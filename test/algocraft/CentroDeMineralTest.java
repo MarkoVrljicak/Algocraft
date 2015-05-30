@@ -24,6 +24,6 @@ public class CentroDeMineralTest {
 	public void testVeoElCostoDeGasParaCrearCentroDeMineral() {
 		Construccion construccion = new CentroDeMineral();
 		
-		assertEquals(0, construccion.costoGas());		
+		assertEquals(0, construccion.costoGas());
 	}
 }

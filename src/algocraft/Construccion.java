@@ -1,6 +1,6 @@
 package algocraft;
 
-public class Construccion {
+public class Construccion implements Creable{
 
 	protected Vida vidamaxima = new Vida();
 	protected int costomineral;
