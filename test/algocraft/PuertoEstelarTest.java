@@ -39,4 +39,18 @@ public class PuertoEstelarTest {
 		
 		assertEquals(150, navetransporte.getVida());
 	}
+	
+	@Test
+	public void testVeoElCostoDeMineralParaCrearPuertoEstelar() {
+		Construccion construccion = new PuertoEstelar();
+		
+		assertEquals(150, construccion.costoMineral());		
+	}
+	
+	@Test
+	public void testVeoElCostoDeGasParaCrearPuertoEstelar() {
+		Construccion construccion = new PuertoEstelar();
+		
+		assertEquals(100, construccion.costoGas());
+	}
 }

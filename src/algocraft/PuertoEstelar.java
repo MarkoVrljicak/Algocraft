@@ -4,6 +4,8 @@ public class PuertoEstelar extends Construccion {
 
 	public PuertoEstelar() {
 		this.vidamaxima.setVida(1300);
+		this.costomineral = 150;
+		this.costogas = 100;
 	}
 
 	public Espectro crearEspectro() {
