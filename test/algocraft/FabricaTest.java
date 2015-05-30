@@ -13,4 +13,12 @@ public class FabricaTest {
 		assertEquals(1250, construccion.getVida());
 	}
 
+	@Test
+	public void testCreoGolliatYControloSuVidaInicial() {
+		Fabrica construccion = new Fabrica();
+		
+		Golliat golliat = construccion.crearGolliat();
+		
+		assertEquals(125, golliat.getVida());
+	}
 }
