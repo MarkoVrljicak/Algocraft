@@ -13,4 +13,13 @@ public class PuertoEstelarTest {
 		assertEquals(1300, construccion.getVida());
 	}
 
+	@Test
+	public void testCreoEspectroYControloSuVidaInicial() {
+		PuertoEstelar construccion = new PuertoEstelar();
+		
+		Espectro espectro = construccion.crearEspectro();
+		
+		assertEquals(120, espectro.getVida());
+	}
+	
 }
