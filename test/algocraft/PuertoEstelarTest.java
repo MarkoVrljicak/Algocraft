@@ -30,4 +30,13 @@ public class PuertoEstelarTest {
 		
 		assertEquals(200, naveciencia.getVida());
 	}
+	
+	@Test
+	public void testCreoNaveTransporteYControloSuVidaInicial() {
+		PuertoEstelar construccion = new PuertoEstelar();
+		
+		NaveTransporte navetransporte = construccion.crearNaveTransporte();
+		
+		assertEquals(150, navetransporte.getVida());
+	}
 }

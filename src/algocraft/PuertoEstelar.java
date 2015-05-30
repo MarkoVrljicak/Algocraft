@@ -13,4 +13,8 @@ public class PuertoEstelar extends Construccion {
 	public NaveCiencia crearNaveCiencia() {
 		return new NaveCiencia();
 	}
+
+	public NaveTransporte crearNaveTransporte() {
+		return new NaveTransporte();
+	}
 }
