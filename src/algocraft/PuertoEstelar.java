@@ -9,4 +9,8 @@ public class PuertoEstelar extends Construccion {
 	public Espectro crearEspectro() {
 		return new Espectro();
 	}
+
+	public NaveCiencia crearNaveCiencia() {
+		return new NaveCiencia();
+	}
 }

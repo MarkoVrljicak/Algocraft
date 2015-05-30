@@ -22,4 +22,12 @@ public class PuertoEstelarTest {
 		assertEquals(120, espectro.getVida());
 	}
 	
+	@Test
+	public void testCreoNaveCienciaYControloSuVidaInicial() {
+		PuertoEstelar construccion = new PuertoEstelar();
+		
+		NaveCiencia naveciencia = construccion.crearNaveCiencia();
+		
+		assertEquals(200, naveciencia.getVida());
+	}
 }
