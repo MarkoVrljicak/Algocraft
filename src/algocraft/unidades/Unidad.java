@@ -4,10 +4,10 @@ import algocraft.Vida;
 
 public class Unidad {
 
-	protected Vida vidamaxima = new Vida();
+	protected Vida vidaMaxima = new Vida();
 	
 	public int getVida() {
-		return vidamaxima.puntosDeVida();
+		return vidaMaxima.puntosDeVida();
 	}
 	
 }

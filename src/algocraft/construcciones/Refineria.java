@@ -3,9 +3,9 @@ package algocraft.construcciones;
 public class Refineria extends Construccion {
 
 	public Refineria() {
-		this.vidamaxima.setVida(750);
-		this.costomineral = 100;
-		this.costogas = 0;
+		this.vidaMaxima.setVida(750);
+		this.costoMineral = 100;
+		this.costoGas = 0;
 	}
 	
 }

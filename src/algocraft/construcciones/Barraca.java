@@ -5,9 +5,9 @@ import algocraft.unidades.Marine;
 public class Barraca extends Construccion{
 	
 	public Barraca() {
-		this.vidamaxima.setVida(1000);
-		this.costomineral = 150;
-		this.costogas = 0;
+		this.vidaMaxima.setVida(1000);
+		this.costoMineral = 150;
+		this.costoGas = 0;
 		this.tiempoDeConstruccion = 12;
 	}
 

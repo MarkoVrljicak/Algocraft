@@ -3,6 +3,6 @@ package algocraft.unidades;
 public class NaveTransporte extends Unidad{
 
 	public NaveTransporte() {
-		this.vidamaxima.setVida(150);
+		this.vidaMaxima.setVida(150);
 	}
 }

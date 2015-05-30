@@ -3,23 +3,23 @@ package algocraft.construcciones;
 import algocraft.Creable;
 import algocraft.Vida;
 
-public class Construccion implements Creable{
+public abstract class Construccion implements Creable{
 
-	protected Vida vidamaxima = new Vida();
-	protected int costomineral;
-	protected int costogas;
+	protected Vida vidaMaxima = new Vida();
+	protected int costoMineral;
+	protected int costoGas;
 	protected int tiempoDeConstruccion;
 	
 	public int getVida() {
-		return vidamaxima.puntosDeVida();
+		return vidaMaxima.puntosDeVida();
 	}
 
 	public int costoMineral() {
-		return costomineral;
+		return costoMineral;
 	}
 
 	public int costoGas() {
-		return costogas;
+		return costoGas;
 	}
 
 	public int tiempoDeConstruccion() {

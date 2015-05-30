@@ -3,7 +3,7 @@ package algocraft.unidades;
 public class Golliat extends Unidad{
 
 	public Golliat() {
-		this.vidamaxima.setVida(125);
+		this.vidaMaxima.setVida(125);
 	}
 	
 }

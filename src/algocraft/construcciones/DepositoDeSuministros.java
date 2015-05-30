@@ -3,9 +3,9 @@ package algocraft.construcciones;
 public class DepositoDeSuministros extends Construccion {
 	
 	public DepositoDeSuministros() {
-		this.vidamaxima.setVida(500);
-		this.costomineral = 100;
-		this.costogas = 0;
+		this.vidaMaxima.setVida(500);
+		this.costoMineral = 100;
+		this.costoGas = 0;
 	}
 	
 }
