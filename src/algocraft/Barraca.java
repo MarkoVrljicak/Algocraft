@@ -1,11 +1,9 @@
 package algocraft;
 
-public class Barraca {
-
-	private Vida vida = new Vida(1000);
+public class Barraca extends Construccion{
 	
-	public int getVida(){
-		return vida.puntosDeVida();
+	public Barraca() {
+		this.vidamaxima.setVida(1000);
 	}
 
 	public Marine crearMarine() {

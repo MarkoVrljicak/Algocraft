@@ -7,14 +7,14 @@ import org.junit.Test;
 public class BarracaTest {
 
 	@Test
-	public void testConstruyoBarracaYControloSuVidaInicial(){
-		Barraca construccion = new Barraca();
+	public void testConstruyoBarracaYControloSuVidaInicial() {
+		Construccion construccion = new Barraca();
 		
 		assertEquals(1000, construccion.getVida());
 	}
 
 	@Test
-	public void testCreoMarineYControloSuVidaInicial(){
+	public void testCreoMarineYControloSuVidaInicial() {
 		Barraca construccion = new Barraca();
 		
 		Marine marine = construccion.crearMarine();

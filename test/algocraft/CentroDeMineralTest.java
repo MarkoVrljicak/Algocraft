@@ -8,7 +8,7 @@ public class CentroDeMineralTest {
 
 	@Test
 	public void testConstruyoCentroDeMineralYControloSuVidaInicial() {
-		CentroDeMineral construccion = new CentroDeMineral();
+		Construccion construccion = new CentroDeMineral();
 		
 		assertEquals(500, construccion.getVida());
 	}

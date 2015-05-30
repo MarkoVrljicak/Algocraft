@@ -1,11 +1,9 @@
 package algocraft;
 
-public class Marine {
+public class Marine extends Unidad{
 
-	private Vida vida = new Vida(40);
-
-	public int getVida() {
-		return vida.puntosDeVida();
+	public Marine() {
+		this.vidamaxima.setVida(40);
 	}
 
 }

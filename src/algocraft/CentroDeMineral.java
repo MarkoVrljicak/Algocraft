@@ -1,11 +1,9 @@
 package algocraft;
 
-public class CentroDeMineral{
-
-	private Vida vida = new Vida(500);
+public class CentroDeMineral extends Construccion{
 	
-	public int getVida(){
-		return vida.puntosDeVida();
+	public CentroDeMineral() {
+		this.vidamaxima.setVida(500);
 	}
 	
 }

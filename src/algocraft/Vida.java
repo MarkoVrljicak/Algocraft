@@ -4,11 +4,13 @@ public class Vida {
 	
 	private int vida;
 
-	public Vida(int valor) {
-		this.vida = valor;
-	}
-
-	public int puntosDeVida(){
+	public int puntosDeVida() {
 		return vida;
 	}
+
+	public void setVida(int valor) {
+		this.vida = valor;
+	}
+	
+	
 }
