@@ -1,4 +1,8 @@
-package algocraft;
+package algocraft.construcciones;
+
+import algocraft.unidades.Espectro;
+import algocraft.unidades.NaveCiencia;
+import algocraft.unidades.NaveTransporte;
 
 public class PuertoEstelar extends Construccion {
 

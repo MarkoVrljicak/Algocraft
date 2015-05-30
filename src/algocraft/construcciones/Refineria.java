@@ -1,4 +1,4 @@
-package algocraft;
+package algocraft.construcciones;
 
 public class Refineria extends Construccion {
 

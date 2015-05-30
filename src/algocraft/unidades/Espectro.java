@@ -1,4 +1,4 @@
-package algocraft;
+package algocraft.unidades;
 
 public class Espectro extends Unidad{
 

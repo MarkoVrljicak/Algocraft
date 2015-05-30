@@ -1,8 +1,11 @@
-package algocraft;
+package algocraft.construcciones;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import algocraft.construcciones.Barraca;
+import algocraft.unidades.Marine;
 
 public class BarracaTest {
 

@@ -1,4 +1,6 @@
-package algocraft;
+package algocraft.construcciones;
+
+import algocraft.unidades.Marine;
 
 public class Barraca extends Construccion{
 	

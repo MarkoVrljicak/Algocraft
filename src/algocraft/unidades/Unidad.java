@@ -1,4 +1,6 @@
-package algocraft;
+package algocraft.unidades;
+
+import algocraft.Vida;
 
 public class Unidad {
 

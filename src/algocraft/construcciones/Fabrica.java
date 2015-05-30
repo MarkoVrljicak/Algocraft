@@ -1,4 +1,6 @@
-package algocraft;
+package algocraft.construcciones;
+
+import algocraft.unidades.Golliat;
 
 public class Fabrica extends Construccion {
 

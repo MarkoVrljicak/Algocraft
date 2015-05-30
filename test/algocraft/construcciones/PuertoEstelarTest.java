@@ -1,8 +1,13 @@
-package algocraft;
+package algocraft.construcciones;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import algocraft.unidades.Espectro;
+import algocraft.construcciones.PuertoEstelar;
+import algocraft.unidades.NaveCiencia;
+import algocraft.unidades.NaveTransporte;
 
 public class PuertoEstelarTest {
 

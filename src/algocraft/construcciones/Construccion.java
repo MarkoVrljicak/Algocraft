@@ -1,4 +1,7 @@
-package algocraft;
+package algocraft.construcciones;
+
+import algocraft.Creable;
+import algocraft.Vida;
 
 public class Construccion implements Creable{
 
