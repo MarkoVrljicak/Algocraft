@@ -13,4 +13,12 @@ public class BarracaTest {
 		assertEquals(1000, construccion.getVida());
 	}
 
+	@Test
+	public void testCreoMarineYControloSuVidaInicial(){
+		Barraca construccion = new Barraca();
+		
+		Marine marine = construccion.crearMarine();
+		
+		assertEquals(40, marine.getVida());
+	}
 }

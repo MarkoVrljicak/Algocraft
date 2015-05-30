@@ -7,4 +7,8 @@ public class Barraca {
 	public int getVida(){
 		return vida.puntosDeVida();
 	}
+
+	public Marine crearMarine() {
+		return new Marine();
+	}
 }
