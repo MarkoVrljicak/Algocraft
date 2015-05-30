@@ -8,6 +8,7 @@ public class Construccion implements Creable{
 	protected Vida vidamaxima = new Vida();
 	protected int costomineral;
 	protected int costogas;
+	protected int tiempoDeConstruccion;
 	
 	public int getVida() {
 		return vidamaxima.puntosDeVida();
@@ -19,6 +20,10 @@ public class Construccion implements Creable{
 
 	public int costoGas() {
 		return costogas;
+	}
+
+	public int tiempoDeConstruccion() {
+		return tiempoDeConstruccion;
 	}
 	
 }

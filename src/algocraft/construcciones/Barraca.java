@@ -8,6 +8,7 @@ public class Barraca extends Construccion{
 		this.vidamaxima.setVida(1000);
 		this.costomineral = 150;
 		this.costogas = 0;
+		this.tiempoDeConstruccion = 12;
 	}
 
 	public Marine crearMarine() {

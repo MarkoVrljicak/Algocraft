@@ -38,4 +38,11 @@ public class BarracaTest {
 		
 		assertEquals(0, construccion.costoGas());
 	}
+	
+	@Test
+	public void testVeoElTiempoDeConstruccionParaCrearBarranca() {
+		Construccion construccion = new Barraca();
+		
+		assertEquals(12, construccion.tiempoDeConstruccion());
+	}
 }
