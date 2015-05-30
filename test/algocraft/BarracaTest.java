@@ -21,4 +21,18 @@ public class BarracaTest {
 		
 		assertEquals(40, marine.getVida());
 	}
+	
+	@Test
+	public void testVeoElCostoDeMineralParaCrearBarraca() {
+		Construccion construccion = new Barraca();
+		
+		assertEquals(150, construccion.costoMineral());		
+	}
+	
+	@Test
+	public void testVeoElCostoDeGasParaCrearBarraca() {
+		Construccion construccion = new Barraca();
+		
+		assertEquals(0, construccion.costoGas());
+	}
 }
