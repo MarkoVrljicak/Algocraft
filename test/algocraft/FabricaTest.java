@@ -21,4 +21,19 @@ public class FabricaTest {
 		
 		assertEquals(125, golliat.getVida());
 	}
+	
+	@Test
+	public void testVeoElCostoDeMineralParaCrearFabrica() {
+		Construccion construccion = new Fabrica();
+		
+		assertEquals(200, construccion.costoMineral());		
+	}
+	
+	@Test
+	public void testVeoElCostoDeGasParaCrearFabrica() {
+		Construccion construccion = new Fabrica();
+		
+		assertEquals(100, construccion.costoGas());
+	}
 }
+
