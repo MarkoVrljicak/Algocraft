@@ -13,4 +13,17 @@ public class DepositoDeSuministrosTest {
 		assertEquals(500, construccion.getVida());
 	}
 
+	@Test
+	public void testVeoElCostoDeMineralParaCrearDepositoDeSuministros() {
+		Construccion construccion = new DepositoDeSuministros();
+		
+		assertEquals(100, construccion.costoMineral());		
+	}
+	
+	@Test
+	public void testVeoElCostoDeGasParaCrearDepositoDeSuministros() {
+		Construccion construccion = new DepositoDeSuministros();
+		
+		assertEquals(0, construccion.costoGas());
+	}
 }
