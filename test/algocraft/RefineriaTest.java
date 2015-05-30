@@ -13,4 +13,17 @@ public class RefineriaTest {
 			assertEquals(750, construccion.getVida());
 	}
 
+	@Test
+	public void testVeoElCostoDeMineralParaCrearRefineria() {
+		Construccion construccion = new Refineria();
+		
+		assertEquals(100, construccion.costoMineral());		
+	}
+	
+	@Test
+	public void testVeoElCostoDeGasParaCrearRefineria() {
+		Construccion construccion = new Refineria();
+		
+		assertEquals(0, construccion.costoGas());
+	}
 }
