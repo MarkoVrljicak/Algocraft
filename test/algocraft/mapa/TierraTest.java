@@ -27,7 +27,7 @@ public class TierraTest {
 	@Test
 	public void testTierraNoTieneGas() {
 		Tierra tierra = new Tierra();
-		assertEquals(false, tierra.hayGas() );
+		assertEquals(false, tierra.tieneGas() );
 	}
 
 }

@@ -1,6 +1,6 @@
 package algocraft.mapa;
 
-public class Volcan {
+public class Volcan extends Terreno {
 
 	public boolean sePuedeCaminar() {
 		return false;
@@ -14,7 +14,7 @@ public class Volcan {
 		return false;
 	}
 
-	public boolean hayGas() {
+	public boolean tieneGas() {
 		return true;
 	}
 

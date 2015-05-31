@@ -1,6 +1,6 @@
 package algocraft.mapa;
 
-public class Tierra {
+public class Tierra extends Terreno {
 	public boolean sePuedeCaminar(){
 		return true;
 	}
@@ -13,7 +13,7 @@ public class Tierra {
 		return false;
 	}
 
-	public boolean hayGas() {
+	public boolean tieneGas() {
 		return false;
 	}
 }

@@ -27,6 +27,6 @@ public class VolcanTest {
 	@Test
 	public void testVolcanTieneGas() {
 		Volcan volcan = new Volcan();
-		assertEquals(true, volcan.hayGas());
+		assertEquals(true, volcan.tieneGas());
 	}
 }

@@ -1,6 +1,6 @@
 package algocraft.mapa;
 
-public class Minerales {
+public class Minerales extends Terreno {
 
 	public boolean sePuedeCaminar() {
 		return false;
@@ -14,7 +14,7 @@ public class Minerales {
 		return true;
 	}
 
-	public boolean hayGas() {
+	public boolean tieneGas() {
 		return false;
 	}
 

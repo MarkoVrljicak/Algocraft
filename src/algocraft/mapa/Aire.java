@@ -1,6 +1,6 @@
 package algocraft.mapa;
 
-public class Aire {
+public class Aire extends Terreno {
 
 	public boolean sePuedeCaminar() {
 		return false;

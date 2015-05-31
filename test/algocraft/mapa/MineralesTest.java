@@ -27,7 +27,7 @@ public class MineralesTest {
 	@Test
 	public void testMineralesNoTienenGas() {
 		Minerales minerales = new Minerales();
-		assertEquals(false, minerales.hayGas());
+		assertEquals(false, minerales.tieneGas());
 	}
 	
 
