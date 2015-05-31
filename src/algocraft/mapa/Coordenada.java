@@ -2,34 +2,53 @@ package algocraft.mapa;
 
 public class Coordenada {
 
-	public int x;
-	public int y;
+	private int x;
+	private int y;
+	
 
-	public Coordenada(int i,int j) {
-		x= i;
-		y= j;
+	public Coordenada(int i, int j) {
+		x = i;
+		y = j;
 	}
 	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
 	
 	@Override
-	public boolean equals(Object otroObjeto){
+	public boolean equals(Object otroObjeto) {
 		
-		if(otroObjeto==null || !(otroObjeto instanceof Coordenada)) return false;
-		Coordenada otraCoordenada= (Coordenada) otroObjeto;
-		return ( ( x == otraCoordenada.x) && (y == otraCoordenada.y) ) ;
+		if ( (otroObjeto == null) || ! (otroObjeto instanceof Coordenada) ){
+			return false;};
+		
+		Coordenada otraCoordenada = (Coordenada) otroObjeto;
+		int otroX = otraCoordenada.getX();
+		int otroY = otraCoordenada.getY();
+		
+		boolean iguales= ( (x == otroX ) && (y == otroY ) );
+		
+		return iguales;
 	}
-
+	
 	@Override
 	public int hashCode() {
-		return ( x +  y*1000  ) ;
+		return (x + y * 1000);
 	}
-
 
 	public int distanciaA(Coordenada otraCoordenada) {
-		int distancia=Math.abs( x-otraCoordenada.x ) + Math.abs( y-otraCoordenada.y );
+		int otroX=otraCoordenada.getX();
+		int otroY=otraCoordenada.getY();
+		
+		int distancia = Math.abs(x - otroX )
+				+ Math.abs(y - otroY);
+
 		return distancia;
 	}
+
 	
 
 }
-
