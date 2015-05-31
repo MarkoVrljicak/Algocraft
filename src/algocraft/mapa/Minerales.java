@@ -10,4 +10,8 @@ public class Minerales {
 		return false;
 	}
 
+	public boolean sePuedeMinar() {
+		return true;
+	}
+
 }

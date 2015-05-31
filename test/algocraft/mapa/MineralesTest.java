@@ -18,5 +18,11 @@ public class MineralesTest {
 		assertEquals(false, minerales.sePuedeVolar());
 	}
 	
+	@Test
+	public void testMineralesSePuedenMinar() {
+		Minerales minerales = new Minerales();
+		assertEquals(true, minerales.sePuedeMinar());
+	}
+	
 
 }
