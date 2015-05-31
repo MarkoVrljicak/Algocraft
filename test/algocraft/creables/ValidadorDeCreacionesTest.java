@@ -24,11 +24,44 @@ public class ValidadorDeCreacionesTest {
 	}
 	
 	@Test
-	public void testPuedeCrearCreableConRecursosSuficientes() {
+	public void testPuedeCrearCreableConRecursosDeMas() {
 		Fabrica fabrica = new Fabrica();
 		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficienteMineral, suficienteGas, fabrica);
 		
 		assertEquals(true, proxy.puedoCrearme(demasiadoMineral, demasiadoGas));
 	}
+	
+	@Test
+	public void testPuedeCrearCreableConRecursosSuficientes() {
+		Fabrica fabrica = new Fabrica();
+		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficienteMineral, suficienteGas, fabrica);
+		
+		assertEquals(true, proxy.puedoCrearme(suficienteMineral, suficienteGas));
+	}
+	
+	@Test
+	public void testNoPuedeCrearCreableConRecursosInsuficientes() {
+		Fabrica fabrica = new Fabrica();
+		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficienteMineral, suficienteGas, fabrica);
+		
+		assertEquals(false, proxy.puedoCrearme(sinMineral, sinGas));
+	}
+	
+	@Test
+	public void testNoPuedeCrearCreableConMineralInsuficiente() {
+		Fabrica fabrica = new Fabrica();
+		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficienteMineral, suficienteGas, fabrica);
+		
+		assertEquals(false, proxy.puedoCrearme(sinMineral, suficienteGas));
+	}
+	
+	@Test
+	public void testNoPuedeCrearCreableConGasInsuficiente() {
+		Fabrica fabrica = new Fabrica();
+		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficienteMineral, suficienteGas, fabrica);
+		
+		assertEquals(false, proxy.puedoCrearme(suficienteMineral, sinGas));
+	}
+
 
 }
