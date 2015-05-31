@@ -21,11 +21,13 @@ public class Coordenada {
 	
 	@Override
 	public boolean equals(Object otroObjeto) {
-		
-		if ( (otroObjeto == null) || ! (otroObjeto instanceof Coordenada) ){
-			return false;};
-		
-		Coordenada otraCoordenada = (Coordenada) otroObjeto;
+		if(otroObjeto==null) return false;
+		Coordenada otraCoordenada;
+		try{
+			otraCoordenada = (Coordenada) otroObjeto;
+		}catch(ClassCastException e){
+			return false;
+		}
 		int otroX = otraCoordenada.getX();
 		int otroY = otraCoordenada.getY();
 		

@@ -20,6 +20,14 @@ public class CoordenadaTest {
 
 		Assert.assertNotEquals(c1, c2);
 	}
+	
+	@Test
+	public void testUnaCoordenadaNoEsIgualAAlgoDeOtroTipo() {
+		Coordenada c1 = new Coordenada(1, 5);
+		String coordenadaFalsa= "10,20";
+
+		Assert.assertNotEquals(c1, coordenadaFalsa);
+	}
 
 	@Test
 	public void testHashcodeIgualSiTieneIgualXY() {
