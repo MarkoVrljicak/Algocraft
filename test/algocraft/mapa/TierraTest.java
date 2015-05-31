@@ -7,15 +7,21 @@ import org.junit.Test;
 public class TierraTest {
 
 	@Test
-	public void testSePuedeCaminar() {
+	public void testTierraSePuedeCaminar() {
 		Tierra tierra = new Tierra();
 		assertEquals(true, tierra.sePuedeCaminar() );
 	}
 	
 	@Test
-	public void testSePuedeVolar() {
+	public void testTierraSePuedeVolar() {
 		Tierra tierra = new Tierra();
 		assertEquals(true, tierra.sePuedeVolar() );
+	}
+	
+	@Test
+	public void testTierraNoSePuedeMinar() {
+		Tierra tierra = new Tierra();
+		assertEquals(false, tierra.sePuedeMinar() );
 	}
 
 }

@@ -8,4 +8,8 @@ public class Tierra {
 	public boolean sePuedeVolar() {
 		return true;
 	}
+	
+	public boolean sePuedeMinar() {
+		return false;
+	}
 }
