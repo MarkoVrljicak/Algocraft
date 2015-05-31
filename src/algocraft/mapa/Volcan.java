@@ -14,4 +14,8 @@ public class Volcan {
 		return false;
 	}
 
+	public boolean hayGas() {
+		return true;
+	}
+
 }
