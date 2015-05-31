@@ -1,6 +1,7 @@
 package algocraft.construcciones;
 
 import algocraft.Creable;
+import algocraft.unidades.Unidad;
 
 public class PuertoEstelar extends Construccion {
 
@@ -8,9 +9,16 @@ public class PuertoEstelar extends Construccion {
 		this.nombre = "Puerto Estelar";
 		this.vidaMaxima.setVida(1300);
 	}
-	
-	public Creable crear(){
+
+	@Override
+	public Creable clonar() {
 		return (new PuertoEstelar());
+	}
+
+	@Override
+	public Unidad crearUnidad(int mineralDisponible, int gasDisponible,
+			String nombreDeUnidad) {
+		return null;
 	}
 
 }

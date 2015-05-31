@@ -1,6 +1,7 @@
 package algocraft.construcciones;
 
 import algocraft.Creable;
+import algocraft.unidades.Unidad;
 
 public class Refineria extends Construccion {
 
@@ -8,9 +9,16 @@ public class Refineria extends Construccion {
 		this.nombre = "Refineria";
 		this.vidaMaxima.setVida(750);
 	}
-	
-	public Creable crear(){
-		return (new Refineria());
+
+	@Override
+	public Creable clonar() {
+		return new Refineria();
+	}
+
+	@Override
+	public Unidad crearUnidad(int mineralDisponible, int gasDisponible,
+			String nombreDeUnidad) {
+		return null;
 	}
 	
 }

@@ -22,7 +22,7 @@ public class ValidadorDeCreaciones {
 	
 	public Creable crear( int mineralDisponible, int gasDisponible){
 		if (this.puedoCrearme(mineralDisponible, gasDisponible)){
-			return creable;
+			return creable.clonar();
 		}
 		else {
 			return null;

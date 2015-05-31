@@ -19,6 +19,13 @@ public class BarracaTest {
 	public void testVeoElTiempoDeConstruccionParaCrearBarranca() {
 		Construccion construccion = new Barraca();
 		
-		assertEquals(12, construccion.tiempoDeConstruccion());
+		assertEquals(12, construccion.tiempoDeCreacion());
+	}
+	
+	@Test
+	public void testBarracaInicializaConMarine() {
+		Barraca barraca = new Barraca();
+		
+		assertEquals(true, barraca.tengoUnidad("Marine"));
 	}
 }

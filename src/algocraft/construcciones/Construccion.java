@@ -2,6 +2,7 @@ package algocraft.construcciones;
 
 import algocraft.Creable;
 import algocraft.Vida;
+import algocraft.unidades.Unidad;
 
 public abstract class Construccion implements Creable{
 
@@ -13,7 +14,7 @@ public abstract class Construccion implements Creable{
 		return vidaMaxima.puntosDeVida();
 	}
 	
-	public int tiempoDeConstruccion() {
+	public int tiempoDeCreacion() {
 		return tiempoDeConstruccion;
 	}
 	
@@ -21,6 +22,8 @@ public abstract class Construccion implements Creable{
 		return nombre;
 	}
 	
-	abstract public Creable crear();
+	abstract public Creable clonar();
+	
+	abstract public Unidad crearUnidad(int mineralDisponible, int gasDisponible, String nombreDeUnidad);
 	
 }

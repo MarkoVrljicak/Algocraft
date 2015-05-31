@@ -29,7 +29,7 @@ public class ValidadorDeCreacionesTest {
 		Fabrica fabricaAGuardar = new Fabrica();
 		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficienteMineral, suficienteGas, fabricaAGuardar);
 		
-		assertEquals(fabricaAGuardar, proxy.crear(demasiadoMineral, demasiadoGas));
+		assertEquals(fabricaAGuardar.getNombre(), proxy.crear(demasiadoMineral, demasiadoGas).getNombre());
 	}
 	
 	@Test
@@ -37,7 +37,7 @@ public class ValidadorDeCreacionesTest {
 		Fabrica fabricaAGuardar = new Fabrica();
 		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficienteMineral, suficienteGas, fabricaAGuardar);
 		
-		assertEquals(fabricaAGuardar, proxy.crear(suficienteMineral, suficienteGas));
+		assertEquals(fabricaAGuardar.getNombre(), proxy.crear(suficienteMineral, suficienteGas).getNombre());
 	}
 	
 	@Test

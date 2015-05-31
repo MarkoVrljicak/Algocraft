@@ -11,7 +11,7 @@ public class ConstruccionTest {
 	@Test
 	public void ConstruccionCreaCopiaDeSiMisma() {
 		Construccion construccion = new Refineria();
-		Creable refineria = construccion.crear();
+		Creable refineria = construccion.clonar();
 		
 		assertEquals(construccion.getNombre() , ((Construccion)refineria).getNombre());		
 	}
