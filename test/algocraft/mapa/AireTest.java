@@ -10,7 +10,14 @@ public class AireTest {
 	public void testAireNoSePuedeCaminar() {
 		Aire aire = new Aire();
 		assertEquals(false, aire.sePuedeCaminar());
-		
 	}
 
+	@Test
+	public void testAireSePuedeVolar() {
+		Aire aire = new Aire();
+		assertEquals(true, aire.sePuedeVolar());
+	}
+	
+	
+	
 }
