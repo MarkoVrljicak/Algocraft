@@ -13,5 +13,9 @@ public class Aire {
 	public boolean sePuedeMinar() {
 		return false;
 	}
+
+	public boolean tieneGas() {
+		return false;
+	}
 	
 }

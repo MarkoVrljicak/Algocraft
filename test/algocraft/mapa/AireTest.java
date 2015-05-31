@@ -24,4 +24,10 @@ public class AireTest {
 		assertEquals(false, aire.sePuedeMinar());
 	}
 	
+	@Test
+	public void testAireNoTieneGas() {
+		Aire aire = new Aire();
+		assertEquals(false, aire.tieneGas());
+	}
+	
 }
