@@ -10,4 +10,8 @@ public class Volcan {
 		return false;
 	}
 
+	public boolean sePuedeMinar() {
+		return false;
+	}
+
 }
