@@ -17,6 +17,10 @@ public abstract class Construccion implements Creable{
 		return tiempoDeConstruccion;
 	}
 	
+	public String getNombre(){
+		return nombre;
+	}
+	
 	abstract public Creable crear();
 	
 }
