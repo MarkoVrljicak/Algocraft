@@ -6,4 +6,8 @@ public class Volcan {
 		return false;
 	}
 
+	public boolean sePuedeVolar() {
+		return false;
+	}
+
 }

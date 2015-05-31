@@ -12,4 +12,9 @@ public class VolcanTest {
 		assertEquals(false, volcan.sePuedeCaminar());
 	}
 
+	@Test
+	public void testVolcanNoSePuedeVolar() {
+		Volcan volcan = new Volcan();
+		assertEquals(false, volcan.sePuedeVolar());
+	}
 }
