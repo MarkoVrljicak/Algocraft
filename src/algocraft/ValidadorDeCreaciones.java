@@ -16,4 +16,7 @@ public class ValidadorDeCreaciones {
 		return creable.getNombre();
 	}
 	
+	public boolean puedoCrearme( int mineralDisponible, int gasDisponible ){
+		return ((mineralDisponible >= mineral) && (gasDisponible >= gas));
+	}
 }
