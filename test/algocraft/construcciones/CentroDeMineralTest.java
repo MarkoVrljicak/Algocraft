@@ -14,18 +14,4 @@ public class CentroDeMineralTest {
 		
 		assertEquals(500, construccion.getVida());
 	}
-
-	@Test
-	public void testVeoElCostoDeMineralParaCrearCentroDeMineral() {
-		Construccion construccion = new CentroDeMineral();
-		
-		assertEquals(50, construccion.costoMineral());		
-	}
-	
-	@Test
-	public void testVeoElCostoDeGasParaCrearCentroDeMineral() {
-		Construccion construccion = new CentroDeMineral();
-		
-		assertEquals(0, construccion.costoGas());
-	}
 }

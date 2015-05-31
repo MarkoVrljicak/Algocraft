@@ -2,8 +2,7 @@ package algocraft;
 
 public interface Creable {
 
-	int costoMineral();
-	int costoGas();
+	public Creable crear();
 	int tiempoDeConstruccion();
 	
 }
