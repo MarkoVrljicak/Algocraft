@@ -14,4 +14,8 @@ public class Minerales {
 		return true;
 	}
 
+	public boolean hayGas() {
+		return false;
+	}
+
 }
