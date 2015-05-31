@@ -23,7 +23,7 @@ public class Casillero {
 	}
 
 	public void almacenar(Object objeto) {
-		contenido= objeto;		
+		contenido = objeto;		
 	}
 	
 }
