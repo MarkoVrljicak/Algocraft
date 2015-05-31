@@ -30,7 +30,7 @@ public class Barraca extends Construccion{
 
 	@Override
 	public Unidad crearUnidad(int mineralDisponible, int gasDisponible, String nombreDeUnidad) {
-		if (unidades.containsKey(nombreDeUnidad)){
+		if (tengoUnidad(nombreDeUnidad)){
 			ValidadorDeCreaciones validador = unidades.get(nombreDeUnidad);
 			return (Unidad) validador.crear(mineralDisponible, gasDisponible);
 		}
