@@ -7,9 +7,16 @@ import org.junit.Test;
 public class MineralesTest {
 
 	@Test
-	public void testAireNoSePuedeCaminar() {
+	public void testMineralesNoSePuedeCaminar() {
 		Minerales minerales = new Minerales();
 		assertEquals(false, minerales.sePuedeCaminar());
 	}
+	
+	@Test
+	public void testMineralesNoSePuedeVolar() {
+		Minerales minerales = new Minerales();
+		assertEquals(false, minerales.sePuedeVolar());
+	}
+	
 
 }

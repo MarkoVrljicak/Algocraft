@@ -2,7 +2,11 @@ package algocraft.mapa;
 
 public class Minerales {
 
-	public Object sePuedeCaminar() {
+	public boolean sePuedeCaminar() {
+		return false;
+	}
+
+	public boolean sePuedeVolar() {
 		return false;
 	}
 
