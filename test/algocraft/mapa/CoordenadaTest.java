@@ -6,11 +6,19 @@ import org.junit.Test;
 public class CoordenadaTest {
 
 	@Test
-	public void testDosCoordenadaSonIgualesSiTienenMismoXY() {
+	public void testDosCoordenadaSonIgualesSiTienenMismoXeY() {
 		Coordenada c1 = new Coordenada(1, 5);
 		Coordenada c2 = new Coordenada(1, 5);
 
 		Assert.assertEquals(c1, c2);
+	}
+	
+	@Test
+	public void testDosCoordenadaSonIgualesSiTienenMismoXoY() {
+		Coordenada c1 = new Coordenada(1, 5);
+		Coordenada c2 = new Coordenada(1, 3);
+
+		Assert.assertNotEquals(c1, c2);
 	}
 
 	@Test
@@ -19,18 +27,6 @@ public class CoordenadaTest {
 		Coordenada c2 = new Coordenada(1, 3);
 
 		Assert.assertEquals(c1.hashCode(), c2.hashCode());
-	}
-
-	@Test
-	public void testHashcodeNoIgualSiTieneDistintoXY() {
-		Coordenada c1 = new Coordenada(1, 3);
-		Coordenada c2 = new Coordenada(3, 4);
-
-		double hash1 = c1.hashCode();
-		double hash2 = c2.hashCode();
-		boolean iguales = (hash1 == hash2);
-
-		Assert.assertEquals(false, iguales);
 	}
 
 	@Test
