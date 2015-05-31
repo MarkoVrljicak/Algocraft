@@ -7,6 +7,7 @@ import algocraft.unidades.NaveTransporte;
 public class PuertoEstelar extends Construccion {
 
 	public PuertoEstelar() {
+		this.nombre = "Puerto Estelar";
 		this.vidaMaxima.setVida(1300);
 		this.costoMineral = 150;
 		this.costoGas = 100;

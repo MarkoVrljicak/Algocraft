@@ -9,6 +9,7 @@ public abstract class Construccion implements Creable{
 	protected int costoMineral;
 	protected int costoGas;
 	protected int tiempoDeConstruccion;
+	protected String nombre;
 	
 	public int getVida() {
 		return vidaMaxima.puntosDeVida();
