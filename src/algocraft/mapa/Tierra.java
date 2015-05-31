@@ -12,4 +12,8 @@ public class Tierra {
 	public boolean sePuedeMinar() {
 		return false;
 	}
+
+	public boolean hayGas() {
+		return false;
+	}
 }

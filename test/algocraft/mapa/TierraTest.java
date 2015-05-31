@@ -23,5 +23,11 @@ public class TierraTest {
 		Tierra tierra = new Tierra();
 		assertEquals(false, tierra.sePuedeMinar() );
 	}
+	
+	@Test
+	public void testTierraNoTieneGas() {
+		Tierra tierra = new Tierra();
+		assertEquals(false, tierra.hayGas() );
+	}
 
 }
