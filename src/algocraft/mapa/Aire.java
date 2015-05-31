@@ -9,5 +9,9 @@ public class Aire {
 	public boolean sePuedeVolar() {
 		return true;
 	}
+
+	public boolean sePuedeMinar() {
+		return false;
+	}
 	
 }

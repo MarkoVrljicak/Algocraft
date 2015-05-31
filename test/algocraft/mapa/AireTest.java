@@ -18,6 +18,10 @@ public class AireTest {
 		assertEquals(true, aire.sePuedeVolar());
 	}
 	
-	
+	@Test
+	public void testAireNoSePuedeMinar() {
+		Aire aire = new Aire();
+		assertEquals(false, aire.sePuedeMinar());
+	}
 	
 }
