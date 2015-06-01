@@ -17,5 +17,9 @@ public class Volcan extends Terreno {
 	public boolean tieneGas() {
 		return true;
 	}
+	
+	public boolean sePuedeEdificar() {
+		return false;
+	}
 
 }

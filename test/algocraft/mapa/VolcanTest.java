@@ -29,4 +29,11 @@ public class VolcanTest {
 		Volcan volcan = new Volcan();
 		assertEquals(true, volcan.tieneGas());
 	}
+	
+	@Test
+	public void testVolcanNoSePuedeEdificar() {
+		Volcan volcan = new Volcan();
+		assertEquals(false, volcan.sePuedeEdificar());
+	}
+	
 }

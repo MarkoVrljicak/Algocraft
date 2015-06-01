@@ -17,7 +17,7 @@ public class Tierra extends Terreno {
 		return false;
 	}
 
-	public Object sePuedeEdificar() {
+	public boolean sePuedeEdificar() {
 		return true;
 	}
 }
