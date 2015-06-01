@@ -11,9 +11,7 @@ import algocraft.construcciones.PuertoEstelar;
 import algocraft.construcciones.Refineria;
 import algocraft.creables.ValidadorDeCreaciones;
 
-public class Terran {
-	
-	private HashMap<String, ValidadorDeCreaciones> construcciones;
+public class Terran extends Raza {
 	
 	Terran(){
 		
