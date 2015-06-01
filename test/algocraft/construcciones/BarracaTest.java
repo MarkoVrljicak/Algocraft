@@ -4,9 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import algocraft.Creable;
 import algocraft.construcciones.Barraca;
+import algocraft.unidades.Unidad;
 
 public class BarracaTest {
+	public int muchoMineral = 999;
+	public int muchoGas = 999;
 
 	@Test
 	public void testConstruyoBarracaYControloSuVidaInicial() {
@@ -27,5 +31,13 @@ public class BarracaTest {
 		Barraca barraca = new Barraca();
 		
 		assertEquals(true, barraca.tengoUnidad("Marine"));
+	}
+	
+	@Test
+	public void testBarracaCreaMarine() {
+		Barraca barraca = new Barraca();
+		Unidad marine = barraca.crearUnidad(muchoMineral, muchoGas, "Marine");
+		
+		assertEquals("Marine", marine.getNombre());
 	}
 }

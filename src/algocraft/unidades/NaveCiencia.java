@@ -5,6 +5,7 @@ import algocraft.Creable;
 public class NaveCiencia extends Unidad{
 
 	public NaveCiencia() {
+		nombre = "Nave Ciencia";
 		this.vida.setVida(200);
 	}
 	
