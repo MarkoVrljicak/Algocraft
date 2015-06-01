@@ -14,7 +14,7 @@ public class Casillero {
 		terreno = null;
 	}
 	
-	public void setTerreno(Terreno unTerreno){
+	protected void setTerreno(Terreno unTerreno){
 		terreno = unTerreno;
 	}
 
@@ -23,7 +23,7 @@ public class Casillero {
 	}
 
 	public Coordenada getCoordenada() {
-		return coordenada;
+		return coordenada;//debreia devolver una copia asi no se puede modificar
 	}
 	
 	public Object getContenido() {
@@ -35,7 +35,7 @@ public class Casillero {
 	}
 
 	public Terreno getTerreno() {
-		return terreno;
+		return terreno;//debreia devolver una copia asi no se puede modificar
 	}
 	
 }
