@@ -7,6 +7,7 @@ public class CentroDeMineral extends Construccion{
 	
 	public CentroDeMineral() {
 		this.nombre = "Centro De Mineral";
+		this.tiempoDeConstruccion = 4;
 		this.vidaMaxima.setVida(500);
 	}
 	

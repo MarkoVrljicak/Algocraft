@@ -14,4 +14,12 @@ public class CentroDeMineralTest {
 		
 		assertEquals(500, construccion.getVida());
 	}
+
+	@Test
+	public void testVeoElTiempoDeConstruccionParaCrearCentroDeMineral() {
+		Construccion construccion = new CentroDeMineral();
+		
+		assertEquals(4, construccion.tiempoDeCreacion());
+	}
+	
 }
