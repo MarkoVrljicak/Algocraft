@@ -35,4 +35,11 @@ public class PuertoEstelarTest {
 		
 		assertEquals(true, puertoEstelar.tengoUnidad("Nave Ciencia"));
 	}
+	
+	@Test
+	public void testPuertoEstelarInicializaConNaveTransporte() {
+		PuertoEstelar puertoEstelar = new PuertoEstelar();
+		
+		assertEquals(true, puertoEstelar.tengoUnidad("Nave Transporte"));
+	}
 }

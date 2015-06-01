@@ -1,10 +1,12 @@
 package algocraft.construcciones;
 
 import java.util.HashMap;
+
 import algocraft.Creable;
 import algocraft.ValidadorDeCreaciones;
 import algocraft.unidades.Espectro;
 import algocraft.unidades.NaveCiencia;
+import algocraft.unidades.NaveTransporte;
 
 public class PuertoEstelar extends CreadorDeUnidades {
 
@@ -16,6 +18,7 @@ public class PuertoEstelar extends CreadorDeUnidades {
 		unidades = new HashMap<String, ValidadorDeCreaciones>();
 		this.unidades.put("Espectro", new ValidadorDeCreaciones(150, 100, new Espectro() ));
 		this.unidades.put("Nave Ciencia", new ValidadorDeCreaciones(100, 225, new NaveCiencia() ));
+		this.unidades.put("Nave Transporte", new ValidadorDeCreaciones(100, 100, new NaveTransporte() ));
 	}
 
 	@Override
