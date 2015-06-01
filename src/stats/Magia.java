@@ -1,6 +1,6 @@
 package stats;
 
-public class Magia extends Stat{
+public class Magia extends Stat implements Regenerable{
 	
 	public void regenerar(int cantidad){
 		

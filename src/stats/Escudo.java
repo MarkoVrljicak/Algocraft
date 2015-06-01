@@ -1,6 +1,6 @@
 package stats;
 
-public class Escudo extends Stat {
+public class Escudo extends Stat implements Regenerable {
 
 	public void regenerar(int cantidad){
 		
