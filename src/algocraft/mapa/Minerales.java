@@ -17,5 +17,9 @@ public class Minerales extends Terreno {
 	public boolean tieneGas() {
 		return false;
 	}
+	
+	public boolean sePuedeEdificar() {
+		return false;
+	}
 
 }
