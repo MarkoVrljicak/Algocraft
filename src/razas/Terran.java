@@ -1,6 +1,4 @@
 package razas;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import algocraft.construcciones.Barraca;
@@ -11,12 +9,12 @@ import algocraft.construcciones.Fabrica;
 import algocraft.construcciones.PuertoEstelar;
 import algocraft.construcciones.Refineria;
 import algocraft.creables.ValidadorDeCreaciones;
-import algocraft.unidades.Marine;
-import algocraft.unidades.Unidad;
-
 public class Terran extends Raza {
 	
+	private String nombre;
+	
 	public Terran(){
+		nombre = "Terran";
 		
 		construcciones = new HashMap<String, ValidadorDeCreaciones>();
 		this.construcciones.put("Centro De Mineral", new ValidadorDeCreaciones(50, 0, new CentroDeMineral() ));
@@ -26,6 +24,10 @@ public class Terran extends Raza {
 		this.construcciones.put("Fabrica", new ValidadorDeCreaciones(200, 100, new Fabrica() ));
 		this.construcciones.put("Puerto Estelar", new ValidadorDeCreaciones(150, 100, new PuertoEstelar() ));
 		
+	}
+	
+	public String getNombre(){
+		return nombre;
 	}
 
 	protected boolean tengoConstruccion(String nombreDeConstruccion){
@@ -45,13 +47,5 @@ public class Terran extends Raza {
 		}
 	}
 
-	@Override
-	public ArrayList<Unidad> unidadesIniciales() {
-		ArrayList<Unidad> unidadesIniciales = new ArrayList<Unidad>();
-		
-		unidadesIniciales.add(new Marine());
-		
-		return unidadesIniciales;
-	}
 	
 }

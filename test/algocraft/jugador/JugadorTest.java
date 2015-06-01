@@ -8,12 +8,20 @@ import org.junit.Test;
 import razas.Terran;
 
 public class JugadorTest {
+	private String nombreTerran = "Terran";
 
 	@Test
-	public void jugadorTerranEmpiezaConPoblacionUno() {
+	public void jugadorTerranEmpiezaConPoblacionCero() {
 		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
 		
-		assertEquals(1, jugadorTerran.poblacion());
+		assertEquals(0, jugadorTerran.poblacion());
+	}
+	
+	@Test
+	public void jugadorObtieneNombreDeRaza() {
+		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
+		
+		assertEquals(nombreTerran, jugadorTerran.getRaza());
 	}
 
 }

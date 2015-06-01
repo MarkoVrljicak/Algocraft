@@ -13,10 +13,14 @@ public class Jugador {
 	public Jugador(String nombreJugador, Raza razaSeleccionada){
 		//falta color
 		raza = razaSeleccionada;
-		unidades = raza.unidadesIniciales();
+		unidades = new ArrayList<Unidad>();
 	}
 	
 	public int poblacion(){
 		return unidades.size();
+	}
+	
+	public String getRaza(){
+		return raza.getNombre();
 	}
 }
