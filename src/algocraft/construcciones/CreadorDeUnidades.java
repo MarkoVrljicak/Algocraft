@@ -9,7 +9,7 @@ public abstract class CreadorDeUnidades extends Construccion{
 	
 	protected Map<String, ValidadorDeCreaciones> unidades; 
 
-	private boolean tengoUnidad(String nombreDeUnidad){
+	protected boolean tengoUnidad(String nombreDeUnidad){
 		return unidades.containsKey(nombreDeUnidad);
 	}
 	
