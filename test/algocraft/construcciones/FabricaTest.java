@@ -21,5 +21,12 @@ public class FabricaTest {
 		
 		assertEquals(12, construccion.tiempoDeCreacion());
 	}
+	
+	@Test
+	public void testFabriInicializaConGolliat() {
+		Fabrica fabrica = new Fabrica();
+		
+		assertEquals(true, fabrica.tengoUnidad("Golliat"));
+	}
 }
 

@@ -12,7 +12,7 @@ public class Barraca extends CreadorDeUnidades{
 		this.vidaMaxima.setVida(1000);
 		this.tiempoDeConstruccion = 12;
 		unidades = new HashMap<String, ValidadorDeCreaciones>();
-		this.unidades.put("Marine", new ValidadorDeCreaciones(150, 0, (Creable) new Marine() ));
+		this.unidades.put("Marine", new ValidadorDeCreaciones(50, 0, new Marine() ));
 	}
 	
 	public Creable clonar(){
