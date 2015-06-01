@@ -2,19 +2,19 @@ package algocraft.construcciones;
 
 import algocraft.creables.Creable;
 
-public class Asimilador extends Construccion {
+public class Pilon extends Construccion {
 
-	public Asimilador() {
-		this.nombre = "Asimilador";
-		this.vida.set(450);
+	public Pilon() {
+		this.nombre = "Pilon";
 		this.tiempoDeConstruccion = 6;
+		this.vida.set(300);
 	}
 	
 	
 	@Override
 	public Creable clonar() {
 		
-		return new Asimilador();
+		return new Pilon();
 	}
 
 }

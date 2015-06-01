@@ -5,7 +5,7 @@ import algocraft.creables.Creable;
 public class NexoMineral extends Construccion {
 
 	public NexoMineral() {
-		this.nombre = "Centro De Mineral";
+		this.nombre = "Nexo Mineral";
 		this.tiempoDeConstruccion = 4;
 		this.vida.set(250);
 	}
