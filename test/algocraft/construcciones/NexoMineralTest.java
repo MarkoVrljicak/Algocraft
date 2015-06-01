@@ -14,4 +14,10 @@ public class NexoMineralTest {
 		assertEquals(250, construccion.getVida());
 	}
 	
+	@Test
+	public void testVeoElTiempoDeConstruccionParaCrearNexoMineral() {
+		Construccion construccion = new NexoMineral();
+		
+		assertEquals(4, construccion.tiempoDeCreacion());
+	}
 }

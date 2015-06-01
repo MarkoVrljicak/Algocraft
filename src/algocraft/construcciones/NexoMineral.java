@@ -6,13 +6,13 @@ public class NexoMineral extends Construccion {
 
 	public NexoMineral() {
 		this.nombre = "Centro De Mineral";
-		this.tiempoDeConstruccion = 14;
+		this.tiempoDeConstruccion = 4;
 		this.vida.set(250);
 	}
 	@Override
 	public Creable clonar() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return new NexoMineral();
 	}
 
 }
