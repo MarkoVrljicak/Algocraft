@@ -22,5 +22,14 @@ public class StatTest {
 		
 		assertEquals(80, magia.actual());
 	}
+	
+	@Test
+	public void StatNoBajaDeCero() {
+		Stat magia = new Magia();
+		magia.set(100);
+		magia.disminuir(110);
+		
+		assertEquals(0, magia.actual());
+	}
 
 }

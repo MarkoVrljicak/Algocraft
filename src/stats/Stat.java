@@ -25,6 +25,10 @@ public class Stat {
 	
 	public void disminuir(int cantidad){
 		this.ActualValor = this.ActualValor - cantidad;
+		
+		if (this.ActualValor < 0){
+			this.ActualValor = 0;
+		}
 	}
 	
 
