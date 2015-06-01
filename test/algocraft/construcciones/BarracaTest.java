@@ -16,7 +16,7 @@ public class BarracaTest {
 	}
 	
 	@Test
-	public void testVeoElTiempoDeConstruccionParaCrearBarranca() {
+	public void testVeoElTiempoDeConstruccionParaCrearBarraca() {
 		Construccion construccion = new Barraca();
 		
 		assertEquals(12, construccion.tiempoDeCreacion());

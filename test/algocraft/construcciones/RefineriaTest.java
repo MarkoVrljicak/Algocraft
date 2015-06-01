@@ -14,4 +14,11 @@ public class RefineriaTest {
 			
 			assertEquals(750, construccion.getVida());
 	}
+	
+	@Test
+	public void testVeoElTiempoDeConstruccionParaCrearRefineria() {
+		Construccion construccion = new Refineria();
+		
+		assertEquals(6, construccion.tiempoDeCreacion());
+	}
 }
