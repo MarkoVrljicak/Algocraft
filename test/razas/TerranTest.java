@@ -7,6 +7,8 @@ import org.junit.Test;
 import algocraft.construcciones.Construccion;
 
 public class TerranTest {
+	private int sinMineral = 0;
+	private int sinGas = 0;
 	private int muchoMineral = 999;
 	private int muchoGas = 999;
 
@@ -111,6 +113,14 @@ public class TerranTest {
 	public void testTerranNoCreaNexoMineral() {
 		Terran terran = new Terran();
 		Construccion nexo = terran.construirConstruccion(muchoMineral, muchoGas, "Nexo Mineral");
+		
+		assertEquals(null, nexo);
+	}
+	
+	@Test
+	public void testTerranNoCreaCentroDeMineralSinRecursos() {
+		Terran terran = new Terran();
+		Construccion nexo = terran.construirConstruccion(sinMineral, sinGas, "Centro De Mineral");
 		
 		assertEquals(null, nexo);
 	}
