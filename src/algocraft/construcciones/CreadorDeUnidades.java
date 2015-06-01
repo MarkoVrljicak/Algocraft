@@ -13,7 +13,6 @@ public abstract class CreadorDeUnidades extends Construccion{
 		return unidades.containsKey(nombreDeUnidad);
 	}
 	
-	@Override
 	public Unidad crearUnidad(int mineralDisponible, int gasDisponible, String nombreDeUnidad) {
 		
 		if (tengoUnidad(nombreDeUnidad)){

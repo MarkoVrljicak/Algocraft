@@ -3,7 +3,7 @@ package algocraft.construcciones;
 import algocraft.Creable;
 import algocraft.unidades.Unidad;
 
-public class PuertoEstelar extends Construccion {
+public class PuertoEstelar extends CreadorDeUnidades {
 
 	public PuertoEstelar() {
 		this.nombre = "Puerto Estelar";

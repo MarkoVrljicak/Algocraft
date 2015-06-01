@@ -1,7 +1,6 @@
 package algocraft.construcciones;
 
 import algocraft.Creable;
-import algocraft.unidades.Unidad;
 
 public class CentroDeMineral extends Construccion{
 	
@@ -15,9 +14,4 @@ public class CentroDeMineral extends Construccion{
 		return (new CentroDeMineral());
 	}
 
-	@Override
-	public Unidad crearUnidad(int mineralDisponible, int gasDisponible, String nombreDeUnidad) {
-		return null;
-	}
-	
 }

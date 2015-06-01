@@ -14,4 +14,12 @@ public class DepositoDeSuministrosTest {
 		
 		assertEquals(500, construccion.getVida());
 	}
+	
+	@Test
+	public void testVeoElTiempoDeConstruccionParaCrearDepositoDeSuministros() {
+		Construccion construccion = new DepositoDeSuministros();
+		
+		assertEquals(6, construccion.tiempoDeCreacion());
+	}
+	
 }
