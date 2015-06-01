@@ -33,7 +33,7 @@ public class FabricaTest {
 	}
 	
 	@Test
-	public void testBarracaInicializaConMarine() {
+	public void testFabricaCreaGolliat() {
 		Fabrica fabrica = new Fabrica();
 		Unidad golliat = fabrica.crearUnidad(muchoMineral, muchoGas, "Golliat");
 		

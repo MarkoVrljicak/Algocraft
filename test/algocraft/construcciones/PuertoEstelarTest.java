@@ -5,9 +5,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import algocraft.construcciones.PuertoEstelar;
+import algocraft.unidades.Unidad;
 
 public class PuertoEstelarTest {
 
+	private int muchoMineral = 999;
+	private int muchoGas = 999;
+	
 	@Test
 	public void testConstruyoPuertoEstelarYControloSuVidaInicial() {
 		Construccion construccion = new PuertoEstelar();
@@ -41,5 +45,13 @@ public class PuertoEstelarTest {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
 		
 		assertEquals(true, puertoEstelar.tengoUnidad("Nave Transporte"));
+	}
+	
+	@Test
+	public void testPuertoEstelarCreaEspectro() {
+		PuertoEstelar puertoEstelar = new PuertoEstelar();
+		Unidad espectro = puertoEstelar.crearUnidad(muchoMineral, muchoGas, "Espectro");
+		
+		assertEquals("Espectro", espectro.getNombre());
 	}
 }
