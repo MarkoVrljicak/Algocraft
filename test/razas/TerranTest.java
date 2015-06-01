@@ -130,5 +130,12 @@ public class TerranTest {
 		
 		assertEquals(null, nexo);
 	}
+	
+	@Test
+	public void testTerranEmpiezaConSeisConstruccionesDisponibles(){
+		Terran terran = new Terran();
+		
+		assertEquals(6, terran.getListaDeConstrucciones().size());
+	}
 
 }

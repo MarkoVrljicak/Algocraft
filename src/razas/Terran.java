@@ -1,4 +1,5 @@
 package razas;
+import java.util.Collection;
 import java.util.HashMap;
 
 import algocraft.construcciones.Barraca;
@@ -45,6 +46,10 @@ public class Terran extends Raza {
 		else {
 			return null;
 		}
+	}
+	
+	public Collection<String> getListaDeConstrucciones(){
+		return construcciones.keySet();
 	}
 
 	

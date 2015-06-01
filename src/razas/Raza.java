@@ -1,6 +1,7 @@
 package razas;
 
 
+import java.util.Collection;
 import java.util.HashMap;
 
 import algocraft.construcciones.Construccion;
@@ -12,5 +13,6 @@ abstract public class Raza {
 	abstract public String getNombre();
 	abstract protected boolean tengoConstruccion(String nombreDeConstruccion);
 	abstract public Construccion construirConstruccion(int mineralDisponible, int gasDisponible, String nombreDeConstruccion);
+	abstract public Collection<String> getListaDeConstrucciones();
 
 }
