@@ -83,5 +83,13 @@ public class TerranTest {
 		
 		assertEquals("Refineria", refineria.getNombre());
 	}
+	
+	@Test
+	public void testTerranCreaFabrica() {
+		Terran terran = new Terran();
+		Construccion fabrica = terran.construirConstruccion(muchoMineral, muchoGas, "Fabrica");
+		
+		assertEquals("Fabrica", fabrica.getNombre());
+	}
 
 }
