@@ -12,4 +12,11 @@ public class AccesoTest {
 		
 		assertEquals(500, construccion.getVida());
 	}
+	
+	@Test
+	public void testVeoElTiempoDeConstruccionParaCrearAcceso() {
+		Construccion construccion = new Acceso();
+		
+		assertEquals(8, construccion.tiempoDeCreacion());
+	}
 }

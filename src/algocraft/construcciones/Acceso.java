@@ -7,6 +7,7 @@ public class Acceso extends Construccion {
 	public Acceso() {
 		this.nombre = "Acceso";
 		this.vida.set(500);
+		this.tiempoDeConstruccion = 8;
 	}
 	
 	
