@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import algocraft.ValidadorDeCreaciones;
 import algocraft.construcciones.Fabrica;
 
 public class ValidadorDeCreacionesTest {

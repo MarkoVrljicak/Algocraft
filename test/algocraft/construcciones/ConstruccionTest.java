@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import algocraft.Creable;
+import algocraft.creables.Creable;
 
 public class ConstruccionTest {
 
