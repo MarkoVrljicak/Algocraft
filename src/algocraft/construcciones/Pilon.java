@@ -6,7 +6,7 @@ public class Pilon extends Construccion {
 
 	public Pilon() {
 		this.nombre = "Pilon";
-		this.tiempoDeConstruccion = 6;
+		this.tiempoDeConstruccion = 5;
 		this.vida.set(300);
 	}
 	

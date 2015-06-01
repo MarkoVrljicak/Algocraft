@@ -12,4 +12,11 @@ public class PilonTest {
 		
 		assertEquals(300, construccion.getVida());
 	}
+	
+	@Test
+	public void testVeoElTiempoDeConstruccionParaCrearPilon() {
+		Construccion construccion =new Pilon();
+		
+		assertEquals(5, construccion.tiempoDeCreacion());
+	}
 }
