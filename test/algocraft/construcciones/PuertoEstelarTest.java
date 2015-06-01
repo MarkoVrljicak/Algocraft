@@ -54,4 +54,12 @@ public class PuertoEstelarTest {
 		
 		assertEquals("Espectro", espectro.getNombre());
 	}
+	
+	@Test
+	public void testPuertoEstelarCreaNavDeTransporte() {
+		PuertoEstelar puertoEstelar = new PuertoEstelar();
+		Unidad nave = puertoEstelar.crearUnidad(muchoMineral, muchoGas, "Nave Transporte");
+		
+		assertEquals("Nave Transporte", nave.getNombre());
+	}
 }
