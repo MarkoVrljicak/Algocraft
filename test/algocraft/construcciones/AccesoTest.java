@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.unidades.Zealot;
+import algocraft.unidades.*;
 
 public class AccesoTest {
 	
@@ -48,5 +48,14 @@ public class AccesoTest {
 		Zealot zealot= (Zealot) acceso.crearUnidad(muchoMineral, muchoGas, nombreZealot);
 		
 		assertEquals(nombreZealot,zealot.getNombre());
+	}
+	
+	@Test
+	public void testAccesoCreaDragon(){
+		Acceso acceso = new Acceso();
+		
+		Dragon dragon= (Dragon) acceso.crearUnidad(muchoMineral, muchoGas, nombreDragon);
+		
+		assertEquals(nombreDragon,dragon.getNombre());
 	}
 }
