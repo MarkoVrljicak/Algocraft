@@ -1,6 +1,7 @@
 package jugador;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import algocraft.unidades.Unidad;
 import razas.Raza;
@@ -22,5 +23,9 @@ public class Jugador {
 	
 	public String getRaza(){
 		return raza.getNombre();
+	}
+	
+	public Collection<String> getConstruccionesDisponibles(){
+		return raza.getListaDeConstrucciones();
 	}
 }

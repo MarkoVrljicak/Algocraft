@@ -23,5 +23,13 @@ public class JugadorTest {
 		
 		assertEquals(nombreTerran, jugadorTerran.getRaza());
 	}
+	
+	@Test
+	public void jugadorTerranTieneSeisConstruccionesDisponibles() {
+		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
+		
+		assertEquals(6, jugadorTerran.getConstruccionesDisponibles().size());
+	}
+	
 
 }
