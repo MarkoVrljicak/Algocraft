@@ -1,5 +1,6 @@
 package razas;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import algocraft.construcciones.Barraca;
@@ -10,10 +11,12 @@ import algocraft.construcciones.Fabrica;
 import algocraft.construcciones.PuertoEstelar;
 import algocraft.construcciones.Refineria;
 import algocraft.creables.ValidadorDeCreaciones;
+import algocraft.unidades.Marine;
+import algocraft.unidades.Unidad;
 
 public class Terran extends Raza {
 	
-	Terran(){
+	public Terran(){
 		
 		construcciones = new HashMap<String, ValidadorDeCreaciones>();
 		this.construcciones.put("Centro De Mineral", new ValidadorDeCreaciones(50, 0, new CentroDeMineral() ));
@@ -40,6 +43,15 @@ public class Terran extends Raza {
 		else {
 			return null;
 		}
+	}
+
+	@Override
+	public ArrayList<Unidad> unidadesIniciales() {
+		ArrayList<Unidad> unidadesIniciales = new ArrayList<Unidad>();
+		
+		unidadesIniciales.add(new Marine());
+		
+		return unidadesIniciales;
 	}
 	
 }
