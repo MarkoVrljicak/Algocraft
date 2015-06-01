@@ -5,7 +5,7 @@ import algocraft.Creable;
 public class Marine extends Unidad{
 
 	public Marine() {
-		this.vidaMaxima.setVida(40);
+		this.vida.setVida(40);
 	}
 	
 	public Creable clonar(){

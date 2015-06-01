@@ -2,15 +2,19 @@ package algocraft;
 
 public class Vida {
 	
-	private int vida;
+	private int vidaMaxima;
+	private int vidaActual;
 
-	public int puntosDeVida() {
-		return vida;
+	public int maxima() {
+		return vidaMaxima;
 	}
 
 	public void setVida(int valor) {
-		this.vida = valor;
+		this.vidaMaxima = valor;
+		this.vidaActual = this.vidaMaxima;
 	}
 	
-	
+	public int actual(){
+		return vidaActual;
+	}
 }

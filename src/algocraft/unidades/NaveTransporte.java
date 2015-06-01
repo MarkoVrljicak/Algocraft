@@ -5,7 +5,7 @@ import algocraft.Creable;
 public class NaveTransporte extends Unidad{
 
 	public NaveTransporte() {
-		this.vidaMaxima.setVida(150);
+		this.vida.setVida(150);
 	}
 	
 	public Creable clonar(){

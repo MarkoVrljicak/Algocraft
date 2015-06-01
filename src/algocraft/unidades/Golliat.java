@@ -5,7 +5,7 @@ import algocraft.Creable;
 public class Golliat extends Unidad{
 
 	public Golliat() {
-		this.vidaMaxima.setVida(125);
+		this.vida.setVida(125);
 	}
 	
 	public Creable clonar(){

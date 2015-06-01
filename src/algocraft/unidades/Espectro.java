@@ -5,7 +5,7 @@ import algocraft.Creable;
 public class Espectro extends Unidad{
 
 	public Espectro() {
-		this.vidaMaxima.setVida(120);
+		this.vida.setVida(120);
 	}
 	
 	public Creable clonar(){

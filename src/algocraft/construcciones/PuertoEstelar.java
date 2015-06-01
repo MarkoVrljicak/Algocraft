@@ -12,7 +12,7 @@ public class PuertoEstelar extends CreadorDeUnidades {
 
 	public PuertoEstelar() {
 		this.nombre = "Puerto Estelar";
-		this.vidaMaxima.setVida(1300);
+		this.vida.setVida(1300);
 		this.tiempoDeConstruccion = 10;
 		
 		unidades = new HashMap<String, ValidadorDeCreaciones>();

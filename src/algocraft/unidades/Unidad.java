@@ -7,10 +7,10 @@ public abstract class Unidad implements Creable{
 
 	protected String nombre;
 	protected int tiempoDeCreacion;
-	protected Vida vidaMaxima = new Vida();
+	protected Vida vida = new Vida();
 	
 	public int getVida() {
-		return vidaMaxima.puntosDeVida();
+		return vida.maxima();
 	}
 
 	@Override

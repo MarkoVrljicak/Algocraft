@@ -7,7 +7,7 @@ public class DepositoDeSuministros extends Construccion {
 	public DepositoDeSuministros() {
 		this.nombre = "Deposito De Suministros";
 		this.tiempoDeConstruccion = 6;
-		this.vidaMaxima.setVida(500);
+		this.vida.setVida(500);
 	}
 
 	@Override

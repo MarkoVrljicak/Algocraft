@@ -5,12 +5,12 @@ import algocraft.Vida;
 
 public abstract class Construccion implements Creable{
 
-	protected Vida vidaMaxima = new Vida();
+	protected Vida vida = new Vida();
 	protected int tiempoDeConstruccion;
 	protected String nombre;
 	
 	public int getVida() {
-		return vidaMaxima.puntosDeVida();
+		return vida.maxima();
 	}
 	
 	public int tiempoDeCreacion() {
