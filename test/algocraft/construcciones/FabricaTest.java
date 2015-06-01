@@ -10,6 +10,7 @@ import algocraft.unidades.Unidad;
 public class FabricaTest {
 	public int muchoMineral = 999;
 	public int muchoGas = 999;
+	String nombreGolliat = "Golliat";
 
 	@Test
 	public void testConstruyoFabricaYControloSuVidaInicial() {
@@ -29,15 +30,15 @@ public class FabricaTest {
 	public void testFabriInicializaConGolliat() {
 		Fabrica fabrica = new Fabrica();
 		
-		assertEquals(true, fabrica.tengoUnidad("Golliat"));
+		assertEquals(true, fabrica.tengoUnidad(nombreGolliat));
 	}
 	
 	@Test
 	public void testFabricaCreaGolliat() {
 		Fabrica fabrica = new Fabrica();
-		Unidad golliat = fabrica.crearUnidad(muchoMineral, muchoGas, "Golliat");
+		Unidad golliat = fabrica.crearUnidad(muchoMineral, muchoGas, nombreGolliat);
 		
-		assertEquals("Golliat", golliat.getNombre());
+		assertEquals(nombreGolliat, golliat.getNombre());
 	}
 }
 

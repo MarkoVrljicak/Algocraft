@@ -10,6 +10,7 @@ import algocraft.unidades.Unidad;
 public class BarracaTest {
 	public int muchoMineral = 999;
 	public int muchoGas = 999;
+	public String nombreMarine = "Marine";
 
 	@Test
 	public void testConstruyoBarracaYControloSuVidaInicial() {
@@ -29,14 +30,14 @@ public class BarracaTest {
 	public void testBarracaInicializaConMarine() {
 		Barraca barraca = new Barraca();
 		
-		assertEquals(true, barraca.tengoUnidad("Marine"));
+		assertEquals(true, barraca.tengoUnidad(nombreMarine));
 	}
 	
 	@Test
 	public void testBarracaCreaMarine() {
 		Barraca barraca = new Barraca();
-		Unidad marine = barraca.crearUnidad(muchoMineral, muchoGas, "Marine");
+		Unidad marine = barraca.crearUnidad(muchoMineral, muchoGas, nombreMarine);
 		
-		assertEquals("Marine", marine.getNombre());
+		assertEquals(nombreMarine, marine.getNombre());
 	}
 }

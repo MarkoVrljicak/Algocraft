@@ -11,6 +11,9 @@ public class PuertoEstelarTest {
 
 	private int muchoMineral = 999;
 	private int muchoGas = 999;
+	public String nombreEspectro = "Espectro";
+	public String nombreNaveCiencia = "Nave Ciencia";
+	public String nombreNaveTransporte = "Nave Transporte";
 	
 	@Test
 	public void testConstruyoPuertoEstelarYControloSuVidaInicial() {
@@ -30,44 +33,44 @@ public class PuertoEstelarTest {
 	public void testPuertoEstelarInicializaConEspectro() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
 		
-		assertEquals(true, puertoEstelar.tengoUnidad("Espectro"));
+		assertEquals(true, puertoEstelar.tengoUnidad(nombreEspectro));
 	}
 	
 	@Test
 	public void testPuertoEstelarInicializaConNaveCiencia() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
 		
-		assertEquals(true, puertoEstelar.tengoUnidad("Nave Ciencia"));
+		assertEquals(true, puertoEstelar.tengoUnidad(nombreNaveCiencia));
 	}
 	
 	@Test
 	public void testPuertoEstelarInicializaConNaveTransporte() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
 		
-		assertEquals(true, puertoEstelar.tengoUnidad("Nave Transporte"));
+		assertEquals(true, puertoEstelar.tengoUnidad(nombreNaveTransporte));
 	}
 	
 	@Test
 	public void testPuertoEstelarCreaEspectro() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Unidad espectro = puertoEstelar.crearUnidad(muchoMineral, muchoGas, "Espectro");
+		Unidad espectro = puertoEstelar.crearUnidad(muchoMineral, muchoGas, nombreEspectro);
 		
-		assertEquals("Espectro", espectro.getNombre());
+		assertEquals(nombreEspectro, espectro.getNombre());
 	}
 	
 	@Test
 	public void testPuertoEstelarCreaNaveDeTransporte() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Unidad nave = puertoEstelar.crearUnidad(muchoMineral, muchoGas, "Nave Transporte");
+		Unidad nave = puertoEstelar.crearUnidad(muchoMineral, muchoGas, nombreNaveTransporte);
 		
-		assertEquals("Nave Transporte", nave.getNombre());
+		assertEquals(nombreNaveTransporte, nave.getNombre());
 	}
 	
 	@Test
 	public void testPuertoEstelarCreaNaveCiencia() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Unidad nave = puertoEstelar.crearUnidad(muchoMineral, muchoGas, "Nave Ciencia");
+		Unidad nave = puertoEstelar.crearUnidad(muchoMineral, muchoGas, nombreNaveCiencia);
 		
-		assertEquals("Nave Ciencia", nave.getNombre());
+		assertEquals(nombreNaveCiencia, nave.getNombre());
 	}
 }

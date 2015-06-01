@@ -11,47 +11,53 @@ public class TerranTest {
 	private int sinGas = 0;
 	private int muchoMineral = 999;
 	private int muchoGas = 999;
+	public String nombreFabrica = "Fabrica";
+	public String nombreCentroDeMineral = "Centro De Mineral";
+	public String nombreBarraca = "Barraca";
+	public String nombreDepositoDeSuministros = "Deposito De Suministros";
+	public String nombreRefineria = "Refineria";
+	public String nombrePuertoEstelar = "Puerto Estelar";
 
 	@Test
 	public void testBarracaInicializaConCentroMineral() {
 		Terran terran = new Terran();
 		
-		assertEquals(true, terran.tengoConstruccion("Centro De Mineral"));
+		assertEquals(true, terran.tengoConstruccion(nombreCentroDeMineral));
 	}
 	
 	@Test
 	public void testBarracaInicializaConBarraca() {
 		Terran terran = new Terran();
 		
-		assertEquals(true, terran.tengoConstruccion("Barraca"));
+		assertEquals(true, terran.tengoConstruccion(nombreBarraca));
 	}
 	
 	@Test
 	public void testBarracaInicializaConDepositoDeSuministros() {
 		Terran terran = new Terran();
 		
-		assertEquals(true, terran.tengoConstruccion("Deposito De Suministros"));
+		assertEquals(true, terran.tengoConstruccion(nombreDepositoDeSuministros));
 	}
 	
 	@Test
 	public void testBarracaInicializaConRefineria() {
 		Terran terran = new Terran();
 		
-		assertEquals(true, terran.tengoConstruccion("Refineria"));
+		assertEquals(true, terran.tengoConstruccion(nombreRefineria));
 	}
 	
 	@Test
 	public void testBarracaInicializaConFabrica() {
 		Terran terran = new Terran();
 		
-		assertEquals(true, terran.tengoConstruccion("Fabrica"));
+		assertEquals(true, terran.tengoConstruccion(nombreFabrica));
 	}
 	
 	@Test
 	public void testBarracaInicializaConPuertoEstelar() {
 		Terran terran = new Terran();
 		
-		assertEquals(true, terran.tengoConstruccion("Puerto Estelar"));
+		assertEquals(true, terran.tengoConstruccion(nombrePuertoEstelar));
 	}
 	
 	@Test
@@ -64,49 +70,49 @@ public class TerranTest {
 	@Test
 	public void testTerranCreaCentroDeMineral() {
 		Terran terran = new Terran();
-		Construccion centroDeMineral = terran.construirConstruccion(muchoMineral, muchoGas, "Centro De Mineral");
+		Construccion centroDeMineral = terran.construirConstruccion(muchoMineral, muchoGas, nombreCentroDeMineral);
 		
-		assertEquals("Centro De Mineral", centroDeMineral.getNombre());
+		assertEquals(nombreCentroDeMineral, centroDeMineral.getNombre());
 	}
 	
 	@Test
 	public void testTerranCreaBarraca() {
 		Terran terran = new Terran();
-		Construccion barraca = terran.construirConstruccion(muchoMineral, muchoGas, "Barraca");
+		Construccion barraca = terran.construirConstruccion(muchoMineral, muchoGas, nombreBarraca);
 		
-		assertEquals("Barraca", barraca.getNombre());
+		assertEquals(nombreBarraca, barraca.getNombre());
 	}
 	
 	@Test
 	public void testTerranCreaDepositoDeSuministros() {
 		Terran terran = new Terran();
-		Construccion deposito = terran.construirConstruccion(muchoMineral, muchoGas, "Deposito De Suministros");
+		Construccion deposito = terran.construirConstruccion(muchoMineral, muchoGas, nombreDepositoDeSuministros);
 		
-		assertEquals("Deposito De Suministros", deposito.getNombre());
+		assertEquals(nombreDepositoDeSuministros, deposito.getNombre());
 	}
 	
 	@Test
 	public void testTerranCreaDepositoRefineria() {
 		Terran terran = new Terran();
-		Construccion refineria = terran.construirConstruccion(muchoMineral, muchoGas, "Refineria");
+		Construccion refineria = terran.construirConstruccion(muchoMineral, muchoGas, nombreRefineria);
 		
-		assertEquals("Refineria", refineria.getNombre());
+		assertEquals(nombreRefineria, refineria.getNombre());
 	}
 	
 	@Test
 	public void testTerranCreaFabrica() {
 		Terran terran = new Terran();
-		Construccion fabrica = terran.construirConstruccion(muchoMineral, muchoGas, "Fabrica");
+		Construccion fabrica = terran.construirConstruccion(muchoMineral, muchoGas, nombreFabrica);
 		
-		assertEquals("Fabrica", fabrica.getNombre());
+		assertEquals(nombreFabrica, fabrica.getNombre());
 	}
 	
 	@Test
 	public void testTerranCreaPuertoEstelar() {
 		Terran terran = new Terran();
-		Construccion puerto = terran.construirConstruccion(muchoMineral, muchoGas, "Puerto Estelar");
+		Construccion puerto = terran.construirConstruccion(muchoMineral, muchoGas, nombrePuertoEstelar);
 		
-		assertEquals("Puerto Estelar", puerto.getNombre());
+		assertEquals(nombrePuertoEstelar, puerto.getNombre());
 	}
 	
 	@Test
@@ -120,7 +126,7 @@ public class TerranTest {
 	@Test
 	public void testTerranNoCreaCentroDeMineralSinRecursos() {
 		Terran terran = new Terran();
-		Construccion nexo = terran.construirConstruccion(sinMineral, sinGas, "Centro De Mineral");
+		Construccion nexo = terran.construirConstruccion(sinMineral, sinGas, nombreCentroDeMineral);
 		
 		assertEquals(null, nexo);
 	}
