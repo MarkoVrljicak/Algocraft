@@ -21,4 +21,11 @@ public class PuertoEstelarTest {
 		
 		assertEquals(10, construccion.tiempoDeCreacion());
 	}
+	
+	@Test
+	public void testPuertoEstelarInicializaConEspectro() {
+		PuertoEstelar puertoEstelar = new PuertoEstelar();
+		
+		assertEquals(true, puertoEstelar.tengoUnidad("Espectro"));
+	}
 }
