@@ -2,7 +2,6 @@ package razas;
 
 import java.util.HashMap;
 
-import algocraft.ValidadorDeCreaciones;
 import algocraft.construcciones.Barraca;
 import algocraft.construcciones.CentroDeMineral;
 import algocraft.construcciones.Construccion;
@@ -10,6 +9,7 @@ import algocraft.construcciones.DepositoDeSuministros;
 import algocraft.construcciones.Fabrica;
 import algocraft.construcciones.PuertoEstelar;
 import algocraft.construcciones.Refineria;
+import algocraft.creables.ValidadorDeCreaciones;
 
 public class Terran {
 	

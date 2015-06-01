@@ -1,4 +1,5 @@
-package algocraft;
+package algocraft.creables;
+
 
 public class ValidadorDeCreaciones {
 	

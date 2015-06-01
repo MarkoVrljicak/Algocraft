@@ -2,7 +2,7 @@ package algocraft.construcciones;
 
 import java.util.Map;
 
-import algocraft.ValidadorDeCreaciones;
+import algocraft.creables.ValidadorDeCreaciones;
 import algocraft.unidades.Unidad;
 
 public abstract class CreadorDeUnidades extends Construccion{

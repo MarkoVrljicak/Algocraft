@@ -1,4 +1,4 @@
-package algocraft;
+package algocraft.creables;
 
 public interface Creable {
 

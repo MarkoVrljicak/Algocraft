@@ -1,8 +1,9 @@
 package algocraft.construcciones;
 
 import java.util.HashMap;
-import algocraft.Creable;
-import algocraft.ValidadorDeCreaciones;
+
+import algocraft.creables.Creable;
+import algocraft.creables.ValidadorDeCreaciones;
 import algocraft.unidades.Golliat;
 
 public class Fabrica extends CreadorDeUnidades {

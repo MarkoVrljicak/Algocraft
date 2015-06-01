@@ -1,6 +1,6 @@
 package algocraft.construcciones;
 
-import algocraft.Creable;
+import algocraft.creables.Creable;
 
 public class Refineria extends Construccion {
 

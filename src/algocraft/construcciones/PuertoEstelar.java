@@ -2,8 +2,8 @@ package algocraft.construcciones;
 
 import java.util.HashMap;
 
-import algocraft.Creable;
-import algocraft.ValidadorDeCreaciones;
+import algocraft.creables.Creable;
+import algocraft.creables.ValidadorDeCreaciones;
 import algocraft.unidades.Espectro;
 import algocraft.unidades.NaveCiencia;
 import algocraft.unidades.NaveTransporte;

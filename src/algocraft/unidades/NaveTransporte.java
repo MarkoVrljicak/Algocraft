@@ -1,6 +1,6 @@
 package algocraft.unidades;
 
-import algocraft.Creable;
+import algocraft.creables.Creable;
 
 public class NaveTransporte extends Unidad{
 
