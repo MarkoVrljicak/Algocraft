@@ -1,13 +1,21 @@
 package algocraft.mapa;
 
+import algocraft.creables.Creable;
+
 public class Casillero {
 	
 	public Coordenada coordenada;
-	public Object contenido;
+	public Creable contenido;
+	public Terreno terreno;
 
 	public Casillero(Coordenada unaCoordenada) {
 		coordenada=unaCoordenada;
 		contenido=null;
+		terreno = null;
+	}
+	
+	public void setTerreno(Terreno unTerreno){
+		terreno = unTerreno;
 	}
 
 	public boolean estaVacio() {
@@ -22,8 +30,12 @@ public class Casillero {
 		return contenido;
 	}
 
-	public void almacenar(Object objeto) {
-		contenido = objeto;		
+	public void almacenar(Creable creable) {
+		contenido = creable;		
+	}
+
+	public Terreno getTerreno() {
+		return terreno;
 	}
 	
 }

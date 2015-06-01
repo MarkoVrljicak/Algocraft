@@ -3,6 +3,8 @@ package algocraft.mapa;
 import org.junit.Assert;
 import org.junit.Test;
 
+import algocraft.construcciones.Barraca;
+
 
 public class CasilleroTest {
 	
@@ -26,7 +28,7 @@ public class CasilleroTest {
 	@Test
 	public void testPonerAlgoEnElCasilleroLoHaceNoVacio(){
 		Casillero c= new Casillero( new Coordenada(1,4) );
-		c.contenido= "algo";
+		c.contenido= new Barraca();
 		
 		Assert.assertEquals(false,c.estaVacio());
 	}
@@ -40,6 +42,16 @@ public class CasilleroTest {
 		Coordenada coordenadaObtenida= casillero.getCoordenada();
 		
 		Assert.assertEquals(coordenadaInicial,coordenadaObtenida);
+	}
+	
+	@Test
+	public void testCasilleroSeteaTerreno(){
+		Coordenada coordenadaCualquiera = new Coordenada (2,4);
+		Casillero casillero = new Casillero( coordenadaCualquiera );
+		Terreno tierra = new Tierra();
+		
+		casillero.setTerreno(tierra);
+		Assert.assertEquals( tierra, casillero.getTerreno() );
 	}
 	
 }
