@@ -2,32 +2,32 @@ package stats;
 
 public class Stat {
 	
-	private int MaximoValor;
-	private int ActualValor;
+	private int maximoValor;
+	protected int actualValor;
 	
 	public Stat(){
-		this.MaximoValor = 0;
-		this.ActualValor = 0;
+		this.maximoValor = 0;
+		this.actualValor = 0;
 	}
 	
 	public int max(){
-		return this.MaximoValor;
+		return this.maximoValor;
 	}
 
 	public void set(int MaximoValor) {
-		this.MaximoValor = MaximoValor;
-		this.ActualValor = this.MaximoValor;
+		this.maximoValor = MaximoValor;
+		this.actualValor = this.maximoValor;
 	}
 	
 	public int actual(){
-		return ActualValor;
+		return actualValor;
 	}
 	
 	public void disminuir(int cantidad){
-		this.ActualValor = this.ActualValor - cantidad;
+		this.actualValor = this.actualValor - cantidad;
 		
-		if (this.ActualValor < 0){
-			this.ActualValor = 0;
+		if (this.actualValor < 0){
+			this.actualValor = 0;
 		}
 	}
 	
