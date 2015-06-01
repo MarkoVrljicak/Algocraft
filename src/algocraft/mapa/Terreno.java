@@ -14,6 +14,9 @@ public abstract class Terreno {
 		abstract public boolean tieneGas();
 		//Para que las refinerias y asimiladores sepan si pueden ser construidos.
 		
+		abstract public boolean sePuedeEdificar();
+		//Para que los edificios que no sean recolectores de recursos sepan si pueden ser construidos.
+		
 		
 		
 }
