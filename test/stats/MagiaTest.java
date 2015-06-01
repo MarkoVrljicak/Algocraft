@@ -16,5 +16,15 @@ public class MagiaTest {
 		
 		assertEquals(100, magia.actual());
 	}
+	
+	@Test
+	public void MagiaParaDeRegenerarseCuandoLlegaAMaximo() {
+		Magia magia = new Magia();
+		magia.set(100);
+		
+		magia.regenerar(20);
+		
+		assertEquals(100, magia.actual());
+	}
 
 }

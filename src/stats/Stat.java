@@ -2,7 +2,7 @@ package stats;
 
 public class Stat {
 	
-	private int maximoValor;
+	protected int maximoValor;
 	protected int actualValor;
 	
 	public Stat(){
