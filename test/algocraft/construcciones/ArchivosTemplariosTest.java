@@ -14,4 +14,11 @@ public class ArchivosTemplariosTest {
 		
 		assertEquals(500, archivosTemplarios.getVida());
 	}
+	
+	@Test
+	public void testVeoElTeimpoDeConstruccionDeArchivosTemplarios(){
+		ArchivosTemplarios archivosTemplarios = new ArchivosTemplarios();
+		
+		assertEquals(9, archivosTemplarios.tiempoDeCreacion());
+	}
 }

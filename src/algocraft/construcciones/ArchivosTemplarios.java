@@ -8,6 +8,7 @@ public class ArchivosTemplarios extends Construccion {
 	public ArchivosTemplarios(){
 		this.nombre= "Archivos Templarios";
 		this.vida.set(500);
+		this.tiempoDeConstruccion=9;
 	}
 	@Override
 	public Creable clonar() {
