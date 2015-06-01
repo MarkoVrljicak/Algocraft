@@ -5,8 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import algocraft.construcciones.Fabrica;
+import algocraft.unidades.Unidad;
 
 public class FabricaTest {
+	public int muchoMineral = 999;
+	public int muchoGas = 999;
 
 	@Test
 	public void testConstruyoFabricaYControloSuVidaInicial() {
@@ -27,6 +30,14 @@ public class FabricaTest {
 		Fabrica fabrica = new Fabrica();
 		
 		assertEquals(true, fabrica.tengoUnidad("Golliat"));
+	}
+	
+	@Test
+	public void testBarracaInicializaConMarine() {
+		Fabrica fabrica = new Fabrica();
+		Unidad golliat = fabrica.crearUnidad(muchoMineral, muchoGas, "Golliat");
+		
+		assertEquals("Golliat", golliat.getNombre());
 	}
 }
 

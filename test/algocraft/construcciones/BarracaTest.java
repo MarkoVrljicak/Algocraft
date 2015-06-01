@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import algocraft.Creable;
 import algocraft.construcciones.Barraca;
 import algocraft.unidades.Unidad;
 
