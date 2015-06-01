@@ -15,8 +15,7 @@ public class CentroDeMineral extends Construccion{
 	}
 
 	@Override
-	public Unidad crearUnidad(int mineralDisponible, int gasDisponible,
-			String nombreDeUnidad) {
+	public Unidad crearUnidad(int mineralDisponible, int gasDisponible, String nombreDeUnidad) {
 		return null;
 	}
 	
