@@ -2,7 +2,7 @@ package algocraft.unidades;
 
 import algocraft.creables.Creable;
 
-public class Zealot extends Unidad implements Creable {
+public class Zealot extends Unidad{
 
 	public Zealot() {
 		nombre = "Zealot";
