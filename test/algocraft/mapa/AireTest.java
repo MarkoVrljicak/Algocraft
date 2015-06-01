@@ -30,4 +30,10 @@ public class AireTest {
 		assertEquals(false, aire.tieneGas());
 	}
 	
+	@Test
+	public void testAireNoSePuedeEdificar() {
+		Aire aire = new Aire();
+		assertEquals(false, aire.sePuedeEdificar());
+	}
+	
 }
