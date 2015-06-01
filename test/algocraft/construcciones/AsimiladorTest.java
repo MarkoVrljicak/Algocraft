@@ -12,4 +12,11 @@ public class AsimiladorTest {
 			
 			assertEquals(450, construccion.getVida());
 	}
+	
+	@Test
+	public void testVeoElTiempoDeConstruccionParaCrearAsimilador() {
+		Construccion construccion = new Asimilador();
+		
+		assertEquals(6, construccion.tiempoDeCreacion());
+	}
 }

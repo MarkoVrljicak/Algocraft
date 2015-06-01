@@ -7,7 +7,7 @@ public class Asimilador extends Construccion {
 	public Asimilador() {
 		this.nombre = "Refineria";
 		this.vida.set(450);
-		this.tiempoDeConstruccion = 5;
+		this.tiempoDeConstruccion = 6;
 	}
 	
 	
