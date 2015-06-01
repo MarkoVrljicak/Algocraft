@@ -19,49 +19,49 @@ public class TerranTest {
 	public String nombrePuertoEstelar = "Puerto Estelar";
 
 	@Test
-	public void testBarracaInicializaConCentroMineral() {
+	public void testTerranInicializaConCentroMineral() {
 		Terran terran = new Terran();
 		
 		assertEquals(true, terran.tengoConstruccion(nombreCentroDeMineral));
 	}
 	
 	@Test
-	public void testBarracaInicializaConBarraca() {
+	public void testTerranInicializaConBarraca() {
 		Terran terran = new Terran();
 		
 		assertEquals(true, terran.tengoConstruccion(nombreBarraca));
 	}
 	
 	@Test
-	public void testBarracaInicializaConDepositoDeSuministros() {
+	public void testTerranInicializaConDepositoDeSuministros() {
 		Terran terran = new Terran();
 		
 		assertEquals(true, terran.tengoConstruccion(nombreDepositoDeSuministros));
 	}
 	
 	@Test
-	public void testBarracaInicializaConRefineria() {
+	public void testTerranInicializaConRefineria() {
 		Terran terran = new Terran();
 		
 		assertEquals(true, terran.tengoConstruccion(nombreRefineria));
 	}
 	
 	@Test
-	public void testBarracaInicializaConFabrica() {
+	public void testTerrranInicializaConFabrica() {
 		Terran terran = new Terran();
 		
 		assertEquals(true, terran.tengoConstruccion(nombreFabrica));
 	}
 	
 	@Test
-	public void testBarracaInicializaConPuertoEstelar() {
+	public void testTerranInicializaConPuertoEstelar() {
 		Terran terran = new Terran();
 		
 		assertEquals(true, terran.tengoConstruccion(nombrePuertoEstelar));
 	}
 	
 	@Test
-	public void testBarracaNoTieneNexoMineral() {
+	public void testTerranNoTieneNexoMineral() {
 		Terran terran = new Terran();
 		
 		assertEquals(false, terran.tengoConstruccion("Nexo Mineral"));
