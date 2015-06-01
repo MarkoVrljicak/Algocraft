@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class EscudoTest {
+public class StatTest {
 
 	@Test
 	public void EscudoActualEsInicialmenteIgualAEscudoMaximo() {
-		Escudo escudo = new Escudo();
+		Stat escudo = new Escudo();
 		escudo.set(100);
 		
 		assertEquals(escudo.actual(), escudo.max());
