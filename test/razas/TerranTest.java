@@ -4,7 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import algocraft.construcciones.Barraca;
+import algocraft.construcciones.Construccion;
+import algocraft.unidades.Unidad;
+
 public class TerranTest {
+	private int muchoMineral = 999;
+	private int muchoGas = 999;
 
 	@Test
 	public void testBarracaInicializaConCentroMineral() {
@@ -46,6 +52,14 @@ public class TerranTest {
 		Terran terran = new Terran();
 		
 		assertEquals(true, terran.tengoConstruccion("Puerto Estelar"));
+	}
+	
+	@Test
+	public void testTerranCreaCentroDeMineral() {
+		Terran terran = new Terran();
+		Construccion centroDeMineral = terran.construirConstruccion(muchoMineral, muchoGas, "Centro De Mineral");
+		
+		assertEquals("Centro De Mineral", centroDeMineral.getNombre());
 	}
 
 }

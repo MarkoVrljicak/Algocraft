@@ -5,6 +5,7 @@ import java.util.HashMap;
 import algocraft.ValidadorDeCreaciones;
 import algocraft.construcciones.Barraca;
 import algocraft.construcciones.CentroDeMineral;
+import algocraft.construcciones.Construccion;
 import algocraft.construcciones.DepositoDeSuministros;
 import algocraft.construcciones.Fabrica;
 import algocraft.construcciones.PuertoEstelar;
@@ -30,5 +31,17 @@ public class Terran {
 		return construcciones.containsKey(nombreDeConstruccion);
 	}
 	
+	public Construccion construirConstruccion(int mineralDisponible, int gasDisponible, String nombreDeConstruccion) {
+		
+		if (tengoConstruccion(nombreDeConstruccion)){
+			
+			ValidadorDeCreaciones validador = construcciones.get(nombreDeConstruccion);
+			return (Construccion) validador.crear(mineralDisponible, gasDisponible);
+		}
+		
+		else {
+			return null;
+		}
+	}
 	
 }
