@@ -53,6 +53,13 @@ public class TerranTest {
 	}
 	
 	@Test
+	public void testBarracaNoTieneNexoMineral() {
+		Terran terran = new Terran();
+		
+		assertEquals(false, terran.tengoConstruccion("Nexo Mineral"));
+	}
+	
+	@Test
 	public void testTerranCreaCentroDeMineral() {
 		Terran terran = new Terran();
 		Construccion centroDeMineral = terran.construirConstruccion(muchoMineral, muchoGas, "Centro De Mineral");
@@ -98,6 +105,14 @@ public class TerranTest {
 		Construccion puerto = terran.construirConstruccion(muchoMineral, muchoGas, "Puerto Estelar");
 		
 		assertEquals("Puerto Estelar", puerto.getNombre());
+	}
+	
+	@Test
+	public void testTerranNoCreaNexoMineral() {
+		Terran terran = new Terran();
+		Construccion nexo = terran.construirConstruccion(muchoMineral, muchoGas, "Nexo Mineral");
+		
+		assertEquals(null, nexo);
 	}
 
 }
