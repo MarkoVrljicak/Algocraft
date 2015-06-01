@@ -6,7 +6,7 @@ public class NaveCiencia extends Unidad{
 
 	public NaveCiencia() {
 		nombre = "Nave Ciencia";
-		this.vida.setVida(200);
+		this.vida.set(200);
 	}
 	
 	public Creable clonar(){

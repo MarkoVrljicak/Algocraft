@@ -6,7 +6,7 @@ public class Espectro extends Unidad{
 
 	public Espectro() {
 		nombre = "Espectro";
-		this.vida.setVida(120);
+		this.vida.set(120);
 	}
 	
 	public Creable clonar(){

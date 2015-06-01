@@ -6,7 +6,7 @@ public class Marine extends Unidad{
 
 	public Marine() {
 		nombre = "Marine";
-		this.vida.setVida(40);
+		this.vida.set(40);
 	}
 	
 	public Creable clonar(){

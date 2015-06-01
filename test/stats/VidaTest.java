@@ -9,9 +9,9 @@ public class VidaTest {
 	@Test
 	public void VidaActualEsInicialmenteIgualAVidaMaxima() {
 		Vida vida = new Vida();
-		vida.setVida(100);
+		vida.set(100);
 		
-		assertEquals(vida.actual(), vida.maxima());
+		assertEquals(vida.actual(), vida.max());
 	}
 
 }

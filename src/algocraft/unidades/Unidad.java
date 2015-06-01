@@ -10,7 +10,7 @@ public abstract class Unidad implements Creable{
 	protected Vida vida = new Vida();
 	
 	public int getVida() {
-		return vida.maxima();
+		return vida.max();
 	}
 
 	@Override

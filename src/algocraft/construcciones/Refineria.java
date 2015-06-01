@@ -6,7 +6,7 @@ public class Refineria extends Construccion {
 
 	public Refineria() {
 		this.nombre = "Refineria";
-		this.vida.setVida(750);
+		this.vida.set(750);
 		this.tiempoDeConstruccion = 6;
 	}
 

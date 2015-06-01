@@ -10,7 +10,7 @@ public abstract class Construccion implements Creable{
 	protected String nombre;
 	
 	public int getVida() {
-		return vida.maxima();
+		return vida.max();
 	}
 	
 	public int tiempoDeCreacion() {

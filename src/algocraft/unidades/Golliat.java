@@ -6,7 +6,7 @@ public class Golliat extends Unidad{
 
 	public Golliat() {
 		nombre = "Golliat";
-		this.vida.setVida(125);
+		this.vida.set(125);
 	}
 	
 	public Creable clonar(){

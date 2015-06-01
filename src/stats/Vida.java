@@ -1,9 +1,9 @@
 package stats;
 
-public class Vida {
+public class Vida implements Daniable {
 	
-	private int vidaMaxima;
-	private int vidaActual;
+	protected int vidaMaxima;
+	protected int vidaActual;
 	
 	public Vida(){
 		//Sin esto vida inicializa como objeto invalido.
@@ -11,12 +11,12 @@ public class Vida {
 		vidaActual = 0;
 	}
 
-	public int maxima() {
+	public int max() {
 		return vidaMaxima;
 	}
 
-	public void setVida(int valor) {
-		this.vidaMaxima = valor;
+	public void set(int vidaMaxima) {
+		this.vidaMaxima = vidaMaxima;
 		this.vidaActual = this.vidaMaxima;
 	}
 	
