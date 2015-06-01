@@ -7,6 +7,7 @@ public class Fabrica extends CreadorDeUnidades {
 
 	public Fabrica() {
 		this.nombre = "Fabrica";
+		this.tiempoDeConstruccion = 12;
 		this.vidaMaxima.setVida(1250);
 	}
 

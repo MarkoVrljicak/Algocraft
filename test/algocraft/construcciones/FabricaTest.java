@@ -14,5 +14,12 @@ public class FabricaTest {
 		
 		assertEquals(1250, construccion.getVida());
 	}
+	
+	@Test
+	public void testVeoElTiempoDeConstruccionParaCrearFabrica() {
+		Construccion construccion = new Fabrica();
+		
+		assertEquals(12, construccion.tiempoDeCreacion());
+	}
 }
 
