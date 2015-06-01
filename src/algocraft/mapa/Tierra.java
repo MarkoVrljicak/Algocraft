@@ -16,4 +16,8 @@ public class Tierra extends Terreno {
 	public boolean tieneGas() {
 		return false;
 	}
+
+	public Object sePuedeEdificar() {
+		return true;
+	}
 }

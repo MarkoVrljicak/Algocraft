@@ -29,5 +29,11 @@ public class TierraTest {
 		Tierra tierra = new Tierra();
 		assertEquals(false, tierra.tieneGas() );
 	}
+	
+	@Test
+	public void testTierraSePuedeEdificar() {
+		Tierra tierra = new Tierra();
+		assertEquals(true, tierra.sePuedeEdificar());
+	}
 
 }
