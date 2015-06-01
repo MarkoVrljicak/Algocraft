@@ -1,7 +1,7 @@
 package algocraft.unidades;
 
+import stats.Vida;
 import algocraft.Creable;
-import algocraft.Vida;
 
 public abstract class Unidad implements Creable{
 

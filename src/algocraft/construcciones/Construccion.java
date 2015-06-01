@@ -1,7 +1,7 @@
 package algocraft.construcciones;
 
+import stats.Vida;
 import algocraft.Creable;
-import algocraft.Vida;
 
 public abstract class Construccion implements Creable{
 
