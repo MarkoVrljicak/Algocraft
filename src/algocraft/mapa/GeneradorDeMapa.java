@@ -1,116 +1,124 @@
 package algocraft.mapa;
 
-import algocraft.construcciones.Construccion;
-import algocraft.construcciones.terran.BaseTerran;
-import algocraft.creables.Creable;
 import algocraft.exception.FueraDeLimitesException;
 
 public class GeneradorDeMapa {
-	// ES COMMMAND, crea un mapa muy basico y cuadrado para testear
-	// funcionalidades
-
-	private static final int distanciaMinimaBaseABorde = 6;
-	private static final double proporcion =((double)2) / 3;
-	private static final int escala = 30;
-	private int ancho;
-	private int alto;
-	private Mapa mapa;
-
-	public Mapa generarMapaBasico() {
-
-		mapa = new Mapa(this.calcularAncho(), this.calcularAlto());
-
+	//Tamanio minimo para que funcione el algoritmo: 20x20
+	int anchoDefault = 20;
+	int altoDefault = 20;
+	Coordenada posicionBase1;
+	Coordenada posicionBase2;
+	
+	private Mapa mapaGenerado;
+	
+	public GeneradorDeMapa(){
+		posicionBase1 = new Coordenada(4, altoDefault -5);
+		posicionBase2 = new Coordenada(anchoDefault -5, 4);
+		mapaGenerado = new Mapa(20, 20);
+	}
+	
+	public Mapa generar(){
+		//1) Llenar de Tierra
+		
 		llenarDeTierra();
-		posicionarRecursos();
-		posicionarBases();
-
-		return mapa;
+		
+		//2) Colocar Recursos
+		//8 minerales a distancia 3 de las bases
+		colocarRecursoAlRededorDeBase(new Minerales(), 8, 3, posicionBase1);
+		colocarRecursoAlRededorDeBase(new Minerales(), 8, 3, posicionBase2);
+		
+		//2 volcanes a distancia 3 de las bases
+		colocarRecursoAlRededorDeBase(new Volcan(), 2, 3, posicionBase1);
+		colocarRecursoAlRededorDeBase(new Volcan(), 2, 3, posicionBase2);
+		
+		//6 minerales a distancia 5 de las bases
+		colocarRecursoAlRededorDeBase(new Minerales(), 6, 5, posicionBase1);
+		colocarRecursoAlRededorDeBase(new Minerales(), 6, 5, posicionBase2);
+		
+		//3 volcanes a distancia 5 de las bases
+		colocarRecursoAlRededorDeBase(new Volcan(), 3, 5, posicionBase1);
+		colocarRecursoAlRededorDeBase(new Volcan(), 3, 5, posicionBase2);
+		
+		//4 minerales a distancia 7 de las bases
+		colocarRecursoAlRededorDeBase(new Minerales(), 4, 7, posicionBase1);
+		colocarRecursoAlRededorDeBase(new Minerales(), 4, 7, posicionBase2);
+		
+		//3 volcanes a distancia 7 de las bases
+		colocarRecursoAlRededorDeBase(new Volcan(), 3, 7, posicionBase1);
+		colocarRecursoAlRededorDeBase(new Volcan(), 3, 7, posicionBase2);
+		
+		//2 minerales a distancia 15 de las bases
+		colocarRecursoAlRededorDeBase(new Minerales(), 2, 15, posicionBase1);
+		colocarRecursoAlRededorDeBase(new Minerales(), 2, 15, posicionBase2);
+		
+		//2 volcanes a distancia 15 de las bases
+		colocarRecursoAlRededorDeBase(new Volcan(), 2, 15, posicionBase1);
+		colocarRecursoAlRededorDeBase(new Volcan(), 2, 15, posicionBase2);
+		
+		
+		//3) Colocar Aire
+		//
+		//colocarAire();
+		
+		return mapaGenerado;
 	}
+	
 
-	private int calcularAncho() {
-		ancho = escala;
-		return ancho;
-	}
-
-	private int calcularAlto() {
-		alto = (int) Math.round( ( (double)escala )  * proporcion);
-		return alto;
+	private void colocarRecursoAlRededorDeBase(Terreno recurso, int cantidad, int distancia, Coordenada posicionBase){
+		/* Coloca cierta cantidad de cierto recurso a cierta distancia de la coordenada provista */
+		
+		while (cantidad > 0){
+		
+			for (int i = 1; i <= mapaGenerado.getAncho(); i++) {
+				for (int j = 1; j <= mapaGenerado.getAlto(); j++) {
+				
+					if (posicionBase.distanciaA(new Coordenada(i, j) ) == distancia && casilleroEsCaminable(i,j)){
+						
+						if(Math.random() < 0.2){
+							this.setearTerrenoEnCasillero(recurso, i, j);
+							cantidad--;
+						}
+					}
+				
+				}
+			}
+		}
+		
 	}
 
 	private void llenarDeTierra() {
 
-		for (int i = 1; i <= ancho; i++) {
-			for (int j = 1; j <= alto; j++) {
-				setearTerrenoEnCasillero(new Tierra(), i, j);
+		for (int i = 1; i <= mapaGenerado.getAncho(); i++) {
+			for (int j = 1; j <= mapaGenerado.getAlto(); j++) {
+				this.setearTerrenoEnCasillero(new Tierra(), i, j);
 			}
 		}
 	}
-
-	private void posicionarBases() {
-		Construccion unaBase = new BaseTerran();
-		posicionarConstruccion(unaBase, distanciaMinimaBaseABorde,
-				distanciaMinimaBaseABorde);
-		unaBase = new BaseTerran();
-		posicionarConstruccion(unaBase, ancho - distanciaMinimaBaseABorde, alto
-				- distanciaMinimaBaseABorde);
-	}
-
-	private void posicionarConstruccion(Construccion unaConstruccion, int i, int j) {
-		Coordenada unaCoordenada = new Coordenada(i, j);
-		try {
-			Casillero unCasillero = mapa.obtenerCasillero(unaCoordenada);
-			unCasillero.almacenar((Creable) unaConstruccion);
-		} catch (FueraDeLimitesException e) {
-			// no deberia pasar
-			e.printStackTrace();
-		}
-	}
-
-	private void posicionarRecursos() {
-		ponerMineralesEnLasEsquinas();
-		ponerVolcanesEnLasEsquinas();
-
-	}
-
-	private void ponerVolcanesEnLasEsquinas() {
-		setearTerrenoEnCasillero(new Volcan(), 2, 3);
-		setearTerrenoEnCasillero(new Volcan(), ancho - 2, 3);
-		setearTerrenoEnCasillero(new Volcan(), 2, alto - 3);
-		setearTerrenoEnCasillero(new Volcan(), ancho - 2, alto - 3);
-	}
-
-	private void ponerMineralesEnLasEsquinas() {
-		for (int i = 1; i <= 3; i++) {
-			for (int j = 1; j <= 2; j++) {
-				setearTerrenoEnCasillero(new Minerales(), i, j);
-			}
-		}
-		for (int i = ancho - 3; i <= ancho; i++) {
-			for (int j = 1; j <= 2; j++) {
-				setearTerrenoEnCasillero(new Minerales(), i, j);
-			}
-		}
-		for (int i = 1; i <= 3; i++) {
-			for (int j = alto - 1; j <= alto; j++) {
-				setearTerrenoEnCasillero(new Minerales(), i, j);
-			}
-		}
-		for (int i = ancho - 3; i <= ancho; i++) {
-			for (int j = 1; j <= 2; j++) {
-				setearTerrenoEnCasillero(new Minerales(), i, j);
-			}
-		}
-	}
-
+	
 	private void setearTerrenoEnCasillero(Terreno unTerreno, int i, int j) {
 		Coordenada unaCoordenada = new Coordenada(i, j);
 		try {
-			Casillero unCasillero = mapa.obtenerCasillero(unaCoordenada);
+			Casillero unCasillero = mapaGenerado.obtenerCasillero(unaCoordenada);
 			unCasillero.setTerreno(unTerreno);
 		} catch (FueraDeLimitesException e) {
 			// no deberia pasar
 			e.printStackTrace();
 		}
+	}
+	
+	private boolean casilleroEsCaminable(int i, int j) {
+		Coordenada unaCoordenada = new Coordenada(i, j);
+		Casillero unCasillero;
+		try {
+			unCasillero = mapaGenerado.obtenerCasillero(unaCoordenada);
+			return unCasillero.getTerreno().sePuedeCaminar();
+		} catch (FueraDeLimitesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false; //no se como mas arreglarlo
+		}
+		
+		
 	}
 
 }

@@ -5,7 +5,7 @@ import algocraft.exception.FueraDeLimitesException;
 public class MirarMapa {
 
 	public static void main(String[] args) {
-		GeneradorDeMapaAlt generador= new GeneradorDeMapaAlt();
+		GeneradorDeMapa generador= new GeneradorDeMapa();
 		VisualizadorMapaBasico visualizador= new VisualizadorMapaBasico();
 		try {
 			visualizador.visualizarMapaPorConsola( generador.generar() );
