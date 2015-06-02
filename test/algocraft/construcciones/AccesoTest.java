@@ -6,8 +6,7 @@ import org.junit.Test;
 
 import stats.Recurso;
 import algocraft.construcciones.protos.Acceso;
-import algocraft.unidades.protos.Dragon;
-import algocraft.unidades.protos.Zealot;
+import algocraft.unidades.Unidad;
 
 public class AccesoTest {
 	
@@ -47,7 +46,7 @@ public class AccesoTest {
 	public void testAccesoCreaZealot(){
 		Acceso acceso = new Acceso();
 		
-		Zealot zealot= (Zealot) acceso.crearUnidad( muchosRecursos, nombreZealot);
+		Unidad zealot= acceso.crearUnidad( muchosRecursos, nombreZealot);
 		
 		assertEquals(nombreZealot,zealot.getNombre());
 	}
@@ -56,7 +55,7 @@ public class AccesoTest {
 	public void testAccesoCreaDragon(){
 		Acceso acceso = new Acceso();
 		
-		Dragon dragon= (Dragon) acceso.crearUnidad( muchosRecursos, nombreDragon);
+		Unidad dragon = acceso.crearUnidad( muchosRecursos, nombreDragon);
 		
 		assertEquals(nombreDragon,dragon.getNombre());
 	}
