@@ -1,9 +1,10 @@
 package algocraft.construcciones.terran;
 
+import stats.Recurso;
 import algocraft.construcciones.Construccion;
 import algocraft.creables.Creable;
 
-public class CentroDeMineral extends Construccion{
+public class CentroDeMineral extends Construccion implements Actualizable{
 	
 	public CentroDeMineral() {
 		this.nombre = "Centro De Mineral";
@@ -13,6 +14,15 @@ public class CentroDeMineral extends Construccion{
 	
 	public Creable clonar(){
 		return (new CentroDeMineral());
+	}
+
+	@Override
+	public void actualizar() {
+		this.recolectarMineral(duenio.getRecursos());		
+	}
+
+	public void recolectarMineral(Recurso recursos) {
+		recursos.incrementarRecurso(new Recurso(10,0));
 	}
 
 }
