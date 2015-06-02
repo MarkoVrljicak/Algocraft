@@ -2,6 +2,7 @@ package algocraft.construcciones;
 
 import java.util.HashMap;
 
+import stats.Recurso;
 import algocraft.creables.Creable;
 import algocraft.creables.ValidadorDeCreaciones;
 import algocraft.unidades.Marine;
@@ -13,7 +14,7 @@ public class Barraca extends CreadorDeUnidades{
 		this.vida.set(1000);
 		this.tiempoDeConstruccion = 12;
 		unidades = new HashMap<String, ValidadorDeCreaciones>();
-		this.unidades.put("Marine", new ValidadorDeCreaciones(50, 0, new Marine() ));
+		this.unidades.put("Marine", new ValidadorDeCreaciones(new Recurso(50,0), new Marine() ));
 	}
 	
 	public Creable clonar(){

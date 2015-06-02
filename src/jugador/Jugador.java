@@ -2,27 +2,24 @@ package jugador;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-
 import algocraft.construcciones.Construccion;
 import algocraft.unidades.Unidad;
 import razas.Raza;
+import stats.Recurso;
 
 public class Jugador {
 	
 	private Raza raza;
 	private ArrayList<Unidad> unidades;
 	private ArrayList<Construccion> construcciones;
-	private HashMap<String, Integer> recursos; //el generico no puede ser int porque es un tipo primitivo.
+	private Recurso recursos;
 	
 	public Jugador(String nombreJugador, Raza razaSeleccionada){
 		//falta color
 		raza = razaSeleccionada;
 		unidades = new ArrayList<Unidad>();
-		recursos = new HashMap<String, Integer>();
+		recursos = new Recurso(200,0);
 		construcciones = new ArrayList<Construccion>();
-		recursos.put("mineral", 200);
-		recursos.put("gas", 0);
 	}
 	
 	public int poblacion(){
@@ -36,17 +33,17 @@ public class Jugador {
 	public Collection<String> getConstruccionesDisponibles(){
 		return raza.getListaDeConstrucciones();
 	}
-	
+	//no se si lo puedo sacar
 	public int getMineral(){
-		return recursos.get("mineral").intValue();
+		return recursos.obtenerMineral();
 	}
-	
+	//no se si lo puedo sacar
 	public int getGas(){
-		return recursos.get("gas").intValue();
+		return recursos.obtenerGas();
 	}
 	
 	public void construir(String nombreConstruccion){
-		Construccion construccion = raza.construirConstruccion(this.getMineral(), this.getGas(), nombreConstruccion);
+		Construccion construccion = raza.construirConstruccion(this.recursos, nombreConstruccion);
 		construcciones.add(construccion);
 	}
 

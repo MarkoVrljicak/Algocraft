@@ -4,14 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import stats.Recurso;
 import algocraft.unidades.*;
 
 public class AccesoTest {
 	
 	private String nombreZealot="Zealot";
 	private String nombreDragon="Dragon";
-	private int muchoMineral=999;
-	private int muchoGas=999;
+	private Recurso muchosRecursos=new Recurso(999,999);
 
 	@Test
 	public void testConstruyoAccesoYControloSuVidaInicial() {
@@ -45,7 +45,7 @@ public class AccesoTest {
 	public void testAccesoCreaZealot(){
 		Acceso acceso = new Acceso();
 		
-		Zealot zealot= (Zealot) acceso.crearUnidad(muchoMineral, muchoGas, nombreZealot);
+		Zealot zealot= (Zealot) acceso.crearUnidad( muchosRecursos, nombreZealot);
 		
 		assertEquals(nombreZealot,zealot.getNombre());
 	}
@@ -54,7 +54,7 @@ public class AccesoTest {
 	public void testAccesoCreaDragon(){
 		Acceso acceso = new Acceso();
 		
-		Dragon dragon= (Dragon) acceso.crearUnidad(muchoMineral, muchoGas, nombreDragon);
+		Dragon dragon= (Dragon) acceso.crearUnidad( muchosRecursos, nombreDragon);
 		
 		assertEquals(nombreDragon,dragon.getNombre());
 	}

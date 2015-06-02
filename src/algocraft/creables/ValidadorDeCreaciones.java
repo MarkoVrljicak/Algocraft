@@ -1,31 +1,31 @@
 package algocraft.creables;
 
+import stats.Recurso;
 
 public class ValidadorDeCreaciones {
-	
-	protected int mineral;
-	protected int gas;
+
+	protected Recurso recursosNecesarios;
 	protected Creable creable;
-	
-	public ValidadorDeCreaciones( int mineralRequerido, int gasRequerido, Creable creableAGuardar ){
-		mineral = mineralRequerido;
-		gas = gasRequerido;
+
+	public ValidadorDeCreaciones(Recurso recursosRequeridos,Creable creableAGuardar) {
+		recursosNecesarios = new Recurso(recursosRequeridos.obtenerMineral(),
+				recursosRequeridos.obtenerGas());
 		creable = creableAGuardar;
 	}
-	
-	public String getNombreCreable(){
+
+	public String getNombreCreable() {
 		return creable.getNombre();
 	}
-	
-	private boolean puedoCrearme( int mineralDisponible, int gasDisponible ){
-		return ((mineralDisponible >= mineral) && (gasDisponible >= gas));
+
+	private boolean puedoCrearme(Recurso recursosDisponibles) {
+		return ( ( recursosDisponibles.obtenerMineral() >= recursosNecesarios.obtenerMineral() ) && 
+				 ( recursosDisponibles.obtenerGas() >= recursosNecesarios.obtenerMineral() ) );
 	}
-	
-	public Creable crear( int mineralDisponible, int gasDisponible){
-		if (this.puedoCrearme(mineralDisponible, gasDisponible)){
+
+	public Creable crear(Recurso recursosDisponibles) {
+		if (this.puedoCrearme(recursosDisponibles)) {
 			return creable.clonar();
-		}
-		else {
+		} else {
 			return null;
 		}
 	}

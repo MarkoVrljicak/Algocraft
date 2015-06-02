@@ -4,12 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import stats.Recurso;
 import algocraft.construcciones.Fabrica;
 import algocraft.unidades.Unidad;
 
 public class FabricaTest {
-	public int muchoMineral = 999;
-	public int muchoGas = 999;
+	public Recurso muchosRecursos= new Recurso(999,999);
 	String nombreGolliat = "Golliat";
 
 	@Test
@@ -36,7 +36,7 @@ public class FabricaTest {
 	@Test
 	public void testFabricaCreaGolliat() {
 		Fabrica fabrica = new Fabrica();
-		Unidad golliat = fabrica.crearUnidad(muchoMineral, muchoGas, nombreGolliat);
+		Unidad golliat = fabrica.crearUnidad( muchosRecursos, nombreGolliat);
 		
 		assertEquals(nombreGolliat, golliat.getNombre());
 	}

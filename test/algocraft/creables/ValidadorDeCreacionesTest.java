@@ -4,21 +4,21 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import stats.Recurso;
 import algocraft.construcciones.Fabrica;
 
 public class ValidadorDeCreacionesTest {
 	/* Estos no son los requerimientos de la Fabrica, pero uso estos para los test */
-	public int sinGas = 0;
-	public int suficienteGas = 100;
-	public int demasiadoGas = 101;
-	public int sinMineral = 0;
-	public int suficienteMineral = 100;
-	public int demasiadoMineral = 101;
-	
+	public Recurso sinRecursos= new Recurso(0,0);
+	public Recurso suficientesRecursos= new Recurso(100,100);
+	public Recurso extraRecursos= new Recurso(101,101);
+	public Recurso recursosConGasSinMineral= new Recurso(0,100);
+	public Recurso recursosConMineralSinGas= new Recurso(100,0);
+		
 	@Test
 	public void testObtengoNombreDelCreableGuardado() {
 		Fabrica fabrica = new Fabrica();
-		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( sinMineral, sinGas, fabrica);
+		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( sinRecursos, fabrica);
 		
 		assertEquals("Fabrica", proxy.getNombreCreable());
 	}
@@ -26,41 +26,41 @@ public class ValidadorDeCreacionesTest {
 	@Test
 	public void testPuedeCrearCreableConRecursosDeMas() {
 		Fabrica fabricaAGuardar = new Fabrica();
-		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficienteMineral, suficienteGas, fabricaAGuardar);
+		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficientesRecursos, fabricaAGuardar);
 		
-		assertEquals(fabricaAGuardar.getNombre(), proxy.crear(demasiadoMineral, demasiadoGas).getNombre());
+		assertEquals(fabricaAGuardar.getNombre(), proxy.crear(extraRecursos).getNombre());
 	}
 	
 	@Test
 	public void testPuedeCrearCreableConRecursosSuficientes() {
 		Fabrica fabricaAGuardar = new Fabrica();
-		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficienteMineral, suficienteGas, fabricaAGuardar);
+		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficientesRecursos, fabricaAGuardar);
 		
-		assertEquals(fabricaAGuardar.getNombre(), proxy.crear(suficienteMineral, suficienteGas).getNombre());
+		assertEquals(fabricaAGuardar.getNombre(), proxy.crear(suficientesRecursos).getNombre());
 	}
 	
 	@Test
 	public void testNoPuedeCrearCreableConRecursosInsuficientes() {
 		Fabrica fabricaAGuardar = new Fabrica();
-		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficienteMineral, suficienteGas, fabricaAGuardar);
+		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficientesRecursos, fabricaAGuardar);
 		
-		assertEquals(null, proxy.crear(sinMineral, sinGas));
+		assertEquals(null, proxy.crear(sinRecursos));
 	}
 	
 	@Test
 	public void testNoPuedeCrearCreableConMineralInsuficienteYGasSuficiente() {
 		Fabrica fabricaAGuardar = new Fabrica();
-		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficienteMineral, suficienteGas, fabricaAGuardar);
+		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficientesRecursos, fabricaAGuardar);
 		
-		assertEquals(null, proxy.crear(sinMineral, suficienteGas));
+		assertEquals(null, proxy.crear(recursosConGasSinMineral));
 	}
 	
 	@Test
 	public void testNoPuedeCrearCreableConGasInsuficienteYMineralSuficiente() {
 		Fabrica fabricaAGuardar = new Fabrica();
-		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficienteMineral, suficienteGas, fabricaAGuardar);
+		ValidadorDeCreaciones proxy = new ValidadorDeCreaciones( suficientesRecursos, fabricaAGuardar);
 		
-		assertEquals(null, proxy.crear(suficienteMineral, sinGas));
+		assertEquals(null, proxy.crear(recursosConMineralSinGas));
 	}
 
 

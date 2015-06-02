@@ -2,6 +2,7 @@ package algocraft.construcciones;
 
 import java.util.HashMap;
 
+import stats.Recurso;
 import algocraft.creables.Creable;
 import algocraft.creables.ValidadorDeCreaciones;
 import algocraft.unidades.AltoTemplario;
@@ -14,7 +15,7 @@ public class ArchivosTemplarios extends CreadorDeUnidades {
 		this.vida.set(500);
 		this.tiempoDeConstruccion=9;
 		this.unidades = new HashMap<String, ValidadorDeCreaciones>();
-		this.unidades.put( "Alto Templario",new ValidadorDeCreaciones( 50, 150, new AltoTemplario() ) );
+		this.unidades.put( "Alto Templario",new ValidadorDeCreaciones( new Recurso(50,150), new AltoTemplario() ) );
 	}
 	
 	

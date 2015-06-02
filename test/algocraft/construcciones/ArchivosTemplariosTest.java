@@ -4,14 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import stats.Recurso;
 import algocraft.construcciones.ArchivosTemplarios;
 import algocraft.unidades.Unidad;
 
 public class ArchivosTemplariosTest {
 
 	private String nombreAltoTemplario="Alto Templario";
-	private int muchoMineral=999;
-	private int muchoGas=999;
+	private Recurso muchosRecursos= new Recurso(999,999);
 
 	@Test
 	public void testConstruyoArchivosTemplariosYControloSuVidaInicial() {
@@ -37,7 +37,7 @@ public class ArchivosTemplariosTest {
 	@Test
 	public void testArchivosTemplariosCreaAltoTemplario() {
 		ArchivosTemplarios archivoTemplario = new ArchivosTemplarios();
-		Unidad altoTemplario = archivoTemplario.crearUnidad(muchoMineral, muchoGas, nombreAltoTemplario);
+		Unidad altoTemplario = archivoTemplario.crearUnidad( muchosRecursos, nombreAltoTemplario);
 		
 		assertEquals(nombreAltoTemplario, altoTemplario.getNombre() );
 	}

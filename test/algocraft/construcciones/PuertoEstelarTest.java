@@ -4,13 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import stats.Recurso;
 import algocraft.construcciones.PuertoEstelar;
 import algocraft.unidades.Unidad;
 
 public class PuertoEstelarTest {
 
-	private int muchoMineral = 999;
-	private int muchoGas = 999;
+	private Recurso  muchosRecursos = new Recurso(999,999);
 	public String nombreEspectro = "Espectro";
 	public String nombreNaveCiencia = "Nave Ciencia";
 	public String nombreNaveTransporte = "Nave Transporte";
@@ -53,7 +53,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaEspectro() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Unidad espectro = puertoEstelar.crearUnidad(muchoMineral, muchoGas, nombreEspectro);
+		Unidad espectro = puertoEstelar.crearUnidad( muchosRecursos, nombreEspectro);
 		
 		assertEquals(nombreEspectro, espectro.getNombre());
 	}
@@ -61,7 +61,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaNaveDeTransporte() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Unidad nave = puertoEstelar.crearUnidad(muchoMineral, muchoGas, nombreNaveTransporte);
+		Unidad nave = puertoEstelar.crearUnidad( muchosRecursos, nombreNaveTransporte);
 		
 		assertEquals(nombreNaveTransporte, nave.getNombre());
 	}
@@ -69,7 +69,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaNaveCiencia() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Unidad nave = puertoEstelar.crearUnidad(muchoMineral, muchoGas, nombreNaveCiencia);
+		Unidad nave = puertoEstelar.crearUnidad( muchosRecursos, nombreNaveCiencia);
 		
 		assertEquals(nombreNaveCiencia, nave.getNombre());
 	}

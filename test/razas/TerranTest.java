@@ -1,16 +1,14 @@
 package razas;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
+import stats.Recurso;
 import algocraft.construcciones.Construccion;
 
 public class TerranTest {
-	private int sinMineral = 0;
-	private int sinGas = 0;
-	private int muchoMineral = 999;
-	private int muchoGas = 999;
+	private Recurso sinRecursos=new Recurso(0,0);
+	private Recurso muchosRecursos=new Recurso(0,0);
 	public String nombreFabrica = "Fabrica";
 	public String nombreCentroDeMineral = "Centro De Mineral";
 	public String nombreBarraca = "Barraca";
@@ -70,7 +68,7 @@ public class TerranTest {
 	@Test
 	public void testTerranCreaCentroDeMineral() {
 		Terran terran = new Terran();
-		Construccion centroDeMineral = terran.construirConstruccion(muchoMineral, muchoGas, nombreCentroDeMineral);
+		Construccion centroDeMineral = terran.construirConstruccion(muchosRecursos, nombreCentroDeMineral);
 		
 		assertEquals(nombreCentroDeMineral, centroDeMineral.getNombre());
 	}
@@ -78,7 +76,7 @@ public class TerranTest {
 	@Test
 	public void testTerranCreaBarraca() {
 		Terran terran = new Terran();
-		Construccion barraca = terran.construirConstruccion(muchoMineral, muchoGas, nombreBarraca);
+		Construccion barraca = terran.construirConstruccion(muchosRecursos, nombreBarraca);
 		
 		assertEquals(nombreBarraca, barraca.getNombre());
 	}
@@ -86,7 +84,7 @@ public class TerranTest {
 	@Test
 	public void testTerranCreaDepositoDeSuministros() {
 		Terran terran = new Terran();
-		Construccion deposito = terran.construirConstruccion(muchoMineral, muchoGas, nombreDepositoDeSuministros);
+		Construccion deposito = terran.construirConstruccion(muchosRecursos, nombreDepositoDeSuministros);
 		
 		assertEquals(nombreDepositoDeSuministros, deposito.getNombre());
 	}
@@ -94,7 +92,7 @@ public class TerranTest {
 	@Test
 	public void testTerranCreaDepositoRefineria() {
 		Terran terran = new Terran();
-		Construccion refineria = terran.construirConstruccion(muchoMineral, muchoGas, nombreRefineria);
+		Construccion refineria = terran.construirConstruccion(muchosRecursos, nombreRefineria);
 		
 		assertEquals(nombreRefineria, refineria.getNombre());
 	}
@@ -102,7 +100,7 @@ public class TerranTest {
 	@Test
 	public void testTerranCreaFabrica() {
 		Terran terran = new Terran();
-		Construccion fabrica = terran.construirConstruccion(muchoMineral, muchoGas, nombreFabrica);
+		Construccion fabrica = terran.construirConstruccion(muchosRecursos, nombreFabrica);
 		
 		assertEquals(nombreFabrica, fabrica.getNombre());
 	}
@@ -110,7 +108,7 @@ public class TerranTest {
 	@Test
 	public void testTerranCreaPuertoEstelar() {
 		Terran terran = new Terran();
-		Construccion puerto = terran.construirConstruccion(muchoMineral, muchoGas, nombrePuertoEstelar);
+		Construccion puerto = terran.construirConstruccion(muchosRecursos, nombrePuertoEstelar);
 		
 		assertEquals(nombrePuertoEstelar, puerto.getNombre());
 	}
@@ -118,7 +116,7 @@ public class TerranTest {
 	@Test
 	public void testTerranNoCreaNexoMineral() {
 		Terran terran = new Terran();
-		Construccion nexo = terran.construirConstruccion(muchoMineral, muchoGas, "Nexo Mineral");
+		Construccion nexo = terran.construirConstruccion(muchosRecursos, "Nexo Mineral");
 		
 		assertEquals(null, nexo);
 	}
@@ -126,7 +124,7 @@ public class TerranTest {
 	@Test
 	public void testTerranNoCreaCentroDeMineralSinRecursos() {
 		Terran terran = new Terran();
-		Construccion nexo = terran.construirConstruccion(sinMineral, sinGas, nombreCentroDeMineral);
+		Construccion nexo = terran.construirConstruccion(sinRecursos, nombreCentroDeMineral);
 		
 		assertEquals(null, nexo);
 	}
