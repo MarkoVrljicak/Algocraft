@@ -69,5 +69,13 @@ public class JugadorTest {
 		
 		assertEquals(210,jugador.getRecursos().obtenerMineral());
 	}
+	
+	
+	@Test
+	public void testJugadorEmpiezaConPoblacionMaximaCero(){
+		Jugador jugador= new Jugador("Fernando De La Rua", new Terran());
+		
+		assertEquals(0,jugador.poblacionMaxima() );
+	}
 
 }

@@ -61,5 +61,9 @@ public class Jugador implements Actualizable {
 		}
 	}
 
+	public int poblacionMaxima() {
+		return 0;
+	}
+
 	
 }
