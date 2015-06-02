@@ -8,7 +8,7 @@ import algocraft.construcciones.Construccion;
 
 public class TerranTest {
 	private Recurso sinRecursos=new Recurso(0,0);
-	private Recurso muchosRecursos=new Recurso(0,0);
+	private Recurso muchosRecursos=new Recurso(999,999);
 	public String nombreFabrica = "Fabrica";
 	public String nombreCentroDeMineral = "Centro De Mineral";
 	public String nombreBarraca = "Barraca";
