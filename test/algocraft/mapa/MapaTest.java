@@ -1,7 +1,8 @@
 package algocraft.mapa;
 
 
-import org.junit.Assert;
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import algocraft.exception.FueraDeLimitesException;
@@ -15,7 +16,7 @@ public class MapaTest {
 		
 		Casillero casillero= mapa.obtenerCasillero(coordenadaPedida);
 		
-		Assert.assertEquals(coordenadaPedida, casillero.getCoordenada());
+		assertEquals(coordenadaPedida, casillero.getCoordenada());
 	}
 	
 	@Test(expected= FueraDeLimitesException.class)
@@ -25,4 +26,19 @@ public class MapaTest {
 		
 		mapa.obtenerCasillero(coordenadaPedida);
 	}
+	
+	@Test
+	public void testObtengoAnchoMiroQueSeaElAncho(){
+		Mapa mapa= new Mapa(100,200);
+		
+		assertEquals(100,mapa.getAncho());
+	}
+	
+	@Test
+	public void testObtengoAltoMiroQueSeaElAlto(){
+		Mapa mapa= new Mapa(100,200);
+		
+		assertEquals(200,mapa.getAlto());
+	}
+	
 }

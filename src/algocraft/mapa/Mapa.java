@@ -1,10 +1,11 @@
 package algocraft.mapa;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 import algocraft.exception.FueraDeLimitesException;
 
-public class Mapa {
+public class Mapa implements Iterable<Casillero>{
 
 	private HashMap<Coordenada, Casillero> casilleros;
 	private int ancho;
@@ -32,6 +33,20 @@ public class Mapa {
 			return casilleros.get(coordenadaPedida);
 		else
 			throw new FueraDeLimitesException();
+	}
+
+	@Override
+	public Iterator<Casillero> iterator() {
+		
+		return casilleros.values().iterator();
+	}
+
+	public int getAncho() {
+		return ancho;
+	}
+
+	public int getAlto() {
+		return alto;
 	}
 
 }
