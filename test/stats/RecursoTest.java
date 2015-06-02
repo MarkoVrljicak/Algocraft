@@ -19,4 +19,22 @@ public class RecursoTest {
 		
 		assertEquals(100,recurso.obtenerGas());
 	}
+	
+	@Test
+	public void testRecursoDisminuyeMineralDelOtro(){
+		Recurso recursosDisponibles = new Recurso(100,100);
+		Recurso recursosNecesarios = new Recurso(50,50);
+		recursosDisponibles.gastarRecurso(recursosNecesarios);
+		
+		assertEquals(50, recursosDisponibles.obtenerMineral());
+	}
+	
+	@Test
+	public void testRecursoDisminuyeGaslDelOtro(){
+		Recurso recursosDisponibles = new Recurso(100,100);
+		Recurso recursosNecesarios = new Recurso(50,50);
+		recursosDisponibles.gastarRecurso(recursosNecesarios);
+		
+		assertEquals(50, recursosDisponibles.obtenerGas());
+	}
 }

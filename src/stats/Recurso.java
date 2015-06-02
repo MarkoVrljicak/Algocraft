@@ -17,4 +17,9 @@ public class Recurso {
 	public int obtenerGas(){
 		return gas;
 	}
+	
+	public void gastarRecurso(Recurso otroRecurso){
+		mineral = mineral - otroRecurso.obtenerMineral();
+		gas = gas - otroRecurso.obtenerGas();
+	}
 }
