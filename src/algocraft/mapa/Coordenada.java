@@ -45,8 +45,10 @@ public class Coordenada {
 		int otroX=otraCoordenada.getX();
 		int otroY=otraCoordenada.getY();
 		
-		int distancia = Math.abs(x - otroX )
-				+ Math.abs(y - otroY);
+		int desplazamientoHorizontal = Math.abs(x - otroX);
+		int desplazamientoVertical = Math.abs(y - otroY);
+		
+		int distancia = Math.max(desplazamientoHorizontal, desplazamientoVertical);
 
 		return distancia;
 	}

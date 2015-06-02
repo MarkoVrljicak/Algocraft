@@ -38,13 +38,53 @@ public class CoordenadaTest {
 	}
 
 	@Test
-	public void testDistanciaACoordenadaEsDiferenciaEntreAmbas() {
-		Coordenada c1 = new Coordenada(2, 3);
+	public void testDistanciaHorizontal() {
+		Coordenada c1 = new Coordenada(5, 0);
 		Coordenada c2 = new Coordenada(0, 0);
 
 		int distancia = c1.distanciaA(c2);
 
 		Assert.assertEquals(5, distancia);
+	}
+	
+	@Test
+	public void testDistanciaVertical() {
+		Coordenada c1 = new Coordenada(0, 5);
+		Coordenada c2 = new Coordenada(0, 0);
+
+		int distancia = c1.distanciaA(c2);
+
+		Assert.assertEquals(5, distancia);
+	}
+	
+	@Test
+	public void testCasilleroDiagonalEstaA1DeDistancia() {
+		Coordenada c1 = new Coordenada(1, 1);
+		Coordenada c2 = new Coordenada(0, 0);
+
+		int distancia = c1.distanciaA(c2);
+
+		Assert.assertEquals(1, distancia);
+	}
+	
+	@Test
+	public void testDistanciaEnDiagonalMasHorizontal() {
+		Coordenada c1 = new Coordenada(2, 1);
+		Coordenada c2 = new Coordenada(0, 0);
+
+		int distancia = c1.distanciaA(c2);
+
+		Assert.assertEquals(2, distancia);
+	}
+	
+	@Test
+	public void testDistanciaEnDiagonalMasVertical() {
+		Coordenada c1 = new Coordenada(2, 3);
+		Coordenada c2 = new Coordenada(0, 0);
+
+		int distancia = c1.distanciaA(c2);
+
+		Assert.assertEquals(3, distancia);
 	}
 
 	@Test
