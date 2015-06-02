@@ -22,7 +22,6 @@ public class ArchivosTemplarios extends CreadorDeUnidades {
 	
 	@Override
 	public Creable clonar() {
-		
 		return new ArchivosTemplarios();
 	}
 

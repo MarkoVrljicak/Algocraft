@@ -24,8 +24,7 @@ public class Acceso extends CreadorDeUnidades {
 	
 	@Override
 	public Creable clonar() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Acceso();
 	}
 
 }
