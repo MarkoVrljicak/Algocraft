@@ -20,4 +20,9 @@ public class Tierra extends Terreno {
 	public boolean sePuedeEdificar() {
 		return true;
 	}
+
+	@Override
+	public char dibujar() {
+		return 'T';
+	}
 }

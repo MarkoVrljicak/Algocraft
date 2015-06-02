@@ -22,4 +22,9 @@ public class Minerales extends Terreno {
 		return false;
 	}
 
+	@Override
+	public char dibujar() {
+		return 'M';
+	}
+
 }

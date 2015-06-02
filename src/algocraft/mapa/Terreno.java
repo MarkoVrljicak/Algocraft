@@ -1,6 +1,6 @@
 package algocraft.mapa;
 
-public abstract class Terreno {
+public abstract class Terreno implements Dibujable {
 
 		abstract public boolean sePuedeCaminar();
 		//Para que las unidades a pie pregunten si pueden transitar por el casillero.
