@@ -13,6 +13,7 @@ public class AccesoTest {
 	private String nombreZealot="Zealot";
 	private String nombreDragon="Dragon";
 	private Recurso muchosRecursos=new Recurso(999,999);
+	private int poblacionSuficiente=5;
 
 	@Test
 	public void testConstruyoAccesoYControloSuVidaInicial() {
@@ -46,7 +47,7 @@ public class AccesoTest {
 	public void testAccesoCreaZealot(){
 		Acceso acceso = new Acceso();
 		
-		Unidad zealot= acceso.crearUnidad( muchosRecursos, nombreZealot);
+		Unidad zealot= acceso.crearUnidad( muchosRecursos, nombreZealot, poblacionSuficiente);
 		
 		assertEquals(nombreZealot,zealot.getNombre());
 	}
@@ -55,7 +56,7 @@ public class AccesoTest {
 	public void testAccesoCreaDragon(){
 		Acceso acceso = new Acceso();
 		
-		Unidad dragon = acceso.crearUnidad( muchosRecursos, nombreDragon);
+		Unidad dragon = acceso.crearUnidad( muchosRecursos, nombreDragon, poblacionSuficiente);
 		
 		assertEquals(nombreDragon,dragon.getNombre());
 	}

@@ -13,6 +13,7 @@ public class PuertoEstelarProtosTest {
 	private String nombreScout = "Scout";
 	private String nombreNaveDeTransporte = "Nave de Transporte";
 	private Recurso muchosRecursos=new Recurso(999,999);
+	private int poblacionSuficiente=5;
 
 
 	@Test
@@ -47,7 +48,7 @@ public class PuertoEstelarProtosTest {
 	public void testPuertoEstelarCreaScout(){
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
 		
-		Unidad scout = puertoEstelar.crearUnidad( muchosRecursos, nombreScout);
+		Unidad scout = puertoEstelar.crearUnidad( muchosRecursos, nombreScout, poblacionSuficiente);
 		
 		assertEquals(nombreScout, scout.getNombre());
 	}
@@ -56,7 +57,7 @@ public class PuertoEstelarProtosTest {
 	public void testPuertoEstelarCreaNaveDeTransporte(){
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
 		
-		Unidad nave = puertoEstelar.crearUnidad( muchosRecursos, nombreNaveDeTransporte);
+		Unidad nave = puertoEstelar.crearUnidad( muchosRecursos, nombreNaveDeTransporte, poblacionSuficiente);
 		
 		assertEquals(nombreNaveDeTransporte, nave.getNombre());
 	}

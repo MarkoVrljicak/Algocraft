@@ -9,6 +9,7 @@ import algocraft.construcciones.terran.Fabrica;
 import algocraft.unidades.Unidad;
 
 public class FabricaTest {
+	public int poblacionSuficiente=5;
 	public Recurso muchosRecursos= new Recurso(999,999);
 	String nombreGolliat = "Golliat";
 
@@ -36,7 +37,7 @@ public class FabricaTest {
 	@Test
 	public void testFabricaCreaGolliat() {
 		Fabrica fabrica = new Fabrica();
-		Unidad golliat = fabrica.crearUnidad( muchosRecursos, nombreGolliat);
+		Unidad golliat = fabrica.crearUnidad( muchosRecursos, nombreGolliat, poblacionSuficiente);
 		
 		assertEquals(nombreGolliat, golliat.getNombre());
 	}

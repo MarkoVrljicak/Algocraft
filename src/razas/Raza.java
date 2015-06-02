@@ -6,11 +6,11 @@ import java.util.HashMap;
 
 import stats.Recurso;
 import algocraft.construcciones.Construccion;
-import algocraft.creables.ValidadorDeCreaciones;
+import algocraft.creables.ValidadorDeRecursos;
 
 abstract public class Raza {
 
-	protected HashMap<String, ValidadorDeCreaciones> construcciones;
+	protected HashMap<String, ValidadorDeRecursos> construcciones;
 	abstract public String getNombre();
 	abstract public Construccion construirConstruccion(Recurso recursosDisponibles, String nombreDeConstruccion);
 	abstract public Collection<String> getListaDeConstrucciones();

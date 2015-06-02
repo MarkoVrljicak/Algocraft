@@ -11,6 +11,7 @@ import algocraft.unidades.Unidad;
 public class BarracaTest {
 	public Recurso  muchosRecursos= new Recurso(999,999);
 	public String nombreMarine = "Marine";
+	private int poblacionSuficiente=5;
 
 	@Test
 	public void testConstruyoBarracaYControloSuVidaInicial() {
@@ -36,7 +37,7 @@ public class BarracaTest {
 	@Test
 	public void testBarracaCreaMarine() {
 		Barraca barraca = new Barraca();
-		Unidad marine = barraca.crearUnidad( muchosRecursos, nombreMarine);
+		Unidad marine = barraca.crearUnidad( muchosRecursos, nombreMarine, poblacionSuficiente);
 		
 		assertEquals(nombreMarine, marine.getNombre());
 	}

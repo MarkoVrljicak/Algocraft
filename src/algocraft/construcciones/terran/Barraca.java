@@ -5,7 +5,7 @@ import java.util.HashMap;
 import stats.Recurso;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.creables.Creable;
-import algocraft.creables.ValidadorDeCreaciones;
+import algocraft.creables.ValidadorDePoblacion;
 import algocraft.unidades.terran.Marine;
 
 public class Barraca extends CreadorDeUnidades{
@@ -14,8 +14,8 @@ public class Barraca extends CreadorDeUnidades{
 		this.nombre = "Barraca";
 		this.vida.set(1000);
 		this.tiempoDeConstruccion = 12;
-		unidades = new HashMap<String, ValidadorDeCreaciones>();
-		this.unidades.put("Marine", new ValidadorDeCreaciones(new Recurso(50,0), new Marine() ));
+		unidades = new HashMap<String, ValidadorDePoblacion>();
+		this.unidades.put("Marine", new ValidadorDePoblacion(new Recurso(50,0), new Marine() , 1 ));
 	}
 	
 	public Creable clonar(){

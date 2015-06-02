@@ -2,12 +2,12 @@ package algocraft.creables;
 
 import stats.Recurso;
 
-public class ValidadorDeCreaciones {
+public class ValidadorDeRecursos {
 
 	protected Recurso recursosNecesarios;
 	protected Creable creable;
 
-	public ValidadorDeCreaciones(Recurso recursosRequeridos,Creable creableAGuardar) {
+	public ValidadorDeRecursos(Recurso recursosRequeridos,Creable creableAGuardar) {
 		recursosNecesarios = new Recurso(recursosRequeridos.obtenerMineral(),
 				recursosRequeridos.obtenerGas());
 		creable = creableAGuardar;

@@ -12,6 +12,7 @@ public class ArchivosTemplariosTest {
 
 	private String nombreAltoTemplario="Alto Templario";
 	private Recurso muchosRecursos= new Recurso(999,999);
+	private int poblacionSuficiente= 5;
 
 	@Test
 	public void testConstruyoArchivosTemplariosYControloSuVidaInicial() {
@@ -37,7 +38,7 @@ public class ArchivosTemplariosTest {
 	@Test
 	public void testArchivosTemplariosCreaAltoTemplario() {
 		ArchivosTemplarios archivoTemplario = new ArchivosTemplarios();
-		Unidad altoTemplario = archivoTemplario.crearUnidad( muchosRecursos, nombreAltoTemplario);
+		Unidad altoTemplario = archivoTemplario.crearUnidad( muchosRecursos, nombreAltoTemplario, poblacionSuficiente);
 		
 		assertEquals(nombreAltoTemplario, altoTemplario.getNombre() );
 	}

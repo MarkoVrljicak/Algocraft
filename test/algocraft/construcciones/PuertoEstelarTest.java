@@ -11,6 +11,7 @@ import algocraft.unidades.Unidad;
 public class PuertoEstelarTest {
 
 	private Recurso  muchosRecursos = new Recurso(999,999);
+	private int poblacionSuficiente=5;
 	public String nombreEspectro = "Espectro";
 	public String nombreNaveCiencia = "Nave Ciencia";
 	public String nombreNaveTransporte = "Nave Transporte";
@@ -53,7 +54,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaEspectro() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Unidad espectro = puertoEstelar.crearUnidad( muchosRecursos, nombreEspectro);
+		Unidad espectro = puertoEstelar.crearUnidad( muchosRecursos, nombreEspectro, poblacionSuficiente);
 		
 		assertEquals(nombreEspectro, espectro.getNombre());
 	}
@@ -61,7 +62,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaNaveDeTransporte() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Unidad nave = puertoEstelar.crearUnidad( muchosRecursos, nombreNaveTransporte);
+		Unidad nave = puertoEstelar.crearUnidad( muchosRecursos, nombreNaveTransporte, poblacionSuficiente);
 		
 		assertEquals(nombreNaveTransporte, nave.getNombre());
 	}
@@ -69,7 +70,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaNaveCiencia() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Unidad nave = puertoEstelar.crearUnidad( muchosRecursos, nombreNaveCiencia);
+		Unidad nave = puertoEstelar.crearUnidad( muchosRecursos, nombreNaveCiencia, poblacionSuficiente);
 		
 		assertEquals(nombreNaveCiencia, nave.getNombre());
 	}

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import stats.Recurso;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.creables.Creable;
-import algocraft.creables.ValidadorDeCreaciones;
+import algocraft.creables.ValidadorDePoblacion;
 import algocraft.unidades.terran.Golliat;
 
 public class Fabrica extends CreadorDeUnidades {
@@ -14,8 +14,8 @@ public class Fabrica extends CreadorDeUnidades {
 		this.nombre = "Fabrica";
 		this.tiempoDeConstruccion = 12;
 		this.vida.set(1250);
-		unidades = new HashMap<String, ValidadorDeCreaciones>();
-		this.unidades.put("Golliat", new ValidadorDeCreaciones(new Recurso(100,50), new Golliat() ));
+		unidades = new HashMap<String, ValidadorDePoblacion>();
+		this.unidades.put("Golliat", new ValidadorDePoblacion(new Recurso(100,50), new Golliat() , 2 ));
 	}
 
 	@Override
