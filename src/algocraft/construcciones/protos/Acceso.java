@@ -1,11 +1,13 @@
-package algocraft.construcciones;
+package algocraft.construcciones.protos;
 
 import java.util.HashMap;
 
 import stats.Recurso;
+import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.creables.Creable;
 import algocraft.creables.ValidadorDeCreaciones;
-import algocraft.unidades.*;
+import algocraft.unidades.protos.Dragon;
+import algocraft.unidades.protos.Zealot;
 
 
 public class Acceso extends CreadorDeUnidades {

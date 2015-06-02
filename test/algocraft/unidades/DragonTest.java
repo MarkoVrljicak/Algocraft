@@ -3,6 +3,8 @@ package algocraft.unidades;
 import org.junit.Assert;
 import org.junit.Test;
 
+import algocraft.unidades.protos.Dragon;
+
 public class DragonTest {
 	
 	@Test

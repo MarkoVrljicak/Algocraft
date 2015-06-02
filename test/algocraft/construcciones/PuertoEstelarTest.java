@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import stats.Recurso;
-import algocraft.construcciones.PuertoEstelar;
+import algocraft.construcciones.terran.PuertoEstelar;
 import algocraft.unidades.Unidad;
 
 public class PuertoEstelarTest {

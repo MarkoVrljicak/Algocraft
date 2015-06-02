@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import algocraft.unidades.protos.AltoTemplario;
+
 public class AltoTemplarioTest {
 
 	@Test

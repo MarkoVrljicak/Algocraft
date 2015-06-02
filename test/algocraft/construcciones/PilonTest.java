@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import algocraft.construcciones.protos.Pilon;
+
 public class PilonTest {
 	
 	@Test

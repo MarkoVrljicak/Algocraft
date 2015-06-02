@@ -5,7 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import stats.Recurso;
-import algocraft.unidades.*;
+import algocraft.construcciones.protos.Acceso;
+import algocraft.unidades.protos.Dragon;
+import algocraft.unidades.protos.Zealot;
 
 public class AccesoTest {
 	

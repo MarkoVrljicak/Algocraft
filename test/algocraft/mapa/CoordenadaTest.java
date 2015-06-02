@@ -18,7 +18,7 @@ public class CoordenadaTest {
 		Coordenada c1 = new Coordenada(1, 5);
 		Coordenada c2 = new Coordenada(1, 3);
 
-		Assert.assertNotEquals(c1, c2);
+		Assert.assertNotSame(c1, c2);
 	}
 	
 	@Test
@@ -26,7 +26,7 @@ public class CoordenadaTest {
 		Coordenada c1 = new Coordenada(1, 5);
 		String coordenadaFalsa= "10,20";
 
-		Assert.assertNotEquals(c1, coordenadaFalsa);
+		Assert.assertNotSame(c1, coordenadaFalsa);
 	}
 
 	@Test

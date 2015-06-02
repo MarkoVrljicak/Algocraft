@@ -1,5 +1,6 @@
-package algocraft.construcciones;
+package algocraft.construcciones.terran;
 
+import algocraft.construcciones.Construccion;
 import algocraft.creables.Creable;
 
 public class DepositoDeSuministros extends Construccion {

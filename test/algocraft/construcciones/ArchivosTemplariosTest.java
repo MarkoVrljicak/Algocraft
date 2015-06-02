@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import stats.Recurso;
-import algocraft.construcciones.ArchivosTemplarios;
+import algocraft.construcciones.protos.ArchivosTemplarios;
 import algocraft.unidades.Unidad;
 
 public class ArchivosTemplariosTest {

@@ -1,5 +1,6 @@
-package algocraft.construcciones;
+package algocraft.construcciones.protos;
 
+import algocraft.construcciones.Construccion;
 import algocraft.creables.Creable;
 
 public class NexoMineral extends Construccion {

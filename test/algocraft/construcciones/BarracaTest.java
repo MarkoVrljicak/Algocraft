@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import stats.Recurso;
-import algocraft.construcciones.Barraca;
+import algocraft.construcciones.terran.Barraca;
 import algocraft.unidades.Unidad;
 
 public class BarracaTest {

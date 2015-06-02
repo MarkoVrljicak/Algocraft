@@ -1,6 +1,7 @@
-package algocraft.unidades;
+package algocraft.unidades.protos;
 
 import algocraft.creables.Creable;
+import algocraft.unidades.Unidad;
 
 public class Zealot extends Unidad{
 

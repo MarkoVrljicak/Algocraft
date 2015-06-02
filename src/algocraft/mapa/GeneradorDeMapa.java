@@ -1,7 +1,7 @@
 package algocraft.mapa;
 
-import algocraft.construcciones.BaseTerran;
 import algocraft.construcciones.Construccion;
+import algocraft.construcciones.terran.BaseTerran;
 import algocraft.creables.Creable;
 import algocraft.exception.FueraDeLimitesException;
 

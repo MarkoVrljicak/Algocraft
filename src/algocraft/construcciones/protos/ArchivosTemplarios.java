@@ -1,11 +1,12 @@
-package algocraft.construcciones;
+package algocraft.construcciones.protos;
 
 import java.util.HashMap;
 
 import stats.Recurso;
+import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.creables.Creable;
 import algocraft.creables.ValidadorDeCreaciones;
-import algocraft.unidades.AltoTemplario;
+import algocraft.unidades.protos.AltoTemplario;
 
 
 public class ArchivosTemplarios extends CreadorDeUnidades {

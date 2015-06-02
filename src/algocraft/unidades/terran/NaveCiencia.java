@@ -1,6 +1,7 @@
-package algocraft.unidades;
+package algocraft.unidades.terran;
 
 import algocraft.creables.Creable;
+import algocraft.unidades.Unidad;
 
 public class NaveCiencia extends Unidad{
 

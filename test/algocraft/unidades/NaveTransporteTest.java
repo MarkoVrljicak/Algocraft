@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import algocraft.unidades.terran.NaveTransporte;
+
 public class NaveTransporteTest {
 
 	@Test

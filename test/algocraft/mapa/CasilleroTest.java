@@ -3,7 +3,7 @@ package algocraft.mapa;
 import org.junit.Assert;
 import org.junit.Test;
 
-import algocraft.construcciones.Barraca;
+import algocraft.construcciones.terran.Barraca;
 
 
 public class CasilleroTest {

@@ -1,13 +1,14 @@
-package algocraft.construcciones;
+package algocraft.construcciones.terran;
 
 import java.util.HashMap;
 
 import stats.Recurso;
+import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.creables.Creable;
 import algocraft.creables.ValidadorDeCreaciones;
-import algocraft.unidades.Espectro;
-import algocraft.unidades.NaveCiencia;
-import algocraft.unidades.NaveTransporte;
+import algocraft.unidades.terran.Espectro;
+import algocraft.unidades.terran.NaveCiencia;
+import algocraft.unidades.terran.NaveTransporte;
 
 public class PuertoEstelar extends CreadorDeUnidades {
 

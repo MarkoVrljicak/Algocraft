@@ -1,11 +1,12 @@
-package algocraft.construcciones;
+package algocraft.construcciones.terran;
 
 import java.util.HashMap;
 
 import stats.Recurso;
+import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.creables.Creable;
 import algocraft.creables.ValidadorDeCreaciones;
-import algocraft.unidades.Marine;
+import algocraft.unidades.terran.Marine;
 
 public class Barraca extends CreadorDeUnidades{
 	

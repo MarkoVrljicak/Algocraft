@@ -3,13 +3,13 @@ import java.util.Collection;
 import java.util.HashMap;
 
 import stats.Recurso;
-import algocraft.construcciones.Barraca;
-import algocraft.construcciones.CentroDeMineral;
 import algocraft.construcciones.Construccion;
-import algocraft.construcciones.DepositoDeSuministros;
-import algocraft.construcciones.Fabrica;
-import algocraft.construcciones.PuertoEstelar;
-import algocraft.construcciones.Refineria;
+import algocraft.construcciones.terran.Barraca;
+import algocraft.construcciones.terran.CentroDeMineral;
+import algocraft.construcciones.terran.DepositoDeSuministros;
+import algocraft.construcciones.terran.Fabrica;
+import algocraft.construcciones.terran.PuertoEstelar;
+import algocraft.construcciones.terran.Refineria;
 import algocraft.creables.ValidadorDeCreaciones;
 public class Terran extends Raza {
 	

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import stats.Recurso;
-import algocraft.construcciones.Fabrica;
+import algocraft.construcciones.terran.Fabrica;
 
 public class ValidadorDeCreacionesTest {
 	/* Estos no son los requerimientos de la Fabrica, pero uso estos para los test */
