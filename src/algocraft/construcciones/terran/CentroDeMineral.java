@@ -4,7 +4,7 @@ import stats.Recurso;
 import algocraft.construcciones.Construccion;
 import algocraft.creables.Creable;
 
-public class CentroDeMineral extends Construccion implements Actualizable{
+public class CentroDeMineral extends Construccion{
 	
 	public CentroDeMineral() {
 		this.nombre = "Centro De Mineral";

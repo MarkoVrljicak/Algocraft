@@ -23,4 +23,9 @@ public class Fabrica extends CreadorDeUnidades {
 		return (new Fabrica());
 	}
 
+	@Override
+	public void actualizar() {
+		//COMPLETAR
+	}
+
 }

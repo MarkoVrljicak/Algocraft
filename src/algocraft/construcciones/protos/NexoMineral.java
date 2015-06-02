@@ -15,5 +15,9 @@ public class NexoMineral extends Construccion {
 		
 		return new NexoMineral();
 	}
+	@Override
+	public void actualizar() {
+		//COMPLETAR
+	}
 
 }

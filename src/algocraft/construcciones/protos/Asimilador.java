@@ -18,4 +18,10 @@ public class Asimilador extends Construccion {
 		return new Asimilador();
 	}
 
+
+	@Override
+	public void actualizar() {
+		//COMPLETAR
+	}
+
 }

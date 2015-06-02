@@ -25,4 +25,9 @@ public class PuertoEstelar extends CreadorDeUnidades {
 		return new PuertoEstelar();
 	}
 
+	@Override
+	public void actualizar() {
+		//COMPLETAR
+	}
+
 }

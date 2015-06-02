@@ -27,4 +27,11 @@ public class Acceso extends CreadorDeUnidades {
 		return new Acceso();
 	}
 
+
+	@Override
+	public void actualizar() {
+		// COMPLETAR
+		
+	}
+
 }

@@ -2,9 +2,10 @@ package algocraft.construcciones;
 
 import jugador.Jugador;
 import stats.Vida;
+import algocraft.construcciones.terran.Actualizable;
 import algocraft.creables.Creable;
 
-public abstract class Construccion implements Creable{
+public abstract class Construccion implements Creable, Actualizable{
 
 	protected Vida vida = new Vida();
 	protected int tiempoDeConstruccion;

@@ -18,4 +18,10 @@ public class Pilon extends Construccion {
 		return new Pilon();
 	}
 
+
+	@Override
+	public void actualizar() {
+		//COMPLETAR
+	}
+
 }

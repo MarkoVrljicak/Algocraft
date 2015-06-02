@@ -16,4 +16,9 @@ public class Refineria extends Construccion {
 		return new Refineria();
 	}
 
+	@Override
+	public void actualizar() {
+		//COMPLETAR
+	}
+
 }

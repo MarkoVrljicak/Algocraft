@@ -15,5 +15,10 @@ public class DepositoDeSuministros extends Construccion {
 	public Creable clonar() {
 		return (new DepositoDeSuministros());
 	}
+
+	@Override
+	public void actualizar() {
+		//COMPLETAR
+	}
 	
 }

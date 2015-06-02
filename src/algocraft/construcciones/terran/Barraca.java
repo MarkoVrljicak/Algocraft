@@ -21,5 +21,10 @@ public class Barraca extends CreadorDeUnidades{
 	public Creable clonar(){
 		return (new Barraca());
 	}
+
+	@Override
+	public void actualizar() {
+		//COMPLETAR
+	}
 	
 }

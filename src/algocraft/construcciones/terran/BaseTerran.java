@@ -17,4 +17,9 @@ public class BaseTerran extends Construccion implements Creable {
 		return null;
 	}
 
+	@Override
+	public void actualizar() {
+		//COMPLETAR
+	}
+
 }

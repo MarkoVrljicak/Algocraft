@@ -25,4 +25,10 @@ public class ArchivosTemplarios extends CreadorDeUnidades {
 		return new ArchivosTemplarios();
 	}
 
+
+	@Override
+	public void actualizar() {
+		//COMPLETAR
+	}
+
 }
