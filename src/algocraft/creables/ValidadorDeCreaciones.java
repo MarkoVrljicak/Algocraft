@@ -19,7 +19,7 @@ public class ValidadorDeCreaciones {
 
 	private boolean puedoCrearme(Recurso recursosDisponibles) {
 		return ( ( recursosDisponibles.obtenerMineral() >= recursosNecesarios.obtenerMineral() ) && 
-				 ( recursosDisponibles.obtenerGas() >= recursosNecesarios.obtenerMineral() ) );
+				 ( recursosDisponibles.obtenerGas() >= recursosNecesarios.obtenerGas() ) );
 	}
 
 	public Creable crear(Recurso recursosDisponibles) {

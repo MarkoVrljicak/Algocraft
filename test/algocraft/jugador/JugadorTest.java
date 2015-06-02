@@ -1,10 +1,8 @@
 package algocraft.jugador;
 
 import static org.junit.Assert.*;
-import jugador.Jugador;
-
 import org.junit.Test;
-
+import jugador.Jugador;
 import razas.Terran;
 
 public class JugadorTest {
@@ -36,14 +34,14 @@ public class JugadorTest {
 	public void jugadorTerranEmpiezaCon200DeMineral() {
 		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
 		
-		assertEquals(200, jugadorTerran.getMineral());
+		assertEquals(200, jugadorTerran.getRecursos().obtenerMineral());
 	}
 	
 	@Test
 	public void jugadorTerranEmpiezaCon0DeGas() {
 		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
 		
-		assertEquals(0, jugadorTerran.getGas());
+		assertEquals(0, jugadorTerran.getRecursos().obtenerGas());
 	}
 	
 	@Test
@@ -61,5 +59,15 @@ public class JugadorTest {
 		assertEquals(1, jugadorTerran.cantidadConstrucciones());
 	}
 	
+	//prueba integracion con centro mineral
+	@Test
+	public void testActualizarConCentroDeMineralAumentaLosRecursosDelJugador(){
+		Jugador jugador= new Jugador("Fernando De La Rua", new Terran());
+		jugador.construir("Centro De Mineral");
+		
+		jugador.actualizar();
+		
+		assertEquals(210,jugador.getRecursos().obtenerMineral());
+	}
 
 }

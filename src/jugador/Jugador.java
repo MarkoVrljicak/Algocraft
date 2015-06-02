@@ -2,12 +2,15 @@ package jugador;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+
 import algocraft.construcciones.Construccion;
+import algocraft.construcciones.terran.Actualizable;
 import algocraft.unidades.Unidad;
 import razas.Raza;
 import stats.Recurso;
 
-public class Jugador {
+public class Jugador implements Actualizable {
 	
 	private Raza raza;
 	private ArrayList<Unidad> unidades;
@@ -33,21 +36,30 @@ public class Jugador {
 	public Collection<String> getConstruccionesDisponibles(){
 		return raza.getListaDeConstrucciones();
 	}
-	//no se si lo puedo sacar
-	public int getMineral(){
-		return recursos.obtenerMineral();
+	
+	public Recurso getRecursos(){
+		return recursos;
 	}
-	//no se si lo puedo sacar
-	public int getGas(){
-		return recursos.obtenerGas();
-	}
+	
 	
 	public void construir(String nombreConstruccion){
 		Construccion construccion = raza.construirConstruccion(this.recursos, nombreConstruccion);
+		construccion.setDuenio(this);
 		construcciones.add(construccion);
 	}
 
 	public int cantidadConstrucciones() {
 		return construcciones.size();
 	}
+
+	@Override
+	public void actualizar() {
+		Iterator<Construccion> itConstrucciones= construcciones.iterator();	
+		while(itConstrucciones.hasNext()){
+			Actualizable unaConstruccion= (Actualizable) itConstrucciones.next();
+			unaConstruccion.actualizar();
+		}
+	}
+
+	
 }
