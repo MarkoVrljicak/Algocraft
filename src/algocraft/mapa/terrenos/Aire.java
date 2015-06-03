@@ -1,14 +1,15 @@
-package algocraft.mapa;
+package algocraft.mapa.terrenos;
 
-public class Tierra extends Terreno {
-	public boolean sePuedeCaminar(){
-		return true;
+public class Aire extends Terreno {
+
+	public boolean sePuedeCaminar() {
+		return false;
 	}
 
 	public boolean sePuedeVolar() {
 		return true;
 	}
-	
+
 	public boolean sePuedeMinar() {
 		return false;
 	}
@@ -16,13 +17,14 @@ public class Tierra extends Terreno {
 	public boolean tieneGas() {
 		return false;
 	}
-
+	
 	public boolean sePuedeEdificar() {
-		return true;
+		return false;
 	}
 
 	@Override
 	public char dibujar() {
-		return 'T';
+		return 'A';
 	}
+	
 }

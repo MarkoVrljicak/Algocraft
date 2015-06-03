@@ -1,4 +1,6 @@
-package algocraft.mapa;
+package algocraft.mapa.terrenos;
+
+import algocraft.mapa.Dibujable;
 
 public abstract class Terreno implements Dibujable {
 

@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import algocraft.construcciones.terran.Barraca;
+import algocraft.mapa.terrenos.Terreno;
+import algocraft.mapa.terrenos.Tierra;
 
 
 public class CasilleroTest {

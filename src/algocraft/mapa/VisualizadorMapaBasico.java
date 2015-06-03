@@ -2,6 +2,7 @@ package algocraft.mapa;
 
 
 import algocraft.exception.FueraDeLimitesException;
+import algocraft.mapa.terrenos.Mapa;
 
 
 public class VisualizadorMapaBasico {

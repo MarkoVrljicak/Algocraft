@@ -1,6 +1,6 @@
-package algocraft.mapa;
+package algocraft.mapa.terrenos;
 
-public class Minerales extends Terreno {
+public class Volcan extends Terreno {
 
 	public boolean sePuedeCaminar() {
 		return false;
@@ -11,11 +11,11 @@ public class Minerales extends Terreno {
 	}
 
 	public boolean sePuedeMinar() {
-		return true;
+		return false;
 	}
 
 	public boolean tieneGas() {
-		return false;
+		return true;
 	}
 	
 	public boolean sePuedeEdificar() {
@@ -24,7 +24,7 @@ public class Minerales extends Terreno {
 
 	@Override
 	public char dibujar() {
-		return 'M';
+		return 'V';
 	}
 
 }

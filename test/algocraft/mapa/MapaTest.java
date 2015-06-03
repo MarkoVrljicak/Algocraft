@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import algocraft.exception.FueraDeLimitesException;
+import algocraft.mapa.terrenos.Mapa;
 
 public class MapaTest {
 	

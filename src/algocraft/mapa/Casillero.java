@@ -1,6 +1,7 @@
 package algocraft.mapa;
 
 import algocraft.creables.Creable;
+import algocraft.mapa.terrenos.Terreno;
 
 public class Casillero {
 	

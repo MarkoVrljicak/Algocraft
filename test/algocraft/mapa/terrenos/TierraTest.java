@@ -1,8 +1,10 @@
-package algocraft.mapa;
+package algocraft.mapa.terrenos;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import algocraft.mapa.terrenos.Tierra;
 
 public class TierraTest {
 

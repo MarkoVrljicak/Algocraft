@@ -1,9 +1,11 @@
-package algocraft.mapa;
+package algocraft.mapa.terrenos;
 
 import java.util.HashMap;
 import java.util.Iterator;
 
 import algocraft.exception.FueraDeLimitesException;
+import algocraft.mapa.Casillero;
+import algocraft.mapa.Coordenada;
 
 public class Mapa implements Iterable<Casillero>{
 

@@ -1,6 +1,12 @@
 package algocraft.mapa;
 
 import algocraft.exception.FueraDeLimitesException;
+import algocraft.mapa.terrenos.Aire;
+import algocraft.mapa.terrenos.Mapa;
+import algocraft.mapa.terrenos.Minerales;
+import algocraft.mapa.terrenos.Terreno;
+import algocraft.mapa.terrenos.Tierra;
+import algocraft.mapa.terrenos.Volcan;
 
 public class GeneradorDeMapa {
 	//Tamanio minimo para que funcione el algoritmo: 20x20
