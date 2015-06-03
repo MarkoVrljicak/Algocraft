@@ -1,7 +1,5 @@
 package algocraft.construcciones.protos;
 
-import java.util.HashMap;
-
 import stats.Recurso;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.creables.Creable;
@@ -16,7 +14,6 @@ public class Acceso extends CreadorDeUnidades {
 		this.nombre = "Acceso";
 		this.vida.set(500);
 		this.tiempoDeConstruccion = 8;
-		unidades = new HashMap<String, ValidadorDePoblacion>();
 		this.unidades.put("Zealot", new ValidadorDePoblacion(new Recurso(100,0), new Zealot() , 2 ));
 		this.unidades.put("Dragon", new ValidadorDePoblacion(new Recurso(125,50), new Dragon() , 2 ));
 	}

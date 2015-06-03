@@ -1,7 +1,5 @@
 package algocraft.construcciones.terran;
 
-import java.util.HashMap;
-
 import stats.Recurso;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.creables.Creable;
@@ -14,7 +12,6 @@ public class Fabrica extends CreadorDeUnidades {
 		this.nombre = "Fabrica";
 		this.tiempoDeConstruccion = 12;
 		this.vida.set(1250);
-		unidades = new HashMap<String, ValidadorDePoblacion>();
 		this.unidades.put("Golliat", new ValidadorDePoblacion(new Recurso(100,50), new Golliat() , 2 ));
 	}
 

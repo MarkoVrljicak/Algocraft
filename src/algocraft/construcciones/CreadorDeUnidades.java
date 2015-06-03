@@ -1,14 +1,13 @@
 package algocraft.construcciones;
 
-import java.util.Map;
-
+import java.util.HashMap;
 import stats.Recurso;
 import algocraft.creables.ValidadorDePoblacion;
 import algocraft.unidades.Unidad;
 
 public abstract class CreadorDeUnidades extends Construccion{
 	
-	protected Map<String, ValidadorDePoblacion> unidades; 
+	protected HashMap<String, ValidadorDePoblacion> unidades = new HashMap<String, ValidadorDePoblacion>();; 
 
 	protected boolean tengoUnidad(String nombreDeUnidad){
 		return unidades.containsKey(nombreDeUnidad);

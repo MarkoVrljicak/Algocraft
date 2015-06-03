@@ -1,7 +1,5 @@
 package algocraft.construcciones.terran;
 
-import java.util.HashMap;
-
 import stats.Recurso;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.creables.Creable;
@@ -16,8 +14,6 @@ public class PuertoEstelar extends CreadorDeUnidades {
 		this.nombre = "Puerto Estelar";
 		this.vida.set(1300);
 		this.tiempoDeConstruccion = 10;
-		
-		unidades = new HashMap<String, ValidadorDePoblacion>();
 		this.unidades.put("Espectro", new ValidadorDePoblacion(new Recurso(150,50), new Espectro() , 2 ));
 		this.unidades.put("Nave Ciencia", new ValidadorDePoblacion(new Recurso(100,225), new NaveCiencia() , 2 ));
 		this.unidades.put("Nave Transporte", new ValidadorDePoblacion(new Recurso(100,100), new NaveTransporte() , 2 ));
