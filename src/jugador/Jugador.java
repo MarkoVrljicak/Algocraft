@@ -18,7 +18,7 @@ public class Jugador implements Actualizable, Usuario {
 	private ArrayList<Unidad> unidades;
 	private ArrayList<Construccion> construcciones;
 	private Recurso recursos;
-	private Poblacion poblacion=new Poblacion();
+	private Poblacion poblacion = new Poblacion();
 	
 	public Jugador(String nombreJugador, Raza razaSeleccionada){
 		//falta color

@@ -12,7 +12,7 @@ public abstract class Construccion implements Creable, Actualizable{
 	public Usuario duenio = new JugadorNulo();
 	
 	public int getVida() {
-		return vida.max();
+		return vida.actual();
 	}
 	
 	public int tiempoDeCreacion() {

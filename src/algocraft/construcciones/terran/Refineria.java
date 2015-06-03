@@ -20,7 +20,9 @@ public class Refineria extends Construccion {
 	@Override
 	public void actualizar() {
 		disminuirTiempoDeConstruccion();
-		recolectarGas(this.duenio.getRecursos());
+		if(tiempoDeConstruccion == 0){
+			recolectarGas(this.duenio.getRecursos());
+		}
 	}
 	
 	public void recolectarGas(Recurso recursos) {

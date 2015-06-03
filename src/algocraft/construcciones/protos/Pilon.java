@@ -23,11 +23,9 @@ public class Pilon extends Construccion {
 	
 	@Override
 	protected void disminuirTiempoDeConstruccion() {
-		if (this.tiempoDeConstruccion != 0) {
-			this.tiempoDeConstruccion--;
-			if(tiempoDeConstruccion == 0){
-				this.duenio.getPoblacion().incrementarMaxima(5);
-			}
+		disminuirTiempoDeConstruccion();
+		if(tiempoDeConstruccion == 0){
+			this.duenio.getPoblacion().incrementarMaxima(5);
 		}
 	}
 

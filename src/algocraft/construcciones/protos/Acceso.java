@@ -18,12 +18,10 @@ public class Acceso extends CreadorDeUnidades {
 		this.unidades.put("Dragon", new ValidadorDePoblacion(new Recurso(125,50), new Dragon() , 2 ));
 	}
 	
-	
 	@Override
 	public Creable clonar() {
 		return new Acceso();
 	}
-
 
 	@Override
 	public void actualizar() {
