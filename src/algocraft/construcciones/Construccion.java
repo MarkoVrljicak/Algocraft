@@ -1,6 +1,6 @@
 package algocraft.construcciones;
 
-import jugador.Jugador;
+import jugador.*;
 import stats.Vida;
 import algocraft.creables.Creable;
 
@@ -9,7 +9,7 @@ public abstract class Construccion implements Creable, Actualizable{
 	protected Vida vida = new Vida();
 	protected int tiempoDeConstruccion;
 	protected String nombre;
-	public Jugador duenio;
+	public Usuario duenio=new JugadorNulo();
 	
 	public int getVida() {
 		return vida.max();

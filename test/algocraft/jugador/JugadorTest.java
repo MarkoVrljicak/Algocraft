@@ -72,10 +72,10 @@ public class JugadorTest {
 	
 	
 	@Test
-	public void testJugadorEmpiezaConPoblacionMaximaCero(){
+	public void testJugadorEmpiezaConPoblacionMaximaCinco(){
 		Jugador jugador= new Jugador("Fernando De La Rua", new Terran());
 		
-		assertEquals(0,jugador.poblacionMaxima() );
+		assertEquals(5,jugador.poblacionMaxima() );
 	}
 
 }
