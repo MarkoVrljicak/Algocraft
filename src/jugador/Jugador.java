@@ -14,6 +14,7 @@ import stats.Recurso;
 public class Jugador implements Actualizable, Usuario {
 	
 	private Raza raza;
+	@SuppressWarnings("unused")
 	private ArrayList<Unidad> unidades;
 	private ArrayList<Construccion> construcciones;
 	private Recurso recursos;
@@ -27,8 +28,8 @@ public class Jugador implements Actualizable, Usuario {
 		construcciones = new ArrayList<Construccion>();
 	}
 	
-	public int poblacion(){
-		return poblacion.actual();
+	public Poblacion getPoblacion(){
+		return poblacion;
 	}
 	
 	public String getRaza(){
@@ -63,10 +64,7 @@ public class Jugador implements Actualizable, Usuario {
 		}
 	}
 
-	public int poblacionMaxima() {
-		return poblacion.maxima();
-	}
-
+	
 	@Override
 	public boolean tieneConstruccion(String nombreConstruccion) {
 		return false;

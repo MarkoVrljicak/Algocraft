@@ -1,8 +1,11 @@
 package algocraft.jugador;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
+
 import jugador.Jugador;
+import razas.Protoss;
 import razas.Terran;
 
 public class JugadorTest {
@@ -13,7 +16,7 @@ public class JugadorTest {
 	public void jugadorTerranEmpiezaConPoblacionCero() {
 		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
 		
-		assertEquals(0, jugadorTerran.poblacion());
+		assertEquals(0, jugadorTerran.getPoblacion().actual());
 	}
 	
 	@Test
@@ -85,7 +88,20 @@ public class JugadorTest {
 	public void testJugadorEmpiezaConPoblacionMaximaCinco(){
 		Jugador jugador= new Jugador("Fernando De La Rua", new Terran());
 		
-		assertEquals(5,jugador.poblacionMaxima() );
+		assertEquals(5,jugador.getPoblacion().maxima() );
+	}
+	
+	@Test
+	public void testConstruyoPilonEsperoAQueSeConstruyaMiroPoblacion(){
+		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss());
+		
+		jugador.construir("Pilon");
+		//espero a que se construya
+		for(int i=1; i<=6 ; i++){
+			jugador.actualizar();
+		}
+		
+		assertEquals(10, jugador.getPoblacion().maxima() );
 	}
 
 }

@@ -1,8 +1,9 @@
 package jugador;
 
+import stats.Poblacion;
 import stats.Recurso;
 
-
+//para no intervenir con los tests unitarios
 public class JugadorNulo implements Usuario {
 
 	@Override
@@ -12,7 +13,12 @@ public class JugadorNulo implements Usuario {
 
 	@Override
 	public boolean tieneConstruccion(String nombreConstruccion) {
-		return false;
+		return true;
+	}
+
+	@Override
+	public Poblacion getPoblacion() {
+		return new Poblacion();
 	}
 	
 }
