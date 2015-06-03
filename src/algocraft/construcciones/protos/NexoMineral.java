@@ -1,5 +1,6 @@
 package algocraft.construcciones.protos;
 
+import stats.Recurso;
 import algocraft.construcciones.Construccion;
 import algocraft.creables.Creable;
 
@@ -17,7 +18,12 @@ public class NexoMineral extends Construccion {
 	
 	@Override
 	public void actualizar() {
+		this.recolectarMineral(duenio.getRecursos());
 		disminuirTiempoDeConstruccion();
+	}
+
+	public void recolectarMineral(Recurso recursos) {
+		recursos.incrementarRecurso(new Recurso(10,0));
 	}
 
 }
