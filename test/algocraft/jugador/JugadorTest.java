@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import jugador.Jugador;
+import razas.Protoss;
 import razas.Terran;
 
 public class JugadorTest {
@@ -89,5 +90,18 @@ public class JugadorTest {
 		
 		assertEquals(5,jugador.getPoblacion().maxima() );
 	}
+	
+	@Test
+	public void testConstruyoPilonEsperoAQueSeConstruyaMiroPoblacion(){
+		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss());
+	
+		jugador.construir("Pilon");
+		//espero a que se construya
+		for(int i=1; i<=6 ; i++){
+			jugador.actualizar();
+		}
+		
+		assertEquals(10, jugador.getPoblacion().maxima() );
+		}
 	
 }
