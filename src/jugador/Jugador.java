@@ -8,6 +8,7 @@ import algocraft.construcciones.Actualizable;
 import algocraft.construcciones.Construccion;
 import algocraft.unidades.Unidad;
 import razas.Raza;
+import stats.Poblacion;
 import stats.Recurso;
 
 public class Jugador implements Actualizable, Usuario {
@@ -15,7 +16,8 @@ public class Jugador implements Actualizable, Usuario {
 	private Raza raza;
 	private ArrayList<Unidad> unidades;
 	private ArrayList<Construccion> construcciones;
-	protected Recurso recursos;
+	private Recurso recursos;
+	private Poblacion poblacion=new Poblacion();
 	
 	public Jugador(String nombreJugador, Raza razaSeleccionada){
 		//falta color
@@ -26,7 +28,7 @@ public class Jugador implements Actualizable, Usuario {
 	}
 	
 	public int poblacion(){
-		return unidades.size();
+		return poblacion.actual();
 	}
 	
 	public String getRaza(){
@@ -62,7 +64,7 @@ public class Jugador implements Actualizable, Usuario {
 	}
 
 	public int poblacionMaxima() {
-		return 5;
+		return poblacion.maxima();
 	}
 
 	@Override
