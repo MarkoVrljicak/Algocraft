@@ -70,6 +70,16 @@ public class JugadorTest {
 		assertEquals(210,jugador.getRecursos().obtenerMineral());
 	}
 	
+	@Test
+	public void testActualizarConRefineriaAumentaLosRecursosDelJugador(){
+		Jugador jugador= new Jugador("Fernando De La Rua", new Terran());
+		jugador.construir("Refineria");
+		
+		jugador.actualizar();
+		
+		assertEquals(10,jugador.getRecursos().obtenerGas());
+	}
+	
 	
 	@Test
 	public void testJugadorEmpiezaConPoblacionMaximaCinco(){

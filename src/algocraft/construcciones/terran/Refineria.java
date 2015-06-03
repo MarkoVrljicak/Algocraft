@@ -1,5 +1,6 @@
 package algocraft.construcciones.terran;
 
+import stats.Recurso;
 import algocraft.construcciones.Construccion;
 import algocraft.creables.Creable;
 
@@ -19,6 +20,12 @@ public class Refineria extends Construccion {
 	@Override
 	public void actualizar() {
 		disminuirTiempoDeConstruccion();
+		recolectarGas(this.duenio.getRecursos());
+	}
+	
+	public void recolectarGas(Recurso recursos) {
+		recursos.incrementarRecurso(new Recurso(0,10));
+		
 	}
 
 }
