@@ -1,9 +1,10 @@
-package algocraft.construcciones;
+package algocraft.construcciones.terran;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import algocraft.construcciones.Construccion;
 import algocraft.construcciones.terran.DepositoDeSuministros;
 
 public class DepositoDeSuministrosTest {

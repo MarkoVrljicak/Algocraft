@@ -1,4 +1,4 @@
-package algocraft.construcciones;
+package algocraft.construcciones.protos;
 
 import static org.junit.Assert.assertEquals;
 

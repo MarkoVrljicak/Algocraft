@@ -1,9 +1,10 @@
-package algocraft.construcciones;
+package algocraft.construcciones.protos;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import algocraft.construcciones.Construccion;
 import algocraft.construcciones.protos.Pilon;
 
 public class PilonTest {

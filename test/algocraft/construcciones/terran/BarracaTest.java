@@ -1,10 +1,11 @@
-package algocraft.construcciones;
+package algocraft.construcciones.terran;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import stats.Recurso;
+import algocraft.construcciones.Construccion;
 import algocraft.construcciones.terran.Barraca;
 import algocraft.unidades.Unidad;
 
