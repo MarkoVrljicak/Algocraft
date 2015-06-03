@@ -2,7 +2,6 @@ package algocraft.construcciones;
 
 import jugador.Jugador;
 import stats.Vida;
-import algocraft.construcciones.terran.Actualizable;
 import algocraft.creables.Creable;
 
 public abstract class Construccion implements Creable, Actualizable{

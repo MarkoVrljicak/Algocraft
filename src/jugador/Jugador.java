@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import algocraft.construcciones.Actualizable;
 import algocraft.construcciones.Construccion;
-import algocraft.construcciones.terran.Actualizable;
 import algocraft.unidades.Unidad;
 import razas.Raza;
 import stats.Recurso;

@@ -1,4 +1,4 @@
-package algocraft.construcciones.terran;
+package algocraft.construcciones;
 
 public interface Actualizable {
 
