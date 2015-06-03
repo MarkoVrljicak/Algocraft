@@ -13,13 +13,12 @@ public class BaseTerran extends Construccion implements Creable {
 	
 	@Override
 	public Creable clonar() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void actualizar() {
-		//COMPLETAR
+		disminuirTiempoDeConstruccion();
 	}
 
 }

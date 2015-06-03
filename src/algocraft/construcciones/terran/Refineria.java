@@ -18,7 +18,7 @@ public class Refineria extends Construccion {
 
 	@Override
 	public void actualizar() {
-		//COMPLETAR
+		disminuirTiempoDeConstruccion();
 	}
 
 }

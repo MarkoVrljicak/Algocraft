@@ -25,7 +25,7 @@ public class Fabrica extends CreadorDeUnidades {
 
 	@Override
 	public void actualizar() {
-		//COMPLETAR
+		disminuirTiempoDeConstruccion();
 	}
 
 }

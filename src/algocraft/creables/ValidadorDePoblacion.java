@@ -4,16 +4,16 @@ import stats.Recurso;
 
 public class ValidadorDePoblacion{
 	
-	protected int poblacionNecesaria= 0;
+	protected int poblacionNecesaria = 0;
 	protected ValidadorDeRecursos validadorRecursos;
 
 	public ValidadorDePoblacion(Recurso recursosRequeridos,Creable creableAGuardar, int poblacionRequerida) {
-		poblacionNecesaria=poblacionRequerida;
-		validadorRecursos=new ValidadorDeRecursos(recursosRequeridos,creableAGuardar);
+		poblacionNecesaria = poblacionRequerida;
+		validadorRecursos = new ValidadorDeRecursos(recursosRequeridos,creableAGuardar);
 	}
 	
 	private boolean puedoCrearme(int poblacionDisponible) {
-		return (poblacionDisponible>=poblacionNecesaria);
+		return (poblacionDisponible >= poblacionNecesaria);
 	}
 
 	public Creable crear(Recurso recursosDisponibles, int poblacionDisponible) {

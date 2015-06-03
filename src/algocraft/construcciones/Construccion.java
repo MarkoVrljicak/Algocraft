@@ -9,7 +9,7 @@ public abstract class Construccion implements Creable, Actualizable{
 	protected Vida vida = new Vida();
 	protected int tiempoDeConstruccion;
 	protected String nombre;
-	public Usuario duenio=new JugadorNulo();
+	public Usuario duenio = new JugadorNulo();
 	
 	public int getVida() {
 		return vida.max();
@@ -23,10 +23,16 @@ public abstract class Construccion implements Creable, Actualizable{
 		return nombre;
 	}
 	
+	protected void disminuirTiempoDeConstruccion() {
+		if (this.tiempoDeConstruccion != 0) {
+			this.tiempoDeConstruccion--;
+		}
+	}
+	
 	abstract public Creable clonar();
 
 	public void setDuenio(Jugador jugador) {
-		duenio= jugador;		
+		duenio = jugador;		
 	}
 	
 }

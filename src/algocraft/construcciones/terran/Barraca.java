@@ -24,7 +24,7 @@ public class Barraca extends CreadorDeUnidades{
 
 	@Override
 	public void actualizar() {
-		//COMPLETAR
+		disminuirTiempoDeConstruccion();
 	}
 	
 }

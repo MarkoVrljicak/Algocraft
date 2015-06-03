@@ -30,7 +30,7 @@ public class PuertoEstelar extends CreadorDeUnidades {
 
 	@Override
 	public void actualizar() {
-		//COMPLETAR
+		disminuirTiempoDeConstruccion();
 	}
 
 }

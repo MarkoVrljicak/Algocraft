@@ -18,7 +18,7 @@ public class DepositoDeSuministros extends Construccion {
 
 	@Override
 	public void actualizar() {
-		//COMPLETAR
+		disminuirTiempoDeConstruccion();
 	}
 	
 }
