@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import stats.Recurso;
 import algocraft.construcciones.protos.Asimilador;
 
 public class AsimiladorTest {
@@ -20,5 +21,15 @@ public class AsimiladorTest {
 		Construccion construccion = new Asimilador();
 		
 		assertEquals(6, construccion.tiempoDeCreacion());
+	}
+	
+	@Test
+	public void testRecolectoGasVerificoQueAumente() {
+		Asimilador asimilador= new Asimilador();
+		Recurso depositoDeRecursos= new Recurso(0,0);
+		
+		asimilador.recolectarGas(depositoDeRecursos);
+		
+		assertEquals(10, depositoDeRecursos.obtenerGas());
 	}
 }
