@@ -4,8 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import algocraft.construcciones.Construccion;
+import stats.Recurso;
+
 public class ProtossTest {
 
+	private Recurso sinRecursos = new Recurso(0,0);
+	private Recurso muchosRecursos = new Recurso(999,999);
 	private String nombreAcceso = "Acceso";
 	private String nombreArchivosTeamplarios = "Archivos Templarios";
 	private String nombreAsimilador = "Asimilador";
@@ -53,6 +58,29 @@ public class ProtossTest {
 		Protoss protoss = new Protoss();
 		
 		assertEquals(true, protoss.tengoConstruccion(nombrePuertoEstelar ));
+	}
+	
+	@Test
+	public void testProtossCreaAcceso() {
+		Protoss protoss = new Protoss();
+		Construccion acceso = protoss.construirConstruccion(muchosRecursos, nombreAcceso);
+		
+		assertEquals(nombreAcceso, acceso.getNombre());
+	}
+	
+	@Test
+	public void testProtossCreaAccesoSinRecursos() {
+		Protoss protoss = new Protoss();
+		Construccion acceso = protoss.construirConstruccion(sinRecursos, nombreAcceso);
+		
+		assertEquals(null, acceso);
+	}
+	
+	@Test
+	public void testProtossEmpiezaConSeisConstruccionesDisponibles(){
+		Protoss protoss = new Protoss();
+		
+		assertEquals(6, protoss.getListaDeConstrucciones().size());
 	}
 }
 	

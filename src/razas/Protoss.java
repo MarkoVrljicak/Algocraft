@@ -19,7 +19,6 @@ public class Protoss extends Raza{
 		this.construcciones.put("Nexo Mineral", new ValidadorDeRecursos(new Recurso(50,0), new NexoMineral() ));
 		this.construcciones.put("Pilon", new ValidadorDeRecursos(new Recurso(100,0), new Pilon() ));
 		this.construcciones.put("Puerto Estelar", new ValidadorDeRecursos(new Recurso(150,150), new PuertoEstelar() ));
-		
 	}
 	
 }
