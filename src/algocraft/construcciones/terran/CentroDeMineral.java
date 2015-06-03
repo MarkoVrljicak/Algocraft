@@ -19,9 +19,7 @@ public class CentroDeMineral extends Construccion{
 	@Override
 	public void actualizar() {
 		disminuirTiempoDeConstruccion();
-		if(tiempoDeConstruccion == 0){
-			this.recolectarMineral(duenio.getRecursos());
-		}
+		this.recolectarMineral(duenio.getRecursos());
 	}
 
 	public void recolectarMineral(Recurso recursos) {
