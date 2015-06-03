@@ -8,6 +8,10 @@ public class ProtossTest {
 
 	private String nombreAcceso = "Acceso";
 	private String nombreArchivosTeamplarios = "Archivos Templarios";
+	private String nombreAsimilador = "Asimilador";
+	private String nombreNexoMineral = "Nexo Mineral";
+	private String nombrePilon = "Pilon";
+	private String nombrePuertoEstelar = "Puerto Estelar";
 
 	@Test
 	public void testProtossInicializaConAcceso() {
@@ -22,4 +26,33 @@ public class ProtossTest {
 		
 		assertEquals(true, protoss.tengoConstruccion(nombreArchivosTeamplarios ));
 	}
+	
+	@Test
+	public void testProtossInicializaConAsimilador() {
+		Protoss protoss = new Protoss();
+		
+		assertEquals(true, protoss.tengoConstruccion(nombreAsimilador ));
+	}
+	
+	@Test
+	public void testProtossInicializaConNexoMineral() {
+		Protoss protoss = new Protoss();
+		
+		assertEquals(true, protoss.tengoConstruccion(nombreNexoMineral ));
+	}
+	
+	@Test
+	public void testProtossInicializaConPilon() {
+		Protoss protoss = new Protoss();
+		
+		assertEquals(true, protoss.tengoConstruccion(nombrePilon ));
+	}
+	
+	@Test
+	public void testProtossInicializaConPuertoEstelar() {
+		Protoss protoss = new Protoss();
+		
+		assertEquals(true, protoss.tengoConstruccion(nombrePuertoEstelar ));
+	}
 }
+	
