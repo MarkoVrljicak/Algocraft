@@ -28,7 +28,7 @@ public class ArchivosTemplarios extends CreadorDeUnidades {
 
 	@Override
 	public void actualizar() {
-		//COMPLETAR
+		disminuirTiempoDeConstruccion();
 	}
 
 }

@@ -30,8 +30,7 @@ public class Acceso extends CreadorDeUnidades {
 
 	@Override
 	public void actualizar() {
-		// COMPLETAR
-		
+		disminuirTiempoDeConstruccion();
 	}
 
 }

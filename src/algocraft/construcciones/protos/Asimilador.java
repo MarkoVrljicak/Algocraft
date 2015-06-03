@@ -11,17 +11,14 @@ public class Asimilador extends Construccion {
 		this.tiempoDeConstruccion = 6;
 	}
 	
-	
 	@Override
 	public Creable clonar() {
-		
 		return new Asimilador();
 	}
 
-
 	@Override
 	public void actualizar() {
-		//COMPLETAR
+		disminuirTiempoDeConstruccion();
 	}
 
 }

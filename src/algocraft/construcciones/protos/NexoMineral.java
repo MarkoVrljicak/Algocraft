@@ -12,12 +12,12 @@ public class NexoMineral extends Construccion {
 	}
 	@Override
 	public Creable clonar() {
-		
 		return new NexoMineral();
 	}
+	
 	@Override
 	public void actualizar() {
-		//COMPLETAR
+		disminuirTiempoDeConstruccion();
 	}
 
 }

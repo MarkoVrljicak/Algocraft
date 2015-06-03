@@ -11,17 +11,14 @@ public class Pilon extends Construccion {
 		this.vida.set(300);
 	}
 	
-	
 	@Override
 	public Creable clonar() {
-		
 		return new Pilon();
 	}
-
-
+	
 	@Override
 	public void actualizar() {
-		//COMPLETAR
+		disminuirTiempoDeConstruccion();
 	}
 
 }
