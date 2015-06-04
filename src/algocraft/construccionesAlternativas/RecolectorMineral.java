@@ -11,7 +11,7 @@ public class RecolectorMineral extends DecoradorConstruccion{
 	@Override
 	public void pasarTurno() {
 		this.edificio.pasarTurno();
-		recolectarMineral(this.getDuenio().getRecursos());
+		//recolectarMineral(this.getDuenio().getRecursos());activar cuando un test lo pida
 	}
 
 	public void recolectarMineral(Recurso recursos) {

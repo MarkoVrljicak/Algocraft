@@ -31,5 +31,10 @@ public class Recurso {
 	public void incrementarMineral(int cantidadAIncrementar) {
 		mineral+= cantidadAIncrementar;		
 	}
+
+	public void incrementarGas(int cantidadAIncrementar) {
+		gas+=cantidadAIncrementar;
+		
+	}
 	
 }
