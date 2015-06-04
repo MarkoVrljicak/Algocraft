@@ -27,5 +27,9 @@ public class Recurso {
 		mineral = mineral + otroRecurso.obtenerMineral();
 		gas = gas + otroRecurso.obtenerGas();
 	}
+
+	public void incrementarMineral(int cantidadAIncrementar) {
+		mineral+= cantidadAIncrementar;		
+	}
 	
 }

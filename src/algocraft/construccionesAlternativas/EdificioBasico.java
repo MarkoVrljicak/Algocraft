@@ -1,28 +1,28 @@
-package construccionesAlternativas;
+package algocraft.construccionesAlternativas;
 
 import jugador.*;
 import stats.Vida;
 
-public class Construccion implements Actualizable{
+public class EdificioBasico implements Construccion{
 
 	protected Vida vida = new Vida();
 	protected int tiempoDeConstruccion;
-	protected Edificio nombre;
+	protected Edificios nombre;//enum
 	public Usuario duenio = new JugadorNulo();
 	
-	public Construccion(Edificio nombre, int vidaMaxima, int tiempoDeConstruccion){
+	public EdificioBasico(Edificios nombre, int vidaMaxima, int tiempoDeConstruccion){
 		this.nombre= nombre;
 		this.vida.set(vidaMaxima);
 		this.tiempoDeConstruccion=tiempoDeConstruccion;
 	}
 	
-	
+	//relacionado con interfaz daniable en un futuro(la vida esta para usarla)
 	public int getVida() {
 		return vida.actual();
 	}
 	
 		
-	public Edificio getNombre(){
+	public Edificios getNombre(){
 		return nombre;
 	}
 	
@@ -35,6 +35,10 @@ public class Construccion implements Actualizable{
 	
 	public void setDuenio(Jugador jugador) {
 		duenio = jugador;		
+	}
+	
+	public Usuario getDuenio() {
+		return duenio;		
 	}
 
 	@Override

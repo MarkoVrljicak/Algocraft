@@ -1,4 +1,4 @@
-package construccionesAlternativas;
+package algocraft.construccionesAlternativas;
 
 public interface Actualizable {
 

@@ -4,39 +4,36 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import construccionesAlternativas.Construccion;
-import construccionesAlternativas.Edificio;
-
-public class ConstruccionTest {
+public class EdificioBasicoTest {
 	
-	private final Edificio nombreDeposito= Edificio.DEPOSITO_DE_SUMINISTROS;
+	private final Edificios nombreDeposito= Edificios.DEPOSITO_DE_SUMINISTROS;
 	private final int vidaDeposito=500;
 	private final int tiempoConstruccionDeposito= 6;
 
 	@Test
 	public void testCreoDepositoControloSuVida(){
-		Construccion depositoSuministros= new Construccion(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
+		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
 		
 		assertEquals(vidaDeposito,depositoSuministros.getVida());
 	}
 	
 	@Test
 	public void testCreoDepositoControloNombre(){
-		Construccion depositoSuministros= new Construccion(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
+		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
 		
 		assertEquals(nombreDeposito,depositoSuministros.getNombre());
 	}
 	
 	@Test
 	public void testCreoDepositoVeoQueEsteEnConstruccion(){
-		Construccion depositoSuministros= new Construccion(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
+		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
 		
 		assertEquals(true,depositoSuministros.enConstruccion());
 	}
 	
 	@Test
 	public void testCreoDepositoPasoTurnoVeoQueEsteEnConstruccion(){
-		Construccion depositoSuministros= new Construccion(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
+		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
 		
 		depositoSuministros.pasarTurno();
 		
@@ -45,7 +42,7 @@ public class ConstruccionTest {
 	
 	@Test
 	public void testCreoDepositoEsperoSeConstruyaYVeoQueNoEsteEnConstruccion(){
-		Construccion depositoSuministros= new Construccion(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
+		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
 		
 		for(int turno=1;turno<=tiempoConstruccionDeposito; turno++)
 			depositoSuministros.pasarTurno();
@@ -55,7 +52,7 @@ public class ConstruccionTest {
 	
 	@Test
 	public void testCreoDepositoEsperoMuchoVeoQueNoEsteEnConstruccion(){
-		Construccion depositoSuministros= new Construccion(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
+		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
 		
 		for(int turno=1;turno<=100; turno++)
 			depositoSuministros.pasarTurno();

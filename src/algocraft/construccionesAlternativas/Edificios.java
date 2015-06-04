@@ -1,6 +1,6 @@
-package construccionesAlternativas;
+package algocraft.construccionesAlternativas;
 
-public enum Edificio {
+public enum Edificios {
 	CENTRO_DE_MINERALES,
 	REFINERIA,
 	DEPOSITO_DE_SUMINISTROS,
