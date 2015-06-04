@@ -6,9 +6,9 @@ import org.junit.Test;
 
 public class EdificioBasicoTest {
 	
-	private final Edificios nombreDeposito= Edificios.DEPOSITO_DE_SUMINISTROS;
-	private final int vidaDeposito=500;
-	private final int tiempoConstruccionDeposito= 6;
+	private static final Edificios nombreDeposito= Edificios.DEPOSITO_DE_SUMINISTROS;
+	private static final int vidaDeposito=500;
+	private static final int tiempoConstruccionDeposito= 6;
 
 	@Test
 	public void testCreoDepositoControloSuVida(){
