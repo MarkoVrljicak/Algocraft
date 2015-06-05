@@ -70,5 +70,10 @@ public class Jugador implements Actualizable, Usuario {
 		return false;
 	}
 
+	@Override
+	public int getPoblacionDisponible() {
+		return 0;//completar
+	}
+
 	
 }

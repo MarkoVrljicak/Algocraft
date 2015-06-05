@@ -8,7 +8,7 @@ public class JugadorNulo implements Usuario {
 
 	@Override
 	public Recurso getRecursos() {
-		return new Recurso(0,0);
+		return new Recurso(1000,1000);
 	}
 
 	@Override
@@ -19,6 +19,11 @@ public class JugadorNulo implements Usuario {
 	@Override
 	public Poblacion getPoblacion() {
 		return new Poblacion();
+	}
+
+	@Override
+	public int getPoblacionDisponible() {
+		return 100;
 	}
 	
 }

@@ -36,5 +36,10 @@ public class Recurso {
 		gas+=cantidadAIncrementar;
 		
 	}
+
+	public void consumirMineral(int mineralAConsumir) {
+		mineral-= mineralAConsumir;
+		//lanzar excepcion si se pasa a menos de cero?
+	}
 	
 }

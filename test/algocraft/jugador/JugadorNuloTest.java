@@ -11,12 +11,12 @@ import stats.Recurso;
 public class JugadorNuloTest {
 
 	@Test
-	public void testPedirRecursoAJugadorNuloDevuelveUnRecursoVacio(){
+	public void testPedirRecursoAJugadorNuloDevuelveUnRecursoNoLimitante(){
 		JugadorNulo jugadorNulo= new JugadorNulo();
 		Recurso recursoObtenido=jugadorNulo.getRecursos();
 		
-		assertEquals(0,recursoObtenido.obtenerMineral() );
-		assertEquals(0,recursoObtenido.obtenerGas() );
+		assertEquals(1000,recursoObtenido.obtenerMineral() );
+		assertEquals(1000,recursoObtenido.obtenerGas() );
 	}
 	
 	@Test
