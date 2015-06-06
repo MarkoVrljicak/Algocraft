@@ -14,7 +14,7 @@ public class Fabrica extends CreadorDeUnidades{
 
 	
 	public Fabrica() {
-		super(new EdificioBasico(nombreFabrica,1000,12));
+		super(new EdificioBasico(nombreFabrica,1250,12));
 	}
 
 	@Override
