@@ -1,5 +1,6 @@
 package algocraft.construccionesAlternativas;
 
+import algocraft.exception.RecursosNegativosException;
 import stats.Recurso;
 
 public class CreadorEdificiosTerran {
@@ -14,7 +15,7 @@ public class CreadorEdificiosTerran {
 	}
 
 	public Construccion crearEdificio(Edificios nombreEdificio,
-			Recurso recursosDisponible){
+			Recurso recursosDisponible) throws RecursosNegativosException{
 		
 		if(nombreEdificio==Edificios.CENTRO_DE_MINERALES)
 			return this.crearCentroMineral(recursosDisponible);
@@ -31,7 +32,7 @@ public class CreadorEdificiosTerran {
 
 	}
 
-	private Construccion crearCentroMineral(Recurso recursosDisponibles) {
+	private Construccion crearCentroMineral(Recurso recursosDisponibles) throws RecursosNegativosException {
 		final int mineralNecesario=50;
 		if(puedeCrearCentroMineral(recursosDisponibles) ){
 			recursosDisponibles.consumirMineral(mineralNecesario);

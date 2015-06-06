@@ -1,6 +1,7 @@
 package algocraft.construccionesAlternativas;
 
 import stats.Recurso;
+import algocraft.exception.RecursosNegativosException;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
 
@@ -50,7 +51,11 @@ public class Barraca extends CreadorDeUnidades {
 	private Unidad crearMarine(Recurso recursosDisponibles,int poblacionDisponible) {
 		final int mineralNecesario=50;
 		if(puedeCrearMarine(recursosDisponibles, poblacionDisponible) ){
-			recursosDisponibles.consumirMineral(mineralNecesario);
+			try {
+				recursosDisponibles.consumirMineral(mineralNecesario);
+			} catch (RecursosNegativosException e) {
+				e.printStackTrace();
+			}
 			return new Unidad(nombreMarine,vidaMarine);
 		}
 		else return null;//o lanzar excepcion ya que no pregunto si podia antes
