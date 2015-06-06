@@ -12,13 +12,13 @@ public class Mapa implements Iterable<Terreno>{
 	private int ancho;
 	private int alto;
 
-	public Mapa(int x, int y) {
-		ancho = x;
-		alto = y;
+	public Mapa(int ancho, int alto) {
+		this.ancho = ancho;
+		this.alto = alto;
 		casilleros = new HashMap<Coordenada, Terreno>();
 
-		for (int i = 1; i <= ancho; i++) {
-			for (int j = 1; j <= alto; j++) {
+		for (int i = 1; i <= this.ancho; i++) {
+			for (int j = 1; j <= this.alto; j++) {
 				setearTerrenoEnCoordenada(Terrenos.TIERRA, i, j);
 			}
 		}
@@ -31,10 +31,7 @@ public class Mapa implements Iterable<Terreno>{
 	}
 
 	public Terreno obtenerCasillero(Coordenada coordenadaPedida)throws FueraDeLimitesException {
-		int x = coordenadaPedida.getX();
-		int y = coordenadaPedida.getY();
-
-		if (x <= ancho && y <= alto)
+		if (this.hayCasillero(coordenadaPedida))
 			return casilleros.get(coordenadaPedida);
 		else
 			throw new FueraDeLimitesException();
@@ -52,6 +49,12 @@ public class Mapa implements Iterable<Terreno>{
 
 	public int getAlto() {
 		return alto;
+	}
+
+	public boolean hayCasillero(Coordenada coordenada) {
+		boolean dentroDelAncho=(coordenada.getX()>0 && coordenada.getX()<=this.ancho);
+		boolean dentroDelAlto=(coordenada.getY()>0 && coordenada.getY()<=this.alto);
+		return (dentroDelAncho && dentroDelAlto);
 	}
 
 }

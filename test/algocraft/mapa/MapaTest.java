@@ -42,4 +42,18 @@ public class MapaTest {
 		assertEquals(200,mapa.getAlto());
 	}
 	
+	@Test
+	public void testHayCasilleroEnMapaDevuelveVerdadero(){
+		Mapa mapa= new Mapa(100,200);
+		
+		assertEquals(true,mapa.hayCasillero(new Coordenada(10,20)));
+	}
+	
+	@Test
+	public void testHayCasilleroNoEnMapaDevuelveFalso(){
+		Mapa mapa= new Mapa(100,200);
+		
+		assertEquals(false,mapa.hayCasillero(new Coordenada(101,20)));
+	}
+	
 }
