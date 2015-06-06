@@ -1,25 +1,21 @@
 package algocraft.construccionesAlternativas;
 
 import static org.junit.Assert.assertEquals;
-
+import jugador.Jugador;
 import org.junit.Test;
-
+import razas.Terran;
 import stats.Recurso;
+import algocraft.exception.RecursosNegativosException;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
-
 
 public class BarracaTest {
 
 	private static final Unidades nombreMarine = Unidades.MARINE;
-	private static final Recurso  muchosRecursos= new Recurso(999,999);
-	private static final int poblacionSuficiente=5;
-	private static final Recurso  recursosInsuficientes= new Recurso(0,0);
-	private static final int poblacionInsuficiente=0;
-	private static final Recurso  recursosJustos= new Recurso(50,0);
-	private static final int poblacionJusta=1;
+	private static final Recurso recursosNecesariosMarine = new Recurso(50,0);
+	private static final int poblacionNecesariaMarine = 1;
 
-		@Test
+	@Test
 	public void testBarracaInicializaConMarine() {
 		Barraca barraca = new Barraca();
 		
@@ -29,35 +25,30 @@ public class BarracaTest {
 	@Test
 	public void testBarracaPuedeCrearMarineConRecursosSuficientesyPoblacionSuficiente() {
 		Barraca barraca = new Barraca();
+		Jugador jugador = new Jugador("Nombre", new Terran());
+		barraca.setDuenio(jugador);
 			
-		assertEquals(true,barraca.puedoCrearUnidad(nombreMarine, muchosRecursos, poblacionSuficiente));
+		assertEquals(true,barraca.puedoCrearUnidad(recursosNecesariosMarine, poblacionNecesariaMarine));
 	}	
-	
+		
 	@Test
-	public void testBarracaPuedeCrearMarineConRecursosJustosyPoblacionJusta() {
+	public void testBarracaNoPuedeCrearMarineConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
 		Barraca barraca = new Barraca();
+		Jugador jugador = new Jugador("Nombre", new Terran());
+		
+		barraca.setDuenio(jugador);
+		jugador.getRecursos().consumirMineral(200);
 			
-		assertEquals(true,barraca.puedoCrearUnidad(nombreMarine, recursosJustos, poblacionJusta));
+		assertEquals(false,barraca.puedoCrearUnidad(recursosNecesariosMarine, poblacionNecesariaMarine));
 	}
-	
-	@Test
-	public void testBarracaNoPuedeCrearMarineConRecursosInSuficientesyPoblacionSuficiente() {
-		Barraca barraca = new Barraca();
-			
-		assertEquals(false,barraca.puedoCrearUnidad(nombreMarine, recursosInsuficientes, poblacionSuficiente));
-	}
-	
-	@Test
-	public void testBarracaNoPuedeCrearMarineConRecursosSuficientesyPoblacionInSuficiente() {
-		Barraca barraca = new Barraca();
-			
-		assertEquals(false,barraca.puedoCrearUnidad(nombreMarine, muchosRecursos, poblacionInsuficiente));
-	}
-	
+		
 	@Test
 	public void testBarracaCreaMarine() {
 		Barraca barraca = new Barraca();
-		Unidad marine = barraca.crearUnidad(nombreMarine, muchosRecursos, poblacionSuficiente);
+		Jugador jugador = new Jugador("Nombre", new Terran());
+		
+		barraca.setDuenio(jugador);
+		Unidad marine = barraca.crearUnidad(nombreMarine);
 		
 		assertEquals(nombreMarine, marine.getNombre());
 	}

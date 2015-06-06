@@ -8,5 +8,6 @@ public interface Construccion extends Actualizable{
 	public Edificios getNombre();
 	public boolean enConstruccion();
 	public Usuario getDuenio();
+	public void setDuenio(Usuario jugador);
 	
 }

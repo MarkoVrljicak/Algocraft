@@ -33,7 +33,7 @@ public class EdificioBasico implements Construccion{
 		}
 	}
 	
-	public void setDuenio(Jugador jugador) {
+	public void setDuenio(Usuario jugador) {
 		duenio = jugador;		
 	}
 	

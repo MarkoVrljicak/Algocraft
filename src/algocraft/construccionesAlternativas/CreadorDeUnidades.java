@@ -19,8 +19,18 @@ public abstract class CreadorDeUnidades extends DecoradorConstruccion {
 
 	abstract protected void determinarCreables();//obligo a que determine creables en construccion
 
-	abstract public boolean puedoCrearUnidad(Unidades nombreUnidad,Recurso recursosDisponible,int poblacionDisponible);
-	abstract public Unidad crearUnidad(Unidades nombreUnidad,Recurso recursosDisponible,int poblacionDisponible);
+	public boolean puedoCrearUnidad(Recurso recursosNecesarios,int poblacionNecesaria) {
+		final Recurso recursosDisponibles = this.getDuenio().getRecursos();
+		final int poblacionDisponible = this.getDuenio().getPoblacion().disponible();
+		
+		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= recursosNecesarios.obtenerMineral());
+		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= recursosNecesarios.obtenerGas());
+		puedeCrearse = puedeCrearse && (poblacionDisponible >= poblacionNecesaria);
+		
+		return puedeCrearse;
+	}
+	
+	abstract public Unidad crearUnidad(Unidades nombreUnidad);
 		
 	public boolean tengoUnidad(Unidades nombreUnidad){
 		return unidadesCreables.contains(nombreUnidad);

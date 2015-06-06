@@ -24,4 +24,8 @@ public abstract class DecoradorConstruccion implements Construccion {
 	public Usuario getDuenio(){
 		return this.edificio.getDuenio();
 	}
+	
+	public void setDuenio(Usuario jugador){
+		this.edificio.setDuenio(jugador);
+	}
 }
