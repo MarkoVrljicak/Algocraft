@@ -1,10 +1,6 @@
-package algocraft.mapa;
+package algocraft.mapa.terrenos;
 
-import algocraft.mapa.terrenos.Aire;
-import algocraft.mapa.terrenos.Minerales;
-import algocraft.mapa.terrenos.Terreno;
-import algocraft.mapa.terrenos.Tierra;
-import algocraft.mapa.terrenos.Volcan;
+import algocraft.mapa.Coordenada;
 
 public enum Terrenos {
 	

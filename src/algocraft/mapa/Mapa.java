@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.terrenos.Terreno;
+import algocraft.mapa.terrenos.Terrenos;
 
 public class Mapa implements Iterable<Terreno>{
 
@@ -55,6 +56,18 @@ public class Mapa implements Iterable<Terreno>{
 		boolean dentroDelAncho=(coordenada.getX()>0 && coordenada.getX()<=this.ancho);
 		boolean dentroDelAlto=(coordenada.getY()>0 && coordenada.getY()<=this.alto);
 		return (dentroDelAncho && dentroDelAlto);
+	}
+
+	public Terrenos obtenerNombreTerreno(Coordenada coordenada) {
+		Terreno terreno = null;
+		
+		try {
+			 terreno = obtenerCasillero(coordenada);
+		} catch (FueraDeLimitesException e) {
+			e.printStackTrace();
+		}
+		
+		return terreno.getNombre();
 	}
 
 }

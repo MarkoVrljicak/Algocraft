@@ -7,6 +7,7 @@ import algocraft.mapa.Coordenada;
 public class Aire extends Terreno {
 	
 	public Aire(Coordenada posicion){
+		nombre = Terrenos.AIRE;
 		coordenada = posicion;
 		contenidoSuelo = null;
 		contenidoCielo = null;

@@ -7,6 +7,7 @@ import algocraft.mapa.Coordenada;
 public class Volcan extends Terreno {
 	
 	public Volcan(Coordenada posicion){
+		nombre = Terrenos.VOLCAN;
 		contenidoSuelo = null;
 		contenidoCielo = null;
 		coordenada = posicion;

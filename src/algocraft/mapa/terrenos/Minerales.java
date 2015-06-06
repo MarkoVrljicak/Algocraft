@@ -7,6 +7,7 @@ import algocraft.mapa.Coordenada;
 public class Minerales extends Terreno {
 	
 	public Minerales(Coordenada posicion){
+		nombre = Terrenos.MINERALES;
 		coordenada = posicion;
 		contenidoSuelo = null;
 		contenidoCielo = null;

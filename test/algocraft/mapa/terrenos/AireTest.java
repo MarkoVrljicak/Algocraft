@@ -13,6 +13,14 @@ import algocraft.unidades.terran.NaveCiencia;
 public class AireTest {
 	Coordenada coordenadaGenerica = new Coordenada(1,1);
 
+	
+	@Test
+	public void testNombreDeAireEsElEsperado(){
+		Aire aire = new Aire(coordenadaGenerica);
+		
+		assertEquals(Terrenos.AIRE, aire.getNombre());
+	}
+	
 	@Test
 	public void testAireNoSePuedeCaminar() {
 		Aire aire = new Aire(coordenadaGenerica);
