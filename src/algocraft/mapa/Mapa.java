@@ -1,33 +1,36 @@
-package algocraft.mapa.terrenos;
+package algocraft.mapa;
 
 import java.util.HashMap;
 import java.util.Iterator;
 
 import algocraft.exception.FueraDeLimitesException;
-import algocraft.mapa.Casillero;
-import algocraft.mapa.Coordenada;
+import algocraft.mapa.terrenos.Terreno;
 
-public class Mapa implements Iterable<Casillero>{
+public class Mapa implements Iterable<Terreno>{
 
-	private HashMap<Coordenada, Casillero> casilleros;
+	private HashMap<Coordenada, Terreno> casilleros;
 	private int ancho;
 	private int alto;
 
 	public Mapa(int x, int y) {
 		ancho = x;
 		alto = y;
-		casilleros = new HashMap<Coordenada, Casillero>();
+		casilleros = new HashMap<Coordenada, Terreno>();
 
 		for (int i = 1; i <= ancho; i++) {
 			for (int j = 1; j <= alto; j++) {
-				Coordenada nuevaCoordenada = new Coordenada(i, j);
-				Casillero nuevoCasillero = new Casillero(nuevaCoordenada);
-				casilleros.put(nuevaCoordenada, nuevoCasillero);
+				setearTerrenoEnCoordenada(Terrenos.TIERRA, i, j);
 			}
 		}
 	}
+	
+	public void setearTerrenoEnCoordenada(Terrenos terreno, int i, int j){
+		Coordenada nuevaCoordenada = new Coordenada(i, j);
+		Terreno nuevoTerreno = terreno.crear(i, j);
+		casilleros.put(nuevaCoordenada, nuevoTerreno);
+	}
 
-	public Casillero obtenerCasillero(Coordenada coordenadaPedida)throws FueraDeLimitesException {
+	public Terreno obtenerCasillero(Coordenada coordenadaPedida)throws FueraDeLimitesException {
 		int x = coordenadaPedida.getX();
 		int y = coordenadaPedida.getY();
 
@@ -38,7 +41,7 @@ public class Mapa implements Iterable<Casillero>{
 	}
 
 	@Override
-	public Iterator<Casillero> iterator() {
+	public Iterator<Terreno> iterator() {
 		
 		return casilleros.values().iterator();
 	}

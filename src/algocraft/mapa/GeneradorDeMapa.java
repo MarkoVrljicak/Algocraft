@@ -1,12 +1,7 @@
 package algocraft.mapa;
 
 import algocraft.exception.FueraDeLimitesException;
-import algocraft.mapa.terrenos.Aire;
-import algocraft.mapa.terrenos.Mapa;
-import algocraft.mapa.terrenos.Minerales;
 import algocraft.mapa.terrenos.Terreno;
-import algocraft.mapa.terrenos.Tierra;
-import algocraft.mapa.terrenos.Volcan;
 
 public class GeneradorDeMapa {
 	//Tamanio minimo para que funcione el algoritmo: 20x20
@@ -25,42 +20,42 @@ public class GeneradorDeMapa {
 	
 	public Mapa generar(){
 		
-		//1) Llenar de Tierra
-		llenarDeTierra();
+//		//1) Llenar de Tierra
+//		llenarDeTierra();
 		
 		//2) Colocar Recursos
 		//6 minerales a distancia 3 de las bases
-		colocarRecursoAlRededorDeBase(new Minerales(), 8, 3, posicionBase1);
-		colocarRecursoAlRededorDeBase(new Minerales(), 8, 3, posicionBase2);
+		colocarRecursoAlRededorDeBase(Terrenos.MINERALES, 8, 3, posicionBase1);
+		colocarRecursoAlRededorDeBase(Terrenos.MINERALES, 8, 3, posicionBase2);
 		
 		//2 volcanes a distancia 3 de las bases
-		colocarRecursoAlRededorDeBase(new Volcan(), 2, 3, posicionBase1);
-		colocarRecursoAlRededorDeBase(new Volcan(), 2, 3, posicionBase2);
+		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 3, posicionBase1);
+		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 3, posicionBase2);
 		
 		//5 minerales a distancia 5 de las bases
-		colocarRecursoAlRededorDeBase(new Minerales(), 5, 5, posicionBase1);
-		colocarRecursoAlRededorDeBase(new Minerales(), 5, 5, posicionBase2);
+		colocarRecursoAlRededorDeBase(Terrenos.MINERALES, 5, 5, posicionBase1);
+		colocarRecursoAlRededorDeBase(Terrenos.MINERALES, 5, 5, posicionBase2);
 		
 		//2 volcanes a distancia 5 de las bases
-		colocarRecursoAlRededorDeBase(new Volcan(), 2, 5, posicionBase1);
-		colocarRecursoAlRededorDeBase(new Volcan(), 2, 5, posicionBase2);
+		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 5, posicionBase1);
+		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 5, posicionBase2);
 		
 		
 		//3 minerales a distancia 7 de las bases
-		colocarRecursoAlRededorDeBase(new Minerales(), 3, 7, posicionBase1);
-		colocarRecursoAlRededorDeBase(new Minerales(), 3, 7, posicionBase2);
+		colocarRecursoAlRededorDeBase(Terrenos.MINERALES, 3, 7, posicionBase1);
+		colocarRecursoAlRededorDeBase(Terrenos.MINERALES, 3, 7, posicionBase2);
 		
 		//2 volcanes a distancia 7 de las bases
-		colocarRecursoAlRededorDeBase(new Volcan(), 2, 7, posicionBase1);
-		colocarRecursoAlRededorDeBase(new Volcan(), 2, 7, posicionBase2);
+		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 7, posicionBase1);
+		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 7, posicionBase2);
 		
 		//2 minerales a distancia 15 de las bases
-		colocarRecursoAlRededorDeBase(new Minerales(), 2, 15, posicionBase1);
-		colocarRecursoAlRededorDeBase(new Minerales(), 2, 15, posicionBase2);
+		colocarRecursoAlRededorDeBase(Terrenos.MINERALES, 2, 15, posicionBase1);
+		colocarRecursoAlRededorDeBase(Terrenos.MINERALES, 2, 15, posicionBase2);
 		
 		//2 volcanes a distancia 15 de las bases
-		colocarRecursoAlRededorDeBase(new Volcan(), 2, 15, posicionBase1);
-		colocarRecursoAlRededorDeBase(new Volcan(), 2, 15, posicionBase2);
+		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 15, posicionBase1);
+		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 15, posicionBase2);
 		
 		//3) Colocar Aire
 		colocarAire();
@@ -69,17 +64,17 @@ public class GeneradorDeMapa {
 		return mapaGenerado;
 	}
 	
-	private void llenarDeTierra() {
-
-		for (int i = 1; i <= mapaGenerado.getAncho(); i++) {
-			for (int j = 1; j <= mapaGenerado.getAlto(); j++) {
-				this.setearTerrenoEnCasillero(new Tierra(), i, j);
-			}
-		}
-	}
+//	private void llenarDeTierra() {
+//
+//		for (int i = 1; i <= mapaGenerado.getAncho(); i++) {
+//			for (int j = 1; j <= mapaGenerado.getAlto(); j++) {
+//				this.setearTerrenoEnCasillero(new Tierra(), i, j);
+//			}
+//		}
+//	}
 	
 
-	private void colocarRecursoAlRededorDeBase(Terreno recurso, int cantidad, int distancia, Coordenada posicionBase){
+	private void colocarRecursoAlRededorDeBase(Terrenos terreno, int cantidad, int distancia, Coordenada posicionBase){
 		/* Coloca cierta cantidad de cierto recurso a cierta distancia de la coordenada provista */
 		
 		while (cantidad > 0){
@@ -90,7 +85,7 @@ public class GeneradorDeMapa {
 					if (posicionBase.distanciaA(new Coordenada(i, j) ) == distancia && casilleroEsCaminable(i,j)){
 						
 						if(Math.random() < 0.2){
-							this.setearTerrenoEnCasillero(recurso, i, j);
+							mapaGenerado.setearTerrenoEnCoordenada(terreno, i, j);
 							cantidad--;
 						}
 					}
@@ -125,7 +120,7 @@ public class GeneradorDeMapa {
 		
 		if(Math.random() < probabilidad && cantidadAireRestante > 0){
 		
-			this.setearTerrenoEnCasillero(new Aire(), i, j);
+			mapaGenerado.setearTerrenoEnCoordenada(Terrenos.AIRE, i, j);
 			cantidadAireRestante--;
 		} else {
 			
@@ -151,25 +146,13 @@ public class GeneradorDeMapa {
 		
 		
 	}
-
-	
-	private void setearTerrenoEnCasillero(Terreno unTerreno, int i, int j) {
-		Coordenada unaCoordenada = new Coordenada(i, j);
-		try {
-			Casillero unCasillero = mapaGenerado.obtenerCasillero(unaCoordenada);
-			unCasillero.setTerreno(unTerreno);
-		} catch (FueraDeLimitesException e) {
-			// no deberia pasar
-			e.printStackTrace();
-		}
-	}
 	
 	private boolean casilleroEsCaminable(int i, int j) {
 		Coordenada unaCoordenada = new Coordenada(i, j);
-		Casillero unCasillero;
+		Terreno unCasillero;
 		try {
 			unCasillero = mapaGenerado.obtenerCasillero(unaCoordenada);
-			return unCasillero.getTerreno().sePuedeCaminar();
+			return unCasillero.sePuedeCaminar();
 		} catch (FueraDeLimitesException e) {
 			e.printStackTrace();
 			return false; //no se como mas arreglarlo

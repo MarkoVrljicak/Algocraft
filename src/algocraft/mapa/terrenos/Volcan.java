@@ -2,12 +2,14 @@ package algocraft.mapa.terrenos;
 
 import algocraft.creables.Creable;
 import algocraft.exception.PosicionInvalidaException;
+import algocraft.mapa.Coordenada;
 
 public class Volcan extends Terreno {
 	
-	public Volcan(){
+	public Volcan(Coordenada posicion){
 		contenidoSuelo = null;
 		contenidoCielo = null;
+		coordenada = posicion;
 	}
 	
 	public void almacenarEnSuelo(Creable creable) throws PosicionInvalidaException{

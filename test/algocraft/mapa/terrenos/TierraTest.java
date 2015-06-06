@@ -6,20 +6,22 @@ import org.junit.Test;
 
 import algocraft.creables.Creable;
 import algocraft.exception.PosicionInvalidaException;
+import algocraft.mapa.Coordenada;
 import algocraft.unidades.terran.Marine;
 import algocraft.unidades.terran.NaveCiencia;
 
 public class TierraTest {
+	Coordenada coordenadaGenerica = new Coordenada(1,1);
 
 	@Test
 	public void testTierraSePuedeCaminar() {
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		assertEquals(true, tierra.sePuedeCaminar() );
 	}
 	
 	@Test
 	public void testTierraNoSePuedeCaminarConSueloOcupado() {
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		Marine marine = new Marine();
 		
 		try {
@@ -33,13 +35,13 @@ public class TierraTest {
 	
 	@Test
 	public void testTierraSePuedeVolar() {
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		assertEquals(true, tierra.sePuedeVolar() );
 	}
 	
 	@Test
 	public void testTierraNoSePuedeVolarConCieloOcupado() {
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		Creable nave = new NaveCiencia();
 		
 		try {
@@ -53,39 +55,39 @@ public class TierraTest {
 	
 	@Test
 	public void testTierraNoSePuedeMinar() {
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		assertEquals(false, tierra.sePuedeMinar() );
 	}
 	
 	@Test
 	public void testTierraNoTieneGas() {
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		assertEquals(false, tierra.tieneGas() );
 	}
 	
 	@Test
 	public void testTierraSePuedeEdificar() {
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		assertEquals(true, tierra.sePuedeEdificar());
 	}
 	
 	@Test
 	public void testTierraInicializaConCieloVacio(){
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		
 		assertEquals(null, tierra.getContenidoCielo());
 	}
 	
 	@Test
 	public void testTierraInicializaConSueloVacio(){
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		
 		assertEquals(null, tierra.getContenidoSuelo());
 	}
 	
 	@Test
 	public void testColocaCreableEnCieloSiEstaVacio(){
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		Creable nave = new NaveCiencia();
 		
 		try {
@@ -99,7 +101,7 @@ public class TierraTest {
 	
 	@Test (expected = PosicionInvalidaException.class)
 	public void testNoColocaCreableEnCieloSiEstaLleno() throws PosicionInvalidaException{
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		Creable nave1 = new NaveCiencia();
 		Creable nave2 = new NaveCiencia();
 		
@@ -109,7 +111,7 @@ public class TierraTest {
 	
 	@Test
 	public void testColocaCreableEnSueloSiEstaVacio(){
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		Marine marine = new Marine();
 		
 		try {
@@ -123,7 +125,7 @@ public class TierraTest {
 	
 	@Test (expected = PosicionInvalidaException.class)
 	public void testNoColocaCreableEnSueloSiEstaLleno() throws PosicionInvalidaException{
-		Tierra tierra = new Tierra();
+		Tierra tierra = new Tierra(coordenadaGenerica);
 		Marine marine1 = new Marine();
 		Marine marine2 = new Marine();
 		

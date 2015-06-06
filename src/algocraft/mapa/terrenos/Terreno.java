@@ -2,12 +2,14 @@ package algocraft.mapa.terrenos;
 
 import algocraft.creables.Creable;
 import algocraft.exception.PosicionInvalidaException;
+import algocraft.mapa.Coordenada;
 import algocraft.mapa.Dibujable;
 
 public abstract class Terreno implements Dibujable {
 	
 		protected Creable contenidoSuelo;
 		protected Creable contenidoCielo;
+		protected Coordenada coordenada;
 		
 		/*-------------------------------------*/
 		/*            Sets y gets              */
@@ -27,6 +29,10 @@ public abstract class Terreno implements Dibujable {
 		
 		abstract public Creable getContenidoSuelo();
 		abstract public Creable getContenidoCielo();
+		
+		public Coordenada getCoordenada() {
+			return coordenada;
+		}
 		
 		/*-------------------------------------*/
 		/* Metodos para permisos de movimiento */
@@ -52,6 +58,8 @@ public abstract class Terreno implements Dibujable {
 		
 		abstract public boolean sePuedeEdificar();
 		//Para que los edificios que no sean recolectores de recursos sepan si pueden ser construidos.
+
+
 		
 		
 		

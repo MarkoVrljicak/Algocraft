@@ -1,12 +1,12 @@
 package algocraft.mapa;
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import algocraft.exception.FueraDeLimitesException;
-import algocraft.mapa.terrenos.Mapa;
+import algocraft.mapa.terrenos.Terreno;
 
 public class MapaTest {
 	
@@ -15,7 +15,7 @@ public class MapaTest {
 		Mapa mapa= new Mapa(100,100);
 		Coordenada coordenadaPedida= new Coordenada(50,50);
 		
-		Casillero casillero= mapa.obtenerCasillero(coordenadaPedida);
+		Terreno casillero= mapa.obtenerCasillero(coordenadaPedida);
 		
 		assertEquals(coordenadaPedida, casillero.getCoordenada());
 	}

@@ -2,10 +2,12 @@ package algocraft.mapa.terrenos;
 
 import algocraft.creables.Creable;
 import algocraft.exception.PosicionInvalidaException;
+import algocraft.mapa.Coordenada;
 
 public class Minerales extends Terreno {
 	
-	public Minerales(){
+	public Minerales(Coordenada posicion){
+		coordenada = posicion;
 		contenidoSuelo = null;
 		contenidoCielo = null;
 	}
