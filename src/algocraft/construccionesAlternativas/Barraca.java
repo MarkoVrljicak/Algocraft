@@ -1,7 +1,6 @@
 package algocraft.construccionesAlternativas;
 
 import stats.Recurso;
-import algocraft.exception.RecursosNegativosException;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
 
@@ -24,25 +23,11 @@ public class Barraca extends CreadorDeUnidades {
 	
 	public Unidad crearUnidad(Unidades nombreUnidad){
 		if(nombreUnidad==nombreMarine)
-			return this.crearMarine();
+			return this.crearUnidadEspecifica(nombreMarine, vidaMarine, recursosNecesariosMarine, poblacionNecesariaMarine);
 		return null;//lanzar excepcion?
 			
 	}
 	
-	private Unidad crearMarine() {
-		if(puedoCrearUnidad(recursosNecesariosMarine, poblacionNecesariaMarine) ){
-			
-			try {
-				this.getDuenio().getRecursos().consumirMineral(recursosNecesariosMarine.obtenerMineral());
-			} catch (RecursosNegativosException e) {
-				e.printStackTrace();
-			}
-			
-			return new Unidad(nombreMarine,vidaMarine);
-		}
-		else return null;//o lanzar excepcion ya que no pregunto si podia antes
-	}
-
 	@Override
 	public void pasarTurno() {
 		this.edificio.pasarTurno();

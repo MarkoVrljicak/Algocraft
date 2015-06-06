@@ -4,6 +4,7 @@ package algocraft.construccionesAlternativas;
 import java.util.ArrayList;
 
 import stats.Recurso;
+import algocraft.exception.RecursosNegativosException;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
 
@@ -18,7 +19,25 @@ public abstract class CreadorDeUnidades extends DecoradorConstruccion {
 	}
 
 	abstract protected void determinarCreables();//obligo a que determine creables en construccion
+	abstract public Unidad crearUnidad(Unidades nombreUnidad);
 
+	
+	public Unidad crearUnidadEspecifica(Unidades nombre, int vida, Recurso recursosNecesarios, int poblacionNecesaria){
+		
+		if(puedoCrearUnidad(recursosNecesarios, poblacionNecesaria) ){
+			
+			try {
+				this.getDuenio().getRecursos().consumirMineral(recursosNecesarios.obtenerMineral());
+				this.getDuenio().getRecursos().consumirGas(recursosNecesarios.obtenerGas());
+			} catch (RecursosNegativosException e) {
+				e.printStackTrace();
+			}
+			
+			return new Unidad(nombre,vida);
+		}
+		else return null;
+	}
+	
 	public boolean puedoCrearUnidad(Recurso recursosNecesarios,int poblacionNecesaria) {
 		final Recurso recursosDisponibles = this.getDuenio().getRecursos();
 		final int poblacionDisponible = this.getDuenio().getPoblacion().disponible();
@@ -30,8 +49,6 @@ public abstract class CreadorDeUnidades extends DecoradorConstruccion {
 		return puedeCrearse;
 	}
 	
-	abstract public Unidad crearUnidad(Unidades nombreUnidad);
-		
 	public boolean tengoUnidad(Unidades nombreUnidad){
 		return unidadesCreables.contains(nombreUnidad);
 	}

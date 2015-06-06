@@ -1,10 +1,10 @@
 package algocraft.construccionesAlternativas;
 
-public class DepositoDeSuministros extends AumentoDePoblacion{
+public class DepositoDeSuministros extends EdificioBasico{
 
 	private static Edificios nombreDepositoDeSuministros = Edificios.DEPOSITO_DE_SUMINISTROS;
 
 	public DepositoDeSuministros() {
-		super(new EdificioBasico(nombreDepositoDeSuministros,500,6));
+		super(nombreDepositoDeSuministros,500,6);
 	}
 }
