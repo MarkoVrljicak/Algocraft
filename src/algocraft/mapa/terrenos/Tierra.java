@@ -1,12 +1,33 @@
 package algocraft.mapa.terrenos;
 
-public class Tierra extends Terreno {
-	public boolean sePuedeCaminar(){
-		return true;
-	}
+import algocraft.creables.Creable;
+import algocraft.exception.PosicionInvalidaException;
 
-	public boolean sePuedeVolar() {
-		return true;
+public class Tierra extends Terreno {
+	
+	public Tierra(){
+		contenidoSuelo = null;
+		contenidoCielo = null;
+	}
+	
+	public void almacenarEnSuelo(Creable creable) throws PosicionInvalidaException{
+		if (!this.sePuedeVolar()){
+			throw new PosicionInvalidaException();
+		} else {
+			contenidoSuelo = creable;
+		}
+	}
+	
+	public Creable getContenidoSuelo(){
+		return contenidoSuelo;
+	}
+	
+	public Creable getContenidoCielo(){
+		return contenidoCielo;
+	}
+	
+	public boolean sePuedeCaminar(){
+		return (contenidoSuelo == null);
 	}
 	
 	public boolean sePuedeMinar() {

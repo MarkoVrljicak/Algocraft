@@ -1,12 +1,28 @@
 package algocraft.mapa.terrenos;
 
-public class Minerales extends Terreno {
+import algocraft.creables.Creable;
+import algocraft.exception.PosicionInvalidaException;
 
-	public boolean sePuedeCaminar() {
-		return false;
+public class Minerales extends Terreno {
+	
+	public Minerales(){
+		contenidoSuelo = null;
+		contenidoCielo = null;
+	}
+	
+	public void almacenarEnSuelo(Creable creable) throws PosicionInvalidaException{
+		throw new PosicionInvalidaException();
+	}
+	
+	public Creable getContenidoSuelo(){
+		return contenidoSuelo;
+	}
+	
+	public Creable getContenidoCielo(){
+		return contenidoCielo;
 	}
 
-	public boolean sePuedeVolar() {
+	public boolean sePuedeCaminar() {
 		return false;
 	}
 

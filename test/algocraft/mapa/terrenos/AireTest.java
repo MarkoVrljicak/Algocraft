@@ -1,10 +1,13 @@
 package algocraft.mapa.terrenos;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.mapa.terrenos.Aire;
+import algocraft.creables.Creable;
+import algocraft.exception.PosicionInvalidaException;
+import algocraft.unidades.terran.Marine;
+import algocraft.unidades.terran.NaveCiencia;
 
 public class AireTest {
 
@@ -18,6 +21,20 @@ public class AireTest {
 	public void testAireSePuedeVolar() {
 		Aire aire = new Aire();
 		assertEquals(true, aire.sePuedeVolar());
+	}
+	
+	@Test
+	public void testAireNoSePuedeVolarSiEstaLleno() {
+		Aire aire = new Aire();
+		Creable nave = new NaveCiencia();
+		
+		try {
+			aire.almacenarEnCielo(nave);
+		} catch (PosicionInvalidaException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(false, aire.sePuedeVolar());
 	}
 	
 	@Test
@@ -37,5 +54,53 @@ public class AireTest {
 		Aire aire = new Aire();
 		assertEquals(false, aire.sePuedeEdificar());
 	}
+	
+	@Test
+	public void testAireInicializaConCieloVacio(){
+		Aire aire = new Aire();
+		
+		assertEquals(null, aire.getContenidoCielo());
+	}
+	
+	@Test
+	public void testAireInicializaConSueloVacio(){
+		Aire aire = new Aire();
+		
+		assertEquals(null, aire.getContenidoSuelo());
+	}
+	
+	@Test
+	public void testColocaCreableEnCieloSiEstaVacio(){
+		Aire aire = new Aire();
+		Creable nave = new NaveCiencia();
+		
+		try {
+			aire.almacenarEnCielo(nave);
+		} catch (PosicionInvalidaException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(nave, aire.getContenidoCielo());
+	}
+	
+	@Test (expected = PosicionInvalidaException.class)
+	public void testNoColocaCreableEnCieloSiEstaLleno() throws PosicionInvalidaException{
+		Aire aire = new Aire();
+		Creable nave1 = new NaveCiencia();
+		Creable nave2 = new NaveCiencia();
+		
+		aire.almacenarEnCielo(nave1);
+		aire.almacenarEnCielo(nave2);
+	}
+	
+	@Test (expected = PosicionInvalidaException.class)
+	public void testNoColocaCreableEnTierraAunqueEsteVacio() throws PosicionInvalidaException{
+		Aire aire = new Aire();
+		Creable marine = new Marine();
+		
+		aire.almacenarEnSuelo(marine);
+	}
+	
+	
 	
 }

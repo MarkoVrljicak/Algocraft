@@ -24,10 +24,9 @@ public class GeneradorDeMapa {
 	}
 	
 	public Mapa generar(){
+		
 		//1) Llenar de Tierra
 		llenarDeTierra();
-		
-
 		
 		//2) Colocar Recursos
 		//6 minerales a distancia 3 de las bases

@@ -43,7 +43,9 @@ public class CreadorEdificiosTerran {
 	private boolean puedeCrearFabrica(Recurso recursosDisponibles) {
 		final int mineralNecesario=200;
 		final int gasNecesario=100;
-		final Edificios edificioNecesario=Edificios.BARRACA;
+		//final Edificios edificioNecesario=Edificios.BARRACA;
+		//no se para que es esta linea pero como no se esta usando
+		//la comento para committear sin warnings.
 		
 		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= mineralNecesario) &&
 				(recursosDisponibles.obtenerGas() >= gasNecesario) ;
