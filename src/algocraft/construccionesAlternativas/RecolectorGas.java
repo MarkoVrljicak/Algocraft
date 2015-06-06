@@ -11,7 +11,7 @@ public class RecolectorGas extends DecoradorConstruccion {
 	@Override
 	public void pasarTurno() {
 		this.edificio.pasarTurno();
-		//recolectarGas(this.edificio.getDuenio().getRecursos()); activar cuando un test lo pida
+		recolectarGas(this.edificio.getDuenio().getRecursos());
 	}
 
 	public void recolectarGas(Recurso recursos) {

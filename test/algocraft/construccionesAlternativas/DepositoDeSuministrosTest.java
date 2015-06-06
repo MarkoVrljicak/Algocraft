@@ -10,7 +10,7 @@ import razas.Terran;
 public class DepositoDeSuministrosTest {
 
 	@Test
-	public void testRecolectoMineral() {
+	public void testAumentoPoblacion() {
 		DepositoDeSuministros deposito = new DepositoDeSuministros();
 		Jugador jugador = new Jugador("Nombre", new Terran());
 		
@@ -20,7 +20,7 @@ public class DepositoDeSuministrosTest {
 	}
 	
 	@Test
-	public void testPasoDeTurnoYRecolectoMineral() {
+	public void testPasoDeTurnoYAumentoPoblacion() {
 		DepositoDeSuministros deposito = new DepositoDeSuministros();
 		Jugador jugador = new Jugador("Nombre", new Terran());
 		
