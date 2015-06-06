@@ -10,6 +10,7 @@ public class GeneradorDeMapa {
 	Coordenada posicionBase2;
 	
 	private Mapa mapaGenerado;
+	private int distanciaMinimaABases=3;
 	
 	public GeneradorDeMapa(int ancho, int alto){
 		posicionBase1 = new Coordenada(4, alto -3);
@@ -54,6 +55,7 @@ public class GeneradorDeMapa {
 		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 15, posicionBase2);
 		
 		//2) Colocar Aire
+		distanciaMinimaABases= 16;//no quiero que esten cerca de las bases
 		colocarAire();
 		
 		
@@ -65,8 +67,8 @@ public class GeneradorDeMapa {
 		
 		while (cantidad > 0){
 		
-			for (int i = 1; i <= mapaGenerado.getAncho(); i++) {
-				for (int j = 1; j <= mapaGenerado.getAlto(); j++) {
+			for (int i = 1; i <= mapaGenerado.getAncho() && cantidad > 0  ; i++) {
+				for (int j = 1; j <= mapaGenerado.getAlto() && cantidad > 0; j++) {
 				
 					if (posicionBase.distanciaA(new Coordenada(i, j) ) == distancia && casilleroEsApto(i,j)){
 						
@@ -89,7 +91,7 @@ public class GeneradorDeMapa {
 			for (int i = 1; i <= mapaGenerado.getAncho(); i++) {
 				for (int j = 1; j <= mapaGenerado.getAlto(); j++) {
 				
-					if (casilleroEsApto(i,j) && Math.random() < 0.01){
+					if (casilleroEsApto(i,j) && Math.random() < 0.005){
 						expandirAireConProbabilidad(i, j, 1, 5);
 						minimaCantidadLagosAire--;
 					
@@ -147,7 +149,8 @@ public class GeneradorDeMapa {
 		
 		boolean areaPermitida = true; 
 		
-		if ( coordenadaActual.distanciaA(posicionBase1) < 3 || coordenadaActual.distanciaA(posicionBase2) < 3 ){
+		if ( coordenadaActual.distanciaA(posicionBase1) < distanciaMinimaABases ||
+				coordenadaActual.distanciaA(posicionBase2) < distanciaMinimaABases ){
 			areaPermitida = false;
 		}
 		
