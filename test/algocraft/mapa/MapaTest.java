@@ -9,6 +9,7 @@ import algocraft.exception.CreableNoEstaEnJuegoException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.terrenos.Terreno;
+import algocraft.mapa.terrenos.Terrenos;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.terran.Marine;
 
@@ -126,6 +127,29 @@ public class MapaTest {
 			mapa.moverPorTierra(marine1, destino);
 		} catch (CreableNoEstaEnJuegoException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test(expected = DestinoInvalidoException.class)
+	public void testMapaNoMueveUnidadPorTierraSiDestinoNoEsTierra() throws DestinoInvalidoException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad marine = new Marine();
+		
+		mapa.setearTerrenoEnCoordenada(Terrenos.AIRE, 1, 2);
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenarEnSuelo(marine, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mapa.moverPorTierra(marine, destino);
+		} catch (CreableNoEstaEnJuegoException e) {
 			e.printStackTrace();
 		}
 	}
