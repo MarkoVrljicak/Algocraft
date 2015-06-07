@@ -39,6 +39,15 @@ public abstract class Terreno implements Dibujable {
 		return coordenada;
 	}
 	
+	public void vaciarSuelo() {
+		this.contenidoSuelo = null;
+	}
+
+	public void vaciarCielo() {
+		this.contenidoCielo = null;
+		
+	}
+	
 	/*-------------------------------------*/
 	/* Metodos para permisos de movimiento */
 	/*-------------------------------------*/
@@ -63,9 +72,7 @@ public abstract class Terreno implements Dibujable {
 	abstract public boolean sePuedeEdificar();
 	//Para que los edificios que no sean recolectores de recursos sepan si pueden ser construidos.
 
-	public void vaciarSuelo() {
-		this.contenidoSuelo = null;
-	}
+
 
 		
 		

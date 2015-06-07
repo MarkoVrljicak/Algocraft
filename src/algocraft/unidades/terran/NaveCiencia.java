@@ -17,7 +17,6 @@ public class NaveCiencia extends Unidad{
 
 	@Override
 	public boolean puedoMoverme(Terreno terrenoDestino) {
-		// TODO Auto-generated method stub
-		return false;
+		return terrenoDestino.sePuedeVolar();
 	}
 }

@@ -12,6 +12,7 @@ import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.terran.Marine;
+import algocraft.unidades.terran.NaveCiencia;
 
 public class MapaTest {
 	
@@ -85,7 +86,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testCuandoMapaMueveUnidadOrigenEstaVacio(){
+	public void testCuandoMapaMueveUnidadPorTierraOrigenEstaVacio(){
 		Mapa mapa= new Mapa(2,2);
 		Unidad marine = new Marine();
 		
@@ -143,9 +144,27 @@ public class MapaTest {
 			e.printStackTrace();
 		}
 		
-		
 		assertEquals(false,	mapa.moverPorTierra(marine, destino));
 		
+	}
+	
+	@Test
+	public void testMapaMueveUnidadPorAire() throws CreableNoEstaEnJuegoException, DestinoInvalidoException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad nave = new NaveCiencia();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenarEnCielo(nave, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		mapa.moverPorCielo(nave, destino);
+		
+		assertEquals(nave, mapa.getCreableCielo(destino));
 	}
 	
 }

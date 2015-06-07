@@ -74,10 +74,6 @@ public class Mapa implements Iterable<Terreno>{
 		return terreno.getNombre();
 	}
 
-	public void almacenarEnSuelo(Creable creable, Coordenada coordenadaDestino) throws DestinoInvalidoException {
-		this.getTerreno(coordenadaDestino).almacenarEnSuelo(creable);
-	}
-
 	public boolean moverPorTierra(Movible movible, Coordenada coordenadaDestino) throws CreableNoEstaEnJuegoException, DestinoInvalidoException {
 		Coordenada coordenadaOrigen = null;
 		Terreno terrenoOrigen = null;
@@ -104,15 +100,56 @@ public class Mapa implements Iterable<Terreno>{
 			terrenoOrigen.vaciarSuelo();
 			return true;
 		}
+	}
+	
+	public boolean moverPorCielo(Movible movible, Coordenada coordenadaDestino) throws CreableNoEstaEnJuegoException, DestinoInvalidoException {
+		Coordenada coordenadaOrigen = null;
+		Terreno terrenoOrigen = null;
+		Iterator<Terreno> iterMapa = (Iterator<Terreno>) this.iterator();
 		
+		if(!movible.puedoMoverme(this.getTerreno(coordenadaDestino))){
+			return false;
+		}
+
+		while(iterMapa.hasNext() && coordenadaOrigen == null){
+			terrenoOrigen = iterMapa.next();
+			Creable contenido = terrenoOrigen.getContenidoCielo();
+			if(contenido == movible){
+				coordenadaOrigen = terrenoOrigen.getCoordenada();
+			}
+		}
+		
+		if(coordenadaOrigen == null){
+			throw new CreableNoEstaEnJuegoException();
+		} else if(coordenadaDestino.distanciaA(coordenadaOrigen) > 1){
+			return false;
+		} else {
+			this.almacenarEnCielo((Creable) movible, coordenadaDestino);
+			terrenoOrigen.vaciarCielo();
+			return true;
+		}
+	}
+	
+	public void almacenarEnSuelo(Creable creable, Coordenada coordenada) throws DestinoInvalidoException {
+		this.getTerreno(coordenada).almacenarEnSuelo(creable);
 	}
 
+	public void almacenarEnCielo(Creable creable, Coordenada coordenada) throws DestinoInvalidoException {
+		this.getTerreno(coordenada).almacenarEnCielo(creable);
+	}
+	
 	public Creable getCreableSuelo(Coordenada coordenada) {
 		return this.getTerreno(coordenada).getContenidoSuelo();
+	}
+
+	public Creable getCreableCielo(Coordenada coordenada) {
+		return this.getTerreno(coordenada).getContenidoCielo();
 	}
 	
 	private Terreno getTerreno(Coordenada coordenada){
 		return casilleros.get(coordenada);
 	}
+
+
 
 }
