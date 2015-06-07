@@ -1,7 +1,7 @@
 package algocraft.mapa.terrenos;
 
 import algocraft.creables.Creable;
-import algocraft.exception.PosicionInvalidaException;
+import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 
 public class Minerales extends Terreno {
@@ -13,8 +13,8 @@ public class Minerales extends Terreno {
 		contenidoCielo = null;
 	}
 	
-	public void almacenarEnSuelo(Creable creable) throws PosicionInvalidaException{
-		throw new PosicionInvalidaException();
+	public void almacenarEnSuelo(Creable creable) throws DestinoInvalidoException{
+		throw new DestinoInvalidoException();
 	}
 	
 	public Creable getContenidoSuelo(){

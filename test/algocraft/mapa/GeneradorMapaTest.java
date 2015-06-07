@@ -2,13 +2,14 @@ package algocraft.mapa;
 
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
 
 import org.junit.Test;
 
 import algocraft.mapa.terrenos.Terreno;
+import algocraft.mapa.terrenos.Terrenos;
 
 public class GeneradorMapaTest {
 
@@ -100,4 +101,32 @@ public class GeneradorMapaTest {
 		
 		assertTrue(gasEquidistantes);
 	}
+
+@Test
+public void testAireNoSeCreaSoloBis(){
+	Mapa mapa = new Mapa(20,20);
+	mapa.setearTerrenoEnCoordenada(Terrenos.AIRE, 1, 1);
+	boolean anterioresNoSolos= true;
+	
+	Iterator<Terreno> itMapa1 = (Iterator<Terreno>) mapa.iterator();
+	//para todos los aires
+	while(itMapa1.hasNext() && anterioresNoSolos){
+		Terreno unTerreno = itMapa1.next();
+		if(unTerreno.sePuedeVolar()){
+			//busco vecinos
+			Iterator<Terreno> itMapa2 = (Iterator<Terreno>) mapa.iterator();
+			boolean encontradoVecinoAire = false;
+			while(itMapa2.hasNext() && !encontradoVecinoAire){
+				Terreno otroTerreno = itMapa2.next();
+				if(otroTerreno.sePuedeVolar() && 
+						unTerreno.getCoordenada().distanciaA(otroTerreno.getCoordenada()) == 1)
+					encontradoVecinoAire = true;
+			}
+			if(!encontradoVecinoAire) anterioresNoSolos=false;
+		}
+	}
+	
+	assertTrue(anterioresNoSolos);
+}
+
 }

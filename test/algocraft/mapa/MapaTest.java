@@ -5,8 +5,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import algocraft.exception.CreableNoEstaEnJuegoException;
+import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.terrenos.Terreno;
+import algocraft.unidades.Unidad;
+import algocraft.unidades.terran.Marine;
 
 public class MapaTest {
 	
@@ -54,6 +58,29 @@ public class MapaTest {
 		Mapa mapa= new Mapa(100,200);
 		
 		assertEquals(false,mapa.hayCasillero(new Coordenada(101,20)));
+	}
+	
+	@Test
+	public void testMapaMueveUnidadPorTierra(){
+		Mapa mapa= new Mapa(2,2);
+		Unidad marine = new Marine();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenarEnSuelo(marine, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mapa.moverPorTierra(marine, destino);
+		} catch (CreableNoEstaEnJuegoException | DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(marine, mapa.getCreableSuelo(destino));
 	}
 	
 }

@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import algocraft.creables.Creable;
-import algocraft.exception.PosicionInvalidaException;
+import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 import algocraft.unidades.terran.Marine;
 import algocraft.unidades.terran.NaveCiencia;
@@ -26,7 +26,7 @@ public class TierraTest {
 		
 		try {
 			tierra.almacenarEnSuelo(marine);
-		} catch (PosicionInvalidaException e) {
+		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
@@ -46,7 +46,7 @@ public class TierraTest {
 		
 		try {
 			tierra.almacenarEnCielo(nave);
-		} catch (PosicionInvalidaException e) {
+		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
@@ -92,15 +92,15 @@ public class TierraTest {
 		
 		try {
 			tierra.almacenarEnCielo(nave);
-		} catch (PosicionInvalidaException e) {
+		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
 		assertEquals(nave, tierra.getContenidoCielo());
 	}
 	
-	@Test (expected = PosicionInvalidaException.class)
-	public void testNoColocaCreableEnCieloSiEstaLleno() throws PosicionInvalidaException{
+	@Test (expected = DestinoInvalidoException.class)
+	public void testNoColocaCreableEnCieloSiEstaLleno() throws DestinoInvalidoException{
 		Tierra tierra = new Tierra(coordenadaGenerica);
 		Creable nave1 = new NaveCiencia();
 		Creable nave2 = new NaveCiencia();
@@ -116,15 +116,15 @@ public class TierraTest {
 		
 		try {
 			tierra.almacenarEnSuelo(marine);
-		} catch (PosicionInvalidaException e) {
+		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
 		assertEquals(marine, tierra.getContenidoSuelo());
 	}
 	
-	@Test (expected = PosicionInvalidaException.class)
-	public void testNoColocaCreableEnSueloSiEstaLleno() throws PosicionInvalidaException{
+	@Test (expected = DestinoInvalidoException.class)
+	public void testNoColocaCreableEnSueloSiEstaLleno() throws DestinoInvalidoException{
 		Tierra tierra = new Tierra(coordenadaGenerica);
 		Marine marine1 = new Marine();
 		Marine marine2 = new Marine();

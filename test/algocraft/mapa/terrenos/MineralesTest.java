@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import algocraft.creables.Creable;
-import algocraft.exception.PosicionInvalidaException;
+import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 import algocraft.unidades.terran.Marine;
 import algocraft.unidades.terran.NaveCiencia;
@@ -32,7 +32,7 @@ public class MineralesTest {
 		
 		try {
 			minerales.almacenarEnCielo(nave);
-		} catch (PosicionInvalidaException e) {
+		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
@@ -78,15 +78,15 @@ Minerales minerales = new Minerales(coordenadaGenerica);
 		
 		try {
 			minerales.almacenarEnCielo(nave);
-		} catch (PosicionInvalidaException e) {
+		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
 		assertEquals(nave, minerales.getContenidoCielo());
 	}
 	
-	@Test (expected = PosicionInvalidaException.class)
-	public void testNoColocaCreableEnCieloSiEstaLleno() throws PosicionInvalidaException{
+	@Test (expected = DestinoInvalidoException.class)
+	public void testNoColocaCreableEnCieloSiEstaLleno() throws DestinoInvalidoException{
 		Minerales minerales = new Minerales(coordenadaGenerica);
 		Creable nave1 = new NaveCiencia();
 		Creable nave2 = new NaveCiencia();
@@ -95,8 +95,8 @@ Minerales minerales = new Minerales(coordenadaGenerica);
 		minerales.almacenarEnCielo(nave2);
 	}
 	
-	@Test (expected = PosicionInvalidaException.class)
-	public void testNoColocaCreableEnTierraAunqueEsteVacio() throws PosicionInvalidaException{
+	@Test (expected = DestinoInvalidoException.class)
+	public void testNoColocaCreableEnTierraAunqueEsteVacio() throws DestinoInvalidoException{
 		Minerales minerales = new Minerales(coordenadaGenerica);
 		Creable marine = new Marine();
 		

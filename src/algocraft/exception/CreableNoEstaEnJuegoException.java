@@ -1,6 +1,6 @@
 package algocraft.exception;
 
-public class PosicionInvalidaException extends Exception {
+public class CreableNoEstaEnJuegoException extends Exception {
 
 	/**
 	 * 

@@ -55,7 +55,7 @@ public class GeneradorDeMapa {
 		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 15, posicionBase2);
 		
 		//2) Colocar Aire
-		distanciaMinimaABases= 16;//no quiero que esten cerca de las bases
+		distanciaMinimaABases= 3;//no quiero que esten cerca de las bases
 		colocarAire();
 		
 		

@@ -1,7 +1,7 @@
 package algocraft.mapa.terrenos;
 
 import algocraft.creables.Creable;
-import algocraft.exception.PosicionInvalidaException;
+import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 
 public class Tierra extends Terreno {
@@ -13,9 +13,9 @@ public class Tierra extends Terreno {
 		coordenada = posicion;
 	}
 	
-	public void almacenarEnSuelo(Creable creable) throws PosicionInvalidaException{
+	public void almacenarEnSuelo(Creable creable) throws DestinoInvalidoException{
 		if (!this.sePuedeVolar()){
-			throw new PosicionInvalidaException();
+			throw new DestinoInvalidoException();
 		} else {
 			contenidoSuelo = creable;
 		}

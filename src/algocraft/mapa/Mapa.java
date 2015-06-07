@@ -3,6 +3,9 @@ package algocraft.mapa;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import algocraft.creables.Creable;
+import algocraft.exception.CreableNoEstaEnJuegoException;
+import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
@@ -68,6 +71,40 @@ public class Mapa implements Iterable<Terreno>{
 		}
 		
 		return terreno.getNombre();
+	}
+
+	public void almacenarEnSuelo(Creable creable, Coordenada coordenadaDestino) throws DestinoInvalidoException {
+		this.getTerreno(coordenadaDestino).almacenarEnSuelo(creable);
+	}
+
+	public void moverPorTierra(Creable creable, Coordenada coordenadaDestino) throws CreableNoEstaEnJuegoException, DestinoInvalidoException {
+		Coordenada coordenadaOrigen = null;
+		Terreno terrenoOrigen = null;
+		Iterator<Terreno> iterMapa = (Iterator<Terreno>) this.iterator();
+
+		while(iterMapa.hasNext() && coordenadaOrigen == null){
+			terrenoOrigen = iterMapa.next();
+			Creable contenido = terrenoOrigen.getContenidoSuelo();
+			if(contenido == creable){
+				coordenadaOrigen = terrenoOrigen.getCoordenada();
+			}
+		}
+		
+		if(coordenadaOrigen == null){
+			throw new CreableNoEstaEnJuegoException();
+		} else {
+			this.almacenarEnSuelo(creable, coordenadaDestino);
+			terrenoOrigen.vaciarSuelo();
+		}
+		
+	}
+
+	public Creable getCreableSuelo(Coordenada coordenada) {
+		return this.getTerreno(coordenada).getContenidoSuelo();
+	}
+	
+	private Terreno getTerreno(Coordenada coordenada){
+		return casilleros.get(coordenada);
 	}
 
 }

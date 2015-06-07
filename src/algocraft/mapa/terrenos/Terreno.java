@@ -1,7 +1,7 @@
 package algocraft.mapa.terrenos;
 
 import algocraft.creables.Creable;
-import algocraft.exception.PosicionInvalidaException;
+import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 import algocraft.mapa.Dibujable;
 
@@ -20,12 +20,12 @@ public abstract class Terreno implements Dibujable {
 		return nombre;
 	}
 		
-	abstract public void almacenarEnSuelo(Creable creable) throws PosicionInvalidaException;
+	abstract public void almacenarEnSuelo(Creable creable) throws DestinoInvalidoException;
 	
-	public void almacenarEnCielo(Creable creable) throws PosicionInvalidaException{
+	public void almacenarEnCielo(Creable creable) throws DestinoInvalidoException{
 		
 		if (contenidoCielo != null) {
-			throw new PosicionInvalidaException();
+			throw new DestinoInvalidoException();
 			
 		} else {
 			contenidoCielo = creable;
@@ -62,6 +62,10 @@ public abstract class Terreno implements Dibujable {
 	
 	abstract public boolean sePuedeEdificar();
 	//Para que los edificios que no sean recolectores de recursos sepan si pueden ser construidos.
+
+	public void vaciarSuelo() {
+		this.contenidoSuelo = null;
+	}
 
 		
 		
