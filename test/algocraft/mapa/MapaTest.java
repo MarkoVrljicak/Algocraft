@@ -167,4 +167,47 @@ public class MapaTest {
 		assertEquals(nave, mapa.getCreableCielo(destino));
 	}
 	
+	@Test
+	public void testCuandoMapaMueveUnidadPorAireOrigenEstaVacio(){
+		Mapa mapa= new Mapa(2,2);
+		Unidad nave = new NaveCiencia();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenarEnCielo(nave, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mapa.moverPorCielo(nave, destino);
+		} catch (CreableNoEstaEnJuegoException | DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(null, mapa.getCreableCielo(origen));
+	}
+	
+	@Test
+	public void testMapaNoMueveUnidadPorCieloSiDestinoEstaOcupadoPorOtraUnidad() throws DestinoInvalidoException, CreableNoEstaEnJuegoException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad nave1 = new NaveCiencia();
+		Unidad nave2 = new NaveCiencia();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenarEnCielo(nave1, origen);
+			mapa.almacenarEnCielo(nave2, destino);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(false, mapa.moverPorCielo(nave1, destino));
+		
+	}
+	
 }
