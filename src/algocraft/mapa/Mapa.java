@@ -81,6 +81,10 @@ public class Mapa implements Iterable<Terreno>{
 		Coordenada coordenadaOrigen = null;
 		Terreno terrenoOrigen = null;
 		Iterator<Terreno> iterMapa = (Iterator<Terreno>) this.iterator();
+		
+		if(this.getCreableSuelo(coordenadaDestino) != null){
+			throw new DestinoInvalidoException();
+		}
 
 		while(iterMapa.hasNext() && coordenadaOrigen == null){
 			terrenoOrigen = iterMapa.next();

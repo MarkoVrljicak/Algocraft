@@ -83,4 +83,33 @@ public class MapaTest {
 		assertEquals(marine, mapa.getCreableSuelo(destino));
 	}
 	
+	@Test
+	public void testCuandoMapaMueveUnidadOrigenEstaVacio(){
+		
+	}
+	
+	@Test(expected = DestinoInvalidoException.class)
+	public void testMapaNoMueveUnidadPorTierraSiDestinoEstaOcupadoPorOtraUnidad() throws DestinoInvalidoException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad marine1 = new Marine();
+		Unidad marine2 = new Marine();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenarEnSuelo(marine1, origen);
+			mapa.almacenarEnSuelo(marine2, destino);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mapa.moverPorTierra(marine1, destino);
+		} catch (CreableNoEstaEnJuegoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }
