@@ -15,7 +15,7 @@ public class GeneradorMapaTest {
 
 	@Test
 	public void testAireNoSeCreaSolo(){
-		GeneradorDeMapa generador = new GeneradorDeMapa(100,100);
+		GeneradorDeMapa generador = new GeneradorDeMapa(22,22);
 		Mapa mapa = generador.generar();
 		boolean anterioresNoSolos= true;
 		
@@ -23,14 +23,14 @@ public class GeneradorMapaTest {
 		//para todos los aires
 		while(itMapa1.hasNext() && anterioresNoSolos){
 			Terreno unTerreno = itMapa1.next();
-			if(unTerreno.sePuedeVolar()){
+			if(unTerreno.getNombre() == Terrenos.AIRE){
 				//busco vecinos
 				Iterator<Terreno> itMapa2 = (Iterator<Terreno>) mapa.iterator();
 				boolean encontradoVecinoAire = false;
 				while(itMapa2.hasNext() && !encontradoVecinoAire){
 					Terreno otroTerreno = itMapa2.next();
-					if(otroTerreno.sePuedeVolar() && 
-							unTerreno.getCoordenada().distanciaA(otroTerreno.getCoordenada()) == 1)
+					if( ( otroTerreno.getNombre() == Terrenos.AIRE) && 
+							( unTerreno.getCoordenada().distanciaA(otroTerreno.getCoordenada()) == 1) )
 						encontradoVecinoAire = true;
 				}
 				if(!encontradoVecinoAire) anterioresNoSolos=false;
@@ -42,13 +42,13 @@ public class GeneradorMapaTest {
 	
 	@Test
 	public void testBasesTienenMineralesEquidistantes(){
-		GeneradorDeMapa generador = new GeneradorDeMapa(100,100);
+		GeneradorDeMapa generador = new GeneradorDeMapa(22,22);
 		Mapa mapa = generador.generar();
 		Coordenada base1 = generador.posicionBase1;
 		Coordenada base2 = generador.posicionBase2;
 		boolean mineralesEquidistantes = true;
 		//los valores de n son las dist min y maxima determinadas en la construccion
-		for(int n=3 ; n<=15 && mineralesEquidistantes ; n++){
+		for(int n=3 ; n<=7 && mineralesEquidistantes ; n++){
 			int mineralesADistanciaNDeBase1= 0;	
 			int mineralesADistanciaNDeBase2= 0;	
 
@@ -75,13 +75,13 @@ public class GeneradorMapaTest {
 	
 	@Test
 	public void testBasesTienenGasEquidistantes(){
-		GeneradorDeMapa generador = new GeneradorDeMapa(100,100);
+		GeneradorDeMapa generador = new GeneradorDeMapa(22,22);
 		Mapa mapa = generador.generar();
 		Coordenada base1 = generador.posicionBase1;
 		Coordenada base2 = generador.posicionBase2;
 		boolean gasEquidistantes = true;
 		
-		for(int n=3 ; n<=15 && gasEquidistantes ; n++){
+		for(int n=3 ; n<=7 && gasEquidistantes ; n++){
 			int gasADistanciaNDeBase1= 0;	
 			int gasADistanciaNDeBase2= 0;	
 

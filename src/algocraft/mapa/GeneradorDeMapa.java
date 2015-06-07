@@ -5,7 +5,7 @@ import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
 
 public class GeneradorDeMapa {
-	//Tamanio minimo para que funcione el algoritmo: 20x20
+	//Tamanio minimo para que funcione el algoritmo: 22x22
 	Coordenada posicionBase1;
 	Coordenada posicionBase2;
 	
@@ -46,16 +46,8 @@ public class GeneradorDeMapa {
 		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 7, posicionBase1);
 		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 7, posicionBase2);
 		
-		//2 minerales a distancia 15 de las bases
-		colocarRecursoAlRededorDeBase(Terrenos.MINERALES, 2, 15, posicionBase1);
-		colocarRecursoAlRededorDeBase(Terrenos.MINERALES, 2, 15, posicionBase2);
-		
-		//2 volcanes a distancia 15 de las bases
-		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 15, posicionBase1);
-		colocarRecursoAlRededorDeBase(Terrenos.VOLCAN, 2, 15, posicionBase2);
 		
 		//2) Colocar Aire
-		distanciaMinimaABases= 3;//no quiero que esten cerca de las bases
 		colocarAire();
 		
 		
