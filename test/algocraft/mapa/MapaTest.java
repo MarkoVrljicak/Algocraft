@@ -107,8 +107,8 @@ public class MapaTest {
 		assertEquals(null, mapa.getCreableSuelo(origen));
 	}
 	
-	@Test(expected = DestinoInvalidoException.class)
-	public void testMapaNoMueveUnidadPorTierraSiDestinoEstaOcupadoPorOtraUnidad() throws DestinoInvalidoException{
+	@Test
+	public void testMapaNoMueveUnidadPorTierraSiDestinoEstaOcupadoPorOtraUnidad() throws DestinoInvalidoException, CreableNoEstaEnJuegoException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad marine1 = new Marine();
 		Unidad marine2 = new Marine();
@@ -123,16 +123,12 @@ public class MapaTest {
 			e.printStackTrace();
 		}
 		
-		try {
-			mapa.moverPorTierra(marine1, destino);
-		} catch (CreableNoEstaEnJuegoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		assertEquals(false, mapa.moverPorTierra(marine1, destino));
+		
 	}
 	
-	@Test(expected = DestinoInvalidoException.class)
-	public void testMapaNoMueveUnidadPorTierraSiDestinoNoEsTierra() throws DestinoInvalidoException{
+	@Test
+	public void testMapaNoMueveUnidadPorTierraSiDestinoNoEsTierra() throws DestinoInvalidoException, CreableNoEstaEnJuegoException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad marine = new Marine();
 		
@@ -147,11 +143,9 @@ public class MapaTest {
 			e.printStackTrace();
 		}
 		
-		try {
-			mapa.moverPorTierra(marine, destino);
-		} catch (CreableNoEstaEnJuegoException e) {
-			e.printStackTrace();
-		}
+		
+		assertEquals(false,	mapa.moverPorTierra(marine, destino));
+		
 	}
 	
 }

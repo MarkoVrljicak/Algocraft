@@ -9,6 +9,7 @@ import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
+import algocraft.unidades.Movible;
 
 public class Mapa implements Iterable<Terreno>{
 
@@ -77,28 +78,31 @@ public class Mapa implements Iterable<Terreno>{
 		this.getTerreno(coordenadaDestino).almacenarEnSuelo(creable);
 	}
 
-	public void moverPorTierra(Creable creable, Coordenada coordenadaDestino) throws CreableNoEstaEnJuegoException, DestinoInvalidoException {
+	public boolean moverPorTierra(Movible movible, Coordenada coordenadaDestino) throws CreableNoEstaEnJuegoException, DestinoInvalidoException {
 		Coordenada coordenadaOrigen = null;
 		Terreno terrenoOrigen = null;
 		Iterator<Terreno> iterMapa = (Iterator<Terreno>) this.iterator();
 		
-		if(this.getCreableSuelo(coordenadaDestino) != null){
-			throw new DestinoInvalidoException();
+		if(!movible.puedoMoverme(this.getTerreno(coordenadaDestino))){
+			return false;
 		}
 
 		while(iterMapa.hasNext() && coordenadaOrigen == null){
 			terrenoOrigen = iterMapa.next();
 			Creable contenido = terrenoOrigen.getContenidoSuelo();
-			if(contenido == creable){
+			if(contenido == movible){
 				coordenadaOrigen = terrenoOrigen.getCoordenada();
 			}
 		}
 		
 		if(coordenadaOrigen == null){
 			throw new CreableNoEstaEnJuegoException();
+		} else if(coordenadaDestino.distanciaA(coordenadaOrigen) > 1){
+			return false;
 		} else {
-			this.almacenarEnSuelo(creable, coordenadaDestino);
+			this.almacenarEnSuelo((Creable) movible, coordenadaDestino);
 			terrenoOrigen.vaciarSuelo();
+			return true;
 		}
 		
 	}

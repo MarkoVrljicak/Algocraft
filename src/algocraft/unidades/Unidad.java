@@ -3,7 +3,7 @@ package algocraft.unidades;
 import stats.Vida;
 import algocraft.creables.Creable;
 
-public abstract class Unidad implements Creable{
+public abstract class Unidad implements Creable, Movible{
 
 	protected String nombre;
 	protected int tiempoDeCreacion;

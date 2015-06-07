@@ -1,6 +1,7 @@
 package algocraft.unidades.terran;
 
 import algocraft.creables.Creable;
+import algocraft.mapa.terrenos.Terreno;
 import algocraft.unidades.Unidad;
 
 public class NaveTransporte extends Unidad{
@@ -12,5 +13,11 @@ public class NaveTransporte extends Unidad{
 	
 	public Creable clonar(){
 		return new NaveTransporte();
+	}
+
+	@Override
+	public boolean puedoMoverme(Terreno terrenoDestino) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
