@@ -85,7 +85,25 @@ public class MapaTest {
 	
 	@Test
 	public void testCuandoMapaMueveUnidadOrigenEstaVacio(){
+		Mapa mapa= new Mapa(2,2);
+		Unidad marine = new Marine();
 		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenarEnSuelo(marine, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mapa.moverPorTierra(marine, destino);
+		} catch (CreableNoEstaEnJuegoException | DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(null, mapa.getCreableSuelo(origen));
 	}
 	
 	@Test(expected = DestinoInvalidoException.class)
