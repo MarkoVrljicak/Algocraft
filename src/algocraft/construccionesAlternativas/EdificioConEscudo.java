@@ -17,6 +17,6 @@ public class EdificioConEscudo extends EdificioBasico{
 	
 	public void pasarTurno() {
 		this.disminuirTiempoDeConstruccion();
-		//falta disminuir escudo
+		this.escudo.regenerar();
 	}
 }

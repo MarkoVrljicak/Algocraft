@@ -7,14 +7,14 @@ import org.junit.Test;
 public class EscudoTest {
 
 	@Test
-	public void EscudoSeRegenera() {
+	public void EscudoSeRegeneraElDiezPorciento() {
 		Escudo escudo = new Escudo();
 		escudo.set(100);
 		
 		escudo.disminuir(20);
-		escudo.regenerar(20);
+		escudo.regenerar();
 		
-		assertEquals(100, escudo.actual());
+		assertEquals(90, escudo.actual());
 	}
 	
 	@Test
@@ -22,7 +22,7 @@ public class EscudoTest {
 		Escudo escudo = new Escudo();
 		escudo.set(100);
 		
-		escudo.regenerar(20);
+		escudo.regenerar();
 		
 		assertEquals(100, escudo.actual());
 	}

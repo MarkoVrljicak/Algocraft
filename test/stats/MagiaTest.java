@@ -7,22 +7,22 @@ import org.junit.Test;
 public class MagiaTest {
 
 	@Test
-	public void MagiaSeRegenera() {
-		Magia magia = new Magia();
+	public void MagiaSeRegeneraLaCantidadPasadaAlInicializarse() {
+		Magia magia = new Magia(10);
 		magia.set(100);
 		
 		magia.disminuir(20);
-		magia.regenerar(20);
+		magia.regenerar();
 		
-		assertEquals(100, magia.actual());
+		assertEquals(90, magia.actual());
 	}
 	
 	@Test
 	public void MagiaParaDeRegenerarseCuandoLlegaAMaximo() {
-		Magia magia = new Magia();
+		Magia magia = new Magia(10);
 		magia.set(100);
 		
-		magia.regenerar(20);
+		magia.regenerar();
 		
 		assertEquals(100, magia.actual());
 	}

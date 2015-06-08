@@ -16,7 +16,7 @@ public class StatTest {
 	
 	@Test
 	public void StatDisminuyeCorrectamente() {
-		Stat magia = new Magia();
+		Stat magia = new Magia(10);
 		magia.set(100);
 		magia.disminuir(20);
 		
@@ -25,7 +25,7 @@ public class StatTest {
 	
 	@Test
 	public void StatNoBajaDeCero() {
-		Stat magia = new Magia();
+		Stat magia = new Magia(10);
 		magia.set(100);
 		magia.disminuir(110);
 		
