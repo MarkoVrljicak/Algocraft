@@ -9,7 +9,9 @@ import algocraft.mapa.Coordenada;
 import algocraft.mapa.Mapa;
 import algocraft.mapa.terrenos.SectoresDeTerreno;
 import algocraft.unidades.Unidad;
+import algocraft.unidades.terran.Espectro;
 import algocraft.unidades.terran.Marine;
+import algocraft.unidades.terran.NaveCiencia;
 
 public class AtaqueNormalTest {
 	Coordenada coordenadaAtacante = new Coordenada(1,1);
@@ -17,15 +19,11 @@ public class AtaqueNormalTest {
 	Coordenada coordenadaFueraDeRango = new Coordenada(10,10);
 	
 	int vidaMaximaMarine = 40;
+	int vidaMaximaNave = 200;
 	int danioMarine = 6;
 	
 	SectoresDeTerreno suelo = SectoresDeTerreno.SUELO;
-	
-	/* FUTUROS TEST:
-	 * - chequear que las unidades no puedan atacarse solas.
-	 * - atacar fuera de rango
-	 * - atacar a espacio vacio.
-	 */
+	SectoresDeTerreno cielo = SectoresDeTerreno.CIELO;
 	
 	@Test
 	public void testAtaqueNormalTerrestreSeRealiza() throws DestinoInvalidoException {
@@ -76,6 +74,39 @@ public class AtaqueNormalTest {
 		marineAtacante.atacar(mapa.getTerreno(coordenadaEnRango), suelo, coordenadaAtacante.distanciaA(coordenadaEnRango));
 		
 		assertEquals(false, marineAtacante.atacar(mapa.getTerreno(coordenadaFueraDeRango), suelo, coordenadaAtacante.distanciaA(coordenadaFueraDeRango)));
+	}
+	
+	@Test
+	public void testUnidadNoSeAtacaASiMisma() throws DestinoInvalidoException {
+		Mapa mapa = new Mapa(2,2);
+		Unidad marineAtacante = new Marine();
+		mapa.almacenarEnSuelo(marineAtacante, coordenadaAtacante);
+		
+		assertEquals(false, marineAtacante.atacar(mapa.getTerreno(coordenadaAtacante), suelo, coordenadaAtacante.distanciaA(coordenadaAtacante)));
+	}
+	
+	@Test
+	public void testAtaqueNormalTierraAAireSeRealiza() throws DestinoInvalidoException {
+		Mapa mapa = new Mapa(2,2);
+		Unidad marineAtacante = new Marine();
+		Unidad naveAtacada = new NaveCiencia();
+		mapa.almacenarEnSuelo(marineAtacante, coordenadaAtacante);
+		mapa.almacenarEnCielo(naveAtacada, coordenadaEnRango);
+		
+		assertEquals(true, marineAtacante.atacar(mapa.getTerreno(coordenadaEnRango), cielo, coordenadaAtacante.distanciaA(coordenadaEnRango)));
+
+	}
+	
+	@Test
+	public void testAtaqueNormalAireATierraSeRealiza() throws DestinoInvalidoException {
+		Mapa mapa = new Mapa(2,2);
+		Unidad marineAtacado = new Marine();
+		Unidad naveAtacante = new Espectro();
+		mapa.almacenarEnSuelo(marineAtacado, coordenadaEnRango);
+		mapa.almacenarEnCielo(naveAtacante, coordenadaAtacante);
+		
+		assertEquals(true, naveAtacante.atacar(mapa.getTerreno(coordenadaEnRango), suelo, coordenadaAtacante.distanciaA(coordenadaEnRango)));
+
 	}
 
 }

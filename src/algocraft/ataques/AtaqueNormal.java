@@ -17,7 +17,7 @@ public class AtaqueNormal extends Ataque{
 	
 	public boolean ejecutarAtaque(Terreno terrenoDestino, SectoresDeTerreno sector, int distancia){
 		Daniable enemigo = null;
-		if (distancia > rango) return false;
+		if (distancia > rango || distancia == 0) return false;
 		
 		if (sector == SectoresDeTerreno.CIELO){
 			enemigo = (Daniable) terrenoDestino.getContenidoCielo();
