@@ -129,8 +129,20 @@ public class TierraTest {
 		Marine marine1 = new Marine();
 		Marine marine2 = new Marine();
 		
-		tierra.almacenarEnCielo(marine1);
-		tierra.almacenarEnCielo(marine2);
+		tierra.almacenarEnSuelo(marine1);
+		tierra.almacenarEnSuelo(marine2);
+	}
+	
+	@Test
+	public void testTierraSoportaUnidadEnTierraYOtraEnAireAlMismoTiempo() throws DestinoInvalidoException{
+		Tierra tierra = new Tierra(coordenadaGenerica);
+		Marine marine = new Marine();
+		NaveCiencia nave = new NaveCiencia();
+		
+		tierra.almacenarEnSuelo(marine);
+		tierra.almacenarEnCielo(nave);
+		
+		assertEquals(true, tierra.getContenidoSuelo() != null && tierra.getContenidoCielo() != null );
 	}
 	
 

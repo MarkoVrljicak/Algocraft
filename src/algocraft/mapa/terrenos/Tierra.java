@@ -14,7 +14,7 @@ public class Tierra extends Terreno {
 	}
 	
 	public void almacenarEnSuelo(Creable creable) throws DestinoInvalidoException{
-		if (!this.sePuedeVolar()){
+		if (!this.sePuedeCaminar()){
 			throw new DestinoInvalidoException();
 		} else {
 			contenidoSuelo = creable;
