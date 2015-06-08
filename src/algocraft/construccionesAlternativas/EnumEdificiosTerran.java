@@ -7,5 +7,6 @@ public enum EnumEdificiosTerran implements EnumEdificios{
 	DEPOSITO_DE_SUMINISTROS,
 	BARRACA,
 	FABRICA,
-	PUERTO_ESTELAR
+	PUERTO_ESTELAR,
+	BASE_TERRAN
 }
