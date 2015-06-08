@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import algocraft.construccionesAlternativas.terran.EnumEdificiosTerran;
 import stats.Recurso;
 
 public class RecolectorMineralTest {

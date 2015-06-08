@@ -1,8 +1,8 @@
 package algocraft.construccionesAlternativas.protos;
 
 import algocraft.construccionesAlternativas.EdificioConEscudo;
-import algocraft.construccionesAlternativas.EnumEdificiosTerran;
 import algocraft.construccionesAlternativas.RecolectorGas;
+import algocraft.construccionesAlternativas.terran.EnumEdificiosTerran;
 
 public class Asimilador extends RecolectorGas{
 

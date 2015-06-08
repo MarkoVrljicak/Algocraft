@@ -3,7 +3,6 @@ package algocraft.construccionesAlternativas.protos;
 import stats.Recurso;
 import algocraft.construccionesAlternativas.CreadorDeUnidades;
 import algocraft.construccionesAlternativas.EdificioConEscudo;
-import algocraft.construccionesAlternativas.EnumEdificiosProtos;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
 import algocraft.unidades.Alternativas.protos.UnidadesProtos;

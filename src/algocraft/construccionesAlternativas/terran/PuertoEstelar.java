@@ -3,7 +3,6 @@ package algocraft.construccionesAlternativas.terran;
 import stats.Recurso;
 import algocraft.construccionesAlternativas.CreadorDeUnidades;
 import algocraft.construccionesAlternativas.EdificioBasico;
-import algocraft.construccionesAlternativas.EnumEdificiosTerran;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
 import algocraft.unidades.Alternativas.terran.UnidadesTerran;

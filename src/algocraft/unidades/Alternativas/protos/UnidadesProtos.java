@@ -1,5 +1,4 @@
 package algocraft.unidades.Alternativas.protos;
-
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
 

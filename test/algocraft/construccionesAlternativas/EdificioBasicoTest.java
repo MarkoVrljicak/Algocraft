@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import algocraft.construccionesAlternativas.terran.EnumEdificiosTerran;
+
 public class EdificioBasicoTest {
 	
 	private static final EnumEdificiosTerran nombreDeposito= EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS;

@@ -1,7 +1,6 @@
 package algocraft.construccionesAlternativas.protos;
 
 import algocraft.construccionesAlternativas.EdificioConEscudo;
-import algocraft.construccionesAlternativas.EnumEdificiosProtos;
 
 public class BaseProtoss extends EdificioConEscudo {
 

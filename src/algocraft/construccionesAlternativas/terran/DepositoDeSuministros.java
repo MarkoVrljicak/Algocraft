@@ -1,7 +1,6 @@
 package algocraft.construccionesAlternativas.terran;
 
 import algocraft.construccionesAlternativas.EdificioBasico;
-import algocraft.construccionesAlternativas.EnumEdificiosTerran;
 
 public class DepositoDeSuministros extends EdificioBasico{
 

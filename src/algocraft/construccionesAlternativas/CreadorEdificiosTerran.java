@@ -1,5 +1,6 @@
 package algocraft.construccionesAlternativas;
 
+import algocraft.construccionesAlternativas.terran.EnumEdificiosTerran;
 import algocraft.exception.RecursosNegativosException;
 import stats.Recurso;
 
