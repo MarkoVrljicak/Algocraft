@@ -24,5 +24,11 @@ public class Golliat extends Unidad{
 		this.pesoTransporte = 2;
 	}
 
+	@Override
+	protected void setearAtaque() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

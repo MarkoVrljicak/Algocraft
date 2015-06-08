@@ -25,5 +25,11 @@ public class NaveCiencia extends Unidad{
 		this.pesoTransporte = 0;		
 	}
 
+	@Override
+	protected void setearAtaque() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

@@ -1,5 +1,6 @@
 package algocraft.unidades.Alternativas.terran;
 
+import algocraft.ataques.AtaqueNormal;
 import algocraft.unidades.Alternativas.Unidad;
 
 
@@ -23,6 +24,12 @@ public class Marine extends Unidad{
 	@Override
 	protected void setearPesoTransporte() {
 		this.pesoTransporte = 1;
+	}
+
+	@Override
+	protected void setearAtaque() {
+		this.ataque = new AtaqueNormal(6,6,4);
+		
 	}
 
 

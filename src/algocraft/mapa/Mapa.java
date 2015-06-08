@@ -3,18 +3,18 @@ package algocraft.mapa;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import algocraft.creables.Creable;
-import algocraft.exception.CreableNoEstaEnJuegoException;
+import algocraft.construccionesAlternativas.Actualizable;
+import algocraft.exception.ActualizableNoEstaEnJuegoException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
-import algocraft.unidades.Movible;
+import algocraft.unidades.Alternativas.Movible;
 
 public class Mapa implements Iterable<Terreno>{
 
 	private HashMap<Coordenada, Terreno> casilleros;
-	private HashMap<Creable, Coordenada> posiciones;
+	private HashMap<Actualizable, Coordenada> posiciones;
 	private int ancho;
 	private int alto;
 
@@ -22,7 +22,7 @@ public class Mapa implements Iterable<Terreno>{
 		this.ancho = ancho;
 		this.alto = alto;
 		casilleros = new HashMap<Coordenada, Terreno>();
-		posiciones = new HashMap<Creable, Coordenada>();
+		posiciones = new HashMap<Actualizable, Coordenada>();
 
 		for (int i = 1; i <= this.ancho; i++) {
 			for (int j = 1; j <= this.alto; j++) {
@@ -76,7 +76,7 @@ public class Mapa implements Iterable<Terreno>{
 		return terreno.getNombre();
 	}
 
-	public boolean moverPorTierra(Movible movible, Coordenada coordenadaDestino) throws CreableNoEstaEnJuegoException, DestinoInvalidoException {
+	public boolean moverPorTierra(Movible movible, Coordenada coordenadaDestino) throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
 		Coordenada coordenadaOrigen = null;
 		Terreno terrenoOrigen = null;
 		Iterator<Terreno> iterMapa = (Iterator<Terreno>) this.iterator();
@@ -87,24 +87,24 @@ public class Mapa implements Iterable<Terreno>{
 
 		while(iterMapa.hasNext() && coordenadaOrigen == null){
 			terrenoOrigen = iterMapa.next();
-			Creable contenido = terrenoOrigen.getContenidoSuelo();
+			Actualizable contenido = terrenoOrigen.getContenidoSuelo();
 			if(contenido == movible){
 				coordenadaOrigen = terrenoOrigen.getCoordenada();
 			}
 		}
 		
 		if(coordenadaOrigen == null){
-			throw new CreableNoEstaEnJuegoException();
+			throw new ActualizableNoEstaEnJuegoException();
 		} else if(coordenadaDestino.distanciaA(coordenadaOrigen) > 1){
 			return false;
 		} else {
-			this.almacenarEnSuelo((Creable) movible, coordenadaDestino);
+			this.almacenarEnSuelo((Actualizable) movible, coordenadaDestino);
 			terrenoOrigen.vaciarSuelo();
 			return true;
 		}
 	}
 	
-	public boolean moverPorCielo(Movible movible, Coordenada coordenadaDestino) throws CreableNoEstaEnJuegoException, DestinoInvalidoException {
+	public boolean moverPorCielo(Movible movible, Coordenada coordenadaDestino) throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
 		Coordenada coordenadaOrigen = null;
 		Terreno terrenoOrigen = null;
 		Iterator<Terreno> iterMapa = (Iterator<Terreno>) this.iterator();
@@ -115,38 +115,38 @@ public class Mapa implements Iterable<Terreno>{
 
 		while(iterMapa.hasNext() && coordenadaOrigen == null){
 			terrenoOrigen = iterMapa.next();
-			Creable contenido = terrenoOrigen.getContenidoCielo();
+			Actualizable contenido = terrenoOrigen.getContenidoCielo();
 			if(contenido == movible){
 				coordenadaOrigen = terrenoOrigen.getCoordenada();
 			}
 		}
 		
 		if(coordenadaOrigen == null){
-			throw new CreableNoEstaEnJuegoException();
+			throw new ActualizableNoEstaEnJuegoException();
 		} else if(coordenadaDestino.distanciaA(coordenadaOrigen) > 1){
 			return false;
 		} else {
-			this.almacenarEnCielo((Creable) movible, coordenadaDestino);
+			this.almacenarEnCielo((Actualizable) movible, coordenadaDestino);
 			terrenoOrigen.vaciarCielo();
 			return true;
 		}
 	}
 	
-	public void almacenarEnSuelo(Creable creable, Coordenada coordenada) throws DestinoInvalidoException {
-		posiciones.put(creable, coordenada);
-		this.getTerreno(coordenada).almacenarEnSuelo(creable);
+	public void almacenarEnSuelo(Actualizable actualizable, Coordenada coordenada) throws DestinoInvalidoException {
+		posiciones.put(actualizable, coordenada);
+		this.getTerreno(coordenada).almacenarEnSuelo(actualizable);
 	}
 
-	public void almacenarEnCielo(Creable creable, Coordenada coordenada) throws DestinoInvalidoException {
-		posiciones.put(creable, coordenada);
-		this.getTerreno(coordenada).almacenarEnCielo(creable);
+	public void almacenarEnCielo(Actualizable actualizable, Coordenada coordenada) throws DestinoInvalidoException {
+		posiciones.put(actualizable, coordenada);
+		this.getTerreno(coordenada).almacenarEnCielo(actualizable);
 	}
 	
-	public Creable getCreableSuelo(Coordenada coordenada) {
+	public Actualizable getActualizableSuelo(Coordenada coordenada) {
 		return this.getTerreno(coordenada).getContenidoSuelo();
 	}
 
-	public Creable getCreableCielo(Coordenada coordenada) {
+	public Actualizable getActualizableCielo(Coordenada coordenada) {
 		return this.getTerreno(coordenada).getContenidoCielo();
 	}
 	

@@ -26,5 +26,13 @@ public class AltoTemplario extends Unidad {
 		
 	}
 
+	@Override
+	protected void setearAtaque() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
 	
 }

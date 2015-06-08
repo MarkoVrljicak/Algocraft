@@ -1,4 +1,4 @@
-package algocraft.unidades;
+package algocraft.unidades.Alternativas;
 
 import algocraft.mapa.terrenos.Terreno;
 

@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.creables.Creable;
+import algocraft.construccionesAlternativas.Actualizable;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
-import algocraft.unidades.terran.Marine;
-import algocraft.unidades.terran.NaveCiencia;
+import algocraft.unidades.Alternativas.terran.Marine;
+import algocraft.unidades.Alternativas.terran.NaveCiencia;
 
 public class VolcanTest {
 	Coordenada coordenadaGenerica = new Coordenada(1,1);
@@ -28,7 +28,7 @@ public class VolcanTest {
 	@Test
 	public void testMineralesNoSePuedeVolarSiEstaLleno() {
 		Volcan volcan = new Volcan(coordenadaGenerica);
-		Creable nave = new NaveCiencia();
+		Actualizable nave = new NaveCiencia();
 		
 		try {
 			volcan.almacenarEnCielo(nave);
@@ -72,9 +72,9 @@ public class VolcanTest {
 	}
 	
 	@Test
-	public void testColocaCreableEnCieloSiEstaVacio(){
+	public void testColocaActualizableEnCieloSiEstaVacio(){
 		Volcan volcan = new Volcan(coordenadaGenerica);
-		Creable nave = new NaveCiencia();
+		Actualizable nave = new NaveCiencia();
 		
 		try {
 			volcan.almacenarEnCielo(nave);
@@ -86,19 +86,19 @@ public class VolcanTest {
 	}
 	
 	@Test (expected = DestinoInvalidoException.class)
-	public void testNoColocaCreableEnCieloSiEstaLleno() throws DestinoInvalidoException{
+	public void testNoColocaActualizableEnCieloSiEstaLleno() throws DestinoInvalidoException{
 		Volcan volcan = new Volcan(coordenadaGenerica);
-		Creable nave1 = new NaveCiencia();
-		Creable nave2 = new NaveCiencia();
+		Actualizable nave1 = new NaveCiencia();
+		Actualizable nave2 = new NaveCiencia();
 		
 		volcan.almacenarEnCielo(nave1);
 		volcan.almacenarEnCielo(nave2);
 	}
 	
 	@Test (expected = DestinoInvalidoException.class)
-	public void testNoColocaCreableEnTierraAunqueEsteVacio() throws DestinoInvalidoException{
+	public void testNoColocaActualizableEnTierraAunqueEsteVacio() throws DestinoInvalidoException{
 		Volcan volcan = new Volcan(coordenadaGenerica);
-		Creable marine = new Marine();
+		Actualizable marine = new Marine();
 		
 		volcan.almacenarEnSuelo(marine);
 	}

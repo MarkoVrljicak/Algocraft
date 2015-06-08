@@ -2,14 +2,14 @@ package algocraft.ataques;
 
 import algocraft.mapa.terrenos.SectoresDeTerreno;
 import algocraft.mapa.terrenos.Terreno;
-import algocraft.unidades.Daniable;
+import algocraft.unidades.Alternativas.Daniable;
 
 public class AtaqueNormal extends Ataque{
 	private int rango;
 	private int danioAire;
 	private int danioTierra;
 	
-	public AtaqueNormal(int rangoAtaque, int danioAereo, int danioTerrestre){
+	public AtaqueNormal(int danioAereo, int danioTerrestre, int rangoAtaque){
 		rango = rangoAtaque;
 		danioAire = danioAereo;
 		danioTierra = danioTerrestre;	

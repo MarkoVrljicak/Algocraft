@@ -1,6 +1,6 @@
 package algocraft.mapa.terrenos;
 
-import algocraft.creables.Creable;
+import algocraft.construccionesAlternativas.Actualizable;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 import algocraft.mapa.Dibujable;
@@ -8,8 +8,8 @@ import algocraft.mapa.Dibujable;
 public abstract class Terreno implements Dibujable {
 	
 	protected Terrenos nombre;
-	protected Creable contenidoSuelo;
-	protected Creable contenidoCielo;
+	protected Actualizable contenidoSuelo;
+	protected Actualizable contenidoCielo;
 	protected Coordenada coordenada;
 	
 	/*-------------------------------------*/
@@ -20,20 +20,20 @@ public abstract class Terreno implements Dibujable {
 		return nombre;
 	}
 		
-	abstract public void almacenarEnSuelo(Creable creable) throws DestinoInvalidoException;
+	abstract public void almacenarEnSuelo(Actualizable actualizable) throws DestinoInvalidoException;
 	
-	public void almacenarEnCielo(Creable creable) throws DestinoInvalidoException{
+	public void almacenarEnCielo(Actualizable actualizable) throws DestinoInvalidoException{
 		
 		if (contenidoCielo != null) {
 			throw new DestinoInvalidoException();
 			
 		} else {
-			contenidoCielo = creable;
+			contenidoCielo = actualizable;
 		}
 	}
 		
-	abstract public Creable getContenidoSuelo();
-	abstract public Creable getContenidoCielo();
+	abstract public Actualizable getContenidoSuelo();
+	abstract public Actualizable getContenidoCielo();
 		
 	public Coordenada getCoordenada() {
 		return coordenada;

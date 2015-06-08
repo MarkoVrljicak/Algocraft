@@ -24,5 +24,11 @@ public class Scout extends Unidad {
 		this.pesoTransporte = 0;		
 	}
 
+	@Override
+	protected void setearAtaque() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }

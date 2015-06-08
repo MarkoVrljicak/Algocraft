@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.creables.Creable;
+import algocraft.construccionesAlternativas.Actualizable;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
-import algocraft.unidades.terran.Marine;
-import algocraft.unidades.terran.NaveCiencia;
+import algocraft.unidades.Alternativas.terran.Marine;
+import algocraft.unidades.Alternativas.terran.NaveCiencia;
 
 public class MineralesTest {
 	Coordenada coordenadaGenerica = new Coordenada(1,1);
@@ -28,7 +28,7 @@ public class MineralesTest {
 	@Test
 	public void testMineralesNoSePuedeVolarSiEstaLleno() {
 		Minerales minerales = new Minerales(coordenadaGenerica);
-		Creable nave = new NaveCiencia();
+		Actualizable nave = new NaveCiencia();
 		
 		try {
 			minerales.almacenarEnCielo(nave);
@@ -72,9 +72,9 @@ Minerales minerales = new Minerales(coordenadaGenerica);
 	}
 	
 	@Test
-	public void testColocaCreableEnCieloSiEstaVacio(){
+	public void testColocaActualizableEnCieloSiEstaVacio(){
 		Minerales minerales = new Minerales(coordenadaGenerica);
-		Creable nave = new NaveCiencia();
+		Actualizable nave = new NaveCiencia();
 		
 		try {
 			minerales.almacenarEnCielo(nave);
@@ -86,19 +86,19 @@ Minerales minerales = new Minerales(coordenadaGenerica);
 	}
 	
 	@Test (expected = DestinoInvalidoException.class)
-	public void testNoColocaCreableEnCieloSiEstaLleno() throws DestinoInvalidoException{
+	public void testNoColocaActualizableEnCieloSiEstaLleno() throws DestinoInvalidoException{
 		Minerales minerales = new Minerales(coordenadaGenerica);
-		Creable nave1 = new NaveCiencia();
-		Creable nave2 = new NaveCiencia();
+		Actualizable nave1 = new NaveCiencia();
+		Actualizable nave2 = new NaveCiencia();
 		
 		minerales.almacenarEnCielo(nave1);
 		minerales.almacenarEnCielo(nave2);
 	}
 	
 	@Test (expected = DestinoInvalidoException.class)
-	public void testNoColocaCreableEnTierraAunqueEsteVacio() throws DestinoInvalidoException{
+	public void testNoColocaActualizableEnTierraAunqueEsteVacio() throws DestinoInvalidoException{
 		Minerales minerales = new Minerales(coordenadaGenerica);
-		Creable marine = new Marine();
+		Actualizable marine = new Marine();
 		
 		minerales.almacenarEnSuelo(marine);
 	}

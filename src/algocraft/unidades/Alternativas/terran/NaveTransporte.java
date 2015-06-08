@@ -24,4 +24,10 @@ public class NaveTransporte extends Unidad{
 	protected void setearPesoTransporte() {
 		this.pesoTransporte = 0;		
 	}
+
+	@Override
+	protected void setearAtaque() {
+		// TODO Auto-generated method stub
+		
+	}
 }

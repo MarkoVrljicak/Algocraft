@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.creables.Creable;
+import algocraft.construccionesAlternativas.Actualizable;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
-import algocraft.unidades.terran.Marine;
-import algocraft.unidades.terran.NaveCiencia;
+import algocraft.unidades.Alternativas.terran.Marine;
+import algocraft.unidades.Alternativas.terran.NaveCiencia;
 
 public class TierraTest {
 	Coordenada coordenadaGenerica = new Coordenada(1,1);
@@ -42,7 +42,7 @@ public class TierraTest {
 	@Test
 	public void testTierraNoSePuedeVolarConCieloOcupado() {
 		Tierra tierra = new Tierra(coordenadaGenerica);
-		Creable nave = new NaveCiencia();
+		Actualizable nave = new NaveCiencia();
 		
 		try {
 			tierra.almacenarEnCielo(nave);
@@ -86,9 +86,9 @@ public class TierraTest {
 	}
 	
 	@Test
-	public void testColocaCreableEnCieloSiEstaVacio(){
+	public void testColocaActualizableEnCieloSiEstaVacio(){
 		Tierra tierra = new Tierra(coordenadaGenerica);
-		Creable nave = new NaveCiencia();
+		Actualizable nave = new NaveCiencia();
 		
 		try {
 			tierra.almacenarEnCielo(nave);
@@ -100,17 +100,17 @@ public class TierraTest {
 	}
 	
 	@Test (expected = DestinoInvalidoException.class)
-	public void testNoColocaCreableEnCieloSiEstaLleno() throws DestinoInvalidoException{
+	public void testNoColocaActualizableEnCieloSiEstaLleno() throws DestinoInvalidoException{
 		Tierra tierra = new Tierra(coordenadaGenerica);
-		Creable nave1 = new NaveCiencia();
-		Creable nave2 = new NaveCiencia();
+		Actualizable nave1 = new NaveCiencia();
+		Actualizable nave2 = new NaveCiencia();
 		
 		tierra.almacenarEnCielo(nave1);
 		tierra.almacenarEnCielo(nave2);
 	}
 	
 	@Test
-	public void testColocaCreableEnSueloSiEstaVacio(){
+	public void testColocaActualizableEnSueloSiEstaVacio(){
 		Tierra tierra = new Tierra(coordenadaGenerica);
 		Marine marine = new Marine();
 		
@@ -124,7 +124,7 @@ public class TierraTest {
 	}
 	
 	@Test (expected = DestinoInvalidoException.class)
-	public void testNoColocaCreableEnSueloSiEstaLleno() throws DestinoInvalidoException{
+	public void testNoColocaActualizableEnSueloSiEstaLleno() throws DestinoInvalidoException{
 		Tierra tierra = new Tierra(coordenadaGenerica);
 		Marine marine1 = new Marine();
 		Marine marine2 = new Marine();

@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.creables.Creable;
+import algocraft.construccionesAlternativas.Actualizable;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
-import algocraft.unidades.terran.Marine;
-import algocraft.unidades.terran.NaveCiencia;
+import algocraft.unidades.Alternativas.terran.Marine;
+import algocraft.unidades.Alternativas.terran.NaveCiencia;
 
 public class AireTest {
 	Coordenada coordenadaGenerica = new Coordenada(1,1);
@@ -36,7 +36,7 @@ public class AireTest {
 	@Test
 	public void testAireNoSePuedeVolarSiEstaLleno() {
 		Aire aire = new Aire(coordenadaGenerica);
-		Creable nave = new NaveCiencia();
+		Actualizable nave = new NaveCiencia();
 		
 		try {
 			aire.almacenarEnCielo(nave);
@@ -80,9 +80,9 @@ public class AireTest {
 	}
 	
 	@Test
-	public void testColocaCreableEnCieloSiEstaVacio(){
+	public void testColocaActualizableEnCieloSiEstaVacio(){
 		Aire aire = new Aire(coordenadaGenerica);
-		Creable nave = new NaveCiencia();
+		Actualizable nave = new NaveCiencia();
 		
 		try {
 			aire.almacenarEnCielo(nave);
@@ -94,19 +94,19 @@ public class AireTest {
 	}
 	
 	@Test (expected = DestinoInvalidoException.class)
-	public void testNoColocaCreableEnCieloSiEstaLleno() throws DestinoInvalidoException{
+	public void testNoColocaActualizableEnCieloSiEstaLleno() throws DestinoInvalidoException{
 		Aire aire = new Aire(coordenadaGenerica);
-		Creable nave1 = new NaveCiencia();
-		Creable nave2 = new NaveCiencia();
+		Actualizable nave1 = new NaveCiencia();
+		Actualizable nave2 = new NaveCiencia();
 		
 		aire.almacenarEnCielo(nave1);
 		aire.almacenarEnCielo(nave2);
 	}
 	
 	@Test (expected = DestinoInvalidoException.class)
-	public void testNoColocaCreableEnTierraAunqueEsteVacio() throws DestinoInvalidoException{
+	public void testNoColocaActualizableEnTierraAunqueEsteVacio() throws DestinoInvalidoException{
 		Aire aire = new Aire(coordenadaGenerica);
-		Creable marine = new Marine();
+		Actualizable marine = new Marine();
 		
 		aire.almacenarEnSuelo(marine);
 	}

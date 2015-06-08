@@ -5,14 +5,14 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.exception.CreableNoEstaEnJuegoException;
+import algocraft.exception.ActualizableNoEstaEnJuegoException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
-import algocraft.unidades.Unidad;
-import algocraft.unidades.terran.Marine;
-import algocraft.unidades.terran.NaveCiencia;
+import algocraft.unidades.Alternativas.Unidad;
+import algocraft.unidades.Alternativas.terran.Marine;
+import algocraft.unidades.Alternativas.terran.NaveCiencia;
 
 public class MapaTest {
 	
@@ -78,11 +78,11 @@ public class MapaTest {
 		
 		try {
 			mapa.moverPorTierra(marine, destino);
-		} catch (CreableNoEstaEnJuegoException | DestinoInvalidoException e) {
+		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
-		assertEquals(marine, mapa.getCreableSuelo(destino));
+		assertEquals(marine, mapa.getActualizableSuelo(destino));
 	}
 	
 	@Test
@@ -101,15 +101,15 @@ public class MapaTest {
 		
 		try {
 			mapa.moverPorTierra(marine, destino);
-		} catch (CreableNoEstaEnJuegoException | DestinoInvalidoException e) {
+		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
-		assertEquals(null, mapa.getCreableSuelo(origen));
+		assertEquals(null, mapa.getActualizableSuelo(origen));
 	}
 	
 	@Test
-	public void testMapaNoMueveUnidadPorTierraSiDestinoEstaOcupadoPorOtraUnidad() throws DestinoInvalidoException, CreableNoEstaEnJuegoException{
+	public void testMapaNoMueveUnidadPorTierraSiDestinoEstaOcupadoPorOtraUnidad() throws DestinoInvalidoException, ActualizableNoEstaEnJuegoException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad marine1 = new Marine();
 		Unidad marine2 = new Marine();
@@ -129,7 +129,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testMapaNoMueveUnidadPorTierraSiDestinoNoEsTierra() throws DestinoInvalidoException, CreableNoEstaEnJuegoException{
+	public void testMapaNoMueveUnidadPorTierraSiDestinoNoEsTierra() throws DestinoInvalidoException, ActualizableNoEstaEnJuegoException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad marine = new Marine();
 		
@@ -149,7 +149,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testMapaMueveUnidadPorAire() throws CreableNoEstaEnJuegoException, DestinoInvalidoException{
+	public void testMapaMueveUnidadPorAire() throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad nave = new NaveCiencia();
 		
@@ -164,7 +164,7 @@ public class MapaTest {
 		
 		mapa.moverPorCielo(nave, destino);
 		
-		assertEquals(nave, mapa.getCreableCielo(destino));
+		assertEquals(nave, mapa.getActualizableCielo(destino));
 	}
 	
 	@Test
@@ -183,15 +183,15 @@ public class MapaTest {
 		
 		try {
 			mapa.moverPorCielo(nave, destino);
-		} catch (CreableNoEstaEnJuegoException | DestinoInvalidoException e) {
+		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
-		assertEquals(null, mapa.getCreableCielo(origen));
+		assertEquals(null, mapa.getActualizableCielo(origen));
 	}
 	
 	@Test
-	public void testMapaNoMueveUnidadPorCieloSiDestinoEstaOcupadoPorOtraUnidad() throws DestinoInvalidoException, CreableNoEstaEnJuegoException{
+	public void testMapaNoMueveUnidadPorCieloSiDestinoEstaOcupadoPorOtraUnidad() throws DestinoInvalidoException, ActualizableNoEstaEnJuegoException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad nave1 = new NaveCiencia();
 		Unidad nave2 = new NaveCiencia();

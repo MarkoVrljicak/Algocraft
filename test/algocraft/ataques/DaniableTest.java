@@ -4,8 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.unidades.Unidad;
-import algocraft.unidades.terran.Marine;
+import algocraft.unidades.Alternativas.Unidad;
+import algocraft.unidades.Alternativas.terran.Marine;
 
 public class DaniableTest {
 

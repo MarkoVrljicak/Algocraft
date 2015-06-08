@@ -24,5 +24,11 @@ public class Dragon extends Unidad {
 		this.pesoTransporte = 4;
 	}
 
+	@Override
+	protected void setearAtaque() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
