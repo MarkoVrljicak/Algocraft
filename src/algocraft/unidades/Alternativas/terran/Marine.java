@@ -19,4 +19,9 @@ public class Marine extends Unidad{
 	protected void setearVida() {
 		this.vida.set(40);
 	}
+
+	@Override
+	protected boolean soyVolador() {
+		return false;
+	}
 }

@@ -14,6 +14,7 @@ import algocraft.unidades.Movible;
 public class Mapa implements Iterable<Terreno>{
 
 	private HashMap<Coordenada, Terreno> casilleros;
+	private HashMap<Creable, Coordenada> posiciones;
 	private int ancho;
 	private int alto;
 
@@ -21,6 +22,7 @@ public class Mapa implements Iterable<Terreno>{
 		this.ancho = ancho;
 		this.alto = alto;
 		casilleros = new HashMap<Coordenada, Terreno>();
+		posiciones = new HashMap<Creable, Coordenada>();
 
 		for (int i = 1; i <= this.ancho; i++) {
 			for (int j = 1; j <= this.alto; j++) {
@@ -131,10 +133,12 @@ public class Mapa implements Iterable<Terreno>{
 	}
 	
 	public void almacenarEnSuelo(Creable creable, Coordenada coordenada) throws DestinoInvalidoException {
+		posiciones.put(creable, coordenada);
 		this.getTerreno(coordenada).almacenarEnSuelo(creable);
 	}
 
 	public void almacenarEnCielo(Creable creable, Coordenada coordenada) throws DestinoInvalidoException {
+		posiciones.put(creable, coordenada);
 		this.getTerreno(coordenada).almacenarEnCielo(creable);
 	}
 	
@@ -149,6 +153,19 @@ public class Mapa implements Iterable<Terreno>{
 	public Terreno getTerreno(Coordenada coordenada){
 		return casilleros.get(coordenada);
 	}
+
+//	public boolean gestionarAtaque(Unidad atacante, Daniable atacado) {
+//		Coordenada posicionAtacante = null;
+//		Coordenada posicionAtacado = null;
+//		SectoresDeTerreno sectorAtacado = null;
+//		int distanciaAtaque = 0;
+//		
+//		Iterator<Terreno> iterMapa = (Iterator<Terreno>) this.iterator();
+//		
+//		
+//		//osea necesito coordenadas
+//		atacante.atacar(terrenoDestino, sectorAtacado, distanciaAtaque);
+//	}
 
 
 

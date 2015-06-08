@@ -1,5 +1,7 @@
 package algocraft.unidades.Alternativas.protos;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,5 +16,10 @@ public class ScoutTest {
 		Scout scout= new Scout();
 		
 		Assert.assertEquals(150, scout.getVida());
+	}
+	
+	public void testScoutEsVolador(){
+		Scout scout = new Scout();
+		assertEquals(true, scout.soyVolador());
 	}
 }

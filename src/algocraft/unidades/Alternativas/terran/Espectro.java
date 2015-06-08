@@ -18,4 +18,9 @@ public class Espectro extends Unidad{
 	protected void setearVida() {
 		this.vida.set(120);
 	}
+
+	@Override
+	protected boolean soyVolador() {
+		return true;
+	}
 }

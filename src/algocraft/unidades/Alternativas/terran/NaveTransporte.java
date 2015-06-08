@@ -17,6 +17,11 @@ public class NaveTransporte extends Unidad{
 
 	@Override
 	protected void setearVida() {
-		this.vida.set(40);
+		this.vida.set(150);
+	}
+
+	@Override
+	protected boolean soyVolador() {
+		return true;
 	}
 }

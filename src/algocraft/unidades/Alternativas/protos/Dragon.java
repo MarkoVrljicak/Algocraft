@@ -18,4 +18,9 @@ public class Dragon extends Unidad {
 	protected void setearVida() {
 		this.vida.set(100);
 	}
+
+	@Override
+	protected boolean soyVolador() {
+		return false;
+	}
 }

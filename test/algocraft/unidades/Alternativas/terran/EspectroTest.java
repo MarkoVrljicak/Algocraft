@@ -13,5 +13,11 @@ public class EspectroTest {
 		
 		assertEquals(120, espectro.getVida());
 	}
+	
+	@Test
+	public void testEspectroEsVolador(){
+		Espectro espectro = new Espectro();
+		assertEquals(true, espectro.soyVolador());
+	}
 
 }

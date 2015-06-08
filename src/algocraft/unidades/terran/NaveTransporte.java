@@ -20,4 +20,9 @@ public class NaveTransporte extends Unidad{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public Object soyVolador() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

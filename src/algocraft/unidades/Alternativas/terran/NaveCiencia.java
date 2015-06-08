@@ -19,4 +19,9 @@ public class NaveCiencia extends Unidad{
 	protected void setearVida() {
 		this.vida.set(200);
 	}
+
+	@Override
+	protected boolean soyVolador() {
+		return true;
+	}
 }

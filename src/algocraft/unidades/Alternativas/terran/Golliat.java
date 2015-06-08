@@ -18,4 +18,9 @@ public class Golliat extends Unidad{
 	protected void setearVida() {
 		this.vida.set(125);
 	}
+
+	@Override
+	protected boolean soyVolador() {
+		return false;
+	}
 }

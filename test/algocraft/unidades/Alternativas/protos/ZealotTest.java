@@ -16,4 +16,9 @@ public class ZealotTest {
 		
 		assertEquals(100, zealot.getVida());
 	}
+	
+	public void testZealotNoEsVolador(){
+		Zealot zealot = new Zealot();
+		assertEquals(false, zealot.soyVolador());
+	}
 }
