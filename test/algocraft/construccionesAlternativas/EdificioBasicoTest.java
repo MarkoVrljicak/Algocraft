@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class EdificioBasicoTest {
 	
-	private static final EdificiosTerran nombreDeposito= EdificiosTerran.DEPOSITO_DE_SUMINISTROS;
+	private static final EnumEdificiosTerran nombreDeposito= EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS;
 	private static final int vidaDeposito=500;
 	private static final int tiempoConstruccionDeposito= 6;
 

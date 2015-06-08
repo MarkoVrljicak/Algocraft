@@ -2,9 +2,12 @@ package algocraft.construccionesAlternativas;
 
 import static org.junit.Assert.assertEquals;
 import jugador.Jugador;
+
 import org.junit.Test;
+
 import razas.Terran;
 import stats.Recurso;
+import algocraft.construccionesAlternativas.terran.Barraca;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.UnidadesTerran;

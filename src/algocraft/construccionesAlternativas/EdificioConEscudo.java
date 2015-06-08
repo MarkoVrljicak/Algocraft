@@ -6,7 +6,7 @@ public class EdificioConEscudo extends EdificioBasico{
 
 	private Escudo escudo = new Escudo();
 
-	public EdificioConEscudo(Edificios nombre, int vidaMaxima, int tiempoDeConstruccion, int escudoMaximo) {
+	public EdificioConEscudo(EnumEdificios nombre, int vidaMaxima, int tiempoDeConstruccion, int escudoMaximo) {
 		super(nombre, vidaMaxima, tiempoDeConstruccion);
 		this.escudo.set(escudoMaximo);
 	}

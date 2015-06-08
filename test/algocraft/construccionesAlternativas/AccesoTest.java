@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import razas.Terran;
 import stats.Recurso;
+import algocraft.construccionesAlternativas.protos.Acceso;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.UnidadesProtos;

@@ -13,7 +13,7 @@ public abstract class DecoradorConstruccion implements Construccion {
 	public int getVida(){
 		return this.edificio.getVida();
 	}
-	public Edificios getNombre(){
+	public EnumEdificios getNombre(){
 		return this.edificio.getNombre();
 		
 	}

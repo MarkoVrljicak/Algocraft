@@ -1,5 +1,5 @@
 package algocraft.construccionesAlternativas;
 
-public interface Edificios {
+public interface EnumEdificios {
 
 }

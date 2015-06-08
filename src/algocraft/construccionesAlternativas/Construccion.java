@@ -5,7 +5,7 @@ import jugador.Usuario;
 public interface Construccion extends Actualizable{
 
 	public int getVida();
-	public Edificios getNombre();
+	public EnumEdificios getNombre();
 	public boolean enConstruccion();
 	public Usuario getDuenio();
 	public void setDuenio(Usuario jugador);

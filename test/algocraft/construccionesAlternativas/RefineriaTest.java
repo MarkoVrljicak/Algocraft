@@ -5,6 +5,7 @@ import jugador.Jugador;
 
 import org.junit.Test;
 
+import algocraft.construccionesAlternativas.terran.Refineria;
 import razas.Terran;
 
 public class RefineriaTest {

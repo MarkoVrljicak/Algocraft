@@ -1,6 +1,6 @@
 package algocraft.construccionesAlternativas;
 
-public enum EdificiosProtos implements Edificios{
+public enum EnumEdificiosProtos implements EnumEdificios{
 
 		ACCESO,
 		ARCHIVOS_TEMPLARIOS,

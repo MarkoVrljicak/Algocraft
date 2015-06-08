@@ -1,13 +1,16 @@
-package algocraft.construccionesAlternativas;
+package algocraft.construccionesAlternativas.protos;
 
 import stats.Recurso;
+import algocraft.construccionesAlternativas.CreadorDeUnidades;
+import algocraft.construccionesAlternativas.EdificioConEscudo;
+import algocraft.construccionesAlternativas.EnumEdificiosProtos;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
 import algocraft.unidades.Alternativas.UnidadesProtos;
 
 public class Acceso extends CreadorDeUnidades {
 	
-	private static final EdificiosProtos nombreAcceso = EdificiosProtos.ACCESO;
+	private static final EnumEdificiosProtos nombreAcceso = EnumEdificiosProtos.ACCESO;
 	private static final UnidadesProtos nombreZealot= UnidadesProtos.ZEALOT;
 	private static final int vidaZealot = 100;
 	private static final Recurso recursosNecesariosZealot = new Recurso(100,0);

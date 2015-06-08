@@ -7,10 +7,10 @@ public class EdificioBasico implements Construccion{
 
 	protected Vida vida = new Vida();
 	protected int tiempoDeConstruccion;
-	protected Edificios nombre;//enum
+	protected EnumEdificios nombre;//enum
 	public Usuario duenio = new JugadorNulo();
 	
-	public EdificioBasico(Edificios nombre, int vidaMaxima, int tiempoDeConstruccion){
+	public EdificioBasico(EnumEdificios nombre, int vidaMaxima, int tiempoDeConstruccion){
 		this.nombre= nombre;
 		this.vida.set(vidaMaxima);
 		this.tiempoDeConstruccion=tiempoDeConstruccion;
@@ -22,7 +22,7 @@ public class EdificioBasico implements Construccion{
 	}
 	
 		
-	public Edificios getNombre(){
+	public EnumEdificios getNombre(){
 		return nombre;
 	}
 	

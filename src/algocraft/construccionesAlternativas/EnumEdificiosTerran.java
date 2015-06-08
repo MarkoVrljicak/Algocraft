@@ -1,6 +1,6 @@
 package algocraft.construccionesAlternativas;
 
-public enum EdificiosTerran implements Edificios{
+public enum EnumEdificiosTerran implements EnumEdificios{
 	
 	CENTRO_DE_MINERALES,
 	REFINERIA,
