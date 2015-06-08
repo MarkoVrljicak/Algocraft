@@ -1,4 +1,4 @@
-package algocraft.construccionesAlternativas;
+package algocraft.construccionesAlternativas.terran;
 
 import static org.junit.Assert.*;
 import jugador.Jugador;
