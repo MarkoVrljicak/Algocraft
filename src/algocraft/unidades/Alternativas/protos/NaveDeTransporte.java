@@ -1,5 +1,7 @@
 package algocraft.unidades.Alternativas.protos;
 
+import algocraft.mapa.terrenos.SectoresDeTerreno;
+import algocraft.mapa.terrenos.Terreno;
 import algocraft.unidades.Alternativas.Unidad;
 
 
@@ -25,10 +27,13 @@ public class NaveDeTransporte extends Unidad {
 	}
 
 	@Override
-	protected void setearAtaque() {
+	public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector,
+			int distancia) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
+
+
 
 
 	

@@ -1,6 +1,10 @@
 package algocraft.unidades.Alternativas.terran;
 
-import algocraft.ataques.AtaqueNormal;
+import algocraft.ataques.Ataque;
+import algocraft.ataques.AtaqueAereo;
+import algocraft.ataques.AtaqueTerrestre;
+import algocraft.mapa.terrenos.SectoresDeTerreno;
+import algocraft.mapa.terrenos.Terreno;
 import algocraft.unidades.Alternativas.Unidad;
 
 
@@ -27,9 +31,18 @@ public class Marine extends Unidad{
 	}
 
 	@Override
-	protected void setearAtaque() {
-		this.ataque = new AtaqueNormal(6,6,4);
+	public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector, int distancia) {
+		Ataque ataque = null;
+		int danio = 6;
+		int rango = 4;
 		
+		if (sector == SectoresDeTerreno.SUELO){
+			ataque = new AtaqueTerrestre(danio, rango);
+		} else if (sector == SectoresDeTerreno.CIELO){
+			ataque = new AtaqueAereo(danio, rango);
+		}
+		
+		return ataque.ejecutarAtaque(terrenoDestino, distancia);
 	}
 
 

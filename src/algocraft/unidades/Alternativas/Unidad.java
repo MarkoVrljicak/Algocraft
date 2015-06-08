@@ -18,14 +18,12 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 		this.setearVida();
 		this.setearNombre();
 		this.setearPesoTransporte();
-		this.setearAtaque();
 	}
 
 	
 	abstract protected void setearPesoTransporte();
 	abstract protected void setearNombre();
 	abstract protected void setearVida();
-	abstract protected void setearAtaque();
 	
 	public Unidades getNombre(){
 		return nombre;
@@ -60,8 +58,6 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	}
 
 
-	public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector, int distancia) {
-		return this.ataque.ejecutarAtaque(terrenoDestino, sector, distancia);
-	}
+	abstract public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector, int distancia);
 
 }
