@@ -11,7 +11,7 @@ public class Scout extends Unidad {
 
 	@Override
 	protected void setearNombre() {
-		this.nombre = UnidadesProtos.ALTO_TEMPLARIO;
+		this.nombre = UnidadesProtos.SCOUT;
 	}
 
 	@Override
