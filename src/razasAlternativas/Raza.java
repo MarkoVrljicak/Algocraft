@@ -11,7 +11,7 @@ import algocraft.exception.RecursosNegativosException;
 
 public abstract class Raza {
 
-	protected String nombre;
+	protected EnumRazas nombre;
 	protected ArrayList<EnumEdificios> construccionesCreables;
 	protected Usuario duenio = new JugadorNulo();
 	
@@ -20,12 +20,16 @@ public abstract class Raza {
 		this.determinarCreables();
 	}
 	
-	public String getNombre(){
+	public EnumRazas getNombre(){
 		return nombre;
 	}
 	
 	public void setDuenio(Usuario jugador) {
 		duenio = jugador;		
+	}
+	
+	public ArrayList<EnumEdificios> getListaDeConstrucciones(){
+		return construccionesCreables;
 	}
 	
 	abstract protected void determinarCreables();//obligo a que determine creables en construccion

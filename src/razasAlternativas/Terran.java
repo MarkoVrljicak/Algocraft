@@ -22,6 +22,10 @@ public class Terran extends Raza{
 	private static final Recurso recursosNecesariosPuertoEstelar = new Recurso(150,100);
 	private static final Recurso recursosNecesariosRefineria = new Recurso(100,0);
 	
+	public Terran(){
+		this.nombre = EnumRazas.TERRAN;
+	}
+	
 	@Override
 	protected void determinarCreables() {
 		this.construccionesCreables.add(nombreBarraca);
