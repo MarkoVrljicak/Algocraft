@@ -11,7 +11,7 @@ public class RecolectorGasTest {
 	@Test
 	public void testRecoletoGaslVeoSiAumentoEn10(){
 		RecolectorGas refineria=new RecolectorGas(
-				new EdificioBasico(Edificios.REFINERIA,750,6));
+				new EdificioBasico(EdificiosTerran.REFINERIA,750,6));
 		Recurso depositoControl=new Recurso(0,0);
 		
 		refineria.recolectarGas(depositoControl);

@@ -8,7 +8,7 @@ public class Unidad {
 	private Vida vida = new Vida();
 
 	public Unidad(Unidades nombre, int vida) {
-		this.nombre=nombre;
+		this.nombre = nombre;
 		this.vida.set(vida);
 	}
 	

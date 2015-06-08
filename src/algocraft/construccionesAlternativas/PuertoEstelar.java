@@ -3,13 +3,14 @@ package algocraft.construccionesAlternativas;
 import stats.Recurso;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
+import algocraft.unidades.Alternativas.UnidadesTerran;
 
 public class PuertoEstelar extends CreadorDeUnidades {
 	
-	private static final Edificios nombrePuertoEstelar = Edificios.PUERTO_ESTELAR;
-	private static final Unidades nombreEspectro = Unidades.ESPECTRO;
-	private static final Unidades nombreNaveDeTransporte = Unidades.NAVE_TRANSPORTE;
-	private static final Unidades nombreNaveDeCiencia = Unidades.NAVE_CIENCIA;
+	private static final EdificiosTerran nombrePuertoEstelar = EdificiosTerran.PUERTO_ESTELAR;
+	private static final UnidadesTerran nombreEspectro = UnidadesTerran.ESPECTRO;
+	private static final UnidadesTerran nombreNaveDeTransporte = UnidadesTerran.NAVE_TRANSPORTE;
+	private static final UnidadesTerran nombreNaveDeCiencia = UnidadesTerran.NAVE_CIENCIA;
 	private static final int vidaEspectro = 40;
 	private static final int vidaNaveDeTransporte = 40;
 	private static final int vidaNaveDeCiencia = 40;

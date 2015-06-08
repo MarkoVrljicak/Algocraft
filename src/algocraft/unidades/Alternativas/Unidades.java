@@ -1,10 +1,5 @@
 package algocraft.unidades.Alternativas;
 
-public enum Unidades {
+public interface Unidades {
 
-	MARINE,
-	GOLLIAT,
-	ESPECTRO,
-	NAVE_CIENCIA,
-	NAVE_TRANSPORTE,
 }

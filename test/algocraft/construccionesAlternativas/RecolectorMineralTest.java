@@ -10,7 +10,7 @@ public class RecolectorMineralTest {
 	@Test
 	public void testRecoletoMineralVeoSiAumentoEn10(){
 		RecolectorMineral centroMineral=new RecolectorMineral(
-				new EdificioBasico(Edificios.CENTRO_DE_MINERALES,500,4));
+				new EdificioBasico(EdificiosTerran.CENTRO_DE_MINERALES,500,4));
 		Recurso depositoControl=new Recurso(0,0);
 		
 		centroMineral.recolectarMineral(depositoControl);

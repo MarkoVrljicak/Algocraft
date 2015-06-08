@@ -5,19 +5,19 @@ import stats.Recurso;
 
 public class CreadorEdificiosTerran {
 
-	public boolean puedoCrearEdificio(Edificios nombreEdificio,
+	public boolean puedoCrearEdificio(EdificiosTerran nombreEdificio,
 			Recurso recursosDisponible) {
-		if(nombreEdificio==Edificios.CENTRO_DE_MINERALES)
+		if(nombreEdificio==EdificiosTerran.CENTRO_DE_MINERALES)
 			return this.puedeCrearCentroMineral(recursosDisponible);
-		if(nombreEdificio==Edificios.FABRICA)
+		if(nombreEdificio==EdificiosTerran.FABRICA)
 			return this.puedeCrearFabrica(recursosDisponible);
 		else return false;
 	}
 
-	public Construccion crearEdificio(Edificios nombreEdificio,
+	public Construccion crearEdificio(EdificiosTerran nombreEdificio,
 			Recurso recursosDisponible) throws RecursosNegativosException{
 		
-		if(nombreEdificio==Edificios.CENTRO_DE_MINERALES)
+		if(nombreEdificio==EdificiosTerran.CENTRO_DE_MINERALES)
 			return this.crearCentroMineral(recursosDisponible);
 		return null;//lanzar excepcion?
 			
@@ -36,7 +36,7 @@ public class CreadorEdificiosTerran {
 		final int mineralNecesario=50;
 		if(puedeCrearCentroMineral(recursosDisponibles) ){
 			recursosDisponibles.consumirMineral(mineralNecesario);
-			return new RecolectorMineral(new EdificioBasico(Edificios.CENTRO_DE_MINERALES,500,4) );
+			return new RecolectorMineral(new EdificioBasico(EdificiosTerran.CENTRO_DE_MINERALES,500,4) );
 		}
 		else return null;//o lanzar excepcion ya que no pregunto si podia antes
 	}

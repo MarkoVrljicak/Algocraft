@@ -9,13 +9,13 @@ import razas.Terran;
 import stats.Recurso;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.unidades.Alternativas.Unidad;
-import algocraft.unidades.Alternativas.Unidades;
+import algocraft.unidades.Alternativas.UnidadesTerran;
 
 public class PuertoEstelarTest {
 
-	private static final Unidades nombreEspectro = Unidades.ESPECTRO;
-	private static final Unidades nombreNaveDeTransporte = Unidades.NAVE_TRANSPORTE;
-	private static final Unidades nombreNaveDeCiencia = Unidades.NAVE_CIENCIA;
+	private static final UnidadesTerran nombreEspectro = UnidadesTerran.ESPECTRO;
+	private static final UnidadesTerran nombreNaveDeTransporte = UnidadesTerran.NAVE_TRANSPORTE;
+	private static final UnidadesTerran nombreNaveDeCiencia = UnidadesTerran.NAVE_CIENCIA;
 	private static final Recurso recursosNecesariosEspectro = new Recurso(50,0);
 	private static final Recurso recursosNecesariosNaveDeTransporte = new Recurso(50,0);
 	private static final Recurso recursosNecesariosNaveDeCiencia = new Recurso(50,0);

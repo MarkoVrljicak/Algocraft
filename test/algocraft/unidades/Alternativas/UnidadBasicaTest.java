@@ -8,7 +8,7 @@ public class UnidadBasicaTest {
 	
 
 	private static final int vidaMarine = 40;
-	private static final Unidades nombreMarine = Unidades.MARINE;
+	private static final UnidadesTerran nombreMarine = UnidadesTerran.MARINE;
 
 	@Test
 	public void testCreoUnidadVerificoVida(){

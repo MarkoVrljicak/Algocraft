@@ -9,11 +9,11 @@ import razas.Terran;
 import stats.Recurso;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.unidades.Alternativas.Unidad;
-import algocraft.unidades.Alternativas.Unidades;
+import algocraft.unidades.Alternativas.UnidadesTerran;
 
 public class FabricaTest {
 
-	private static final Unidades nombreGolliat = Unidades.GOLLIAT;
+	private static final UnidadesTerran nombreGolliat = UnidadesTerran.GOLLIAT;
 	private static final Recurso recursosNecesariosGolliat = new Recurso(100,50);
 	private static final int poblacionNecesariaGolliat = 2;
 

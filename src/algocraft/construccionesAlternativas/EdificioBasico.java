@@ -27,7 +27,7 @@ public class EdificioBasico implements Construccion{
 	}
 	
 	
-	private void disminuirTiempoDeConstruccion() {
+	protected void disminuirTiempoDeConstruccion() {
 		if (this.tiempoDeConstruccion != 0) {
 			this.tiempoDeConstruccion--;
 		}
