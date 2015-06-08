@@ -6,7 +6,7 @@ import algocraft.construccionesAlternativas.EdificioBasico;
 import algocraft.construccionesAlternativas.EnumEdificiosTerran;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
-import algocraft.unidades.Alternativas.UnidadesTerran;
+import algocraft.unidades.Alternativas.terran.UnidadesTerran;
 
 public class PuertoEstelar extends CreadorDeUnidades {
 	
@@ -14,9 +14,6 @@ public class PuertoEstelar extends CreadorDeUnidades {
 	private static final UnidadesTerran nombreEspectro = UnidadesTerran.ESPECTRO;
 	private static final UnidadesTerran nombreNaveDeTransporte = UnidadesTerran.NAVE_TRANSPORTE;
 	private static final UnidadesTerran nombreNaveDeCiencia = UnidadesTerran.NAVE_CIENCIA;
-	private static final int vidaEspectro = 40;
-	private static final int vidaNaveDeTransporte = 40;
-	private static final int vidaNaveDeCiencia = 40;
 	private static final Recurso recursosNecesariosEspectro = new Recurso(50,0);
 	private static final Recurso recursosNecesariosNaveDeTransporte = new Recurso(50,0);
 	private static final Recurso recursosNecesariosNaveDeCiencia = new Recurso(50,0);
@@ -37,20 +34,14 @@ public class PuertoEstelar extends CreadorDeUnidades {
 	
 	public Unidad crearUnidad(Unidades nombreUnidad){
 		if(nombreUnidad==nombreEspectro)
-			return this.crearUnidadEspecifica(nombreEspectro, vidaEspectro, recursosNecesariosEspectro, poblacionNecesariaEspectro);
+			return this.crearUnidadEspecifica(nombreEspectro, recursosNecesariosEspectro, poblacionNecesariaEspectro);
 		
 		if(nombreUnidad==nombreNaveDeTransporte)
-			return this.crearUnidadEspecifica(nombreNaveDeTransporte, vidaNaveDeTransporte, recursosNecesariosNaveDeTransporte, poblacionNecesariaNaveDeTransporte);
+			return this.crearUnidadEspecifica(nombreNaveDeTransporte, recursosNecesariosNaveDeTransporte, poblacionNecesariaNaveDeTransporte);
 		
 		if(nombreUnidad==nombreNaveDeCiencia)
-			return this.crearUnidadEspecifica(nombreNaveDeCiencia, vidaNaveDeCiencia, recursosNecesariosNaveDeCiencia, poblacionNecesariaNaveDeCiencia);
+			return this.crearUnidadEspecifica(nombreNaveDeCiencia, recursosNecesariosNaveDeCiencia, poblacionNecesariaNaveDeCiencia);
 		return null;//lanzar excepcion?
 			
 	}
-	
-	@Override
-	public void pasarTurno() {
-		this.edificio.pasarTurno();
-	}	
-
 }

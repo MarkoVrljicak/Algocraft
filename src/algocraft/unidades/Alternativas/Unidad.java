@@ -2,15 +2,19 @@ package algocraft.unidades.Alternativas;
 
 import stats.Vida;
 
-public class Unidad {
+public abstract class Unidad {
 	
-	private Unidades nombre;
-	private Vida vida = new Vida();
+	protected Unidades nombre;
+	protected Vida vida = new Vida();
 
-	public Unidad(Unidades nombre, int vida) {
-		this.nombre = nombre;
-		this.vida.set(vida);
+	//Template method
+	protected void inicializar() {
+		this.setearVida();
+		this.setearNombre();
 	}
+
+	abstract protected void setearNombre();
+	abstract protected void setearVida();
 	
 	public Unidades getNombre(){
 		return nombre;

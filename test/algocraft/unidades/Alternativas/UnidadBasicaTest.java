@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import algocraft.unidades.Alternativas.terran.Marine;
+import algocraft.unidades.Alternativas.terran.UnidadesTerran;
+
 public class UnidadBasicaTest {
 	
 
@@ -12,14 +15,14 @@ public class UnidadBasicaTest {
 
 	@Test
 	public void testCreoUnidadVerificoVida(){
-		Unidad marine= new Unidad(nombreMarine,vidaMarine);
+		Unidad marine= new Marine();
 		
 		assertEquals(vidaMarine,marine.getVida());
 	}
 	
 	@Test
 	public void testCreoUnidadVerificoNombre(){
-		Unidad marine= new Unidad(nombreMarine,vidaMarine);
+		Unidad marine= new Marine();
 		
 		assertEquals(nombreMarine,marine.getNombre());
 	}

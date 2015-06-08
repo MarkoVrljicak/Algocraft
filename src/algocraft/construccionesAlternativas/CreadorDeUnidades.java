@@ -22,7 +22,7 @@ public abstract class CreadorDeUnidades extends DecoradorConstruccion {
 	abstract public Unidad crearUnidad(Unidades nombreUnidad);
 
 	
-	public Unidad crearUnidadEspecifica(Unidades nombre, int vida, Recurso recursosNecesarios, int poblacionNecesaria){
+	public Unidad crearUnidadEspecifica(Unidades unidad, Recurso recursosNecesarios, int poblacionNecesaria){
 		
 		if(puedoCrearUnidad(recursosNecesarios, poblacionNecesaria) ){
 			
@@ -33,7 +33,7 @@ public abstract class CreadorDeUnidades extends DecoradorConstruccion {
 				e.printStackTrace();
 			}
 			
-			return new Unidad(nombre,vida);
+			return unidad.crear();
 		}
 		else return null;
 	}
@@ -52,4 +52,9 @@ public abstract class CreadorDeUnidades extends DecoradorConstruccion {
 	public boolean tengoUnidad(Unidades nombreUnidad){
 		return unidadesCreables.contains(nombreUnidad);
 	}
+	
+	@Override
+	public void pasarTurno() {
+		this.edificio.pasarTurno();
+	}	
 }

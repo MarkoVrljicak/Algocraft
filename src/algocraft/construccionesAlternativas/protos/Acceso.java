@@ -6,13 +6,12 @@ import algocraft.construccionesAlternativas.EdificioConEscudo;
 import algocraft.construccionesAlternativas.EnumEdificiosProtos;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
-import algocraft.unidades.Alternativas.UnidadesProtos;
+import algocraft.unidades.Alternativas.protos.UnidadesProtos;
 
 public class Acceso extends CreadorDeUnidades {
 	
 	private static final EnumEdificiosProtos nombreAcceso = EnumEdificiosProtos.ACCESO;
 	private static final UnidadesProtos nombreZealot= UnidadesProtos.ZEALOT;
-	private static final int vidaZealot = 100;
 	private static final Recurso recursosNecesariosZealot = new Recurso(100,0);
 	private static final int poblacionNecesariaZealot = 2;
 
@@ -27,14 +26,8 @@ public class Acceso extends CreadorDeUnidades {
 	
 	public Unidad crearUnidad(Unidades nombreUnidad){
 		if(nombreUnidad==nombreZealot)
-			return this.crearUnidadEspecifica(nombreZealot, vidaZealot, recursosNecesariosZealot, poblacionNecesariaZealot);
+			return this.crearUnidadEspecifica(nombreZealot, recursosNecesariosZealot, poblacionNecesariaZealot);
 		return null;//lanzar excepcion?
 			
 	}
-	
-	@Override
-	public void pasarTurno() {
-		this.edificio.pasarTurno();
-	}	
-
 }
