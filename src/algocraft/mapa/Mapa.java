@@ -146,7 +146,7 @@ public class Mapa implements Iterable<Terreno>{
 		return this.getTerreno(coordenada).getContenidoCielo();
 	}
 	
-	private Terreno getTerreno(Coordenada coordenada){
+	public Terreno getTerreno(Coordenada coordenada){
 		return casilleros.get(coordenada);
 	}
 

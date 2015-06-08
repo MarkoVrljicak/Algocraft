@@ -1,6 +1,8 @@
 package algocraft.construcciones;
 
-import jugador.*;
+import jugador.Jugador;
+import jugador.JugadorNulo;
+import jugador.Usuario;
 import stats.Vida;
 import algocraft.creables.Creable;
 

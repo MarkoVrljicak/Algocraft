@@ -15,5 +15,5 @@ public class MarineTest {
 		
 		assertEquals(40, marine.getVida());
 	}
-
+	
 }
