@@ -23,4 +23,12 @@ public class UnidadBasicaTest {
 		
 		assertEquals(nombreMarine,marine.getNombre());
 	}
+	
+	@Test
+	public void testVidaDeUnidadEsDaniada(){
+		Unidad marine= new Unidad(nombreMarine,vidaMarine);
+		marine.recibirDanio(20);
+		
+		assertEquals(vidaMarine - 20,marine.getVida());
+	}
 }

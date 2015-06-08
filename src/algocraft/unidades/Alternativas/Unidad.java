@@ -19,5 +19,9 @@ public class Unidad {
 	public int getVida(){
 		return vida.actual();
 	}
+	
+	public void recibirDanio(int cantidadDanio){
+		vida.disminuir(cantidadDanio);
+	}
 
 }
