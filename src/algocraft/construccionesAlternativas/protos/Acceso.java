@@ -20,7 +20,7 @@ public class Acceso extends CreadorDeUnidades {
 
 
 	public Acceso() {
-		super(new EdificioConEscudo(nombreAcceso,500,12,500));
+		super(new EdificioConEscudo(nombreAcceso,500,8,500));
 	}
 	
 	@Override

@@ -2,9 +2,7 @@ package algocraft.construccionesAlternativas;
 
 import static org.junit.Assert.*;
 import jugador.Jugador;
-
 import org.junit.Test;
-
 import algocraft.construccionesAlternativas.terran.CentroDeMineral;
 import razas.Terran;
 

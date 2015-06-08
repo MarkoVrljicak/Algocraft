@@ -2,10 +2,8 @@ package algocraft.construccionesAlternativas;
 
 import static org.junit.Assert.assertEquals;
 import jugador.Jugador;
-
 import org.junit.Test;
-
-import razas.Terran;
+import razas.Protoss;
 import stats.Recurso;
 import algocraft.construccionesAlternativas.protos.Acceso;
 import algocraft.exception.RecursosNegativosException;
@@ -31,7 +29,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoPuedeCrearZealotConRecursosSuficientesyPoblacionSuficiente() {
 		Acceso acceso = new Acceso();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Protoss());
 		acceso.setDuenio(jugador);
 			
 		assertEquals(true,acceso.puedoCrearUnidad(recursosNecesariosZealot, poblacionNecesariaZealot));
@@ -40,7 +38,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoNoPuedeCrearZealotConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
 		Acceso acceso = new Acceso();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Protoss());
 		
 		acceso.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -51,7 +49,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoCreaZealot() {
 		Acceso acceso = new Acceso();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Protoss());
 		
 		acceso.setDuenio(jugador);
 		Unidad zealot = acceso.crearUnidad(nombreZealot);
@@ -69,7 +67,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoPuedeCrearDragonConRecursosSuficientesyPoblacionSuficiente() {
 		Acceso acceso = new Acceso();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Protoss());
 		
 		jugador.getRecursos().incrementarGas(50);
 		acceso.setDuenio(jugador);
@@ -80,7 +78,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoNoPuedeCrearDragonConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
 		Acceso acceso = new Acceso();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Protoss());
 		
 		acceso.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -91,7 +89,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoCreaDragon() {
 		Acceso acceso = new Acceso();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Protoss());
 		
 		jugador.getRecursos().incrementarGas(50);
 		acceso.setDuenio(jugador);

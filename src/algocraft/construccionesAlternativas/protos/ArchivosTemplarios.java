@@ -2,7 +2,7 @@ package algocraft.construccionesAlternativas.protos;
 
 import stats.Recurso;
 import algocraft.construccionesAlternativas.CreadorDeUnidades;
-import algocraft.construccionesAlternativas.EdificioBasico;
+import algocraft.construccionesAlternativas.EdificioConEscudo;
 import algocraft.construccionesAlternativas.EnumEdificiosProtos;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
@@ -16,7 +16,7 @@ public class ArchivosTemplarios extends CreadorDeUnidades {
 	private static final int poblacionNecesariaAltoTemplario = 2;
 
 	public ArchivosTemplarios() {
-		super(new EdificioBasico(nombreArchivosTemplarios,1000,12));
+		super(new EdificioConEscudo(nombreArchivosTemplarios,500,9,500));
 	}
 	
 	@Override
