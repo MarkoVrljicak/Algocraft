@@ -21,7 +21,9 @@ public class NaveCiencia extends Unidad{
 	}
 
 	@Override
-	protected boolean soyVolador() {
-		return true;
+	protected void setearPesoTransporte() {
+		this.pesoTransporte = 0;		
 	}
+
+
 }

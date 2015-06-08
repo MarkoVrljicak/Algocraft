@@ -21,7 +21,9 @@ public class Marine extends Unidad{
 	}
 
 	@Override
-	protected boolean soyVolador() {
-		return false;
+	protected void setearPesoTransporte() {
+		this.pesoTransporte = 1;
 	}
+
+
 }

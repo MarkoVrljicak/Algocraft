@@ -6,16 +6,17 @@ public abstract class Unidad {
 	
 	protected Unidades nombre;
 	protected Vida vida = new Vida();
-	protected boolean volador;
+	protected int pesoTransporte;
 
 	//Template method
 	protected void inicializar() {
 		this.setearVida();
 		this.setearNombre();
-		this.volador = this.soyVolador();
+		this.setearPesoTransporte();
 	}
 
-	abstract protected boolean soyVolador();
+	
+	abstract protected void setearPesoTransporte();
 	abstract protected void setearNombre();
 	abstract protected void setearVida();
 	
@@ -25,6 +26,10 @@ public abstract class Unidad {
 	
 	public int getVida(){
 		return vida.actual();
+	}
+	
+	public boolean soyVolador(){
+		return (pesoTransporte == 0);
 	}
 
 }

@@ -20,7 +20,9 @@ public class Scout extends Unidad {
 	}
 
 	@Override
-	protected boolean soyVolador() {
-		return true;
+	protected void setearPesoTransporte() {
+		this.pesoTransporte = 0;		
 	}
+
+	
 }

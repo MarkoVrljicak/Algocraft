@@ -20,7 +20,9 @@ public class Zealot extends Unidad{
 	}
 
 	@Override
-	protected boolean soyVolador() {
-		return false;
+	protected void setearPesoTransporte() {
+		this.pesoTransporte = 2;		
 	}
+
+
 }
