@@ -7,6 +7,6 @@ public enum EnumEdificiosProtos implements EnumEdificios{
 		ASIMILADOR,
 		NEXO_MINERAL,
 		PILON,
-		PUERTO_ESTELAR
-		
+		PUERTO_ESTELAR, 
+		BASE_PROTOSS
 }
