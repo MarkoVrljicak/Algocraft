@@ -1,7 +1,7 @@
 package algocraft.construccionesAlternativas;
 
-import algocraft.ataques.Ataques;
 import stats.Recurso;
+import algocraft.ataques.Ataques;
 
 public class RecolectorGas extends DecoradorConstruccion {
 	Construccion construccionDecorada;

@@ -35,6 +35,6 @@ public class Vida extends Stat {
 
 	@Override
 	public void regenerar() {
-		
+		//no hace nada
 	}
 }

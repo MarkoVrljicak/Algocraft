@@ -1,10 +1,10 @@
 package algocraft.construccionesAlternativas;
 
-import algocraft.ataques.Ataques;
 import jugador.JugadorNulo;
 import jugador.Usuario;
 import stats.Stat;
 import stats.Vida;
+import algocraft.ataques.Ataques;
 
 public class EdificioBasico implements Construccion{
 

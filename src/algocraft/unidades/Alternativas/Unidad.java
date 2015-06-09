@@ -62,8 +62,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	
 	@Override
 	public void pasarTurno() {
-		// TODO Auto-generated method stub
-		
+		this.stat.regenerar();
 	}
 
 
