@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import Interfaces.Construccion;
+import algocraft.construccionesAlternativas.Construccion;
 import algocraft.construccionesAlternativas.terran.Barraca;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.terran.Marine;

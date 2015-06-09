@@ -1,6 +1,5 @@
 package jugador;
 
-import Interfaces.Usuario;
 import algocraft.construccionesAlternativas.EnumEdificios;
 import stats.Recurso;
 

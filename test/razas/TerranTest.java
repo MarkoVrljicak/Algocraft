@@ -5,7 +5,7 @@ import jugador.Jugador;
 
 import org.junit.Test;
 
-import Interfaces.Construccion;
+import algocraft.construccionesAlternativas.Construccion;
 import algocraft.construccionesAlternativas.protos.EnumEdificiosProtos;
 import algocraft.construccionesAlternativas.terran.EnumEdificiosTerran;
 import algocraft.exception.RecursosNegativosException;

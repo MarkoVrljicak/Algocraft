@@ -1,7 +1,6 @@
 package algocraft.construccionesAlternativas;
 
-import Interfaces.Construccion;
-import Interfaces.Usuario;
+import jugador.Usuario;
 
 public abstract class DecoradorConstruccion implements Construccion {
 

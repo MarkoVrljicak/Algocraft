@@ -1,7 +1,7 @@
 package razasAlternativas;
 
 import stats.Recurso;
-import Interfaces.Construccion;
+import algocraft.construccionesAlternativas.Construccion;
 import algocraft.construccionesAlternativas.EnumEdificios;
 import algocraft.construccionesAlternativas.protos.EnumEdificiosProtos;
 

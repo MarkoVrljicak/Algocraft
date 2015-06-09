@@ -4,7 +4,6 @@ package algocraft.construccionesAlternativas;
 import java.util.ArrayList;
 
 import stats.Recurso;
-import Interfaces.Construccion;
 import algocraft.ataques.Ataques;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.unidades.Alternativas.Unidad;

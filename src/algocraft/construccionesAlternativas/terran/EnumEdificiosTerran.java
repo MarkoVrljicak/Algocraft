@@ -1,5 +1,5 @@
 package algocraft.construccionesAlternativas.terran;
-import Interfaces.Construccion;
+import algocraft.construccionesAlternativas.Construccion;
 import algocraft.construccionesAlternativas.EnumEdificios;;
 
 public enum EnumEdificiosTerran implements EnumEdificios{
