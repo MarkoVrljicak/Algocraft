@@ -48,9 +48,9 @@ public class Terran extends Raza{
 			return this.crearConstruccionEspecifico(nombreCentroDeMineral, recursosNecesariosCentroDeMineral);
 		if(nombreEdificio==nombreDepositoDeSuministros)
 			return this.crearConstruccionEspecifico(nombreDepositoDeSuministros, recursosNecesariosDepositoDeSuministros);
-		if(nombreEdificio==nombreFabrica)
+		if(nombreEdificio==nombreFabrica && this.duenio.tieneConstruccion(nombreBarraca))
 			return this.crearConstruccionEspecifico(nombreFabrica, recursosNecesariosFabrica);
-		if(nombreEdificio==nombrePuertoEstelar)
+		if(nombreEdificio==nombrePuertoEstelar && this.duenio.tieneConstruccion(nombreFabrica))
 			return this.crearConstruccionEspecifico(nombrePuertoEstelar, recursosNecesariosPuertoEstelar);
 		if(nombreEdificio==nombreRefineria)
 			return this.crearConstruccionEspecifico(nombreRefineria, recursosNecesariosRefineria);

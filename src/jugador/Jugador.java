@@ -75,8 +75,10 @@ public class Jugador implements Actualizable, Usuario {
 	
 	public void construir(EnumEdificios nombreConstruccion){
 		Construccion construccion = raza.crearConstruccion(nombreConstruccion);
-		construccion.setDuenio(this);
-		construcciones.add(construccion);
+		if(!(construccion == null) ){
+			construccion.setDuenio(this);
+			construcciones.add(construccion);
+		}
 	}
 
 	public int cantidadConstrucciones() {
@@ -94,7 +96,12 @@ public class Jugador implements Actualizable, Usuario {
 
 	
 	@Override
-	public boolean tieneConstruccion(String nombreConstruccion) {
-		return false;
+	public boolean tieneConstruccion(EnumEdificios nombreEdificio) {
+		Iterator<Construccion> itConstrucciones= construcciones.iterator();	
+		while(itConstrucciones.hasNext()){
+			if(itConstrucciones.next().getNombre() == nombreEdificio)
+				return true;
+		}
+		return false;//si no lo tiene
 	}
 }

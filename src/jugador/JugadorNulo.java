@@ -1,5 +1,6 @@
 package jugador;
 
+import algocraft.construccionesAlternativas.EnumEdificios;
 import stats.Recurso;
 
 //para no intervenir con los tests unitarios
@@ -11,7 +12,7 @@ public class JugadorNulo implements Usuario {
 	}
 
 	@Override
-	public boolean tieneConstruccion(String nombreConstruccion) {
+	public boolean tieneConstruccion(EnumEdificios nombreEdificio) {
 		return true;
 	}
 
