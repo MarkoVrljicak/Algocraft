@@ -86,6 +86,100 @@ public class MapaTest {
 	}
 	
 	@Test
+	public void testMapaMueveaADistanciaEnRangoDeMovimientos(){
+		Mapa mapa= new Mapa(5,5);
+		Unidad marine = new Marine();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(2,4);
+		
+		try {
+			mapa.almacenarEnSuelo(marine, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mapa.moverUnidad(marine, destino);
+		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(marine, mapa.getActualizableSuelo(destino));
+	}
+	
+	@Test
+	public void testMapaNoMueveUnidadSiDistanciaFueraDeRangoDeMovimientos() 
+			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
+		Mapa mapa= new Mapa(5,5);
+		Unidad marine = new Marine();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(5,5);
+		
+		try {
+			mapa.almacenarEnSuelo(marine, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mapa.moverUnidad(marine, destino);
+		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(false, mapa.moverUnidad(marine, destino));
+	}
+	
+	@Test
+	public void testMapaMueveUnidadReduceMovimientosRestantes(){
+		Mapa mapa= new Mapa(2,3);
+		Unidad marine = new Marine();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,3);
+		
+		try {
+			mapa.almacenarEnSuelo(marine, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mapa.moverUnidad(marine, destino);
+		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(1, marine.getMovimientos().actual());
+	}
+	
+	@Test
+	public void testMapaNoMueveUnidadSiNoHayMovimientosRestantesSuficientes() 
+			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
+		Mapa mapa= new Mapa(4,4);
+		Unidad marine = new Marine();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(3,3);
+		
+		try {
+			mapa.almacenarEnSuelo(marine, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mapa.moverUnidad(marine, destino);
+		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(false, mapa.moverUnidad(marine, origen));
+	}
+	
+	@Test
 	public void testCuandoMapaMueveUnidadPorTierraOrigenEstaVacio(){
 		Mapa mapa= new Mapa(2,2);
 		Unidad marine = new Marine();
@@ -109,7 +203,8 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testMapaNoMueveUnidadPorTierraSiDestinoEstaOcupadoPorOtraUnidad() throws DestinoInvalidoException, ActualizableNoEstaEnJuegoException{
+	public void testMapaNoMueveUnidadPorTierraSiDestinoEstaOcupadoPorOtraUnidad() 
+			throws DestinoInvalidoException, ActualizableNoEstaEnJuegoException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad marine1 = new Marine();
 		Unidad marine2 = new Marine();
@@ -129,7 +224,8 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testMapaNoMueveUnidadPorTierraSiDestinoNoEsTierra() throws DestinoInvalidoException, ActualizableNoEstaEnJuegoException{
+	public void testMapaNoMueveUnidadPorTierraSiDestinoNoEsTierra() 
+			throws DestinoInvalidoException, ActualizableNoEstaEnJuegoException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad marine = new Marine();
 		
@@ -149,7 +245,8 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testMapaMueveUnidadPorAire() throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
+	public void testMapaMueveUnidadPorAire() 
+			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad nave = new NaveCiencia();
 		
@@ -158,6 +255,28 @@ public class MapaTest {
 		
 		try {
 			mapa.almacenarEnCielo(nave, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		mapa.moverUnidad(nave, destino);
+		
+		assertEquals(nave, mapa.getActualizableCielo(destino));
+	}
+	
+	@Test
+	public void testMapaMueveUnidadPorAireInclusoSiDestinoOcupadoEnTierra() 
+			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad nave = new NaveCiencia();
+		Unidad marine= new Marine();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenarEnCielo(nave, origen);
+			mapa.almacenarEnSuelo(marine, destino);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -191,7 +310,8 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testMapaNoMueveUnidadPorCieloSiDestinoEstaOcupadoPorOtraUnidad() throws DestinoInvalidoException, ActualizableNoEstaEnJuegoException{
+	public void testMapaNoMueveUnidadPorCieloSiDestinoEstaOcupadoPorOtraUnidad() 
+			throws DestinoInvalidoException, ActualizableNoEstaEnJuegoException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad nave1 = new NaveCiencia();
 		Unidad nave2 = new NaveCiencia();
@@ -211,7 +331,8 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testMapaGestionaAtaqueEntreDosUnidades() throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
+	public void testMapaGestionaAtaqueEntreDosUnidades() 
+			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
 		Mapa mapa = new Mapa(5,5);
 		Unidad marine1 = new Marine();
 		Unidad marine2 = new Marine();
@@ -223,7 +344,8 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testMapaGestionaAtaqueEntreDosUnidadesYDisminuyeVidaDeUnidadAtacada() throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
+	public void testMapaGestionaAtaqueEntreDosUnidadesYDisminuyeVidaDeUnidadAtacada() 
+			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
 		Mapa mapa = new Mapa(5,5);
 		Unidad marine1 = new Marine();
 		Unidad marine2 = new Marine();

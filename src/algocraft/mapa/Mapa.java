@@ -68,7 +68,7 @@ public class Mapa implements Iterable<Terreno>{
 
 	public boolean moverUnidad(Movible movible, Coordenada coordenadaDestino) throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
 		Unidad unidad = (Unidad) movible;
-		
+		//busca unidad en mapa
 		Coordenada coordenadaOrigen = posiciones.get((Actualizable) movible);
 		if(coordenadaOrigen == null){
 			throw new ActualizableNoEstaEnJuegoException();
@@ -79,7 +79,7 @@ public class Mapa implements Iterable<Terreno>{
 		
 		if(!movible.puedoMoverme(terrenoDestino)){
 			return false;
-		} else if(coordenadaDestino.distanciaA(coordenadaOrigen) > 1){
+		} else if(coordenadaDestino.distanciaA(coordenadaOrigen) > unidad.getMovimientos().actual()){
 			return false;
 		} else if(!unidad.soyVolador()){
 			this.almacenarEnSuelo((Actualizable) movible, coordenadaDestino);
@@ -88,6 +88,8 @@ public class Mapa implements Iterable<Terreno>{
 			this.almacenarEnCielo((Actualizable) movible, coordenadaDestino);
 			terrenoOrigen.vaciarCielo();
 		}
+		
+		unidad.getMovimientos().disminuir(coordenadaOrigen.distanciaA(coordenadaDestino));
 		
 		return true;
 	}
