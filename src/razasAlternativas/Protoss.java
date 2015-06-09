@@ -16,9 +16,9 @@ public class Protoss extends Raza{
 	private static final EnumEdificiosProtos nombrePilon= EnumEdificiosProtos.PILON;
 	private static final Recurso recursosNecesariosAcceso = new Recurso(150,0);
 	private static final Recurso recursosNecesariosBaseProtos = new Recurso(0,0);
-	private static final Recurso recursosNecesariosArchivosTemplarios = new Recurso(50,0);
+	private static final Recurso recursosNecesariosArchivosTemplarios = new Recurso(150,200);
 	private static final Recurso recursosNecesariosAsimilador = new Recurso(100,0);
-	private static final Recurso recursosNecesariosNexoMineral = new Recurso(200,100);
+	private static final Recurso recursosNecesariosNexoMineral = new Recurso(50,0);
 	private static final Recurso recursosNecesariosPuertoEstelar = new Recurso(150,100);
 	private static final Recurso recursosNecesariosPilon = new Recurso(100,0);
 	

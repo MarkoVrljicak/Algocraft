@@ -23,6 +23,7 @@ public class Jugador implements Actualizable, Usuario {
 	public Jugador(String nombreJugador, Raza razaSeleccionada){
 		//falta color
 		raza = razaSeleccionada;
+		this.raza.setDuenio(this);
 		unidades = new ArrayList<Unidad>();
 		recursos = new Recurso(200,0);
 		construcciones = new ArrayList<Construccion>();
