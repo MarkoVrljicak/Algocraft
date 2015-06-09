@@ -22,6 +22,10 @@ public class Protoss extends Raza{
 	private static final Recurso recursosNecesariosPuertoEstelar = new Recurso(150,100);
 	private static final Recurso recursosNecesariosPilon = new Recurso(100,0);
 	
+	public Protoss(){
+		this.nombre = EnumRazas.PROTOSS;
+	}
+	
 	@Override
 	protected void determinarCreables() {
 		this.construccionesCreables.add(nombreAcceso);
@@ -40,13 +44,13 @@ public class Protoss extends Raza{
 			return this.crearConstruccionEspecifico(nombreAcceso, recursosNecesariosAcceso);
 		if(nombreEdificio==nombreBaseProtos)
 			return this.crearConstruccionEspecifico(nombreBaseProtos, recursosNecesariosBaseProtos);
-		if(nombreEdificio==nombreArchivosTemplarios)
+		if(nombreEdificio==nombreArchivosTemplarios && this.duenio.tieneConstruccion(nombrePuertoEstelar))
 			return this.crearConstruccionEspecifico(nombreArchivosTemplarios, recursosNecesariosArchivosTemplarios);
 		if(nombreEdificio==nombreAsimilador)
 			return this.crearConstruccionEspecifico(nombreAsimilador, recursosNecesariosAsimilador);
 		if(nombreEdificio==nombreNexoMineral)
 			return this.crearConstruccionEspecifico(nombreNexoMineral, recursosNecesariosNexoMineral);
-		if(nombreEdificio==nombrePuertoEstelar)
+		if(nombreEdificio==nombrePuertoEstelar && this.duenio.tieneConstruccion(nombreAcceso))
 			return this.crearConstruccionEspecifico(nombrePuertoEstelar, recursosNecesariosPuertoEstelar);
 		if(nombreEdificio==nombrePilon)
 			return this.crearConstruccionEspecifico(nombrePilon, recursosNecesariosPilon);
