@@ -14,8 +14,16 @@ public class AltoTemplarioTest {
 		assertEquals(40,altoTemplario.getVida() );
 	}
 	
+	@Test
 	public void testAltoTemplarioNoEsVolador(){
 		AltoTemplario templario = new AltoTemplario();
 		assertEquals(false, templario.soyVolador());
+	}
+	
+	@Test
+	public void testSuminstrosAltoTemplarioEs2(){
+		AltoTemplario altoTemplario= new AltoTemplario();
+		
+		assertEquals(2,altoTemplario.getSuministros() );
 	}
 }

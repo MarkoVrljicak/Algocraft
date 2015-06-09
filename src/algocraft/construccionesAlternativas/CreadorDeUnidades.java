@@ -40,7 +40,7 @@ public abstract class CreadorDeUnidades extends DecoradorConstruccion {
 	
 	public boolean puedoCrearUnidad(Recurso recursosNecesarios,int poblacionNecesaria) {
 		final Recurso recursosDisponibles = this.getDuenio().getRecursos();
-		final int poblacionDisponible = this.getDuenio().getPoblacion().disponible();
+		final int poblacionDisponible = this.getDuenio().getPoblacionDisponible();
 		
 		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= recursosNecesarios.obtenerMineral());
 		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= recursosNecesarios.obtenerGas());

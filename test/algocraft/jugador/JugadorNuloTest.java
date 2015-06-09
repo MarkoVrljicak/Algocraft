@@ -5,7 +5,6 @@ import jugador.JugadorNulo;
 
 import org.junit.Test;
 
-import stats.Poblacion;
 import stats.Recurso;
 
 public class JugadorNuloTest {
@@ -22,8 +21,7 @@ public class JugadorNuloTest {
 	@Test
 	public void testPedirPoblacionAJugadorNuloDevuelvePoblacionConEspacio5(){
 		JugadorNulo jugadorNulo= new JugadorNulo();
-		Poblacion poblacion=jugadorNulo.getPoblacion();
 		
-		assertEquals(5, poblacion.maxima() );
+		assertEquals(5, jugadorNulo.getPoblacionMaxima() );
 	}
 }

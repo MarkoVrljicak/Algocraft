@@ -11,7 +11,6 @@ import razasAlternativas.Protoss;
 import razasAlternativas.Terran;
 import jugador.Jugador;
 
-@SuppressWarnings("unused")
 public class JugadorTest {
 	private static final EnumRazas nombreTerran = EnumRazas.TERRAN;;
 	private static final EnumEdificiosTerran nombreBarraca = EnumEdificiosTerran.BARRACA;
@@ -23,7 +22,7 @@ public class JugadorTest {
 	public void jugadorTerranEmpiezaConPoblacionCero() {
 		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
 		
-		assertEquals(0, jugadorTerran.getPoblacion().actual());
+		assertEquals(0, jugadorTerran.getPoblacionActual());
 	}
 	
 	@Test
@@ -95,20 +94,20 @@ public class JugadorTest {
 	public void testJugadorEmpiezaConPoblacionMaximaCinco(){
 		Jugador jugador= new Jugador("Fernando De La Rua", new Terran());
 		
-		assertEquals(5,jugador.getPoblacion().maxima() );
+		assertEquals(5,jugador.getPoblacionMaxima() );
 	}
 	
-//	@Test
-//	public void testConstruyoPilonEsperoAQueSeConstruyaMiroPoblacion(){
-//		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss());
-//	
-//		jugador.construir(nombrePilon);
-//		//espero a que se construya
-//		for(int i=1; i<=6 ; i++){
-//			jugador.pasarTurno();
-//		}
-//		
-//		assertEquals(10, jugador.getPoblacion().maxima() );
-//		}
+	@Test
+	public void testConstruyoPilonEsperoAQueSeConstruyaMiroPoblacion(){
+		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss());
+	
+		jugador.construir(nombrePilon);
+		//espero a que se construya
+		for(int i=1; i<=6 ; i++){
+			jugador.pasarTurno();
+		}
+	
+		assertEquals(10, jugador.getPoblacionMaxima() );
+	}
 	
 }

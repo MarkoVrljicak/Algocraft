@@ -25,6 +25,11 @@ public class Scout extends Unidad {
 	protected void setearPesoTransporte() {
 		this.pesoTransporte = 0;		
 	}
+	
+	@Override
+	protected void setearSuministros() {
+		this.suministros = 3;
+	}
 
 	@Override
 	public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector,

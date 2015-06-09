@@ -1,6 +1,5 @@
 package jugador;
 
-import stats.Poblacion;
 import stats.Recurso;
 
 //para no intervenir con los tests unitarios
@@ -17,13 +16,17 @@ public class JugadorNulo implements Usuario {
 	}
 
 	@Override
-	public Poblacion getPoblacion() {
-		return new Poblacion();
+	public int getPoblacionActual() {
+		return 0;
 	}
 
 	@Override
 	public int getPoblacionDisponible() {
 		return 100;
+	}
+
+	public int getPoblacionMaxima() {
+		return 5;
 	}
 	
 }

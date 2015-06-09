@@ -1,6 +1,7 @@
 package algocraft.unidades.Alternativas.terran;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 
@@ -18,6 +19,13 @@ public class EspectroTest {
 	public void testEspectroEsVolador(){
 		Espectro espectro = new Espectro();
 		assertEquals(true, espectro.soyVolador());
+	}
+	
+	@Test
+	public void testSuminstrosEspectroEs2(){
+		Espectro espectro = new Espectro(); 
+		
+		assertEquals(2,espectro.getSuministros() );
 	}
 
 }

@@ -27,6 +27,11 @@ public class AltoTemplario extends Unidad {
 		this.pesoTransporte = 2;
 		
 	}
+	
+	@Override
+	protected void setearSuministros() {
+		this.suministros = 2;
+	}
 
 	@Override
 	public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector,
@@ -34,6 +39,8 @@ public class AltoTemplario extends Unidad {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
 
 
 

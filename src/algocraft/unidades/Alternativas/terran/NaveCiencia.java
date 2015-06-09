@@ -26,6 +26,11 @@ public class NaveCiencia extends Unidad{
 	protected void setearPesoTransporte() {
 		this.pesoTransporte = 0;		
 	}
+	
+	@Override
+	protected void setearSuministros() {
+		this.suministros = 2;
+	}
 
 	@Override
 	public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector,

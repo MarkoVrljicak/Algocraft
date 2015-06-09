@@ -16,8 +16,16 @@ public class DragonTest {
 		Assert.assertEquals(100,dragon.getVida());
 	}
 	
+	@Test
 	public void testDragonNoEsVolador(){
 		Dragon dragon = new Dragon();
 		assertEquals(false, dragon.soyVolador());
+	}
+	
+	@Test
+	public void testSuminstrosDragonEs2(){
+		Dragon dragon = new Dragon();
+		
+		assertEquals(2,dragon.getSuministros() );
 	}
 }

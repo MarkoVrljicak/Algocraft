@@ -12,15 +12,18 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	protected Vida vida = new Vida();
 	protected int pesoTransporte;
 	protected Ataque ataque;
+	protected int suministros;
 
 	//Template method
 	protected void inicializar() {
 		this.setearVida();
 		this.setearNombre();
 		this.setearPesoTransporte();
+		this.setearSuministros();
 	}
 
 	
+	abstract protected void setearSuministros();
 	abstract protected void setearPesoTransporte();
 	abstract protected void setearNombre();
 	abstract protected void setearVida();
@@ -59,5 +62,10 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 
 
 	abstract public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector, int distancia);
+
+
+	public int getSuministros() {
+		return this.suministros;
+	}
 
 }

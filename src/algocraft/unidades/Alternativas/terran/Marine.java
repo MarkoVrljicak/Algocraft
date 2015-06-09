@@ -29,6 +29,11 @@ public class Marine extends Unidad{
 	protected void setearPesoTransporte() {
 		this.pesoTransporte = 1;
 	}
+	
+	@Override
+	protected void setearSuministros() {
+		this.suministros = 1;
+	}
 
 	@Override
 	public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector, int distancia) {

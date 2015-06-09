@@ -18,8 +18,17 @@ public class ScoutTest {
 		Assert.assertEquals(150, scout.getVida());
 	}
 	
+	@Test
 	public void testScoutEsVolador(){
 		Scout scout = new Scout();
+		
 		assertEquals(true, scout.soyVolador());
+	}
+	
+	@Test
+	public void testSuminstrosScoutEs3(){
+		Scout scout = new Scout();
+		
+		assertEquals(3,scout.getSuministros() );
 	}
 }

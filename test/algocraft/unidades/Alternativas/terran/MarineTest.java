@@ -18,5 +18,12 @@ public class MarineTest {
 		Marine marine = new Marine();
 		assertEquals(false, marine.soyVolador());
 	}
+	
+	@Test
+	public void testSuminstrosMarineEs1(){
+		Marine marine = new Marine();
+		
+		assertEquals(1,marine.getSuministros() );
+	}
 
 }

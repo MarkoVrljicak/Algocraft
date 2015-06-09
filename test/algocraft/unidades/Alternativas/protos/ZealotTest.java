@@ -17,8 +17,16 @@ public class ZealotTest {
 		assertEquals(100, zealot.getVida());
 	}
 	
+	@Test
 	public void testZealotNoEsVolador(){
 		Zealot zealot = new Zealot();
 		assertEquals(false, zealot.soyVolador());
+	}
+	
+	@Test
+	public void testSuminstrosZealotEs2(){
+		Zealot zealot = new Zealot();
+		
+		assertEquals(2,zealot.getSuministros() );
 	}
 }

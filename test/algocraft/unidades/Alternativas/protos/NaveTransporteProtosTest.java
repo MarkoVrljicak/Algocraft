@@ -20,7 +20,14 @@ public class NaveTransporteProtosTest {
 	@Test
 	public void testNaveTransporteEsVolador(){
 		NaveDeTransporte nave = new NaveDeTransporte();
+		
 		assertEquals(true, nave.soyVolador());
 	}
-
+	
+	@Test
+	public void testSuminstrosNaveTransporteEs2(){
+		NaveDeTransporte nave = new NaveDeTransporte(); 
+		
+		assertEquals(2,nave.getSuministros() );
+	}
 }

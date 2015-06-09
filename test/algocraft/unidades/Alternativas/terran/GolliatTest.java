@@ -20,5 +20,12 @@ public class GolliatTest {
 		assertEquals(false, golliat.soyVolador());
 	}
 	
+	@Test
+	public void testSuminstrosGolliatEs2(){
+		Golliat golliat = new Golliat();
+		
+		assertEquals(2,golliat.getSuministros() );
+	}
+	
 	
 }

@@ -25,6 +25,11 @@ public class Golliat extends Unidad{
 	protected void setearPesoTransporte() {
 		this.pesoTransporte = 2;
 	}
+	
+	@Override
+	protected void setearSuministros() {
+		this.suministros = 2;
+	}
 
 	@Override
 	public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector,

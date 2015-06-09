@@ -5,23 +5,20 @@ import java.util.Iterator;
 
 import razasAlternativas.EnumRazas;
 import razasAlternativas.Raza;
-import stats.Poblacion;
 import stats.Recurso;
 import algocraft.construccionesAlternativas.Actualizable;
 import algocraft.construccionesAlternativas.Construccion;
 import algocraft.construccionesAlternativas.EnumEdificios;
+import algocraft.construccionesAlternativas.protos.EnumEdificiosProtos;
+import algocraft.construccionesAlternativas.terran.EnumEdificiosTerran;
 import algocraft.unidades.Alternativas.Unidad;
 
 public class Jugador implements Actualizable, Usuario {
 	
 	private Raza raza;
-	
-	@SuppressWarnings("unused")
 	private ArrayList<Unidad> unidades;
-	
 	private ArrayList<Construccion> construcciones;
 	private Recurso recursos;
-	private Poblacion poblacion = new Poblacion();
 	
 	public Jugador(String nombreJugador, Raza razaSeleccionada){
 		//falta color
@@ -31,9 +28,34 @@ public class Jugador implements Actualizable, Usuario {
 		construcciones = new ArrayList<Construccion>();
 	}
 	
-	public Poblacion getPoblacion(){
+	public int getPoblacionMaxima() {
+		//empieza en cinco
+		int poblacionMaxima = 5;
+		//recorro construcciones, pilon y deposito suman poblacion maxima
+		Iterator<Construccion> itConstrucciones = construcciones.iterator();
+		while(itConstrucciones.hasNext()){
+			 EnumEdificios nombre = itConstrucciones.next().getNombre();
+			 if(nombre == EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS)
+				 poblacionMaxima += 5;
+			 if(nombre == EnumEdificiosProtos.PILON)
+				 poblacionMaxima += 5;
+		}
+		return poblacionMaxima;
+	}	
+	
+	public int getPoblacionActual(){
+		int poblacion = 0;
+		Iterator<Unidad> itUnidades = unidades.iterator();
+		while(itUnidades.hasNext()){
+			poblacion += itUnidades.next().getSuministros();
+		}
 		return poblacion;
 	}
+	
+	@Override
+	public int getPoblacionDisponible() {
+		return this.getPoblacionMaxima()-this.getPoblacionActual();
+	}	
 	
 	public EnumRazas getRaza(){
 		return raza.getNombre();
@@ -71,10 +93,4 @@ public class Jugador implements Actualizable, Usuario {
 	public boolean tieneConstruccion(String nombreConstruccion) {
 		return false;
 	}
-
-	@Override
-	public int getPoblacionDisponible() {
-		return 0;//completar
-	}
-	
 }

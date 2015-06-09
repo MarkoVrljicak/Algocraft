@@ -1,12 +1,11 @@
 package jugador;
 
-import stats.Poblacion;
 import stats.Recurso;
 
 public interface Usuario {
 
 	public Recurso getRecursos();
-	public Poblacion getPoblacion();//sacar
+	public int getPoblacionActual();
 	public boolean tieneConstruccion(String nombreConstruccion);
 	public int getPoblacionDisponible();
 }

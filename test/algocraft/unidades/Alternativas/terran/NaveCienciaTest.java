@@ -22,5 +22,12 @@ public class NaveCienciaTest {
 		
 		assertEquals(true, naveCiencia.soyVolador());
 	}
+	
+	@Test
+	public void testSuminstrosNaveCienciaEs2(){
+		NaveCiencia naveCiencia = new NaveCiencia();
+		
+		assertEquals(2,naveCiencia.getSuministros() );
+	}
 
 }
