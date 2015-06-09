@@ -1,10 +1,7 @@
 package algocraft.unidades.Alternativas.terran;
 
-import algocraft.ataques.Ataque;
-import algocraft.ataques.AtaqueAereo;
-import algocraft.ataques.AtaqueTerrestre;
-import algocraft.mapa.terrenos.SectoresDeTerreno;
-import algocraft.mapa.terrenos.Terreno;
+import algocraft.ataques.Danio;
+import algocraft.unidades.Alternativas.Daniable;
 import algocraft.unidades.Alternativas.Unidad;
 
 
@@ -34,20 +31,21 @@ public class Espectro extends Unidad{
 		this.suministros = 2;
 	}
 
+
+
 	@Override
-	public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector, int distancia) {
-		Ataque ataque = null;
-		int danioTerrestre = 8;
+	public boolean atacar(Daniable DaniableAtacado, int distancia) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected void setearDanio() {
 		int danioAereo = 20;
+		int danioTerrestre = 8;
 		int rango = 5;
+		this.danio = new Danio(danioAereo, danioTerrestre, rango, rango);
 		
-		if (sector == SectoresDeTerreno.SUELO){
-			ataque = new AtaqueTerrestre(danioTerrestre, rango);
-		} else if (sector == SectoresDeTerreno.CIELO){
-			ataque = new AtaqueAereo(danioAereo, rango);
-		}
-		
-		return ataque.ejecutarAtaque(terrenoDestino, distancia);
 	}
 
 

@@ -1,8 +1,7 @@
 package algocraft.unidades.Alternativas.terran;
 
 
-import algocraft.mapa.terrenos.SectoresDeTerreno;
-import algocraft.mapa.terrenos.Terreno;
+import algocraft.ataques.Danio;
 import algocraft.unidades.Alternativas.Unidad;
 
 public class Golliat extends Unidad{
@@ -32,11 +31,17 @@ public class Golliat extends Unidad{
 	}
 
 	@Override
-	public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector,
-			int distancia) {
-		// TODO Auto-generated method stub
-		return false;
+	protected void setearDanio() {
+		int danioAereo = 10;
+		int danioTerrestre = 12;
+		int rangoAereo = 5;
+		int rangoTerrestre = 6;
+		
+		this.danio = new Danio(danioAereo, danioTerrestre, rangoAereo, rangoTerrestre);
+		
 	}
+
+
 
 }
 

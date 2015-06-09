@@ -7,7 +7,6 @@ import algocraft.construccionesAlternativas.Actualizable;
 import algocraft.exception.ActualizableNoEstaEnJuegoException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
-import algocraft.mapa.terrenos.SectoresDeTerreno;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
 import algocraft.unidades.Alternativas.Daniable;
@@ -123,19 +122,9 @@ public class Mapa implements Iterable<Terreno>{
 			throw new ActualizableNoEstaEnJuegoException();
 		}
 		
-		SectoresDeTerreno sector = null;
-		boolean enemigoVuela = ((Unidad) atacado).soyVolador();
-		if(enemigoVuela){
-			sector = SectoresDeTerreno.CIELO;
-		} else if(!enemigoVuela){
-			sector = SectoresDeTerreno.SUELO;
-		}
-		
 		int distanciaAtaque = posicionAtacante.distanciaA(posicionAtacado);
 		
-		Terreno terrenoDestino = this.getTerreno(posicionAtacado);
-		
-		return atacante.atacar(terrenoDestino, sector, distanciaAtaque);
+		return atacante.atacar(atacado, distanciaAtaque);
 	}
 
 

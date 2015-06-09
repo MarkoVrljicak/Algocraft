@@ -1,9 +1,10 @@
 package algocraft.unidades.Alternativas;
 
 import stats.Vida;
-import algocraft.ataques.Ataque;
+import algocraft.ataques.AtaqueNormal;
+import algocraft.ataques.Ataques;
+import algocraft.ataques.Danio;
 import algocraft.construccionesAlternativas.Actualizable;
-import algocraft.mapa.terrenos.SectoresDeTerreno;
 import algocraft.mapa.terrenos.Terreno;
 
 public abstract class Unidad implements Daniable, Movible, Actualizable{
@@ -11,8 +12,8 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	protected Unidades nombre;
 	protected Vida vida = new Vida();
 	protected int pesoTransporte;
-	protected Ataque ataque;
 	protected int suministros;
+	protected Danio danio;
 
 	//Template method
 	protected void inicializar() {
@@ -20,9 +21,10 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 		this.setearNombre();
 		this.setearPesoTransporte();
 		this.setearSuministros();
+		this.setearDanio();
 	}
 
-	
+	abstract protected void setearDanio();
 	abstract protected void setearSuministros();
 	abstract protected void setearPesoTransporte();
 	abstract protected void setearNombre();
@@ -61,11 +63,31 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	}
 
 
-	abstract public boolean atacar(Terreno terrenoDestino, SectoresDeTerreno sector, int distancia);
+	public boolean atacar(Daniable daniableAtacado, int distancia) {
+		Ataques tipoAtaque = daniableAtacado.comoAtacarme();
+		AtaqueNormal ataque = null;
+		
+		if (tipoAtaque == Ataques.ATAQUE_NORMAL_AEREO){
+			ataque = new AtaqueNormal(danio.getDanioAereo(), danio.getRangoAereo());
+		} else if (tipoAtaque == Ataques.ATAQUE_NORMAL_TERRESTRE){
+			ataque = new AtaqueNormal(danio.getDanioTerrestre(), danio.getRangoTerrestre());
+		}
+		
+		return ataque.ejecutarAtaque(daniableAtacado, distancia);
+	}
 
 
 	public int getSuministros() {
 		return this.suministros;
+	}
+	
+	public Ataques comoAtacarme(){
+		boolean soyVolador = this.soyVolador();
+		if(soyVolador){
+			return Ataques.ATAQUE_NORMAL_AEREO;
+		} else {
+			return Ataques.ATAQUE_NORMAL_TERRESTRE;
+		}
 	}
 
 }
