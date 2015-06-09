@@ -77,7 +77,7 @@ public class MapaTest {
 		}
 		
 		try {
-			mapa.moverPorTierra(marine, destino);
+			mapa.moverUnidad(marine, destino);
 		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -100,7 +100,7 @@ public class MapaTest {
 		}
 		
 		try {
-			mapa.moverPorTierra(marine, destino);
+			mapa.moverUnidad(marine, destino);
 		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -124,7 +124,7 @@ public class MapaTest {
 			e.printStackTrace();
 		}
 		
-		assertEquals(false, mapa.moverPorTierra(marine1, destino));
+		assertEquals(false, mapa.moverUnidad(marine1, destino));
 		
 	}
 	
@@ -144,7 +144,7 @@ public class MapaTest {
 			e.printStackTrace();
 		}
 		
-		assertEquals(false,	mapa.moverPorTierra(marine, destino));
+		assertEquals(false,	mapa.moverUnidad(marine, destino));
 		
 	}
 	
@@ -162,7 +162,7 @@ public class MapaTest {
 			e.printStackTrace();
 		}
 		
-		mapa.moverPorCielo(nave, destino);
+		mapa.moverUnidad(nave, destino);
 		
 		assertEquals(nave, mapa.getActualizableCielo(destino));
 	}
@@ -182,7 +182,7 @@ public class MapaTest {
 		}
 		
 		try {
-			mapa.moverPorCielo(nave, destino);
+			mapa.moverUnidad(nave, destino);
 		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -206,7 +206,7 @@ public class MapaTest {
 			e.printStackTrace();
 		}
 		
-		assertEquals(false, mapa.moverPorCielo(nave1, destino));
+		assertEquals(false, mapa.moverUnidad(nave1, destino));
 		
 	}
 	

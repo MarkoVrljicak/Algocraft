@@ -10,6 +10,7 @@ import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
 import algocraft.unidades.Alternativas.Movible;
+import algocraft.unidades.Alternativas.Unidad;
 
 public class Mapa implements Iterable<Terreno>{
 
@@ -76,60 +77,30 @@ public class Mapa implements Iterable<Terreno>{
 		return terreno.getNombre();
 	}
 
-	public boolean moverPorTierra(Movible movible, Coordenada coordenadaDestino) throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
-		Coordenada coordenadaOrigen = null;
-		Terreno terrenoOrigen = null;
-		Iterator<Terreno> iterMapa = (Iterator<Terreno>) this.iterator();
+	public boolean moverUnidad(Movible movible, Coordenada coordenadaDestino) throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
+		Unidad unidad = (Unidad) movible;
 		
-		if(!movible.puedoMoverme(this.getTerreno(coordenadaDestino))){
-			return false;
-		}
-
-		while(iterMapa.hasNext() && coordenadaOrigen == null){
-			terrenoOrigen = iterMapa.next();
-			Actualizable contenido = terrenoOrigen.getContenidoSuelo();
-			if(contenido == movible){
-				coordenadaOrigen = terrenoOrigen.getCoordenada();
-			}
-		}
-		
+		Coordenada coordenadaOrigen = posiciones.get((Actualizable) movible);
 		if(coordenadaOrigen == null){
 			throw new ActualizableNoEstaEnJuegoException();
+		}
+		
+		Terreno terrenoOrigen = this.getTerreno(coordenadaOrigen);
+		Terreno terrenoDestino = this.getTerreno(coordenadaDestino);
+		
+		if(!movible.puedoMoverme(terrenoDestino)){
+			return false;
 		} else if(coordenadaDestino.distanciaA(coordenadaOrigen) > 1){
 			return false;
-		} else {
+		} else if(!unidad.soyVolador()){
 			this.almacenarEnSuelo((Actualizable) movible, coordenadaDestino);
 			terrenoOrigen.vaciarSuelo();
-			return true;
-		}
-	}
-	
-	public boolean moverPorCielo(Movible movible, Coordenada coordenadaDestino) throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
-		Coordenada coordenadaOrigen = null;
-		Terreno terrenoOrigen = null;
-		Iterator<Terreno> iterMapa = (Iterator<Terreno>) this.iterator();
-		
-		if(!movible.puedoMoverme(this.getTerreno(coordenadaDestino))){
-			return false;
-		}
-
-		while(iterMapa.hasNext() && coordenadaOrigen == null){
-			terrenoOrigen = iterMapa.next();
-			Actualizable contenido = terrenoOrigen.getContenidoCielo();
-			if(contenido == movible){
-				coordenadaOrigen = terrenoOrigen.getCoordenada();
-			}
-		}
-		
-		if(coordenadaOrigen == null){
-			throw new ActualizableNoEstaEnJuegoException();
-		} else if(coordenadaDestino.distanciaA(coordenadaOrigen) > 1){
-			return false;
-		} else {
+		} else if(unidad.soyVolador()){
 			this.almacenarEnCielo((Actualizable) movible, coordenadaDestino);
 			terrenoOrigen.vaciarCielo();
-			return true;
 		}
+		
+		return true;
 	}
 	
 	public void almacenarEnSuelo(Actualizable actualizable, Coordenada coordenada) throws DestinoInvalidoException {
