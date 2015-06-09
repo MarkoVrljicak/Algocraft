@@ -1,5 +1,6 @@
 package algocraft.construccionesAlternativas;
 
+import Interfaces.Construccion;
 import algocraft.ataques.Ataques;
 import stats.Recurso;
 

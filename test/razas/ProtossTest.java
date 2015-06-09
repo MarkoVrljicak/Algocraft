@@ -2,8 +2,10 @@ package razas;
 
 import static org.junit.Assert.*;
 import jugador.Jugador;
+
 import org.junit.Test;
-import algocraft.construccionesAlternativas.Construccion;
+
+import Interfaces.Construccion;
 import algocraft.construccionesAlternativas.protos.EnumEdificiosProtos;
 import algocraft.exception.RecursosNegativosException;
 import razasAlternativas.Protoss;

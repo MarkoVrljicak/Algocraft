@@ -1,9 +1,9 @@
 package algocraft.mapa.terrenos;
 
-import algocraft.construccionesAlternativas.Actualizable;
+import Interfaces.Actualizable;
+import Interfaces.Dibujable;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
-import algocraft.mapa.Dibujable;
 
 public abstract class Terreno implements Dibujable {
 	

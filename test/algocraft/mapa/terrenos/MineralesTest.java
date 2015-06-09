@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.construccionesAlternativas.Actualizable;
+import Interfaces.Actualizable;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 import algocraft.unidades.Alternativas.terran.Marine;

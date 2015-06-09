@@ -1,8 +1,9 @@
 package algocraft.construccionesAlternativas;
 
+import Interfaces.Construccion;
+import Interfaces.Usuario;
 import algocraft.ataques.Ataques;
 import jugador.JugadorNulo;
-import jugador.Usuario;
 import stats.Stat;
 import stats.Vida;
 

@@ -1,5 +1,5 @@
 package algocraft.construccionesAlternativas.protos;
-import algocraft.construccionesAlternativas.Construccion;
+import Interfaces.Construccion;
 import algocraft.construccionesAlternativas.EnumEdificios;
 
 public enum EnumEdificiosProtos implements EnumEdificios{

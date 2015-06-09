@@ -1,7 +1,6 @@
-package algocraft.construccionesAlternativas;
+package Interfaces;
 
-import jugador.Usuario;
-import algocraft.unidades.Alternativas.Daniable;
+import algocraft.construccionesAlternativas.EnumEdificios;
 
 public interface Construccion extends Actualizable, Daniable{
 

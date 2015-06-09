@@ -2,10 +2,12 @@ package algocraft.unidades.Alternativas;
 
 import stats.Movimientos;
 import stats.Stat;
+import Interfaces.Actualizable;
+import Interfaces.Daniable;
+import Interfaces.Movible;
 import algocraft.ataques.AtaqueNormal;
 import algocraft.ataques.Ataques;
 import algocraft.ataques.Danio;
-import algocraft.construccionesAlternativas.Actualizable;
 import algocraft.mapa.terrenos.Terreno;
 
 public abstract class Unidad implements Daniable, Movible, Actualizable{

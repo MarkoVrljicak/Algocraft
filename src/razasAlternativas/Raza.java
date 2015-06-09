@@ -3,9 +3,9 @@ package razasAlternativas;
 import java.util.ArrayList;
 
 import jugador.JugadorNulo;
-import jugador.Usuario;
 import stats.Recurso;
-import algocraft.construccionesAlternativas.Construccion;
+import Interfaces.Construccion;
+import Interfaces.Usuario;
 import algocraft.construccionesAlternativas.EnumEdificios;
 import algocraft.exception.RecursosNegativosException;
 
