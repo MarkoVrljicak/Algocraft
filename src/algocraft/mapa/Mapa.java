@@ -7,8 +7,10 @@ import algocraft.construccionesAlternativas.Actualizable;
 import algocraft.exception.ActualizableNoEstaEnJuegoException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
+import algocraft.mapa.terrenos.SectoresDeTerreno;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
+import algocraft.unidades.Alternativas.Daniable;
 import algocraft.unidades.Alternativas.Movible;
 import algocraft.unidades.Alternativas.Unidad;
 
@@ -65,18 +67,6 @@ public class Mapa implements Iterable<Terreno>{
 		return (dentroDelAncho && dentroDelAlto);
 	}
 
-	public Terrenos obtenerNombreTerreno(Coordenada coordenada) {
-		Terreno terreno = null;
-		
-		try {
-			 terreno = obtenerCasillero(coordenada);
-		} catch (FueraDeLimitesException e) {
-			e.printStackTrace();
-		}
-		
-		return terreno.getNombre();
-	}
-
 	public boolean moverUnidad(Movible movible, Coordenada coordenadaDestino) throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
 		Unidad unidad = (Unidad) movible;
 		
@@ -125,18 +115,28 @@ public class Mapa implements Iterable<Terreno>{
 		return casilleros.get(coordenada);
 	}
 
-//	public boolean gestionarAtaque(Unidad atacante, Daniable atacado) {
-//		Coordenada posicionAtacante = null;
-//		Coordenada posicionAtacado = null;
-//		SectoresDeTerreno sectorAtacado = null;
-//		int distanciaAtaque = 0;
-//		
-//		Iterator<Terreno> iterMapa = (Iterator<Terreno>) this.iterator();
-//		
-//		
-//		//osea necesito coordenadas
-//		atacante.atacar(terrenoDestino, sectorAtacado, distanciaAtaque);
-//	}
+	public boolean gestionarAtaque(Unidad atacante, Daniable atacado) throws ActualizableNoEstaEnJuegoException {
+		Coordenada posicionAtacante = posiciones.get((Actualizable) atacante);
+		Coordenada posicionAtacado = posiciones.get((Actualizable) atacado);
+		
+		if(posicionAtacante == null || posicionAtacado == null){
+			throw new ActualizableNoEstaEnJuegoException();
+		}
+		
+		SectoresDeTerreno sector = null;
+		boolean enemigoVuela = ((Unidad) atacado).soyVolador();
+		if(enemigoVuela){
+			sector = SectoresDeTerreno.CIELO;
+		} else if(!enemigoVuela){
+			sector = SectoresDeTerreno.SUELO;
+		}
+		
+		int distanciaAtaque = posicionAtacante.distanciaA(posicionAtacado);
+		
+		Terreno terrenoDestino = this.getTerreno(posicionAtacado);
+		
+		return atacante.atacar(terrenoDestino, sector, distanciaAtaque);
+	}
 
 
 

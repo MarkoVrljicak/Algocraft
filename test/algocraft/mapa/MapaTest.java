@@ -210,24 +210,30 @@ public class MapaTest {
 		
 	}
 	
-//	@Test
-//	public void testMapaGestionaAtaqueEntreDosUnidades(){
-//		Mapa mapa = new Mapa(5,5);
-//		Unidad marine1 = new Marine();
-//		Unidad marine2 = new Marine();
-//		
-//		assertEquals(true, mapa.gestionarAtaque(marine1, marine2));
-//	}
-//	
-//	@Test
-//	public void testMapaGestionaAtaqueEntreDosUnidadesYDisminuyeVidaDeUnidadAtacada(){
-//		Mapa mapa = new Mapa(5,5);
-//		Unidad marine1 = new Marine();
-//		Unidad marine2 = new Marine();
-//		
-//		mapa.gestionarAtaque(marine1, marine2);
-//		
-//		assertEquals(34, marine2.getVida());
-//	}
+	@Test
+	public void testMapaGestionaAtaqueEntreDosUnidades() throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
+		Mapa mapa = new Mapa(5,5);
+		Unidad marine1 = new Marine();
+		Unidad marine2 = new Marine();
+		
+		mapa.almacenarEnSuelo(marine1, new Coordenada(1,1));
+		mapa.almacenarEnSuelo(marine2, new Coordenada(2,2));
+		
+		assertEquals(true, mapa.gestionarAtaque(marine1, marine2));
+	}
+	
+	@Test
+	public void testMapaGestionaAtaqueEntreDosUnidadesYDisminuyeVidaDeUnidadAtacada() throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
+		Mapa mapa = new Mapa(5,5);
+		Unidad marine1 = new Marine();
+		Unidad marine2 = new Marine();
+		
+		mapa.almacenarEnSuelo(marine1, new Coordenada(1,1));
+		mapa.almacenarEnSuelo(marine2, new Coordenada(2,2));
+		
+		mapa.gestionarAtaque(marine1, marine2);
+		
+		assertEquals(34, marine2.getVida());
+	}
 	
 }
