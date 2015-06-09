@@ -27,13 +27,43 @@ public class UnidadBasicaTest {
 		assertEquals(nombreMarine,marine.getNombre());
 	}
 	
-//	@Test
-//	public void testVidaDeUnidadEsDaniada(){
-//		int danioCausado = 20;
-//		
-//		Unidad marine= new Unidad(nombreMarine,vidaMarine);
-//		marine.recibirDanio(danioCausado);
-//		
-//		assertEquals(vidaMarine - danioCausado,marine.getVida());
-//	}
+	@Test
+	public void testVidaDeUnidadEsDaniada(){
+		int danioCausado = 20;
+		
+		Unidad marine= new Marine();
+		marine.recibirDanio(danioCausado);
+		
+		assertEquals(vidaMarine - danioCausado,marine.getVida());
+	}
+	
+	@Test
+	public void testUnidadMuereConSuficienteDanio(){
+		int danioCausado = 40;
+		
+		Unidad marine= new Marine();
+		marine.recibirDanio(danioCausado);
+		
+		assertEquals(true, marine.estoyMuerto());
+	}
+	
+	@Test
+	public void testUnidadMuereConDemasiadoDanio(){
+		int danioCausado = 41;
+		
+		Unidad marine= new Marine();
+		marine.recibirDanio(danioCausado);
+		
+		assertEquals(true, marine.estoyMuerto());
+	}
+	
+	@Test
+	public void testUnidadNoMuereCondanioDeMenos(){
+		int danioCausado = 39;
+		
+		Unidad marine= new Marine();
+		marine.recibirDanio(danioCausado);
+		
+		assertEquals(false, marine.estoyMuerto());
+	}
 }

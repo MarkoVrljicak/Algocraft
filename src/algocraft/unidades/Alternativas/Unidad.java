@@ -95,5 +95,9 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 			return Ataques.ATAQUE_NORMAL_TERRESTRE;
 		}
 	}
+	
+	public boolean estoyMuerto(){
+		return this.stat.estoyVacio();
+	}
 
 }

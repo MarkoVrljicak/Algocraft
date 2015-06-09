@@ -1,8 +1,10 @@
 package algocraft.unidades.Alternativas.protos;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+
+import algocraft.unidades.Alternativas.Unidad;
 
 
 public class AltoTemplarioTest {
@@ -32,5 +34,15 @@ public class AltoTemplarioTest {
 		AltoTemplario altoTemplario= new AltoTemplario();
 		
 		assertEquals(3,altoTemplario.getMovimientos().actual() );
+	}
+	
+	@Test
+	public void testAltoTemplarioMuereCon80DeDanio(){
+		int danioCausado = 80;
+		
+		Unidad templario = new AltoTemplario();
+		templario.recibirDanio(danioCausado);
+		
+		assertEquals(true, templario.estoyMuerto());
 	}
 }

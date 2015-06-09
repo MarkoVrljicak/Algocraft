@@ -28,6 +28,8 @@ public enum UnidadesProtos implements Unidades{
 		public Unidad crear(){
 			return new Zealot();
 		}
-	},
+	};
+	
+	abstract public Unidad crear();
 	
 }
