@@ -98,7 +98,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testMapaMueveaADistanciaEnRangoDeMovimientos(){
+	public void testMapaMueveADistanciaEnRangoDeMovimientos(){
 		Mapa mapa= new Mapa(5,5);
 		Unidad marine = new Marine();
 		
@@ -140,6 +140,27 @@ public class MapaTest {
 		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
+		
+		assertEquals(false, mapa.moverUnidad(marine, destino));
+	}
+	
+	@Test
+	public void testMapaNoMueveUnidadTerrestreATravesDeAire() 
+			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
+		Mapa mapa= new Mapa(3,3);
+		Unidad marine = new Marine();
+		Coordenada origen = new Coordenada(1,2);
+		Coordenada destino = new Coordenada(3,2);
+		//posiciono el marine
+		try {
+			mapa.almacenarEnSuelo(marine, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		//hago un "rio" de aire
+		mapa.setearTerrenoEnCoordenada(Terrenos.AIRE, 2, 1);
+		mapa.setearTerrenoEnCoordenada(Terrenos.AIRE, 2, 2);
+		mapa.setearTerrenoEnCoordenada(Terrenos.AIRE, 2, 3);
 		
 		assertEquals(false, mapa.moverUnidad(marine, destino));
 	}
@@ -187,7 +208,7 @@ public class MapaTest {
 		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
-		
+		//intento volver al origen
 		assertEquals(false, mapa.moverUnidad(marine, origen));
 	}
 	

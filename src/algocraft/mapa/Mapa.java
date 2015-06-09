@@ -66,7 +66,8 @@ public class Mapa implements Iterable<Terreno>{
 		return (dentroDelAncho && dentroDelAlto);
 	}
 
-	public boolean moverUnidad(Movible movible, Coordenada coordenadaDestino) throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
+	public boolean moverUnidad(Movible movible, Coordenada coordenadaDestino) 
+			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
 		Unidad unidad = (Unidad) movible;
 
 		Coordenada coordenadaOrigen = posiciones.get((Actualizable) movible);
@@ -77,11 +78,18 @@ public class Mapa implements Iterable<Terreno>{
 		Terreno terrenoOrigen = this.getTerreno(coordenadaOrigen);
 		Terreno terrenoDestino = this.getTerreno(coordenadaDestino);
 		
-		if(!movible.puedoMoverme(terrenoDestino)){
-			return false;
-		} else if(coordenadaDestino.distanciaA(coordenadaOrigen) > unidad.getMovimientos().actual()){
-			return false;
-		} else if(!unidad.soyVolador()){
+		if(!movible.puedoMoverme(terrenoDestino))
+			return false;//destino invalido
+		if(coordenadaDestino.distanciaA(coordenadaOrigen) > unidad.getMovimientos().actual())
+			return false;//fuera de rango
+		while(coordenadaDestino.distanciaA(coordenadaOrigen) > 1){
+			if(! this.darUnPaso(unidad,coordenadaOrigen,coordenadaDestino) )
+				return false;//no pudo llegar al destino, algo paso en el medio
+			else 
+				coordenadaOrigen = posiciones.get((Actualizable) movible);//actualizo origen
+		}
+		
+		if(!unidad.soyVolador()){
 			this.almacenarEnSuelo((Actualizable) movible, coordenadaDestino);
 			terrenoOrigen.vaciarSuelo();
 		} else if(unidad.soyVolador()){
@@ -94,6 +102,27 @@ public class Mapa implements Iterable<Terreno>{
 		return true;
 	}
 	
+	private boolean darUnPaso(Unidad unidad, Coordenada origen, Coordenada destino) 
+			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
+		Coordenada mejorOpcion = origen ;
+		//entre los vecinos busco la mejor opcion
+		for(int x = origen.getX()-1 ; x <= origen.getX()+1 ; x++){
+			for(int y = origen.getY()-1 ; y <= origen.getY()+1 ; y++){
+				Coordenada candidata= new Coordenada(x,y);
+				if(this.hayCasillero(candidata)){
+					Terreno candidato = this.getTerreno(candidata);
+					if( ( candidato.getCoordenada().distanciaA(destino) < mejorOpcion.distanciaA(destino) )
+							&& unidad.puedoMoverme(candidato) )
+						mejorOpcion = candidata;
+				}
+			}
+		}
+		if (mejorOpcion == origen)
+			return false;//no hay mejor opcion que el lugar actual
+		else
+			return this.moverUnidad(unidad, mejorOpcion);
+	}
+
 	public void almacenarEnSuelo(Actualizable actualizable, Coordenada coordenada) throws DestinoInvalidoException {
 		posiciones.put(actualizable, coordenada);
 		this.getTerreno(coordenada).almacenarEnSuelo(actualizable);
