@@ -14,8 +14,8 @@ public class Stat {
 		return this.maximoValor;
 	}
 
-	public void set(int MaximoValor) {
-		this.maximoValor = MaximoValor;
+	public void set(int maximoValor) {
+		this.maximoValor = maximoValor;
 		this.actualValor = this.maximoValor;
 	}
 	

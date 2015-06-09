@@ -26,6 +26,11 @@ public class GolliatTest {
 		
 		assertEquals(2,golliat.getSuministros() );
 	}
-	
-	
+
+	@Test
+	public void testMovimientosGolliatEmpiezaEn4(){
+		Golliat golliat = new Golliat();
+		
+		assertEquals(4,golliat.getMovimientos().actual() );
+	}
 }

@@ -27,5 +27,12 @@ public class EspectroTest {
 		
 		assertEquals(2,espectro.getSuministros() );
 	}
+	
+	@Test
+	public void testMovimientosEspectroEmpiezaEn3(){
+		Espectro espectro = new Espectro();
+		
+		assertEquals(3,espectro.getMovimientos().actual() );
+	}
 
 }

@@ -26,4 +26,11 @@ public class AltoTemplarioTest {
 		
 		assertEquals(2,altoTemplario.getSuministros() );
 	}
+	
+	@Test
+	public void testMovimientosAltoTemplarioEmpiezanEn3(){
+		AltoTemplario altoTemplario= new AltoTemplario();
+		
+		assertEquals(3,altoTemplario.getMovimientos().actual() );
+	}
 }

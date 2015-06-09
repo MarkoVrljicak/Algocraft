@@ -1,5 +1,6 @@
 package algocraft.unidades.Alternativas.terran;
 
+import stats.Movimientos;
 import algocraft.unidades.Alternativas.Unidad;
 
 
@@ -36,5 +37,10 @@ public class NaveTransporte extends Unidad{
 		
 	}
 
+	@Override
+	protected void setearMovimientos() {
+		this.movimientos = new Movimientos();
+		this.movimientos.set(4);
+	}
 
 }

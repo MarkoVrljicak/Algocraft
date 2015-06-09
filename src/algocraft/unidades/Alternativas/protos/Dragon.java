@@ -1,6 +1,7 @@
 package algocraft.unidades.Alternativas.protos;
 
 
+import stats.Movimientos;
 import algocraft.ataques.Danio;
 import algocraft.unidades.Alternativas.Unidad;
 
@@ -38,7 +39,11 @@ public class Dragon extends Unidad {
 		
 	}
 
-
+	@Override
+	protected void setearMovimientos() {
+		this.movimientos = new Movimientos();
+		this.movimientos.set(4);
+	}
 
 
 }

@@ -29,4 +29,11 @@ public class ZealotTest {
 		
 		assertEquals(2,zealot.getSuministros() );
 	}
+	
+	@Test
+	public void testMovimientosZealotEmpiezaEn3(){
+		Zealot zealot = new Zealot();
+		
+		assertEquals(3,zealot.getMovimientos().actual() );
+	}
 }

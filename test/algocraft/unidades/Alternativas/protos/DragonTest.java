@@ -28,4 +28,11 @@ public class DragonTest {
 		
 		assertEquals(2,dragon.getSuministros() );
 	}
+	
+	@Test
+	public void testMovimientosDragonEmpiezaEn4(){
+		Dragon dragon = new Dragon();
+		
+		assertEquals(4,dragon.getMovimientos().actual() );
+	}
 }

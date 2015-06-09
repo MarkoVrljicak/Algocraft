@@ -1,6 +1,7 @@
 package algocraft.unidades.Alternativas.terran;
 
 
+import stats.Movimientos;
 import algocraft.ataques.Danio;
 import algocraft.unidades.Alternativas.Unidad;
 
@@ -40,8 +41,12 @@ public class Golliat extends Unidad{
 		this.danio = new Danio(danioAereo, danioTerrestre, rangoAereo, rangoTerrestre);
 		
 	}
-
-
+	
+	@Override
+	protected void setearMovimientos() {
+		this.movimientos = new Movimientos();
+		this.movimientos.set(4);
+	}
 
 }
 

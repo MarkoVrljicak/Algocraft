@@ -29,5 +29,12 @@ public class NaveCienciaTest {
 		
 		assertEquals(2,naveCiencia.getSuministros() );
 	}
+	
+	@Test
+	public void testNaveCienciaEmpiezaEn5(){
+		NaveCiencia naveCiencia = new NaveCiencia();
+		
+		assertEquals(5,naveCiencia.getMovimientos().actual() );
+	}
 
 }

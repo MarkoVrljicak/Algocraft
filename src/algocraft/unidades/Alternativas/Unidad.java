@@ -1,5 +1,6 @@
 package algocraft.unidades.Alternativas;
 
+import stats.Movimientos;
 import stats.Vida;
 import algocraft.ataques.AtaqueNormal;
 import algocraft.ataques.Ataques;
@@ -14,6 +15,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	protected int pesoTransporte;
 	protected int suministros;
 	protected Danio danio;
+	protected Movimientos movimientos;
 
 	//Template method
 	protected void inicializar() {
@@ -22,6 +24,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 		this.setearPesoTransporte();
 		this.setearSuministros();
 		this.setearDanio();
+		this.setearMovimientos();
 	}
 
 	abstract protected void setearDanio();
@@ -29,6 +32,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	abstract protected void setearPesoTransporte();
 	abstract protected void setearNombre();
 	abstract protected void setearVida();
+	abstract protected void setearMovimientos();
 	
 	public Unidades getNombre(){
 		return nombre;
@@ -79,6 +83,10 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 
 	public int getSuministros() {
 		return this.suministros;
+	}
+	
+	public Movimientos getMovimientos(){
+		return this.movimientos;
 	}
 	
 	public Ataques comoAtacarme(){

@@ -29,5 +29,12 @@ public class NaveTransporteTest {
 		
 		assertEquals(2,nave.getSuministros() );
 	}
+	
+	@Test
+	public void testNaveTransporteMovimientosEmpiezaEn4(){
+		NaveTransporte nave = new NaveTransporte(); 
+		
+		assertEquals(4,nave.getMovimientos().actual() );
+	}
 
 }

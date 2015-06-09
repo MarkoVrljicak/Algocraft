@@ -31,4 +31,11 @@ public class ScoutTest {
 		
 		assertEquals(3,scout.getSuministros() );
 	}
+	
+	@Test
+	public void testMovimientosScoutEmpiezaEn3(){
+		Scout scout = new Scout();
+		
+		assertEquals(3,scout.getMovimientos().actual() );
+	}
 }

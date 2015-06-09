@@ -25,5 +25,12 @@ public class MarineTest {
 		
 		assertEquals(1,marine.getSuministros() );
 	}
+	
+	@Test
+	public void testMovimientosMarineEmpiezanEn3(){
+		Marine marine = new Marine();
+		
+		assertEquals(3,marine.getMovimientos().actual() );
+	}
 
 }

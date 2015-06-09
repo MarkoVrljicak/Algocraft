@@ -1,5 +1,6 @@
 package algocraft.unidades.Alternativas.protos;
 
+import stats.Movimientos;
 import algocraft.unidades.Alternativas.Unidad;
 
 
@@ -36,6 +37,12 @@ public class AltoTemplario extends Unidad {
 	protected void setearDanio() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	protected void setearMovimientos() {
+		this.movimientos = new Movimientos();
+		this.movimientos.set(3);
 	}
 
 	
