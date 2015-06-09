@@ -29,6 +29,7 @@ public class Jugador implements Actualizable, Usuario {
 	}
 	
 	public int getPoblacionMaxima() {
+		final int topePoblacional = 200 ;
 		//empieza en cinco
 		int poblacionMaxima = 5;
 		//recorro construcciones, pilon y deposito suman poblacion maxima
@@ -40,7 +41,9 @@ public class Jugador implements Actualizable, Usuario {
 			 if(nombre == EnumEdificiosProtos.PILON)
 				 poblacionMaxima += 5;
 		}
-		return poblacionMaxima;
+		if(poblacionMaxima<=topePoblacional)
+			return poblacionMaxima;
+		else return topePoblacional ;
 	}	
 	
 	public int getPoblacionActual(){

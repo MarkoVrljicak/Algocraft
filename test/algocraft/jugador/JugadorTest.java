@@ -68,7 +68,7 @@ public class JugadorTest {
 		assertEquals(1, jugadorTerran.cantidadConstrucciones());
 	}
 	
-	//prueba integracion con centro mineral
+	//prueba integracion recoleccion recursos con centro mineral
 	@Test
 	public void testActualizarConCentroDeMineralAumentaLosRecursosDelJugador(){
 		Jugador jugador= new Jugador("Fernando De La Rua", new Terran());
@@ -79,6 +79,7 @@ public class JugadorTest {
 		assertEquals(210,jugador.getRecursos().obtenerMineral());
 	}
 	
+	//prueba integracion recoleccion recursos con refineria
 	@Test
 	public void testActualizarConRefineriaAumentaLosRecursosDelJugador(){
 		Jugador jugador= new Jugador("Fernando De La Rua", new Terran());
@@ -97,6 +98,7 @@ public class JugadorTest {
 		assertEquals(5,jugador.getPoblacionMaxima() );
 	}
 	
+	//prueba integracion poblacion con pilon
 	@Test
 	public void testConstruyoPilonEsperoAQueSeConstruyaMiroPoblacion(){
 		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss());
@@ -108,6 +110,36 @@ public class JugadorTest {
 		}
 	
 		assertEquals(10, jugador.getPoblacionMaxima() );
+	}
+	
+	@Test
+	public void testLlevoPoblacionMaximaAlTopeYVerifico(){
+		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss());
+		//construyo pilones exactos para llegar a 200(39*5=195 +5 iniciales)
+		for(int i=1; i<=39 ; i++){
+		jugador.construir(nombrePilon);
+		}
+		//espero a que se construyan
+		for(int i=1; i<=6 ; i++){
+			jugador.pasarTurno();
+		}
+	
+		assertEquals(200, jugador.getPoblacionMaxima() );
+	}
+	
+	@Test
+	public void testSuperoTopePoblacionMaximaVerificoQueSigaEnTope(){
+		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss());
+		//construyo pilones exactos para llegar a 200(39*5=195 +5 iniciales)
+		for(int i=1; i<=50 ; i++){
+		jugador.construir(nombrePilon);
+		}
+		//espero a que se construyan
+		for(int i=1; i<=6 ; i++){
+			jugador.pasarTurno();
+		}
+	
+		assertEquals(200, jugador.getPoblacionMaxima() );
 	}
 	
 }
