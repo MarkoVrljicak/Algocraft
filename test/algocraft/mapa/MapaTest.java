@@ -11,6 +11,7 @@ import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
 import algocraft.unidades.Alternativas.Unidad;
+import algocraft.unidades.Alternativas.protos.Dragon;
 import algocraft.unidades.Alternativas.terran.Marine;
 import algocraft.unidades.Alternativas.terran.NaveCiencia;
 
@@ -24,6 +25,17 @@ public class MapaTest {
 		Terreno casillero= mapa.obtenerCasillero(coordenadaPedida);
 		
 		assertEquals(coordenadaPedida, casillero.getCoordenada());
+	}
+	
+	@Test
+	public void testObtenerActualizablesEnJuego() throws FueraDeLimitesException, DestinoInvalidoException{
+		Mapa mapa= new Mapa(100,100);
+		Coordenada coordenada = new Coordenada(50,50);
+		
+		Unidad marine = new Marine();
+		mapa.almacenarEnSuelo(marine, coordenada);
+		
+		assertEquals(1, mapa.actualizablesEnJuego());
 	}
 	
 	@Test(expected= FueraDeLimitesException.class)
@@ -356,6 +368,36 @@ public class MapaTest {
 		mapa.gestionarAtaque(marine1, marine2);
 		
 		assertEquals(34, marine2.getVida());
+	}
+	
+	@Test
+	public void testPeleaGestionadaPorMapaResultaEnMuerte() throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
+		Mapa mapa = new Mapa(5,5);
+		Unidad dragon = new Dragon();
+		Unidad marine = new Marine();
+		
+		mapa.almacenarEnSuelo(dragon, new Coordenada(1,1));
+		mapa.almacenarEnSuelo(marine, new Coordenada(2,2));
+		
+		mapa.gestionarAtaque(dragon, marine);
+		mapa.gestionarAtaque(dragon, marine);
+		
+		assertEquals(true, marine.estoyMuerto());
+	}
+	
+	@Test
+	public void testMapaEliminaUnidadMatada() throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
+		Mapa mapa = new Mapa(5,5);
+		Unidad dragon = new Dragon();
+		Unidad marine = new Marine();
+		
+		mapa.almacenarEnSuelo(dragon, new Coordenada(1,1));
+		mapa.almacenarEnSuelo(marine, new Coordenada(2,2));
+		
+		mapa.gestionarAtaque(dragon, marine);
+		mapa.gestionarAtaque(dragon, marine);
+		
+		assertEquals(1, mapa.actualizablesEnJuego());
 	}
 	
 }

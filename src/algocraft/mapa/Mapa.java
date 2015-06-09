@@ -68,7 +68,7 @@ public class Mapa implements Iterable<Terreno>{
 
 	public boolean moverUnidad(Movible movible, Coordenada coordenadaDestino) throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
 		Unidad unidad = (Unidad) movible;
-		//busca unidad en mapa
+
 		Coordenada coordenadaOrigen = posiciones.get((Actualizable) movible);
 		if(coordenadaOrigen == null){
 			throw new ActualizableNoEstaEnJuegoException();
@@ -126,7 +126,29 @@ public class Mapa implements Iterable<Terreno>{
 		
 		int distanciaAtaque = posicionAtacante.distanciaA(posicionAtacado);
 		
-		return atacante.atacar(atacado, distanciaAtaque);
+		boolean resultado = atacante.atacar(atacado, distanciaAtaque);
+		if (atacado.estoyMuerto()){
+			limpiarMuerto(atacado);
+		}
+		
+		return resultado;
+	}
+	
+	private void limpiarMuerto(Daniable daniableBuscado){
+		Terreno terreno = this.getTerreno(posiciones.get(daniableBuscado));
+		
+		if(terreno.getContenidoSuelo() == daniableBuscado){
+			terreno.vaciarSuelo();
+		} else if (terreno.getContenidoCielo() == daniableBuscado){
+			terreno.vaciarCielo();
+		}
+		
+		posiciones.remove(daniableBuscado);
+		
+	}
+	
+	public int actualizablesEnJuego(){
+		return posiciones.size();
 	}
 
 

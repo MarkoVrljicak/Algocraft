@@ -37,7 +37,7 @@ public class Dragon extends Unidad {
 
 	@Override
 	protected void setearDanio() {
-		int danio = 4;
+		int danio = 20;
 		int rango = 4;
 		this.danio = new Danio(danio, danio, rango, rango);
 		

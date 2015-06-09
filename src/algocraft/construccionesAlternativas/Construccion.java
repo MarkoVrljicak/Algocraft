@@ -1,8 +1,9 @@
 package algocraft.construccionesAlternativas;
 
 import jugador.Usuario;
+import algocraft.unidades.Alternativas.Daniable;
 
-public interface Construccion extends Actualizable{
+public interface Construccion extends Actualizable, Daniable{
 
 	public int getVida();
 	public EnumEdificios getNombre();

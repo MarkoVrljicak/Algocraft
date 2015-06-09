@@ -19,5 +19,15 @@ public class DaniableTest {
 		
 		assertEquals(vidaMarine - danioCausado,marine.getVida());
 	}
+	
+	@Test
+	public void testUnidadMatada(){
+		int danioCausado = 40;
+		
+		Unidad marine = new Marine();
+		marine.recibirDanio(danioCausado);
+		
+		assertEquals(true ,marine.estoyMuerto());
+	}
 
 }

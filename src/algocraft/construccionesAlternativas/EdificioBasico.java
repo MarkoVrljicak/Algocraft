@@ -1,5 +1,6 @@
 package algocraft.construccionesAlternativas;
 
+import algocraft.ataques.Ataques;
 import jugador.JugadorNulo;
 import jugador.Usuario;
 import stats.Stat;
@@ -54,6 +55,21 @@ public class EdificioBasico implements Construccion{
 			return false;
 		else
 			return true;
+	}
+
+	@Override
+	public void recibirDanio(int cantidadDanio) {
+		stat.disminuir(cantidadDanio);
+	}
+
+	@Override
+	public Ataques comoAtacarme() {
+		return Ataques.ATAQUE_NORMAL_TERRESTRE;
+	}
+
+	@Override
+	public boolean estoyMuerto() {
+		return stat.estoyVacio();
 	}
 	
 }

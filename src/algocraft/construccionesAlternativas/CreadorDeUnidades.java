@@ -4,6 +4,7 @@ package algocraft.construccionesAlternativas;
 import java.util.ArrayList;
 
 import stats.Recurso;
+import algocraft.ataques.Ataques;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
@@ -11,11 +12,13 @@ import algocraft.unidades.Alternativas.Unidades;
 public abstract class CreadorDeUnidades extends DecoradorConstruccion {
 	
 	protected ArrayList<Unidades> unidadesCreables;
+	Construccion construccionDecorada;
 	
 	public CreadorDeUnidades(Construccion construccionDecorada) {
 		super(construccionDecorada);
 		unidadesCreables= new ArrayList<Unidades>();
 		this.determinarCreables();
+		this.construccionDecorada = construccionDecorada;
 	}
 
 	abstract protected void determinarCreables();//obligo a que determine creables en construccion
@@ -57,4 +60,20 @@ public abstract class CreadorDeUnidades extends DecoradorConstruccion {
 	public void pasarTurno() {
 		this.edificio.pasarTurno();
 	}	
+	
+	@Override
+	public void recibirDanio(int cantidadDanio) {
+		construccionDecorada.recibirDanio(cantidadDanio);
+		
+	}
+
+	@Override
+	public Ataques comoAtacarme() {
+		return Ataques.ATAQUE_NORMAL_TERRESTRE;
+	}
+
+	@Override
+	public boolean estoyMuerto() {
+		return construccionDecorada.estoyMuerto();
+	}
 }
