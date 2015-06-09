@@ -8,10 +8,12 @@ import razasAlternativas.Raza;
 import stats.Recurso;
 import Interfaces.Actualizable;
 import algocraft.construccionesAlternativas.Construccion;
+import algocraft.construccionesAlternativas.CreadorDeUnidades;
 import algocraft.construccionesAlternativas.EnumEdificios;
 import algocraft.construccionesAlternativas.protos.EnumEdificiosProtos;
 import algocraft.construccionesAlternativas.terran.EnumEdificiosTerran;
 import algocraft.unidades.Alternativas.Unidad;
+import algocraft.unidades.Alternativas.Unidades;
 
 public class Jugador implements Actualizable, Usuario {
 	
@@ -30,8 +32,39 @@ public class Jugador implements Actualizable, Usuario {
 		construcciones = new ArrayList<Construccion>();
 	}
 	
+	
+	public EnumRazas getRaza(){
+		return raza.getNombre();
+	}
+	
+	
+	public ArrayList<EnumEdificios> getConstruccionesDisponibles(){
+		return raza.getListaDeConstrucciones();
+	}
+	
+	
+	public Recurso getRecursos(){
+		return recursos;
+	}
+	
+	
 	public Colores getColor(){
 		return color;
+	}
+	
+	
+	public int cantidadConstrucciones() {
+		return construcciones.size();
+	}
+	
+	
+	public int getPoblacionActual(){
+		int poblacion = 0;
+		Iterator<Unidad> itUnidades = unidades.iterator();
+		while(itUnidades.hasNext()){
+			poblacion += itUnidades.next().getSuministros();
+		}
+		return poblacion;
 	}
 	
 	public int getPoblacionMaxima() {
@@ -52,53 +85,11 @@ public class Jugador implements Actualizable, Usuario {
 		else return topePoblacional ;
 	}	
 	
-	public int getPoblacionActual(){
-		int poblacion = 0;
-		Iterator<Unidad> itUnidades = unidades.iterator();
-		while(itUnidades.hasNext()){
-			poblacion += itUnidades.next().getSuministros();
-		}
-		return poblacion;
-	}
-	
 	@Override
 	public int getPoblacionDisponible() {
 		return this.getPoblacionMaxima()-this.getPoblacionActual();
-	}	
-	
-	public EnumRazas getRaza(){
-		return raza.getNombre();
 	}
 	
-	public ArrayList<EnumEdificios> getConstruccionesDisponibles(){
-		return raza.getListaDeConstrucciones();
-	}
-	
-	public Recurso getRecursos(){
-		return recursos;
-	}
-	
-	public void construir(EnumEdificios nombreConstruccion){
-		Construccion construccion = raza.crearConstruccion(nombreConstruccion);
-		if(!(construccion == null) ){
-			construccion.setDuenio(this);
-			construcciones.add(construccion);
-		}
-	}
-
-	public int cantidadConstrucciones() {
-		return construcciones.size();
-	}
-
-	@Override
-	public void pasarTurno() {
-		Iterator<Construccion> itConstrucciones= construcciones.iterator();	
-		while(itConstrucciones.hasNext()){
-			Actualizable unaConstruccion= (Actualizable) itConstrucciones.next();
-			unaConstruccion.pasarTurno();
-		}
-	}
-
 	
 	@Override
 	public boolean tieneConstruccion(EnumEdificios nombreEdificio) {
@@ -108,5 +99,35 @@ public class Jugador implements Actualizable, Usuario {
 				return true;
 		}
 		return false;//si no lo tiene
+	}
+	
+	
+	public Construccion construir(EnumEdificios nombreConstruccion){
+		Construccion construccion = raza.crearConstruccion(nombreConstruccion);
+		if(!(construccion == null) ){
+			construccion.setDuenio(this);
+			construcciones.add(construccion);
+		}
+		return construccion;
+	}
+	
+	
+	public Unidad crearUnidad(Unidades nombreUnidad , CreadorDeUnidades edificioCreador) {
+		Unidad unidadCreada = null;
+		if(edificioCreador.puedoCrearUnidad(this.getRecursos(),this.getPoblacionDisponible())){
+			unidadCreada = edificioCreador.crearUnidad(nombreUnidad);
+			unidades.add( unidadCreada );
+		}
+		return unidadCreada;
+	}
+
+	
+	@Override
+	public void pasarTurno() {
+		Iterator<Construccion> itConstrucciones= construcciones.iterator();	
+		while(itConstrucciones.hasNext()){
+			Actualizable unaConstruccion= (Actualizable) itConstrucciones.next();
+			unaConstruccion.pasarTurno();
+		}
 	}
 }

@@ -26,7 +26,7 @@ public class Barraca extends CreadorDeUnidades {
 	public Unidad crearUnidad(Unidades nombreUnidad){
 		if(nombreUnidad==nombreMarine)
 			return this.crearUnidadEspecifica(nombreMarine, recursosNecesariosMarine, poblacionNecesariaMarine);
-		return null;//lanzar excepcion?
+		return null;
 			
 	}	
 }

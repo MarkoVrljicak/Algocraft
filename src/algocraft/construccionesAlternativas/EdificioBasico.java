@@ -10,7 +10,7 @@ public class EdificioBasico implements Construccion{
 
 	protected Stat stat;
 	protected int tiempoDeConstruccion;
-	protected EnumEdificios nombre;//enum
+	protected EnumEdificios nombre;
 	public Usuario duenio = new JugadorNulo();
 	
 	public EdificioBasico(EnumEdificios nombre, int vidaMaxima, int tiempoDeConstruccion){
@@ -19,7 +19,7 @@ public class EdificioBasico implements Construccion{
 		this.tiempoDeConstruccion=tiempoDeConstruccion;
 	}
 	
-	//relacionado con interfaz daniable en un futuro(la vida esta para usarla)
+
 	public int getVida() {
 		return stat.actual();
 	}

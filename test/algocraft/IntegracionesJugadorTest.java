@@ -6,8 +6,12 @@ import jugador.Jugador;
 
 import org.junit.Test;
 
+import algocraft.construccionesAlternativas.CreadorDeUnidades;
+import algocraft.construccionesAlternativas.EnumEdificios;
 import algocraft.construccionesAlternativas.protos.EnumEdificiosProtos;
 import algocraft.construccionesAlternativas.terran.EnumEdificiosTerran;
+import algocraft.unidades.Alternativas.Unidades;
+import algocraft.unidades.Alternativas.terran.UnidadesTerran;
 import razasAlternativas.Protoss;
 import razasAlternativas.Terran;
 
@@ -18,6 +22,8 @@ public class IntegracionesJugadorTest {
 	private static final EnumEdificiosTerran nombreRefineria = EnumEdificiosTerran.REFINERIA;
 	private static final EnumEdificiosProtos nombrePilon = EnumEdificiosProtos.PILON;
 	private static final EnumEdificiosProtos nombreNexo = EnumEdificiosProtos.NEXO_MINERAL;
+	private static final EnumEdificios nombreBarraca = EnumEdificiosTerran.BARRACA;
+	private static final Unidades nombreMarine = UnidadesTerran.MARINE;
 
 	
 		@Test
@@ -114,5 +120,49 @@ public class IntegracionesJugadorTest {
 			}
 		
 			assertEquals(200, jugador.getPoblacionMaxima() );
+		}
+		
+		@Test
+		public void testCrearUnidadesAumentaPoblacion() {
+			Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
+			//construyo edificios para acumular recursos 
+			jugador.construir(nombreCentroDeMineral);
+			jugador.construir(nombreCentroDeMineral);
+			jugador.construir(nombreRefineria);
+			//espero a que se construyan y recolecten recursos de mas
+			for(int i=1; i<= 200  ; i++){
+				jugador.pasarTurno();
+			}
+			//creo edificios para unidades
+			CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(nombreBarraca);
+			
+
+			jugador.crearUnidad(nombreMarine, barraca);
+
+			
+			assertEquals( 1 , jugador.getPoblacionActual() );
+		}
+		
+		@Test
+		public void testNoSePuedeCrearUnidadesCuandoPoblacionEstaAlMaximo() {
+			Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
+			//construyo edificios para acumular recursos 
+			jugador.construir(nombreCentroDeMineral);
+			jugador.construir(nombreCentroDeMineral);
+			jugador.construir(nombreRefineria);
+			//espero a que se construyan y recolecten recursos de mas
+			for(int i=1; i<= 200  ; i++){
+				jugador.pasarTurno();
+			}
+			//creo edificios para unidades
+			CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(nombreBarraca);
+			//creo 5 marines
+			for(int i = 1 ; i <= 5 ; i++ ){
+				jugador.crearUnidad(nombreMarine, barraca);
+			}
+			
+			assertEquals( 5 , jugador.getPoblacionMaxima() );//verifico poblacion maxima
+			assertEquals( 5 , jugador.getPoblacionActual() );//verifico poblacion maxima alcanzada
+			assertEquals( null , jugador.crearUnidad(nombreMarine, barraca) );//verifico que no pueda crear
 		}
 }
