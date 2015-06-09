@@ -1,7 +1,6 @@
 package algocraft.unidades.Alternativas.terran;
 
 import algocraft.ataques.Danio;
-import algocraft.unidades.Alternativas.Daniable;
 import algocraft.unidades.Alternativas.Unidad;
 
 
@@ -29,14 +28,6 @@ public class Espectro extends Unidad{
 	@Override
 	protected void setearSuministros() {
 		this.suministros = 2;
-	}
-
-
-
-	@Override
-	public boolean atacar(Daniable DaniableAtacado, int distancia) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override

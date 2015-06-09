@@ -13,7 +13,7 @@ public class AtaqueNormal{
 	}
 	
 	public boolean ejecutarAtaque(Daniable enemigo, int distancia){
-		if (distancia > rangoAtaque || distancia == 0) return false;
+		if (distancia > rangoAtaque || distancia == 0 || danioAtaque == 0) return false;
 		
 		if (enemigo == null){
 			return false; //analizar luego si deberia devolver excepcion.

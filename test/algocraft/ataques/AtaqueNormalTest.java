@@ -9,6 +9,8 @@ import algocraft.mapa.Coordenada;
 import algocraft.mapa.Mapa;
 import algocraft.mapa.terrenos.SectoresDeTerreno;
 import algocraft.unidades.Alternativas.Unidad;
+import algocraft.unidades.Alternativas.protos.Zealot;
+import algocraft.unidades.Alternativas.terran.Espectro;
 import algocraft.unidades.Alternativas.terran.Marine;
 import algocraft.unidades.Alternativas.terran.NaveCiencia;
 
@@ -72,30 +74,30 @@ public class AtaqueNormalTest {
 		
 		assertEquals(false, marineAtacante.atacar(marineAtacante, coordenadaAtacante.distanciaA(coordenadaAtacante)));
 	}
-//	
-//	@Test
-//	public void testAtaqueNormalAireATierraSeRealiza() throws DestinoInvalidoException {
-//		Mapa mapa = new Mapa(2,2);
-//		Unidad marineAtacado = new Marine();
-//		Unidad naveAtacante = new Espectro();
-//		mapa.almacenarEnSuelo(marineAtacado, coordenadaEnRango);
-//		mapa.almacenarEnCielo(naveAtacante, coordenadaAtacante);
-//		
-//		assertEquals(true, naveAtacante.atacar(marineAtacado, coordenadaAtacante.distanciaA(coordenadaEnRango)));
-//
-//	}
 	
-//	@Test
-//	public void testAtaqueNormalTierraAAireNoSeRealizaSiLaUnidadNoInfligePuntosTerrestres() throws DestinoInvalidoException {
-//		Mapa mapa = new Mapa(2,2);
-//		Unidad zealotAtacante = new Zealot();
-//		Unidad naveAtacada = new NaveCiencia();
-//		mapa.almacenarEnSuelo(zealotAtacante, coordenadaAtacante);
-//		mapa.almacenarEnCielo(naveAtacada, coordenadaEnRango);
-//		
-//		assertEquals(false, zealotAtacante.atacar(naveAtacada, coordenadaAtacante.distanciaA(coordenadaEnRango)));
-//
-//	}
+	@Test
+	public void testAtaqueNormalAireATierraSeRealiza() throws DestinoInvalidoException {
+		Mapa mapa = new Mapa(2,2);
+		Unidad marineAtacado = new Marine();
+		Unidad espectroAtacante = new Espectro();
+		mapa.almacenarEnSuelo(marineAtacado, coordenadaEnRango);
+		mapa.almacenarEnCielo(espectroAtacante, coordenadaAtacante);
+		
+		assertEquals(true, espectroAtacante.atacar(marineAtacado, coordenadaAtacante.distanciaA(coordenadaEnRango)));
+
+	}
+	
+	@Test
+	public void testAtaqueNormalTierraAAireNoSeRealizaSiLaUnidadNoInfligePuntosTerrestres() throws DestinoInvalidoException {
+		Mapa mapa = new Mapa(2,2);
+		Unidad zealotAtacante = new Zealot();
+		Unidad naveAtacada = new NaveCiencia();
+		mapa.almacenarEnSuelo(zealotAtacante, coordenadaAtacante);
+		mapa.almacenarEnCielo(naveAtacada, coordenadaEnRango);
+		
+		assertEquals(false, zealotAtacante.atacar(naveAtacada, coordenadaAtacante.distanciaA(coordenadaEnRango)));
+
+	}
 
 
 	@Test

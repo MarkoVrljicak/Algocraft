@@ -1,6 +1,7 @@
 package algocraft.unidades.Alternativas.protos;
 
 
+import algocraft.ataques.Danio;
 import algocraft.unidades.Alternativas.Unidad;
 
 public class Dragon extends Unidad {
@@ -31,7 +32,9 @@ public class Dragon extends Unidad {
 
 	@Override
 	protected void setearDanio() {
-		// TODO Auto-generated method stub
+		int danio = 4;
+		int rango = 4;
+		this.danio = new Danio(danio, danio, rango, rango);
 		
 	}
 
