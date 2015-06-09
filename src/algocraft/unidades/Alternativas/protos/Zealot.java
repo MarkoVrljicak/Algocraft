@@ -1,7 +1,10 @@
 package algocraft.unidades.Alternativas.protos;
 
 
+import stats.Escudo;
 import stats.Movimientos;
+import stats.Stat;
+import stats.Vida;
 import algocraft.ataques.Danio;
 import algocraft.unidades.Alternativas.Unidad;
 
@@ -18,7 +21,8 @@ public class Zealot extends Unidad{
 
 	@Override
 	protected void setearVida() {
-		this.vida.set(100);
+		Stat vida = new Vida(100);
+		this.stat = new Escudo(60, vida);
 	}
 
 	@Override
@@ -42,7 +46,11 @@ public class Zealot extends Unidad{
 
 	@Override
 	protected void setearMovimientos() {
-		this.movimientos = new Movimientos();
-		this.movimientos.set(3);
+		this.movimientos = new Movimientos(3);
 	}
+	
+	@Override
+	public int getVida() {
+		return ((Escudo)this.stat).actualProtegida();
+	}	
 }

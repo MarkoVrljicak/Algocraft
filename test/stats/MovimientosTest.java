@@ -9,8 +9,8 @@ public class MovimientosTest {
 	@Test
 	public void MovimientosSeRegeneraPorCompleto() {
 		final int movimientosMaximos = 7;
-		Movimientos movimientos = new Movimientos();
-		movimientos.set(movimientosMaximos);
+		Movimientos movimientos = new Movimientos(movimientosMaximos);
+
 		movimientos.disminuir(movimientosMaximos);
 		
 		movimientos.regenerar();
@@ -21,8 +21,7 @@ public class MovimientosTest {
 	@Test
 	public void MovimientosRegeneraDosVecesNoSuperaElMaximo() {
 		final int movimientosMaximos = 7;
-		Movimientos movimientos = new Movimientos();
-		movimientos.set(movimientosMaximos);
+		Movimientos movimientos = new Movimientos(movimientosMaximos);
 		movimientos.disminuir(movimientosMaximos);
 		
 		movimientos.regenerar();

@@ -1,6 +1,7 @@
 package algocraft.unidades.Alternativas.terran;
 
 import stats.Movimientos;
+import stats.Vida;
 import algocraft.unidades.Alternativas.Unidad;
 
 
@@ -18,7 +19,7 @@ public class NaveTransporte extends Unidad{
 
 	@Override
 	protected void setearVida() {
-		this.vida.set(150);
+		this.stat = new Vida(150);
 	}
 
 	@Override
@@ -39,8 +40,12 @@ public class NaveTransporte extends Unidad{
 
 	@Override
 	protected void setearMovimientos() {
-		this.movimientos = new Movimientos();
-		this.movimientos.set(4);
+		this.movimientos = new Movimientos(4);
+	}
+
+	@Override
+	public int getVida() {
+		return this.stat.actual();
 	}
 
 }

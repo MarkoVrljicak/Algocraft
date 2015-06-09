@@ -1,6 +1,7 @@
 package algocraft.unidades.Alternativas.terran;
 
 import stats.Movimientos;
+import stats.Vida;
 import algocraft.ataques.Danio;
 import algocraft.unidades.Alternativas.Unidad;
 
@@ -19,7 +20,7 @@ public class Marine extends Unidad{
 
 	@Override
 	protected void setearVida() {
-		this.vida.set(40);
+		this.stat = new Vida(40);
 	}
 
 	@Override
@@ -42,8 +43,12 @@ public class Marine extends Unidad{
 
 	@Override
 	protected void setearMovimientos() {
-		this.movimientos = new Movimientos();
-		this.movimientos.set(3);
+		this.movimientos = new Movimientos(3);
+	}
+
+	@Override
+	public int getVida() {
+		return this.stat.actual();
 	}
 
 }

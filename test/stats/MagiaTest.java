@@ -5,11 +5,12 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class MagiaTest {
+	int maximoGenerico = 100;
+	int cantidadRegenerada = 10;
 
 	@Test
 	public void MagiaSeRegeneraLaCantidadPasadaAlInicializarse() {
-		Magia magia = new Magia(10);
-		magia.set(100);
+		Magia magia = new Magia(maximoGenerico, cantidadRegenerada);
 		
 		magia.disminuir(20);
 		magia.regenerar();
@@ -19,8 +20,7 @@ public class MagiaTest {
 	
 	@Test
 	public void MagiaParaDeRegenerarseCuandoLlegaAMaximo() {
-		Magia magia = new Magia(10);
-		magia.set(100);
+		Magia magia = new Magia(maximoGenerico, cantidadRegenerada);
 		
 		magia.regenerar();
 		

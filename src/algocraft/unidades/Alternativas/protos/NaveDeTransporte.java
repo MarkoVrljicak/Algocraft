@@ -1,6 +1,9 @@
 package algocraft.unidades.Alternativas.protos;
 
+import stats.Escudo;
 import stats.Movimientos;
+import stats.Stat;
+import stats.Vida;
 import algocraft.unidades.Alternativas.Unidad;
 
 
@@ -17,7 +20,8 @@ public class NaveDeTransporte extends Unidad {
 
 	@Override
 	protected void setearVida() {
-		this.vida.set(150);
+		Stat vida = new Vida(80);
+		this.stat = new Escudo(60, vida);
 	}
 
 	@Override
@@ -38,7 +42,11 @@ public class NaveDeTransporte extends Unidad {
 
 	@Override
 	protected void setearMovimientos() {
-		this.movimientos = new Movimientos();
-		this.movimientos.set(4);
+		this.movimientos = new Movimientos(4);
+	}
+
+	@Override
+	public int getVida() {
+		return ((Escudo)this.stat).actualProtegida();
 	}	
 }

@@ -4,19 +4,21 @@ import stats.Escudo;
 
 public class EdificioConEscudo extends EdificioBasico{
 
-	private Escudo escudo = new Escudo();
-
 	public EdificioConEscudo(EnumEdificios nombre, int vidaMaxima, int tiempoDeConstruccion, int escudoMaximo) {
 		super(nombre, vidaMaxima, tiempoDeConstruccion);
-		this.escudo.set(escudoMaximo);
+		this.stat = new Escudo(escudoMaximo, this.stat);
 	}
 	
 	public int getEscudo() {
-		return escudo.actual();
+		return stat.actual();
+	}
+	
+	public int getVida(){
+		return ((Escudo)stat).actualProtegida();
 	}
 	
 	public void pasarTurno() {
 		this.disminuirTiempoDeConstruccion();
-		this.escudo.regenerar();
+		this.stat.regenerar();
 	}
 }

@@ -1,7 +1,7 @@
 package algocraft.unidades.Alternativas;
 
 import stats.Movimientos;
-import stats.Vida;
+import stats.Stat;
 import algocraft.ataques.AtaqueNormal;
 import algocraft.ataques.Ataques;
 import algocraft.ataques.Danio;
@@ -11,7 +11,7 @@ import algocraft.mapa.terrenos.Terreno;
 public abstract class Unidad implements Daniable, Movible, Actualizable{
 	
 	protected Unidades nombre;
-	protected Vida vida = new Vida();
+	protected Stat stat;
 	protected int pesoTransporte;
 	protected int suministros;
 	protected Danio danio;
@@ -38,9 +38,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 		return nombre;
 	}
 	
-	public int getVida(){
-		return vida.actual();
-	}
+	abstract public int getVida();
 	
 	public boolean soyVolador(){
 		return (pesoTransporte == 0);
@@ -48,7 +46,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	
 	//los que tengan escudo deberian pisarlo
 	public void recibirDanio(int cantidadDanio){
-		vida.disminuir(cantidadDanio);
+		stat.disminuir(cantidadDanio);
 	}
 	
 	@Override

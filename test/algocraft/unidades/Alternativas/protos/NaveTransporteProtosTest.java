@@ -14,7 +14,7 @@ public class NaveTransporteProtosTest {
 		
 		NaveDeTransporte nave = new NaveDeTransporte();
 		
-		Assert.assertEquals(150, nave.getVida());
+		Assert.assertEquals(80, nave.getVida());
 	}
 	
 	@Test

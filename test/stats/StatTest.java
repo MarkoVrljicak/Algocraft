@@ -8,28 +8,33 @@ public class StatTest {
 
 	@Test
 	public void StatActualEsInicialmenteIgualAStatMaximo() {
-		Stat escudo = new Escudo();
-		escudo.set(100);
+		Stat vida = new Vida(100);
 		
-		assertEquals(escudo.actual(), escudo.max());
+		assertEquals(vida.actual(), vida.max());
 	}
 	
 	@Test
 	public void StatDisminuyeCorrectamente() {
-		Stat magia = new Magia(10);
-		magia.set(100);
-		magia.disminuir(20);
+		Stat vida = new Vida(100);
+		vida.disminuir(20);
 		
-		assertEquals(80, magia.actual());
+		assertEquals(80, vida.actual());
 	}
 	
 	@Test
 	public void StatNoBajaDeCero() {
-		Stat magia = new Magia(10);
-		magia.set(100);
-		magia.disminuir(110);
+		Stat vida = new Vida(100);
+		vida.disminuir(110);
 		
-		assertEquals(0, magia.actual());
+		assertEquals(0, vida.actual());
+	}
+	
+	@Test
+	public void VidaEstaVaciaEn0() {
+		Stat vida = new Vida(100);
+		vida.disminuir(100);
+		
+		assertEquals(true, vida.estoyVacio());
 	}
 
 }

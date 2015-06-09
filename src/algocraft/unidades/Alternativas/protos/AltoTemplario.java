@@ -1,6 +1,9 @@
 package algocraft.unidades.Alternativas.protos;
 
+import stats.Escudo;
 import stats.Movimientos;
+import stats.Stat;
+import stats.Vida;
 import algocraft.unidades.Alternativas.Unidad;
 
 
@@ -18,7 +21,8 @@ public class AltoTemplario extends Unidad {
 
 	@Override
 	protected void setearVida() {
-		this.vida.set(40);
+		Stat vida = new Vida(40);
+		this.stat = new Escudo(40, vida);
 	}
 
 	@Override
@@ -41,9 +45,13 @@ public class AltoTemplario extends Unidad {
 
 	@Override
 	protected void setearMovimientos() {
-		this.movimientos = new Movimientos();
-		this.movimientos.set(3);
+		this.movimientos = new Movimientos(3);
 	}
+	
+	@Override
+	public int getVida() {
+		return ((Escudo)this.stat).actualProtegida();
+	}	
 
 	
 

@@ -2,6 +2,7 @@ package algocraft.unidades.Alternativas.terran;
 
 
 import stats.Movimientos;
+import stats.Vida;
 import algocraft.ataques.Danio;
 import algocraft.unidades.Alternativas.Unidad;
 
@@ -18,7 +19,7 @@ public class Golliat extends Unidad{
 
 	@Override
 	protected void setearVida() {
-		this.vida.set(125);
+		this.stat = new Vida(125);
 	}
 
 	@Override
@@ -44,8 +45,12 @@ public class Golliat extends Unidad{
 	
 	@Override
 	protected void setearMovimientos() {
-		this.movimientos = new Movimientos();
-		this.movimientos.set(4);
+		this.movimientos = new Movimientos(4);
+	}
+
+	@Override
+	public int getVida() {
+		return stat.actual();
 	}
 
 }
