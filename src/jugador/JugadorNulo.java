@@ -1,7 +1,7 @@
 package jugador;
 
-import algocraft.construccionesAlternativas.EnumEdificios;
 import stats.Recurso;
+import algocraft.construccionesAlternativas.EnumEdificios;
 
 //para no intervenir con los tests unitarios
 public class JugadorNulo implements Usuario {

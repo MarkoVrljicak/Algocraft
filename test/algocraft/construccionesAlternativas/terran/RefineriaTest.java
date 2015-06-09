@@ -1,6 +1,7 @@
 package algocraft.construccionesAlternativas.terran;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import jugador.Colores;
 import jugador.Jugador;
 
 import org.junit.Test;
@@ -13,7 +14,7 @@ public class RefineriaTest {
 	@Test
 	public void testRecolectoGas() {
 		Refineria refineria = new Refineria();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		refineria.recolectarGas(jugador.getRecursos());
 		
@@ -23,7 +24,7 @@ public class RefineriaTest {
 	@Test
 	public void testPasoDeTurnoYRecolectoGas() {
 		Refineria refineria = new Refineria();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		refineria.setDuenio(jugador);
 		refineria.pasarTurno();

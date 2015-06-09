@@ -1,6 +1,7 @@
 package algocraft;
 
 import static org.junit.Assert.assertEquals;
+import jugador.Colores;
 import jugador.Jugador;
 
 import org.junit.Test;
@@ -12,6 +13,7 @@ import razasAlternativas.Terran;
 
 public class IntegracionesJugadorTest {
 	
+	Colores colorAzul = Colores.AZUL;
 	private static final EnumEdificiosTerran nombreCentroDeMineral = EnumEdificiosTerran.CENTRO_DE_MINERALES;
 	private static final EnumEdificiosTerran nombreRefineria = EnumEdificiosTerran.REFINERIA;
 	private static final EnumEdificiosProtos nombrePilon = EnumEdificiosProtos.PILON;
@@ -20,7 +22,7 @@ public class IntegracionesJugadorTest {
 	
 		@Test
 		public void testActualizarConCentroDeMineralAumentaLosRecursosDelJugador(){
-			Jugador jugador= new Jugador("Fernando De La Rua", new Terran());
+			Jugador jugador= new Jugador("Fernando De La Rua", new Terran(), colorAzul);
 			jugador.construir(nombreCentroDeMineral);
 			
 			jugador.pasarTurno();
@@ -31,7 +33,7 @@ public class IntegracionesJugadorTest {
 		
 		@Test
 		public void testActualizarConRefineriaAumentaLosRecursosDelJugador(){
-			Jugador jugador= new Jugador("Fernando De La Rua", new Terran());
+			Jugador jugador= new Jugador("Fernando De La Rua", new Terran(), colorAzul);
 			jugador.construir(nombreRefineria);
 			
 			jugador.pasarTurno();
@@ -42,7 +44,7 @@ public class IntegracionesJugadorTest {
 		
 		@Test
 		public void testConstruirReduceRecursos(){
-			Jugador jugador= new Jugador("Fernando De La Rua", new Terran());
+			Jugador jugador= new Jugador("Fernando De La Rua", new Terran(), colorAzul);
 			
 			//cuesta 100 mineral
 			jugador.construir(nombreRefineria);
@@ -54,7 +56,7 @@ public class IntegracionesJugadorTest {
 		
 		@Test
 		public void testConstruyoPilonEsperoAQueSeConstruyaMiroPoblacion(){
-			Jugador jugador= new Jugador("Fernando De La Rua", new Protoss());
+			Jugador jugador= new Jugador("Fernando De La Rua", new Protoss(), colorAzul);
 		
 			jugador.construir(nombrePilon);
 			//espero a que se construya
@@ -68,7 +70,7 @@ public class IntegracionesJugadorTest {
 		
 		@Test
 		public void testLlevoPoblacionMaximaAlTopeYVerifico(){
-			Jugador jugador= new Jugador("Fernando De La Rua", new Protoss());
+			Jugador jugador= new Jugador("Fernando De La Rua", new Protoss(), colorAzul);
 			//construyo edificios para acumular recursos 
 			for(int i = 1 ; i <= 4 ; i++ ){
 				jugador.construir(nombreNexo);
@@ -92,7 +94,7 @@ public class IntegracionesJugadorTest {
 		
 		@Test
 		public void testSuperoTopePoblacionMaximaVerificoQueSigaEnTope(){
-			Jugador jugador= new Jugador("Fernando De La Rua", new Protoss());
+			Jugador jugador= new Jugador("Fernando De La Rua", new Protoss(), colorAzul);
 			//construyo edificios para acumular recursos 
 			for(int i = 1 ; i <= 4 ; i++ ){
 				jugador.construir(nombreNexo);

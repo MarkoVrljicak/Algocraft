@@ -1,6 +1,7 @@
 package algocraft.construccionesAlternativas.terran;
 
 import static org.junit.Assert.*;
+import jugador.Colores;
 import jugador.Jugador;
 
 import org.junit.Test;
@@ -13,7 +14,7 @@ public class CentroDeMineralTest {
 	@Test
 	public void testRecolectoMineral() {
 		CentroDeMineral centro = new CentroDeMineral();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Terran(),Colores.AZUL);
 		
 		centro.recolectarMineral(jugador.getRecursos());
 		
@@ -23,7 +24,7 @@ public class CentroDeMineralTest {
 	@Test
 	public void testPasoDeTurnoYRecolectoMineral() {
 		CentroDeMineral centro = new CentroDeMineral();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		centro.setDuenio(jugador);
 		centro.pasarTurno();

@@ -1,8 +1,11 @@
 package algocraft.construccionesAlternativas.protos;
 
 import static org.junit.Assert.assertEquals;
+import jugador.Colores;
 import jugador.Jugador;
+
 import org.junit.Test;
+
 import razasAlternativas.Protoss;
 import stats.Recurso;
 import algocraft.exception.RecursosNegativosException;
@@ -11,6 +14,7 @@ import algocraft.unidades.Alternativas.protos.UnidadesProtos;
 
 public class AccesoTest {
 	
+	Colores colorAzul = Colores.AZUL;
 	private static final UnidadesProtos nombreZealot= UnidadesProtos.ZEALOT;
 	private static final UnidadesProtos nombreDragon= UnidadesProtos.DRAGON;
 	private static final Recurso recursosNecesariosZealot = new Recurso(100,0);
@@ -28,7 +32,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoPuedeCrearZealotConRecursosSuficientesyPoblacionSuficiente() {
 		Acceso acceso = new Acceso();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		acceso.setDuenio(jugador);
 			
 		assertEquals(true,acceso.puedoCrearUnidad(recursosNecesariosZealot, poblacionNecesariaZealot));
@@ -37,7 +41,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoNoPuedeCrearZealotConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
 		Acceso acceso = new Acceso();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		acceso.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -48,7 +52,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoCreaZealot() {
 		Acceso acceso = new Acceso();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		acceso.setDuenio(jugador);
 		Unidad zealot = acceso.crearUnidad(nombreZealot);
@@ -66,7 +70,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoPuedeCrearDragonConRecursosSuficientesyPoblacionSuficiente() {
 		Acceso acceso = new Acceso();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		jugador.getRecursos().incrementarGas(50);
 		acceso.setDuenio(jugador);
@@ -77,7 +81,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoNoPuedeCrearDragonConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
 		Acceso acceso = new Acceso();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		acceso.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -88,7 +92,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoCreaDragon() {
 		Acceso acceso = new Acceso();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		jugador.getRecursos().incrementarGas(50);
 		acceso.setDuenio(jugador);

@@ -1,6 +1,7 @@
 package algocraft.construccionesAlternativas.protos;
 
 import static org.junit.Assert.assertEquals;
+import jugador.Colores;
 import jugador.Jugador;
 
 import org.junit.Test;
@@ -12,7 +13,8 @@ import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.protos.UnidadesProtos;
 
 public class ArchivosTemplariosTest {
-
+	
+	Colores colorAzul = Colores.AZUL;
 	private static final UnidadesProtos nombreAltoTemplario= UnidadesProtos.ALTO_TEMPLARIO;
 	private static final Recurso recursosNecesariosAltoTemplario = new Recurso(50,150);
 	private static final int poblacionNecesariaAltoTemplario = 2;
@@ -27,7 +29,7 @@ public class ArchivosTemplariosTest {
 	@Test
 	public void testArchivosTemplariosPuedeCrearAltoTemplarioConRecursosSuficientesyPoblacionSuficiente() {
 		ArchivosTemplarios archivosTemplarios = new ArchivosTemplarios();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		jugador.getRecursos().incrementarGas(150);
 		archivosTemplarios.setDuenio(jugador);
@@ -38,7 +40,7 @@ public class ArchivosTemplariosTest {
 	@Test
 	public void testArchivosTemplariosNoPuedeCrearAltoTemplarioConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
 		ArchivosTemplarios archivosTemplarios = new ArchivosTemplarios();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		archivosTemplarios.setDuenio(jugador);
 			
@@ -48,7 +50,7 @@ public class ArchivosTemplariosTest {
 	@Test
 	public void testArchivosTemplariosCreaAltoTemplario() {
 		ArchivosTemplarios archivosTemplarios = new ArchivosTemplarios();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		jugador.getRecursos().incrementarGas(150);
 		archivosTemplarios.setDuenio(jugador);

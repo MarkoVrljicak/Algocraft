@@ -1,6 +1,7 @@
 package algocraft.construccionesAlternativas.protos;
 
 import static org.junit.Assert.assertEquals;
+import jugador.Colores;
 import jugador.Jugador;
 
 import org.junit.Test;
@@ -12,7 +13,7 @@ import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.protos.UnidadesProtos;
 
 public class PuertoEstelarTest {
-	
+	Colores colorAzul = Colores.AZUL;
 	private static final UnidadesProtos nombreScout= UnidadesProtos.SCOUT;
 	private static final UnidadesProtos nombreNaveDeTransporte= UnidadesProtos.NAVE_DE_TRANSPORTE;
 	private static final Recurso recursosNecesariosScout = new Recurso(300,150);
@@ -30,7 +31,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarPuedeCrearScoutConRecursosSuficientesyPoblacionSuficiente() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		jugador.getRecursos().incrementarMineral(100);
 		jugador.getRecursos().incrementarGas(150);
@@ -42,7 +43,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarNoPuedeCrearScoutConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		puertoEstelar.setDuenio(jugador);
 			
@@ -52,8 +53,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaScout() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
-		
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);		
 		jugador.getRecursos().incrementarMineral(100);
 		jugador.getRecursos().incrementarGas(150);
 		puertoEstelar.setDuenio(jugador);
@@ -72,7 +72,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarPuedeCrearNaveDeTransporteConRecursosSuficientesyPoblacionSuficiente() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		puertoEstelar.setDuenio(jugador);
 					
@@ -82,7 +82,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarNoPuedeCrearNaveDeTransporteConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		puertoEstelar.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -93,8 +93,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaNaveDeTransporte() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Protoss());
-		
+		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);		
 		jugador.getRecursos().incrementarGas(50);
 		puertoEstelar.setDuenio(jugador);
 		Unidad nave = puertoEstelar.crearUnidad(nombreNaveDeTransporte);

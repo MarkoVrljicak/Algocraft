@@ -1,6 +1,7 @@
 package algocraft.construccionesAlternativas.terran;
 
 import static org.junit.Assert.assertEquals;
+import jugador.Colores;
 import jugador.Jugador;
 
 import org.junit.Test;
@@ -13,6 +14,7 @@ import algocraft.unidades.Alternativas.terran.UnidadesTerran;
 
 public class BarracaTest {
 
+	Colores color = Colores.AZUL;
 	private static final UnidadesTerran nombreMarine = UnidadesTerran.MARINE;
 	private static final Recurso recursosNecesariosMarine = new Recurso(50,0);
 	private static final int poblacionNecesariaMarine = 1;
@@ -27,7 +29,7 @@ public class BarracaTest {
 	@Test
 	public void testBarracaPuedeCrearMarineConRecursosSuficientesyPoblacionSuficiente() {
 		Barraca barraca = new Barraca();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Terran(), color);
 		barraca.setDuenio(jugador);
 			
 		assertEquals(true,barraca.puedoCrearUnidad(recursosNecesariosMarine, poblacionNecesariaMarine));
@@ -36,7 +38,7 @@ public class BarracaTest {
 	@Test
 	public void testBarracaNoPuedeCrearMarineConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
 		Barraca barraca = new Barraca();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Terran(), color);
 		
 		barraca.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -47,7 +49,7 @@ public class BarracaTest {
 	@Test
 	public void testBarracaCreaMarine() {
 		Barraca barraca = new Barraca();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Terran(), color);
 		
 		barraca.setDuenio(jugador);
 		Unidad marine = barraca.crearUnidad(nombreMarine);

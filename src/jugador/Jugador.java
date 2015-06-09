@@ -19,14 +19,19 @@ public class Jugador implements Actualizable, Usuario {
 	private ArrayList<Unidad> unidades;
 	private ArrayList<Construccion> construcciones;
 	private Recurso recursos;
+	private Colores color;
 	
-	public Jugador(String nombreJugador, Raza razaSeleccionada){
-		//falta color
-		raza = razaSeleccionada;
+	public Jugador(String nombreJugador, Raza raza, Colores color){
+		this.color = color;
+		this.raza = raza;
 		this.raza.setDuenio(this);
 		unidades = new ArrayList<Unidad>();
 		recursos = new Recurso(200,0);
 		construcciones = new ArrayList<Construccion>();
+	}
+	
+	public Colores getColor(){
+		return color;
 	}
 	
 	public int getPoblacionMaxima() {

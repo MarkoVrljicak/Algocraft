@@ -1,6 +1,7 @@
 package algocraft.construccionesAlternativas.terran;
 
 import static org.junit.Assert.assertEquals;
+import jugador.Colores;
 import jugador.Jugador;
 
 import org.junit.Test;
@@ -12,7 +13,7 @@ import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.terran.UnidadesTerran;
 
 public class FabricaTest {
-
+	Colores colorAzul = Colores.AZUL;
 	private static final UnidadesTerran nombreGolliat = UnidadesTerran.GOLLIAT;
 	private static final Recurso recursosNecesariosGolliat = new Recurso(100,50);
 	private static final int poblacionNecesariaGolliat = 2;
@@ -27,7 +28,7 @@ public class FabricaTest {
 	@Test
 	public void testFabricaPuedeCrearGolliatConRecursosSuficientesyPoblacionSuficiente() {
 		Fabrica fabrica = new Fabrica();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Terran(), colorAzul);
 		
 		jugador.getRecursos().incrementarGas(100);
 		fabrica.setDuenio(jugador);
@@ -38,7 +39,7 @@ public class FabricaTest {
 	@Test
 	public void testFabricaNoPuedeCrearGolliatConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
 		Fabrica fabrica = new Fabrica();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Terran(), colorAzul);
 		
 		fabrica.setDuenio(jugador);
 			
@@ -48,7 +49,7 @@ public class FabricaTest {
 	@Test
 	public void testFabricaCreaGolliat() {
 		Fabrica fabrica = new Fabrica();
-		Jugador jugador = new Jugador("Nombre", new Terran());
+		Jugador jugador = new Jugador("Nombre", new Terran(), colorAzul);
 		
 		jugador.getRecursos().incrementarGas(100);
 		fabrica.setDuenio(jugador);

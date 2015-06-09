@@ -7,57 +7,58 @@ import org.junit.Test;
 import algocraft.construccionesAlternativas.terran.EnumEdificiosTerran;
 import razasAlternativas.EnumRazas;
 import razasAlternativas.Terran;
+import jugador.Colores;
 import jugador.Jugador;
 
 public class JugadorTest {
+	Colores colorAzul = Colores.AZUL;
 	private static final EnumRazas nombreTerran = EnumRazas.TERRAN;;
 	private static final EnumEdificiosTerran nombreBarraca = EnumEdificiosTerran.BARRACA;
 	
 	@Test
 	public void jugadorTerranEmpiezaConPoblacionCero() {
-		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
+		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran(), colorAzul);
 		
 		assertEquals(0, jugadorTerran.getPoblacionActual());
 	}
 	
 	@Test
 	public void jugadorObtieneNombreDeRaza() {
-		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
-		
+		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran(), colorAzul);		
 		assertEquals(nombreTerran, jugadorTerran.getRaza());
 	}
 	
 	@Test
 	public void jugadorTerranTieneSeisConstruccionesDisponibles() {
-		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
+		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran(), colorAzul);
 		
 		assertEquals(7, jugadorTerran.getConstruccionesDisponibles().size());
 	}
 	
 	@Test
 	public void jugadorTerranEmpiezaCon200DeMineral() {
-		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
+		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran(), colorAzul);
 		
 		assertEquals(200, jugadorTerran.getRecursos().obtenerMineral());
 	}
 	
 	@Test
 	public void jugadorTerranEmpiezaCon0DeGas() {
-		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
+		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran(), colorAzul);
 		
 		assertEquals(0, jugadorTerran.getRecursos().obtenerGas());
 	}
 	
 	@Test
 	public void jugadorTerranEmpiezaSinEdificios() {
-		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
+		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran(), colorAzul);
 		
 		assertEquals(0, jugadorTerran.cantidadConstrucciones());
 	}
 	
 	@Test
 	public void jugadorTerranPuedeCrearBarracaConRecursosIniciales() {
-		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran());
+		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran(), colorAzul);
 		jugadorTerran.construir(nombreBarraca);
 		
 		assertEquals(1, jugadorTerran.cantidadConstrucciones());
@@ -65,9 +66,8 @@ public class JugadorTest {
 	
 	@Test
 	public void testJugadorEmpiezaConPoblacionMaximaCinco(){
-		Jugador jugador= new Jugador("Fernando De La Rua", new Terran());
-		
-		assertEquals(5,jugador.getPoblacionMaxima() );
+		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran(), colorAzul);		
+		assertEquals(5,jugadorTerran.getPoblacionMaxima() );
 	}
 	
 	

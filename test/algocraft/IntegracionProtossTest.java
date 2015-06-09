@@ -1,13 +1,17 @@
 package algocraft;
 
 import static org.junit.Assert.*;
+import jugador.Colores;
 import jugador.Jugador;
+
 import org.junit.Test;
+
 import razasAlternativas.Protoss;
 import algocraft.construccionesAlternativas.protos.EnumEdificiosProtos;
 
 public class IntegracionProtossTest {
 
+	private Colores colorAzul = Colores.AZUL;
 	private static final EnumEdificiosProtos nombreAcceso= EnumEdificiosProtos.ACCESO;
 	private static final EnumEdificiosProtos nombreArchivosTemplarios= EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS;
 	private static final EnumEdificiosProtos nombreAsimilador= EnumEdificiosProtos.ASIMILADOR;
@@ -17,7 +21,7 @@ public class IntegracionProtossTest {
 	
 	@Test
 	public void testCrearAcceso() {
-		Jugador jugador = new Jugador("pepe", new Protoss());
+		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
 		jugador.construir(nombreAcceso);
 		
 		assertTrue(jugador.tieneConstruccion(nombreAcceso));
@@ -25,7 +29,7 @@ public class IntegracionProtossTest {
 	
 	@Test
 	public void testCrearAsimilador() {
-		Jugador jugador = new Jugador("pepe", new Protoss());
+		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
 		jugador.construir( nombreAsimilador);
 		
 		assertTrue(jugador.tieneConstruccion(nombreAsimilador));
@@ -33,7 +37,7 @@ public class IntegracionProtossTest {
 	
 	@Test
 	public void testCrearNexoMineral() {
-		Jugador jugador = new Jugador("pepe", new Protoss());
+		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
 		jugador.construir( nombreNexoMineral);
 		
 		assertTrue(jugador.tieneConstruccion(nombreNexoMineral));
@@ -41,7 +45,7 @@ public class IntegracionProtossTest {
 	
 	@Test
 	public void testCrearPilon() {
-		Jugador jugador = new Jugador("pepe", new Protoss());
+		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
 		jugador.construir(nombrePilon);
 		
 		assertTrue(jugador.tieneConstruccion(nombrePilon));
@@ -49,7 +53,7 @@ public class IntegracionProtossTest {
 
 	@Test
 	public void testCrearPuertoEstelar() {
-		Jugador jugador = new Jugador("pepe", new Protoss());
+		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
 		//construyo edificios para acumular recursos 
 		jugador.construir(nombreNexoMineral);
 		jugador.construir(nombreNexoMineral);
@@ -69,7 +73,7 @@ public class IntegracionProtossTest {
 	
 	@Test
 	public void testNoSeCreaPuertoEstelarSinAcceso() {
-		Jugador jugador = new Jugador("pepe", new Protoss());
+		Jugador jugador = new Jugador("pepe", new Protoss(),colorAzul);
 		//construyo edificios para acumular recursos 
 		jugador.construir(nombreNexoMineral);
 		jugador.construir(nombreNexoMineral);
@@ -87,7 +91,7 @@ public class IntegracionProtossTest {
 	
 	@Test
 	public void testCrearArchivosTemplarios() {
-		Jugador jugador = new Jugador("pepe", new Protoss());
+		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
 		//construyo edificios para acumular recursos 
 		jugador.construir(nombreNexoMineral);
 		jugador.construir(nombreNexoMineral);
@@ -108,7 +112,7 @@ public class IntegracionProtossTest {
 	
 	@Test
 	public void testNoSeCreaArchivosTemplariosSinPuertoEstelar() {
-		Jugador jugador = new Jugador("pepe", new Protoss());
+		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
 		//construyo edificios para acumular recursos 
 		jugador.construir(nombreNexoMineral);
 		jugador.construir(nombreNexoMineral);

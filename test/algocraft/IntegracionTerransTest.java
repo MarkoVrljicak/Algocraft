@@ -1,6 +1,7 @@
 package algocraft;
 
 import static org.junit.Assert.*;
+import jugador.Colores;
 import jugador.Jugador;
 
 import org.junit.Test;
@@ -10,6 +11,7 @@ import razasAlternativas.Terran;
 
 public class IntegracionTerransTest {
 	
+	Colores colorAzul = Colores.AZUL;
 	private static final EnumEdificiosTerran nombreBarraca= EnumEdificiosTerran.BARRACA;
 	private static final EnumEdificiosTerran nombreCentroDeMineral= EnumEdificiosTerran.CENTRO_DE_MINERALES;
 	private static final EnumEdificiosTerran nombreDepositoDeSuministros= EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS;
@@ -19,7 +21,7 @@ public class IntegracionTerransTest {
 
 	@Test
 	public void testCrearCentroDeMineral() {
-		Jugador jugador = new Jugador("pepe", new Terran());
+		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
 		jugador.construir( nombreCentroDeMineral);
 		
 		assertTrue(jugador.tieneConstruccion(nombreCentroDeMineral));
@@ -27,7 +29,7 @@ public class IntegracionTerransTest {
 	
 	@Test
 	public void testCrearBarraca() {
-		Jugador jugador = new Jugador("pepe", new Terran());
+		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
 		jugador.construir( nombreBarraca);
 		
 		assertTrue(jugador.tieneConstruccion(nombreBarraca));
@@ -35,7 +37,7 @@ public class IntegracionTerransTest {
 	
 	@Test
 	public void testCrearDepositoDeSuministros() {
-		Jugador jugador = new Jugador("pepe", new Terran());
+		Jugador jugador = new Jugador("pepe", new Terran(),colorAzul);
 		jugador.construir( nombreDepositoDeSuministros);
 		
 		assertTrue(jugador.tieneConstruccion(nombreDepositoDeSuministros));
@@ -43,7 +45,7 @@ public class IntegracionTerransTest {
 	
 	@Test
 	public void testCrearRefineria() {
-		Jugador jugador = new Jugador("pepe", new Terran());
+		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
 		jugador.construir(nombreRefineria);
 		
 		assertTrue(jugador.tieneConstruccion(nombreRefineria));
@@ -51,7 +53,7 @@ public class IntegracionTerransTest {
 	
 	@Test
 	public void testCrearFabrica() {
-		Jugador jugador = new Jugador("pepe", new Terran());
+		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
 		//construyo edificios para acumular recursos 
 		jugador.construir(nombreCentroDeMineral);
 		jugador.construir(nombreCentroDeMineral);
@@ -71,7 +73,7 @@ public class IntegracionTerransTest {
 	
 	@Test
 	public void testNoSeCreaFabricaSinBarraca() {
-		Jugador jugador = new Jugador("pepe", new Terran());
+		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
 		//construyo edificios para acumular recursos 
 		jugador.construir(nombreCentroDeMineral);
 		jugador.construir(nombreCentroDeMineral);
@@ -90,7 +92,7 @@ public class IntegracionTerransTest {
 	
 	@Test
 	public void testCrearPuertoEstelar() {
-		Jugador jugador = new Jugador("pepe", new Terran());
+		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
 		//construyo edificios para acumular recursos 
 		jugador.construir(nombreCentroDeMineral);
 		jugador.construir(nombreCentroDeMineral);
@@ -111,7 +113,7 @@ public class IntegracionTerransTest {
 	
 	@Test
 	public void testNoSeCreaPuertoEstelarSinFabrica() {
-		Jugador jugador = new Jugador("pepe", new Terran());
+		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
 		//construyo edificios para acumular recursos 
 		jugador.construir(nombreCentroDeMineral);
 		jugador.construir(nombreCentroDeMineral);
