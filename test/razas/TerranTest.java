@@ -1,12 +1,16 @@
 package razas;
 
 import static org.junit.Assert.*;
+import jugador.Jugador;
 
 import org.junit.Test;
 
+import algocraft.construccionesAlternativas.Construccion;
 import algocraft.construccionesAlternativas.protos.EnumEdificiosProtos;
 import algocraft.construccionesAlternativas.terran.EnumEdificiosTerran;
+import algocraft.exception.RecursosNegativosException;
 import razasAlternativas.Terran;
+import stats.Recurso;
 
 public class TerranTest {
 	private static final EnumEdificiosTerran nombreBarraca= EnumEdificiosTerran.BARRACA;
@@ -16,7 +20,13 @@ public class TerranTest {
 	private static final EnumEdificiosTerran nombrePuertoEstelar= EnumEdificiosTerran.PUERTO_ESTELAR;
 	private static final EnumEdificiosTerran nombreRefineria= EnumEdificiosTerran.REFINERIA;
 	private static final EnumEdificiosProtos nombreNexoMineral= EnumEdificiosProtos.NEXO_MINERAL;
-
+	private static final Recurso recursosNecesariosBarraca = new Recurso(150,0);
+	private static final Recurso recursosNecesariosCentroDeMineral = new Recurso(50,0);
+	private static final Recurso recursosNecesariosDepositoDeSuministros = new Recurso(100,0);
+	private static final Recurso recursosNecesariosFabrica = new Recurso(200,100);
+	private static final Recurso recursosNecesariosPuertoEstelar = new Recurso(150,100);
+	private static final Recurso recursosNecesariosRefineria = new Recurso(100,0);
+	
 	@Test
 	public void testTerranInicializaConCentroMineral() {
 		Terran terran = new Terran();
@@ -65,71 +75,175 @@ public class TerranTest {
 		
 		assertEquals(false, terran.tengoConstruccion(nombreNexoMineral));
 	}
-	/*se van a tests de integracion
-	@Test
-	public void testTerranCreaCentroDeMineral() {
-		Terran terran = new Terran();
-		Construccion centroDeMineral = terran.construirConstruccion(muchosRecursos, nombreCentroDeMineral);
-		
-		assertEquals(nombreCentroDeMineral, centroDeMineral.getNombre());
-	}
 	
+	@Test
+	public void testTerranPuedeCrearBarracaConRecursosSuficientesyPoblacionSuficiente() {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		terran.setDuenio(jugador);
+			
+		assertEquals(true,terran.puedoCrearConstruccion(recursosNecesariosBarraca));
+	}	
+		
+	@Test
+	public void testTerranNoPuedeCrearBarracaConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		
+		terran.setDuenio(jugador);
+		jugador.getRecursos().consumirMineral(200);
+			
+		assertEquals(false,terran.puedoCrearConstruccion(recursosNecesariosBarraca));
+	}
+		
 	@Test
 	public void testTerranCreaBarraca() {
 		Terran terran = new Terran();
-		Construccion barraca = terran.construirConstruccion(muchosRecursos, nombreBarraca);
+		Jugador jugador = new Jugador("Nombre", terran);
+		
+		terran.setDuenio(jugador);
+		Construccion barraca = terran.crearConstruccion(nombreBarraca);
 		
 		assertEquals(nombreBarraca, barraca.getNombre());
 	}
 	
 	@Test
-	public void testTerranCreaDepositoDeSuministros() {
+	public void testTerranPuedeCrearCentroDeMineralConRecursosSuficientesyPoblacionSuficiente() {
 		Terran terran = new Terran();
-		Construccion deposito = terran.construirConstruccion(muchosRecursos, nombreDepositoDeSuministros);
+		Jugador jugador = new Jugador("Nombre", terran);
+		terran.setDuenio(jugador);
+			
+		assertEquals(true,terran.puedoCrearConstruccion(recursosNecesariosCentroDeMineral));
+	}	
 		
-		assertEquals(nombreDepositoDeSuministros, deposito.getNombre());
+	@Test
+	public void testTerranNoPuedeCrearCentroDeMineralConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		
+		terran.setDuenio(jugador);
+		jugador.getRecursos().consumirMineral(200);
+			
+		assertEquals(false,terran.puedoCrearConstruccion(recursosNecesariosCentroDeMineral));
+	}
+		
+	@Test
+	public void testTerranCreaCentroDeMineral() {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		
+		terran.setDuenio(jugador);
+		Construccion centroDeMineral = terran.crearConstruccion(nombreCentroDeMineral);
+		
+		assertEquals(nombreCentroDeMineral, centroDeMineral.getNombre());
 	}
 	
 	@Test
-	public void testTerranCreaDepositoRefineria() {
+	public void testTerranPuedeCrearDepositoDeSuministrosConRecursosSuficientesyPoblacionSuficiente() {
 		Terran terran = new Terran();
-		Construccion refineria = terran.construirConstruccion(muchosRecursos, nombreRefineria);
+		Jugador jugador = new Jugador("Nombre", terran);
+		terran.setDuenio(jugador);
+			
+		assertEquals(true,terran.puedoCrearConstruccion(recursosNecesariosDepositoDeSuministros));
+	}	
+		
+	@Test
+	public void testTerranNoPuedeCrearDepositoDeSuministrosConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		
+		terran.setDuenio(jugador);
+		jugador.getRecursos().consumirMineral(200);
+			
+		assertEquals(false,terran.puedoCrearConstruccion(recursosNecesariosDepositoDeSuministros));
+	}
+		
+	@Test
+	public void testTerranCreaDepositoDeSuministros() {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		
+		terran.setDuenio(jugador);
+		Construccion depositoDeSuministros = terran.crearConstruccion(nombreDepositoDeSuministros);
+		
+		assertEquals(nombreDepositoDeSuministros, depositoDeSuministros.getNombre());
+	}
+	
+	@Test
+	public void testTerranPuedeCrearFabricaConRecursosSuficientesyPoblacionSuficiente() {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		
+		jugador.getRecursos().incrementarGas(100);
+		terran.setDuenio(jugador);
+			
+		assertEquals(true,terran.puedoCrearConstruccion(recursosNecesariosFabrica));
+	}	
+		
+	@Test
+	public void testTerranNoPuedeCrearFabricaConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		
+		terran.setDuenio(jugador);
+		jugador.getRecursos().consumirMineral(200);
+			
+		assertEquals(false,terran.puedoCrearConstruccion(recursosNecesariosFabrica));
+	}
+		
+	@Test
+	public void testTerranPuedeCrearPuertoEstelarConRecursosSuficientesyPoblacionSuficiente() {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		
+		jugador.getRecursos().incrementarGas(100);
+		terran.setDuenio(jugador);
+			
+		assertEquals(true,terran.puedoCrearConstruccion(recursosNecesariosPuertoEstelar));
+	}	
+		
+	@Test
+	public void testTerranNoPuedeCrearPuertoEstelarConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		
+		terran.setDuenio(jugador);
+		jugador.getRecursos().consumirMineral(200);
+			
+		assertEquals(false,terran.puedoCrearConstruccion(recursosNecesariosPuertoEstelar));
+	}
+		
+	@Test
+	public void testTerranPuedeCrearRefineriaConRecursosSuficientesyPoblacionSuficiente() {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		terran.setDuenio(jugador);
+			
+		assertEquals(true,terran.puedoCrearConstruccion(recursosNecesariosRefineria));
+	}	
+		
+	@Test
+	public void testTerranNoPuedeCrearRefineriaConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		
+		terran.setDuenio(jugador);
+		jugador.getRecursos().consumirMineral(200);
+			
+		assertEquals(false,terran.puedoCrearConstruccion(recursosNecesariosRefineria));
+	}
+		
+	@Test
+	public void testTerranCreaRefineria() {
+		Terran terran = new Terran();
+		Jugador jugador = new Jugador("Nombre", terran);
+		
+		terran.setDuenio(jugador);
+		Construccion refineria = terran.crearConstruccion(nombreRefineria);
 		
 		assertEquals(nombreRefineria, refineria.getNombre());
 	}
-	
-	@Test
-	public void testTerranCreaFabrica() {
-		Terran terran = new Terran();
-		Construccion fabrica = terran.construirConstruccion(muchosRecursos, nombreFabrica);
-		
-		assertEquals(nombreFabrica, fabrica.getNombre());
-	}
-	
-	@Test
-	public void testTerranCreaPuertoEstelar() {
-		Terran terran = new Terran();
-		Construccion puerto = terran.construirConstruccion(muchosRecursos, nombrePuertoEstelar);
-		
-		assertEquals(nombrePuertoEstelar, puerto.getNombre());
-	}
-	
-	@Test
-	public void testTerranNoCreaNexoMineral() {
-		Terran terran = new Terran();
-		Construccion nexo = terran.construirConstruccion(muchosRecursos, "Nexo Mineral");
-		
-		assertEquals(null, nexo);
-	}
-	
-	@Test
-	public void testTerranNoCreaCentroDeMineralSinRecursos() {
-		Terran terran = new Terran();
-		Construccion nexo = terran.construirConstruccion(sinRecursos, nombreCentroDeMineral);
-		
-		assertEquals(null, nexo);
-	}
-	*/
+
 	@Test
 	public void testTerranEmpiezaConSieteConstruccionesDisponibles(){
 		Terran terran = new Terran();
