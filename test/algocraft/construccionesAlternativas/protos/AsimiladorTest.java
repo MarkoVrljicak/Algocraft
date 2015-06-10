@@ -28,7 +28,7 @@ public class AsimiladorTest {
 		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
 		
 		asimilador.setDuenio(jugador);
-		asimilador.pasarTurno();
+		asimilador.iniciarTurno();
 		
 		assertEquals(10 , jugador.getRecursos().obtenerGas());
 	}

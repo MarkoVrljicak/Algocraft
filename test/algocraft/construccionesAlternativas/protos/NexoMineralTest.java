@@ -26,7 +26,7 @@ public class NexoMineralTest {
 		NexoMineral nexo = new NexoMineral();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);		
 		nexo.setDuenio(jugador);
-		nexo.pasarTurno();
+		nexo.iniciarTurno();
 		
 		assertEquals(210 , jugador.getRecursos().obtenerMineral());
 	}

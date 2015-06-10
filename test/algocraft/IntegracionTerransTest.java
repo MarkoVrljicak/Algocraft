@@ -60,7 +60,7 @@ public class IntegracionTerransTest {
 		jugador.construir(nombreRefineria);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
-			jugador.pasarTurno();
+			jugador.iniciarTurno();
 		}
 		//creo edificios necesarios
 		jugador.construir(nombreBarraca);
@@ -80,7 +80,7 @@ public class IntegracionTerransTest {
 		jugador.construir(nombreRefineria);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
-			jugador.pasarTurno();
+			jugador.iniciarTurno();
 		}
 		
 		
@@ -99,7 +99,7 @@ public class IntegracionTerransTest {
 		jugador.construir(nombreRefineria);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
-			jugador.pasarTurno();
+			jugador.iniciarTurno();
 		}
 		//creo edificios necesarios
 		jugador.construir(nombreBarraca);
@@ -120,7 +120,7 @@ public class IntegracionTerransTest {
 		jugador.construir(nombreRefineria);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
-			jugador.pasarTurno();
+			jugador.iniciarTurno();
 		}
 
 		//creo puerto estelar

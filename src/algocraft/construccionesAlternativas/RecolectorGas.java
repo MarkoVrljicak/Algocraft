@@ -11,8 +11,8 @@ public class RecolectorGas extends DecoradorEdificioBasico {
 	}
 
 	@Override
-	public void pasarTurno() {
-		this.edificio.pasarTurno();
+	public void iniciarTurno() {
+		this.edificio.iniciarTurno();
 		recolectarGas(this.edificio.getDuenio().getRecursos());
 	}
 

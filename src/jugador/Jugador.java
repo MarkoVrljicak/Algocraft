@@ -7,6 +7,7 @@ import razasAlternativas.EnumRazas;
 import razasAlternativas.Raza;
 import stats.Recurso;
 import Interfaces.Actualizable;
+import Interfaces.Daniable;
 import algocraft.construccionesAlternativas.Construccion;
 import algocraft.construccionesAlternativas.CreadorDeUnidades;
 import algocraft.construccionesAlternativas.EnumEdificios;
@@ -123,11 +124,36 @@ public class Jugador implements Actualizable, Usuario {
 
 	
 	@Override
-	public void pasarTurno() {
+	public void iniciarTurno() {
+		
+		this.limpiarMuertos();
+		//inicio construcciones
 		Iterator<Construccion> itConstrucciones= construcciones.iterator();	
 		while(itConstrucciones.hasNext()){
 			Actualizable unaConstruccion= (Actualizable) itConstrucciones.next();
-			unaConstruccion.pasarTurno();
+			unaConstruccion.iniciarTurno();
+		}
+	}
+
+
+	private void limpiarMuertos() {
+		//limpio construcciones
+		Iterator<Construccion> itConstrucciones= construcciones.iterator();	
+		while(itConstrucciones.hasNext()){
+			Daniable unaConstruccion= (Daniable) itConstrucciones.next();
+			if (unaConstruccion.estoyMuerto()){
+				construcciones.remove(unaConstruccion);
+				itConstrucciones= construcciones.iterator();				
+			}
+		}
+		//limpio unidades
+		Iterator<Unidad> itUnidades = unidades.iterator();
+		while(itUnidades.hasNext()){
+			Daniable unaUnidad =(Daniable) itUnidades.next();
+			if (unaUnidad.estoyMuerto()){
+				unidades.remove(unaUnidad);
+				itUnidades = unidades.iterator();
+			}
 		}
 	}
 }

@@ -27,7 +27,7 @@ public class CentroDeMineralTest {
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		centro.setDuenio(jugador);
-		centro.pasarTurno();
+		centro.iniciarTurno();
 		
 		assertEquals(210 , jugador.getRecursos().obtenerMineral());
 	}

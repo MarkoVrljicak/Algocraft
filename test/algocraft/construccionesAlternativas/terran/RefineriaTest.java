@@ -27,7 +27,7 @@ public class RefineriaTest {
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		refineria.setDuenio(jugador);
-		refineria.pasarTurno();
+		refineria.iniciarTurno();
 		
 		assertEquals(10 , jugador.getRecursos().obtenerGas());
 	}

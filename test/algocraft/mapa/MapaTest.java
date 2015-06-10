@@ -74,6 +74,8 @@ public class MapaTest {
 		assertEquals(false,mapa.hayCasillero(new Coordenada(101,20)));
 	}
 	
+	// tests de movimiento
+	
 	@Test
 	public void testMapaMueveUnidadPorTierra(){
 		Mapa mapa= new Mapa(2,2);
@@ -363,6 +365,8 @@ public class MapaTest {
 		
 	}
 	
+	//tests gestion ataque
+	
 	@Test
 	public void testMapaGestionaAtaqueEntreDosUnidades() 
 			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
@@ -392,7 +396,8 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testPeleaGestionadaPorMapaResultaEnMuerte() throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
+	public void testPeleaGestionadaPorMapaResultaEnMuerte() 
+			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException{
 		Mapa mapa = new Mapa(5,5);
 		Unidad dragon = new Dragon();
 		Unidad marine = new Marine();

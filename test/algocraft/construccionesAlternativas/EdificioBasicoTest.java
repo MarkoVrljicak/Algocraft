@@ -37,7 +37,7 @@ public class EdificioBasicoTest {
 	public void testCreoDepositoPasoTurnoVeoQueEsteEnConstruccion(){
 		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
 		
-		depositoSuministros.pasarTurno();
+		depositoSuministros.iniciarTurno();
 		
 		assertEquals(true,depositoSuministros.enConstruccion());
 	}
@@ -47,7 +47,7 @@ public class EdificioBasicoTest {
 		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
 		
 		for(int turno=1;turno<=tiempoConstruccionDeposito; turno++)
-			depositoSuministros.pasarTurno();
+			depositoSuministros.iniciarTurno();
 		
 		assertEquals(false,depositoSuministros.enConstruccion());
 	}
@@ -57,7 +57,7 @@ public class EdificioBasicoTest {
 		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
 		
 		for(int turno=1;turno<=100; turno++)
-			depositoSuministros.pasarTurno();
+			depositoSuministros.iniciarTurno();
 		
 		assertEquals(false,depositoSuministros.enConstruccion());
 	}

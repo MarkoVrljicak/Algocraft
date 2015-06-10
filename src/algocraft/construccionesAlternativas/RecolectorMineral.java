@@ -11,8 +11,8 @@ public class RecolectorMineral extends DecoradorEdificioBasico{
 	}
 
 	@Override
-	public void pasarTurno() {
-		this.edificio.pasarTurno();
+	public void iniciarTurno() {
+		this.edificio.iniciarTurno();
 		recolectarMineral(this.getDuenio().getRecursos());
 	}
 

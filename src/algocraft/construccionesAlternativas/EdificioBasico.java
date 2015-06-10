@@ -45,7 +45,7 @@ public class EdificioBasico implements Construccion{
 	}
 
 	@Override
-	public void pasarTurno() {
+	public void iniciarTurno() {
 		this.disminuirTiempoDeConstruccion();		
 	}
 

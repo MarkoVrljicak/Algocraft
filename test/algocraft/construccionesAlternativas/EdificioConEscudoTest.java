@@ -45,7 +45,7 @@ public class EdificioConEscudoTest {
 	public void testCreoPilonPasoTurnoVeoQueEsteEnConstruccion(){
 		EdificioConEscudo pilon= new EdificioConEscudo(nombrePilon,vidaPilon,tiempoConstruccionPilon,escudoPilon);
 		
-		pilon.pasarTurno();
+		pilon.iniciarTurno();
 		
 		assertEquals(true,pilon.enConstruccion());
 	}
@@ -55,7 +55,7 @@ public class EdificioConEscudoTest {
 		EdificioConEscudo pilon= new EdificioConEscudo(nombrePilon,vidaPilon,tiempoConstruccionPilon,escudoPilon);
 		
 		for(int turno=1;turno<=tiempoConstruccionPilon; turno++)
-			pilon.pasarTurno();
+			pilon.iniciarTurno();
 		
 		assertEquals(false,pilon.enConstruccion());
 	}
@@ -65,7 +65,7 @@ public class EdificioConEscudoTest {
 		EdificioConEscudo pilon= new EdificioConEscudo(nombrePilon,vidaPilon,tiempoConstruccionPilon,escudoPilon);
 		
 		for(int turno=1;turno<=100; turno++)
-			pilon.pasarTurno();
+			pilon.iniciarTurno();
 		
 		assertEquals(false,pilon.enConstruccion());
 	}

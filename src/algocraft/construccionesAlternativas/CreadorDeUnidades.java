@@ -55,7 +55,7 @@ public abstract class CreadorDeUnidades extends DecoradorEdificioBasico {
 	}
 	
 	@Override
-	public void pasarTurno() {
-		this.edificio.pasarTurno();
+	public void iniciarTurno() {
+		this.edificio.iniciarTurno();
 	}	
 }

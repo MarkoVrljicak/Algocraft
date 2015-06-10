@@ -60,7 +60,7 @@ public class IntegracionProtossTest {
 		jugador.construir(nombreAsimilador);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
-			jugador.pasarTurno();
+			jugador.iniciarTurno();
 		}
 		//creo edificios necesarios
 		jugador.construir(nombreAcceso);
@@ -80,7 +80,7 @@ public class IntegracionProtossTest {
 		jugador.construir(nombreAsimilador);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
-			jugador.pasarTurno();
+			jugador.iniciarTurno();
 		}
 				
 		//creo PuertoEstelar sin tener Acceso
@@ -98,7 +98,7 @@ public class IntegracionProtossTest {
 		jugador.construir(nombreAsimilador);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
-			jugador.pasarTurno();
+			jugador.iniciarTurno();
 		}
 		//creo edificios necesarios
 		jugador.construir(nombreAcceso);
@@ -119,7 +119,7 @@ public class IntegracionProtossTest {
 		jugador.construir(nombreAsimilador);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
-			jugador.pasarTurno();
+			jugador.iniciarTurno();
 		}
 		
 		//creo ArchivosTemplarios

@@ -17,7 +17,7 @@ public class EdificioConEscudo extends EdificioBasico{
 		return ((Escudo)stat).actualProtegida();
 	}
 	
-	public void pasarTurno() {
+	public void iniciarTurno() {
 		this.disminuirTiempoDeConstruccion();
 		this.stat.regenerar();
 	}

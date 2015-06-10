@@ -2,6 +2,6 @@ package Interfaces;
 
 public interface Actualizable {
 
-	public  void pasarTurno();
+	public  void iniciarTurno();
 
 }
