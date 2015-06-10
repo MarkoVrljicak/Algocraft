@@ -3,11 +3,9 @@ package algocraft.construccionesAlternativas;
 import stats.Recurso;
 
 public class RecolectorMineral extends DecoradorEdificioBasico{
-	Construccion construccionDecorada;
 
 	public RecolectorMineral(Construccion construccionDecorada) {
 		super(construccionDecorada);
-		this.construccionDecorada = construccionDecorada;
 	}
 
 	@Override

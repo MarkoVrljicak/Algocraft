@@ -3,11 +3,9 @@ package algocraft.construccionesAlternativas;
 import stats.Recurso;
 
 public class RecolectorGas extends DecoradorEdificioBasico {
-	Construccion construccionDecorada;
 
 	public RecolectorGas(Construccion construccionDecorada) {
 		super(construccionDecorada);
-		this.construccionDecorada = construccionDecorada;
 	}
 
 	@Override

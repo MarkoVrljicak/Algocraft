@@ -10,13 +10,11 @@ import algocraft.unidades.Alternativas.Unidades;
 public abstract class CreadorDeUnidades extends DecoradorEdificioBasico {
 	
 	protected ArrayList<Unidades> unidadesCreables;
-	Construccion construccionDecorada;
 	
 	public CreadorDeUnidades(Construccion construccionDecorada) {
 		super(construccionDecorada);
 		unidadesCreables= new ArrayList<Unidades>();
 		this.determinarCreables();
-		this.construccionDecorada = construccionDecorada;
 	}
 
 	abstract protected void determinarCreables();//obligo a que determine creables en construccion
