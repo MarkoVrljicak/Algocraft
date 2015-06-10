@@ -51,13 +51,11 @@ public class AltoTemplario extends Unidad {
 	@Override
 	public int getVida() {
 		return ((Escudo)this.stat).actualProtegida();
+	}
+
+	@Override
+	protected void seteartiempoDeConstruccion() {
+		this.tiempoDeConstruccion = 7;
 	}	
-
-	
-
-
-
-	
-
 	
 }

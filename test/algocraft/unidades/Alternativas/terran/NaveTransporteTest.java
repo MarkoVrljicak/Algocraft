@@ -1,9 +1,7 @@
 package algocraft.unidades.Alternativas.terran;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
 import algocraft.unidades.Alternativas.terran.NaveTransporte;
 
 public class NaveTransporteTest {
@@ -37,4 +35,17 @@ public class NaveTransporteTest {
 		assertEquals(4,nave.getMovimientos().actual() );
 	}
 
+	@Test
+	public void testTiempoDeConstruccionCorrecto(){
+		final int tiempoDeConstruccion = 8;
+		NaveTransporte naveTransporte= new NaveTransporte();
+		
+		assertEquals(true, naveTransporte.enConstruccion());
+		
+		for(int i = 0; i<tiempoDeConstruccion; i++){
+			naveTransporte.iniciarTurno();
+		}
+		
+		assertEquals(false, naveTransporte.enConstruccion());
+	}
 }

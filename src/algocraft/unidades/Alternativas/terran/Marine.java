@@ -51,4 +51,8 @@ public class Marine extends Unidad{
 		return this.stat.actual();
 	}
 
+	@Override
+	protected void seteartiempoDeConstruccion() {
+		this.tiempoDeConstruccion = 3;
+	}	
 }

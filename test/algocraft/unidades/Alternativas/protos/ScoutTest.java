@@ -38,4 +38,18 @@ public class ScoutTest {
 		
 		assertEquals(3,scout.getMovimientos().actual() );
 	}
+	
+	@Test
+	public void testTiempoDeConstruccionCorrecto(){
+		final int tiempoDeConstruccion = 9;
+		Scout scout= new Scout();
+		
+		assertEquals(true, scout.enConstruccion());
+		
+		for(int i = 0; i<tiempoDeConstruccion; i++){
+			scout.iniciarTurno();
+		}
+		
+		assertEquals(false, scout.enConstruccion());
+	}
 }

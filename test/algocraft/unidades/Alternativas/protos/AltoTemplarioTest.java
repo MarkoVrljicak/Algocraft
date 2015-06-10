@@ -45,4 +45,18 @@ public class AltoTemplarioTest {
 		
 		assertEquals(true, templario.estoyMuerto());
 	}
+	
+	@Test
+	public void testTiempoDeConstruccionCorrecto(){
+		final int tiempoDeConstruccion = 7;
+		AltoTemplario altoTemplario= new AltoTemplario();
+		
+		assertEquals(true, altoTemplario.enConstruccion());
+		
+		for(int i = 0; i<tiempoDeConstruccion; i++){
+			altoTemplario.iniciarTurno();
+		}
+		
+		assertEquals(false, altoTemplario.enConstruccion());
+	}
 }

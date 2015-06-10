@@ -36,4 +36,18 @@ public class ZealotTest {
 		
 		assertEquals(3,zealot.getMovimientos().actual() );
 	}
+	
+	@Test
+	public void testTiempoDeConstruccionCorrecto(){
+		final int tiempoDeConstruccion = 4;
+		Zealot zealot= new Zealot();
+		
+		assertEquals(true, zealot.enConstruccion());
+		
+		for(int i = 0; i<tiempoDeConstruccion; i++){
+			zealot.iniciarTurno();
+		}
+		
+		assertEquals(false, zealot.enConstruccion());
+	}
 }

@@ -15,6 +15,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	protected Unidades nombre;
 	protected Stat stat;
 	protected int pesoTransporte;
+	protected int tiempoDeConstruccion;
 	protected int suministros;
 	protected Danio danio;
 	protected Movimientos movimientos;
@@ -24,6 +25,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 		this.setearVida();
 		this.setearNombre();
 		this.setearPesoTransporte();
+		this.seteartiempoDeConstruccion();
 		this.setearSuministros();
 		this.setearDanio();
 		this.setearMovimientos();
@@ -32,6 +34,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	abstract protected void setearDanio();
 	abstract protected void setearSuministros();
 	abstract protected void setearPesoTransporte();
+	abstract protected void seteartiempoDeConstruccion();
 	abstract protected void setearNombre();
 	abstract protected void setearVida();
 	abstract protected void setearMovimientos();
@@ -62,6 +65,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	
 	@Override
 	public void iniciarTurno() {
+		this.disminuirTiempoDeConstruccion();
 		this.stat.regenerar();
 	}
 
@@ -101,4 +105,13 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 		return this.stat.estoyVacio();
 	}
 
+	protected void disminuirTiempoDeConstruccion() {
+		if (this.tiempoDeConstruccion != 0) {
+			this.tiempoDeConstruccion--;
+		}
+	}
+	
+	public boolean enConstruccion() {
+		return (tiempoDeConstruccion!=0);
+	}
 }

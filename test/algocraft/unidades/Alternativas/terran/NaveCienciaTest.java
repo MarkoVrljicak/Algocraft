@@ -37,4 +37,17 @@ public class NaveCienciaTest {
 		assertEquals(5,naveCiencia.getMovimientos().actual() );
 	}
 
+	@Test
+	public void testTiempoDeConstruccionCorrecto(){
+		final int tiempoDeConstruccion = 10;
+		NaveCiencia naveCiencia= new NaveCiencia();
+		
+		assertEquals(true, naveCiencia.enConstruccion());
+		
+		for(int i = 0; i<tiempoDeConstruccion; i++){
+			naveCiencia.iniciarTurno();
+		}
+		
+		assertEquals(false, naveCiencia.enConstruccion());
+	}
 }

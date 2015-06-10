@@ -35,4 +35,8 @@ public class NaveTransporte extends UnidadTransportadora{
 		return this.stat.actual();
 	}
 
+	@Override
+	protected void seteartiempoDeConstruccion() {
+		this.tiempoDeConstruccion = 7;
+	}	
 }

@@ -53,5 +53,8 @@ public class Dragon extends Unidad {
 		return ((Escudo)this.stat).actualProtegida();
 	}	
 
-
+	@Override
+	protected void seteartiempoDeConstruccion() {
+		this.tiempoDeConstruccion = 6;
+	}	
 }

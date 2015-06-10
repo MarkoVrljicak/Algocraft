@@ -47,4 +47,8 @@ public class NaveCiencia extends Unidad{
 		return stat.actual();
 	}
 
+	@Override
+	protected void seteartiempoDeConstruccion() {
+		this.tiempoDeConstruccion = 10;
+	}	
 }

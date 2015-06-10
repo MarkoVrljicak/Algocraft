@@ -53,5 +53,9 @@ public class Golliat extends Unidad{
 		return stat.actual();
 	}
 
+	@Override
+	protected void seteartiempoDeConstruccion() {
+		this.tiempoDeConstruccion = 6;
+	}	
 }
 

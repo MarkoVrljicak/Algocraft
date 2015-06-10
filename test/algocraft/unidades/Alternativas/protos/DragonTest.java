@@ -65,4 +65,18 @@ public class DragonTest {
 		
 		assertEquals(100, vidaEspectro - danioDragon );
 	}
+	
+	@Test
+	public void testTiempoDeConstruccionCorrecto(){
+		final int tiempoDeConstruccion = 6;
+		Dragon dragon= new Dragon();
+		
+		assertEquals(true, dragon.enConstruccion());
+		
+		for(int i = 0; i<tiempoDeConstruccion; i++){
+			dragon.iniciarTurno();
+		}
+		
+		assertEquals(false, dragon.enConstruccion());
+	}
 }

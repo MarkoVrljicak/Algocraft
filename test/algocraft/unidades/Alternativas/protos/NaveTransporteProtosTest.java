@@ -37,4 +37,18 @@ public class NaveTransporteProtosTest {
 		
 		assertEquals(4,nave.getMovimientos().actual() );
 	}
+	
+	@Test
+	public void testTiempoDeConstruccionCorrecto(){
+		final int tiempoDeConstruccion = 8;
+		NaveDeTransporte naveDeTransporte= new NaveDeTransporte();
+		
+		assertEquals(true, naveDeTransporte.enConstruccion());
+		
+		for(int i = 0; i<tiempoDeConstruccion; i++){
+			naveDeTransporte.iniciarTurno();
+		}
+		
+		assertEquals(false, naveDeTransporte.enConstruccion());
+	}
 }

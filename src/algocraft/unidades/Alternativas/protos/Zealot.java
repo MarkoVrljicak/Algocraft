@@ -53,4 +53,9 @@ public class Zealot extends Unidad{
 	public int getVida() {
 		return ((Escudo)this.stat).actualProtegida();
 	}	
+	
+	@Override
+	protected void seteartiempoDeConstruccion() {
+		this.tiempoDeConstruccion = 4;
+	}	
 }

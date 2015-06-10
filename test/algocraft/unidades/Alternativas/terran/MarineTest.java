@@ -33,4 +33,17 @@ public class MarineTest {
 		assertEquals(3,marine.getMovimientos().actual() );
 	}
 
+	@Test
+	public void testTiempoDeConstruccionCorrecto(){
+		final int tiempoDeConstruccion = 3;
+		Marine marine= new Marine();
+		
+		assertEquals(true, marine.enConstruccion());
+		
+		for(int i = 0; i<tiempoDeConstruccion; i++){
+			marine.iniciarTurno();
+		}
+		
+		assertEquals(false, marine.enConstruccion());
+	}
 }

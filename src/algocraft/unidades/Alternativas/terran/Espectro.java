@@ -51,4 +51,8 @@ public class Espectro extends Unidad{
 		return this.stat.actual();
 	}
 
+	@Override
+	protected void seteartiempoDeConstruccion() {
+		this.tiempoDeConstruccion = 8;
+	}	
 }

@@ -33,4 +33,18 @@ public class GolliatTest {
 		
 		assertEquals(4,golliat.getMovimientos().actual() );
 	}
+	
+	@Test
+	public void testTiempoDeConstruccionCorrecto(){
+		final int tiempoDeConstruccion = 6;
+		Golliat golliat= new Golliat();
+		
+		assertEquals(true, golliat.enConstruccion());
+		
+		for(int i = 0; i<tiempoDeConstruccion; i++){
+			golliat.iniciarTurno();
+		}
+		
+		assertEquals(false, golliat.enConstruccion());
+	}
 }
