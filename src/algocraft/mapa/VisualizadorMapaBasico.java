@@ -14,7 +14,7 @@ public class VisualizadorMapaBasico {
 		for (int j = 1; j <= alto; j++) {
 			for (int i = 1; i <= ancho; i++) {
 				Coordenada nuevaCoordenada = new Coordenada(i, j);
-				Terreno unCasillero = mapa.obtenerCasillero(nuevaCoordenada);
+				Terreno unCasillero = mapa.getTerreno(nuevaCoordenada);
 				//Dibujable terreno= unCasillero.getTerreno();
 				System.out.print(unCasillero.dibujar());
 				System.out.print(' ');

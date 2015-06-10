@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import algocraft.exception.DestinoInvalidoException;
+import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.Coordenada;
 import algocraft.mapa.Mapa;
 import algocraft.mapa.terrenos.SectoresDeTerreno;
@@ -27,7 +28,8 @@ public class AtaqueNormalTest {
 	SectoresDeTerreno cielo = SectoresDeTerreno.CIELO;
 	
 	@Test
-	public void testAtaqueNormalTerrestreSeRealiza() throws DestinoInvalidoException {
+	public void testAtaqueNormalTerrestreSeRealiza() 
+			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
 		Unidad marineAtacante = new Marine();
 		Unidad marineAtacado = new Marine();
@@ -43,7 +45,8 @@ public class AtaqueNormalTest {
 	}
 	
 	@Test
-	public void testUnidadTerrestreRecibeDanioDeAtaqueNormal() throws DestinoInvalidoException {
+	public void testUnidadTerrestreRecibeDanioDeAtaqueNormal() 
+			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
 		Unidad marineAtacante = new Marine();
 		Unidad marineAtacado = new Marine();
@@ -56,7 +59,8 @@ public class AtaqueNormalTest {
 	}
 	
 	@Test
-	public void testAtaqueNormalNoSeRealizaFueraDeRango() throws DestinoInvalidoException {
+	public void testAtaqueNormalNoSeRealizaFueraDeRango() 
+			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(10,10);
 		Unidad marineAtacante = new Marine();
 		Unidad marineAtacado = new Marine();
@@ -67,7 +71,8 @@ public class AtaqueNormalTest {
 	}
 	
 	@Test
-	public void testUnidadNoSeAtacaASiMisma() throws DestinoInvalidoException {
+	public void testUnidadNoSeAtacaASiMisma() 
+			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
 		Unidad marineAtacante = new Marine();
 		mapa.almacenarEnSuelo(marineAtacante, coordenadaAtacante);
@@ -76,7 +81,8 @@ public class AtaqueNormalTest {
 	}
 	
 	@Test
-	public void testAtaqueNormalAireATierraSeRealiza() throws DestinoInvalidoException {
+	public void testAtaqueNormalAireATierraSeRealiza() 
+			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
 		Unidad marineAtacado = new Marine();
 		Unidad espectroAtacante = new Espectro();
@@ -88,7 +94,8 @@ public class AtaqueNormalTest {
 	}
 	
 	@Test
-	public void testAtaqueNormalTierraAAireNoSeRealizaSiLaUnidadNoInfligePuntosTerrestres() throws DestinoInvalidoException {
+	public void testAtaqueNormalTierraAAireNoSeRealizaSiLaUnidadNoInfligePuntosTerrestres() 
+			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
 		Unidad zealotAtacante = new Zealot();
 		Unidad naveAtacada = new NaveCiencia();
@@ -101,7 +108,8 @@ public class AtaqueNormalTest {
 
 
 	@Test
-	public void testAtaqueNormalTierraAAireSeRealiza() throws DestinoInvalidoException {
+	public void testAtaqueNormalTierraAAireSeRealiza() 
+			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
 		Unidad marineAtacante = new Marine();
 		Unidad naveAtacada = new NaveCiencia();

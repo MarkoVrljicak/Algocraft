@@ -134,7 +134,7 @@ public class GeneradorDeMapa {
 		
 		Terreno unCasillero = null;
 		try {
-			unCasillero = mapaGenerado.obtenerCasillero(coordenadaActual);
+			unCasillero = mapaGenerado.getTerreno(coordenadaActual);
 		} catch (FueraDeLimitesException e) {
 			e.printStackTrace();
 		}

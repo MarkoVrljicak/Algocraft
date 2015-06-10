@@ -36,7 +36,7 @@ public abstract class Raza {
 	abstract public Construccion crearConstruccion(EnumEdificios nombreEdificio);
 
 	
-	public Construccion crearConstruccionEspecifico(EnumEdificios edificio, Recurso recursosNecesarios){
+	protected Construccion crearConstruccionEspecifico(EnumEdificios edificio, Recurso recursosNecesarios){
 		
 		if(puedoCrearConstruccion(recursosNecesarios) ){
 			

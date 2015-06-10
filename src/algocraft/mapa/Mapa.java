@@ -39,7 +39,7 @@ public class Mapa implements Iterable<Terreno>{
 		casilleros.put(nuevaCoordenada, nuevoTerreno);
 	}
 
-	public Terreno obtenerCasillero(Coordenada coordenadaPedida)throws FueraDeLimitesException {
+	public Terreno getTerreno(Coordenada coordenadaPedida)throws FueraDeLimitesException {
 		if (this.hayCasillero(coordenadaPedida))
 			return casilleros.get(coordenadaPedida);
 		else
@@ -67,7 +67,7 @@ public class Mapa implements Iterable<Terreno>{
 	}
 
 	public boolean moverUnidad(Movible movible, Coordenada coordenadaDestino) 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
+			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException {
 		Unidad unidad = (Unidad) movible;
 
 		Coordenada coordenadaOrigen = posiciones.get((Actualizable) movible);
@@ -103,7 +103,7 @@ public class Mapa implements Iterable<Terreno>{
 	}
 	
 	private boolean darUnPaso(Unidad unidad, Coordenada origen, Coordenada destino) 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException {
+			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException {
 		Coordenada mejorOpcion = origen ;
 		//entre los vecinos busco la mejor opcion
 		for(int x = origen.getX()-1 ; x <= origen.getX()+1 ; x++){
@@ -123,27 +123,29 @@ public class Mapa implements Iterable<Terreno>{
 			return this.moverUnidad(unidad, mejorOpcion);
 	}
 
-	public void almacenarEnSuelo(Actualizable actualizable, Coordenada coordenada) throws DestinoInvalidoException {
+	public void almacenarEnSuelo(Actualizable actualizable, Coordenada coordenada)
+			throws DestinoInvalidoException, FueraDeLimitesException {
 		posiciones.put(actualizable, coordenada);
 		this.getTerreno(coordenada).almacenarEnSuelo(actualizable);
 	}
 
-	public void almacenarEnCielo(Actualizable actualizable, Coordenada coordenada) throws DestinoInvalidoException {
+	public void almacenarEnCielo(Actualizable actualizable, Coordenada coordenada)
+			throws DestinoInvalidoException, FueraDeLimitesException {
 		posiciones.put(actualizable, coordenada);
 		this.getTerreno(coordenada).almacenarEnCielo(actualizable);
 	}
 	
-	public Actualizable getActualizableSuelo(Coordenada coordenada) {
+	public Actualizable getActualizableSuelo(Coordenada coordenada) 
+			throws FueraDeLimitesException {
 		return this.getTerreno(coordenada).getContenidoSuelo();
 	}
 
-	public Actualizable getActualizableCielo(Coordenada coordenada) {
+	public Actualizable getActualizableCielo(Coordenada coordenada) 
+			throws FueraDeLimitesException {
 		return this.getTerreno(coordenada).getContenidoCielo();
 	}
 	
-	public Terreno getTerreno(Coordenada coordenada){
-		return casilleros.get(coordenada);
-	}
+	
 
 	public boolean gestionarAtaque(Unidad atacante, Daniable atacado) throws ActualizableNoEstaEnJuegoException {
 		Coordenada posicionAtacante = posiciones.get((Actualizable) atacante);
@@ -157,13 +159,18 @@ public class Mapa implements Iterable<Terreno>{
 		
 		boolean resultado = atacante.atacar(atacado, distanciaAtaque);
 		if (atacado.estoyMuerto()){
-			limpiarMuerto(atacado);
+			try {
+				limpiarMuerto(atacado);
+			} catch (FueraDeLimitesException e) {
+				e.printStackTrace();//no deberia
+			}
 		}
 		
 		return resultado;
 	}
 	
-	private void limpiarMuerto(Daniable daniableBuscado){
+	private void limpiarMuerto(Daniable daniableBuscado) 
+			throws FueraDeLimitesException{
 		Terreno terreno = this.getTerreno(posiciones.get(daniableBuscado));
 		
 		if(terreno.getContenidoSuelo() == daniableBuscado){
@@ -179,7 +186,5 @@ public class Mapa implements Iterable<Terreno>{
 	public int actualizablesEnJuego(){
 		return posiciones.size();
 	}
-
-
 
 }
