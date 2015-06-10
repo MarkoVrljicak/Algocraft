@@ -68,9 +68,9 @@ public class Mapa implements Iterable<Terreno>{
 
 	public boolean moverUnidad(Movible movible, Coordenada coordenadaDestino) 
 			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException {
-		Unidad unidad = (Unidad) movible;
+		Unidad unidad =  (Unidad) movible;
 
-		Coordenada coordenadaOrigen = posiciones.get((Actualizable) movible);
+		Coordenada coordenadaOrigen = posiciones.get( movible );
 		if(coordenadaOrigen == null){
 			throw new ActualizableNoEstaEnJuegoException();
 		}
