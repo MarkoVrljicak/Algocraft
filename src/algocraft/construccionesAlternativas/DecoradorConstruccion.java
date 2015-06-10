@@ -1,5 +1,6 @@
 package algocraft.construccionesAlternativas;
 
+import algocraft.ataques.Ataques;
 import jugador.Usuario;
 
 public abstract class DecoradorConstruccion implements Construccion {
@@ -28,4 +29,21 @@ public abstract class DecoradorConstruccion implements Construccion {
 	public void setDuenio(Usuario jugador){
 		this.edificio.setDuenio(jugador);
 	}
+	
+	@Override
+	public void recibirDanio(int cantidadDanio) {
+		this.edificio.recibirDanio(cantidadDanio);
+		
+	}
+
+	@Override
+	public Ataques comoAtacarme() {
+		return Ataques.ATAQUE_NORMAL_TERRESTRE;
+	}
+
+	@Override
+	public boolean estoyMuerto() {
+		return this.edificio.estoyMuerto();
+	}
 }
+

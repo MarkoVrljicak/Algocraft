@@ -51,10 +51,7 @@ public class EdificioBasico implements Construccion{
 
 
 	public boolean enConstruccion() {
-		if(tiempoDeConstruccion==0)
-			return false;
-		else
-			return true;
+		return (tiempoDeConstruccion!=0);
 	}
 
 	@Override
