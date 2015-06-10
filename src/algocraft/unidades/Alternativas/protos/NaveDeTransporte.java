@@ -4,10 +4,10 @@ import stats.Escudo;
 import stats.Movimientos;
 import stats.Stat;
 import stats.Vida;
-import algocraft.unidades.Alternativas.Unidad;
+import algocraft.unidades.Alternativas.UnidadTransportadora;
 
 
-public class NaveDeTransporte extends Unidad {
+public class NaveDeTransporte extends UnidadTransportadora {
 
 	public NaveDeTransporte() {
 		super.inicializar();
@@ -25,19 +25,8 @@ public class NaveDeTransporte extends Unidad {
 	}
 
 	@Override
-	protected void setearPesoTransporte() {
-		this.pesoTransporte = 0;
-	}
-	
-	@Override
 	protected void setearSuministros() {
 		this.suministros = 2;
-	}
-
-	@Override
-	protected void setearDanio() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

@@ -2,11 +2,9 @@ package algocraft.unidades.Alternativas.terran;
 
 import stats.Movimientos;
 import stats.Vida;
-import algocraft.unidades.Alternativas.Unidad;
+import algocraft.unidades.Alternativas.UnidadTransportadora;
 
-
-
-public class NaveTransporte extends Unidad{
+public class NaveTransporte extends UnidadTransportadora{
 
 	public NaveTransporte() {
 		super.inicializar();
@@ -21,21 +19,10 @@ public class NaveTransporte extends Unidad{
 	protected void setearVida() {
 		this.stat = new Vida(150);
 	}
-
-	@Override
-	protected void setearPesoTransporte() {
-		this.pesoTransporte = 0;		
-	}
 	
 	@Override
 	protected void setearSuministros() {
 		this.suministros = 2;
-	}
-
-	@Override
-	protected void setearDanio() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
