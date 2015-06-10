@@ -3,11 +3,11 @@ package algocraft.construccionesAlternativas;
 import algocraft.ataques.Ataques;
 import jugador.Usuario;
 
-public abstract class DecoradorConstruccion implements Construccion {
+public abstract class DecoradorEdificioBasico implements Construccion {
 
 	public Construccion edificio;
 
-	public DecoradorConstruccion(Construccion construccionDecorada){
+	public DecoradorEdificioBasico(Construccion construccionDecorada){
 		this.edificio=construccionDecorada;
 	}
 	

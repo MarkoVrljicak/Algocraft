@@ -7,7 +7,7 @@ import algocraft.exception.RecursosNegativosException;
 import algocraft.unidades.Alternativas.Unidad;
 import algocraft.unidades.Alternativas.Unidades;
 
-public abstract class CreadorDeUnidades extends DecoradorConstruccion {
+public abstract class CreadorDeUnidades extends DecoradorEdificioBasico {
 	
 	protected ArrayList<Unidades> unidadesCreables;
 	Construccion construccionDecorada;

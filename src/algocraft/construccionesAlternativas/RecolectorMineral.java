@@ -2,7 +2,7 @@ package algocraft.construccionesAlternativas;
 
 import stats.Recurso;
 
-public class RecolectorMineral extends DecoradorConstruccion{
+public class RecolectorMineral extends DecoradorEdificioBasico{
 	Construccion construccionDecorada;
 
 	public RecolectorMineral(Construccion construccionDecorada) {
