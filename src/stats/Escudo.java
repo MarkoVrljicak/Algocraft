@@ -1,13 +1,11 @@
 package stats;
 
 public class Escudo extends Stat {
-	protected int maximoValor;
-	protected int actualValor;
+
 	protected Stat statProtegido;
 	
 	public Escudo(int maximoValor, Stat statProtegido){
-		this.maximoValor = maximoValor;
-		this.actualValor = this.maximoValor;
+		super(maximoValor);
 		this.statProtegido = statProtegido;
 	}
 	
@@ -21,16 +19,6 @@ public class Escudo extends Stat {
 
 	private int porcentajeRegenerado(){
 		return (this.maximoValor * 10)/100; //El escudo regenera el 10% por turno
-	}
-
-	@Override
-	public int max() {
-		return this.maximoValor;
-	}
-
-	@Override
-	public int actual() {
-		return this.actualValor;
 	}
 
 	@Override
