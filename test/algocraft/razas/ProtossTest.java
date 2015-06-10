@@ -1,4 +1,4 @@
-package razas;
+package algocraft.razas;
 
 import static org.junit.Assert.*;
 

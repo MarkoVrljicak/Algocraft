@@ -1,4 +1,4 @@
-package stats;
+package algocraft.stats;
 
 import static org.junit.Assert.assertEquals;
 
