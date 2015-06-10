@@ -1,10 +1,10 @@
 package algocraft.ataques;
 
 public class Danio {
-	int danioAereo;
-	int danioTerrestre;
-	int rangoAereo;
-	int rangoTerrestre;
+	private int danioAereo;
+	private int danioTerrestre;
+	private int rangoAereo;
+	private int rangoTerrestre;
 	
 	public Danio(int danioAire, int danioTierra, int rangoAire, int rangoTierra){
 		danioAereo = danioAire;

@@ -49,7 +49,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 		return (pesoTransporte == 0);
 	}
 	
-	//los que tengan escudo deberian pisarlo
+	
 	public void recibirDanio(int cantidadDanio){
 		stat.disminuir(cantidadDanio);
 	}
