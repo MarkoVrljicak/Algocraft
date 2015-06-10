@@ -34,44 +34,7 @@ public class RecursoTest {
 		
 		new Recurso(0,-1);
 		
-	}
-	//sacar
-	@Test
-	public void testGastarRecursoDisminuyeMineralDelOtro(){
-		Recurso recursosDisponibles = new Recurso(100,100);
-		Recurso recursosNecesarios = new Recurso(50,50);
-		recursosDisponibles.gastarRecurso(recursosNecesarios);
-		
-		assertEquals(50, recursosDisponibles.obtenerMineral());
-	}
-	//sacar
-	@Test
-	public void testGastarRecursoDisminuyeGaslDelOtro(){
-		Recurso recursosDisponibles = new Recurso(100,100);
-		Recurso recursosNecesarios = new Recurso(50,50);
-		recursosDisponibles.gastarRecurso(recursosNecesarios);
-		
-		assertEquals(50, recursosDisponibles.obtenerGas());
-	}
-	
-	//sacar
-	@Test
-	public void testIncrementarRecursoAumentaMineralDelOtro(){
-		Recurso recursosDisponibles = new Recurso(100,100);
-		Recurso recursosNuevos = new Recurso(50,50);
-		recursosDisponibles.incrementarRecurso(recursosNuevos);
-		
-		assertEquals(150, recursosDisponibles.obtenerMineral());
-	}
-	//sacar
-	@Test
-	public void testIncrementarRecursoAumentaGasDelOtro(){
-		Recurso recursosDisponibles = new Recurso(100,100);
-		Recurso recursosNuevos = new Recurso(50,50);
-		recursosDisponibles.incrementarRecurso(recursosNuevos);
-		
-		assertEquals(150, recursosDisponibles.obtenerGas());
-	}
+	} 
 	
 	@Test
 	public void testIncrementoMineralVerifico(){

@@ -24,18 +24,6 @@ public class Recurso {
 		return gas;
 	}
 	
-	//quitar
-	public void gastarRecurso(Recurso otroRecurso){
-		mineral = mineral - otroRecurso.obtenerMineral();
-		gas = gas - otroRecurso.obtenerGas();
-	}
-
-	//quitar
-	public void incrementarRecurso(Recurso otroRecurso) {
-		mineral = mineral + otroRecurso.obtenerMineral();
-		gas = gas + otroRecurso.obtenerGas();
-	}
-
 	public void incrementarMineral(int cantidadAIncrementar) {
 		mineral += cantidadAIncrementar;		
 	}
