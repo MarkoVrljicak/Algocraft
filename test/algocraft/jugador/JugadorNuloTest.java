@@ -1,11 +1,11 @@
 package algocraft.jugador;
 
 import static org.junit.Assert.*;
-import jugador.JugadorNulo;
 
 import org.junit.Test;
 
-import stats.Recurso;
+import algocraft.jugador.JugadorNulo;
+import algocraft.stats.Recurso;
 
 public class JugadorNuloTest {
 

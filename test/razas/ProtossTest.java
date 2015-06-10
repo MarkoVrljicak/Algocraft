@@ -1,16 +1,16 @@
 package razas;
 
 import static org.junit.Assert.*;
-import jugador.Colores;
-import jugador.Jugador;
 
 import org.junit.Test;
 
-import algocraft.construccionesAlternativas.Construccion;
-import algocraft.construccionesAlternativas.protos.EnumEdificiosProtos;
+import algocraft.construcciones.Construccion;
+import algocraft.construcciones.protos.EnumEdificiosProtos;
 import algocraft.exception.RecursosNegativosException;
-import razasAlternativas.Protoss;
-import stats.Recurso;
+import algocraft.jugador.Colores;
+import algocraft.jugador.Jugador;
+import algocraft.razas.Protoss;
+import algocraft.stats.Recurso;
 
 public class ProtossTest {
 	

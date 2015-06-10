@@ -1,6 +1,6 @@
 package algocraft.ataques;
 
-import Interfaces.Daniable;
+import algocraft.Interfaces.Daniable;
 
 public class AtaqueNormal{
 	private int danioAtaque;

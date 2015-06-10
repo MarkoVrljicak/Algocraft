@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import algocraft.stats.Magia;
+
 public class MagiaTest {
 	int maximoGenerico = 100;
 	int cantidadRegenerada = 10;

@@ -1,13 +1,13 @@
 package algocraft;
 
 import static org.junit.Assert.*;
-import jugador.Colores;
-import jugador.Jugador;
 
 import org.junit.Test;
 
-import razasAlternativas.Protoss;
-import algocraft.construccionesAlternativas.protos.EnumEdificiosProtos;
+import algocraft.construcciones.protos.EnumEdificiosProtos;
+import algocraft.jugador.Colores;
+import algocraft.jugador.Jugador;
+import algocraft.razas.Protoss;
 
 public class IntegracionProtossTest {
 

@@ -10,10 +10,10 @@ import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
-import algocraft.unidades.Alternativas.Unidad;
-import algocraft.unidades.Alternativas.protos.Dragon;
-import algocraft.unidades.Alternativas.terran.Marine;
-import algocraft.unidades.Alternativas.terran.NaveCiencia;
+import algocraft.unidades.Unidad;
+import algocraft.unidades.protos.Dragon;
+import algocraft.unidades.terran.Marine;
+import algocraft.unidades.terran.NaveCiencia;
 
 public class MapaTest {
 	

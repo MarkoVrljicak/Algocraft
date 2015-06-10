@@ -1,7 +1,7 @@
 package algocraft.mapa.terrenos;
 
-import Interfaces.Actualizable;
-import Interfaces.Dibujable;
+import algocraft.Interfaces.Actualizable;
+import algocraft.Interfaces.Dibujable;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 

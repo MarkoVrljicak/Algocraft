@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import algocraft.stats.Stat;
+import algocraft.stats.Vida;
+
 public class StatTest {
 
 	@Test

@@ -9,11 +9,11 @@ import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.Coordenada;
 import algocraft.mapa.Mapa;
 import algocraft.mapa.terrenos.SectoresDeTerreno;
-import algocraft.unidades.Alternativas.Unidad;
-import algocraft.unidades.Alternativas.protos.Zealot;
-import algocraft.unidades.Alternativas.terran.Espectro;
-import algocraft.unidades.Alternativas.terran.Marine;
-import algocraft.unidades.Alternativas.terran.NaveCiencia;
+import algocraft.unidades.Unidad;
+import algocraft.unidades.protos.Zealot;
+import algocraft.unidades.terran.Espectro;
+import algocraft.unidades.terran.Marine;
+import algocraft.unidades.terran.NaveCiencia;
 
 public class AtaqueNormalTest {
 	Coordenada coordenadaAtacante = new Coordenada(1,1);

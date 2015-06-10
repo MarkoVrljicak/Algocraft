@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import algocraft.exception.RecursosNegativosException;
+import algocraft.stats.Recurso;
 
 public class RecursoTest {
 

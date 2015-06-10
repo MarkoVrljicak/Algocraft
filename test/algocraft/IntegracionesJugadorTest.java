@@ -1,22 +1,22 @@
 package algocraft;
 
 import static org.junit.Assert.assertEquals;
-import jugador.Colores;
-import jugador.Jugador;
 
 import org.junit.Test;
 
-import Interfaces.Daniable;
-import algocraft.construccionesAlternativas.CreadorDeUnidades;
-import algocraft.construccionesAlternativas.EnumEdificios;
-import algocraft.construccionesAlternativas.protos.EnumEdificiosProtos;
-import algocraft.construccionesAlternativas.terran.EnumEdificiosTerran;
-import algocraft.unidades.Alternativas.Unidad;
-import algocraft.unidades.Alternativas.Unidades;
-import algocraft.unidades.Alternativas.protos.Dragon;
-import algocraft.unidades.Alternativas.terran.UnidadesTerran;
-import razasAlternativas.Protoss;
-import razasAlternativas.Terran;
+import algocraft.Interfaces.Daniable;
+import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.construcciones.EnumEdificios;
+import algocraft.construcciones.protos.EnumEdificiosProtos;
+import algocraft.construcciones.terran.EnumEdificiosTerran;
+import algocraft.jugador.Colores;
+import algocraft.jugador.Jugador;
+import algocraft.razas.Protoss;
+import algocraft.razas.Terran;
+import algocraft.unidades.Unidad;
+import algocraft.unidades.Unidades;
+import algocraft.unidades.protos.Dragon;
+import algocraft.unidades.terran.UnidadesTerran;
 
 public class IntegracionesJugadorTest {
 

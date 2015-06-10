@@ -1,13 +1,13 @@
 package algocraft;
 
 import static org.junit.Assert.*;
-import jugador.Colores;
-import jugador.Jugador;
 
 import org.junit.Test;
 
-import algocraft.construccionesAlternativas.terran.EnumEdificiosTerran;
-import razasAlternativas.Terran;
+import algocraft.construcciones.terran.EnumEdificiosTerran;
+import algocraft.jugador.Colores;
+import algocraft.jugador.Jugador;
+import algocraft.razas.Terran;
 
 public class IntegracionTerransTest {
 	

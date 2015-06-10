@@ -3,15 +3,15 @@ package algocraft.mapa;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import Interfaces.Actualizable;
-import Interfaces.Daniable;
-import Interfaces.Movible;
+import algocraft.Interfaces.Actualizable;
+import algocraft.Interfaces.Daniable;
+import algocraft.Interfaces.Movible;
 import algocraft.exception.ActualizableNoEstaEnJuegoException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
-import algocraft.unidades.Alternativas.Unidad;
+import algocraft.unidades.Unidad;
 
 public class Mapa implements Iterable<Terreno>{
 

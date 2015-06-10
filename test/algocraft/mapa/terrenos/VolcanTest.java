@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import Interfaces.Actualizable;
+import algocraft.Interfaces.Actualizable;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
-import algocraft.unidades.Alternativas.terran.Marine;
-import algocraft.unidades.Alternativas.terran.NaveCiencia;
+import algocraft.unidades.terran.Marine;
+import algocraft.unidades.terran.NaveCiencia;
 
 public class VolcanTest {
 	Coordenada coordenadaGenerica = new Coordenada(1,1);

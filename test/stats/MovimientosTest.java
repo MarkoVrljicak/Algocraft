@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import algocraft.stats.Movimientos;
+
 public class MovimientosTest {
 
 	@Test
