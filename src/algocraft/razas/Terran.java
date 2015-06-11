@@ -7,13 +7,7 @@ import algocraft.stats.Recurso;
 
 public class Terran extends Raza{
 
-	private static final EnumEdificiosTerran nombreBarraca= EnumEdificiosTerran.BARRACA;
-	private static final EnumEdificiosTerran nombreBaseTerran= EnumEdificiosTerran.BASE_TERRAN;
-	private static final EnumEdificiosTerran nombreCentroDeMineral= EnumEdificiosTerran.CENTRO_DE_MINERALES;
-	private static final EnumEdificiosTerran nombreDepositoDeSuministros= EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS;
-	private static final EnumEdificiosTerran nombreFabrica= EnumEdificiosTerran.FABRICA;
-	private static final EnumEdificiosTerran nombrePuertoEstelar= EnumEdificiosTerran.PUERTO_ESTELAR;
-	private static final EnumEdificiosTerran nombreRefineria= EnumEdificiosTerran.REFINERIA;
+	
 	private static final Recurso recursosNecesariosBarraca = new Recurso(150,0);
 	private static final Recurso recursosNecesariosBaseTerran = new Recurso(0,0);
 	private static final Recurso recursosNecesariosCentroDeMineral = new Recurso(50,0);
@@ -28,32 +22,42 @@ public class Terran extends Raza{
 	
 	@Override
 	protected void determinarCreables() {
-		this.construccionesCreables.add(nombreBarraca);
-		this.construccionesCreables.add(nombreBaseTerran);
-		this.construccionesCreables.add(nombreCentroDeMineral);
-		this.construccionesCreables.add(nombreDepositoDeSuministros);
-		this.construccionesCreables.add(nombreFabrica);
-		this.construccionesCreables.add(nombrePuertoEstelar);
-		this.construccionesCreables.add(nombreRefineria);
+		this.construccionesCreables.add(EnumEdificiosTerran.BARRACA);
+		this.construccionesCreables.add(EnumEdificiosTerran.BASE_TERRAN);
+		this.construccionesCreables.add(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		this.construccionesCreables.add(EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS);
+		this.construccionesCreables.add(EnumEdificiosTerran.FABRICA);
+		this.construccionesCreables.add(EnumEdificiosTerran.PUERTO_ESTELAR);
+		this.construccionesCreables.add(EnumEdificiosTerran.REFINERIA);
 		
 	}
 
 	@Override
 	public Construccion crearConstruccion(EnumEdificios nombreEdificio) {
-		if(nombreEdificio==nombreBarraca)
-			return this.crearConstruccionEspecifico(nombreBarraca, recursosNecesariosBarraca);
-		if(nombreEdificio==nombreBaseTerran)
-			return this.crearConstruccionEspecifico(nombreBaseTerran, recursosNecesariosBaseTerran);
-		if(nombreEdificio==nombreCentroDeMineral)
-			return this.crearConstruccionEspecifico(nombreCentroDeMineral, recursosNecesariosCentroDeMineral);
-		if(nombreEdificio==nombreDepositoDeSuministros)
-			return this.crearConstruccionEspecifico(nombreDepositoDeSuministros, recursosNecesariosDepositoDeSuministros);
-		if(nombreEdificio==nombreFabrica && this.duenio.tieneConstruccion(nombreBarraca))
-			return this.crearConstruccionEspecifico(nombreFabrica, recursosNecesariosFabrica);
-		if(nombreEdificio==nombrePuertoEstelar && this.duenio.tieneConstruccion(nombreFabrica))
-			return this.crearConstruccionEspecifico(nombrePuertoEstelar, recursosNecesariosPuertoEstelar);
-		if(nombreEdificio==nombreRefineria)
-			return this.crearConstruccionEspecifico(nombreRefineria, recursosNecesariosRefineria);
+		if(nombreEdificio==EnumEdificiosTerran.BARRACA)
+			return this.crearConstruccionEspecifico(EnumEdificiosTerran.BARRACA, recursosNecesariosBarraca);
+		
+		if(nombreEdificio==EnumEdificiosTerran.BASE_TERRAN)
+			return this.crearConstruccionEspecifico(EnumEdificiosTerran.BASE_TERRAN, recursosNecesariosBaseTerran);
+		
+		if(nombreEdificio==EnumEdificiosTerran.CENTRO_DE_MINERALES)
+			return this.crearConstruccionEspecifico(EnumEdificiosTerran.CENTRO_DE_MINERALES, recursosNecesariosCentroDeMineral);
+		
+		if(nombreEdificio==EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS)
+			return this.crearConstruccionEspecifico(EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS,
+					recursosNecesariosDepositoDeSuministros);
+		
+		if(nombreEdificio==EnumEdificiosTerran.FABRICA 
+				&& this.duenio.tieneConstruccion(EnumEdificiosTerran.BARRACA))
+			return this.crearConstruccionEspecifico(EnumEdificiosTerran.FABRICA, recursosNecesariosFabrica);
+		
+		if(nombreEdificio==EnumEdificiosTerran.PUERTO_ESTELAR
+				&& this.duenio.tieneConstruccion(EnumEdificiosTerran.FABRICA))
+			return this.crearConstruccionEspecifico(EnumEdificiosTerran.PUERTO_ESTELAR, recursosNecesariosPuertoEstelar);
+		
+		if(nombreEdificio==EnumEdificiosTerran.REFINERIA)
+			return this.crearConstruccionEspecifico(EnumEdificiosTerran.REFINERIA, recursosNecesariosRefineria);
+		
 		return null;
 	}
 

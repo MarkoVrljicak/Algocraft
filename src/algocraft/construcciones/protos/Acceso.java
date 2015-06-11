@@ -9,9 +9,7 @@ import algocraft.unidades.protos.UnidadesProtos;
 
 public class Acceso extends CreadorDeUnidades {
 	
-	private static final EnumEdificiosProtos nombreAcceso = EnumEdificiosProtos.ACCESO;
-	private static final UnidadesProtos nombreZealot= UnidadesProtos.ZEALOT;
-	private static final UnidadesProtos nombreDragon= UnidadesProtos.DRAGON;
+	
 	private static final Recurso recursosNecesariosZealot = new Recurso(100,0);
 	private static final Recurso recursosNecesariosDragon = new Recurso(125,50);
 	private static final int poblacionNecesariaZealot = 2;
@@ -19,20 +17,20 @@ public class Acceso extends CreadorDeUnidades {
 
 
 	public Acceso() {
-		super(new EdificioConEscudo(nombreAcceso,500,8,500));
+		super(new EdificioConEscudo(EnumEdificiosProtos.ACCESO,500,8,500));
 	}
 	
 	@Override
 	protected void determinarCreables() {
-		this.unidadesCreables.add(nombreZealot);
-		this.unidadesCreables.add(nombreDragon);
+		this.unidadesCreables.add(UnidadesProtos.ZEALOT);
+		this.unidadesCreables.add(UnidadesProtos.DRAGON);
 	}
 	
 	public Unidad crearUnidad(Unidades nombreUnidad){
-		if(nombreUnidad==nombreZealot)
-			return this.crearUnidadEspecifica(nombreZealot, recursosNecesariosZealot, poblacionNecesariaZealot);
-		if(nombreUnidad==nombreDragon)
-			return this.crearUnidadEspecifica(nombreDragon, recursosNecesariosDragon, poblacionNecesariaDragon);
+		if(nombreUnidad==UnidadesProtos.ZEALOT)
+			return this.crearUnidadEspecifica(UnidadesProtos.ZEALOT, recursosNecesariosZealot, poblacionNecesariaZealot);
+		if(nombreUnidad==UnidadesProtos.DRAGON)
+			return this.crearUnidadEspecifica(UnidadesProtos.DRAGON, recursosNecesariosDragon, poblacionNecesariaDragon);
 		return null;//lanzar excepcion?
 			
 	}

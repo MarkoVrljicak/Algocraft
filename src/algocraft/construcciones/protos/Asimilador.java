@@ -5,10 +5,9 @@ import algocraft.construcciones.RecolectorGas;
 
 public class Asimilador extends RecolectorGas{
 
-	private static EnumEdificiosProtos nombreAsimilador = EnumEdificiosProtos.ASIMILADOR;
-
+	
 	public Asimilador() {
-		super(new EdificioConEscudo(nombreAsimilador,450,6,450));
+		super(new EdificioConEscudo(EnumEdificiosProtos.ASIMILADOR,450,6,450));
 	}
 	
 }

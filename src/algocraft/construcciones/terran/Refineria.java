@@ -5,9 +5,9 @@ import algocraft.construcciones.RecolectorGas;
 
 public class Refineria extends RecolectorGas{
 
-	private static EnumEdificiosTerran nombreRefineria = EnumEdificiosTerran.REFINERIA;
+	
 
 	public Refineria() {
-		super(new EdificioBasico(nombreRefineria,750,6));
+		super(new EdificioBasico(EnumEdificiosTerran.REFINERIA,750,6));
 	}
 }

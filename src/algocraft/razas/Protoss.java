@@ -7,13 +7,7 @@ import algocraft.stats.Recurso;
 
 public class Protoss extends Raza{
 
-	private static final EnumEdificiosProtos nombreAcceso= EnumEdificiosProtos.ACCESO;
-	private static final EnumEdificiosProtos nombreBaseProtos= EnumEdificiosProtos.BASE_PROTOSS;
-	private static final EnumEdificiosProtos nombreArchivosTemplarios= EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS;
-	private static final EnumEdificiosProtos nombreAsimilador= EnumEdificiosProtos.ASIMILADOR;
-	private static final EnumEdificiosProtos nombreNexoMineral= EnumEdificiosProtos.NEXO_MINERAL;
-	private static final EnumEdificiosProtos nombrePuertoEstelar= EnumEdificiosProtos.PUERTO_ESTELAR;
-	private static final EnumEdificiosProtos nombrePilon= EnumEdificiosProtos.PILON;
+	
 	private static final Recurso recursosNecesariosAcceso = new Recurso(150,0);
 	private static final Recurso recursosNecesariosBaseProtos = new Recurso(0,0);
 	private static final Recurso recursosNecesariosArchivosTemplarios = new Recurso(150,200);
@@ -28,32 +22,43 @@ public class Protoss extends Raza{
 	
 	@Override
 	protected void determinarCreables() {
-		this.construccionesCreables.add(nombreAcceso);
-		this.construccionesCreables.add(nombreBaseProtos);
-		this.construccionesCreables.add(nombreArchivosTemplarios);
-		this.construccionesCreables.add(nombreAsimilador);
-		this.construccionesCreables.add(nombreNexoMineral);
-		this.construccionesCreables.add(nombrePuertoEstelar);
-		this.construccionesCreables.add(nombrePilon);
+		this.construccionesCreables.add(EnumEdificiosProtos.ACCESO);
+		this.construccionesCreables.add(EnumEdificiosProtos.BASE_PROTOSS);
+		this.construccionesCreables.add(EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS);
+		this.construccionesCreables.add(EnumEdificiosProtos.ASIMILADOR);
+		this.construccionesCreables.add(EnumEdificiosProtos.NEXO_MINERAL);
+		this.construccionesCreables.add(EnumEdificiosProtos.PUERTO_ESTELAR);
+		this.construccionesCreables.add(EnumEdificiosProtos.PILON);
 		
 	}
 
 	@Override
 	public Construccion crearConstruccion(EnumEdificios nombreEdificio) {
-		if(nombreEdificio==nombreAcceso)
-			return this.crearConstruccionEspecifico(nombreAcceso, recursosNecesariosAcceso);
-		if(nombreEdificio==nombreBaseProtos)
-			return this.crearConstruccionEspecifico(nombreBaseProtos, recursosNecesariosBaseProtos);
-		if(nombreEdificio==nombreArchivosTemplarios && this.duenio.tieneConstruccion(nombrePuertoEstelar))
-			return this.crearConstruccionEspecifico(nombreArchivosTemplarios, recursosNecesariosArchivosTemplarios);
-		if(nombreEdificio==nombreAsimilador)
-			return this.crearConstruccionEspecifico(nombreAsimilador, recursosNecesariosAsimilador);
-		if(nombreEdificio==nombreNexoMineral)
-			return this.crearConstruccionEspecifico(nombreNexoMineral, recursosNecesariosNexoMineral);
-		if(nombreEdificio==nombrePuertoEstelar && this.duenio.tieneConstruccion(nombreAcceso))
-			return this.crearConstruccionEspecifico(nombrePuertoEstelar, recursosNecesariosPuertoEstelar);
-		if(nombreEdificio==nombrePilon)
-			return this.crearConstruccionEspecifico(nombrePilon, recursosNecesariosPilon);
+		
+		if(nombreEdificio==EnumEdificiosProtos.ACCESO)
+			return this.crearConstruccionEspecifico(EnumEdificiosProtos.ACCESO, recursosNecesariosAcceso);
+		
+		if(nombreEdificio==EnumEdificiosProtos.BASE_PROTOSS)
+			return this.crearConstruccionEspecifico(EnumEdificiosProtos.BASE_PROTOSS, recursosNecesariosBaseProtos);
+		
+		if(nombreEdificio==EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS 
+				&& this.duenio.tieneConstruccion(EnumEdificiosProtos.PUERTO_ESTELAR))
+			return this.crearConstruccionEspecifico(EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS, 
+					recursosNecesariosArchivosTemplarios);
+		
+		if(nombreEdificio==EnumEdificiosProtos.ASIMILADOR)
+			return this.crearConstruccionEspecifico(EnumEdificiosProtos.ASIMILADOR, recursosNecesariosAsimilador);
+		
+		if(nombreEdificio==EnumEdificiosProtos.NEXO_MINERAL)
+			return this.crearConstruccionEspecifico(EnumEdificiosProtos.NEXO_MINERAL, recursosNecesariosNexoMineral);
+		
+		if(nombreEdificio==EnumEdificiosProtos.PUERTO_ESTELAR 
+				&& this.duenio.tieneConstruccion(EnumEdificiosProtos.ACCESO))
+			return this.crearConstruccionEspecifico(EnumEdificiosProtos.PUERTO_ESTELAR, recursosNecesariosPuertoEstelar);
+		
+		if(nombreEdificio==EnumEdificiosProtos.PILON)
+			return this.crearConstruccionEspecifico(EnumEdificiosProtos.PILON, recursosNecesariosPilon);
+		
 		return null;
 	}
 
