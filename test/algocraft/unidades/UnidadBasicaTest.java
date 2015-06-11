@@ -12,7 +12,6 @@ public class UnidadBasicaTest {
 	
 
 	private static final int vidaMarine = 40;
-	private static final UnidadesTerran nombreMarine = UnidadesTerran.MARINE;
 
 	@Test
 	public void testCreoUnidadVerificoVida(){
@@ -25,7 +24,7 @@ public class UnidadBasicaTest {
 	public void testCreoUnidadVerificoNombre(){
 		Unidad marine= new Marine();
 		
-		assertEquals(nombreMarine,marine.getNombre());
+		assertEquals( UnidadesTerran.MARINE,marine.getNombre());
 	}
 	
 	@Test

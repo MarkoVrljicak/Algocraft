@@ -8,58 +8,70 @@ import algocraft.construcciones.EdificioBasico;
 import algocraft.construcciones.terran.EnumEdificiosTerran;
 
 public class EdificioBasicoTest {
-	
-	private static final EnumEdificiosTerran nombreDeposito= EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS;
-	private static final int vidaDeposito=500;
-	private static final int tiempoConstruccionDeposito= 6;
+
+	private static final int vidaDeposito = 500;
+	private static final int tiempoConstruccionDeposito = 6;
 
 	@Test
-	public void testCreoDepositoControloSuVida(){
-		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
-		
-		assertEquals(vidaDeposito,depositoSuministros.getVida());
+	public void testCreoDepositoControloSuVida() {
+		EdificioBasico depositoSuministros = new EdificioBasico(
+				EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS, vidaDeposito,
+				tiempoConstruccionDeposito);
+
+		assertEquals(vidaDeposito, depositoSuministros.getVida());
 	}
-	
+
 	@Test
-	public void testCreoDepositoControloNombre(){
-		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
-		
-		assertEquals(nombreDeposito,depositoSuministros.getNombre());
+	public void testCreoDepositoControloNombre() {
+		EdificioBasico depositoSuministros = new EdificioBasico(
+				EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS, vidaDeposito,
+				tiempoConstruccionDeposito);
+
+		assertEquals(EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS,
+				depositoSuministros.getNombre());
 	}
-	
+
 	@Test
-	public void testCreoDepositoVeoQueEsteEnConstruccion(){
-		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
-		
-		assertEquals(true,depositoSuministros.enConstruccion());
+	public void testCreoDepositoVeoQueEsteEnConstruccion() {
+		EdificioBasico depositoSuministros = new EdificioBasico(
+				EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS, vidaDeposito,
+				tiempoConstruccionDeposito);
+
+		assertEquals(true, depositoSuministros.enConstruccion());
 	}
-	
+
 	@Test
-	public void testCreoDepositoPasoTurnoVeoQueEsteEnConstruccion(){
-		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
-		
+	public void testCreoDepositoPasoTurnoVeoQueEsteEnConstruccion() {
+		EdificioBasico depositoSuministros = new EdificioBasico(
+				EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS, vidaDeposito,
+				tiempoConstruccionDeposito);
+
 		depositoSuministros.iniciarTurno();
-		
-		assertEquals(true,depositoSuministros.enConstruccion());
+
+		assertEquals(true, depositoSuministros.enConstruccion());
 	}
-	
+
 	@Test
-	public void testCreoDepositoEsperoSeConstruyaYVeoQueNoEsteEnConstruccion(){
-		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
-		
-		for(int turno=1;turno<=tiempoConstruccionDeposito; turno++)
+	public void testCreoDepositoEsperoSeConstruyaYVeoQueNoEsteEnConstruccion() {
+		EdificioBasico depositoSuministros = new EdificioBasico(
+				EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS, vidaDeposito,
+				tiempoConstruccionDeposito);
+
+		for (int turno = 1; turno <= tiempoConstruccionDeposito; turno++)
 			depositoSuministros.iniciarTurno();
-		
-		assertEquals(false,depositoSuministros.enConstruccion());
+
+		assertEquals(false, depositoSuministros.enConstruccion());
 	}
-	
+
 	@Test
-	public void testCreoDepositoEsperoMuchoVeoQueNoEsteEnConstruccion(){
-		EdificioBasico depositoSuministros= new EdificioBasico(nombreDeposito,vidaDeposito,tiempoConstruccionDeposito);
-		
-		for(int turno=1;turno<=100; turno++)
+	public void testCreoDepositoEsperoMuchoVeoQueNoEsteEnConstruccion() {
+		EdificioBasico depositoSuministros = new EdificioBasico(
+				EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS, vidaDeposito,
+				tiempoConstruccionDeposito);
+
+		for (int turno = 1; turno <= 100; turno++)
 			depositoSuministros.iniciarTurno();
-		
-		assertEquals(false,depositoSuministros.enConstruccion());
+
+		assertEquals(false, depositoSuministros.enConstruccion());
 	}
 }

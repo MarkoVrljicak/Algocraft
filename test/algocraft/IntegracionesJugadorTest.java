@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import algocraft.Interfaces.Daniable;
 import algocraft.construcciones.CreadorDeUnidades;
-import algocraft.construcciones.EnumEdificios;
 import algocraft.construcciones.protos.EnumEdificiosProtos;
 import algocraft.construcciones.terran.EnumEdificiosTerran;
 import algocraft.jugador.Colores;
@@ -14,25 +13,16 @@ import algocraft.jugador.Jugador;
 import algocraft.razas.Protoss;
 import algocraft.razas.Terran;
 import algocraft.unidades.Unidad;
-import algocraft.unidades.Unidades;
 import algocraft.unidades.protos.Dragon;
 import algocraft.unidades.terran.UnidadesTerran;
 
 public class IntegracionesJugadorTest {
 
-	Colores colorAzul = Colores.AZUL;
-	private static final EnumEdificiosTerran nombreCentroDeMineral = EnumEdificiosTerran.CENTRO_DE_MINERALES;
-	private static final EnumEdificiosTerran nombreRefineria = EnumEdificiosTerran.REFINERIA;
-	private static final EnumEdificiosProtos nombrePilon = EnumEdificiosProtos.PILON;
-	private static final EnumEdificiosProtos nombreNexo = EnumEdificiosProtos.NEXO_MINERAL;
-	private static final EnumEdificios nombreBarraca = EnumEdificiosTerran.BARRACA;
-	private static final Unidades nombreMarine = UnidadesTerran.MARINE;
-
-
+	
 	@Test
 	public void testActualizarConCentroDeMineralAumentaLosRecursosDelJugador(){
-		Jugador jugador= new Jugador("Fernando De La Rua", new Terran(), colorAzul);
-		jugador.construir(nombreCentroDeMineral);
+		Jugador jugador= new Jugador("Fernando De La Rua", new Terran(), Colores.AZUL);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
 
 		jugador.iniciarTurno();
 		//160 por que es 200 iniciales -50 del centro mineral +10 de la recoleccion
@@ -42,8 +32,8 @@ public class IntegracionesJugadorTest {
 
 	@Test
 	public void testActualizarConRefineriaAumentaLosRecursosDelJugador(){
-		Jugador jugador= new Jugador("Fernando De La Rua", new Terran(), colorAzul);
-		jugador.construir(nombreRefineria);
+		Jugador jugador= new Jugador("Fernando De La Rua", new Terran(), Colores.AZUL);
+		jugador.construir(EnumEdificiosTerran.REFINERIA);
 
 		jugador.iniciarTurno();
 
@@ -53,10 +43,10 @@ public class IntegracionesJugadorTest {
 
 	@Test
 	public void testConstruirReduceRecursos(){
-		Jugador jugador= new Jugador("Fernando De La Rua", new Terran(), colorAzul);
+		Jugador jugador= new Jugador("Fernando De La Rua", new Terran(), Colores.AZUL);
 
 		//cuesta 100 mineral
-		jugador.construir(nombreRefineria);
+		jugador.construir(EnumEdificiosTerran.REFINERIA);
 
 		//200 iniciales - 100 coste refineria
 		assertEquals(100,jugador.getRecursos().obtenerMineral());
@@ -65,9 +55,9 @@ public class IntegracionesJugadorTest {
 
 	@Test
 	public void testConstruyoPilonEsperoAQueSeConstruyaMiroPoblacion(){
-		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss(), colorAzul);
+		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss(), Colores.AZUL);
 
-		jugador.construir(nombrePilon);
+		jugador.construir(EnumEdificiosProtos.PILON);
 		//espero a que se construya
 		for(int i=1; i<=6 ; i++){
 			jugador.iniciarTurno();
@@ -79,10 +69,10 @@ public class IntegracionesJugadorTest {
 
 	@Test
 	public void testLlevoPoblacionMaximaAlTopeYVerifico(){
-		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss(), colorAzul);
+		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
 		for(int i = 1 ; i <= 4 ; i++ ){
-			jugador.construir(nombreNexo);
+			jugador.construir(EnumEdificiosProtos.NEXO_MINERAL);
 		}
 		//espero a que se construyan(4) y recolecten recursos de mas(200)
 		for(int i=1; i<= 200  ; i++){
@@ -90,7 +80,7 @@ public class IntegracionesJugadorTest {
 		}
 		//construyo pilones exactos para llegar a 200(39*5=195 +5 iniciales)
 		for(int i=1; i<=39 ; i++){
-			jugador.construir(nombrePilon);
+			jugador.construir(EnumEdificiosProtos.PILON);
 		}
 		//espero a que se construyan
 		for(int i=1; i<=6 ; i++){
@@ -103,10 +93,10 @@ public class IntegracionesJugadorTest {
 
 	@Test
 	public void testSuperoTopePoblacionMaximaVerificoQueSigaEnTope(){
-		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss(), colorAzul);
+		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
 		for(int i = 1 ; i <= 4 ; i++ ){
-			jugador.construir(nombreNexo);
+			jugador.construir(EnumEdificiosProtos.NEXO_MINERAL);
 		}
 		//espero a que se construyan(4) y recolecten recursos de mas(200)
 		for(int i=1; i<= 200  ; i++){
@@ -115,7 +105,7 @@ public class IntegracionesJugadorTest {
 
 		//creo muchos pilones
 		for(int i=1; i<=50 ; i++){
-			jugador.construir(nombrePilon);
+			jugador.construir(EnumEdificiosProtos.PILON);
 		}
 		//espero a que se construyan
 		for(int i=1; i<=6 ; i++){
@@ -127,20 +117,20 @@ public class IntegracionesJugadorTest {
 
 	@Test
 	public void testCrearUnidadesAumentaPoblacion() {
-		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreRefineria);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.REFINERIA);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
 			jugador.iniciarTurno();
 		}
 		//creo edificios para unidades
-		CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(nombreBarraca);
+		CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(EnumEdificiosTerran.BARRACA);
 
 		//creo unidad
-		jugador.crearUnidad(nombreMarine, barraca);
+		jugador.crearUnidad( UnidadesTerran.MARINE, barraca);
 
 
 		assertEquals( 1 , jugador.getPoblacionActual() );
@@ -148,43 +138,43 @@ public class IntegracionesJugadorTest {
 
 	@Test
 	public void testNoSePuedeCrearUnidadesCuandoPoblacionEstaAlMaximo() {
-		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreRefineria);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.REFINERIA);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
 			jugador.iniciarTurno();
 		}
 		//creo edificios para unidades
-		CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(nombreBarraca);
+		CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(EnumEdificiosTerran.BARRACA);
 		//creo 5 marines
 		for(int i = 1 ; i <= 5 ; i++ ){
-			jugador.crearUnidad(nombreMarine, barraca);
+			jugador.crearUnidad( UnidadesTerran.MARINE, barraca);
 		}
 
 		assertEquals( 5 , jugador.getPoblacionMaxima() );//verifico poblacion maxima
 		assertEquals( 5 , jugador.getPoblacionActual() );//verifico poblacion maxima alcanzada
-		assertEquals( null , jugador.crearUnidad(nombreMarine, barraca) );//verifico que no pueda crear
+		assertEquals( null , jugador.crearUnidad( UnidadesTerran.MARINE, barraca) );//verifico que no pueda crear
 	}
 
 	@Test
 	public void testMatarUnidadesdisminuyePoblacion() {
-		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreRefineria);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.REFINERIA);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
 			jugador.iniciarTurno();
 		}
 		//creo edificios para unidades
-		CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(nombreBarraca);
+		CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(EnumEdificiosTerran.BARRACA);
 		
 		//creo unidad
-		Daniable marine = jugador.crearUnidad(nombreMarine, barraca);
+		Daniable marine = jugador.crearUnidad( UnidadesTerran.MARINE, barraca);
 		
 		assertEquals( 1 , jugador.getPoblacionActual() );//verifico aumento poblacion
 		

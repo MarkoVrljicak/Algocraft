@@ -11,12 +11,12 @@ import algocraft.razas.Protoss;
 
 
 public class AsimiladorTest {
-	Colores colorAzul = Colores.AZUL;
+	
 	
 	@Test
 	public void testRecolectoGas() {
 		Asimilador asimilador = new Asimilador();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		asimilador.recolectarGas(jugador.getRecursos());
 		
@@ -26,7 +26,7 @@ public class AsimiladorTest {
 	@Test
 	public void testPasoDeTurnoYRecolectoGas() {
 		Asimilador asimilador = new Asimilador();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		asimilador.setDuenio(jugador);
 		asimilador.iniciarTurno();

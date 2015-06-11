@@ -15,8 +15,7 @@ import algocraft.unidades.terran.UnidadesTerran;
 
 public class BarracaTest {
 
-	Colores color = Colores.AZUL;
-	private static final UnidadesTerran nombreMarine = UnidadesTerran.MARINE;
+	
 	private static final Recurso recursosNecesariosMarine = new Recurso(50,0);
 	private static final int poblacionNecesariaMarine = 1;
 
@@ -24,22 +23,23 @@ public class BarracaTest {
 	public void testBarracaInicializaConMarine() {
 		Barraca barraca = new Barraca();
 		
-		assertEquals(true, barraca.tengoUnidad(nombreMarine));
+		assertEquals(true, barraca.tengoUnidad(UnidadesTerran.MARINE));
 	}
 		
 	@Test
 	public void testBarracaPuedeCrearMarineConRecursosSuficientesyPoblacionSuficiente() {
 		Barraca barraca = new Barraca();
-		Jugador jugador = new Jugador("Nombre", new Terran(), color);
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		barraca.setDuenio(jugador);
 			
 		assertEquals(true,barraca.puedoCrearUnidad(recursosNecesariosMarine, poblacionNecesariaMarine));
 	}	
 		
 	@Test
-	public void testBarracaNoPuedeCrearMarineConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testBarracaNoPuedeCrearMarineConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		Barraca barraca = new Barraca();
-		Jugador jugador = new Jugador("Nombre", new Terran(), color);
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		barraca.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -50,11 +50,11 @@ public class BarracaTest {
 	@Test
 	public void testBarracaCreaMarine() {
 		Barraca barraca = new Barraca();
-		Jugador jugador = new Jugador("Nombre", new Terran(), color);
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		barraca.setDuenio(jugador);
-		Unidad marine = barraca.crearUnidad(nombreMarine);
+		Unidad marine = barraca.crearUnidad(UnidadesTerran.MARINE);
 		
-		assertEquals(nombreMarine, marine.getNombre());
+		assertEquals(UnidadesTerran.MARINE, marine.getNombre());
 	}
 }

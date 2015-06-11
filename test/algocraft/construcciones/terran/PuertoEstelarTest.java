@@ -14,10 +14,7 @@ import algocraft.unidades.Unidad;
 import algocraft.unidades.terran.UnidadesTerran;
 
 public class PuertoEstelarTest {
-	private Colores colorAzul = Colores.AZUL;
-	private static final UnidadesTerran nombreEspectro = UnidadesTerran.ESPECTRO;
-	private static final UnidadesTerran nombreNaveDeTransporte = UnidadesTerran.NAVE_TRANSPORTE;
-	private static final UnidadesTerran nombreNaveDeCiencia = UnidadesTerran.NAVE_CIENCIA;
+	
 	private static final Recurso recursosNecesariosEspectro = new Recurso(50,0);
 	private static final Recurso recursosNecesariosNaveDeTransporte = new Recurso(50,0);
 	private static final Recurso recursosNecesariosNaveDeCiencia = new Recurso(50,0);
@@ -29,13 +26,13 @@ public class PuertoEstelarTest {
 	public void testPuertoEstelarInicializaConEspectro() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
 		
-		assertEquals(true, puertoEstelar.tengoUnidad(nombreEspectro));
+		assertEquals(true, puertoEstelar.tengoUnidad(UnidadesTerran.ESPECTRO));
 	}
 		
 	@Test
 	public void testPuertoEstelarPuedeCrearEspectroConRecursosSuficientesyPoblacionSuficiente() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 			
@@ -43,9 +40,10 @@ public class PuertoEstelarTest {
 	}	
 		
 	@Test
-	public void testPuertoEstelarNoPuedeCrearEspectroConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testPuertoEstelarNoPuedeCrearEspectroConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -56,25 +54,25 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaEspectro() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Terran(), colorAzul);		
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);		
 		puertoEstelar.setDuenio(jugador);
 		
-		Unidad espectro = puertoEstelar.crearUnidad(nombreEspectro);
+		Unidad espectro = puertoEstelar.crearUnidad(UnidadesTerran.ESPECTRO);
 		
-		assertEquals(nombreEspectro, espectro.getNombre());
+		assertEquals(UnidadesTerran.ESPECTRO, espectro.getNombre());
 	}
 	
 	@Test
 	public void testPuertoEstelarInicializaConNaveDeTransporte() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
 		
-		assertEquals(true, puertoEstelar.tengoUnidad(nombreNaveDeTransporte));
+		assertEquals(true, puertoEstelar.tengoUnidad(UnidadesTerran.NAVE_TRANSPORTE));
 	}
 		
 	@Test
 	public void testPuertoEstelarPuedeCrearNaveDeTransporteConRecursosSuficientesyPoblacionSuficiente() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 			
@@ -82,9 +80,10 @@ public class PuertoEstelarTest {
 	}	
 		
 	@Test
-	public void testPuertoEstelarNoPuedeCrearNaveDeTransporteConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testPuertoEstelarNoPuedeCrearNaveDeTransporteConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -95,25 +94,25 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaNaveDeTransporte() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
-		Unidad nave = puertoEstelar.crearUnidad(nombreNaveDeTransporte);
+		Unidad nave = puertoEstelar.crearUnidad(UnidadesTerran.NAVE_TRANSPORTE);
 		
-		assertEquals(nombreNaveDeTransporte, nave.getNombre());
+		assertEquals(UnidadesTerran.NAVE_TRANSPORTE, nave.getNombre());
 	}
 	
 	@Test
 	public void testPuertoEstelarInicializaConNaveDeCiencia() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
 		
-		assertEquals(true, puertoEstelar.tengoUnidad(nombreNaveDeCiencia));
+		assertEquals(true, puertoEstelar.tengoUnidad(UnidadesTerran.NAVE_CIENCIA));
 	}
 		
 	@Test
 	public void testPuertoEstelarPuedeCrearNaveDeCienciaConRecursosSuficientesyPoblacionSuficiente() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 			
@@ -121,9 +120,10 @@ public class PuertoEstelarTest {
 	}	
 		
 	@Test
-	public void testPuertoEstelarNoPuedeCrearNaveDeCienciaConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testPuertoEstelarNoPuedeCrearNaveDeCienciaConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -134,11 +134,11 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaNaveDeCiencia() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
-		Unidad nave = puertoEstelar.crearUnidad(nombreNaveDeCiencia);
+		Unidad nave = puertoEstelar.crearUnidad(UnidadesTerran.NAVE_CIENCIA);
 		
-		assertEquals(nombreNaveDeCiencia, nave.getNombre());
+		assertEquals(UnidadesTerran.NAVE_CIENCIA, nave.getNombre());
 	}
 }

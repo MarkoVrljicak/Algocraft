@@ -9,66 +9,78 @@ import algocraft.construcciones.protos.EnumEdificiosProtos;
 
 public class EdificioConEscudoTest {
 
-	private static final EnumEdificiosProtos nombrePilon= EnumEdificiosProtos.PILON;
 	private static final int vidaPilon = 300;
 	private static final int escudoPilon = 300;
 	private static final int tiempoConstruccionPilon = 5;
 
 	@Test
-	public void testCreoPilonControloSuVida(){
-		EdificioConEscudo pilon= new EdificioConEscudo(nombrePilon,vidaPilon,tiempoConstruccionPilon,escudoPilon);
-		
-		assertEquals(vidaPilon,pilon.getVida());
+	public void testCreoPilonControloSuVida() {
+		EdificioConEscudo pilon = new EdificioConEscudo(
+				EnumEdificiosProtos.PILON, vidaPilon, tiempoConstruccionPilon,
+				escudoPilon);
+
+		assertEquals(vidaPilon, pilon.getVida());
 	}
-	
+
 	@Test
-	public void testCreoPilonControloSuEscudo(){
-		EdificioConEscudo pilon= new EdificioConEscudo(nombrePilon,vidaPilon,tiempoConstruccionPilon,escudoPilon);
-		
-		assertEquals(escudoPilon,pilon.getEscudo());
+	public void testCreoPilonControloSuEscudo() {
+		EdificioConEscudo pilon = new EdificioConEscudo(
+				EnumEdificiosProtos.PILON, vidaPilon, tiempoConstruccionPilon,
+				escudoPilon);
+
+		assertEquals(escudoPilon, pilon.getEscudo());
 	}
-	
+
 	@Test
-	public void testCreoPilonControloNombre(){
-		EdificioConEscudo pilon= new EdificioConEscudo(nombrePilon,vidaPilon,tiempoConstruccionPilon,escudoPilon);
-		
-		assertEquals(nombrePilon,pilon.getNombre());
+	public void testCreoPilonControloNombre() {
+		EdificioConEscudo pilon = new EdificioConEscudo(
+				EnumEdificiosProtos.PILON, vidaPilon, tiempoConstruccionPilon,
+				escudoPilon);
+
+		assertEquals(EnumEdificiosProtos.PILON, pilon.getNombre());
 	}
-	
+
 	@Test
-	public void testCreoPilonVeoQueEsteEnConstruccion(){
-		EdificioConEscudo pilon= new EdificioConEscudo(nombrePilon,vidaPilon,tiempoConstruccionPilon,escudoPilon);
-		
-		assertEquals(true,pilon.enConstruccion());
+	public void testCreoPilonVeoQueEsteEnConstruccion() {
+		EdificioConEscudo pilon = new EdificioConEscudo(
+				EnumEdificiosProtos.PILON, vidaPilon, tiempoConstruccionPilon,
+				escudoPilon);
+
+		assertEquals(true, pilon.enConstruccion());
 	}
-	
+
 	@Test
-	public void testCreoPilonPasoTurnoVeoQueEsteEnConstruccion(){
-		EdificioConEscudo pilon= new EdificioConEscudo(nombrePilon,vidaPilon,tiempoConstruccionPilon,escudoPilon);
-		
+	public void testCreoPilonPasoTurnoVeoQueEsteEnConstruccion() {
+		EdificioConEscudo pilon = new EdificioConEscudo(
+				EnumEdificiosProtos.PILON, vidaPilon, tiempoConstruccionPilon,
+				escudoPilon);
+
 		pilon.iniciarTurno();
-		
-		assertEquals(true,pilon.enConstruccion());
+
+		assertEquals(true, pilon.enConstruccion());
 	}
-	
+
 	@Test
-	public void testCreoPilonEsperoSeConstruyaYVeoQueNoEsteEnConstruccion(){
-		EdificioConEscudo pilon= new EdificioConEscudo(nombrePilon,vidaPilon,tiempoConstruccionPilon,escudoPilon);
-		
-		for(int turno=1;turno<=tiempoConstruccionPilon; turno++)
+	public void testCreoPilonEsperoSeConstruyaYVeoQueNoEsteEnConstruccion() {
+		EdificioConEscudo pilon = new EdificioConEscudo(
+				EnumEdificiosProtos.PILON, vidaPilon, tiempoConstruccionPilon,
+				escudoPilon);
+
+		for (int turno = 1; turno <= tiempoConstruccionPilon; turno++)
 			pilon.iniciarTurno();
-		
-		assertEquals(false,pilon.enConstruccion());
+
+		assertEquals(false, pilon.enConstruccion());
 	}
-	
+
 	@Test
-	public void testCreoPilonEsperoMuchoVeoQueNoEsteEnConstruccion(){
-		EdificioConEscudo pilon= new EdificioConEscudo(nombrePilon,vidaPilon,tiempoConstruccionPilon,escudoPilon);
-		
-		for(int turno=1;turno<=100; turno++)
+	public void testCreoPilonEsperoMuchoVeoQueNoEsteEnConstruccion() {
+		EdificioConEscudo pilon = new EdificioConEscudo(
+				EnumEdificiosProtos.PILON, vidaPilon, tiempoConstruccionPilon,
+				escudoPilon);
+
+		for (int turno = 1; turno <= 100; turno++)
 			pilon.iniciarTurno();
-		
-		assertEquals(false,pilon.enConstruccion());
+
+		assertEquals(false, pilon.enConstruccion());
 	}
 }
-

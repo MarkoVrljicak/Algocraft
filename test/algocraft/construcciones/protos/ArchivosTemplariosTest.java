@@ -15,8 +15,7 @@ import algocraft.unidades.protos.UnidadesProtos;
 
 public class ArchivosTemplariosTest {
 	
-	Colores colorAzul = Colores.AZUL;
-	private static final UnidadesProtos nombreAltoTemplario= UnidadesProtos.ALTO_TEMPLARIO;
+	
 	private static final Recurso recursosNecesariosAltoTemplario = new Recurso(50,150);
 	private static final int poblacionNecesariaAltoTemplario = 2;
 	
@@ -24,13 +23,13 @@ public class ArchivosTemplariosTest {
 	public void testArchivosTemplariosInicializaConAltoTemplario() {
 		ArchivosTemplarios archivosTemplarios = new ArchivosTemplarios();
 		
-		assertEquals(true, archivosTemplarios.tengoUnidad(nombreAltoTemplario));
+		assertEquals(true, archivosTemplarios.tengoUnidad(UnidadesProtos.ALTO_TEMPLARIO));
 	}
 		
 	@Test
 	public void testArchivosTemplariosPuedeCrearAltoTemplarioConRecursosSuficientesyPoblacionSuficiente() {
 		ArchivosTemplarios archivosTemplarios = new ArchivosTemplarios();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		jugador.getRecursos().incrementarGas(150);
 		archivosTemplarios.setDuenio(jugador);
@@ -39,9 +38,10 @@ public class ArchivosTemplariosTest {
 	}	
 		
 	@Test
-	public void testArchivosTemplariosNoPuedeCrearAltoTemplarioConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testArchivosTemplariosNoPuedeCrearAltoTemplarioConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		ArchivosTemplarios archivosTemplarios = new ArchivosTemplarios();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		archivosTemplarios.setDuenio(jugador);
 			
@@ -51,13 +51,13 @@ public class ArchivosTemplariosTest {
 	@Test
 	public void testArchivosTemplariosCreaAltoTemplario() {
 		ArchivosTemplarios archivosTemplarios = new ArchivosTemplarios();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		jugador.getRecursos().incrementarGas(150);
 		archivosTemplarios.setDuenio(jugador);
-		Unidad altoTemplario = archivosTemplarios.crearUnidad(nombreAltoTemplario);
+		Unidad altoTemplario = archivosTemplarios.crearUnidad(UnidadesProtos.ALTO_TEMPLARIO);
 		
-		assertEquals(nombreAltoTemplario, altoTemplario.getNombre());
+		assertEquals(UnidadesProtos.ALTO_TEMPLARIO, altoTemplario.getNombre());
 	}
 	
 }

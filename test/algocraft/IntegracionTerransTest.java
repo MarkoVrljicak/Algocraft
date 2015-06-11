@@ -11,73 +11,67 @@ import algocraft.razas.Terran;
 
 public class IntegracionTerransTest {
 	
-	Colores colorAzul = Colores.AZUL;
-	private static final EnumEdificiosTerran nombreBarraca= EnumEdificiosTerran.BARRACA;
-	private static final EnumEdificiosTerran nombreCentroDeMineral= EnumEdificiosTerran.CENTRO_DE_MINERALES;
-	private static final EnumEdificiosTerran nombreDepositoDeSuministros= EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS;
-	private static final EnumEdificiosTerran nombreFabrica= EnumEdificiosTerran.FABRICA;
-	private static final EnumEdificiosTerran nombrePuertoEstelar= EnumEdificiosTerran.PUERTO_ESTELAR;
-	private static final EnumEdificiosTerran nombreRefineria= EnumEdificiosTerran.REFINERIA;
+	
 
 	@Test
 	public void testCrearCentroDeMineral() {
-		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
-		jugador.construir( nombreCentroDeMineral);
+		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
+		jugador.construir( EnumEdificiosTerran.CENTRO_DE_MINERALES);
 		
-		assertTrue(jugador.tieneConstruccion(nombreCentroDeMineral));
+		assertTrue(jugador.tieneConstruccion(EnumEdificiosTerran.CENTRO_DE_MINERALES));
 	}
 	
 	@Test
 	public void testCrearBarraca() {
-		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
-		jugador.construir( nombreBarraca);
+		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
+		jugador.construir( EnumEdificiosTerran.BARRACA);
 		
-		assertTrue(jugador.tieneConstruccion(nombreBarraca));
+		assertTrue(jugador.tieneConstruccion(EnumEdificiosTerran.BARRACA));
 	}
 	
 	@Test
 	public void testCrearDepositoDeSuministros() {
-		Jugador jugador = new Jugador("pepe", new Terran(),colorAzul);
-		jugador.construir( nombreDepositoDeSuministros);
+		Jugador jugador = new Jugador("pepe", new Terran(),Colores.AZUL);
+		jugador.construir( EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS);
 		
-		assertTrue(jugador.tieneConstruccion(nombreDepositoDeSuministros));
+		assertTrue(jugador.tieneConstruccion(EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS));
 	}
 	
 	@Test
 	public void testCrearRefineria() {
-		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
-		jugador.construir(nombreRefineria);
+		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
+		jugador.construir(EnumEdificiosTerran.REFINERIA);
 		
-		assertTrue(jugador.tieneConstruccion(nombreRefineria));
+		assertTrue(jugador.tieneConstruccion(EnumEdificiosTerran.REFINERIA));
 	}
 	
 	@Test
 	public void testCrearFabrica() {
-		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreRefineria);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.REFINERIA);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
 			jugador.iniciarTurno();
 		}
 		//creo edificios necesarios
-		jugador.construir(nombreBarraca);
+		jugador.construir(EnumEdificiosTerran.BARRACA);
 		
 		//creo fabrica
-		jugador.construir(nombreFabrica);
+		jugador.construir(EnumEdificiosTerran.FABRICA);
 		
-		assertTrue(jugador.tieneConstruccion(nombreFabrica));
+		assertTrue(jugador.tieneConstruccion(EnumEdificiosTerran.FABRICA));
 	}
 	
 	@Test
 	public void testNoSeCreaFabricaSinBarraca() {
-		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreRefineria);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.REFINERIA);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
 			jugador.iniciarTurno();
@@ -85,48 +79,48 @@ public class IntegracionTerransTest {
 		
 		
 		//creo fabrica sin tener barraca
-		jugador.construir(nombreFabrica);
+		jugador.construir(EnumEdificiosTerran.FABRICA);
 		
-		assertFalse(jugador.tieneConstruccion(nombreFabrica));
+		assertFalse(jugador.tieneConstruccion(EnumEdificiosTerran.FABRICA));
 	}
 	
 	@Test
 	public void testCrearPuertoEstelar() {
-		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreRefineria);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.REFINERIA);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
 			jugador.iniciarTurno();
 		}
 		//creo edificios necesarios
-		jugador.construir(nombreBarraca);
-		jugador.construir(nombreFabrica);
+		jugador.construir(EnumEdificiosTerran.BARRACA);
+		jugador.construir(EnumEdificiosTerran.FABRICA);
 
 		//creo puerto estelar
-		jugador.construir( nombrePuertoEstelar);
+		jugador.construir( EnumEdificiosTerran.PUERTO_ESTELAR);
 		
-		assertTrue(jugador.tieneConstruccion(nombrePuertoEstelar));
+		assertTrue(jugador.tieneConstruccion(EnumEdificiosTerran.PUERTO_ESTELAR));
 	}
 	
 	@Test
 	public void testNoSeCreaPuertoEstelarSinFabrica() {
-		Jugador jugador = new Jugador("pepe", new Terran(), colorAzul);
+		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreCentroDeMineral);
-		jugador.construir(nombreRefineria);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		jugador.construir(EnumEdificiosTerran.REFINERIA);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
 			jugador.iniciarTurno();
 		}
 
 		//creo puerto estelar
-		jugador.construir( nombrePuertoEstelar);
+		jugador.construir( EnumEdificiosTerran.PUERTO_ESTELAR);
 		
-		assertFalse(jugador.tieneConstruccion(nombrePuertoEstelar));
+		assertFalse(jugador.tieneConstruccion(EnumEdificiosTerran.PUERTO_ESTELAR));
 	}
 
 }

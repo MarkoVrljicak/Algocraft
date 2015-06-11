@@ -14,13 +14,7 @@ import algocraft.stats.Recurso;
 
 public class ProtossTest {
 	
-	Colores colorAzul = Colores.AZUL;
-	private static final EnumEdificiosProtos nombreAcceso= EnumEdificiosProtos.ACCESO;
-	private static final EnumEdificiosProtos nombreArchivosTemplarios= EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS;
-	private static final EnumEdificiosProtos nombreAsimilador= EnumEdificiosProtos.ASIMILADOR;
-	private static final EnumEdificiosProtos nombreNexoMineral= EnumEdificiosProtos.NEXO_MINERAL;
-	private static final EnumEdificiosProtos nombrePuertoEstelar= EnumEdificiosProtos.PUERTO_ESTELAR;
-	private static final EnumEdificiosProtos nombrePilon= EnumEdificiosProtos.PILON;
+	
 	private static final Recurso recursosNecesariosAcceso = new Recurso(150,0);
 	private static final Recurso recursosNecesariosArchivosTemplarios = new Recurso(150,200);
 	private static final Recurso recursosNecesariosAsimilador = new Recurso(100,0);
@@ -33,57 +27,58 @@ public class ProtossTest {
 	public void testProtossInicializaConAcceso() {
 		Protoss protoss = new Protoss();
 		
-		assertEquals(true, protoss.tengoConstruccion(nombreAcceso));
+		assertEquals(true, protoss.tengoConstruccion(EnumEdificiosProtos.ACCESO));
 	}
 	
 	@Test
 	public void testProtossInicializaConArchivosTemplarios() {
 		Protoss protoss = new Protoss();
 		
-		assertEquals(true, protoss.tengoConstruccion(nombreArchivosTemplarios ));
+		assertEquals(true, protoss.tengoConstruccion(EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS ));
 	}
 	
 	@Test
 	public void testProtossInicializaConAsimilador() {
 		Protoss protoss = new Protoss();
 		
-		assertEquals(true, protoss.tengoConstruccion(nombreAsimilador ));
+		assertEquals(true, protoss.tengoConstruccion(EnumEdificiosProtos.ASIMILADOR ));
 	}
 	
 	@Test
 	public void testProtossInicializaConNexoMineral() {
 		Protoss protoss = new Protoss();
 		
-		assertEquals(true, protoss.tengoConstruccion(nombreNexoMineral ));
+		assertEquals(true, protoss.tengoConstruccion(EnumEdificiosProtos.NEXO_MINERAL ));
 	}
 	
 	@Test
 	public void testProtossInicializaConPilon() {
 		Protoss protoss = new Protoss();
 		
-		assertEquals(true, protoss.tengoConstruccion(nombrePilon ));
+		assertEquals(true, protoss.tengoConstruccion(EnumEdificiosProtos.PILON ));
 	}
 	
 	@Test
 	public void testProtossInicializaConPuertoEstelar() {
 		Protoss protoss = new Protoss();
 		
-		assertEquals(true, protoss.tengoConstruccion(nombrePuertoEstelar ));
+		assertEquals(true, protoss.tengoConstruccion(EnumEdificiosProtos.PUERTO_ESTELAR ));
 	}
 	
 	@Test
 	public void testProtossPuedeCrearAccesoConRecursosSuficientesyPoblacionSuficiente() {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		protoss.setDuenio(jugador);
 			
 		assertEquals(true,protoss.puedoCrearConstruccion(recursosNecesariosAcceso));
 	}	
 		
 	@Test
-	public void testProtossNoPuedeCrearAccesoConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testProtossNoPuedeCrearAccesoConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -94,18 +89,18 @@ public class ProtossTest {
 	@Test
 	public void testProtossCreaAcceso() {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
-		Construccion acceso = protoss.crearConstruccion(nombreAcceso);
+		Construccion acceso = protoss.crearConstruccion(EnumEdificiosProtos.ACCESO);
 		
-		assertEquals(nombreAcceso, acceso.getNombre());
+		assertEquals(EnumEdificiosProtos.ACCESO, acceso.getNombre());
 	}
 	
 	@Test
 	public void testProtossPuedeCrearArchivosTemplariosConRecursosSuficientesyPoblacionSuficiente() {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		jugador.getRecursos().incrementarGas(200);
 		protoss.setDuenio(jugador);
@@ -114,9 +109,10 @@ public class ProtossTest {
 	}	
 		
 	@Test
-	public void testProtossNoPuedeCrearArchivosTemplariosConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testProtossNoPuedeCrearArchivosTemplariosConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -127,16 +123,17 @@ public class ProtossTest {
 	@Test
 	public void testProtossPuedeCrearAsimiladorConRecursosSuficientesyPoblacionSuficiente() {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss,colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss, Colores.AZUL);
 		protoss.setDuenio(jugador);
 			
 		assertEquals(true,protoss.puedoCrearConstruccion(recursosNecesariosAsimilador));
 	}	
 		
 	@Test
-	public void testProtossNoPuedeCrearAsimiladorConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testProtossNoPuedeCrearAsimiladorConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss,colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss, Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -147,27 +144,28 @@ public class ProtossTest {
 	@Test
 	public void testProtossCreaAsimilador() {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
-		Construccion asimilador = protoss.crearConstruccion(nombreAsimilador);
+		Construccion asimilador = protoss.crearConstruccion(EnumEdificiosProtos.ASIMILADOR);
 		
-		assertEquals(nombreAsimilador, asimilador.getNombre());
+		assertEquals(EnumEdificiosProtos.ASIMILADOR, asimilador.getNombre());
 	}
 	
 	@Test
 	public void testProtossPuedeCrearNexoMineralConRecursosSuficientesyPoblacionSuficiente() {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		protoss.setDuenio(jugador);
 			
 		assertEquals(true,protoss.puedoCrearConstruccion(recursosNecesariosNexoMineral));
 	}	
 		
 	@Test
-	public void testProtossNoPuedeCrearNexoMineralConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testProtossNoPuedeCrearNexoMineralConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -178,18 +176,18 @@ public class ProtossTest {
 	@Test
 	public void testProtossCreaNexoMineral() {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
-		Construccion nexoMineral = protoss.crearConstruccion(nombreNexoMineral);
+		Construccion nexoMineral = protoss.crearConstruccion(EnumEdificiosProtos.NEXO_MINERAL);
 		
-		assertEquals(nombreNexoMineral, nexoMineral.getNombre());
+		assertEquals(EnumEdificiosProtos.NEXO_MINERAL, nexoMineral.getNombre());
 	}
 	
 	@Test
 	public void testProtossPuedeCrearPuertoEstelarConRecursosSuficientesyPoblacionSuficiente() {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		jugador.getRecursos().incrementarGas(100);
 		protoss.setDuenio(jugador);
@@ -198,9 +196,10 @@ public class ProtossTest {
 	}	
 		
 	@Test
-	public void testProtossNoPuedeCrearPuertoEstelarConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testProtossNoPuedeCrearPuertoEstelarConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -211,16 +210,17 @@ public class ProtossTest {
 	@Test
 	public void testProtossPuedeCrearPilonConRecursosSuficientesyPoblacionSuficiente() {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		protoss.setDuenio(jugador);
 			
 		assertEquals(true,protoss.puedoCrearConstruccion(recursosNecesariosPilon));
 	}	
 		
 	@Test
-	public void testProtossNoPuedeCrearPilonConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testProtossNoPuedeCrearPilonConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -231,12 +231,12 @@ public class ProtossTest {
 	@Test
 	public void testProtossCreaPilon() {
 		Protoss protoss = new Protoss();
-		Jugador jugador = new Jugador("Nombre", protoss, colorAzul);
+		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
-		Construccion pilon = protoss.crearConstruccion(nombrePilon);
+		Construccion pilon = protoss.crearConstruccion(EnumEdificiosProtos.PILON);
 		
-		assertEquals(nombrePilon, pilon.getNombre());
+		assertEquals(EnumEdificiosProtos.PILON, pilon.getNombre());
 	}
 
 	@Test

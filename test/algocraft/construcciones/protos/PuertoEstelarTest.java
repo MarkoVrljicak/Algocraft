@@ -14,9 +14,7 @@ import algocraft.unidades.Unidad;
 import algocraft.unidades.protos.UnidadesProtos;
 
 public class PuertoEstelarTest {
-	Colores colorAzul = Colores.AZUL;
-	private static final UnidadesProtos nombreScout= UnidadesProtos.SCOUT;
-	private static final UnidadesProtos nombreNaveDeTransporte= UnidadesProtos.NAVE_DE_TRANSPORTE;
+	
 	private static final Recurso recursosNecesariosScout = new Recurso(300,150);
 	private static final Recurso recursosNecesariosNaveDeTransporte = new Recurso(200,0);
 	private static final int poblacionNecesariaScout = 3;
@@ -26,13 +24,13 @@ public class PuertoEstelarTest {
 	public void testPuertoEstelarInicializaConScout() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
 		
-		assertEquals(true, puertoEstelar.tengoUnidad(nombreScout));
+		assertEquals(true, puertoEstelar.tengoUnidad(UnidadesProtos.SCOUT));
 	}
 		
 	@Test
 	public void testPuertoEstelarPuedeCrearScoutConRecursosSuficientesyPoblacionSuficiente() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		jugador.getRecursos().incrementarMineral(100);
 		jugador.getRecursos().incrementarGas(150);
@@ -42,9 +40,10 @@ public class PuertoEstelarTest {
 	}	
 		
 	@Test
-	public void testPuertoEstelarNoPuedeCrearScoutConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testPuertoEstelarNoPuedeCrearScoutConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 			
@@ -54,26 +53,26 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaScout() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);		
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);		
 		jugador.getRecursos().incrementarMineral(100);
 		jugador.getRecursos().incrementarGas(150);
 		puertoEstelar.setDuenio(jugador);
-		Unidad scout = puertoEstelar.crearUnidad(nombreScout);
+		Unidad scout = puertoEstelar.crearUnidad(UnidadesProtos.SCOUT);
 		
-		assertEquals(nombreScout, scout.getNombre());
+		assertEquals(UnidadesProtos.SCOUT, scout.getNombre());
 	}
 	
 	@Test
 	public void testPuertoEstelarInicializaConNaveDeTransporte() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
 		
-		assertEquals(true, puertoEstelar.tengoUnidad(nombreNaveDeTransporte));
+		assertEquals(true, puertoEstelar.tengoUnidad(UnidadesProtos.NAVE_DE_TRANSPORTE));
 	}
 		
 	@Test
 	public void testPuertoEstelarPuedeCrearNaveDeTransporteConRecursosSuficientesyPoblacionSuficiente() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 					
@@ -81,9 +80,10 @@ public class PuertoEstelarTest {
 	}	
 		
 	@Test
-	public void testPuertoEstelarNoPuedeCrearNaveDeTransporteConRecursosInSuficientesyPoblacionSuficiente() throws RecursosNegativosException {
+	public void testPuertoEstelarNoPuedeCrearNaveDeTransporteConRecursosInSuficientesyPoblacionSuficiente() 
+			throws RecursosNegativosException {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
@@ -94,12 +94,12 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarCreaNaveDeTransporte() {
 		PuertoEstelar puertoEstelar = new PuertoEstelar();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);		
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);		
 		jugador.getRecursos().incrementarGas(50);
 		puertoEstelar.setDuenio(jugador);
-		Unidad nave = puertoEstelar.crearUnidad(nombreNaveDeTransporte);
+		Unidad nave = puertoEstelar.crearUnidad(UnidadesProtos.NAVE_DE_TRANSPORTE);
 		
-		assertEquals(nombreNaveDeTransporte, nave.getNombre());
+		assertEquals(UnidadesProtos.NAVE_DE_TRANSPORTE, nave.getNombre());
 	}
 }
 

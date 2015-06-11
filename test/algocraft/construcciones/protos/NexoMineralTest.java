@@ -10,12 +10,12 @@ import algocraft.jugador.Jugador;
 import algocraft.razas.Protoss;
 
 public class NexoMineralTest {
-	Colores colorAzul = Colores.AZUL;
+	
 	
 	@Test
 	public void testRecolectoMineral() {
 		NexoMineral nexo = new NexoMineral();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		nexo.recolectarMineral(jugador.getRecursos());
 		
@@ -25,7 +25,7 @@ public class NexoMineralTest {
 	@Test
 	public void testPasoDeTurnoYRecolectoMineral() {
 		NexoMineral nexo = new NexoMineral();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), colorAzul);		
+		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);		
 		nexo.setDuenio(jugador);
 		nexo.iniciarTurno();
 		

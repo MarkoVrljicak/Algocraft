@@ -13,7 +13,6 @@ import algocraft.unidades.terran.UnidadesTerran;
 
 public class UnidadTransportadoraTest {
 
-	private static final UnidadesTerran nombreMarine = UnidadesTerran.MARINE;
 	
 	@Test
 	public void testNaveSubeAUnidad(){
@@ -49,7 +48,7 @@ public class UnidadTransportadoraTest {
 		Unidad unidadDescargada = nave.bajarUnidad(marine);
 		
 		assertEquals(unidadDescargada,marine);
-		assertEquals(nombreMarine, marine.getNombre());
+		assertEquals(UnidadesTerran.MARINE, marine.getNombre());
 	}
 	
 	@Test

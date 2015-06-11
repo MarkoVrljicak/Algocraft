@@ -11,120 +11,114 @@ import algocraft.razas.Protoss;
 
 public class IntegracionProtossTest {
 
-	private Colores colorAzul = Colores.AZUL;
-	private static final EnumEdificiosProtos nombreAcceso= EnumEdificiosProtos.ACCESO;
-	private static final EnumEdificiosProtos nombreArchivosTemplarios= EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS;
-	private static final EnumEdificiosProtos nombreAsimilador= EnumEdificiosProtos.ASIMILADOR;
-	private static final EnumEdificiosProtos nombreNexoMineral= EnumEdificiosProtos.NEXO_MINERAL;
-	private static final EnumEdificiosProtos nombrePuertoEstelar= EnumEdificiosProtos.PUERTO_ESTELAR;
-	private static final EnumEdificiosProtos nombrePilon= EnumEdificiosProtos.PILON;
+	
 	
 	@Test
 	public void testCrearAcceso() {
-		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
-		jugador.construir(nombreAcceso);
+		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
+		jugador.construir(EnumEdificiosProtos.ACCESO);
 		
-		assertTrue(jugador.tieneConstruccion(nombreAcceso));
+		assertTrue(jugador.tieneConstruccion(EnumEdificiosProtos.ACCESO));
 	}
 	
 	@Test
 	public void testCrearAsimilador() {
-		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
-		jugador.construir( nombreAsimilador);
+		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
+		jugador.construir( EnumEdificiosProtos.ASIMILADOR);
 		
-		assertTrue(jugador.tieneConstruccion(nombreAsimilador));
+		assertTrue(jugador.tieneConstruccion(EnumEdificiosProtos.ASIMILADOR));
 	}
 	
 	@Test
 	public void testCrearNexoMineral() {
-		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
-		jugador.construir( nombreNexoMineral);
+		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
+		jugador.construir(  EnumEdificiosProtos.NEXO_MINERAL);
 		
-		assertTrue(jugador.tieneConstruccion(nombreNexoMineral));
+		assertTrue(jugador.tieneConstruccion( EnumEdificiosProtos.NEXO_MINERAL));
 	}
 	
 	@Test
 	public void testCrearPilon() {
-		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
-		jugador.construir(nombrePilon);
+		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
+		jugador.construir(EnumEdificiosProtos.PILON);
 		
-		assertTrue(jugador.tieneConstruccion(nombrePilon));
+		assertTrue(jugador.tieneConstruccion(EnumEdificiosProtos.PILON));
 	}
 
 	@Test
 	public void testCrearPuertoEstelar() {
-		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
-		jugador.construir(nombreNexoMineral);
-		jugador.construir(nombreNexoMineral);
-		jugador.construir(nombreAsimilador);
+		jugador.construir( EnumEdificiosProtos.NEXO_MINERAL);
+		jugador.construir( EnumEdificiosProtos.NEXO_MINERAL);
+		jugador.construir(EnumEdificiosProtos.ASIMILADOR);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
 			jugador.iniciarTurno();
 		}
 		//creo edificios necesarios
-		jugador.construir(nombreAcceso);
+		jugador.construir(EnumEdificiosProtos.ACCESO);
 		
 		//creo PuertoEstelar
-		jugador.construir(nombrePuertoEstelar);
+		jugador.construir(EnumEdificiosProtos.PUERTO_ESTELAR);
 		
-		assertTrue(jugador.tieneConstruccion(nombrePuertoEstelar));
+		assertTrue(jugador.tieneConstruccion(EnumEdificiosProtos.PUERTO_ESTELAR));
 	}
 	
 	@Test
 	public void testNoSeCreaPuertoEstelarSinAcceso() {
-		Jugador jugador = new Jugador("pepe", new Protoss(),colorAzul);
+		Jugador jugador = new Jugador("pepe", new Protoss(),Colores.AZUL);
 		//construyo edificios para acumular recursos 
-		jugador.construir(nombreNexoMineral);
-		jugador.construir(nombreNexoMineral);
-		jugador.construir(nombreAsimilador);
+		jugador.construir( EnumEdificiosProtos.NEXO_MINERAL);
+		jugador.construir( EnumEdificiosProtos.NEXO_MINERAL);
+		jugador.construir(EnumEdificiosProtos.ASIMILADOR);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
 			jugador.iniciarTurno();
 		}
 				
 		//creo PuertoEstelar sin tener Acceso
-		jugador.construir(nombrePuertoEstelar);
+		jugador.construir(EnumEdificiosProtos.PUERTO_ESTELAR);
 		
-		assertFalse(jugador.tieneConstruccion(nombrePuertoEstelar));
+		assertFalse(jugador.tieneConstruccion(EnumEdificiosProtos.PUERTO_ESTELAR));
 	}
 	
 	@Test
 	public void testCrearArchivosTemplarios() {
-		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
-		jugador.construir(nombreNexoMineral);
-		jugador.construir(nombreNexoMineral);
-		jugador.construir(nombreAsimilador);
+		jugador.construir( EnumEdificiosProtos.NEXO_MINERAL);
+		jugador.construir( EnumEdificiosProtos.NEXO_MINERAL);
+		jugador.construir(EnumEdificiosProtos.ASIMILADOR);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
 			jugador.iniciarTurno();
 		}
 		//creo edificios necesarios
-		jugador.construir(nombreAcceso);
-		jugador.construir(nombrePuertoEstelar);
+		jugador.construir(EnumEdificiosProtos.ACCESO);
+		jugador.construir(EnumEdificiosProtos.PUERTO_ESTELAR);
 		
 		//creo ArchivosTemplarios
-		jugador.construir(nombreArchivosTemplarios);
+		jugador.construir(EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS);
 		
-		assertTrue(jugador.tieneConstruccion(nombreArchivosTemplarios));
+		assertTrue(jugador.tieneConstruccion(EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS));
 	}
 	
 	@Test
 	public void testNoSeCreaArchivosTemplariosSinPuertoEstelar() {
-		Jugador jugador = new Jugador("pepe", new Protoss(), colorAzul);
+		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
-		jugador.construir(nombreNexoMineral);
-		jugador.construir(nombreNexoMineral);
-		jugador.construir(nombreAsimilador);
+		jugador.construir( EnumEdificiosProtos.NEXO_MINERAL);
+		jugador.construir( EnumEdificiosProtos.NEXO_MINERAL);
+		jugador.construir(EnumEdificiosProtos.ASIMILADOR);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
 			jugador.iniciarTurno();
 		}
 		
 		//creo ArchivosTemplarios
-		jugador.construir(nombreArchivosTemplarios);
+		jugador.construir(EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS);
 		
-		assertFalse(jugador.tieneConstruccion(nombreArchivosTemplarios));
+		assertFalse(jugador.tieneConstruccion(EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS));
 	}
 }
