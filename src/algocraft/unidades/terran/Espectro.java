@@ -19,7 +19,7 @@ public class Espectro extends Unidad{
 
 	@Override
 	protected void setearVida() {
-		this.stat = new Vida(120);
+		this.vitalidad = new Vida(120);
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class Espectro extends Unidad{
 
 	@Override
 	public int getVida() {
-		return this.stat.actual();
+		return this.vitalidad.actual();
 	}
 
 	@Override

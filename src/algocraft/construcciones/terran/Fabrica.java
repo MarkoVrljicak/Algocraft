@@ -20,7 +20,7 @@ public class Fabrica extends CreadorDeUnidades{
 
 	@Override
 	protected void determinarCreables() {
-		this.unidadesCreables.add(UnidadesTerran.GOLLIAT);
+		this.aniadirUnidadCreable(UnidadesTerran.GOLLIAT);
 	}
 
 	@Override

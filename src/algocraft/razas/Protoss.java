@@ -17,18 +17,19 @@ public class Protoss extends Raza{
 	private static final Recurso recursosNecesariosPilon = new Recurso(100,0);
 	
 	public Protoss(){
+		super();
 		this.nombre = EnumRazas.PROTOSS;
 	}
 	
 	@Override
 	protected void determinarCreables() {
-		this.construccionesCreables.add(EnumEdificiosProtos.ACCESO);
-		this.construccionesCreables.add(EnumEdificiosProtos.BASE_PROTOSS);
-		this.construccionesCreables.add(EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS);
-		this.construccionesCreables.add(EnumEdificiosProtos.ASIMILADOR);
-		this.construccionesCreables.add(EnumEdificiosProtos.NEXO_MINERAL);
-		this.construccionesCreables.add(EnumEdificiosProtos.PUERTO_ESTELAR);
-		this.construccionesCreables.add(EnumEdificiosProtos.PILON);
+		this.aniadirEdificioCreable(EnumEdificiosProtos.ACCESO);
+		this.aniadirEdificioCreable(EnumEdificiosProtos.BASE_PROTOSS);
+		this.aniadirEdificioCreable(EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS);
+		this.aniadirEdificioCreable(EnumEdificiosProtos.ASIMILADOR);
+		this.aniadirEdificioCreable(EnumEdificiosProtos.NEXO_MINERAL);
+		this.aniadirEdificioCreable(EnumEdificiosProtos.PUERTO_ESTELAR);
+		this.aniadirEdificioCreable(EnumEdificiosProtos.PILON);
 		
 	}
 

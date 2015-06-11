@@ -22,8 +22,8 @@ public class Acceso extends CreadorDeUnidades {
 	
 	@Override
 	protected void determinarCreables() {
-		this.unidadesCreables.add(UnidadesProtos.ZEALOT);
-		this.unidadesCreables.add(UnidadesProtos.DRAGON);
+		this.aniadirUnidadCreable(UnidadesProtos.ZEALOT);
+		this.aniadirUnidadCreable(UnidadesProtos.DRAGON);
 	}
 	
 	public Unidad crearUnidad(Unidades nombreUnidad){

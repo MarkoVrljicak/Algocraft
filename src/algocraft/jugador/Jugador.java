@@ -33,6 +33,7 @@ public class Jugador implements Actualizable, Usuario {
 		construcciones = new ArrayList<Construccion>();
 	}
 	
+	//accesors 
 	
 	public EnumRazas getRaza(){
 		return raza.getNombre();
@@ -102,6 +103,7 @@ public class Jugador implements Actualizable, Usuario {
 		return false;//si no lo tiene
 	}
 	
+	//de creacion
 	
 	public Construccion construir(EnumEdificios nombreConstruccion){
 		Construccion construccion = raza.crearConstruccion(nombreConstruccion);
@@ -122,6 +124,7 @@ public class Jugador implements Actualizable, Usuario {
 		return unidadCreada;
 	}
 
+	//actualizacion
 	
 	@Override
 	public void iniciarTurno() {
@@ -140,7 +143,7 @@ public class Jugador implements Actualizable, Usuario {
 		//limpio construcciones
 		Iterator<Construccion> itConstrucciones= construcciones.iterator();	
 		while(itConstrucciones.hasNext()){
-			Daniable unaConstruccion= (Daniable) itConstrucciones.next();
+			Daniable unaConstruccion=  itConstrucciones.next();
 			if (unaConstruccion.estoyMuerto()){
 				construcciones.remove(unaConstruccion);
 				itConstrucciones= construcciones.iterator();				
@@ -149,7 +152,7 @@ public class Jugador implements Actualizable, Usuario {
 		//limpio unidades
 		Iterator<Unidad> itUnidades = unidades.iterator();
 		while(itUnidades.hasNext()){
-			Daniable unaUnidad =(Daniable) itUnidades.next();
+			Daniable unaUnidad = itUnidades.next();
 			if (unaUnidad.estoyMuerto()){
 				unidades.remove(unaUnidad);
 				itUnidades = unidades.iterator();

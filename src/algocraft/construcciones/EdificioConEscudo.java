@@ -18,7 +18,7 @@ public class EdificioConEscudo extends EdificioBasico{
 	}
 	
 	public void iniciarTurno() {
-		this.disminuirTiempoDeConstruccion();
+		super.iniciarTurno();
 		this.stat.regenerar();
 	}
 }

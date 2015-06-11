@@ -17,18 +17,19 @@ public class Terran extends Raza{
 	private static final Recurso recursosNecesariosRefineria = new Recurso(100,0);
 	
 	public Terran(){
+		super();
 		this.nombre = EnumRazas.TERRAN;
 	}
 	
 	@Override
 	protected void determinarCreables() {
-		this.construccionesCreables.add(EnumEdificiosTerran.BARRACA);
-		this.construccionesCreables.add(EnumEdificiosTerran.BASE_TERRAN);
-		this.construccionesCreables.add(EnumEdificiosTerran.CENTRO_DE_MINERALES);
-		this.construccionesCreables.add(EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS);
-		this.construccionesCreables.add(EnumEdificiosTerran.FABRICA);
-		this.construccionesCreables.add(EnumEdificiosTerran.PUERTO_ESTELAR);
-		this.construccionesCreables.add(EnumEdificiosTerran.REFINERIA);
+		this.aniadirEdificioCreable(EnumEdificiosTerran.BARRACA);
+		this.aniadirEdificioCreable(EnumEdificiosTerran.BASE_TERRAN);
+		this.aniadirEdificioCreable(EnumEdificiosTerran.CENTRO_DE_MINERALES);
+		this.aniadirEdificioCreable(EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS);
+		this.aniadirEdificioCreable(EnumEdificiosTerran.FABRICA);
+		this.aniadirEdificioCreable(EnumEdificiosTerran.PUERTO_ESTELAR);
+		this.aniadirEdificioCreable(EnumEdificiosTerran.REFINERIA);
 		
 	}
 

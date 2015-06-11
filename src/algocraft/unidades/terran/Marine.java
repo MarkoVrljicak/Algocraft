@@ -20,7 +20,7 @@ public class Marine extends Unidad{
 
 	@Override
 	protected void setearVida() {
-		this.stat = new Vida(40);
+		this.vitalidad = new Vida(40);
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class Marine extends Unidad{
 
 	@Override
 	public int getVida() {
-		return this.stat.actual();
+		return this.vitalidad.actual();
 	}
 
 	@Override

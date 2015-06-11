@@ -19,7 +19,7 @@ public class Golliat extends Unidad{
 
 	@Override
 	protected void setearVida() {
-		this.stat = new Vida(125);
+		this.vitalidad = new Vida(125);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class Golliat extends Unidad{
 
 	@Override
 	public int getVida() {
-		return stat.actual();
+		return vitalidad.actual();
 	}
 
 	@Override

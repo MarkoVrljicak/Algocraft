@@ -19,7 +19,7 @@ public class NaveCiencia extends Unidad{
 
 	@Override
 	protected void setearVida() {
-		this.stat = new Vida(200);
+		this.vitalidad = new Vida(200);
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class NaveCiencia extends Unidad{
 
 	@Override
 	public int getVida() {
-		return stat.actual();
+		return vitalidad.actual();
 	}
 
 	@Override

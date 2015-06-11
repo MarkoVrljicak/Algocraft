@@ -17,7 +17,7 @@ public class NaveTransporte extends UnidadTransportadora{
 
 	@Override
 	protected void setearVida() {
-		this.stat = new Vida(150);
+		this.vitalidad = new Vida(150);
 	}
 	
 	@Override
@@ -32,7 +32,7 @@ public class NaveTransporte extends UnidadTransportadora{
 
 	@Override
 	public int getVida() {
-		return this.stat.actual();
+		return this.vitalidad.actual();
 	}
 
 	@Override

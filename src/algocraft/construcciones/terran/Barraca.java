@@ -19,7 +19,7 @@ public class Barraca extends CreadorDeUnidades {
 	
 	@Override
 	protected void determinarCreables() {
-		this.unidadesCreables.add(UnidadesTerran.MARINE)	;
+		this.aniadirUnidadCreable(UnidadesTerran.MARINE)	;
 	}
 	
 	public Unidad crearUnidad(Unidades nombreUnidad){

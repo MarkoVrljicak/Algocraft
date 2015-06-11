@@ -15,10 +15,19 @@ public abstract class Raza {
 	protected ArrayList<EnumEdificios> construccionesCreables;
 	protected Usuario duenio = new JugadorNulo();
 	
+	//metodos de inicializacion
 	public Raza(){
 		construccionesCreables= new ArrayList<EnumEdificios>();
 		this.determinarCreables();
 	}
+	
+	abstract protected void determinarCreables();
+	
+	protected void aniadirEdificioCreable(EnumEdificios nombreEdificio){
+		this.construccionesCreables.add(nombreEdificio);
+	}
+	
+	//accessors
 	
 	public EnumRazas getNombre(){
 		return nombre;
@@ -32,10 +41,20 @@ public abstract class Raza {
 		return construccionesCreables;
 	}
 	
-	abstract protected void determinarCreables();//obligo a que determine creables en construccion
-	abstract public Construccion crearConstruccion(EnumEdificios nombreEdificio);
-
+	public boolean tengoConstruccion(EnumEdificios nombreEdificio){
+		return construccionesCreables.contains(nombreEdificio);
+	}
 	
+	//creacion edificios
+	public boolean puedoCrearConstruccion(Recurso recursosNecesarios) {
+		final Recurso recursosDisponibles = duenio.getRecursos();
+		
+		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= recursosNecesarios.obtenerMineral());
+		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= recursosNecesarios.obtenerGas());
+		
+		return puedeCrearse;
+	}	
+		
 	protected Construccion crearConstruccionEspecifico(EnumEdificios edificio, Recurso recursosNecesarios){
 		
 		if(puedoCrearConstruccion(recursosNecesarios) ){
@@ -52,16 +71,6 @@ public abstract class Raza {
 		else return null;
 	}
 	
-	public boolean puedoCrearConstruccion(Recurso recursosNecesarios) {
-		final Recurso recursosDisponibles = duenio.getRecursos();
-		
-		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= recursosNecesarios.obtenerMineral());
-		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= recursosNecesarios.obtenerGas());
-		
-		return puedeCrearse;
-	}
+	abstract public Construccion crearConstruccion(EnumEdificios nombreEdificio);
 	
-	public boolean tengoConstruccion(EnumEdificios nombreEdificio){
-		return construccionesCreables.contains(nombreEdificio);
-	}
 }

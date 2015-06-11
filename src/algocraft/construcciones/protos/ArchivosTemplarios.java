@@ -19,7 +19,7 @@ public class ArchivosTemplarios extends CreadorDeUnidades {
 	
 	@Override
 	protected void determinarCreables() {
-		this.unidadesCreables.add(UnidadesProtos.ALTO_TEMPLARIO)	;
+		this.aniadirUnidadCreable(UnidadesProtos.ALTO_TEMPLARIO)	;
 	}
 	
 	public Unidad crearUnidad(Unidades nombreUnidad){

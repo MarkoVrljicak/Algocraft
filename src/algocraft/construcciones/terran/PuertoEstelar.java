@@ -22,9 +22,9 @@ public class PuertoEstelar extends CreadorDeUnidades {
 	
 	@Override
 	protected void determinarCreables() {
-		this.unidadesCreables.add(UnidadesTerran.ESPECTRO);
-		this.unidadesCreables.add(UnidadesTerran.NAVE_TRANSPORTE);
-		this.unidadesCreables.add(UnidadesTerran.NAVE_CIENCIA);
+		this.aniadirUnidadCreable(UnidadesTerran.ESPECTRO);
+		this.aniadirUnidadCreable(UnidadesTerran.NAVE_TRANSPORTE);
+		this.aniadirUnidadCreable(UnidadesTerran.NAVE_CIENCIA);
 	}
 	
 	public Unidad crearUnidad(Unidades nombreUnidad){

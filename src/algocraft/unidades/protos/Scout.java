@@ -22,7 +22,7 @@ public class Scout extends Unidad {
 	@Override
 	protected void setearVida() {
 		Stat vida = new Vida(150);
-		this.stat = new Escudo(100, vida);
+		this.vitalidad = new Escudo(100, vida);
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class Scout extends Unidad {
 	
 	@Override
 	public int getVida() {
-		return ((Escudo)this.stat).actualProtegida();
+		return ((Escudo)this.vitalidad).actualProtegida();
 	}	
 	
 	@Override

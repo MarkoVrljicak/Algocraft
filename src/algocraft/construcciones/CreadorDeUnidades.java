@@ -12,6 +12,7 @@ public abstract class CreadorDeUnidades extends DecoradorEdificioBasico {
 	
 	protected ArrayList<Unidades> unidadesCreables;
 	
+	//creacion
 	public CreadorDeUnidades(Construccion construccionDecorada) {
 		super(construccionDecorada);
 		unidadesCreables= new ArrayList<Unidades>();
@@ -19,8 +20,13 @@ public abstract class CreadorDeUnidades extends DecoradorEdificioBasico {
 	}
 
 	abstract protected void determinarCreables();//obligo a que determine creables en construccion
+	
+	protected void aniadirUnidadCreable(Unidades nombreUnidad){
+		unidadesCreables.add(nombreUnidad);
+	}
+	
+	//creacion de unidades
 	abstract public Unidad crearUnidad(Unidades nombreUnidad);
-
 	
 	public Unidad crearUnidadEspecifica(Unidades unidad, Recurso recursosNecesarios, int poblacionNecesaria){
 		
@@ -48,6 +54,8 @@ public abstract class CreadorDeUnidades extends DecoradorEdificioBasico {
 		
 		return puedeCrearse;
 	}
+	
+	//otros
 	
 	public boolean tengoUnidad(Unidades nombreUnidad){
 		return unidadesCreables.contains(nombreUnidad);

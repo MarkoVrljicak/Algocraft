@@ -22,7 +22,7 @@ public class AltoTemplario extends Unidad {
 	@Override
 	protected void setearVida() {
 		Stat vida = new Vida(40);
-		this.stat = new Escudo(40, vida);
+		this.vitalidad = new Escudo(40, vida);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class AltoTemplario extends Unidad {
 	
 	@Override
 	public int getVida() {
-		return ((Escudo)this.stat).actualProtegida();
+		return ((Escudo)this.vitalidad).actualProtegida();
 	}
 
 	@Override

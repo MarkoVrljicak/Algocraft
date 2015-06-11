@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 import algocraft.Interfaces.Actualizable;
 import algocraft.Interfaces.Daniable;
-import algocraft.Interfaces.Movible;
 import algocraft.exception.ActualizableNoEstaEnJuegoException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
@@ -33,10 +32,26 @@ public class Mapa implements Iterable<Terreno>{
 		}
 	}
 	
+	//accesors
+	
+	public int getAncho() {
+		return ancho;
+	}
+
+	public int getAlto() {
+		return alto;
+	}
+	
 	public void setearTerrenoEnCoordenada(Terrenos terreno, int i, int j){
 		Coordenada nuevaCoordenada = new Coordenada(i, j);
 		Terreno nuevoTerreno = terreno.crear(i, j);
 		casilleros.put(nuevaCoordenada, nuevoTerreno);
+	}
+	
+	public boolean hayCasillero(Coordenada coordenada) {
+		boolean dentroDelAncho=(coordenada.getX()>0 && coordenada.getX()<=this.ancho);
+		boolean dentroDelAlto=(coordenada.getY()>0 && coordenada.getY()<=this.alto);
+		return (dentroDelAncho && dentroDelAlto);
 	}
 
 	public Terreno getTerreno(Coordenada coordenadaPedida)throws FueraDeLimitesException {
@@ -45,32 +60,42 @@ public class Mapa implements Iterable<Terreno>{
 		else
 			throw new FueraDeLimitesException();
 	}
+	
 
 	@Override
 	public Iterator<Terreno> iterator() {
 		
 		return casilleros.values().iterator();
 	}
-
-	public int getAncho() {
-		return ancho;
+	
+	public void almacenarEnSuelo(Actualizable actualizable, Coordenada coordenada)
+			throws DestinoInvalidoException, FueraDeLimitesException {
+		posiciones.put(actualizable, coordenada);
+		this.getTerreno(coordenada).almacenarEnSuelo(actualizable);
 	}
 
-	public int getAlto() {
-		return alto;
+	public void almacenarEnCielo(Actualizable actualizable, Coordenada coordenada)
+			throws DestinoInvalidoException, FueraDeLimitesException {
+		posiciones.put(actualizable, coordenada);
+		this.getTerreno(coordenada).almacenarEnCielo(actualizable);
+	}
+	
+	public Actualizable getActualizableSuelo(Coordenada coordenada) 
+			throws FueraDeLimitesException {
+		return this.getTerreno(coordenada).getContenidoSuelo();
 	}
 
-	public boolean hayCasillero(Coordenada coordenada) {
-		boolean dentroDelAncho=(coordenada.getX()>0 && coordenada.getX()<=this.ancho);
-		boolean dentroDelAlto=(coordenada.getY()>0 && coordenada.getY()<=this.alto);
-		return (dentroDelAncho && dentroDelAlto);
+	public Actualizable getActualizableCielo(Coordenada coordenada) 
+			throws FueraDeLimitesException {
+		return this.getTerreno(coordenada).getContenidoCielo();
 	}
+	
+	//movimiento
 
-	public boolean moverUnidad(Movible movible, Coordenada coordenadaDestino) 
+	public boolean moverUnidad(Unidad unidad, Coordenada coordenadaDestino) 
 			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException {
-		Unidad unidad =  (Unidad) movible;
-
-		Coordenada coordenadaOrigen = posiciones.get( movible );
+		
+		Coordenada coordenadaOrigen = posiciones.get( unidad );
 		if(coordenadaOrigen == null){
 			throw new ActualizableNoEstaEnJuegoException();
 		}
@@ -78,7 +103,7 @@ public class Mapa implements Iterable<Terreno>{
 		Terreno terrenoOrigen = this.getTerreno(coordenadaOrigen);
 		Terreno terrenoDestino = this.getTerreno(coordenadaDestino);
 		
-		if(!movible.puedoMoverme(terrenoDestino))
+		if(!unidad.puedoMoverme(terrenoDestino))
 			return false;//destino invalido
 		if(coordenadaDestino.distanciaA(coordenadaOrigen) > unidad.getMovimientos().actual())
 			return false;//fuera de rango
@@ -86,14 +111,14 @@ public class Mapa implements Iterable<Terreno>{
 			if(! this.darUnPaso(unidad,coordenadaOrigen,coordenadaDestino) )
 				return false;//no pudo llegar al destino, algo paso en el medio
 			else 
-				coordenadaOrigen = posiciones.get((Actualizable) movible);//actualizo origen
+				coordenadaOrigen = posiciones.get(unidad);//actualizo origen
 		}
 		
 		if(!unidad.soyVolador()){
-			this.almacenarEnSuelo((Actualizable) movible, coordenadaDestino);
+			this.almacenarEnSuelo(unidad, coordenadaDestino);
 			terrenoOrigen.vaciarSuelo();
 		} else if(unidad.soyVolador()){
-			this.almacenarEnCielo((Actualizable) movible, coordenadaDestino);
+			this.almacenarEnCielo(unidad, coordenadaDestino);
 			terrenoOrigen.vaciarCielo();
 		}
 		
@@ -122,31 +147,10 @@ public class Mapa implements Iterable<Terreno>{
 		else
 			return this.moverUnidad(unidad, mejorOpcion);
 	}
-
-	public void almacenarEnSuelo(Actualizable actualizable, Coordenada coordenada)
-			throws DestinoInvalidoException, FueraDeLimitesException {
-		posiciones.put(actualizable, coordenada);
-		this.getTerreno(coordenada).almacenarEnSuelo(actualizable);
-	}
-
-	public void almacenarEnCielo(Actualizable actualizable, Coordenada coordenada)
-			throws DestinoInvalidoException, FueraDeLimitesException {
-		posiciones.put(actualizable, coordenada);
-		this.getTerreno(coordenada).almacenarEnCielo(actualizable);
-	}
-	
-	public Actualizable getActualizableSuelo(Coordenada coordenada) 
-			throws FueraDeLimitesException {
-		return this.getTerreno(coordenada).getContenidoSuelo();
-	}
-
-	public Actualizable getActualizableCielo(Coordenada coordenada) 
-			throws FueraDeLimitesException {
-		return this.getTerreno(coordenada).getContenidoCielo();
-	}
 	
 	
-
+	//ataque
+	
 	public boolean gestionarAtaque(Unidad atacante, Daniable atacado) throws ActualizableNoEstaEnJuegoException {
 		Coordenada posicionAtacante = posiciones.get((Actualizable) atacante);
 		Coordenada posicionAtacado = posiciones.get((Actualizable) atacado);

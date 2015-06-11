@@ -13,7 +13,7 @@ import algocraft.stats.Stat;
 public abstract class Unidad implements Daniable, Movible, Actualizable{
 	
 	protected Unidades nombre;
-	protected Stat stat;
+	protected Stat vitalidad;
 	protected int pesoTransporte;
 	protected int tiempoDeConstruccion;
 	protected int suministros;
@@ -51,7 +51,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	
 	//los que tengan escudo deberian pisarlo
 	public void recibirDanio(int cantidadDanio){
-		stat.disminuir(cantidadDanio);
+		vitalidad.disminuir(cantidadDanio);
 	}
 	
 	@Override
@@ -66,7 +66,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	@Override
 	public void iniciarTurno() {
 		this.disminuirTiempoDeConstruccion();
-		this.stat.regenerar();
+		this.vitalidad.regenerar();
 	}
 
 
@@ -102,7 +102,7 @@ public abstract class Unidad implements Daniable, Movible, Actualizable{
 	}
 	
 	public boolean estoyMuerto(){
-		return this.stat.estoyVacio();
+		return this.vitalidad.estoyVacio();
 	}
 
 	protected void disminuirTiempoDeConstruccion() {
