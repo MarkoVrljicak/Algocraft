@@ -4,12 +4,11 @@ import algocraft.construcciones.Construccion;
 import algocraft.construcciones.EnumEdificios;
 import algocraft.construcciones.terran.Barraca;
 import algocraft.factory.CreadorDeEdificios;
-import algocraft.stats.Recurso;
 
 public class CreadorBarraca extends CreadorDeEdificios {
 
 	public CreadorBarraca(){
-		this.recursosNecesarios = new Recurso(150,0);
+		this.recursosNecesarios = Barraca.getRecursosNecesarios();
 	}
 	
 	@Override

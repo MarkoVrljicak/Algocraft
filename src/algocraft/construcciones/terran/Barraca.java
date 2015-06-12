@@ -12,6 +12,7 @@ public class Barraca extends CreadorDeUnidades {
 	
 	private static final Recurso recursosNecesariosMarine = new Recurso(50,0);
 	private static final int poblacionNecesariaMarine = 1;
+	private static Recurso recursosNecesarios = new Recurso(150,0);
 
 	public Barraca() {
 		super(new EdificioBasico(EnumEdificiosTerran.BARRACA,1000,12));
@@ -28,5 +29,10 @@ public class Barraca extends CreadorDeUnidades {
 					recursosNecesariosMarine, poblacionNecesariaMarine);
 		return null;
 			
-	}	
+	}
+
+	public static Recurso getRecursosNecesarios() {
+		return recursosNecesarios;
+	}
+	
 }
