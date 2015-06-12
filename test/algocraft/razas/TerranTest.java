@@ -3,25 +3,17 @@ package algocraft.razas;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.protos.EnumEdificiosProtos;
 import algocraft.construcciones.terran.EnumEdificiosTerran;
 import algocraft.exception.RecursosNegativosException;
+import algocraft.factory.edificiosTerran.*;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 import algocraft.razas.Terran;
-import algocraft.stats.Recurso;
 
 public class TerranTest {
-	
-	private static final Recurso recursosNecesariosBarraca = new Recurso(150,0);
-	private static final Recurso recursosNecesariosCentroDeMineral = new Recurso(50,0);
-	private static final Recurso recursosNecesariosDepositoDeSuministros = new Recurso(100,0);
-	private static final Recurso recursosNecesariosFabrica = new Recurso(200,100);
-	private static final Recurso recursosNecesariosPuertoEstelar = new Recurso(150,100);
-	private static final Recurso recursosNecesariosRefineria = new Recurso(100,0);
-	
+
 	@Test
 	public void testTerranInicializaConCentroMineral() {
 		Terran terran = new Terran();
@@ -77,7 +69,7 @@ public class TerranTest {
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		terran.setDuenio(jugador);
 			
-		assertEquals(true,terran.puedoCrearConstruccion(recursosNecesariosBarraca));
+		assertEquals(true,terran.puedoCrearConstruccion(new CreadorBarraca()));
 	}	
 		
 	@Test
@@ -89,7 +81,7 @@ public class TerranTest {
 		terran.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
 			
-		assertEquals(false,terran.puedoCrearConstruccion(recursosNecesariosBarraca));
+		assertEquals(false,terran.puedoCrearConstruccion(new CreadorBarraca()));
 	}
 		
 	@Test
@@ -109,7 +101,7 @@ public class TerranTest {
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		terran.setDuenio(jugador);
 			
-		assertEquals(true,terran.puedoCrearConstruccion(recursosNecesariosCentroDeMineral));
+		assertEquals(true,terran.puedoCrearConstruccion(new CreadorCentroDeMineral()));
 	}	
 		
 	@Test
@@ -121,7 +113,7 @@ public class TerranTest {
 		terran.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
 			
-		assertEquals(false,terran.puedoCrearConstruccion(recursosNecesariosCentroDeMineral));
+		assertEquals(false,terran.puedoCrearConstruccion(new CreadorCentroDeMineral()));
 	}
 		
 	@Test
@@ -141,7 +133,7 @@ public class TerranTest {
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		terran.setDuenio(jugador);
 			
-		assertEquals(true,terran.puedoCrearConstruccion(recursosNecesariosDepositoDeSuministros));
+		assertEquals(true,terran.puedoCrearConstruccion(new CreadorDepositoDeSuministros()));
 	}	
 		
 	@Test
@@ -153,7 +145,7 @@ public class TerranTest {
 		terran.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
 			
-		assertEquals(false,terran.puedoCrearConstruccion(recursosNecesariosDepositoDeSuministros));
+		assertEquals(false,terran.puedoCrearConstruccion(new CreadorDepositoDeSuministros()));
 	}
 		
 	@Test
@@ -172,10 +164,12 @@ public class TerranTest {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(100);
+		jugador.getRecursos().incrementarGas(1000);
+		jugador.getRecursos().incrementarMineral(1000);
+		jugador.construir(EnumEdificiosTerran.BARRACA);
 		terran.setDuenio(jugador);
 			
-		assertEquals(true,terran.puedoCrearConstruccion(recursosNecesariosFabrica));
+		assertEquals(true,terran.puedoCrearConstruccion(new CreadorFabrica()));
 	}	
 		
 	@Test
@@ -187,7 +181,7 @@ public class TerranTest {
 		terran.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
 			
-		assertEquals(false,terran.puedoCrearConstruccion(recursosNecesariosFabrica));
+		assertEquals(false,terran.puedoCrearConstruccion(new CreadorFabrica()));
 	}
 		
 	@Test
@@ -195,10 +189,13 @@ public class TerranTest {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(100);
+		jugador.getRecursos().incrementarGas(1000);
+		jugador.getRecursos().incrementarMineral(1000);
+		jugador.construir(EnumEdificiosTerran.BARRACA);
+		jugador.construir(EnumEdificiosTerran.FABRICA);
 		terran.setDuenio(jugador);
 			
-		assertEquals(true,terran.puedoCrearConstruccion(recursosNecesariosPuertoEstelar));
+		assertEquals(true,terran.puedoCrearConstruccion(new CreadorPuertoEstelar()));
 	}	
 		
 	@Test
@@ -210,7 +207,7 @@ public class TerranTest {
 		terran.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
 			
-		assertEquals(false,terran.puedoCrearConstruccion(recursosNecesariosPuertoEstelar));
+		assertEquals(false,terran.puedoCrearConstruccion(new CreadorPuertoEstelar()));
 	}
 		
 	@Test
@@ -219,7 +216,7 @@ public class TerranTest {
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		terran.setDuenio(jugador);
 			
-		assertEquals(true,terran.puedoCrearConstruccion(recursosNecesariosRefineria));
+		assertEquals(true,terran.puedoCrearConstruccion(new CreadorRefineria()));
 	}	
 		
 	@Test
@@ -231,7 +228,7 @@ public class TerranTest {
 		terran.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
 			
-		assertEquals(false,terran.puedoCrearConstruccion(recursosNecesariosRefineria));
+		assertEquals(false,terran.puedoCrearConstruccion(new CreadorRefineria()));
 	}
 		
 	@Test

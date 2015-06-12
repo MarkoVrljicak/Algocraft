@@ -45,5 +45,6 @@ public abstract class DecoradorEdificioBasico implements Construccion {
 	public boolean estoyMuerto() {
 		return this.edificio.estoyMuerto();
 	}
+	
 }
 

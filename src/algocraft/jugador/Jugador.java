@@ -2,6 +2,7 @@ package algocraft.jugador;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Set;
 
 import algocraft.Interfaces.Actualizable;
 import algocraft.Interfaces.Daniable;
@@ -40,7 +41,7 @@ public class Jugador implements Actualizable, Usuario {
 	}
 	
 	
-	public ArrayList<EnumEdificios> getConstruccionesDisponibles(){
+	public Set<EnumEdificios> getConstruccionesDisponibles(){
 		return raza.getListaDeConstrucciones();
 	}
 	
