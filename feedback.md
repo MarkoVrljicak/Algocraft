@@ -2,7 +2,6 @@
 
 * Modelo
   * Ataques especiales no implementados
-  * Edificios son creados sin usar los decorators
 * Encapsulamiento / polimorfismo
   * Mantuvieron la implementación de una clase por cada edificio / unidad. Cuál es la justificación de esta decisión?
   * _IFs_ en `Terran.crearConstruccion()`!
@@ -31,6 +30,7 @@
 * Código
   * Paquetes siguen desorganizados (habían dicho que iban a mover todo a `algocraft`)
   * Enumerado `EnumEdificiosTerran` con métodos???
+  * Idem: implementa interfaz `Unidades`
   * Uso de enum a través de constantes (ej: `Terran.nombreBarraca`)
   * Usar accesores a métodos correctamente (ej: `almacenarEnSuelo` y `almacenarEnCielo` de `Mapa` son públicos)
   * Usar constantes en vez de números mágicos (ej: `Jugador.getPoblacionMaxima()`)
