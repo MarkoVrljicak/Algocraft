@@ -3,8 +3,8 @@ package algocraft.razas;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
 import algocraft.construcciones.Construccion;
-import algocraft.construcciones.protos.EnumEdificiosProtos;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.edificiosProtoss.*;
 import algocraft.jugador.Colores;

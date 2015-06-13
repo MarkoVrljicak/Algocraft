@@ -1,55 +1,55 @@
 package algocraft.construcciones.terran;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-
-import algocraft.construcciones.terran.Fabrica;
+import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.exception.RecursosNegativosException;
+import algocraft.factory.edificiosTerran.CreadorFabrica;
+import algocraft.factory.unidadesTerran.CreadorGolliat;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 import algocraft.razas.Terran;
-import algocraft.stats.Recurso;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.terran.UnidadesTerran;
 
 public class FabricaTest {
 	
-	private static final Recurso recursosNecesariosGolliat = new Recurso(100,50);
-	private static final int poblacionNecesariaGolliat = 2;
-
 	@Test
 	public void testFabricaInicializaConGolliat() {
-		Fabrica fabrica = new Fabrica();
+		CreadorFabrica creador = new CreadorFabrica();
+		CreadorDeUnidades fabrica = creador.crearEdificio();
 		
 		assertEquals(true, fabrica.tengoUnidad(UnidadesTerran.GOLLIAT));
 	}
 		
 	@Test
 	public void testFabricaPuedeCrearGolliatConRecursosSuficientesyPoblacionSuficiente() {
-		Fabrica fabrica = new Fabrica();
+		CreadorFabrica creador = new CreadorFabrica();
+		CreadorDeUnidades fabrica = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		jugador.getRecursos().incrementarGas(100);
 		fabrica.setDuenio(jugador);
 			
-		assertEquals(true,fabrica.puedoCrearUnidad(recursosNecesariosGolliat, poblacionNecesariaGolliat));
+		assertEquals(true,fabrica.puedoCrearUnidad(new CreadorGolliat()));
 	}	
 		
 	@Test
 	public void testFabricaNoPuedeCrearGolliatConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		Fabrica fabrica = new Fabrica();
+		CreadorFabrica creador = new CreadorFabrica();
+		CreadorDeUnidades fabrica = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		fabrica.setDuenio(jugador);
 			
-		assertEquals(false,fabrica.puedoCrearUnidad(recursosNecesariosGolliat, poblacionNecesariaGolliat));
+		assertEquals(false,fabrica.puedoCrearUnidad(new CreadorGolliat()));
 	}
 		
 	@Test
 	public void testFabricaCreaGolliat() {
-		Fabrica fabrica = new Fabrica();
+		CreadorFabrica creador = new CreadorFabrica();
+		CreadorDeUnidades fabrica = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		jugador.getRecursos().incrementarGas(100);

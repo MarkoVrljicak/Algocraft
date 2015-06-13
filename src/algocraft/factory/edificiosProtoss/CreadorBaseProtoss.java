@@ -1,12 +1,12 @@
 package algocraft.factory.edificiosProtoss;
 
 import algocraft.construcciones.Construccion;
+import algocraft.construcciones.EdificioConEscudo;
 import algocraft.construcciones.EnumEdificios;
-import algocraft.construcciones.protos.BaseProtoss;
-import algocraft.factory.CreadorDeEdificios;
+import algocraft.factory.EdificiosAbstractFactory;
 import algocraft.stats.Recurso;
 
-public class CreadorBaseProtoss extends CreadorDeEdificios {
+public class CreadorBaseProtoss extends EdificiosAbstractFactory {
 
 	public CreadorBaseProtoss(){
 		this.recursosNecesarios = new Recurso(0,0);
@@ -14,7 +14,7 @@ public class CreadorBaseProtoss extends CreadorDeEdificios {
 	
 	@Override
 	public Construccion crearEdificio() {
-		return new BaseProtoss();
+		return new EdificioConEscudo(EnumEdificiosProtos.BASE_PROTOSS,1300,0,1200);
 	}
 
 	@Override

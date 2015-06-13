@@ -6,8 +6,8 @@ import org.junit.Test;
 
 import algocraft.Interfaces.Daniable;
 import algocraft.construcciones.CreadorDeUnidades;
-import algocraft.construcciones.protos.EnumEdificiosProtos;
-import algocraft.construcciones.terran.EnumEdificiosTerran;
+import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
+import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 import algocraft.razas.Protoss;

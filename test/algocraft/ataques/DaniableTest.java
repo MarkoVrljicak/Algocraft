@@ -1,11 +1,9 @@
 package algocraft.ataques;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-
-import algocraft.construcciones.Construccion;
-import algocraft.construcciones.terran.Barraca;
+import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.factory.edificiosTerran.CreadorBarraca;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.terran.Marine;
 
@@ -37,7 +35,8 @@ public class DaniableTest {
 		int vidaBarraca = 1000;
 		int danioCausado = 20;
 		
-		Construccion barraca = new Barraca();
+		CreadorBarraca creador = new CreadorBarraca();
+		CreadorDeUnidades barraca = creador.crearEdificio();
 		barraca.recibirDanio(danioCausado);
 		
 		assertEquals(vidaBarraca - danioCausado, barraca.getVida());
@@ -47,7 +46,8 @@ public class DaniableTest {
 	public void testEdificioDestruido(){
 		int danioCausado = 1000;
 		
-		Construccion barraca = new Barraca();
+		CreadorBarraca creador = new CreadorBarraca();
+		CreadorDeUnidades barraca = creador.crearEdificio();
 		barraca.recibirDanio(danioCausado);
 		
 		assertEquals(true, barraca.estoyMuerto());

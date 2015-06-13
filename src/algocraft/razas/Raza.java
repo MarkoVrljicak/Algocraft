@@ -5,7 +5,7 @@ import java.util.Set;
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.EnumEdificios;
 import algocraft.exception.RecursosNegativosException;
-import algocraft.factory.CreadorDeEdificios;
+import algocraft.factory.EdificiosAbstractFactory;
 import algocraft.jugador.JugadorNulo;
 import algocraft.jugador.Usuario;
 import algocraft.stats.Recurso;
@@ -13,18 +13,18 @@ import algocraft.stats.Recurso;
 public abstract class Raza {
 
 	protected EnumRazas nombre;
-	protected HashMap<EnumEdificios, CreadorDeEdificios> construccionesCreables;
+	protected HashMap<EnumEdificios, EdificiosAbstractFactory> construccionesCreables;
 	protected Usuario duenio = new JugadorNulo();
 	
 	//metodos de inicializacion
 	public Raza(){
-		construccionesCreables = new HashMap<EnumEdificios, CreadorDeEdificios>();
+		construccionesCreables = new HashMap<EnumEdificios, EdificiosAbstractFactory>();
 		this.determinarCreables();
 	}
 	
 	abstract protected void determinarCreables();
 	
-	protected void aniadirEdificioCreable(EnumEdificios nombreEdificio, CreadorDeEdificios creador){
+	protected void aniadirEdificioCreable(EnumEdificios nombreEdificio, EdificiosAbstractFactory creador){
 		this.construccionesCreables.put(nombreEdificio, creador);
 	}
 	
@@ -47,7 +47,7 @@ public abstract class Raza {
 	}
 	
 	public Construccion crearConstruccion(EnumEdificios nombreEdificio){
-		CreadorDeEdificios creador = construccionesCreables.get(nombreEdificio);
+		EdificiosAbstractFactory creador = construccionesCreables.get(nombreEdificio);
 		
 		if(puedoCrearConstruccion(creador) ){
 			
@@ -64,7 +64,7 @@ public abstract class Raza {
 	}
 	
 	//creacion edificios
-	public boolean puedoCrearConstruccion(CreadorDeEdificios creador) {
+	public boolean puedoCrearConstruccion(EdificiosAbstractFactory creador) {
 		final Recurso recursosDisponibles = duenio.getRecursos();
 		final Recurso recursosNecesarios = creador.getRecursosNecesarios();
 		

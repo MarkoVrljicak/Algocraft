@@ -1,20 +1,19 @@
 package algocraft.construcciones.protos;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-
-import algocraft.construcciones.protos.NexoMineral;
+import algocraft.construcciones.RecolectorMineral;
+import algocraft.factory.edificiosProtoss.CreadorNexoMineral;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 import algocraft.razas.Protoss;
 
 public class NexoMineralTest {
 	
-	
 	@Test
 	public void testRecolectoMineral() {
-		NexoMineral nexo = new NexoMineral();
+		CreadorNexoMineral creador = new CreadorNexoMineral();
+		RecolectorMineral nexo = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		nexo.recolectarMineral(jugador.getRecursos());
@@ -24,7 +23,8 @@ public class NexoMineralTest {
 	
 	@Test
 	public void testPasoDeTurnoYRecolectoMineral() {
-		NexoMineral nexo = new NexoMineral();
+		CreadorNexoMineral creador = new CreadorNexoMineral();
+		RecolectorMineral nexo = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);		
 		nexo.setDuenio(jugador);
 		nexo.iniciarTurno();

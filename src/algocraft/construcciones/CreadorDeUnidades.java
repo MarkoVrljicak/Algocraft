@@ -1,56 +1,51 @@
 package algocraft.construcciones;
 
-
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import algocraft.exception.RecursosNegativosException;
+import algocraft.factory.UnidadesAbstractFactory;
 import algocraft.stats.Recurso;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.Unidades;
 
-public abstract class CreadorDeUnidades extends DecoradorEdificioBasico {
-	
-	protected ArrayList<Unidades> unidadesCreables;
+public class CreadorDeUnidades extends DecoradorEdificioBasico {
+
+	protected HashMap<Unidades, UnidadesAbstractFactory> unidadesCreables;
 	
 	//creacion
 	public CreadorDeUnidades(Construccion construccionDecorada) {
 		super(construccionDecorada);
-		unidadesCreables= new ArrayList<Unidades>();
-		this.determinarCreables();
-	}
-
-	abstract protected void determinarCreables();//obligo a que determine creables en construccion
-	
-	protected void aniadirUnidadCreable(Unidades nombreUnidad){
-		unidadesCreables.add(nombreUnidad);
+		unidadesCreables= new HashMap<Unidades, UnidadesAbstractFactory>();
 	}
 	
-	//creacion de unidades
-	abstract public Unidad crearUnidad(Unidades nombreUnidad);
+	public void aniadirUnidadCreable(Unidades nombreUnidad, UnidadesAbstractFactory creador){
+		unidadesCreables.put(nombreUnidad, creador);
+	}
 	
-	public Unidad crearUnidadEspecifica(Unidades unidad, Recurso recursosNecesarios, int poblacionNecesaria){
+	public Unidad crearUnidad(Unidades unidad){
+		UnidadesAbstractFactory creador = unidadesCreables.get(unidad);
 		
-		if(puedoCrearUnidad(recursosNecesarios, poblacionNecesaria) ){
+		if(puedoCrearUnidad(creador) ){
 			
 			try {
-				this.getDuenio().getRecursos().consumirMineral(recursosNecesarios.obtenerMineral());
-				this.getDuenio().getRecursos().consumirGas(recursosNecesarios.obtenerGas());
+				this.getDuenio().getRecursos().consumirMineral(creador.getRecursosNecesarios().obtenerMineral());
+				this.getDuenio().getRecursos().consumirGas(creador.getRecursosNecesarios().obtenerGas());
 			} catch (RecursosNegativosException e) {
 				e.printStackTrace();
 			}
 			
-			return unidad.crear();
+			return creador.crearUnidad();
 		}
 		else return null;
 	}
 	
-	public boolean puedoCrearUnidad(Recurso recursosNecesarios,int poblacionNecesaria) {
+	public boolean puedoCrearUnidad(UnidadesAbstractFactory creador) {
 		final Recurso recursosDisponibles = this.getDuenio().getRecursos();
 		final int poblacionDisponible = this.getDuenio().getPoblacionDisponible();
 		
-		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= recursosNecesarios.obtenerMineral());
-		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= recursosNecesarios.obtenerGas());
-		puedeCrearse = puedeCrearse && (poblacionDisponible >= poblacionNecesaria);
+		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= creador.getRecursosNecesarios().obtenerMineral());
+		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= creador.getRecursosNecesarios().obtenerGas());
+		puedeCrearse = puedeCrearse && (poblacionDisponible >= creador.getPoblacionNecesaria());
 		
 		return puedeCrearse;
 	}
@@ -58,7 +53,7 @@ public abstract class CreadorDeUnidades extends DecoradorEdificioBasico {
 	//otros
 	
 	public boolean tengoUnidad(Unidades nombreUnidad){
-		return unidadesCreables.contains(nombreUnidad);
+		return unidadesCreables.containsKey(nombreUnidad);
 	}
 	
 	@Override

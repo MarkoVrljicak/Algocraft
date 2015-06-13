@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import algocraft.construcciones.EdificioBasico;
-import algocraft.construcciones.terran.EnumEdificiosTerran;
+import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 
 public class EdificioBasicoTest {
 

@@ -1,12 +1,13 @@
 package algocraft.factory.edificiosTerran;
 
-import algocraft.construcciones.Construccion;
-import algocraft.construcciones.terran.EnumEdificiosTerran;
-import algocraft.construcciones.terran.Fabrica;
-import algocraft.factory.CreadorDeEdificios;
+import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.construcciones.EdificioBasico;
+import algocraft.factory.EdificiosAbstractFactory;
+import algocraft.factory.unidadesTerran.CreadorGolliat;
 import algocraft.stats.Recurso;
+import algocraft.unidades.terran.UnidadesTerran;
 
-public class CreadorFabrica extends CreadorDeEdificios {
+public class CreadorFabrica extends EdificiosAbstractFactory {
 
 	private EnumEdificiosTerran construccionNecesitada;
 
@@ -16,8 +17,10 @@ public class CreadorFabrica extends CreadorDeEdificios {
 	}
 	
 	@Override
-	public Construccion crearEdificio() {
-		return new Fabrica();
+	public CreadorDeUnidades crearEdificio() {
+		CreadorDeUnidades fabrica =  new CreadorDeUnidades(new EdificioBasico(EnumEdificiosTerran.FABRICA,1250,12));
+		fabrica.aniadirUnidadCreable(UnidadesTerran.GOLLIAT, new CreadorGolliat());
+		return fabrica;
 	}
 
 	@Override

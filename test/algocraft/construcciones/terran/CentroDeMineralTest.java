@@ -1,10 +1,9 @@
 package algocraft.construcciones.terran;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-
-import algocraft.construcciones.terran.CentroDeMineral;
+import algocraft.construcciones.RecolectorMineral;
+import algocraft.factory.edificiosTerran.CreadorCentroDeMineral;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 import algocraft.razas.Terran;
@@ -14,21 +13,23 @@ public class CentroDeMineralTest {
 
 	@Test
 	public void testRecolectoMineral() {
-		CentroDeMineral centro = new CentroDeMineral();
+		CreadorCentroDeMineral creador = new CreadorCentroDeMineral();
+		RecolectorMineral centroDeMineral = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(),Colores.AZUL);
 		
-		centro.recolectarMineral(jugador.getRecursos());
+		centroDeMineral.recolectarMineral(jugador.getRecursos());
 		
 		assertEquals(210 , jugador.getRecursos().obtenerMineral());
 	}
 	
 	@Test
 	public void testPasoDeTurnoYRecolectoMineral() {
-		CentroDeMineral centro = new CentroDeMineral();
+		CreadorCentroDeMineral creador = new CreadorCentroDeMineral();
+		RecolectorMineral centroDeMineral = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
-		centro.setDuenio(jugador);
-		centro.iniciarTurno();
+		centroDeMineral.setDuenio(jugador);
+		centroDeMineral.iniciarTurno();
 		
 		assertEquals(210 , jugador.getRecursos().obtenerMineral());
 	}

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import algocraft.construcciones.EdificioConEscudo;
-import algocraft.construcciones.protos.EnumEdificiosProtos;
+import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 
 public class EdificioConEscudoTest {
 

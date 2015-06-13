@@ -1,12 +1,13 @@
 package algocraft.factory.edificiosProtoss;
 
-import algocraft.construcciones.Construccion;
-import algocraft.construcciones.protos.ArchivosTemplarios;
-import algocraft.construcciones.protos.EnumEdificiosProtos;
-import algocraft.factory.CreadorDeEdificios;
+import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.construcciones.EdificioConEscudo;
+import algocraft.factory.EdificiosAbstractFactory;
+import algocraft.factory.unidadesProtoss.CreadorAltoTemplario;
 import algocraft.stats.Recurso;
+import algocraft.unidades.protos.UnidadesProtos;
 
-public class CreadorArchivosTemplarios extends CreadorDeEdificios {
+public class CreadorArchivosTemplarios extends EdificiosAbstractFactory {
 
 	private EnumEdificiosProtos construccionNecesitada;
 
@@ -16,8 +17,10 @@ public class CreadorArchivosTemplarios extends CreadorDeEdificios {
 	}
 	
 	@Override
-	public Construccion crearEdificio() {
-		return new ArchivosTemplarios();
+	public CreadorDeUnidades crearEdificio() {
+		CreadorDeUnidades archivos = new CreadorDeUnidades(new EdificioConEscudo(EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS,500,9,500));
+		archivos.aniadirUnidadCreable(UnidadesProtos.ALTO_TEMPLARIO, new CreadorAltoTemplario());
+		return archivos;
 	}
 
 	@Override

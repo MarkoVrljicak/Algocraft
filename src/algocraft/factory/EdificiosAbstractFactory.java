@@ -4,7 +4,7 @@ import algocraft.construcciones.Construccion;
 import algocraft.construcciones.EnumEdificios;
 import algocraft.stats.Recurso;
 
-public abstract class CreadorDeEdificios {
+public abstract class EdificiosAbstractFactory {
 	
 	protected Recurso recursosNecesarios;
 	

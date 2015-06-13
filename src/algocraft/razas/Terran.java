@@ -1,6 +1,5 @@
 package algocraft.razas;
 
-import algocraft.construcciones.terran.EnumEdificiosTerran;
 import algocraft.factory.edificiosTerran.*;
 
 public class Terran extends Raza{

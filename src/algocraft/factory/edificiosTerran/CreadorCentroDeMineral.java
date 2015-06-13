@@ -1,20 +1,20 @@
 package algocraft.factory.edificiosTerran;
 
-import algocraft.construcciones.Construccion;
+import algocraft.construcciones.EdificioBasico;
 import algocraft.construcciones.EnumEdificios;
-import algocraft.construcciones.terran.CentroDeMineral;
-import algocraft.factory.CreadorDeEdificios;
+import algocraft.construcciones.RecolectorMineral;
+import algocraft.factory.EdificiosAbstractFactory;
 import algocraft.stats.Recurso;
 
-public class CreadorCentroDeMineral extends CreadorDeEdificios {
+public class CreadorCentroDeMineral extends EdificiosAbstractFactory {
 
 	public CreadorCentroDeMineral(){
 		this.recursosNecesarios = new Recurso(50,0);
 	}
 	
 	@Override
-	public Construccion crearEdificio() {
-		return new CentroDeMineral();
+	public RecolectorMineral crearEdificio() {
+		return new RecolectorMineral(new EdificioBasico(EnumEdificiosTerran.CENTRO_DE_MINERALES,500,4));
 	}
 
 	@Override

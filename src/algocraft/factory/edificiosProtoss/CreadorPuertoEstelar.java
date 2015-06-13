@@ -1,12 +1,14 @@
 package algocraft.factory.edificiosProtoss;
 
-import algocraft.construcciones.Construccion;
-import algocraft.construcciones.protos.EnumEdificiosProtos;
-import algocraft.construcciones.protos.PuertoEstelar;
-import algocraft.factory.CreadorDeEdificios;
+import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.construcciones.EdificioConEscudo;
+import algocraft.factory.EdificiosAbstractFactory;
+import algocraft.factory.unidadesProtoss.CreadorNaveDeTransporte;
+import algocraft.factory.unidadesProtoss.CreadorScout;
 import algocraft.stats.Recurso;
+import algocraft.unidades.protos.UnidadesProtos;
 
-public class CreadorPuertoEstelar extends CreadorDeEdificios {
+public class CreadorPuertoEstelar extends EdificiosAbstractFactory {
 
 	private EnumEdificiosProtos construccionNecesitada;
 
@@ -16,8 +18,11 @@ public class CreadorPuertoEstelar extends CreadorDeEdificios {
 	}
 	
 	@Override
-	public Construccion crearEdificio() {
-		return new PuertoEstelar();
+	public CreadorDeUnidades crearEdificio() {
+		CreadorDeUnidades puerto = new CreadorDeUnidades((new EdificioConEscudo(EnumEdificiosProtos.PUERTO_ESTELAR,600,10,600)));
+		puerto.aniadirUnidadCreable(UnidadesProtos.SCOUT, new CreadorScout());
+		puerto.aniadirUnidadCreable(UnidadesProtos.NAVE_DE_TRANSPORTE, new CreadorNaveDeTransporte());
+		return puerto;
 	}
 
 	@Override

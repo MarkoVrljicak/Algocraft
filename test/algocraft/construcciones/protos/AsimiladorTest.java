@@ -1,21 +1,19 @@
 package algocraft.construcciones.protos;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-
-import algocraft.construcciones.protos.Asimilador;
+import algocraft.construcciones.RecolectorGas;
+import algocraft.factory.edificiosProtoss.CreadorAsimilador;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 import algocraft.razas.Protoss;
 
-
 public class AsimiladorTest {
-	
 	
 	@Test
 	public void testRecolectoGas() {
-		Asimilador asimilador = new Asimilador();
+		CreadorAsimilador creador = new CreadorAsimilador();
+		RecolectorGas asimilador = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		asimilador.recolectarGas(jugador.getRecursos());
@@ -25,7 +23,8 @@ public class AsimiladorTest {
 	
 	@Test
 	public void testPasoDeTurnoYRecolectoGas() {
-		Asimilador asimilador = new Asimilador();
+		CreadorAsimilador creador = new CreadorAsimilador();
+		RecolectorGas asimilador = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		asimilador.setDuenio(jugador);

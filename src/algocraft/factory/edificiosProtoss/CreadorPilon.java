@@ -1,12 +1,12 @@
 package algocraft.factory.edificiosProtoss;
 
 import algocraft.construcciones.Construccion;
+import algocraft.construcciones.EdificioConEscudo;
 import algocraft.construcciones.EnumEdificios;
-import algocraft.construcciones.protos.Pilon;
-import algocraft.factory.CreadorDeEdificios;
+import algocraft.factory.EdificiosAbstractFactory;
 import algocraft.stats.Recurso;
 
-public class CreadorPilon extends CreadorDeEdificios {
+public class CreadorPilon extends EdificiosAbstractFactory {
 
 	public CreadorPilon(){
 		this.recursosNecesarios = new Recurso(100,0);
@@ -14,7 +14,7 @@ public class CreadorPilon extends CreadorDeEdificios {
 	
 	@Override
 	public Construccion crearEdificio() {
-		return new Pilon();
+		return new EdificioConEscudo(EnumEdificiosProtos.PILON,300,5,300);
 	}
 
 	@Override

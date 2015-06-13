@@ -1,57 +1,55 @@
 package algocraft.construcciones.protos;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-
-import algocraft.construcciones.protos.Acceso;
+import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.exception.RecursosNegativosException;
+import algocraft.factory.edificiosProtoss.CreadorAcceso;
+import algocraft.factory.unidadesProtoss.CreadorDragon;
+import algocraft.factory.unidadesProtoss.CreadorZealot;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 import algocraft.razas.Protoss;
-import algocraft.stats.Recurso;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.protos.UnidadesProtos;
 
 public class AccesoTest {
 	
-	
-	private static final Recurso recursosNecesariosZealot = new Recurso(100,0);
-	private static final Recurso recursosNecesariosDragon = new Recurso(125,50);
-	private static final int poblacionNecesariaZealot = 2;
-	private static final int poblacionNecesariaDragon = 2;
-	
 	@Test
 	public void testAccesoInicializaConZealot() {
-		Acceso acceso = new Acceso();
+		CreadorAcceso creador = new CreadorAcceso();
+		CreadorDeUnidades acceso = creador.crearEdificio();
 		
 		assertEquals(true, acceso.tengoUnidad(UnidadesProtos.ZEALOT));
 	}
 		
 	@Test
 	public void testAccesoPuedeCrearZealotConRecursosSuficientesyPoblacionSuficiente() {
-		Acceso acceso = new Acceso();
+		CreadorAcceso creador = new CreadorAcceso();
+		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		acceso.setDuenio(jugador);
 			
-		assertEquals(true,acceso.puedoCrearUnidad(recursosNecesariosZealot, poblacionNecesariaZealot));
+		assertEquals(true,acceso.puedoCrearUnidad(new CreadorZealot()));
 	}	
 		
 	@Test
 	public void testAccesoNoPuedeCrearZealotConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		Acceso acceso = new Acceso();
+		CreadorAcceso creador = new CreadorAcceso();
+		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		acceso.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
 			
-		assertEquals(false,acceso.puedoCrearUnidad(recursosNecesariosZealot, poblacionNecesariaZealot));
+		assertEquals(false,acceso.puedoCrearUnidad(new CreadorZealot()));
 	}
 		
 	@Test
 	public void testAccesoCreaZealot() {
-		Acceso acceso = new Acceso();
+		CreadorAcceso creador = new CreadorAcceso();
+		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		acceso.setDuenio(jugador);
@@ -62,37 +60,41 @@ public class AccesoTest {
 	
 	@Test
 	public void testAccesoInicializaConDragon() {
-		Acceso acceso = new Acceso();
+		CreadorAcceso creador = new CreadorAcceso();
+		CreadorDeUnidades acceso = creador.crearEdificio();
 		
 		assertEquals(true, acceso.tengoUnidad(UnidadesProtos.DRAGON));
 	}
 		
 	@Test
 	public void testAccesoPuedeCrearDragonConRecursosSuficientesyPoblacionSuficiente() {
-		Acceso acceso = new Acceso();
+		CreadorAcceso creador = new CreadorAcceso();
+		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		jugador.getRecursos().incrementarGas(50);
 		acceso.setDuenio(jugador);
 					
-		assertEquals(true,acceso.puedoCrearUnidad(recursosNecesariosDragon, poblacionNecesariaDragon));
+		assertEquals(true,acceso.puedoCrearUnidad(new CreadorDragon()));
 	}	
 		
 	@Test
 	public void testAccesoNoPuedeCrearDragonConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		Acceso acceso = new Acceso();
+		CreadorAcceso creador = new CreadorAcceso();
+		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		acceso.setDuenio(jugador);
 		jugador.getRecursos().consumirMineral(200);
 			
-		assertEquals(false,acceso.puedoCrearUnidad(recursosNecesariosDragon, poblacionNecesariaDragon));
+		assertEquals(false,acceso.puedoCrearUnidad(new CreadorDragon()));
 	}
 		
 	@Test
 	public void testAccesoCreaDragon() {
-		Acceso acceso = new Acceso();
+		CreadorAcceso creador = new CreadorAcceso();
+		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		jugador.getRecursos().incrementarGas(50);

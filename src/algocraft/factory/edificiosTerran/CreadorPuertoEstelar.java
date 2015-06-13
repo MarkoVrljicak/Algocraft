@@ -1,12 +1,15 @@
 package algocraft.factory.edificiosTerran;
 
-import algocraft.construcciones.Construccion;
-import algocraft.construcciones.terran.EnumEdificiosTerran;
-import algocraft.construcciones.terran.PuertoEstelar;
-import algocraft.factory.CreadorDeEdificios;
+import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.construcciones.EdificioBasico;
+import algocraft.factory.EdificiosAbstractFactory;
+import algocraft.factory.unidadesTerran.CreadorEspectro;
+import algocraft.factory.unidadesTerran.CreadorNaveCiencia;
+import algocraft.factory.unidadesTerran.CreadorNaveTransporte;
 import algocraft.stats.Recurso;
+import algocraft.unidades.terran.UnidadesTerran;
 
-public class CreadorPuertoEstelar extends CreadorDeEdificios {
+public class CreadorPuertoEstelar extends EdificiosAbstractFactory {
 
 	private EnumEdificiosTerran construccionNecesitada;
 
@@ -16,8 +19,12 @@ public class CreadorPuertoEstelar extends CreadorDeEdificios {
 	}
 	
 	@Override
-	public Construccion crearEdificio() {
-		return new PuertoEstelar();
+	public CreadorDeUnidades crearEdificio() {
+		CreadorDeUnidades puertoEstelar = new CreadorDeUnidades(new EdificioBasico(EnumEdificiosTerran.PUERTO_ESTELAR,1300,10));
+		puertoEstelar.aniadirUnidadCreable(UnidadesTerran.ESPECTRO, new CreadorEspectro());
+		puertoEstelar.aniadirUnidadCreable(UnidadesTerran.NAVE_TRANSPORTE, new CreadorNaveTransporte());
+		puertoEstelar.aniadirUnidadCreable(UnidadesTerran.NAVE_CIENCIA, new CreadorNaveCiencia());
+		return puertoEstelar;
 	}
 
 	@Override

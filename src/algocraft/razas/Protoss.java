@@ -1,6 +1,5 @@
 package algocraft.razas;
 
-import algocraft.construcciones.protos.EnumEdificiosProtos;
 import algocraft.factory.edificiosProtoss.*;
 
 public class Protoss extends Raza{

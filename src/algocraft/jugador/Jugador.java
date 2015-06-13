@@ -9,8 +9,8 @@ import algocraft.Interfaces.Daniable;
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.construcciones.EnumEdificios;
-import algocraft.construcciones.protos.EnumEdificiosProtos;
-import algocraft.construcciones.terran.EnumEdificiosTerran;
+import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
+import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 import algocraft.razas.EnumRazas;
 import algocraft.razas.Raza;
 import algocraft.stats.Recurso;
@@ -118,8 +118,8 @@ public class Jugador implements Actualizable, Usuario {
 	
 	public Unidad crearUnidad(Unidades nombreUnidad , CreadorDeUnidades edificioCreador) {
 		Unidad unidadCreada = null;
-		if(edificioCreador.puedoCrearUnidad(this.getRecursos(),this.getPoblacionDisponible())){
-			unidadCreada = edificioCreador.crearUnidad(nombreUnidad);
+		unidadCreada = edificioCreador.crearUnidad(nombreUnidad);
+		if(!(unidadCreada == null)){
 			unidades.add( unidadCreada );
 		}
 		return unidadCreada;

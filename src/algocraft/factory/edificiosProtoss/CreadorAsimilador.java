@@ -1,20 +1,20 @@
 package algocraft.factory.edificiosProtoss;
 
-import algocraft.construcciones.Construccion;
+import algocraft.construcciones.EdificioConEscudo;
 import algocraft.construcciones.EnumEdificios;
-import algocraft.construcciones.protos.Asimilador;
-import algocraft.factory.CreadorDeEdificios;
+import algocraft.construcciones.RecolectorGas;
+import algocraft.factory.EdificiosAbstractFactory;
 import algocraft.stats.Recurso;
 
-public class CreadorAsimilador extends CreadorDeEdificios {
+public class CreadorAsimilador extends EdificiosAbstractFactory {
 
 	public CreadorAsimilador(){
 		this.recursosNecesarios = new Recurso(100,0);
 	}
 	
 	@Override
-	public Construccion crearEdificio() {
-		return new Asimilador();
+	public RecolectorGas crearEdificio() {
+		return new RecolectorGas(new EdificioConEscudo(EnumEdificiosProtos.ASIMILADOR,450,6,450));
 	}
 
 	@Override
