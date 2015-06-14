@@ -6,7 +6,6 @@ import algocraft.construcciones.Construccion;
 import algocraft.construcciones.EnumEdificios;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.EdificiosAbstractFactory;
-import algocraft.jugador.JugadorNulo;
 import algocraft.jugador.Usuario;
 import algocraft.stats.Recurso;
 
@@ -14,7 +13,7 @@ public abstract class Raza {
 
 	protected EnumRazas nombre;
 	protected HashMap<EnumEdificios, EdificiosAbstractFactory> construccionesCreables;
-	protected Usuario duenio = new JugadorNulo();
+	protected Usuario duenio;
 	
 	//metodos de inicializacion
 	public Raza(){
@@ -58,7 +57,9 @@ public abstract class Raza {
 				e.printStackTrace();
 			}
 			
-			return creador.crearEdificio();
+			Construccion edificio = creador.crearEdificio();
+			edificio.setDuenio(duenio);
+			return edificio;
 		}
 		else return null;
 	}

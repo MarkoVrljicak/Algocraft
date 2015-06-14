@@ -109,7 +109,6 @@ public class Jugador implements Actualizable, Usuario {
 	public Construccion construir(EnumEdificios nombreConstruccion){
 		Construccion construccion = raza.crearConstruccion(nombreConstruccion);
 		if(!(construccion == null) ){
-			construccion.setDuenio(this);
 			construcciones.add(construccion);
 		}
 		return construccion;
