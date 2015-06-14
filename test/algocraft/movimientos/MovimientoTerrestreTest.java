@@ -97,5 +97,27 @@ public class MovimientoTerrestreTest {
 		
 		assertEquals(null, mapa.getPropiedadSuelo(origen));
 	}
+	
+	@Test
+	public void testUnidadNoLlegaSiElCaminoEstaObstruido() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
+		Mapa mapa = new Mapa(1,3);
+		
+		Unidad unidad = new Marine();
+		Unidad obstruccion = new Marine();
+		
+		Movimiento movimiento = new MovimientoTerrestre(); //no quiero depender de que la unidad lo tenga.
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,3);
+		
+		mapa.almacenar((Propiedad) unidad, origen);
+		mapa.almacenar((Propiedad) obstruccion, new Coordenada(1,2));
+		
+		Collection<Terreno> camino = mapa.trazarCamino(origen, destino);
+		
+		movimiento.ejecutar(camino, unidad);
+		
+		assertEquals(unidad, mapa.getPropiedadSuelo(origen));
+	}
 
 }
