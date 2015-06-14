@@ -22,7 +22,7 @@ public class MovimientoTerrestre extends Movimiento{
 			terrenoOriginal = proximoTerreno;
 			proximoTerreno = iter.next();
 			
-			if(!proximoTerreno.sePuedeCaminar()){
+			if(!proximoTerreno.sePuedeCaminar() || unidad.getMovimientos() < 1){
 				break;
 				
 			} else {
@@ -38,6 +38,8 @@ public class MovimientoTerrestre extends Movimiento{
 				} catch (PropiedadNoExisteEnEstaUbicacion e) {
 					e.printStackTrace();
 				}
+				
+				unidad.darPaso();
 			}
 		}
 		
