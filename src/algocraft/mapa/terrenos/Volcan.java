@@ -1,6 +1,7 @@
 package algocraft.mapa.terrenos;
 
 import Propiedad.Propiedad;
+import algocraft.construcciones.RecolectorGas;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 
@@ -14,7 +15,15 @@ public class Volcan extends Terreno {
 	}
 	
 	public void almacenarEnSuelo(Propiedad propiedad) throws DestinoInvalidoException{
-		throw new DestinoInvalidoException();
+		try{
+			RecolectorGas recolector = (RecolectorGas) propiedad;
+			if(contenidoSuelo != null)
+				throw new DestinoInvalidoException();
+			else
+				contenidoSuelo = recolector;				
+		}catch(ClassCastException e){
+			throw new DestinoInvalidoException();
+		}
 	}
 	
 	public Propiedad getContenidoSuelo(){

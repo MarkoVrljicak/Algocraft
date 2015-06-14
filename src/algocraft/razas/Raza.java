@@ -16,7 +16,7 @@ public abstract class Raza {
 	protected Jugador duenio;
 	
 	//metodos de inicializacion
-	public Raza(){
+	protected Raza(){
 		construccionesCreables = new HashMap<EnumEdificios, EdificiosAbstractFactory>();
 		this.determinarCreables();
 	}

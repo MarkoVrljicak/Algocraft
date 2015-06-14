@@ -1,6 +1,7 @@
 package algocraft.mapa.terrenos;
 
 import Propiedad.Propiedad;
+import algocraft.construcciones.RecolectorMineral;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 
@@ -14,7 +15,16 @@ public class Minerales extends Terreno {
 	}
 	
 	public void almacenarEnSuelo(Propiedad actualizable) throws DestinoInvalidoException{
-		throw new DestinoInvalidoException();
+		try{
+			RecolectorMineral recolector = (RecolectorMineral) actualizable;
+			if(contenidoSuelo != null)
+				throw new DestinoInvalidoException();
+				
+			else
+				contenidoSuelo = recolector;
+		}catch(ClassCastException e){
+			throw new DestinoInvalidoException();
+		}
 	}
 	
 	public Propiedad getContenidoSuelo(){
