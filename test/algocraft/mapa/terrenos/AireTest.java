@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.Interfaces.Actualizable;
+import Propiedad.Propiedad;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 import algocraft.unidades.terran.Marine;
@@ -36,7 +36,7 @@ public class AireTest {
 	@Test
 	public void testAireNoSePuedeVolarSiEstaLleno() {
 		Aire aire = new Aire(coordenadaGenerica);
-		Actualizable nave = new NaveCiencia();
+		Propiedad nave = new NaveCiencia();
 		
 		try {
 			aire.almacenarEnCielo(nave);
@@ -82,7 +82,7 @@ public class AireTest {
 	@Test
 	public void testColocaActualizableEnCieloSiEstaVacio(){
 		Aire aire = new Aire(coordenadaGenerica);
-		Actualizable nave = new NaveCiencia();
+		Propiedad nave = new NaveCiencia();
 		
 		try {
 			aire.almacenarEnCielo(nave);
@@ -96,8 +96,8 @@ public class AireTest {
 	@Test (expected = DestinoInvalidoException.class)
 	public void testNoColocaActualizableEnCieloSiEstaLleno() throws DestinoInvalidoException{
 		Aire aire = new Aire(coordenadaGenerica);
-		Actualizable nave1 = new NaveCiencia();
-		Actualizable nave2 = new NaveCiencia();
+		Propiedad nave1 = new NaveCiencia();
+		Propiedad nave2 = new NaveCiencia();
 		
 		aire.almacenarEnCielo(nave1);
 		aire.almacenarEnCielo(nave2);
@@ -106,7 +106,7 @@ public class AireTest {
 	@Test (expected = DestinoInvalidoException.class)
 	public void testNoColocaActualizableEnTierraAunqueEsteVacio() throws DestinoInvalidoException{
 		Aire aire = new Aire(coordenadaGenerica);
-		Actualizable marine = new Marine();
+		Propiedad marine = new Marine();
 		
 		aire.almacenarEnSuelo(marine);
 	}

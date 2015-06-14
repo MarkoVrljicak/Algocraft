@@ -1,6 +1,6 @@
 package algocraft.unidades;
 
-import algocraft.Interfaces.Actualizable;
+import Propiedad.Propiedad;
 import algocraft.Interfaces.Daniable;
 import algocraft.Interfaces.Movible;
 import algocraft.ataques.AtaqueNormal;
@@ -10,7 +10,7 @@ import algocraft.mapa.terrenos.Terreno;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Stat;
 
-public abstract class Unidad implements Daniable, Movible, Actualizable{
+public abstract class Unidad extends Propiedad implements Movible{
 	
 	protected Unidades nombre;
 	protected Stat vitalidad;

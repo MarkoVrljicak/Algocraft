@@ -1,9 +1,10 @@
 package algocraft.construcciones;
 
+import Propiedad.Propiedad;
 import algocraft.ataques.Ataques;
 import algocraft.jugador.Usuario;
 
-public abstract class DecoradorEdificioBasico implements Construccion {
+public abstract class DecoradorEdificioBasico extends Propiedad implements Construccion {
 
 	public Construccion edificio;
 

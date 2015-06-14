@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.Interfaces.Actualizable;
+import Propiedad.Propiedad;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 import algocraft.unidades.terran.Marine;
@@ -28,7 +28,7 @@ public class VolcanTest {
 	@Test
 	public void testMineralesNoSePuedeVolarSiEstaLleno() {
 		Volcan volcan = new Volcan(coordenadaGenerica);
-		Actualizable nave = new NaveCiencia();
+		Propiedad nave = new NaveCiencia();
 		
 		try {
 			volcan.almacenarEnCielo(nave);
@@ -74,7 +74,7 @@ public class VolcanTest {
 	@Test
 	public void testColocaActualizableEnCieloSiEstaVacio(){
 		Volcan volcan = new Volcan(coordenadaGenerica);
-		Actualizable nave = new NaveCiencia();
+		Propiedad nave = new NaveCiencia();
 		
 		try {
 			volcan.almacenarEnCielo(nave);
@@ -88,8 +88,8 @@ public class VolcanTest {
 	@Test (expected = DestinoInvalidoException.class)
 	public void testNoColocaActualizableEnCieloSiEstaLleno() throws DestinoInvalidoException{
 		Volcan volcan = new Volcan(coordenadaGenerica);
-		Actualizable nave1 = new NaveCiencia();
-		Actualizable nave2 = new NaveCiencia();
+		Propiedad nave1 = new NaveCiencia();
+		Propiedad nave2 = new NaveCiencia();
 		
 		volcan.almacenarEnCielo(nave1);
 		volcan.almacenarEnCielo(nave2);
@@ -98,7 +98,7 @@ public class VolcanTest {
 	@Test (expected = DestinoInvalidoException.class)
 	public void testNoColocaActualizableEnTierraAunqueEsteVacio() throws DestinoInvalidoException{
 		Volcan volcan = new Volcan(coordenadaGenerica);
-		Actualizable marine = new Marine();
+		Propiedad marine = new Marine();
 		
 		volcan.almacenarEnSuelo(marine);
 	}

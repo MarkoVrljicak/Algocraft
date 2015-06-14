@@ -4,7 +4,7 @@ import algocraft.Interfaces.Actualizable;
 import algocraft.Interfaces.Daniable;
 import algocraft.jugador.Usuario;
 
-public interface Construccion extends Actualizable, Daniable{
+public interface Construccion extends Daniable, Actualizable{
 
 	public int getVida();
 	public EnumEdificios getNombre();

@@ -1,6 +1,6 @@
 package algocraft.exception;
 
-public class ActualizableNoEstaEnJuegoException extends Exception {
+public class PropiedadNoEstaEnJuegoException extends Exception {
 
 	/**
 	 * 

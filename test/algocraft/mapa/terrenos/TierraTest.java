@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.Interfaces.Actualizable;
+import Propiedad.Propiedad;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 import algocraft.unidades.terran.Marine;
@@ -42,7 +42,7 @@ public class TierraTest {
 	@Test
 	public void testTierraNoSePuedeVolarConCieloOcupado() {
 		Tierra tierra = new Tierra(coordenadaGenerica);
-		Actualizable nave = new NaveCiencia();
+		Propiedad nave = new NaveCiencia();
 		
 		try {
 			tierra.almacenarEnCielo(nave);
@@ -88,7 +88,7 @@ public class TierraTest {
 	@Test
 	public void testColocaActualizableEnCieloSiEstaVacio(){
 		Tierra tierra = new Tierra(coordenadaGenerica);
-		Actualizable nave = new NaveCiencia();
+		Propiedad nave = new NaveCiencia();
 		
 		try {
 			tierra.almacenarEnCielo(nave);
@@ -102,8 +102,8 @@ public class TierraTest {
 	@Test (expected = DestinoInvalidoException.class)
 	public void testNoColocaActualizableEnCieloSiEstaLleno() throws DestinoInvalidoException{
 		Tierra tierra = new Tierra(coordenadaGenerica);
-		Actualizable nave1 = new NaveCiencia();
-		Actualizable nave2 = new NaveCiencia();
+		Propiedad nave1 = new NaveCiencia();
+		Propiedad nave2 = new NaveCiencia();
 		
 		tierra.almacenarEnCielo(nave1);
 		tierra.almacenarEnCielo(nave2);
@@ -144,7 +144,6 @@ public class TierraTest {
 		
 		assertEquals(true, tierra.getContenidoSuelo() != null && tierra.getContenidoCielo() != null );
 	}
-	
 
 
 }

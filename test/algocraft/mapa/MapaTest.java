@@ -7,7 +7,7 @@ import java.util.Collection;
 
 import org.junit.Test;
 
-import algocraft.exception.ActualizableNoEstaEnJuegoException;
+import algocraft.exception.PropiedadNoEstaEnJuegoException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.terrenos.Terreno;
@@ -37,7 +37,7 @@ public class MapaTest {
 		Unidad marine = new Marine();
 		mapa.almacenarEnSuelo(marine, coordenada);
 		
-		assertEquals(1, mapa.actualizablesEnJuego());
+		assertEquals(1, mapa.propiedadesEnJuego());
 	}
 	
 	@Test(expected= FueraDeLimitesException.class)
@@ -94,11 +94,11 @@ public class MapaTest {
 		
 		try {
 			mapa.moverUnidad(marine, destino);
-		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
+		} catch (PropiedadNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
-		assertEquals(marine, mapa.getActualizableSuelo(destino));
+		assertEquals(marine, mapa.getPropiedadSuelo(destino));
 	}
 	
 	@Test
@@ -118,16 +118,16 @@ public class MapaTest {
 		
 		try {
 			mapa.moverUnidad(marine, destino);
-		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
+		} catch (PropiedadNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
-		assertEquals(marine, mapa.getActualizableSuelo(destino));
+		assertEquals(marine, mapa.getPropiedadSuelo(destino));
 	}
 	
 	@Test
 	public void testMapaNoMueveUnidadSiDistanciaFueraDeRangoDeMovimientos() 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa= new Mapa(5,5);
 		Unidad marine = new Marine();
 		
@@ -142,7 +142,7 @@ public class MapaTest {
 		
 		try {
 			mapa.moverUnidad(marine, destino);
-		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
+		} catch (PropiedadNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
@@ -151,7 +151,7 @@ public class MapaTest {
 	
 	@Test
 	public void testMapaNoMueveUnidadTerrestreATravesDeAire() 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa= new Mapa(3,3);
 		Unidad marine = new Marine();
 		Coordenada origen = new Coordenada(1,2);
@@ -186,7 +186,7 @@ public class MapaTest {
 		
 		try {
 			mapa.moverUnidad(marine, destino);
-		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException | FueraDeLimitesException e) {
+		} catch (PropiedadNoEstaEnJuegoException | DestinoInvalidoException | FueraDeLimitesException e) {
 			e.printStackTrace();
 		}
 		
@@ -195,7 +195,7 @@ public class MapaTest {
 	
 	@Test
 	public void testMapaNoMueveUnidadSiNoHayMovimientosRestantesSuficientes() 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa= new Mapa(4,4);
 		Unidad marine = new Marine();
 		
@@ -210,7 +210,7 @@ public class MapaTest {
 		
 		try {
 			mapa.moverUnidad(marine, destino);
-		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
+		} catch (PropiedadNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		//intento volver al origen
@@ -234,16 +234,16 @@ public class MapaTest {
 		
 		try {
 			mapa.moverUnidad(marine, destino);
-		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
+		} catch (PropiedadNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
-		assertEquals(null, mapa.getActualizableSuelo(origen));
+		assertEquals(null, mapa.getPropiedadSuelo(origen));
 	}
 	
 	@Test
 	public void testMapaNoMueveUnidadPorTierraSiDestinoEstaOcupadoPorOtraUnidad() 
-			throws DestinoInvalidoException, ActualizableNoEstaEnJuegoException, FueraDeLimitesException{
+			throws DestinoInvalidoException, PropiedadNoEstaEnJuegoException, FueraDeLimitesException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad marine1 = new Marine();
 		Unidad marine2 = new Marine();
@@ -264,7 +264,7 @@ public class MapaTest {
 	
 	@Test
 	public void testMapaNoMueveUnidadPorTierraSiDestinoNoEsTierra() 
-			throws DestinoInvalidoException, ActualizableNoEstaEnJuegoException, FueraDeLimitesException{
+			throws DestinoInvalidoException, PropiedadNoEstaEnJuegoException, FueraDeLimitesException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad marine = new Marine();
 		
@@ -285,7 +285,7 @@ public class MapaTest {
 	
 	@Test
 	public void testMapaMueveUnidadPorAire() 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad nave = new NaveCiencia();
 		
@@ -300,12 +300,12 @@ public class MapaTest {
 		
 		mapa.moverUnidad(nave, destino);
 		
-		assertEquals(nave, mapa.getActualizableCielo(destino));
+		assertEquals(nave, mapa.getPropiedadCielo(destino));
 	}
 	
 	@Test
 	public void testMapaMueveUnidadPorAireInclusoSiDestinoOcupadoEnTierra() 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad nave = new NaveCiencia();
 		Unidad marine= new Marine();
@@ -322,7 +322,7 @@ public class MapaTest {
 		
 		mapa.moverUnidad(nave, destino);
 		
-		assertEquals(nave, mapa.getActualizableCielo(destino));
+		assertEquals(nave, mapa.getPropiedadCielo(destino));
 	}
 	
 	@Test
@@ -341,16 +341,16 @@ public class MapaTest {
 		
 		try {
 			mapa.moverUnidad(nave, destino);
-		} catch (ActualizableNoEstaEnJuegoException | DestinoInvalidoException e) {
+		} catch (PropiedadNoEstaEnJuegoException | DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
 		
-		assertEquals(null, mapa.getActualizableCielo(origen));
+		assertEquals(null, mapa.getPropiedadCielo(origen));
 	}
 	
 	@Test
 	public void testMapaNoMueveUnidadPorCieloSiDestinoEstaOcupadoPorOtraUnidad() 
-			throws DestinoInvalidoException, ActualizableNoEstaEnJuegoException, FueraDeLimitesException{
+			throws DestinoInvalidoException, PropiedadNoEstaEnJuegoException, FueraDeLimitesException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad nave1 = new NaveCiencia();
 		Unidad nave2 = new NaveCiencia();
@@ -373,7 +373,7 @@ public class MapaTest {
 	
 	@Test
 	public void testMapaGestionaAtaqueEntreDosUnidades() 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa = new Mapa(5,5);
 		Unidad marine1 = new Marine();
 		Unidad marine2 = new Marine();
@@ -386,7 +386,7 @@ public class MapaTest {
 	
 	@Test
 	public void testMapaGestionaAtaqueEntreDosUnidadesYDisminuyeVidaDeUnidadAtacada() 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa = new Mapa(5,5);
 		Unidad marine1 = new Marine();
 		Unidad marine2 = new Marine();
@@ -401,7 +401,7 @@ public class MapaTest {
 	
 	@Test
 	public void testPeleaGestionadaPorMapaResultaEnMuerte() 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa = new Mapa(5,5);
 		Unidad dragon = new Dragon();
 		Unidad marine = new Marine();
@@ -417,7 +417,7 @@ public class MapaTest {
 	
 	@Test
 	public void testMapaEliminaUnidadMatada() 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa = new Mapa(5,5);
 		Unidad dragon = new Dragon();
 		Unidad marine = new Marine();
@@ -428,7 +428,7 @@ public class MapaTest {
 		mapa.gestionarAtaque(dragon, marine);
 		mapa.gestionarAtaque(dragon, marine);
 		
-		assertEquals(1, mapa.actualizablesEnJuego());
+		assertEquals(1, mapa.propiedadesEnJuego());
 	}
 	
 	@Test

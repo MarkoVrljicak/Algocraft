@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.Interfaces.Actualizable;
+import Propiedad.Propiedad;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 import algocraft.unidades.terran.Marine;
@@ -28,7 +28,7 @@ public class MineralesTest {
 	@Test
 	public void testMineralesNoSePuedeVolarSiEstaLleno() {
 		Minerales minerales = new Minerales(coordenadaGenerica);
-		Actualizable nave = new NaveCiencia();
+		Propiedad nave = new NaveCiencia();
 		
 		try {
 			minerales.almacenarEnCielo(nave);
@@ -74,7 +74,7 @@ Minerales minerales = new Minerales(coordenadaGenerica);
 	@Test
 	public void testColocaActualizableEnCieloSiEstaVacio(){
 		Minerales minerales = new Minerales(coordenadaGenerica);
-		Actualizable nave = new NaveCiencia();
+		Propiedad nave = new NaveCiencia();
 		
 		try {
 			minerales.almacenarEnCielo(nave);
@@ -88,8 +88,8 @@ Minerales minerales = new Minerales(coordenadaGenerica);
 	@Test (expected = DestinoInvalidoException.class)
 	public void testNoColocaActualizableEnCieloSiEstaLleno() throws DestinoInvalidoException{
 		Minerales minerales = new Minerales(coordenadaGenerica);
-		Actualizable nave1 = new NaveCiencia();
-		Actualizable nave2 = new NaveCiencia();
+		Propiedad nave1 = new NaveCiencia();
+		Propiedad nave2 = new NaveCiencia();
 		
 		minerales.almacenarEnCielo(nave1);
 		minerales.almacenarEnCielo(nave2);
@@ -98,7 +98,7 @@ Minerales minerales = new Minerales(coordenadaGenerica);
 	@Test (expected = DestinoInvalidoException.class)
 	public void testNoColocaActualizableEnTierraAunqueEsteVacio() throws DestinoInvalidoException{
 		Minerales minerales = new Minerales(coordenadaGenerica);
-		Actualizable marine = new Marine();
+		Propiedad marine = new Marine();
 		
 		minerales.almacenarEnSuelo(marine);
 	}

@@ -1,6 +1,6 @@
 package algocraft.mapa.terrenos;
 
-import algocraft.Interfaces.Actualizable;
+import Propiedad.Propiedad;
 import algocraft.Interfaces.Dibujable;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
@@ -8,8 +8,8 @@ import algocraft.mapa.Coordenada;
 public abstract class Terreno implements Dibujable {
 	
 	protected Terrenos nombre;
-	protected Actualizable contenidoSuelo;
-	protected Actualizable contenidoCielo;
+	protected Propiedad contenidoSuelo;
+	protected Propiedad contenidoCielo;
 	protected Coordenada coordenada;
 	
 	/*-------------------------------------*/
@@ -20,20 +20,20 @@ public abstract class Terreno implements Dibujable {
 		return nombre;
 	}
 		
-	abstract public void almacenarEnSuelo(Actualizable actualizable) throws DestinoInvalidoException;
+	abstract public void almacenarEnSuelo(Propiedad propiedad) throws DestinoInvalidoException;
 	
-	public void almacenarEnCielo(Actualizable actualizable) throws DestinoInvalidoException{
+	public void almacenarEnCielo(Propiedad propiedad) throws DestinoInvalidoException{
 		
 		if (contenidoCielo != null) {
 			throw new DestinoInvalidoException();
 			
 		} else {
-			contenidoCielo = actualizable;
+			contenidoCielo = propiedad;
 		}
 	}
 		
-	abstract public Actualizable getContenidoSuelo();
-	abstract public Actualizable getContenidoCielo();
+	abstract public Propiedad getContenidoSuelo();
+	abstract public Propiedad getContenidoCielo();
 		
 	public Coordenada getCoordenada() {
 		return coordenada;
@@ -47,6 +47,15 @@ public abstract class Terreno implements Dibujable {
 		this.contenidoCielo = null;
 		
 	}
+//	
+//	public void almacenar(Propiedad propiedad) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//	
+//	public void borrarContenido(Propiedad propiedad){
+//		
+//	}
 	
 	/*-------------------------------------*/
 	/* Metodos para permisos de movimiento */
@@ -71,6 +80,8 @@ public abstract class Terreno implements Dibujable {
 	
 	abstract public boolean sePuedeEdificar();
 	//Para que los edificios que no sean recolectores de recursos sepan si pueden ser construidos.
+
+
 
 
 

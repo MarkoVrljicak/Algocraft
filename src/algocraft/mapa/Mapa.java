@@ -5,11 +5,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import algocraft.Interfaces.Actualizable;
+import Propiedad.Propiedad;
 import algocraft.Interfaces.Daniable;
-import algocraft.exception.ActualizableNoEstaEnJuegoException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
+import algocraft.exception.PropiedadNoEstaEnJuegoException;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
 import algocraft.unidades.Unidad;
@@ -17,7 +17,7 @@ import algocraft.unidades.Unidad;
 public class Mapa implements Iterable<Terreno>{
 
 	private HashMap<Coordenada, Terreno> casilleros;
-	private HashMap<Actualizable, Coordenada> posiciones;
+	private HashMap<Propiedad, Coordenada> posiciones;
 	private int ancho;
 	private int alto;
 
@@ -25,7 +25,7 @@ public class Mapa implements Iterable<Terreno>{
 		this.ancho = ancho;
 		this.alto = alto;
 		casilleros = new HashMap<Coordenada, Terreno>();
-		posiciones = new HashMap<Actualizable, Coordenada>();
+		posiciones = new HashMap<Propiedad, Coordenada>();
 
 		for (int i = 1; i <= this.ancho; i++) {
 			for (int j = 1; j <= this.alto; j++) {
@@ -70,24 +70,24 @@ public class Mapa implements Iterable<Terreno>{
 		return casilleros.values().iterator();
 	}
 	
-	public void almacenarEnSuelo(Actualizable actualizable, Coordenada coordenada)
+	public void almacenarEnSuelo(Propiedad propiedad, Coordenada coordenada)
 			throws DestinoInvalidoException, FueraDeLimitesException {
-		posiciones.put(actualizable, coordenada);
-		this.getTerreno(coordenada).almacenarEnSuelo(actualizable);
+		posiciones.put(propiedad, coordenada);
+		this.getTerreno(coordenada).almacenarEnSuelo(propiedad);
 	}
 
-	public void almacenarEnCielo(Actualizable actualizable, Coordenada coordenada)
+	public void almacenarEnCielo(Propiedad propiedad, Coordenada coordenada)
 			throws DestinoInvalidoException, FueraDeLimitesException {
-		posiciones.put(actualizable, coordenada);
-		this.getTerreno(coordenada).almacenarEnCielo(actualizable);
+		posiciones.put(propiedad, coordenada);
+		this.getTerreno(coordenada).almacenarEnCielo(propiedad);
 	}
 	
-	public Actualizable getActualizableSuelo(Coordenada coordenada) 
+	public Propiedad getPropiedadSuelo(Coordenada coordenada) 
 			throws FueraDeLimitesException {
 		return this.getTerreno(coordenada).getContenidoSuelo();
 	}
 
-	public Actualizable getActualizableCielo(Coordenada coordenada) 
+	public Propiedad getPropiedadCielo(Coordenada coordenada) 
 			throws FueraDeLimitesException {
 		return this.getTerreno(coordenada).getContenidoCielo();
 	}
@@ -95,11 +95,11 @@ public class Mapa implements Iterable<Terreno>{
 	//movimiento
 
 	public boolean moverUnidad(Unidad unidad, Coordenada coordenadaDestino) 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException {
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException {
 		
 		Coordenada coordenadaOrigen = posiciones.get( unidad );
 		if(coordenadaOrigen == null){
-			throw new ActualizableNoEstaEnJuegoException();
+			throw new PropiedadNoEstaEnJuegoException();
 		}
 		
 		Terreno terrenoOrigen = this.getTerreno(coordenadaOrigen);
@@ -130,7 +130,7 @@ public class Mapa implements Iterable<Terreno>{
 	}
 	
 	private boolean darUnPaso(Unidad unidad, Coordenada origen, Coordenada destino) 
-			throws ActualizableNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException {
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException {
 		Coordenada mejorOpcion = origen ;
 		//entre los vecinos busco la mejor opcion
 		for(int x = origen.getX()-1 ; x <= origen.getX()+1 ; x++){
@@ -153,12 +153,12 @@ public class Mapa implements Iterable<Terreno>{
 	
 	//ataque
 	
-	public boolean gestionarAtaque(Unidad atacante, Daniable atacado) throws ActualizableNoEstaEnJuegoException {
-		Coordenada posicionAtacante = posiciones.get((Actualizable) atacante);
-		Coordenada posicionAtacado = posiciones.get((Actualizable) atacado);
+	public boolean gestionarAtaque(Unidad atacante, Daniable atacado) throws PropiedadNoEstaEnJuegoException {
+		Coordenada posicionAtacante = posiciones.get((Propiedad) atacante);
+		Coordenada posicionAtacado = posiciones.get((Propiedad) atacado);
 		
 		if(posicionAtacante == null || posicionAtacado == null){
-			throw new ActualizableNoEstaEnJuegoException();
+			throw new PropiedadNoEstaEnJuegoException();
 		}
 		
 		int distanciaAtaque = posicionAtacante.distanciaA(posicionAtacado);
@@ -189,7 +189,7 @@ public class Mapa implements Iterable<Terreno>{
 		
 	}
 	
-	public int actualizablesEnJuego(){
+	public int propiedadesEnJuego(){
 		return posiciones.size();
 	}
 	

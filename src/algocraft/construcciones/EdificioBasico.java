@@ -1,12 +1,13 @@
 package algocraft.construcciones;
 
+import Propiedad.Propiedad;
 import algocraft.ataques.Ataques;
 import algocraft.jugador.JugadorNulo;
 import algocraft.jugador.Usuario;
 import algocraft.stats.Stat;
 import algocraft.stats.Vida;
 
-public class EdificioBasico implements Construccion{
+public class EdificioBasico extends Propiedad implements Construccion{
 
 	protected Stat stat;
 	protected int tiempoDeConstruccion;

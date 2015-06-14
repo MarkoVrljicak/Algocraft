@@ -1,6 +1,6 @@
 package algocraft.mapa.terrenos;
 
-import algocraft.Interfaces.Actualizable;
+import Propiedad.Propiedad;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
 
@@ -13,15 +13,15 @@ public class Aire extends Terreno {
 		contenidoCielo = null;
 	}
 	
-	public void almacenarEnSuelo(Actualizable Actualizable) throws DestinoInvalidoException{
+	public void almacenarEnSuelo(Propiedad Propiedad) throws DestinoInvalidoException{
 		throw new DestinoInvalidoException();
 	}
 	
-	public Actualizable getContenidoSuelo(){
+	public Propiedad getContenidoSuelo(){
 		return contenidoSuelo;
 	}
 	
-	public Actualizable getContenidoCielo(){
+	public Propiedad getContenidoCielo(){
 		return contenidoCielo;
 	}
 
