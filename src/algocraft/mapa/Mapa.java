@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import Propiedad.Propiedad;
+import algocraft.exception.CoordenadaInexistenteException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.exception.PropiedadNoEstaEnJuegoException;
@@ -90,7 +91,7 @@ public class Mapa implements Iterable<Terreno>{
 	
 	public boolean desplazarPropiedad(Propiedad propiedad, Coordenada destino) throws PropiedadNoEstaEnJuegoException{
 
-		Coordenada coordenadaOrigen = posiciones.get( propiedad );
+		Coordenada coordenadaOrigen = posiciones.get(propiedad);
 		if(coordenadaOrigen == null){
 			throw new PropiedadNoEstaEnJuegoException();
 		}
@@ -115,6 +116,37 @@ public class Mapa implements Iterable<Terreno>{
 		
 		return true;
 		
+	}
+	
+	public Collection<Terreno> trazarCamino(Coordenada origen, Coordenada destino) throws CoordenadaInexistenteException{
+		Collection<Terreno> camino = new ArrayList<Terreno>();
+		
+		if(this.casilleros.get(origen) == null || this.casilleros.get(destino) == null){
+			throw new CoordenadaInexistenteException();
+		}
+		
+		Coordenada coordenadaActual = origen;
+		while(coordenadaActual.distanciaA(destino) != 0){
+			camino.add(this.casilleros.get(coordenadaActual));
+			
+			Collection<Terreno> linderos = this.obtenerRadioDeCasilleros(1, coordenadaActual);
+			
+			Iterator<Terreno> iter = linderos.iterator();
+			coordenadaActual = iter.next().getCoordenada();
+			
+			while(iter.hasNext()){
+				int mejorDistancia = coordenadaActual.distanciaA(destino);
+				Terreno siguienteTerreno = iter.next();
+				Coordenada siguienteCoordenada = siguienteTerreno.getCoordenada();
+				if(siguienteCoordenada.distanciaA(destino) < mejorDistancia){
+					mejorDistancia = siguienteCoordenada.distanciaA(destino);
+					coordenadaActual = siguienteCoordenada;
+				}
+			}
+		}
+		camino.add(this.casilleros.get(coordenadaActual));
+		
+		return camino;
 	}
 
 //	public boolean moverUnidad(Unidad unidad, Coordenada coordenadaDestino) 
@@ -217,6 +249,7 @@ public class Mapa implements Iterable<Terreno>{
 	}
 	
 	public Collection<Terreno> obtenerRadioDeCasilleros(int radio, Coordenada centro){
+		
 		Collection<Terreno> outputTerrenos = new ArrayList<Terreno>();
 		Iterator<Terreno> iter = this.iterator();
 		

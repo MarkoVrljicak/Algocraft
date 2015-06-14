@@ -1,12 +1,13 @@
 package algocraft.mapa;
 
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.Collection;
 
 import org.junit.Test;
 
+import algocraft.exception.CoordenadaInexistenteException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.exception.PropiedadNoEstaEnJuegoException;
@@ -459,5 +460,76 @@ public class MapaTest {
 		
 		assertEquals(25, casilleros.size());
 	}
+	
+	//Obtencion de caminos
+	
+	@Test
+	public void testMapaDevuelveUnCaminoNoVacio() throws CoordenadaInexistenteException{
+		Mapa mapa = new Mapa(3,3);
+		
+		Collection<Terreno> camino = mapa.trazarCamino(new Coordenada(1,1), new Coordenada(3,3));
+				
+		assertFalse(camino.size() == 0);
+	}
+	
+	@Test
+	public void testElLargoDeUnCaminoEsIgualALaDistanciaEntreDosCoordenadasMasUno() throws CoordenadaInexistenteException{
+		Mapa mapa = new Mapa(10,10);
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(7,9);
+		
+		Collection<Terreno> camino = mapa.trazarCamino(origen, destino);
+				
+		assertEquals(camino.size() , origen.distanciaA(destino) +1);
+	}
+	
+	@Test
+	public void testCaminoConOrigenIgualADestinoEsDeTamanio1() throws CoordenadaInexistenteException{
+		Mapa mapa = new Mapa(3,3);
+		
+		Collection<Terreno> camino = mapa.trazarCamino(new Coordenada(1,1), new Coordenada(1,1));
+				
+		assertEquals(1, camino.size());
+	}
+	
+	@Test(expected = CoordenadaInexistenteException.class)
+	public void testTrazarCaminosLanzaCoordenadaInexistenteSiNoExisteDestino() throws CoordenadaInexistenteException{
+		Mapa mapa = new Mapa(3,3);
+		
+		mapa.trazarCamino(new Coordenada(1,1), new Coordenada(10,1));
+	}
+	
+	@Test(expected = CoordenadaInexistenteException.class)
+	public void testTrazarCaminosLanzaCoordenadaInexistenteSiNoExisteOrigen() throws CoordenadaInexistenteException{
+		Mapa mapa = new Mapa(3,3);
+		
+		mapa.trazarCamino(new Coordenada(0,1), new Coordenada(1,1));
+	}
+	
+	@Test
+	public void testCaminoContieneAlOrigen() throws CoordenadaInexistenteException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(3,3);
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(3,3);
+		
+		Collection<Terreno> camino = mapa.trazarCamino(origen, destino);
+				
+		assertEquals(true , camino.contains(mapa.getTerreno(origen)));
+	}
+	
+	@Test
+	public void testCaminoContieneAlDestino() throws CoordenadaInexistenteException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(3,3);
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(3,3);
+		
+		Collection<Terreno> camino = mapa.trazarCamino(origen, destino);
+				
+		assertEquals(true , camino.contains(mapa.getTerreno(destino)));
+	}
+	
 	
 }
