@@ -3,6 +3,7 @@ package algocraft.mapa.terrenos;
 import Propiedad.Propiedad;
 import algocraft.Interfaces.Dibujable;
 import algocraft.exception.DestinoInvalidoException;
+import algocraft.exception.PropiedadNoExisteEnEstaUbicacion;
 import algocraft.mapa.Coordenada;
 
 public abstract class Terreno implements Dibujable {
@@ -52,6 +53,18 @@ public abstract class Terreno implements Dibujable {
 		propiedad.almacenarme(this);
 	}
 	
+	public void borrarContenido(Propiedad propiedad) throws PropiedadNoExisteEnEstaUbicacion {
+		if(this.getContenidoSuelo() == propiedad){
+			this.contenidoSuelo = null;
+			
+		} else if(this.getContenidoCielo() == propiedad){
+			this.contenidoCielo = null;
+			
+		} else {
+			throw new PropiedadNoExisteEnEstaUbicacion();
+		}
+	}
+	
 	/*-------------------------------------*/
 	/* Metodos para permisos de movimiento */
 	/*-------------------------------------*/
@@ -75,6 +88,8 @@ public abstract class Terreno implements Dibujable {
 	
 	abstract public boolean sePuedeEdificar();
 	//Para que los edificios que no sean recolectores de recursos sepan si pueden ser construidos.
+
+
 
 
 
