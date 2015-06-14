@@ -2,7 +2,7 @@ package algocraft.construcciones;
 
 import Propiedad.Propiedad;
 import algocraft.ataques.Ataques;
-import algocraft.jugador.Usuario;
+import algocraft.jugador.Jugador;
 
 public abstract class DecoradorEdificioBasico extends Propiedad implements Construccion {
 
@@ -23,11 +23,11 @@ public abstract class DecoradorEdificioBasico extends Propiedad implements Const
 		return this.edificio.enConstruccion();
 	}
 	
-	public Usuario getDuenio(){
+	public Jugador getDuenio(){
 		return this.edificio.getDuenio();
 	}
 	
-	public void setDuenio(Usuario jugador){
+	public void setDuenio(Jugador jugador){
 		this.edificio.setDuenio(jugador);
 	}
 	

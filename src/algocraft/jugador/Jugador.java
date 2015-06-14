@@ -9,6 +9,7 @@ import algocraft.Interfaces.Daniable;
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.construcciones.EnumEdificios;
+import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 import algocraft.razas.EnumRazas;
@@ -50,6 +51,13 @@ public class Jugador implements Actualizable, Usuario {
 		return recursos;
 	}
 	
+	public void consumirMineral(int cantidad) throws RecursosNegativosException{
+		this.recursos.consumirMineral(cantidad);
+	}
+	
+	public void consumirGas(int cantidad) throws RecursosNegativosException{
+		this.recursos.consumirGas(cantidad);
+	}	
 	
 	public Colores getColor(){
 		return color;

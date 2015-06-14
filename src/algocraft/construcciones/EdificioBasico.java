@@ -1,8 +1,7 @@
 package algocraft.construcciones;
 
 import Propiedad.Propiedad;
-import algocraft.jugador.JugadorNulo;
-import algocraft.jugador.Usuario;
+import algocraft.jugador.Jugador;
 import algocraft.stats.Stat;
 import algocraft.stats.Vida;
 
@@ -11,7 +10,7 @@ public class EdificioBasico extends Propiedad implements Construccion{
 	protected Stat stat;
 	protected int tiempoDeConstruccion;
 	protected EnumEdificios nombre;
-	public Usuario duenio = new JugadorNulo();
+	public Jugador duenio;
 	
 	public EdificioBasico(EnumEdificios nombre, int vidaMaxima, int tiempoDeConstruccion){
 		this.nombre= nombre;
@@ -36,11 +35,11 @@ public class EdificioBasico extends Propiedad implements Construccion{
 		}
 	}
 	
-	public void setDuenio(Usuario jugador) {
+	public void setDuenio(Jugador jugador) {
 		duenio = jugador;		
 	}
 	
-	public Usuario getDuenio() {
+	public Jugador getDuenio() {
 		return duenio;		
 	}
 

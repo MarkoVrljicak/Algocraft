@@ -9,8 +9,12 @@ public abstract class UnidadesAbstractFactory {
 	protected int poblacionNecesaria;
 	public abstract Unidad crearUnidad();
 	
-	public Recurso getRecursosNecesarios(){
-		return recursosNecesarios;
+	public int getMineralNecesario(){
+		return recursosNecesarios.obtenerMineral();
+	}
+	
+	public int getGasNecesario(){
+		return recursosNecesarios.obtenerGas();
 	}
 	
 	public int getPoblacionNecesaria(){

@@ -28,8 +28,8 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 		if(puedoCrearUnidad(creador) ){
 			
 			try {
-				this.getDuenio().getRecursos().consumirMineral(creador.getRecursosNecesarios().obtenerMineral());
-				this.getDuenio().getRecursos().consumirGas(creador.getRecursosNecesarios().obtenerGas());
+				this.getDuenio().consumirMineral(creador.getMineralNecesario());
+				this.getDuenio().consumirGas(creador.getGasNecesario());
 			} catch (RecursosNegativosException e) {
 				e.printStackTrace();
 			}
@@ -43,8 +43,8 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 		final Recurso recursosDisponibles = this.getDuenio().getRecursos();
 		final int poblacionDisponible = this.getDuenio().getPoblacionDisponible();
 		
-		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= creador.getRecursosNecesarios().obtenerMineral());
-		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= creador.getRecursosNecesarios().obtenerGas());
+		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= creador.getMineralNecesario());
+		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= creador.getGasNecesario());
 		puedeCrearse = puedeCrearse && (poblacionDisponible >= creador.getPoblacionNecesaria());
 		
 		return puedeCrearse;

@@ -6,14 +6,14 @@ import algocraft.construcciones.Construccion;
 import algocraft.construcciones.EnumEdificios;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.EdificiosAbstractFactory;
-import algocraft.jugador.Usuario;
+import algocraft.jugador.Jugador;
 import algocraft.stats.Recurso;
 
 public abstract class Raza {
 
 	protected EnumRazas nombre;
 	protected HashMap<EnumEdificios, EdificiosAbstractFactory> construccionesCreables;
-	protected Usuario duenio;
+	protected Jugador duenio;
 	
 	//metodos de inicializacion
 	public Raza(){
@@ -33,7 +33,7 @@ public abstract class Raza {
 		return nombre;
 	}
 	
-	public void setDuenio(Usuario jugador) {
+	public void setDuenio(Jugador jugador) {
 		duenio = jugador;		
 	}
 	
@@ -51,8 +51,8 @@ public abstract class Raza {
 		if(puedoCrearConstruccion(creador) ){
 			
 			try {
-				duenio.getRecursos().consumirMineral(creador.getRecursosNecesarios().obtenerMineral());
-				duenio.getRecursos().consumirGas(creador.getRecursosNecesarios().obtenerGas());
+				duenio.consumirMineral(creador.getMineralNecesario());
+				duenio.consumirGas(creador.getGasNecesario());
 			} catch (RecursosNegativosException e) {
 				e.printStackTrace();
 			}
@@ -67,10 +67,9 @@ public abstract class Raza {
 	//creacion edificios
 	public boolean puedoCrearConstruccion(EdificiosAbstractFactory creador) {
 		final Recurso recursosDisponibles = duenio.getRecursos();
-		final Recurso recursosNecesarios = creador.getRecursosNecesarios();
 		
-		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= recursosNecesarios.obtenerMineral());
-		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= recursosNecesarios.obtenerGas());
+		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= creador.getMineralNecesario());
+		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= creador.getGasNecesario());
 		
 		if(creador.necesitoConstruccionAnterior()){
 			puedeCrearse = puedeCrearse && (duenio.tieneConstruccion(creador.getConstruccionNecesitada()));

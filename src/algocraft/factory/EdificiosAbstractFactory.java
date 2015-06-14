@@ -12,7 +12,12 @@ public abstract class EdificiosAbstractFactory {
 	public abstract boolean necesitoConstruccionAnterior();
 	public abstract EnumEdificios getConstruccionNecesitada();
 	
-	public Recurso getRecursosNecesarios(){
-		return recursosNecesarios;
+	public int getMineralNecesario(){
+		return recursosNecesarios.obtenerMineral();
 	}
+	
+	public int getGasNecesario(){
+		return recursosNecesarios.obtenerGas();
+	}
+	
 }
