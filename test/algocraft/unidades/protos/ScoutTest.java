@@ -36,7 +36,7 @@ public class ScoutTest {
 	public void testMovimientosScoutEmpiezaEn3(){
 		Scout scout = new Scout();
 		
-		assertEquals(3,scout.getMovimientos().actual() );
+		assertEquals(3,scout.getMovimientos() );
 	}
 	
 	@Test

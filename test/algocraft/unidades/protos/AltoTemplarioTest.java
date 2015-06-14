@@ -34,7 +34,7 @@ public class AltoTemplarioTest {
 	public void testMovimientosAltoTemplarioEmpiezanEn3(){
 		AltoTemplario altoTemplario= new AltoTemplario();
 		
-		assertEquals(3,altoTemplario.getMovimientos().actual() );
+		assertEquals(3,altoTemplario.getMovimientos() );
 	}
 	
 	@Test

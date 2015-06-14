@@ -33,7 +33,7 @@ public class GolliatTest {
 	public void testMovimientosGolliatEmpiezaEn4(){
 		Golliat golliat = new Golliat();
 		
-		assertEquals(4,golliat.getMovimientos().actual() );
+		assertEquals(4,golliat.getMovimientos() );
 	}
 	
 	@Test

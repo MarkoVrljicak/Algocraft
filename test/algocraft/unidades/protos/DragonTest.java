@@ -38,7 +38,7 @@ public class DragonTest {
 	public void testMovimientosDragonEmpiezaEn4(){
 		Dragon dragon = new Dragon();
 		
-		assertEquals(4,dragon.getMovimientos().actual() );
+		assertEquals(4,dragon.getMovimientos());
 	}
 	
 	@Test

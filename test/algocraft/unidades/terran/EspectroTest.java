@@ -33,7 +33,7 @@ public class EspectroTest {
 	public void testMovimientosEspectroEmpiezaEn3(){
 		Espectro espectro = new Espectro();
 		
-		assertEquals(3,espectro.getMovimientos().actual() );
+		assertEquals(3,espectro.getMovimientos() );
 	}
 
 	@Test

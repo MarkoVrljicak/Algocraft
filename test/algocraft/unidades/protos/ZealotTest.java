@@ -34,7 +34,7 @@ public class ZealotTest {
 	public void testMovimientosZealotEmpiezaEn3(){
 		Zealot zealot = new Zealot();
 		
-		assertEquals(3,zealot.getMovimientos().actual() );
+		assertEquals(3,zealot.getMovimientos() );
 	}
 	
 	@Test

@@ -34,7 +34,7 @@ public class NaveTransporteTest {
 	public void testNaveTransporteMovimientosEmpiezaEn4(){
 		NaveTransporte nave = new NaveTransporte(); 
 		
-		assertEquals(4,nave.getMovimientos().actual() );
+		assertEquals(4,nave.getMovimientos() );
 	}
 
 	@Test

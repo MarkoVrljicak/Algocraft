@@ -88,10 +88,15 @@ public abstract class Unidad extends Propiedad implements Movible{
 		return this.suministros;
 	}
 	
-	public Movimientos getMovimientos(){
-		return this.movimientos;
+	public int getMovimientos(){
+		return this.movimientos.actual();
 	}
 	
+	public void darPaso(){
+		int unPaso = 1;
+		if(this.movimientos.actual() > 0)
+			this.movimientos.disminuir(unPaso);
+	}
 
 	
 	public boolean estoyMuerto(){

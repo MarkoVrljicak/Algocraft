@@ -34,7 +34,7 @@ public class NaveCienciaTest {
 	public void testNaveCienciaEmpiezaEn5(){
 		NaveCiencia naveCiencia = new NaveCiencia();
 		
-		assertEquals(5,naveCiencia.getMovimientos().actual() );
+		assertEquals(5,naveCiencia.getMovimientos() );
 	}
 
 	@Test
