@@ -3,6 +3,8 @@ package algocraft.mapa;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Collection;
+
 import org.junit.Test;
 
 import algocraft.exception.ActualizableNoEstaEnJuegoException;
@@ -427,6 +429,42 @@ public class MapaTest {
 		mapa.gestionarAtaque(dragon, marine);
 		
 		assertEquals(1, mapa.actualizablesEnJuego());
+	}
+	
+	@Test
+	public void mapaDevuelve9CasillerosAlObtenerUnRadioDe1ConCentroEnUnCasilleroQueNoEstaEnElBorde(){
+		Mapa mapa = new Mapa(10,10);
+		
+		Collection<Terreno> casilleros = mapa.obtenerRadioDeCasilleros(1, new Coordenada(3,3));
+		
+		assertEquals(9, casilleros.size());
+	}
+	
+	@Test
+	public void mapaDevuelve4CasillerosAlObtenerUnRadioDe1ConCentroEnUnaEsquina(){
+		Mapa mapa = new Mapa(10,10);
+		
+		Collection<Terreno> casilleros = mapa.obtenerRadioDeCasilleros(1, new Coordenada(1,1));
+		
+		assertEquals(4, casilleros.size());
+	}
+	
+	@Test
+	public void mapaDevuelve6CasillerosAlObtenerUnRadioDe1ConCentroEnUnaPared(){
+		Mapa mapa = new Mapa(10,10);
+		
+		Collection<Terreno> casilleros = mapa.obtenerRadioDeCasilleros(1, new Coordenada(1,5));
+		
+		assertEquals(6, casilleros.size());
+	}
+	
+	@Test
+	public void mapaDevuelve25CasillerosAlObtenerUnRadioDe2ConCentroEnUnCasilleroQueNoEstaEnElBorde(){
+		Mapa mapa = new Mapa(10,10);
+		
+		Collection<Terreno> casilleros = mapa.obtenerRadioDeCasilleros(2, new Coordenada(3,3));
+		
+		assertEquals(25, casilleros.size());
 	}
 	
 }

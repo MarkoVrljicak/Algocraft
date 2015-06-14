@@ -1,5 +1,7 @@
 package algocraft.mapa;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -189,6 +191,21 @@ public class Mapa implements Iterable<Terreno>{
 	
 	public int actualizablesEnJuego(){
 		return posiciones.size();
+	}
+	
+	public Collection<Terreno> obtenerRadioDeCasilleros(int radio, Coordenada centro){
+		Collection<Terreno> outputTerrenos = new ArrayList<Terreno>();
+		Iterator<Terreno> iter = this.iterator();
+		
+		while (iter.hasNext()){
+			Terreno terrenoActual = iter.next();
+			Coordenada coordenadaActual = terrenoActual.getCoordenada();
+			if(coordenadaActual.distanciaA(centro) <= radio){
+				outputTerrenos.add(terrenoActual);
+			}
+		}
+		
+		return outputTerrenos;
 	}
 
 }
