@@ -2,6 +2,7 @@ package algocraft.unidades.protos;
 
 
 import algocraft.ataques.Danio;
+import algocraft.movimientos.MovimientoTerrestre;
 import algocraft.stats.Escudo;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Stat;
@@ -56,5 +57,13 @@ public class Dragon extends Unidad {
 	@Override
 	protected void seteartiempoDeConstruccion() {
 		this.tiempoDeConstruccion = 6;
+	}
+
+	@Override
+	protected void setearMovimiento() {
+		this.movimiento = new MovimientoTerrestre();
+		
 	}	
+	
+	
 }

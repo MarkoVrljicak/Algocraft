@@ -1,5 +1,6 @@
 package algocraft.unidades.protos;
 
+import algocraft.movimientos.MovimientoTerrestre;
 import algocraft.stats.Escudo;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Stat;
@@ -56,6 +57,12 @@ public class AltoTemplario extends Unidad {
 	@Override
 	protected void seteartiempoDeConstruccion() {
 		this.tiempoDeConstruccion = 7;
+	}
+
+	@Override
+	protected void setearMovimiento() {
+		this.movimiento = new MovimientoTerrestre();
+		
 	}	
 	
 }

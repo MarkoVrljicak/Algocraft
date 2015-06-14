@@ -2,6 +2,7 @@ package algocraft.unidades.terran;
 
 
 import algocraft.ataques.Danio;
+import algocraft.movimientos.MovimientoTerrestre;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Vida;
 import algocraft.unidades.Unidad;
@@ -56,6 +57,12 @@ public class Golliat extends Unidad{
 	@Override
 	protected void seteartiempoDeConstruccion() {
 		this.tiempoDeConstruccion = 6;
+	}	
+	
+	@Override
+	protected void setearMovimiento() {
+		this.movimiento = new MovimientoTerrestre();
+		
 	}	
 }
 

@@ -1,5 +1,6 @@
 package algocraft.unidades.terran;
 
+import algocraft.movimientos.MovimientoAereo;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Vida;
 import algocraft.unidades.UnidadTransportadora;
@@ -38,5 +39,11 @@ public class NaveTransporte extends UnidadTransportadora{
 	@Override
 	protected void seteartiempoDeConstruccion() {
 		this.tiempoDeConstruccion = 7;
+	}	
+	
+	@Override
+	protected void setearMovimiento() {
+		this.movimiento = new MovimientoAereo();
+		
 	}	
 }

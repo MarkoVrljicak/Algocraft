@@ -1,6 +1,7 @@
 package algocraft.unidades.terran;
 
 import algocraft.ataques.Danio;
+import algocraft.movimientos.MovimientoAereo;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Vida;
 import algocraft.unidades.Unidad;
@@ -54,5 +55,11 @@ public class Espectro extends Unidad{
 	@Override
 	protected void seteartiempoDeConstruccion() {
 		this.tiempoDeConstruccion = 8;
+	}	
+	
+	@Override
+	protected void setearMovimiento() {
+		this.movimiento = new MovimientoAereo();
+		
 	}	
 }

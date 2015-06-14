@@ -2,6 +2,7 @@ package algocraft.unidades.protos;
 
 
 import algocraft.ataques.Danio;
+import algocraft.movimientos.MovimientoTerrestre;
 import algocraft.stats.Escudo;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Stat;
@@ -57,5 +58,11 @@ public class Zealot extends Unidad{
 	@Override
 	protected void seteartiempoDeConstruccion() {
 		this.tiempoDeConstruccion = 4;
+	}	
+	
+	@Override
+	protected void setearMovimiento() {
+		this.movimiento = new MovimientoTerrestre();
+		
 	}	
 }

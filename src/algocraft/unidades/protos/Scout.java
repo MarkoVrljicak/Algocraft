@@ -2,6 +2,7 @@ package algocraft.unidades.protos;
 
 
 import algocraft.ataques.Danio;
+import algocraft.movimientos.MovimientoAereo;
 import algocraft.stats.Escudo;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Stat;
@@ -57,5 +58,11 @@ public class Scout extends Unidad {
 	@Override
 	protected void seteartiempoDeConstruccion() {
 		this.tiempoDeConstruccion = 9;
+	}	
+	
+	@Override
+	protected void setearMovimiento() {
+		this.movimiento = new MovimientoAereo();
+		
 	}	
 }

@@ -89,32 +89,23 @@ public class Mapa implements Iterable<Terreno>{
 	
 	//movimiento
 	
-	public boolean desplazarPropiedad(Propiedad propiedad, Coordenada destino) throws PropiedadNoEstaEnJuegoException{
+	public void moverUnidad(Unidad unidad, Coordenada destino) throws PropiedadNoEstaEnJuegoException{
 
-		Coordenada coordenadaOrigen = posiciones.get(propiedad);
-		if(coordenadaOrigen == null){
+		Coordenada origen = posiciones.get(unidad);
+		if(origen == null){
 			throw new PropiedadNoEstaEnJuegoException();
 		}
 		
-		if(coordenadaOrigen == destino)
-			return false;
-		
+		Collection<Terreno> camino = null;
 		try {
-			this.almacenar(propiedad, destino);
-		} catch (DestinoInvalidoException | FueraDeLimitesException e) {
-			return false;
+			camino = this.trazarCamino(origen, destino);
+		} catch (CoordenadaInexistenteException e) {
+			e.printStackTrace();
 		}
 		
-		this.posiciones.put(propiedad, destino);
+		Coordenada coordenadaArribada = unidad.mover(camino);
 		
-		try {
-			this.casilleros.get(coordenadaOrigen).borrarContenido(propiedad);
-		} catch (PropiedadNoExisteEnEstaUbicacion e) {
-			// Si se dispara este error esta todo mal.
-			e.printStackTrace();
-		};
-		
-		return true;
+		this.posiciones.put(unidad, coordenadaArribada);
 		
 	}
 	

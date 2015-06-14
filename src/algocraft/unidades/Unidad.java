@@ -1,11 +1,15 @@
 package algocraft.unidades;
 
+import java.util.Collection;
+
 import algocraft.Interfaces.Daniable;
 import algocraft.Interfaces.Movible;
 import algocraft.ataques.AtaqueNormal;
 import algocraft.ataques.Ataques;
 import algocraft.ataques.Danio;
+import algocraft.mapa.Coordenada;
 import algocraft.mapa.terrenos.Terreno;
+import algocraft.movimientos.Movimiento;
 import algocraft.propiedad.Propiedad;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Stat;
@@ -19,6 +23,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 	protected int suministros;
 	protected Danio danio;
 	protected Movimientos movimientos;
+	protected Movimiento movimiento;
 
 	//Template method
 	protected void inicializar() {
@@ -29,6 +34,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 		this.setearSuministros();
 		this.setearDanio();
 		this.setearMovimientos();
+		this.setearMovimiento();
 	}
 
 	abstract protected void setearDanio();
@@ -38,6 +44,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 	abstract protected void setearNombre();
 	abstract protected void setearVida();
 	abstract protected void setearMovimientos();
+	abstract protected void setearMovimiento();
 	
 	public Unidades getNombre(){
 		return nombre;
@@ -111,5 +118,9 @@ public abstract class Unidad extends Propiedad implements Movible{
 	
 	public boolean enConstruccion() {
 		return (tiempoDeConstruccion!=0);
+	}
+	
+	public Coordenada mover(Collection<Terreno> camino){
+		return this.movimiento.ejecutar(camino, this);
 	}
 }

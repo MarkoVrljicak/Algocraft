@@ -1,5 +1,6 @@
 package algocraft.unidades.protos;
 
+import algocraft.movimientos.MovimientoAereo;
 import algocraft.stats.Escudo;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Stat;
@@ -42,5 +43,11 @@ public class NaveDeTransporte extends UnidadTransportadora {
 	@Override
 	protected void seteartiempoDeConstruccion() {
 		this.tiempoDeConstruccion = 8;
+	}	
+	
+	@Override
+	protected void setearMovimiento() {
+		this.movimiento = new MovimientoAereo();
+		
 	}	
 }

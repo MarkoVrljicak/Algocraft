@@ -1,7 +1,8 @@
 package algocraft.mapa;
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.util.Collection;
 
@@ -12,7 +13,6 @@ import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.exception.PropiedadNoEstaEnJuegoException;
 import algocraft.mapa.terrenos.Terreno;
-import algocraft.mapa.terrenos.Terrenos;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.protos.Dragon;
 import algocraft.unidades.terran.Marine;
@@ -94,7 +94,7 @@ public class MapaTest {
 		}
 		
 		try {
-			mapa.desplazarPropiedad(marine, destino);
+			mapa.moverUnidad(marine, destino);
 		} catch (PropiedadNoEstaEnJuegoException e) {
 			e.printStackTrace();
 		}
@@ -230,51 +230,9 @@ public class MapaTest {
 		
 		mapa.almacenar(marine, origen);
 		
-		mapa.desplazarPropiedad(marine, destino);
+		mapa.moverUnidad(marine, destino);
 		
 		assertEquals(null, mapa.getPropiedadSuelo(origen));
-	}
-	
-	@Test
-	public void testMapaNoMueveUnidadPorTierraSiDestinoEstaOcupadoPorOtraUnidad() 
-			throws DestinoInvalidoException, PropiedadNoEstaEnJuegoException, FueraDeLimitesException{
-		Mapa mapa= new Mapa(2,2);
-		Unidad marine1 = new Marine();
-		Unidad marine2 = new Marine();
-		
-		Coordenada origen = new Coordenada(1,1);
-		Coordenada destino = new Coordenada(1,2);
-		
-		try {
-			mapa.almacenar(marine1, origen);
-			mapa.almacenar(marine2, destino);
-		} catch (DestinoInvalidoException e) {
-			e.printStackTrace();
-		}
-		
-		assertEquals(false, mapa.desplazarPropiedad(marine1, destino));
-		
-	}
-	
-	@Test
-	public void testMapaNoMueveUnidadPorTierraSiDestinoNoEsTierra() 
-			throws DestinoInvalidoException, PropiedadNoEstaEnJuegoException, FueraDeLimitesException{
-		Mapa mapa= new Mapa(2,2);
-		Unidad marine = new Marine();
-		
-		mapa.setearTerrenoEnCoordenada(Terrenos.AIRE, 1, 2);
-		
-		Coordenada origen = new Coordenada(1,1);
-		Coordenada destino = new Coordenada(1,2);
-		
-		try {
-			mapa.almacenar(marine, origen);
-		} catch (DestinoInvalidoException e) {
-			e.printStackTrace();
-		}
-		
-		assertEquals(false,	mapa.desplazarPropiedad(marine, destino));
-		
 	}
 	
 	@Test
@@ -292,7 +250,7 @@ public class MapaTest {
 			e.printStackTrace();
 		}
 		
-		mapa.desplazarPropiedad(nave, destino);
+		mapa.moverUnidad(nave, destino);
 		
 		assertEquals(nave, mapa.getPropiedadCielo(destino));
 	}
@@ -314,7 +272,7 @@ public class MapaTest {
 			e.printStackTrace();
 		}
 		
-		mapa.desplazarPropiedad(nave, destino);
+		mapa.moverUnidad(nave, destino);
 		
 		assertEquals(nave, mapa.getPropiedadCielo(destino));
 	}
@@ -334,33 +292,12 @@ public class MapaTest {
 		}
 		
 		try {
-			mapa.desplazarPropiedad(nave, destino);
+			mapa.moverUnidad(nave, destino);
 		} catch (PropiedadNoEstaEnJuegoException e) {
 			e.printStackTrace();
 		}
 		
 		assertEquals(null, mapa.getPropiedadCielo(origen));
-	}
-	
-	@Test
-	public void testMapaNoMueveUnidadPorCieloSiDestinoEstaOcupadoPorOtraUnidad() 
-			throws DestinoInvalidoException, PropiedadNoEstaEnJuegoException, FueraDeLimitesException{
-		Mapa mapa= new Mapa(2,2);
-		Unidad nave1 = new NaveCiencia();
-		Unidad nave2 = new NaveCiencia();
-		
-		Coordenada origen = new Coordenada(1,1);
-		Coordenada destino = new Coordenada(1,2);
-		
-		try {
-			mapa.almacenar(nave1, origen);
-			mapa.almacenar(nave2, destino);
-		} catch (DestinoInvalidoException e) {
-			e.printStackTrace();
-		}
-		
-		assertEquals(false, mapa.desplazarPropiedad(nave1, destino));
-		
 	}
 	
 	//tests gestion ataque
