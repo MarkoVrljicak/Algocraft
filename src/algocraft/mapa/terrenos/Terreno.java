@@ -47,15 +47,10 @@ public abstract class Terreno implements Dibujable {
 		this.contenidoCielo = null;
 		
 	}
-//	
-//	public void almacenar(Propiedad propiedad) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//	
-//	public void borrarContenido(Propiedad propiedad){
-//		
-//	}
+	
+	public void almacenar(Propiedad propiedad) throws DestinoInvalidoException{
+		propiedad.almacenarme(this);
+	}
 	
 	/*-------------------------------------*/
 	/* Metodos para permisos de movimiento */

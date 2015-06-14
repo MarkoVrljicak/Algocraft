@@ -59,5 +59,10 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	@Override
 	public void iniciarTurno() {
 		this.edificio.iniciarTurno();
+	}
+
+	@Override
+	public boolean soyVolador() {
+		return false;
 	}	
 }

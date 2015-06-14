@@ -92,14 +92,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 		return this.movimientos;
 	}
 	
-	public Ataques comoAtacarme(){
-		boolean soyVolador = this.soyVolador();
-		if(soyVolador){
-			return Ataques.ATAQUE_NORMAL_AEREO;
-		} else {
-			return Ataques.ATAQUE_NORMAL_TERRESTRE;
-		}
-	}
+
 	
 	public boolean estoyMuerto(){
 		return this.vitalidad.estoyVacio();

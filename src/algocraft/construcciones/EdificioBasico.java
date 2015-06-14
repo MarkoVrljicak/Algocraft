@@ -1,7 +1,6 @@
 package algocraft.construcciones;
 
 import Propiedad.Propiedad;
-import algocraft.ataques.Ataques;
 import algocraft.jugador.JugadorNulo;
 import algocraft.jugador.Usuario;
 import algocraft.stats.Stat;
@@ -61,13 +60,14 @@ public class EdificioBasico extends Propiedad implements Construccion{
 	}
 
 	@Override
-	public Ataques comoAtacarme() {
-		return Ataques.ATAQUE_NORMAL_TERRESTRE;
-	}
-
-	@Override
 	public boolean estoyMuerto() {
 		return stat.estoyVacio();
+	}
+
+
+	@Override
+	public boolean soyVolador() {
+		return false;
 	}
 	
 }

@@ -17,4 +17,9 @@ public class RecolectorMineral extends DecoradorEdificioBasico{
 	public void recolectarMineral(Recurso recursos) {
 		recursos.incrementarMineral(10);		
 	}
+
+	@Override
+	public boolean soyVolador() {
+		return false;
+	}
 }

@@ -17,5 +17,10 @@ public class RecolectorGas extends DecoradorEdificioBasico {
 	public void recolectarGas(Recurso recursos) {
 		recursos.incrementarGas(10);		
 	}
+
+	@Override
+	public boolean soyVolador() {
+		return false;
+	}
 	
 }
