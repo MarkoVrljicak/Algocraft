@@ -11,9 +11,11 @@ import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.exception.PropiedadNoEstaEnJuegoException;
 import algocraft.mapa.terrenos.Terreno;
+import algocraft.mapa.terrenos.Terrenos;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.protos.Dragon;
 import algocraft.unidades.terran.Marine;
+import algocraft.unidades.terran.NaveCiencia;
 
 public class MapaTest {
 	
@@ -76,29 +78,29 @@ public class MapaTest {
 	
 	// tests de movimiento
 	
-//	@Test
-//	public void testMapaMueveUnidadPorTierra() throws FueraDeLimitesException{
-//		Mapa mapa= new Mapa(2,2);
-//		Unidad marine = new Marine();
-//		
-//		Coordenada origen = new Coordenada(1,1);
-//		Coordenada destino = new Coordenada(1,2);
-//		
-//		try {
-//			mapa.almacenar(marine, origen);
-//		} catch (DestinoInvalidoException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		try {
-//			mapa.moverUnidad(marine, destino);
-//		} catch (PropiedadNoEstaEnJuegoException | DestinoInvalidoException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		assertEquals(marine, mapa.getPropiedadSuelo(destino));
-//	}
-//	
+	@Test
+	public void testMapaMueveUnidadPorTierra() throws FueraDeLimitesException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad marine = new Marine();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenar(marine, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mapa.desplazarPropiedad(marine, destino);
+		} catch (PropiedadNoEstaEnJuegoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(marine, mapa.getPropiedadSuelo(destino));
+	}
+	
 //	@Test
 //	public void testMapaMueveADistanciaEnRangoDeMovimientos() 
 //			throws FueraDeLimitesException{
@@ -115,14 +117,14 @@ public class MapaTest {
 //		}
 //		
 //		try {
-//			mapa.moverUnidad(marine, destino);
-//		} catch (PropiedadNoEstaEnJuegoException | DestinoInvalidoException e) {
+//			mapa.desplazarPropiedad(marine, destino);
+//		} catch (PropiedadNoEstaEnJuegoException e) {
 //			e.printStackTrace();
 //		}
 //		
 //		assertEquals(marine, mapa.getPropiedadSuelo(destino));
 //	}
-//	
+	
 //	@Test
 //	public void testMapaNoMueveUnidadSiDistanciaFueraDeRangoDeMovimientos() 
 //			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
@@ -139,12 +141,12 @@ public class MapaTest {
 //		}
 //		
 //		try {
-//			mapa.moverUnidad(marine, destino);
-//		} catch (PropiedadNoEstaEnJuegoException | DestinoInvalidoException e) {
+//			mapa.desplazarPropiedad(marine, destino);
+//		} catch (PropiedadNoEstaEnJuegoException e) {
 //			e.printStackTrace();
 //		}
 //		
-//		assertEquals(false, mapa.moverUnidad(marine, destino));
+//		assertEquals(false, mapa.desplazarPropiedad(marine, destino));
 //	}
 //	
 //	@Test
@@ -214,158 +216,151 @@ public class MapaTest {
 //		//intento volver al origen
 //		assertEquals(false, mapa.moverUnidad(marine, origen));
 //	}
-//	
-//	@Test
-//	public void testCuandoMapaMueveUnidadPorTierraOrigenEstaVacio() 
-//			throws FueraDeLimitesException{
-//		Mapa mapa= new Mapa(2,2);
-//		Unidad marine = new Marine();
-//		
-//		Coordenada origen = new Coordenada(1,1);
-//		Coordenada destino = new Coordenada(1,2);
-//		
-//		try {
-//			mapa.almacenar(marine, origen);
-//		} catch (DestinoInvalidoException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		try {
-//			mapa.moverUnidad(marine, destino);
-//		} catch (PropiedadNoEstaEnJuegoException | DestinoInvalidoException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		assertEquals(null, mapa.getPropiedadSuelo(origen));
-//	}
-//	
-//	@Test
-//	public void testMapaNoMueveUnidadPorTierraSiDestinoEstaOcupadoPorOtraUnidad() 
-//			throws DestinoInvalidoException, PropiedadNoEstaEnJuegoException, FueraDeLimitesException{
-//		Mapa mapa= new Mapa(2,2);
-//		Unidad marine1 = new Marine();
-//		Unidad marine2 = new Marine();
-//		
-//		Coordenada origen = new Coordenada(1,1);
-//		Coordenada destino = new Coordenada(1,2);
-//		
-//		try {
-//			mapa.almacenar(marine1, origen);
-//			mapa.almacenar(marine2, destino);
-//		} catch (DestinoInvalidoException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		assertEquals(false, mapa.moverUnidad(marine1, destino));
-//		
-//	}
-//	
-//	@Test
-//	public void testMapaNoMueveUnidadPorTierraSiDestinoNoEsTierra() 
-//			throws DestinoInvalidoException, PropiedadNoEstaEnJuegoException, FueraDeLimitesException{
-//		Mapa mapa= new Mapa(2,2);
-//		Unidad marine = new Marine();
-//		
-//		mapa.setearTerrenoEnCoordenada(Terrenos.AIRE, 1, 2);
-//		
-//		Coordenada origen = new Coordenada(1,1);
-//		Coordenada destino = new Coordenada(1,2);
-//		
-//		try {
-//			mapa.almacenar(marine, origen);
-//		} catch (DestinoInvalidoException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		assertEquals(false,	mapa.moverUnidad(marine, destino));
-//		
-//	}
-//	
-//	@Test
-//	public void testMapaMueveUnidadPorAire() 
-//			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
-//		Mapa mapa= new Mapa(2,2);
-//		Unidad nave = new NaveCiencia();
-//		
-//		Coordenada origen = new Coordenada(1,1);
-//		Coordenada destino = new Coordenada(1,2);
-//		
-//		try {
-//			mapa.almacenar(nave, origen);
-//		} catch (DestinoInvalidoException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		mapa.moverUnidad(nave, destino);
-//		
-//		assertEquals(nave, mapa.getPropiedadCielo(destino));
-//	}
-//	
-//	@Test
-//	public void testMapaMueveUnidadPorAireInclusoSiDestinoOcupadoEnTierra() 
-//			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
-//		Mapa mapa= new Mapa(2,2);
-//		Unidad nave = new NaveCiencia();
-//		Unidad marine= new Marine();
-//		
-//		Coordenada origen = new Coordenada(1,1);
-//		Coordenada destino = new Coordenada(1,2);
-//		
-//		try {
-//			mapa.almacenar(nave, origen);
-//			mapa.almacenar(marine, destino);
-//		} catch (DestinoInvalidoException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		mapa.moverUnidad(nave, destino);
-//		
-//		assertEquals(nave, mapa.getPropiedadCielo(destino));
-//	}
-//	
-//	@Test
-//	public void testCuandoMapaMueveUnidadPorAireOrigenEstaVacio() throws FueraDeLimitesException{
-//		Mapa mapa= new Mapa(2,2);
-//		Unidad nave = new NaveCiencia();
-//		
-//		Coordenada origen = new Coordenada(1,1);
-//		Coordenada destino = new Coordenada(1,2);
-//		
-//		try {
-//			mapa.almacenar(nave, origen);
-//		} catch (DestinoInvalidoException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		try {
-//			mapa.moverUnidad(nave, destino);
-//		} catch (PropiedadNoEstaEnJuegoException | DestinoInvalidoException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		assertEquals(null, mapa.getPropiedadCielo(origen));
-//	}
-//	
-//	@Test
-//	public void testMapaNoMueveUnidadPorCieloSiDestinoEstaOcupadoPorOtraUnidad() 
-//			throws DestinoInvalidoException, PropiedadNoEstaEnJuegoException, FueraDeLimitesException{
-//		Mapa mapa= new Mapa(2,2);
-//		Unidad nave1 = new NaveCiencia();
-//		Unidad nave2 = new NaveCiencia();
-//		
-//		Coordenada origen = new Coordenada(1,1);
-//		Coordenada destino = new Coordenada(1,2);
-//		
-//		try {
-//			mapa.almacenar(nave1, origen);
-//			mapa.almacenar(nave2, destino);
-//		} catch (DestinoInvalidoException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		assertEquals(false, mapa.moverUnidad(nave1, destino));
-//		
-//	}
+	
+	@Test
+	public void testCuandoMapaMueveUnidadPorTierraOrigenEstaVacio() 
+			throws FueraDeLimitesException, PropiedadNoEstaEnJuegoException, DestinoInvalidoException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad marine = new Marine();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		
+		mapa.almacenar(marine, origen);
+		
+		mapa.desplazarPropiedad(marine, destino);
+		
+		assertEquals(null, mapa.getPropiedadSuelo(origen));
+	}
+	
+	@Test
+	public void testMapaNoMueveUnidadPorTierraSiDestinoEstaOcupadoPorOtraUnidad() 
+			throws DestinoInvalidoException, PropiedadNoEstaEnJuegoException, FueraDeLimitesException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad marine1 = new Marine();
+		Unidad marine2 = new Marine();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenar(marine1, origen);
+			mapa.almacenar(marine2, destino);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(false, mapa.desplazarPropiedad(marine1, destino));
+		
+	}
+	
+	@Test
+	public void testMapaNoMueveUnidadPorTierraSiDestinoNoEsTierra() 
+			throws DestinoInvalidoException, PropiedadNoEstaEnJuegoException, FueraDeLimitesException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad marine = new Marine();
+		
+		mapa.setearTerrenoEnCoordenada(Terrenos.AIRE, 1, 2);
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenar(marine, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(false,	mapa.desplazarPropiedad(marine, destino));
+		
+	}
+	
+	@Test
+	public void testMapaMueveUnidadPorAire() 
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad nave = new NaveCiencia();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenar(nave, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		mapa.desplazarPropiedad(nave, destino);
+		
+		assertEquals(nave, mapa.getPropiedadCielo(destino));
+	}
+	
+	@Test
+	public void testMapaMueveUnidadPorAireInclusoSiDestinoOcupadoEnTierra() 
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad nave = new NaveCiencia();
+		Unidad marine= new Marine();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenar(nave, origen);
+			mapa.almacenar(marine, destino);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		mapa.desplazarPropiedad(nave, destino);
+		
+		assertEquals(nave, mapa.getPropiedadCielo(destino));
+	}
+	
+	@Test
+	public void testCuandoMapaMueveUnidadPorAireOrigenEstaVacio() throws FueraDeLimitesException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad nave = new NaveCiencia();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenar(nave, origen);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mapa.desplazarPropiedad(nave, destino);
+		} catch (PropiedadNoEstaEnJuegoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(null, mapa.getPropiedadCielo(origen));
+	}
+	
+	@Test
+	public void testMapaNoMueveUnidadPorCieloSiDestinoEstaOcupadoPorOtraUnidad() 
+			throws DestinoInvalidoException, PropiedadNoEstaEnJuegoException, FueraDeLimitesException{
+		Mapa mapa= new Mapa(2,2);
+		Unidad nave1 = new NaveCiencia();
+		Unidad nave2 = new NaveCiencia();
+		
+		Coordenada origen = new Coordenada(1,1);
+		Coordenada destino = new Coordenada(1,2);
+		
+		try {
+			mapa.almacenar(nave1, origen);
+			mapa.almacenar(nave2, destino);
+		} catch (DestinoInvalidoException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(false, mapa.desplazarPropiedad(nave1, destino));
+		
+	}
 	
 	//tests gestion ataque
 	

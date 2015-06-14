@@ -87,6 +87,35 @@ public class Mapa implements Iterable<Terreno>{
 	}
 	
 	//movimiento
+	
+	public boolean desplazarPropiedad(Propiedad propiedad, Coordenada destino) throws PropiedadNoEstaEnJuegoException{
+
+		Coordenada coordenadaOrigen = posiciones.get( propiedad );
+		if(coordenadaOrigen == null){
+			throw new PropiedadNoEstaEnJuegoException();
+		}
+		
+		if(coordenadaOrigen == destino)
+			return false;
+		
+		try {
+			this.almacenar(propiedad, destino);
+		} catch (DestinoInvalidoException | FueraDeLimitesException e) {
+			return false;
+		}
+		
+		this.posiciones.put(propiedad, destino);
+		
+		try {
+			this.casilleros.get(coordenadaOrigen).borrarContenido(propiedad);
+		} catch (PropiedadNoExisteEnEstaUbicacion e) {
+			// Si se dispara este error esta todo mal.
+			e.printStackTrace();
+		};
+		
+		return true;
+		
+	}
 
 //	public boolean moverUnidad(Unidad unidad, Coordenada coordenadaDestino) 
 //			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException {
