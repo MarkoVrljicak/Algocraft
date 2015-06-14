@@ -33,8 +33,8 @@ public class AtaqueNormalTest {
 		Mapa mapa = new Mapa(2,2);
 		Unidad marineAtacante = new Marine();
 		Unidad marineAtacado = new Marine();
-		mapa.almacenarEnSuelo(marineAtacante, coordenadaAtacante);
-		mapa.almacenarEnSuelo(marineAtacado, coordenadaEnRango);
+		mapa.almacenar(marineAtacante, coordenadaAtacante);
+		mapa.almacenar(marineAtacado, coordenadaEnRango);
 		
 		//Puedo hacer esto porque se donde puse a los marines.
 		//En realidad es Mapa quien tiene que suministrarle
@@ -50,8 +50,8 @@ public class AtaqueNormalTest {
 		Mapa mapa = new Mapa(2,2);
 		Unidad marineAtacante = new Marine();
 		Unidad marineAtacado = new Marine();
-		mapa.almacenarEnSuelo(marineAtacante, coordenadaAtacante);
-		mapa.almacenarEnSuelo(marineAtacado, coordenadaEnRango);
+		mapa.almacenar(marineAtacante, coordenadaAtacante);
+		mapa.almacenar(marineAtacado, coordenadaEnRango);
 		
 		marineAtacante.atacar(marineAtacado, coordenadaAtacante.distanciaA(coordenadaEnRango));
 		
@@ -64,8 +64,8 @@ public class AtaqueNormalTest {
 		Mapa mapa = new Mapa(10,10);
 		Unidad marineAtacante = new Marine();
 		Unidad marineAtacado = new Marine();
-		mapa.almacenarEnSuelo(marineAtacante, coordenadaAtacante);
-		mapa.almacenarEnSuelo(marineAtacado, coordenadaFueraDeRango);
+		mapa.almacenar(marineAtacante, coordenadaAtacante);
+		mapa.almacenar(marineAtacado, coordenadaFueraDeRango);
 		
 		assertEquals(false, marineAtacante.atacar(marineAtacado, coordenadaAtacante.distanciaA(coordenadaFueraDeRango)));
 	}
@@ -75,7 +75,7 @@ public class AtaqueNormalTest {
 			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
 		Unidad marineAtacante = new Marine();
-		mapa.almacenarEnSuelo(marineAtacante, coordenadaAtacante);
+		mapa.almacenar(marineAtacante, coordenadaAtacante);
 		
 		assertEquals(false, marineAtacante.atacar(marineAtacante, coordenadaAtacante.distanciaA(coordenadaAtacante)));
 	}
@@ -86,8 +86,8 @@ public class AtaqueNormalTest {
 		Mapa mapa = new Mapa(2,2);
 		Unidad marineAtacado = new Marine();
 		Unidad espectroAtacante = new Espectro();
-		mapa.almacenarEnSuelo(marineAtacado, coordenadaEnRango);
-		mapa.almacenarEnCielo(espectroAtacante, coordenadaAtacante);
+		mapa.almacenar(marineAtacado, coordenadaEnRango);
+		mapa.almacenar(espectroAtacante, coordenadaAtacante);
 		
 		assertEquals(true, espectroAtacante.atacar(marineAtacado, coordenadaAtacante.distanciaA(coordenadaEnRango)));
 
@@ -99,8 +99,8 @@ public class AtaqueNormalTest {
 		Mapa mapa = new Mapa(2,2);
 		Unidad zealotAtacante = new Zealot();
 		Unidad naveAtacada = new NaveCiencia();
-		mapa.almacenarEnSuelo(zealotAtacante, coordenadaAtacante);
-		mapa.almacenarEnCielo(naveAtacada, coordenadaEnRango);
+		mapa.almacenar(zealotAtacante, coordenadaAtacante);
+		mapa.almacenar(naveAtacada, coordenadaEnRango);
 		
 		assertEquals(false, zealotAtacante.atacar(naveAtacada, coordenadaAtacante.distanciaA(coordenadaEnRango)));
 
@@ -113,8 +113,8 @@ public class AtaqueNormalTest {
 		Mapa mapa = new Mapa(2,2);
 		Unidad marineAtacante = new Marine();
 		Unidad naveAtacada = new NaveCiencia();
-		mapa.almacenarEnSuelo(marineAtacante, coordenadaAtacante);
-		mapa.almacenarEnCielo(naveAtacada, coordenadaEnRango);
+		mapa.almacenar(marineAtacante, coordenadaAtacante);
+		mapa.almacenar(naveAtacada, coordenadaEnRango);
 		
 		assertEquals(true, marineAtacante.atacar(naveAtacada, coordenadaAtacante.distanciaA(coordenadaEnRango)));
 	}

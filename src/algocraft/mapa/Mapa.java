@@ -70,16 +70,10 @@ public class Mapa implements Iterable<Terreno>{
 		return casilleros.values().iterator();
 	}
 	
-	public void almacenarEnSuelo(Propiedad propiedad, Coordenada coordenada)
+	public void almacenar(Propiedad propiedad, Coordenada coordenada)
 			throws DestinoInvalidoException, FueraDeLimitesException {
 		posiciones.put(propiedad, coordenada);
-		this.getTerreno(coordenada).almacenarEnSuelo(propiedad);
-	}
-
-	public void almacenarEnCielo(Propiedad propiedad, Coordenada coordenada)
-			throws DestinoInvalidoException, FueraDeLimitesException {
-		posiciones.put(propiedad, coordenada);
-		this.getTerreno(coordenada).almacenarEnCielo(propiedad);
+		this.getTerreno(coordenada).almacenar(propiedad);
 	}
 	
 	public Propiedad getPropiedadSuelo(Coordenada coordenada) 
@@ -116,11 +110,10 @@ public class Mapa implements Iterable<Terreno>{
 				coordenadaOrigen = posiciones.get(unidad);//actualizo origen
 		}
 		
+		this.almacenar(unidad, coordenadaDestino);
 		if(!unidad.soyVolador()){
-			this.almacenarEnSuelo(unidad, coordenadaDestino);
 			terrenoOrigen.vaciarSuelo();
 		} else if(unidad.soyVolador()){
-			this.almacenarEnCielo(unidad, coordenadaDestino);
 			terrenoOrigen.vaciarCielo();
 		}
 		

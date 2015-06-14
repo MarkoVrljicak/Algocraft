@@ -35,7 +35,7 @@ public class MapaTest {
 		Coordenada coordenada = new Coordenada(50,50);
 		
 		Unidad marine = new Marine();
-		mapa.almacenarEnSuelo(marine, coordenada);
+		mapa.almacenar(marine, coordenada);
 		
 		assertEquals(1, mapa.propiedadesEnJuego());
 	}
@@ -87,7 +87,7 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(1,2);
 		
 		try {
-			mapa.almacenarEnSuelo(marine, origen);
+			mapa.almacenar(marine, origen);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -111,7 +111,7 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(2,4);
 		
 		try {
-			mapa.almacenarEnSuelo(marine, origen);
+			mapa.almacenar(marine, origen);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -135,7 +135,7 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(5,5);
 		
 		try {
-			mapa.almacenarEnSuelo(marine, origen);
+			mapa.almacenar(marine, origen);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -158,7 +158,7 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(3,2);
 		//posiciono el marine
 		try {
-			mapa.almacenarEnSuelo(marine, origen);
+			mapa.almacenar(marine, origen);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -179,7 +179,7 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(1,3);
 		
 		try {
-			mapa.almacenarEnSuelo(marine, origen);
+			mapa.almacenar(marine, origen);
 		} catch (DestinoInvalidoException | FueraDeLimitesException e) {
 			e.printStackTrace();
 		}
@@ -203,7 +203,7 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(3,3);
 		
 		try {
-			mapa.almacenarEnSuelo(marine, origen);
+			mapa.almacenar(marine, origen);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -227,7 +227,7 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(1,2);
 		
 		try {
-			mapa.almacenarEnSuelo(marine, origen);
+			mapa.almacenar(marine, origen);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -252,8 +252,8 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(1,2);
 		
 		try {
-			mapa.almacenarEnSuelo(marine1, origen);
-			mapa.almacenarEnSuelo(marine2, destino);
+			mapa.almacenar(marine1, origen);
+			mapa.almacenar(marine2, destino);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -274,7 +274,7 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(1,2);
 		
 		try {
-			mapa.almacenarEnSuelo(marine, origen);
+			mapa.almacenar(marine, origen);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -293,7 +293,7 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(1,2);
 		
 		try {
-			mapa.almacenarEnCielo(nave, origen);
+			mapa.almacenar(nave, origen);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -314,8 +314,8 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(1,2);
 		
 		try {
-			mapa.almacenarEnCielo(nave, origen);
-			mapa.almacenarEnSuelo(marine, destino);
+			mapa.almacenar(nave, origen);
+			mapa.almacenar(marine, destino);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -334,7 +334,7 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(1,2);
 		
 		try {
-			mapa.almacenarEnCielo(nave, origen);
+			mapa.almacenar(nave, origen);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -359,8 +359,8 @@ public class MapaTest {
 		Coordenada destino = new Coordenada(1,2);
 		
 		try {
-			mapa.almacenarEnCielo(nave1, origen);
-			mapa.almacenarEnCielo(nave2, destino);
+			mapa.almacenar(nave1, origen);
+			mapa.almacenar(nave2, destino);
 		} catch (DestinoInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -378,8 +378,8 @@ public class MapaTest {
 		Unidad marine1 = new Marine();
 		Unidad marine2 = new Marine();
 		
-		mapa.almacenarEnSuelo(marine1, new Coordenada(1,1));
-		mapa.almacenarEnSuelo(marine2, new Coordenada(2,2));
+		mapa.almacenar(marine1, new Coordenada(1,1));
+		mapa.almacenar(marine2, new Coordenada(2,2));
 		
 		assertEquals(true, mapa.gestionarAtaque(marine1, marine2));
 	}
@@ -391,8 +391,8 @@ public class MapaTest {
 		Unidad marine1 = new Marine();
 		Unidad marine2 = new Marine();
 		
-		mapa.almacenarEnSuelo(marine1, new Coordenada(1,1));
-		mapa.almacenarEnSuelo(marine2, new Coordenada(2,2));
+		mapa.almacenar(marine1, new Coordenada(1,1));
+		mapa.almacenar(marine2, new Coordenada(2,2));
 		
 		mapa.gestionarAtaque(marine1, marine2);
 		
@@ -406,8 +406,8 @@ public class MapaTest {
 		Unidad dragon = new Dragon();
 		Unidad marine = new Marine();
 		
-		mapa.almacenarEnSuelo(dragon, new Coordenada(1,1));
-		mapa.almacenarEnSuelo(marine, new Coordenada(2,2));
+		mapa.almacenar(dragon, new Coordenada(1,1));
+		mapa.almacenar(marine, new Coordenada(2,2));
 		
 		mapa.gestionarAtaque(dragon, marine);
 		mapa.gestionarAtaque(dragon, marine);
@@ -422,8 +422,8 @@ public class MapaTest {
 		Unidad dragon = new Dragon();
 		Unidad marine = new Marine();
 		
-		mapa.almacenarEnSuelo(dragon, new Coordenada(1,1));
-		mapa.almacenarEnSuelo(marine, new Coordenada(2,2));
+		mapa.almacenar(dragon, new Coordenada(1,1));
+		mapa.almacenar(marine, new Coordenada(2,2));
 		
 		mapa.gestionarAtaque(dragon, marine);
 		mapa.gestionarAtaque(dragon, marine);
