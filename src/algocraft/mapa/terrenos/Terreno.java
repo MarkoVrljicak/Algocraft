@@ -1,10 +1,10 @@
 package algocraft.mapa.terrenos;
 
-import Propiedad.Propiedad;
 import algocraft.Interfaces.Dibujable;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.PropiedadNoExisteEnEstaUbicacion;
 import algocraft.mapa.Coordenada;
+import algocraft.propiedad.Propiedad;
 
 public abstract class Terreno implements Dibujable {
 	

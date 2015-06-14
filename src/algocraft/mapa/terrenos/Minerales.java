@@ -1,9 +1,9 @@
 package algocraft.mapa.terrenos;
 
-import Propiedad.Propiedad;
 import algocraft.construcciones.RecolectorMineral;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
+import algocraft.propiedad.Propiedad;
 
 public class Minerales extends Terreno {
 	

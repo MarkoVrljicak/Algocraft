@@ -1,8 +1,8 @@
 package algocraft.construcciones;
 
-import Propiedad.Propiedad;
 import algocraft.ataques.Ataques;
 import algocraft.jugador.Jugador;
+import algocraft.propiedad.Propiedad;
 
 public abstract class DecoradorEdificioBasico extends Propiedad implements Construccion {
 

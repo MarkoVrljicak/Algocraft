@@ -1,7 +1,7 @@
 package algocraft.construcciones;
 
-import Propiedad.Propiedad;
 import algocraft.jugador.Jugador;
+import algocraft.propiedad.Propiedad;
 import algocraft.stats.Stat;
 import algocraft.stats.Vida;
 

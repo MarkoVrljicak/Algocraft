@@ -5,101 +5,155 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import algocraft.construcciones.Construccion;
+import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
+import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 import algocraft.jugador.Colores;
 import algocraft.mapa.Coordenada;
 import algocraft.mapa.terrenos.Terreno;
+import algocraft.mapa.terrenos.Terrenos;
 import algocraft.razas.Protoss;
 import algocraft.razas.Terran;
+import algocraft.unidades.terran.UnidadesTerran;
 
 public class JuegoTest {
+	
+	private static final int ancho = 30;
+	private static final int alto = 30;
 
-	@Test
-	public void testCreoEdificioEnPosicionVerificoQueEsteAhi() 
-			throws DestinoInvalidoException, FueraDeLimitesException{
-		Juego algocraft = new Juego(30,30);
+	public Juego iniciarJuegoConDosJugadores(){
+		Juego algocraft = new Juego(ancho,alto);
 		algocraft.setJugador1("Agustin", new Terran() , Colores.AZUL );
 		algocraft.setJugador2("Marco", new Protoss() , Colores.ROJO );
 		algocraft.iniciarJuego();
 		
+		return algocraft;
+	}
+	
+	public Coordenada encontrarTerrenoVacio(Terrenos terrenoBuscado,Juego algocraft) 
+			throws FueraDeLimitesException{
+		for(int i = 1 ; i<=ancho ; i++){
+			for(int j = 1 ; j<=alto ; j++){
+				Coordenada unaPosicion = new Coordenada(i,j);
+				Terreno unTerreno = algocraft.obtenerTerreno(unaPosicion);
+				if( (unTerreno.getNombre() == terrenoBuscado) && (unTerreno.getContenidoSuelo() == null) )
+					return unaPosicion;
+			}
+		}
+		return null; //no se encontro en todo el mapa
+	}
+	
+	private void juntarRecursosParaAmbosJugadores(Juego algocraft) 
+			throws DestinoInvalidoException, FueraDeLimitesException {
+		final int muchosTurnos = 400; 
+		
+		algocraft.construirEn(EnumEdificiosTerran.CENTRO_DE_MINERALES,
+				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
+		algocraft.construirEn(EnumEdificiosTerran.CENTRO_DE_MINERALES,
+				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
+		algocraft.construirEn(EnumEdificiosTerran.REFINERIA,
+				this.encontrarTerrenoVacio(Terrenos.VOLCAN, algocraft));
+		
+		algocraft.pasarTurno();
+		
+		algocraft.construirEn(EnumEdificiosProtos.NEXO_MINERAL,
+				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
+		algocraft.construirEn(EnumEdificiosProtos.NEXO_MINERAL,
+				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
+		algocraft.construirEn(EnumEdificiosProtos.ASIMILADOR,
+				this.encontrarTerrenoVacio(Terrenos.VOLCAN, algocraft));
+		
+		for (int turnos=0; turnos<=muchosTurnos ; turnos++){
+			algocraft.pasarTurno();
+		}
+		//nota: al salir es el turno del jugador 1
+	}
+	
+	@Test
+	public void testCreoEdificioEnPosicionVerificoQueEsteAhi() 
+			throws DestinoInvalidoException, FueraDeLimitesException{
+		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		algocraft.construirEn(EnumEdificiosTerran.BARRACA , new Coordenada(6,26));
 		
 		Construccion edificioConstruido =  (Construccion) algocraft.seleccionarSuelo(new Coordenada(6,26));
 		assertEquals(EnumEdificiosTerran.BARRACA , edificioConstruido.getNombre() );
 	}
 	
+	
 	@Test(expected = DestinoInvalidoException.class)
 	public void testIntentarCrearEdificioEnAireLanzaDestinoInvalido() 
 			throws DestinoInvalidoException, FueraDeLimitesException{
-		Juego algocraft = new Juego(20,20);
-		algocraft.setJugador1("Agustin", new Terran() , Colores.AZUL );
-		algocraft.setJugador2("Marco", new Protoss() , Colores.ROJO );
-		algocraft.iniciarJuego();
+		Juego algocraft = this.iniciarJuegoConDosJugadores();
+		Coordenada posicionInvalida = this.encontrarTerrenoVacio(Terrenos.AIRE, algocraft);
 		
-		//busco un aire
-		for(int i = 1 ; i<=20  ; i++){
-			for(int j = 1 ; j<=20 ; j++){
-				Coordenada unaPosicion = new Coordenada(i,j);
-				Terreno unTerreno = algocraft.obtenerTerreno(unaPosicion);
-				if(! unTerreno.sePuedeEdificar()){
-					algocraft.construirEn(EnumEdificiosTerran.BARRACA , unaPosicion);//tira error y sale solo
-				}
-			}
-		}
+		algocraft.construirEn(EnumEdificiosTerran.BARRACA , posicionInvalida);
 	}
+	
+	@Test(expected = DestinoInvalidoException.class)
+	public void testIntentarCrearEdificioIncorrectoEnMineralLanzaDestinoInvalido() 
+			throws DestinoInvalidoException, FueraDeLimitesException{
+		Juego algocraft = this.iniciarJuegoConDosJugadores();
+		Coordenada posicionInvalida = this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft);
+		
+		algocraft.construirEn(EnumEdificiosTerran.BARRACA , posicionInvalida);
+	}
+	
 	
 	@Test
 	public void testCreoCentroMineralEnCristalesVerificoQueEsteAhi() 
 			throws DestinoInvalidoException, FueraDeLimitesException{
-		Juego algocraft = new Juego(30,30);
-		algocraft.setJugador1("Agustin", new Terran() , Colores.AZUL );
-		algocraft.setJugador2("Marco", new Protoss() , Colores.ROJO );
-		algocraft.iniciarJuego();
+		Juego algocraft = this.iniciarJuegoConDosJugadores();
+		Coordenada unaPosicion = this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft);
 		
-		//busco un cristal y construyo sobre el
-		Construccion edificioConstruido = null;
-		boolean cristalEncontrado = false;
-		for(int i = 1 ; i<=30 && !cristalEncontrado ; i++){
-			for(int j = 1 ; j<=30 && !cristalEncontrado ; j++){
-				Coordenada unaPosicion = new Coordenada(i,j);
-				Terreno unTerreno = algocraft.obtenerTerreno(unaPosicion);
-				if(unTerreno.sePuedeMinar()){
-					algocraft.construirEn(EnumEdificiosTerran.CENTRO_DE_MINERALES , unaPosicion);
-					edificioConstruido = (Construccion) algocraft.seleccionarSuelo(unaPosicion);
-					cristalEncontrado = true;
-				}
-			}
-		}
+		algocraft.construirEn(EnumEdificiosTerran.CENTRO_DE_MINERALES , unaPosicion);
+		Construccion edificioConstruido = (Construccion) algocraft.seleccionarSuelo(unaPosicion);
+		
 		assertEquals(EnumEdificiosTerran.CENTRO_DE_MINERALES , edificioConstruido.getNombre() );
 	}
+	
 	
 	@Test
 	public void testCreoRefineriaEnVolcanVerificoQueEsteAhi() 
 			throws DestinoInvalidoException, FueraDeLimitesException{
-		Juego algocraft = new Juego(30,30);
-		algocraft.setJugador1("Agustin", new Terran() , Colores.AZUL );
-		algocraft.setJugador2("Marco", new Protoss() , Colores.ROJO );
-		algocraft.iniciarJuego();
+		Juego algocraft = this.iniciarJuegoConDosJugadores();
+		Coordenada unaPosicion = this.encontrarTerrenoVacio(Terrenos.VOLCAN, algocraft);
 		
-		//busco un volcan y construyo sobre el
-		Construccion edificioConstruido = null;
-		boolean volcanEncontrado = false;
-		for(int i = 1 ; i<=30 && !volcanEncontrado ; i++){
-			for(int j = 1 ; j<=30 && !volcanEncontrado ; j++){
-				Coordenada unaPosicion = new Coordenada(i,j);
-				Terreno unTerreno = algocraft.obtenerTerreno(unaPosicion);
-				if(unTerreno.tieneGas()){
-					algocraft.construirEn(EnumEdificiosTerran.REFINERIA , unaPosicion);
-					edificioConstruido = (Construccion) algocraft.seleccionarSuelo(unaPosicion);
-					volcanEncontrado = true;
-				}
-			}
-		}
+		algocraft.construirEn(EnumEdificiosTerran.REFINERIA , unaPosicion);
+		Construccion edificioConstruido = (Construccion) algocraft.seleccionarSuelo(unaPosicion);
 		
 		assertEquals(EnumEdificiosTerran.REFINERIA , edificioConstruido.getNombre() );
 	}
 	
+	
+	@Test
+	public void testPasarTurnoCambiaElJugadorActual(){
+		Juego algocraft = this.iniciarJuegoConDosJugadores();
+		
+		algocraft.pasarTurno();
+		
+		assertEquals(Colores.ROJO,algocraft.obtenerJugadorActual().getColor());
+	}
+	
+	@Test
+	public void testCreoUnidadEsperoQueSeConstruyaVerificoQueEsteAlLadoDeSuBarraca() 
+			throws DestinoInvalidoException, FueraDeLimitesException{
+		Juego algocraft = this.iniciarJuegoConDosJugadores();
+		this.juntarRecursosParaAmbosJugadores(algocraft);
+		//creo barraca
+		Coordenada posicionBarraca = this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft);
+		algocraft.construirEn(EnumEdificiosTerran.BARRACA, posicionBarraca);
+		//espero a que se construya
+		CreadorDeUnidades barraca=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicionBarraca);
+		while(barraca.enConstruccion()){
+			algocraft.pasarTurno();
+		}
+		
+		//creo marine
+		algocraft.pedirUnidad(UnidadesTerran.MARINE, barraca);
+		//incompleto
+	}
+
 	
 }

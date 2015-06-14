@@ -1,4 +1,4 @@
-package Propiedad;
+package algocraft.propiedad;
 
 import algocraft.Interfaces.Actualizable;
 import algocraft.Interfaces.Daniable;

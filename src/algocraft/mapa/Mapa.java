@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import Propiedad.Propiedad;
 import algocraft.exception.CoordenadaInexistenteException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
@@ -13,6 +12,7 @@ import algocraft.exception.PropiedadNoEstaEnJuegoException;
 import algocraft.exception.PropiedadNoExisteEnEstaUbicacion;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
+import algocraft.propiedad.Propiedad;
 import algocraft.unidades.Unidad;
 
 public class Mapa implements Iterable<Terreno>{

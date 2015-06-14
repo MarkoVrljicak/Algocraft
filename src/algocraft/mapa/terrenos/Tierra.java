@@ -1,8 +1,8 @@
 package algocraft.mapa.terrenos;
 
-import Propiedad.Propiedad;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
+import algocraft.propiedad.Propiedad;
 
 public class Tierra extends Terreno {
 	

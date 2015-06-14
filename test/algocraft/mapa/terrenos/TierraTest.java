@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import Propiedad.Propiedad;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.mapa.Coordenada;
+import algocraft.propiedad.Propiedad;
 import algocraft.unidades.terran.Marine;
 import algocraft.unidades.terran.NaveCiencia;
 

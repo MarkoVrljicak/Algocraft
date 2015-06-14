@@ -1,12 +1,12 @@
 package algocraft.unidades;
 
-import Propiedad.Propiedad;
 import algocraft.Interfaces.Daniable;
 import algocraft.Interfaces.Movible;
 import algocraft.ataques.AtaqueNormal;
 import algocraft.ataques.Ataques;
 import algocraft.ataques.Danio;
 import algocraft.mapa.terrenos.Terreno;
+import algocraft.propiedad.Propiedad;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Stat;
 
