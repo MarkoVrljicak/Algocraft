@@ -3,15 +3,12 @@ package algocraft.jugador;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
-
 import algocraft.Interfaces.Actualizable;
 import algocraft.Interfaces.Daniable;
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.construcciones.EnumEdificios;
 import algocraft.exception.RecursosNegativosException;
-import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
-import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 import algocraft.razas.EnumRazas;
 import algocraft.razas.Raza;
 import algocraft.stats.Recurso;
@@ -87,11 +84,8 @@ public class Jugador implements Actualizable, Usuario {
 		//recorro construcciones, pilon y deposito suman poblacion maxima
 		Iterator<Construccion> itConstrucciones = construcciones.iterator();
 		while(itConstrucciones.hasNext()){
-			 EnumEdificios nombre = itConstrucciones.next().getNombre();
-			 if(nombre == EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS)
-				 poblacionMaxima += 5;
-			 if(nombre == EnumEdificiosProtos.PILON)
-				 poblacionMaxima += 5;
+			 Construccion edificio = itConstrucciones.next();
+			 poblacionMaxima += edificio.getPoblacionSumada();
 		}
 		if(poblacionMaxima<=topePoblacional)
 			return poblacionMaxima;

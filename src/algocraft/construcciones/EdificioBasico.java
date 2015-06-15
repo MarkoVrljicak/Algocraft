@@ -11,11 +11,13 @@ public class EdificioBasico extends Propiedad implements Construccion{
 	protected int tiempoDeConstruccion;
 	protected EnumEdificios nombre;
 	public Jugador duenio;
+	protected int poblacionSumada;
 	
 	public EdificioBasico(EnumEdificios nombre, int vidaMaxima, int tiempoDeConstruccion){
 		this.nombre= nombre;
 		this.stat = new Vida(vidaMaxima);
 		this.tiempoDeConstruccion=tiempoDeConstruccion;
+		this.setPoblacionSumada(0);
 	}
 	
 
@@ -69,4 +71,11 @@ public class EdificioBasico extends Propiedad implements Construccion{
 		return false;
 	}
 	
+	public void setPoblacionSumada(int cantidad){
+		this.poblacionSumada = cantidad;
+	}
+	
+	public int getPoblacionSumada(){
+		return this.poblacionSumada;
+	}
 }

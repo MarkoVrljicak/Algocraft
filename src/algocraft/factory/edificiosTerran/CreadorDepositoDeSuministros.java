@@ -14,7 +14,9 @@ public class CreadorDepositoDeSuministros extends EdificiosAbstractFactory {
 	
 	@Override
 	public Construccion crearEdificio() {
-		return new EdificioBasico(EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS,500,6);
+		EdificioBasico deposito = new EdificioBasico(EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS,500,6);
+		deposito.setPoblacionSumada(5);
+		return deposito;
 	}
 
 	@Override

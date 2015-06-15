@@ -1,6 +1,7 @@
 package algocraft.factory.edificiosProtoss;
 
 import algocraft.construcciones.Construccion;
+import algocraft.construcciones.EdificioBasico;
 import algocraft.construcciones.EdificioConEscudo;
 import algocraft.construcciones.EnumEdificios;
 import algocraft.factory.EdificiosAbstractFactory;
@@ -14,7 +15,9 @@ public class CreadorPilon extends EdificiosAbstractFactory {
 	
 	@Override
 	public Construccion crearEdificio() {
-		return new EdificioConEscudo(EnumEdificiosProtos.PILON,300,5,300);
+		EdificioBasico pilon = new EdificioConEscudo(EnumEdificiosProtos.PILON,300,5,300);
+		pilon.setPoblacionSumada(5);
+		return pilon;
 	}
 
 	@Override

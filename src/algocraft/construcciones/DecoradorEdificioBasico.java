@@ -47,5 +47,8 @@ public abstract class DecoradorEdificioBasico extends Propiedad implements Const
 		return this.edificio.estoyMuerto();
 	}
 	
+	public int getPoblacionSumada(){
+		return this.edificio.getPoblacionSumada();
+	}
 }
 
