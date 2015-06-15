@@ -71,6 +71,16 @@ public class JuegoTest {
 		}
 		//nota: al salir es el turno del jugador 1
 	}
+
+	private CreadorDeUnidades crearBarracaListaEn(Juego algocraft, Coordenada posicion) 
+			throws DestinoInvalidoException, FueraDeLimitesException{
+		algocraft.construirEn(EnumEdificiosTerran.BARRACA, posicion);
+		CreadorDeUnidades barraca=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicion);
+		while(barraca.enConstruccion()){
+			algocraft.pasarTurno();
+		}
+		return barraca;
+	}
 	
 	@Test
 	public void testCreoEdificioEnPosicionVerificoQueEsteAhi() 
@@ -142,21 +152,24 @@ public class JuegoTest {
 			throws DestinoInvalidoException, FueraDeLimitesException{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		this.juntarRecursosParaAmbosJugadores(algocraft);
-		//creo barraca
 		Coordenada posicionBarraca = new Coordenada(6,alto-5);
 		algocraft.construirEn(EnumEdificiosTerran.BARRACA, posicionBarraca);
-		//espero a que se construya
 		CreadorDeUnidades barraca=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicionBarraca);
 		while(barraca.enConstruccion()){
 			algocraft.pasarTurno();
 		}
 		
-		//creo marine
 		algocraft.crearUnidad(barraca, UnidadesTerran.MARINE);
 		for(int turnos=1 ; turnos<=8 ; turnos++)
 			algocraft.pasarTurno();
 		
-		//lo busco donde deberia estar
+		boolean encontrado = encontrarMarineCercaDeBarraca(algocraft,
+				posicionBarraca);
+		assertTrue(encontrado);
+	}
+
+	private boolean encontrarMarineCercaDeBarraca(Juego algocraft,
+			Coordenada posicionBarraca) throws FueraDeLimitesException {
 		boolean encontrado = false;
 		for(int x = posicionBarraca.getX()-1 ; x <= posicionBarraca.getX()+1  && !encontrado; x++){
 			for(int y = posicionBarraca.getY()-1 ; y <= posicionBarraca.getY()+1 && !encontrado; y++){
@@ -170,8 +183,22 @@ public class JuegoTest {
 					}
 			}
 		}
-		assertTrue(encontrado);
+		return encontrado;
 	}
 
-	
+	@Test
+	public void testTransportoMarineATravesDeAire() 
+			throws DestinoInvalidoException, FueraDeLimitesException{
+		Juego algocraft = this.iniciarJuegoConDosJugadores();
+		this.juntarRecursosParaAmbosJugadores(algocraft);
+		Coordenada posicionBarraca = new Coordenada(6,alto-5);
+		CreadorDeUnidades barraca = this.crearBarracaListaEn(algocraft, posicionBarraca);
+		algocraft.crearUnidad(barraca, UnidadesTerran.MARINE);
+		for(int turnos=1 ; turnos<=8 ; turnos++)
+			algocraft.pasarTurno();
+		@SuppressWarnings("unused")
+		Coordenada posicionFabrica = new Coordenada(5,alto-5);
+		
+		//incompleto
+	}
 }
