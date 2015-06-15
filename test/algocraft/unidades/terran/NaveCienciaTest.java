@@ -31,12 +31,12 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testNaveCienciaEmpiezaEn5(){
+	public void testMovimientosNaveCienciaEmpiezaEn5(){
 		NaveCiencia naveCiencia = new NaveCiencia();
 		
 		assertEquals(5,naveCiencia.getMovimientos() );
 	}
-
+	
 	@Test
 	public void testTiempoDeConstruccionCorrecto(){
 		final int tiempoDeConstruccion = 10;
@@ -45,9 +45,10 @@ public class NaveCienciaTest {
 		assertEquals(true, naveCiencia.enConstruccion());
 		
 		for(int i = 0; i<tiempoDeConstruccion; i++){
-			naveCiencia.iniciarTurno();
+			naveCiencia.disminuirTiempoDeConstruccion();
 		}
 		
 		assertEquals(false, naveCiencia.enConstruccion());
 	}
+	
 }

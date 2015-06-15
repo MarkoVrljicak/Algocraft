@@ -48,7 +48,7 @@ public class NaveTransporteProtosTest {
 		assertEquals(true, naveDeTransporte.enConstruccion());
 		
 		for(int i = 0; i<tiempoDeConstruccion; i++){
-			naveDeTransporte.iniciarTurno();
+			naveDeTransporte.disminuirTiempoDeConstruccion();
 		}
 		
 		assertEquals(false, naveDeTransporte.enConstruccion());

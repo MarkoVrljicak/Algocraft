@@ -131,6 +131,9 @@ public class IntegracionesJugadorTest {
 
 		//creo unidad
 		jugador.crearUnidad( UnidadesTerran.MARINE, barraca);
+		for(int i=1; i<=3 ; i++){
+			jugador.iniciarTurno();
+		}
 
 
 		assertEquals( 1 , jugador.getPoblacionActual() );
@@ -152,6 +155,10 @@ public class IntegracionesJugadorTest {
 		//creo 5 marines
 		for(int i = 1 ; i <= 5 ; i++ ){
 			jugador.crearUnidad( UnidadesTerran.MARINE, barraca);
+		}
+		//espero a que se creen
+		for(int i=1; i<=3 ; i++){
+			jugador.iniciarTurno();
 		}
 
 		assertEquals( 5 , jugador.getPoblacionMaxima() );//verifico poblacion maxima
@@ -175,6 +182,9 @@ public class IntegracionesJugadorTest {
 		
 		//creo unidad
 		Daniable marine = jugador.crearUnidad( UnidadesTerran.MARINE, barraca);
+		for(int i=1; i<=3 ; i++){
+			jugador.iniciarTurno();
+		}
 		
 		assertEquals( 1 , jugador.getPoblacionActual() );//verifico aumento poblacion
 		

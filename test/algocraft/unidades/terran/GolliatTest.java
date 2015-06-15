@@ -44,7 +44,7 @@ public class GolliatTest {
 		assertEquals(true, golliat.enConstruccion());
 		
 		for(int i = 0; i<tiempoDeConstruccion; i++){
-			golliat.iniciarTurno();
+			golliat.disminuirTiempoDeConstruccion();
 		}
 		
 		assertEquals(false, golliat.enConstruccion());

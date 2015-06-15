@@ -239,6 +239,10 @@ public class Mapa implements Iterable<Terreno>{
 		return posiciones.size();
 	}
 	
+	public Coordenada encontrar(Propiedad elementoBuscado){
+		return this.posiciones.get(elementoBuscado);
+	}
+	
 	public Collection<Terreno> obtenerRadioDeCasilleros(int radio, Coordenada centro){
 		
 		Collection<Terreno> outputTerrenos = new ArrayList<Terreno>();

@@ -45,7 +45,7 @@ public class ZealotTest {
 		assertEquals(true, zealot.enConstruccion());
 		
 		for(int i = 0; i<tiempoDeConstruccion; i++){
-			zealot.iniciarTurno();
+			zealot.disminuirTiempoDeConstruccion();
 		}
 		
 		assertEquals(false, zealot.enConstruccion());

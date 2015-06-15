@@ -47,7 +47,7 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= creador.getGasNecesario());
 		puedeCrearse = puedeCrearse && (poblacionDisponible >= creador.getPoblacionNecesaria());
 		
-		return puedeCrearse;
+		return (puedeCrearse);
 	}
 	
 	//otros

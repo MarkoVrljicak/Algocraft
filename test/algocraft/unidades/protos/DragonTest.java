@@ -75,7 +75,7 @@ public class DragonTest {
 		assertEquals(true, dragon.enConstruccion());
 		
 		for(int i = 0; i<tiempoDeConstruccion; i++){
-			dragon.iniciarTurno();
+			dragon.disminuirTiempoDeConstruccion();
 		}
 		
 		assertEquals(false, dragon.enConstruccion());

@@ -55,7 +55,7 @@ public class AltoTemplarioTest {
 		assertEquals(true, altoTemplario.enConstruccion());
 		
 		for(int i = 0; i<tiempoDeConstruccion; i++){
-			altoTemplario.iniciarTurno();
+			altoTemplario.disminuirTiempoDeConstruccion();
 		}
 		
 		assertEquals(false, altoTemplario.enConstruccion());

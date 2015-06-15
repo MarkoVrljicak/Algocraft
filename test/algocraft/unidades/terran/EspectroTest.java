@@ -44,7 +44,7 @@ public class EspectroTest {
 		assertEquals(true, espectro.enConstruccion());
 		
 		for(int i = 0; i<tiempoDeConstruccion; i++){
-			espectro.iniciarTurno();
+			espectro.disminuirTiempoDeConstruccion();
 		}
 		
 		assertEquals(false, espectro.enConstruccion());

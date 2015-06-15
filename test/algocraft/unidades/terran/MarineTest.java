@@ -43,7 +43,7 @@ public class MarineTest {
 		assertEquals(true, marine.enConstruccion());
 		
 		for(int i = 0; i<tiempoDeConstruccion; i++){
-			marine.iniciarTurno();
+			marine.disminuirTiempoDeConstruccion();
 		}
 		
 		assertEquals(false, marine.enConstruccion());

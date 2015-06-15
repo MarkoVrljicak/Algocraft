@@ -16,6 +16,7 @@ import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
 import algocraft.razas.Protoss;
 import algocraft.razas.Terran;
+import algocraft.unidades.Unidad;
 import algocraft.unidades.terran.UnidadesTerran;
 
 public class JuegoTest {
@@ -142,7 +143,7 @@ public class JuegoTest {
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		this.juntarRecursosParaAmbosJugadores(algocraft);
 		//creo barraca
-		Coordenada posicionBarraca = this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft);
+		Coordenada posicionBarraca = new Coordenada(6,alto-5);
 		algocraft.construirEn(EnumEdificiosTerran.BARRACA, posicionBarraca);
 		//espero a que se construya
 		CreadorDeUnidades barraca=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicionBarraca);
@@ -151,8 +152,25 @@ public class JuegoTest {
 		}
 		
 		//creo marine
-		algocraft.pedirUnidad(UnidadesTerran.MARINE, barraca);
-		//incompleto
+		algocraft.crearUnidad(barraca, UnidadesTerran.MARINE);
+		for(int turnos=1 ; turnos<=8 ; turnos++)
+			algocraft.pasarTurno();
+		
+		//lo busco donde corresponde
+		boolean encontrado = false;
+		for(int x = posicionBarraca.getX()-1 ; x <= posicionBarraca.getX()+1  && !encontrado; x++){
+			for(int y = posicionBarraca.getY()-1 ; y <= posicionBarraca.getY()+1 && !encontrado; y++){
+				Coordenada coordenadaCandidata = new Coordenada(x,y);
+				if(algocraft.seleccionarSuelo(coordenadaCandidata) != null)
+					try{
+						Unidad unidadEncontrada = (Unidad)algocraft.seleccionarSuelo(coordenadaCandidata);
+						if(unidadEncontrada.getNombre()==UnidadesTerran.MARINE) encontrado = true;
+					}catch(ClassCastException e){
+						e.printStackTrace();
+					}
+			}
+		}
+		assertTrue(encontrado);
 	}
 
 	

@@ -72,8 +72,8 @@ public abstract class Unidad extends Propiedad implements Movible{
 	
 	@Override
 	public void iniciarTurno() {
-		this.disminuirTiempoDeConstruccion();
-		this.vitalidad.regenerar();
+		if(!this.enConstruccion())
+			this.vitalidad.regenerar();
 	}
 
 
@@ -110,7 +110,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 		return this.vitalidad.estoyVacio();
 	}
 
-	protected void disminuirTiempoDeConstruccion() {
+	public void disminuirTiempoDeConstruccion() {
 		if (this.tiempoDeConstruccion != 0) {
 			this.tiempoDeConstruccion--;
 		}

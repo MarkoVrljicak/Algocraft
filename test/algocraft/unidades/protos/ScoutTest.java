@@ -47,7 +47,7 @@ public class ScoutTest {
 		assertEquals(true, scout.enConstruccion());
 		
 		for(int i = 0; i<tiempoDeConstruccion; i++){
-			scout.iniciarTurno();
+			scout.disminuirTiempoDeConstruccion();
 		}
 		
 		assertEquals(false, scout.enConstruccion());

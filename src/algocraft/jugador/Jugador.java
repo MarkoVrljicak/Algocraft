@@ -141,8 +141,12 @@ public class Jugador implements Actualizable, Usuario {
 		//inicio construcciones
 		Iterator<Construccion> itConstrucciones= construcciones.iterator();	
 		while(itConstrucciones.hasNext()){
-			Actualizable unaConstruccion= (Actualizable) itConstrucciones.next();
-			unaConstruccion.iniciarTurno();
+			itConstrucciones.next().iniciarTurno();;
+		}
+		//inicio unidades
+		Iterator<Unidad> itUnidades= unidades.iterator();	
+		while(itUnidades.hasNext()){
+			itUnidades.next().iniciarTurno();
 		}
 	}
 
