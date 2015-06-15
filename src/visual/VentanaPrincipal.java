@@ -15,7 +15,7 @@ public class VentanaPrincipal extends JFrame {
 		//Asigna un titulo a la barra de titulo
 		setTitle("AlgoCraft");
 		
-		//tamaño de la ventana
+		//tamanio de la ventana
 		setSize(640,480);
 		
 		//pone la ventana en el Centro de la pantalla
