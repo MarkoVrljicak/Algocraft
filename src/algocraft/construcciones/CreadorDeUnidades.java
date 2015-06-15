@@ -1,8 +1,11 @@
 package algocraft.construcciones;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import algocraft.exception.RecursosNegativosException;
+import algocraft.exception.UnidadIncompletaException;
 import algocraft.factory.UnidadesAbstractFactory;
 import algocraft.stats.Recurso;
 import algocraft.unidades.Unidad;
@@ -11,11 +14,13 @@ import algocraft.unidades.Unidades;
 public class CreadorDeUnidades extends DecoradorEdificioBasico {
 
 	protected HashMap<Unidades, UnidadesAbstractFactory> unidadesCreables;
+	private Queue<Unidad> unidadesEnCreacion;
 	
-	//creacion
+	
 	public CreadorDeUnidades(Construccion construccionDecorada) {
 		super(construccionDecorada);
-		unidadesCreables= new HashMap<Unidades, UnidadesAbstractFactory>();
+		this.unidadesCreables= new HashMap<Unidades, UnidadesAbstractFactory>();
+		this.unidadesEnCreacion = new LinkedList<Unidad>();
 	}
 	
 	public void aniadirUnidadCreable(Unidades nombreUnidad, UnidadesAbstractFactory creador){
@@ -33,8 +38,10 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 			} catch (RecursosNegativosException e) {
 				e.printStackTrace();
 			}
+			Unidad unidadCreada = creador.crearUnidad();
+			this.unidadesEnCreacion.add(unidadCreada);
 			
-			return creador.crearUnidad();
+			return unidadCreada;
 		}
 		else return null;
 	}
@@ -50,8 +57,23 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 		return (puedeCrearse);
 	}
 	
-	//otros
+	public boolean unidadEnCreacion() {
+		return !unidadesEnCreacion.isEmpty();
+	}	
 	
+	//preguntar si hay unidades en creacion
+	public boolean unidadTerminada() {
+		return !unidadesEnCreacion.peek().enConstruccion();
+	}
+	
+	//preguntar si la unidad esta terminada
+	public Unidad obtenerUnidadCreada() throws UnidadIncompletaException{
+		if(this.unidadEnCreacion() && this.unidadTerminada())
+			return unidadesEnCreacion.poll();
+		else
+			throw new UnidadIncompletaException();		
+	}	
+
 	public boolean tengoUnidad(Unidades nombreUnidad){
 		return unidadesCreables.containsKey(nombreUnidad);
 	}
@@ -59,7 +81,11 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	@Override
 	public void iniciarTurno() {
 		this.edificio.iniciarTurno();
+		Unidad primerUnidadEnLista = this.unidadesEnCreacion.peek();
+		if(this.unidadEnCreacion() && primerUnidadEnLista.enConstruccion())
+			primerUnidadEnLista.disminuirTiempoDeConstruccion();
 	}
+
 
 	@Override
 	public boolean soyVolador() {

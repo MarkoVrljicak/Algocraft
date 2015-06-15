@@ -24,7 +24,7 @@ public class JuegoTest {
 	private static final int ancho = 30;
 	private static final int alto = 30;
 
-	public Juego iniciarJuegoConDosJugadores(){
+	private Juego iniciarJuegoConDosJugadores(){
 		Juego algocraft = new Juego(ancho,alto);
 		algocraft.setJugador1("Agustin", new Terran() , Colores.AZUL );
 		algocraft.setJugador2("Marco", new Protoss() , Colores.ROJO );
@@ -33,7 +33,7 @@ public class JuegoTest {
 		return algocraft;
 	}
 	
-	public Coordenada encontrarTerrenoVacio(Terrenos terrenoBuscado,Juego algocraft) 
+	private Coordenada encontrarTerrenoVacio(Terrenos terrenoBuscado,Juego algocraft) 
 			throws FueraDeLimitesException{
 		for(int i = 1 ; i<=ancho ; i++){
 			for(int j = 1 ; j<=alto ; j++){
@@ -76,7 +76,7 @@ public class JuegoTest {
 	public void testCreoEdificioEnPosicionVerificoQueEsteAhi() 
 			throws DestinoInvalidoException, FueraDeLimitesException{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
-		algocraft.construirEn(EnumEdificiosTerran.BARRACA , new Coordenada(6,26));
+		algocraft.construirEn(EnumEdificiosTerran.BARRACA , new Coordenada(6,alto-4));
 		
 		Construccion edificioConstruido =  (Construccion) algocraft.seleccionarSuelo(new Coordenada(6,26));
 		assertEquals(EnumEdificiosTerran.BARRACA , edificioConstruido.getNombre() );
@@ -156,7 +156,7 @@ public class JuegoTest {
 		for(int turnos=1 ; turnos<=8 ; turnos++)
 			algocraft.pasarTurno();
 		
-		//lo busco donde corresponde
+		//lo busco donde deberia estar
 		boolean encontrado = false;
 		for(int x = posicionBarraca.getX()-1 ; x <= posicionBarraca.getX()+1  && !encontrado; x++){
 			for(int y = posicionBarraca.getY()-1 ; y <= posicionBarraca.getY()+1 && !encontrado; y++){

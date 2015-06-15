@@ -1,17 +1,15 @@
 package algocraft;
 
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
-
 import algocraft.Interfaces.Actualizable;
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.construcciones.EnumEdificios;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
+import algocraft.exception.UnidadIncompletaException;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 import algocraft.mapa.Coordenada;
@@ -29,12 +27,12 @@ public class Juego {
 	private Jugador jugador2;
 	private Jugador jugadorActual;
 	public Mapa mapa;
-	private HashMap<CreadorDeUnidades,Queue<Unidad>> unidadesEnCreacion;
+	private ArrayList<CreadorDeUnidades> creadoresDeUnidadesEnUso;
 	
 	public Juego(int ancho , int alto){
 		GeneradorDeMapa generador = new GeneradorDeMapa(ancho, alto);
 		mapa = generador.generar();
-		unidadesEnCreacion = new HashMap<CreadorDeUnidades, Queue<Unidad>>();
+		creadoresDeUnidadesEnUso = new ArrayList<CreadorDeUnidades>();
 	}
 
 	public void setJugador1(String nombre, Raza unaRaza , Colores unColor) {
@@ -68,6 +66,11 @@ public class Juego {
 		Construccion edificioNuevo = jugadorActual.construir(edificio);
 		mapa.almacenar((Propiedad) edificioNuevo, coordenada);
 	}
+	
+	public void crearUnidad(CreadorDeUnidades edificioCreador, Unidades unidadPedida) {
+		 jugadorActual.crearUnidad(unidadPedida, edificioCreador);	
+		 creadoresDeUnidadesEnUso.add(edificioCreador);
+	}
 
 	public void pasarTurno() {
 		//cambio de jugador
@@ -80,21 +83,30 @@ public class Juego {
 		jugadorActual.iniciarTurno();
 		
 		//gestiono creacion de unidades
-		Iterator<CreadorDeUnidades> itEdificiosCreadores = unidadesEnCreacion.keySet().iterator();
+		ponerNuevasUnidadesEnMapa();
+		
+	}
+
+	private void ponerNuevasUnidadesEnMapa() {
+		Iterator<CreadorDeUnidades> itEdificiosCreadores = creadoresDeUnidadesEnUso.iterator();
 		while(itEdificiosCreadores.hasNext()){
 			CreadorDeUnidades unCreador = itEdificiosCreadores.next();
-			if(unCreador.getDuenio()==jugadorActual){
-				Unidad primerUnidadEnLista = unidadesEnCreacion.get(unCreador).element();
-				if(primerUnidadEnLista.enConstruccion())
-					primerUnidadEnLista.disminuirTiempoDeConstruccion();
-				else
-					this.posicionarNuevaUnidad(unidadesEnCreacion.get(unCreador).poll(),
-							this.mapa.encontrar(unCreador));
+			if(unCreador.getDuenio()==jugadorActual 
+					&& unCreador.unidadEnCreacion() && unCreador.unidadTerminada()){
+				try {
+					Unidad  unidadTerminada = unCreador.obtenerUnidadCreada();
+					this.posicionarNuevaUnidad(unidadTerminada,this.mapa.encontrar(unCreador));
+				} catch (UnidadIncompletaException e) {
+					//no ocurre, pregunte antes
+					e.printStackTrace();
+				}				
 				//si no pudo lo intenta de nuevo en el proximo turno
 			}
-				 
+			if(!unCreador.unidadEnCreacion()){
+				creadoresDeUnidadesEnUso.remove(unCreador);	
+				itEdificiosCreadores = creadoresDeUnidadesEnUso.iterator();
+			}
 		}
-		
 	}
 
 	private void posicionarNuevaUnidad(Unidad unidad, Coordenada posicionCreador){
@@ -112,12 +124,5 @@ public class Juego {
 				}
 			}
 		}
-	}
-
-	public void crearUnidad(CreadorDeUnidades edificioCreador, Unidades unidadPedida) {
-		 Unidad nuevaUnidad = jugadorActual.crearUnidad(unidadPedida, edificioCreador);	
-		 if(!unidadesEnCreacion.containsKey(edificioCreador))
-			unidadesEnCreacion.put(edificioCreador, new LinkedList<Unidad>());		 
-		 unidadesEnCreacion.get(edificioCreador).add(nuevaUnidad);
 	}
 }

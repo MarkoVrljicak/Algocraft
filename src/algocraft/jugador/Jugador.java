@@ -73,7 +73,9 @@ public class Jugador implements Actualizable, Usuario {
 		int poblacion = 0;
 		Iterator<Unidad> itUnidades = unidades.iterator();
 		while(itUnidades.hasNext()){
-			poblacion += itUnidades.next().getSuministros();
+			Unidad unaUnidad = itUnidades.next();
+			if (!unaUnidad.enConstruccion())
+				poblacion += unaUnidad.getSuministros();
 		}
 		return poblacion;
 	}
