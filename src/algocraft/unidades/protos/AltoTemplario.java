@@ -74,6 +74,11 @@ public class AltoTemplario extends UnidadMagica {
 	}
 	
 	public void alucinacion(Unidad unidadAClonar, Collection<Terreno> zonaDeClonacion){
+		int magiaRequerida = 100;
+		if(this.magia.actual() < magiaRequerida){
+			return;
+		}
+		
 		int alucinaciones = 2;
 		Terreno terrenoCualquiera;
 		
@@ -88,6 +93,7 @@ public class AltoTemplario extends UnidadMagica {
 			alucinaciones--;
 		}
 		
+		this.magia.disminuir(magiaRequerida);
 		
 	}
 	

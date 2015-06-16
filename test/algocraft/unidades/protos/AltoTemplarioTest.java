@@ -99,8 +99,13 @@ public class AltoTemplarioTest {
 		Unidad original = new Zealot();
 		AltoTemplario templario = new AltoTemplario();
 		Coordenada ubicacion = new Coordenada(5,5);
-		
 		mapa.almacenar(original, ubicacion);
+		
+		int variosTurnos = 20;
+		for(int i=0; i<variosTurnos; i++){
+			templario.iniciarTurno(); //para llenar magia
+		}
+		
 		templario.alucinacion(original, mapa.obtenerRadioDeCasilleros(2, ubicacion));
 		
 		int alucinacionesEncontradas = 0;
@@ -116,6 +121,51 @@ public class AltoTemplarioTest {
 		
 		assertEquals(2, alucinacionesEncontradas);
 	}
+	
+	@Test
+	public void testTemplarioNoClonaUnidadSinMagiaSuficiente3() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10,10);
+		Unidad original = new Zealot();
+		AltoTemplario templario = new AltoTemplario();
+		Coordenada ubicacion = new Coordenada(5,5);
+		mapa.almacenar(original, ubicacion);
+		
+		templario.alucinacion(original, mapa.obtenerRadioDeCasilleros(2, ubicacion));
+		
+		int alucinacionesEncontradas = 0;
+		
+		Iterator<Terreno> iterMapa = mapa.iterator();
+		while(iterMapa.hasNext()){
+			Terreno terreno = iterMapa.next();
+			Unidad unidad = (Unidad) terreno.getContenidoSuelo();
+			if(unidad != null && unidad.getNombre() == UnidadesProtos.ALUCINACION){
+				alucinacionesEncontradas++;
+			}
+		}
+		
+		assertEquals(0, alucinacionesEncontradas);
+	}
+	
+	@Test
+	public void testAlucinacionGastaXMagia() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10,10);
+		Unidad original = new Zealot();
+		AltoTemplario templario = new AltoTemplario();
+		Coordenada ubicacion = new Coordenada(5,5);
+		mapa.almacenar(original, ubicacion);
+		
+		int variosTurnos = 20;
+		for(int i=0; i<variosTurnos; i++){
+			templario.iniciarTurno(); //para llenar magia
+		}
+		
+		int magiaOriginal = templario.getMagiaActual();
+		
+		templario.alucinacion(original, mapa.obtenerRadioDeCasilleros(2, ubicacion));
+		
+		assertEquals(templario.getMagiaActual(), magiaOriginal - 100);
+	}
+	
 	
 
 }
