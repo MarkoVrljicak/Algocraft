@@ -2,6 +2,7 @@ package algocraft.unidades.protos;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Collection;
 import java.util.Iterator;
 
 import org.junit.Test;
@@ -13,6 +14,8 @@ import algocraft.mapa.Mapa;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.UnidadMagica;
+import algocraft.unidades.terran.Marine;
+import algocraft.unidades.terran.NaveCiencia;
 
 
 public class AltoTemplarioTest {
@@ -144,6 +147,40 @@ public class AltoTemplarioTest {
 		}
 		
 		assertEquals(0, alucinacionesEncontradas);
+	}
+	
+	@Test
+	public void testTormentaPsionicaDaniaUnidad() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10,10);
+		AltoTemplario templario = new AltoTemplario();
+		Unidad otraUnidad = new Marine();
+		Coordenada posicion =  new Coordenada(5,5);
+		mapa.almacenar(otraUnidad, posicion);
+		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, posicion);
+		
+		int vidaOriginal = otraUnidad.getVida();
+		
+		templario.tormentaPsionica(area);
+		
+		assertEquals(true, otraUnidad.getVida() < vidaOriginal);
+	}
+	
+	@Test
+	public void testTormentaPsionicaHace100DeDanioLaPrimeraVuelta() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10,10);
+		AltoTemplario templario = new AltoTemplario();
+		Unidad otraUnidad = new NaveCiencia();
+		
+		int vidaInicial = otraUnidad.getVida();
+		
+		Coordenada posicion =  new Coordenada(5,5);
+		mapa.almacenar(otraUnidad, posicion);
+		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, posicion);
+		
+		
+		templario.tormentaPsionica(area);
+		
+		assertEquals(vidaInicial - 100, otraUnidad.getVida());
 	}
 	
 	@Test

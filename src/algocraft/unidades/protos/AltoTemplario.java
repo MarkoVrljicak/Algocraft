@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import algocraft.exception.DestinoInvalidoException;
+import algocraft.magias.TormentaPsionica;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.movimientos.MovimientoTerrestre;
 import algocraft.stats.Escudo;
@@ -14,9 +15,9 @@ import algocraft.stats.Vida;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.UnidadMagica;
 
-
-
 public class AltoTemplario extends UnidadMagica {
+	
+	TormentaPsionica tormentaPsionica;
 	
 	public AltoTemplario(){
 		super.inicializar();
@@ -95,6 +96,11 @@ public class AltoTemplario extends UnidadMagica {
 		
 		this.magia.disminuir(magiaRequerida);
 		
+	}
+
+	public void tormentaPsionica(Collection<Terreno> area) {
+		this.tormentaPsionica = new TormentaPsionica(area);
+		this.tormentaPsionica.ejecutar();
 	}
 	
 }
