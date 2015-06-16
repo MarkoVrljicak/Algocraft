@@ -2,8 +2,15 @@ package algocraft.unidades.protos;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Iterator;
+
 import org.junit.Test;
 
+import algocraft.exception.DestinoInvalidoException;
+import algocraft.exception.FueraDeLimitesException;
+import algocraft.mapa.Coordenada;
+import algocraft.mapa.Mapa;
+import algocraft.mapa.terrenos.Terreno;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.UnidadMagica;
 
@@ -84,6 +91,30 @@ public class AltoTemplarioTest {
 		
 		assertEquals(65, templario.getMagiaActual());
 		
+	}
+	
+	@Test
+	public void testTemplarioClonaUnidad() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10,10);
+		Unidad original = new Zealot();
+		AltoTemplario templario = new AltoTemplario();
+		Coordenada ubicacion = new Coordenada(5,5);
+		
+		mapa.almacenar(original, ubicacion);
+		templario.alucinacion(original, mapa.obtenerRadioDeCasilleros(2, ubicacion));
+		
+		int alucinacionesEncontradas = 0;
+		
+		Iterator<Terreno> iterMapa = mapa.iterator();
+		while(iterMapa.hasNext()){
+			Terreno terreno = iterMapa.next();
+			Unidad unidad = (Unidad) terreno.getContenidoSuelo();
+			if(unidad != null && unidad.getNombre() == UnidadesProtos.ALUCINACION){
+				alucinacionesEncontradas++;
+			}
+		}
+		
+		assertEquals(2, alucinacionesEncontradas);
 	}
 	
 

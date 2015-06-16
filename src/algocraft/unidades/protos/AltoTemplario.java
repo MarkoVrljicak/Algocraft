@@ -1,11 +1,17 @@
 package algocraft.unidades.protos;
 
+import java.util.Collection;
+import java.util.Iterator;
+
+import algocraft.exception.DestinoInvalidoException;
+import algocraft.mapa.terrenos.Terreno;
 import algocraft.movimientos.MovimientoTerrestre;
 import algocraft.stats.Escudo;
 import algocraft.stats.Magia;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Stat;
 import algocraft.stats.Vida;
+import algocraft.unidades.Unidad;
 import algocraft.unidades.UnidadMagica;
 
 
@@ -65,6 +71,24 @@ public class AltoTemplario extends UnidadMagica {
 		int regeneracion = 15;
 		this.magia = new Magia(maximo, regeneracion);
 		this.magia.disminuir(150);
+	}
+	
+	public void alucinacion(Unidad unidadAClonar, Collection<Terreno> zonaDeClonacion){
+		int alucinaciones = 2;
+		Terreno terrenoCualquiera;
+		
+		Iterator<Terreno> iter = zonaDeClonacion.iterator();
+		while(iter.hasNext() && alucinaciones > 0){
+			terrenoCualquiera = iter.next();
+			try {
+				terrenoCualquiera.almacenar(new Alucinacion(unidadAClonar));
+			} catch (DestinoInvalidoException e) {
+				continue;
+			}
+			alucinaciones--;
+		}
+		
+		
 	}
 	
 }
