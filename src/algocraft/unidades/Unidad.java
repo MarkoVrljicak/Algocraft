@@ -2,10 +2,7 @@ package algocraft.unidades;
 
 import java.util.Collection;
 
-import algocraft.Interfaces.Daniable;
 import algocraft.Interfaces.Movible;
-import algocraft.ataques.AtaqueNormal;
-import algocraft.ataques.Ataques;
 import algocraft.ataques.Danio;
 import algocraft.mapa.Coordenada;
 import algocraft.mapa.terrenos.Terreno;
@@ -32,12 +29,10 @@ public abstract class Unidad extends Propiedad implements Movible{
 		this.setearPesoTransporte();
 		this.seteartiempoDeConstruccion();
 		this.setearSuministros();
-		this.setearDanio();
 		this.setearMovimientos();
 		this.setearMovimiento();
 	}
 
-	abstract protected void setearDanio();
 	abstract protected void setearSuministros();
 	abstract protected void setearPesoTransporte();
 	abstract protected void seteartiempoDeConstruccion();
@@ -51,6 +46,9 @@ public abstract class Unidad extends Propiedad implements Movible{
 	}
 	
 	abstract public int getVida();
+	public int getVitalidadMaxima(){
+		return this.vitalidad.max();
+	}
 	
 	public boolean soyVolador(){
 		return (pesoTransporte == 0);
@@ -77,26 +75,16 @@ public abstract class Unidad extends Propiedad implements Movible{
 	}
 
 
-	public boolean atacar(Daniable daniableAtacado, int distancia) {
-		Ataques tipoAtaque = daniableAtacado.comoAtacarme();
-		AtaqueNormal ataque = null;
-		
-		if (tipoAtaque == Ataques.ATAQUE_NORMAL_AEREO){
-			ataque = new AtaqueNormal(danio.getDanioAereo(), danio.getRangoAereo());
-		} else if (tipoAtaque == Ataques.ATAQUE_NORMAL_TERRESTRE){
-			ataque = new AtaqueNormal(danio.getDanioTerrestre(), danio.getRangoTerrestre());
-		}
-		
-		return ataque.ejecutarAtaque(daniableAtacado, distancia);
-	}
-
-
 	public int getSuministros() {
 		return this.suministros;
 	}
 	
 	public int getMovimientos(){
 		return this.movimientos.actual();
+	}
+	
+	public int getPesoTransporte(){
+		return this.pesoTransporte;
 	}
 	
 	public void darPaso(){

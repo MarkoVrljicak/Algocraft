@@ -2,7 +2,6 @@ package algocraft.unidades;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import algocraft.ataques.Danio;
 
 public abstract class UnidadTransportadora extends Unidad{
 
@@ -29,11 +28,6 @@ public abstract class UnidadTransportadora extends Unidad{
 	
 	protected int unidadesCargadas(){
 		return unidadesTransportadas.size();
-	}
-	
-	@Override
-	protected void setearDanio() {
-		this.danio = new Danio(0,0,0,0);
 	}
 
 	@Override

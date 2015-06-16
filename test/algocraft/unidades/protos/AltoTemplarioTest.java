@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import algocraft.unidades.Unidad;
-import algocraft.unidades.protos.AltoTemplario;
+import algocraft.unidades.UnidadMagica;
 
 
 public class AltoTemplarioTest {
@@ -60,4 +60,31 @@ public class AltoTemplarioTest {
 		
 		assertEquals(false, altoTemplario.enConstruccion());
 	}
+	
+	@Test
+	public void testTemplarioEmpiezaCon50DeMagia(){
+		UnidadMagica templario = new AltoTemplario();
+		
+		assertEquals(50, templario.getMagiaActual());
+		
+	}
+	
+	@Test
+	public void testTemplarioTieneMagiaMaxima200(){
+		UnidadMagica templario = new AltoTemplario();
+		
+		assertEquals(200, templario.getMagiaMaxima());
+		
+	}
+	
+	@Test
+	public void testTemplarioRegenera15DeMagia(){
+		UnidadMagica templario = new AltoTemplario();
+		templario.iniciarTurno();
+		
+		assertEquals(65, templario.getMagiaActual());
+		
+	}
+	
+
 }

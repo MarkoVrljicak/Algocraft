@@ -5,9 +5,9 @@ import algocraft.ataques.Danio;
 import algocraft.movimientos.MovimientoTerrestre;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Vida;
-import algocraft.unidades.Unidad;
+import algocraft.unidades.UnidadAtacante;
 
-public class Golliat extends Unidad{
+public class Golliat extends UnidadAtacante{
 
 	public Golliat() {
 		super.inicializar();

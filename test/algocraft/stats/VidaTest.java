@@ -17,5 +17,12 @@ public class VidaTest {
 		
 		assertEquals(9, vida.actual());
 	}
+	
+	@Test
+	public void testInicializarVidaConCeroEsValido(){
+		Vida vida = new Vida(0);
+		
+		assertFalse(vida == null);
+	}
 
 }

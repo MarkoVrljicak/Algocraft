@@ -14,6 +14,7 @@ import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
 import algocraft.propiedad.Propiedad;
 import algocraft.unidades.Unidad;
+import algocraft.unidades.UnidadAtacante;
 
 public class Mapa implements Iterable<Terreno>{
 
@@ -199,7 +200,7 @@ public class Mapa implements Iterable<Terreno>{
 	
 	//ataque
 	
-	public boolean gestionarAtaque(Unidad atacante, Propiedad atacado) throws PropiedadNoEstaEnJuegoException {
+	public boolean gestionarAtaque(UnidadAtacante atacante, Propiedad atacado) throws PropiedadNoEstaEnJuegoException {
 		Coordenada posicionAtacante = posiciones.get(atacante);
 		Coordenada posicionAtacado = posiciones.get(atacado);
 		

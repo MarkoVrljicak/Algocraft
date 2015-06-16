@@ -14,6 +14,7 @@ import algocraft.exception.FueraDeLimitesException;
 import algocraft.exception.PropiedadNoEstaEnJuegoException;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.unidades.Unidad;
+import algocraft.unidades.UnidadAtacante;
 import algocraft.unidades.protos.Dragon;
 import algocraft.unidades.terran.Marine;
 import algocraft.unidades.terran.NaveCiencia;
@@ -306,7 +307,7 @@ public class MapaTest {
 	public void testMapaGestionaAtaqueEntreDosUnidades() 
 			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa = new Mapa(5,5);
-		Unidad marine1 = new Marine();
+		UnidadAtacante marine1 = new Marine();
 		Unidad marine2 = new Marine();
 		
 		mapa.almacenar(marine1, new Coordenada(1,1));
@@ -319,7 +320,7 @@ public class MapaTest {
 	public void testMapaGestionaAtaqueEntreDosUnidadesYDisminuyeVidaDeUnidadAtacada() 
 			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa = new Mapa(5,5);
-		Unidad marine1 = new Marine();
+		UnidadAtacante marine1 = new Marine();
 		Unidad marine2 = new Marine();
 		
 		mapa.almacenar(marine1, new Coordenada(1,1));
@@ -334,7 +335,7 @@ public class MapaTest {
 	public void testPeleaGestionadaPorMapaResultaEnMuerte() 
 			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa = new Mapa(5,5);
-		Unidad dragon = new Dragon();
+		UnidadAtacante dragon = new Dragon();
 		Unidad marine = new Marine();
 		
 		mapa.almacenar(dragon, new Coordenada(1,1));
@@ -350,7 +351,7 @@ public class MapaTest {
 	public void testMapaEliminaUnidadMatada() 
 			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa = new Mapa(5,5);
-		Unidad dragon = new Dragon();
+		UnidadAtacante dragon = new Dragon();
 		Unidad marine = new Marine();
 		
 		mapa.almacenar(dragon, new Coordenada(1,1));

@@ -10,6 +10,7 @@ import algocraft.mapa.Coordenada;
 import algocraft.mapa.Mapa;
 import algocraft.mapa.terrenos.SectoresDeTerreno;
 import algocraft.unidades.Unidad;
+import algocraft.unidades.UnidadAtacante;
 import algocraft.unidades.protos.Zealot;
 import algocraft.unidades.terran.Espectro;
 import algocraft.unidades.terran.Marine;
@@ -31,7 +32,7 @@ public class AtaqueNormalTest {
 	public void testAtaqueNormalTerrestreSeRealiza() 
 			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
-		Unidad marineAtacante = new Marine();
+		UnidadAtacante marineAtacante = new Marine();
 		Unidad marineAtacado = new Marine();
 		mapa.almacenar(marineAtacante, coordenadaAtacante);
 		mapa.almacenar(marineAtacado, coordenadaEnRango);
@@ -48,7 +49,7 @@ public class AtaqueNormalTest {
 	public void testUnidadTerrestreRecibeDanioDeAtaqueNormal() 
 			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
-		Unidad marineAtacante = new Marine();
+		UnidadAtacante marineAtacante = new Marine();
 		Unidad marineAtacado = new Marine();
 		mapa.almacenar(marineAtacante, coordenadaAtacante);
 		mapa.almacenar(marineAtacado, coordenadaEnRango);
@@ -62,7 +63,7 @@ public class AtaqueNormalTest {
 	public void testAtaqueNormalNoSeRealizaFueraDeRango() 
 			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(10,10);
-		Unidad marineAtacante = new Marine();
+		UnidadAtacante marineAtacante = new Marine();
 		Unidad marineAtacado = new Marine();
 		mapa.almacenar(marineAtacante, coordenadaAtacante);
 		mapa.almacenar(marineAtacado, coordenadaFueraDeRango);
@@ -74,7 +75,7 @@ public class AtaqueNormalTest {
 	public void testUnidadNoSeAtacaASiMisma() 
 			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
-		Unidad marineAtacante = new Marine();
+		UnidadAtacante marineAtacante = new Marine();
 		mapa.almacenar(marineAtacante, coordenadaAtacante);
 		
 		assertEquals(false, marineAtacante.atacar(marineAtacante, coordenadaAtacante.distanciaA(coordenadaAtacante)));
@@ -85,7 +86,7 @@ public class AtaqueNormalTest {
 			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
 		Unidad marineAtacado = new Marine();
-		Unidad espectroAtacante = new Espectro();
+		UnidadAtacante espectroAtacante = new Espectro();
 		mapa.almacenar(marineAtacado, coordenadaEnRango);
 		mapa.almacenar(espectroAtacante, coordenadaAtacante);
 		
@@ -97,7 +98,7 @@ public class AtaqueNormalTest {
 	public void testAtaqueNormalTierraAAireNoSeRealizaSiLaUnidadNoInfligePuntosTerrestres() 
 			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
-		Unidad zealotAtacante = new Zealot();
+		UnidadAtacante zealotAtacante = new Zealot();
 		Unidad naveAtacada = new NaveCiencia();
 		mapa.almacenar(zealotAtacante, coordenadaAtacante);
 		mapa.almacenar(naveAtacada, coordenadaEnRango);
@@ -111,7 +112,7 @@ public class AtaqueNormalTest {
 	public void testAtaqueNormalTierraAAireSeRealiza() 
 			throws DestinoInvalidoException, FueraDeLimitesException {
 		Mapa mapa = new Mapa(2,2);
-		Unidad marineAtacante = new Marine();
+		UnidadAtacante marineAtacante = new Marine();
 		Unidad naveAtacada = new NaveCiencia();
 		mapa.almacenar(marineAtacante, coordenadaAtacante);
 		mapa.almacenar(naveAtacada, coordenadaEnRango);

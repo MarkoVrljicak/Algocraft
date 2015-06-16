@@ -21,6 +21,13 @@ public class UnidadBasicaTest {
 	}
 	
 	@Test
+	public void testVidaActualEsIgualAVidaMaxima(){
+		Unidad marine= new Marine();
+		
+		assertEquals(marine.getVitalidadMaxima(),marine.getVida());
+	}
+	
+	@Test
 	public void testCreoUnidadVerificoNombre(){
 		Unidad marine= new Marine();
 		

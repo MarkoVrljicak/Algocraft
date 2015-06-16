@@ -7,9 +7,9 @@ import algocraft.stats.Escudo;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Stat;
 import algocraft.stats.Vida;
-import algocraft.unidades.Unidad;
+import algocraft.unidades.UnidadAtacante;
 
-public class Scout extends Unidad {
+public class Scout extends UnidadAtacante {
 
 	public Scout() {
 		super.inicializar();

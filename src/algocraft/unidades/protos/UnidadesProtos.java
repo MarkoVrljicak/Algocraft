@@ -7,6 +7,7 @@ public enum UnidadesProtos implements Unidades{
 	DRAGON,
 	NAVE_DE_TRANSPORTE,
 	SCOUT,
-	ZEALOT
+	ZEALOT,
+	ALUCINACION;
 	
 }

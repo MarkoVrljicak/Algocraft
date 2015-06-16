@@ -13,7 +13,7 @@ import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 import algocraft.razas.Protoss;
 import algocraft.razas.Terran;
-import algocraft.unidades.Unidad;
+import algocraft.unidades.UnidadAtacante;
 import algocraft.unidades.protos.Dragon;
 import algocraft.unidades.terran.UnidadesTerran;
 
@@ -203,7 +203,7 @@ public class IntegracionesJugadorTest {
 		assertEquals( 1 , jugador.getPoblacionActual() );//verifico aumento poblacion
 		
 		//mato unidad
-		Unidad dragon = new Dragon();
+		UnidadAtacante dragon = new Dragon();
 		dragon.atacar(marine, 1);
 		dragon.atacar(marine, 1);
 

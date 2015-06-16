@@ -4,10 +4,10 @@ import algocraft.ataques.Danio;
 import algocraft.movimientos.MovimientoAereo;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Vida;
-import algocraft.unidades.Unidad;
+import algocraft.unidades.UnidadAtacante;
 
 
-public class Espectro extends Unidad{
+public class Espectro extends UnidadAtacante{
 
 	public Espectro() {
 		super.inicializar();

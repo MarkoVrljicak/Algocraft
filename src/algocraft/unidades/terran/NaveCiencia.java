@@ -1,13 +1,14 @@
 package algocraft.unidades.terran;
 
 import algocraft.movimientos.MovimientoAereo;
+import algocraft.stats.Magia;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Vida;
-import algocraft.unidades.Unidad;
+import algocraft.unidades.UnidadMagica;
 
 
 
-public class NaveCiencia extends Unidad{
+public class NaveCiencia extends UnidadMagica{
 
 	public NaveCiencia() {
 		super.inicializar();
@@ -34,11 +35,6 @@ public class NaveCiencia extends Unidad{
 	}
 
 	@Override
-	protected void setearDanio() {
-		
-	}
-
-	@Override
 	protected void setearMovimientos() {
 		this.movimientos = new Movimientos(5);
 	}
@@ -57,5 +53,13 @@ public class NaveCiencia extends Unidad{
 	protected void setearMovimiento() {
 		this.movimiento = new MovimientoAereo();
 		
-	}	
+	}
+	
+	@Override
+	protected void setearMagia(){
+		int maximo = 200;
+		int regeneracion = 10;
+		this.magia = new Magia(maximo, regeneracion);
+		this.magia.disminuir(150);
+	}
 }

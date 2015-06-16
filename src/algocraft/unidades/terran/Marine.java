@@ -4,11 +4,11 @@ import algocraft.ataques.Danio;
 import algocraft.movimientos.MovimientoTerrestre;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Vida;
-import algocraft.unidades.Unidad;
+import algocraft.unidades.UnidadAtacante;
 
 
 
-public class Marine extends Unidad{
+public class Marine extends UnidadAtacante{
 
 	public Marine() {
 		super.inicializar();

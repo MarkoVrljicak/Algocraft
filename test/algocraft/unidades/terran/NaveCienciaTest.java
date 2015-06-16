@@ -1,10 +1,10 @@
 package algocraft.unidades.terran;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.unidades.terran.NaveCiencia;
+import algocraft.unidades.UnidadMagica;
 
 public class NaveCienciaTest {
 
@@ -49,6 +49,31 @@ public class NaveCienciaTest {
 		}
 		
 		assertEquals(false, naveCiencia.enConstruccion());
+	}
+	
+	@Test
+	public void testNaveEmpiezaCon50DeMagia(){
+		UnidadMagica nave = new NaveCiencia();
+		
+		assertEquals(50, nave.getMagiaActual());
+		
+	}
+	
+	@Test
+	public void testTemplarioTieneMagiaMaxima200(){
+		UnidadMagica nave = new NaveCiencia();
+		
+		assertEquals(200, nave.getMagiaMaxima());
+		
+	}
+	
+	@Test
+	public void testTemplarioRegenera10DeMagia(){
+		UnidadMagica nave = new NaveCiencia();
+		nave.iniciarTurno();
+		
+		assertEquals(60, nave.getMagiaActual());
+		
 	}
 	
 }

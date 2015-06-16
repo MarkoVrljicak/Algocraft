@@ -2,14 +2,15 @@ package algocraft.unidades.protos;
 
 import algocraft.movimientos.MovimientoTerrestre;
 import algocraft.stats.Escudo;
+import algocraft.stats.Magia;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Stat;
 import algocraft.stats.Vida;
-import algocraft.unidades.Unidad;
+import algocraft.unidades.UnidadMagica;
 
 
 
-public class AltoTemplario extends Unidad {
+public class AltoTemplario extends UnidadMagica {
 	
 	public AltoTemplario(){
 		super.inicializar();
@@ -37,13 +38,6 @@ public class AltoTemplario extends Unidad {
 		this.suministros = 2;
 	}
 
-
-	@Override
-	protected void setearDanio() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	protected void setearMovimientos() {
 		this.movimientos = new Movimientos(3);
@@ -63,6 +57,14 @@ public class AltoTemplario extends Unidad {
 	protected void setearMovimiento() {
 		this.movimiento = new MovimientoTerrestre();
 		
-	}	
+	}
+
+	@Override
+	protected void setearMagia(){
+		int maximo = 200;
+		int regeneracion = 15;
+		this.magia = new Magia(maximo, regeneracion);
+		this.magia.disminuir(150);
+	}
 	
 }
