@@ -7,19 +7,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import controlador.AccionCambiarAVentanaIngresoDeDatos;
 
 @SuppressWarnings("serial")
 public class VentanaInicial extends JPanel {
 	
-	
-
-	private Algocraft aplicacion;
-
-	public VentanaInicial(Algocraft aplicacion) {
+	public VentanaInicial() {
 		super();
-		this.aplicacion = aplicacion;
 		this.setLayout(null);
 		this.setVisible(true);
 		this.inicializarComponentes();		
@@ -27,11 +21,7 @@ public class VentanaInicial extends JPanel {
 
 	private void inicializarComponentes() {
 		JButton btnIniciarJuego = new JButton("Iniciar Juego");
-		btnIniciarJuego.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				aplicacion.cambiarVentanaA(Ventanas.INGRESO_DATOS_JUGADOR);
-			}
-		});
+		btnIniciarJuego.addActionListener(new AccionCambiarAVentanaIngresoDeDatos());
 		btnIniciarJuego.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnIniciarJuego.setBounds(242, 286, 193, 67);
 		this.add(btnIniciarJuego);

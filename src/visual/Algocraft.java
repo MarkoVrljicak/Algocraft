@@ -3,19 +3,33 @@ package visual;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
 import java.awt.SystemColor;
 import java.awt.CardLayout;
-import javax.swing.JPanel;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import algocraft.Juego;
+import controlador.Controlador;
+
 public class Algocraft {
+	
+	@SuppressWarnings("unused")
+	private Controlador controlador;
+	private Juego juego;
+	private int anchoMapa = 30;
+	private int altoMapa = 30;
 
 	private JFrame frame;
-	private JPanel ventanaInicial;
-	private JPanel ventanaDatosJugador;
-	private JPanel ventanaJuego;
+	public VentanaInicial ventanaInicial;
+	public VentanaIngresoDeDatosJugador ventanaDatosJugador;
+	public VentanaJuego ventanaJuego;
+	
+	private JMenuBar menuBar;
+	private JMenu mnArchivo;
+	private JMenuItem mntmSalir;
 	/**
 	 * Launch the application.
 	 */
@@ -37,13 +51,15 @@ public class Algocraft {
 	 */
 	public Algocraft() {
 		initialize();
+		this.juego = new Juego(anchoMapa,altoMapa);
+		this.controlador = new Controlador(this,this.juego);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = 	new JFrame();
+		frame = new JFrame();
 		inicializarComponentes();
 		
 		frame.setBounds(100, 100, 693, 510);
@@ -51,53 +67,32 @@ public class Algocraft {
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JMenuBar menuBar = new JMenuBar();
-		frame.setJMenuBar(menuBar);
 		
-		JMenu mnArchivo = new JMenu("Archivo");
-		menuBar.add(mnArchivo);
-		
-		JMenuItem mntmSalir = new JMenuItem("Salir");
-		mnArchivo.add(mntmSalir);
 	}
 
 	private void inicializarComponentes() {
 		frame.getContentPane().setBackground(SystemColor.controlShadow);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
-		ventanaInicial = new VentanaInicial(this);
+		ventanaInicial = new VentanaInicial();
 		frame.getContentPane().add(ventanaInicial, "name_482171807646183");
 			
 		
 		ventanaDatosJugador = new VentanaIngresoDeDatosJugador();
 		frame.getContentPane().add(ventanaDatosJugador, "name_482181740405689");
-		ventanaDatosJugador.setVisible(false);
 		
 		
-		ventanaJuego = new JPanel();
+		ventanaJuego = new VentanaJuego();
 		frame.getContentPane().add(ventanaJuego, "name_482183878529208");
-		ventanaJuego.setVisible(false);
-	}
-
-	public void cambiarVentanaA(Ventanas enumVentana) {
 		
-		switch(enumVentana){
-		case INGRESO_DATOS_JUGADOR:
-			ventanaInicial.setVisible(false);
-			ventanaJuego.setVisible(false);
-			ventanaDatosJugador.setVisible(true);
-			break;
-		case JUEGO:
-			ventanaInicial.setVisible(false);
-			ventanaDatosJugador.setVisible(false);
-			ventanaJuego.setVisible(true);
-			break;
-		case VENTANA_INICIAL:
-			ventanaDatosJugador.setVisible(false);
-			ventanaJuego.setVisible(false);
-			ventanaInicial.setVisible(true);
-			break;
-		}
 		
+		menuBar = new JMenuBar();
+		frame.setJMenuBar(menuBar);
+		
+		mnArchivo = new JMenu("Archivo");
+		menuBar.add(mnArchivo);
+		
+		mntmSalir = new JMenuItem("Salir");
+		mnArchivo.add(mntmSalir);
 	}
 }
