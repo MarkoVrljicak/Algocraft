@@ -109,6 +109,12 @@ public class AltoTemplario extends UnidadMagica {
 	}
 
 	public void tormentaPsionica(Collection<Terreno> area) {
+		if(this.magia.actual() < 75){
+			return;
+		} else {
+			this.magia.disminuir(75);
+		}
+		
 		this.tormentaPsionica = new TormentaPsionica(area);
 		this.tormentaPsionica.ejecutar();
 	}

@@ -19,6 +19,13 @@ import algocraft.unidades.terran.NaveCiencia;
 
 
 public class AltoTemplarioTest {
+	
+	public void pasarMuchosTurnos(AltoTemplario templario){
+		//para llenar magia
+		for(int i = 0; i<20; i++){
+			templario.iniciarTurno();
+		}
+	}
 
 	@Test
 	public void testCreoAltoTemplarioYControloVidaInicial(){
@@ -104,10 +111,7 @@ public class AltoTemplarioTest {
 		Coordenada ubicacion = new Coordenada(5,5);
 		mapa.almacenar(original, ubicacion);
 		
-		int variosTurnos = 20;
-		for(int i=0; i<variosTurnos; i++){
-			templario.iniciarTurno(); //para llenar magia
-		}
+		pasarMuchosTurnos(templario);
 		
 		templario.alucinacion(original, mapa.obtenerRadioDeCasilleros(2, ubicacion));
 		
@@ -157,10 +161,7 @@ public class AltoTemplarioTest {
 		Coordenada ubicacion = new Coordenada(5,5);
 		mapa.almacenar(original, ubicacion);
 		
-		int variosTurnos = 20;
-		for(int i=0; i<variosTurnos; i++){
-			templario.iniciarTurno(); //para llenar magia
-		}
+		pasarMuchosTurnos(templario);
 		
 		int magiaOriginal = templario.getMagiaActual();
 		
@@ -173,6 +174,8 @@ public class AltoTemplarioTest {
 	public void testTormentaPsionicaDaniaUnidad() throws DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa = new Mapa(10,10);
 		AltoTemplario templario = new AltoTemplario();
+		pasarMuchosTurnos(templario);
+		
 		Unidad otraUnidad = new Marine();
 		Coordenada posicion =  new Coordenada(5,5);
 		mapa.almacenar(otraUnidad, posicion);
@@ -190,6 +193,8 @@ public class AltoTemplarioTest {
 		Mapa mapa = new Mapa(10,10);
 		AltoTemplario templario = new AltoTemplario();
 		Unidad otraUnidad = new NaveCiencia();
+		
+		pasarMuchosTurnos(templario);
 		
 		int vidaInicial = otraUnidad.getVida();
 		
@@ -209,6 +214,8 @@ public class AltoTemplarioTest {
 		AltoTemplario templario = new AltoTemplario();
 		Unidad otraUnidad = new NaveCiencia();
 		
+		pasarMuchosTurnos(templario);
+		
 		Coordenada posicion =  new Coordenada(5,5);
 		mapa.almacenar(otraUnidad, posicion);
 		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, posicion);
@@ -217,6 +224,59 @@ public class AltoTemplarioTest {
 		templario.iniciarTurno();
 		
 		assertEquals(true, otraUnidad.estoyMuerto());
+	}
+	
+	@Test
+	public void testTormentaPsionicaMata2NavesCienciaEnDosTurnos() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10,10);
+		AltoTemplario templario = new AltoTemplario();
+		Unidad nave1 = new NaveCiencia();
+		Unidad nave2 = new NaveCiencia();
+		
+		pasarMuchosTurnos(templario);
+		
+		Coordenada posicion1 = new Coordenada(5,5);
+		Coordenada posicion2 = new Coordenada(5,6);
+		
+		mapa.almacenar(nave1, posicion1);
+		mapa.almacenar(nave2, posicion2);
+		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, posicion1);
+		
+		templario.tormentaPsionica(area);
+		templario.iniciarTurno();
+		
+		assertEquals(true, nave1.estoyMuerto() && nave2.estoyMuerto());
+	}
+	
+	@Test
+	public void testTormentaPsionicaNoSeActivaSinMagiaSuficiente() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10,10);
+		AltoTemplario templario = new AltoTemplario();
+		Unidad otraUnidad = new NaveCiencia();
+		
+		int vidaInicial = otraUnidad.getVida();
+		
+		Coordenada posicion =  new Coordenada(5,5);
+		mapa.almacenar(otraUnidad, posicion);
+		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, posicion);
+		
+		templario.tormentaPsionica(area);
+		
+		assertEquals(vidaInicial, otraUnidad.getVida());
+	}
+	
+	@Test
+	public void testTormentaPsionicaGasta75deEnergia() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10,10);
+		AltoTemplario templario = new AltoTemplario();
+		
+		pasarMuchosTurnos(templario);
+		
+		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, new Coordenada(5,5));
+		
+		templario.tormentaPsionica(area);
+		
+		assertEquals(templario.getMagiaMaxima() - 75, templario.getMagiaActual());
 	}
 	
 
