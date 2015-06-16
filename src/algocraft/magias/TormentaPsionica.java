@@ -15,7 +15,6 @@ public class TormentaPsionica {
 	}
 	
 	public void ejecutar(){
-			
 		Iterator<Terreno> iter = area.iterator();
 		while(iter.hasNext()){
 			atormentar(iter.next());

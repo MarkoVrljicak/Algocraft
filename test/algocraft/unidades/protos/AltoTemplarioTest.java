@@ -126,7 +126,7 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-	public void testTemplarioNoClonaUnidadSinMagiaSuficiente3() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testTemplarioNoClonaUnidadSinMagiaSuficiente() throws DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa = new Mapa(10,10);
 		Unidad original = new Zealot();
 		AltoTemplario templario = new AltoTemplario();
@@ -147,6 +147,26 @@ public class AltoTemplarioTest {
 		}
 		
 		assertEquals(0, alucinacionesEncontradas);
+	}
+	
+	@Test
+	public void testAlucinacionGasta100Magia() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10,10);
+		Unidad original = new Zealot();
+		AltoTemplario templario = new AltoTemplario();
+		Coordenada ubicacion = new Coordenada(5,5);
+		mapa.almacenar(original, ubicacion);
+		
+		int variosTurnos = 20;
+		for(int i=0; i<variosTurnos; i++){
+			templario.iniciarTurno(); //para llenar magia
+		}
+		
+		int magiaOriginal = templario.getMagiaActual();
+		
+		templario.alucinacion(original, mapa.obtenerRadioDeCasilleros(2, ubicacion));
+		
+		assertEquals(templario.getMagiaActual(), magiaOriginal - 100);
 	}
 	
 	@Test
@@ -184,25 +204,20 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-	public void testAlucinacionGastaXMagia() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testTormentaPsionicaHace100DeDanioLaSegundaVuelta() throws DestinoInvalidoException, FueraDeLimitesException{
 		Mapa mapa = new Mapa(10,10);
-		Unidad original = new Zealot();
 		AltoTemplario templario = new AltoTemplario();
-		Coordenada ubicacion = new Coordenada(5,5);
-		mapa.almacenar(original, ubicacion);
+		Unidad otraUnidad = new NaveCiencia();
 		
-		int variosTurnos = 20;
-		for(int i=0; i<variosTurnos; i++){
-			templario.iniciarTurno(); //para llenar magia
-		}
+		Coordenada posicion =  new Coordenada(5,5);
+		mapa.almacenar(otraUnidad, posicion);
+		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, posicion);
 		
-		int magiaOriginal = templario.getMagiaActual();
+		templario.tormentaPsionica(area);
+		templario.iniciarTurno();
 		
-		templario.alucinacion(original, mapa.obtenerRadioDeCasilleros(2, ubicacion));
-		
-		assertEquals(templario.getMagiaActual(), magiaOriginal - 100);
+		assertEquals(true, otraUnidad.estoyMuerto());
 	}
-	
 	
 
 }

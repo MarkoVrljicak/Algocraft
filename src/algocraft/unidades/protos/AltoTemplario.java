@@ -22,6 +22,16 @@ public class AltoTemplario extends UnidadMagica {
 	public AltoTemplario(){
 		super.inicializar();
 	}
+	
+	@Override
+	public void iniciarTurno(){
+		super.iniciarTurno();
+		
+		if(tormentaPsionica != null){
+			tormentaPsionica.ejecutar();
+			tormentaPsionica = null;
+		}
+	}
 
 	@Override
 	protected void setearNombre() {
