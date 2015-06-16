@@ -2,6 +2,7 @@ package controlador;
 
 import algocraft.Juego;
 import algocraft.jugador.Colores;
+import algocraft.mapa.Coordenada;
 import algocraft.razas.Protoss;
 import algocraft.razas.Raza;
 import algocraft.razas.Terran;
@@ -13,11 +14,13 @@ public class Controlador {
 	
 	private Algocraft aplicacion;
 	private Juego juego;
+	private DibujadorMapa dibujadorMapa;
 
 	public Controlador(Algocraft aplicacion, Juego juego){
 		AccionesAlgocraft.setearControlador(this);	
 		this.aplicacion = aplicacion;
 		this.juego = juego;
+		this.dibujadorMapa = new DibujadorMapa(aplicacion.ventanaJuego.mapa,juego);
 	}
 
 	public void cambiarVentanaA(Ventanas enumVentana) {
@@ -101,6 +104,14 @@ public class Controlador {
 		juego.setJugador2(nombreIngresado, razaElegida, colorElegido);
 		juego.iniciarJuego();
 		this.cambiarVentanaA(Ventanas.JUEGO);
+		this.dibujadorMapa.dibujar();
+		
+	}
+
+	public void realizarAccionPara(Coordenada posicion) {
+		//toma la posicion y acorde al strategy hace algo con juego
+		
+		
 		
 	}
 }

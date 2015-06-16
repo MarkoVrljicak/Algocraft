@@ -48,8 +48,9 @@ public class Algocraft {
 
 	/**
 	 * Create the application.
+	 * @throws IOException 
 	 */
-	public Algocraft() {
+	public Algocraft(){
 		initialize();
 		this.juego = new Juego(anchoMapa,altoMapa);
 		this.controlador = new Controlador(this,this.juego);
@@ -57,8 +58,9 @@ public class Algocraft {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws IOException 
 	 */
-	private void initialize() {
+	private void initialize(){
 		frame = new JFrame();
 		inicializarComponentes();
 		
@@ -70,7 +72,7 @@ public class Algocraft {
 		
 	}
 
-	private void inicializarComponentes() {
+	private void inicializarComponentes(){
 		frame.getContentPane().setBackground(SystemColor.controlShadow);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
