@@ -1,9 +1,5 @@
 package controlador;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -20,31 +16,37 @@ public class DibujadorMapa {
 	private VistaMapa vistaMapa;
 	private Juego juego;
 	
-	private BufferedImage imagenTierra;
-	private BufferedImage imagenAire;
-	private BufferedImage imagenMineral;
-	private BufferedImage imagenVolcan;
+	private ImageIcon imagenTierra;
+	private ImageIcon imagenAire;
+	private ImageIcon imagenMineral;
+	private ImageIcon imagenVolcan;
 	
-	private static final String texturas ="C://Users//Nicolas//workspace//TpFinal//trunk//src//controlador//texturas//";
+	private static final String pathTexturas ="texturas//";
 	
 
 	public DibujadorMapa(VistaMapa vistaMapa, Juego juego){
 		this.vistaMapa = vistaMapa;
 		this.juego = juego;
 		
-		File file;
-		try {
-			file = new File(texturas + "tierra.png") ;
-			imagenTierra =ImageIO.read(file);
-			file = new File(texturas + "aire.png") ;
-			imagenAire=ImageIO.read(file);
-			file = new File(texturas + "cristales.png") ;
-			imagenMineral=ImageIO.read(file);
-			file = new File(texturas + "volcan.png") ;
-			imagenVolcan=ImageIO.read(file);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		String file;
+		file = (pathTexturas + "tierra.png") ;
+		imagenTierra =createImageIcon(file,"");
+		file =(pathTexturas + "aire.png") ;
+		imagenAire=createImageIcon(file,"");
+		file = (pathTexturas + "cristales.png") ;
+		imagenMineral=createImageIcon(file,"");
+		file = (pathTexturas + "volcan.png") ;
+		imagenVolcan=createImageIcon(file,"");
+	}
+	
+	protected ImageIcon createImageIcon(String path,
+			String description) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL, description);
+		} else {
+			System.err.println("Couldn't find file: " + path);
+			return null;
 		}
 	}
 	
@@ -73,7 +75,7 @@ public class DibujadorMapa {
 	}
 	
 	private JLabel dibujarTerreno(Terrenos nombreTerreno){
-		BufferedImage imagen;
+		ImageIcon imagen;
 		switch(nombreTerreno){
 		case AIRE:
 			imagen =imagenAire;
@@ -91,6 +93,6 @@ public class DibujadorMapa {
 			imagen =imagenTierra;
 			break;
 		}
-		return new JLabel(new ImageIcon( imagen));
+		return new JLabel(imagen);
     }
 }
