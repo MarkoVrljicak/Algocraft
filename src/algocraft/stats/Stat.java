@@ -30,5 +30,7 @@ abstract public class Stat {
 	}
 	
 	abstract public void regenerar();
+	
+	abstract public void quitarEnergia();
 
 }

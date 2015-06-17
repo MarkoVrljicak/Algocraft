@@ -16,5 +16,10 @@ public class Magia extends Stat{
 			this.actualValor = this.maximoValor;
 		}
 	}
+	
+	@Override
+	public void quitarEnergia() {
+		this.actualValor = 0;
+	}
 
 }

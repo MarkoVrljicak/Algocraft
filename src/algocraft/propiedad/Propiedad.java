@@ -29,5 +29,7 @@ abstract public class Propiedad implements Daniable, Actualizable{
 		}
 		
 	}
+
+	abstract public void quitarEnergia();
 	
 }

@@ -1,8 +1,13 @@
 package algocraft.unidades.terran;
 
+import java.util.Collection;
+
 import algocraft.magias.AtaqueMagico;
+import algocraft.magias.EMP;
 import algocraft.magias.Radiacion;
+import algocraft.mapa.Coordenada;
 import algocraft.mapa.Mapa;
+import algocraft.mapa.terrenos.Terreno;
 import algocraft.movimientos.MovimientoAereo;
 import algocraft.stats.Magia;
 import algocraft.stats.Movimientos;
@@ -71,15 +76,31 @@ public class NaveCiencia extends UnidadMagica{
 
 	public void radiacion(Unidad marine, Mapa mapa) {
 		int costo = 75;
-		if(this.magia.actual() < costo){
-			return;
-		} else {
-			this.magia.disminuir(costo);
-		}
+		if(!chequearCostoDeMagia(costo)) return;
 		
 		AtaqueMagico radiacion = new Radiacion(marine, mapa);
 		radiacion.ejecutar();
 		this.magias.add(radiacion);
 		
+	}
+	
+	public void emp(Mapa mapa, Coordenada objetivo){
+		int costo = 100;
+		if(!chequearCostoDeMagia(costo)) return;
+		
+		Collection<Terreno> campo = mapa.obtenerRadioDeCasilleros(2, objetivo);
+		
+		AtaqueMagico emp = new EMP(campo);
+		emp.ejecutar();
+		this.magias.add(emp);
+	}
+	
+	private boolean chequearCostoDeMagia(int costo){
+		if(this.magia.actual() < costo){
+			return false;
+		} else {
+			this.magia.disminuir(costo);
+			return true;
+		}
 	}
 }

@@ -121,4 +121,10 @@ public abstract class Unidad extends Propiedad implements Movible{
 	public Coordenada mover(Collection<Terreno> camino){
 		return this.movimiento.ejecutar(camino, this);
 	}
+	
+	@Override
+	public void quitarEnergia() {
+		this.vitalidad.quitarEnergia();
+		
+	}	
 }

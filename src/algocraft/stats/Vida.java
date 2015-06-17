@@ -10,4 +10,9 @@ public class Vida extends Stat {
 	public void regenerar() {
 		//no hace nada
 	}
+
+	@Override
+	public void quitarEnergia() {
+		//no hace nada
+	}
 }

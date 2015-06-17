@@ -55,5 +55,12 @@ public abstract class DecoradorEdificioBasico extends Propiedad implements Const
 	public int getPoblacionSumada(){
 		return this.edificio.getPoblacionSumada();
 	}
+
+	@Override
+	public void quitarEnergia() {
+		//no responde.
+	}	
+	
+	
 }
 

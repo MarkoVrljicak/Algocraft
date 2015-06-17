@@ -27,13 +27,14 @@ abstract public class UnidadMagica extends Unidad {
 			if(siguienteMagia.caduco()){
 				magias.remove(siguienteMagia);
 			} 
-			
-		iter = magias.iterator();
-		while(iter.hasNext()) {
-			siguienteMagia = iter.next();
-			siguienteMagia.ejecutar();
+		
+			iter = magias.iterator(); //Confesion: anide esto por error. Si lo desanido deja de andar, y no entiendo por que.
+			while(iter.hasNext()) {
+				siguienteMagia = iter.next();
+				siguienteMagia.ejecutar();
+			}
 		}
-		}
+		
 	}
 	
 	public int getMagiaActual(){
@@ -43,6 +44,12 @@ abstract public class UnidadMagica extends Unidad {
 	public int getMagiaMaxima(){
 		return this.magia.max();
 	}
+	
+	@Override
+	public void quitarEnergia() {
+		this.magia.quitarEnergia();
+		
+	}	
 	
 	
 	

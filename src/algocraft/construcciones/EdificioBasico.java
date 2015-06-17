@@ -86,4 +86,10 @@ public class EdificioBasico extends Propiedad implements Construccion{
 	public int getPoblacionSumada(){
 		return this.poblacionSumada;
 	}
+
+
+	@Override
+	public void quitarEnergia() {
+		//no responde
+	}
 }

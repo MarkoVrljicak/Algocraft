@@ -15,9 +15,10 @@ public class TormentaPsionica extends AtaqueMagico{
 	}
 	
 	public void ejecutar(){
+		int danio = 100;
 		Iterator<Terreno> iter = area.iterator();
 		while(iter.hasNext()){
-			afectarZona(iter.next(), 100);
+			afectarZona(iter.next(), danio);
 		}
 		turnosActivo++;
 	}

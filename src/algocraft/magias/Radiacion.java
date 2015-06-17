@@ -19,6 +19,7 @@ public class Radiacion extends AtaqueMagico{
 	}
 	
 	public void ejecutar(){
+		int danio = 10;
 		Coordenada posicionUnidad = null;
 		
 		try {
@@ -31,7 +32,7 @@ public class Radiacion extends AtaqueMagico{
 		Collection<Terreno> zonaRadioactiva = mapa.obtenerRadioDeCasilleros(1, posicionUnidad);
 		Iterator<Terreno> iter = zonaRadioactiva.iterator();
 		while(iter.hasNext()){
-			afectarZona(iter.next(), 10);
+			afectarZona(iter.next(), danio);
 		}
 		
 	}

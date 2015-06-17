@@ -10,4 +10,9 @@ public class Movimientos extends Stat{
 	public void regenerar() {
 		this.actualValor = this.maximoValor;
 	}
+	
+	@Override
+	public void quitarEnergia() {
+		//no hace nada
+	}
 }

@@ -11,6 +11,9 @@ import algocraft.mapa.Coordenada;
 import algocraft.mapa.Mapa;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.UnidadMagica;
+import algocraft.unidades.protos.AltoTemplario;
+import algocraft.unidades.protos.Alucinacion;
+import algocraft.unidades.protos.Zealot;
 
 public class NaveCienciaTest {
 	
@@ -218,5 +221,60 @@ public class NaveCienciaTest {
 		assertEquals(marine2.getVitalidadMaxima() - danioRadiacion, marine2.getVida());
 	}
 
+	@Test
+	public void testEMPMataAlucinacionesDeUna() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10, 10);
+		NaveCiencia nave = new NaveCiencia();
+		Unidad aClonar = new Zealot();
+		Unidad alucinacion = new Alucinacion(aClonar);
+		Coordenada posicion = new Coordenada(5,5);
+		mapa.almacenar(alucinacion, posicion);
+		
+		pasarMuchosTurnos(nave);
+		nave.emp(mapa, posicion);
+		
+		assertEquals(true, alucinacion.estoyMuerto());
+	}
+	
+	@Test
+	public void testEMPNoSeRealizaSinMagiaSuficiente() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10, 10);
+		NaveCiencia nave = new NaveCiencia();
+		Unidad aClonar = new Zealot();
+		Unidad alucinacion = new Alucinacion(aClonar);
+		Coordenada posicion = new Coordenada(5,5);
+		mapa.almacenar(alucinacion, posicion);
+		
+		nave.emp(mapa, posicion);
+		
+		assertEquals(false, alucinacion.estoyMuerto());
+	}
+	
+	@Test
+	public void testEMPQuitaMagiaEnLugarDeEscudoAUnidadesMagicas() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10, 10);
+		NaveCiencia nave = new NaveCiencia();
+		UnidadMagica templario = new AltoTemplario();
+		Coordenada posicion = new Coordenada(5,5);
+		mapa.almacenar(templario, posicion);
+		
+		pasarMuchosTurnos(nave);
+		nave.emp(mapa, posicion);
+		
+		assertEquals(0, templario.getMagiaActual());
+	}
+	
+	@Test
+	public void testEMPNoQuitaEnergiaFueraDeRango() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10, 10);
+		NaveCiencia nave = new NaveCiencia();
+		UnidadMagica templario = new AltoTemplario();
+		mapa.almacenar(templario, new Coordenada(5,5));
+		
+		pasarMuchosTurnos(nave);
+		nave.emp(mapa, new Coordenada(5,8));
+		
+		assertEquals(50, templario.getMagiaActual());
+	}
 	
 }

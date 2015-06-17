@@ -91,5 +91,6 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	@Override
 	public boolean soyVolador() {
 		return false;
-	}	
+	}
+
 }

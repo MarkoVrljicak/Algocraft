@@ -42,4 +42,9 @@ public class Escudo extends Stat {
 	public int actualProtegida() {
 		return this.statProtegido.actual();
 	}
+
+	@Override
+	public void quitarEnergia() {
+		this.actualValor = 0;
+	}
 }
