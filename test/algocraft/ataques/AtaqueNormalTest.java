@@ -135,4 +135,33 @@ public class AtaqueNormalTest {
 		
 		assertEquals(false, marineAtacante.atacar(marineAtacado, coordenadaAtacante.distanciaA(coordenadaEnRango)));
 	}
+	
+	@Test
+	public void testUnidadNoAtacaDosVecesEnMismoTurno() 
+			throws DestinoInvalidoException, FueraDeLimitesException {
+		Mapa mapa = new Mapa(2,2);
+		UnidadAtacante marineAtacante = new Marine();
+		Unidad marineAtacado = new Marine();
+		mapa.almacenar(marineAtacante, coordenadaAtacante);
+		mapa.almacenar(marineAtacado, coordenadaEnRango);
+		
+		marineAtacante.atacar(marineAtacado, coordenadaAtacante.distanciaA(coordenadaEnRango));
+		
+		assertEquals(false, marineAtacante.atacar(marineAtacado, coordenadaAtacante.distanciaA(coordenadaEnRango)));
+	}
+	
+	@Test
+	public void testUnidadPuedeVolverAAtacarEnOtroTurno() 
+			throws DestinoInvalidoException, FueraDeLimitesException {
+		Mapa mapa = new Mapa(2,2);
+		UnidadAtacante marineAtacante = new Marine();
+		Unidad marineAtacado = new Marine();
+		mapa.almacenar(marineAtacante, coordenadaAtacante);
+		mapa.almacenar(marineAtacado, coordenadaEnRango);
+		
+		marineAtacante.atacar(marineAtacado, coordenadaAtacante.distanciaA(coordenadaEnRango));
+		marineAtacante.iniciarTurno();
+		
+		assertEquals(true, marineAtacante.atacar(marineAtacado, coordenadaAtacante.distanciaA(coordenadaEnRango)));
+	}
 }

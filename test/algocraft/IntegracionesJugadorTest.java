@@ -205,6 +205,7 @@ public class IntegracionesJugadorTest {
 		//mato unidad
 		UnidadAtacante dragon = new Dragon();
 		dragon.atacar(marine, 1);
+		dragon.iniciarTurno();
 		dragon.atacar(marine, 1);
 
 		assertEquals(true, marine.estoyMuerto());//verifico marine muerto

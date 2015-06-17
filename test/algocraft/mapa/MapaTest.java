@@ -342,6 +342,7 @@ public class MapaTest {
 		mapa.almacenar(marine, new Coordenada(2,2));
 		
 		mapa.gestionarAtaque(dragon, marine);
+		dragon.iniciarTurno();
 		mapa.gestionarAtaque(dragon, marine);
 		
 		assertEquals(true, marine.estoyMuerto());
@@ -358,6 +359,7 @@ public class MapaTest {
 		mapa.almacenar(marine, new Coordenada(2,2));
 		
 		mapa.gestionarAtaque(dragon, marine);
+		dragon.iniciarTurno();
 		mapa.gestionarAtaque(dragon, marine);
 		
 		assertEquals(1, mapa.propiedadesEnJuego());
