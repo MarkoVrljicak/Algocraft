@@ -26,15 +26,15 @@ abstract public class UnidadMagica extends Unidad {
 			AtaqueMagico siguienteMagia = iter.next();
 			if(siguienteMagia.caduco()){
 				magias.remove(siguienteMagia);
+				iter = magias.iterator();
 			} 
-		
-			iter = magias.iterator(); //Confesion: anide esto por error. Si lo desanido deja de andar, y no entiendo por que.
-			while(iter.hasNext()) {
-				siguienteMagia = iter.next();
-				siguienteMagia.ejecutar();
-			}
 		}
 		
+		iter = magias.iterator();
+		while(iter.hasNext()) {
+			AtaqueMagico siguienteMagia = iter.next();
+			siguienteMagia.ejecutar();
+		}
 	}
 	
 	public int getMagiaActual(){

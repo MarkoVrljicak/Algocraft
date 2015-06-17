@@ -74,11 +74,11 @@ public class NaveCiencia extends UnidadMagica{
 		this.magia.disminuir(150);
 	}
 
-	public void radiacion(Unidad marine, Mapa mapa) {
+	public void radiacion(Unidad unidad, Mapa mapa) {
 		int costo = 75;
 		if(!chequearCostoDeMagia(costo)) return;
 		
-		AtaqueMagico radiacion = new Radiacion(marine, mapa);
+		AtaqueMagico radiacion = new Radiacion(unidad, mapa);
 		radiacion.ejecutar();
 		this.magias.add(radiacion);
 		
