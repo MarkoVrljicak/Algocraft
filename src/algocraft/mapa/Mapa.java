@@ -162,63 +162,6 @@ public class Mapa implements Iterable<Terreno>{
 		
 		return camino;
 	}
-
-//	public boolean moverUnidad(Unidad unidad, Coordenada coordenadaDestino) 
-//			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException {
-//		
-//		Coordenada coordenadaOrigen = posiciones.get( unidad );
-//		if(coordenadaOrigen == null){
-//			throw new PropiedadNoEstaEnJuegoException();
-//		}
-//		
-//		Terreno terrenoOrigen = this.getTerreno(coordenadaOrigen);
-//		Terreno terrenoDestino = this.getTerreno(coordenadaDestino);
-//		
-//		if(!unidad.puedoMoverme(terrenoDestino))
-//			return false;//destino invalido
-//		if(coordenadaDestino.distanciaA(coordenadaOrigen) > unidad.getMovimientos().actual())
-//			return false;//fuera de rango
-//		while(coordenadaDestino.distanciaA(coordenadaOrigen) > 1){
-//			if(! this.darUnPaso(unidad,coordenadaOrigen,coordenadaDestino) )
-//				return false;//no pudo llegar al destino, algo paso en el medio
-//			else 
-//				coordenadaOrigen = posiciones.get(unidad);//actualizo origen
-//		}
-//		
-//		this.almacenar(unidad, coordenadaDestino);
-//		
-//		try {
-//			terrenoOrigen.borrarContenido(unidad);
-//		} catch (PropiedadNoExisteEnEstaUbicacion e) {
-//			e.printStackTrace();
-//		}
-//		
-//		unidad.getMovimientos().disminuir(coordenadaOrigen.distanciaA(coordenadaDestino));
-//		
-//		return true;
-//	}
-//	
-//	private boolean darUnPaso(Unidad unidad, Coordenada origen, Coordenada destino) 
-//			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException {
-//		Coordenada mejorOpcion = origen ;
-//		//entre los vecinos busco la mejor opcion
-//		for(int x = origen.getX()-1 ; x <= origen.getX()+1 ; x++){
-//			for(int y = origen.getY()-1 ; y <= origen.getY()+1 ; y++){
-//				Coordenada candidata= new Coordenada(x,y);
-//				if(this.hayCasillero(candidata)){
-//					Terreno candidato = this.getTerreno(candidata);
-//					if( ( candidato.getCoordenada().distanciaA(destino) < mejorOpcion.distanciaA(destino) )
-//							&& unidad.puedoMoverme(candidato) )
-//						mejorOpcion = candidata;
-//				}
-//			}
-//		}
-//		if (mejorOpcion == origen)
-//			return false;//no hay mejor opcion que el lugar actual
-//		else
-//			return this.moverUnidad(unidad, mejorOpcion);
-//	}
-	
 	
 	//ataque
 	

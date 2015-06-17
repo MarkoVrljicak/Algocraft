@@ -4,14 +4,17 @@ package algocraft;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import algocraft.Interfaces.Actualizable;
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.construcciones.EnumEdificios;
 import algocraft.exception.DestinoInvalidoException;
+import algocraft.exception.EspacioInsuficienteException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.PropiedadNoEstaEnJuegoException;
+import algocraft.exception.PropiedadNoExisteEnEstaUbicacion;
 import algocraft.exception.UnidadIncompletaException;
+import algocraft.exception.UnidadNoTransportableException;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 import algocraft.mapa.Coordenada;
@@ -21,6 +24,7 @@ import algocraft.mapa.terrenos.Terreno;
 import algocraft.propiedad.Propiedad;
 import algocraft.razas.Raza;
 import algocraft.unidades.Unidad;
+import algocraft.unidades.UnidadTransportadora;
 import algocraft.unidades.Unidades;
 
 public class Juego {
@@ -58,9 +62,14 @@ public class Juego {
 		return mapa.getTerreno(coordenada);
 	}
 	
-	public Actualizable seleccionarSuelo(Coordenada coordenada) 
+	public Propiedad seleccionarSuelo(Coordenada coordenada) 
 			throws FueraDeLimitesException {
 		return mapa.getPropiedadSuelo(coordenada);
+	}
+	
+	public Propiedad seleccionarCielo(Coordenada coordenada) 
+			throws FueraDeLimitesException {	
+		return mapa.getPropiedadCielo(coordenada);
 	}
 
 	public void construirEn(EnumEdificios edificio, Coordenada coordenada) 
@@ -128,4 +137,36 @@ public class Juego {
 			}
 		}
 	}
+
+	public void moverUnidad(Unidad unidad, Coordenada destino) 
+			throws PropiedadNoEstaEnJuegoException {
+		this.mapa.moverUnidad(unidad, destino);		
+	}
+
+	public void subirUnidad(Unidad unidadSubida, UnidadTransportadora naveTransportadora) 
+			throws EspacioInsuficienteException, UnidadNoTransportableException {
+		naveTransportadora.subirUnidad(unidadSubida);
+		try {
+			mapa.getTerreno(mapa.encontrar(unidadSubida)).borrarContenido(unidadSubida);
+		} catch (PropiedadNoExisteEnEstaUbicacion | FueraDeLimitesException e) {
+			// contradiccion
+			e.printStackTrace();
+		}	
+	}
+
+	public void bajarUnidad(UnidadTransportadora naveTransportadora, Unidad unidadABajar)
+			throws DestinoInvalidoException {
+		Coordenada posicionDescenso = mapa.encontrar(naveTransportadora);
+		Unidad unidadBajada = naveTransportadora.bajarUnidad(unidadABajar);
+		try {
+			mapa.almacenar(unidadBajada, posicionDescenso);
+		} catch (FueraDeLimitesException e) {
+			// contradiccion
+			e.printStackTrace();
+		}
+	}
+
+	
+
+	
 }

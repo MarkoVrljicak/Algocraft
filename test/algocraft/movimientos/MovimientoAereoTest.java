@@ -20,7 +20,8 @@ import algocraft.unidades.terran.NaveCiencia;
 
 public class MovimientoAereoTest {
 	@Test
-	public void testMovimientoTerrestreAVecinoDespejado() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
+	public void testMovimientoTerrestreAVecinoDespejado() 
+			throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
 		Mapa mapa = new Mapa(3,3);
 		
 		Unidad unidad = new NaveCiencia();
@@ -40,7 +41,8 @@ public class MovimientoAereoTest {
 	}
 	
 	@Test
-	public void testMovimientoTerrestreATierraMasLejanaConCaminoDespejado() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
+	public void testMovimientoTerrestreATierraMasLejanaConCaminoDespejado() 
+			throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
 		Mapa mapa = new Mapa(3,3);
 		
 		Unidad unidad = new NaveCiencia();
@@ -60,7 +62,8 @@ public class MovimientoAereoTest {
 	}
 	
 	@Test
-	public void testUnidadNoLlegaSiElObjetivoEstaDemasiadoLejos() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
+	public void testUnidadNoLlegaSiElObjetivoEstaDemasiadoLejos() 
+			throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
 		Mapa mapa = new Mapa(10,10);
 		
 		Unidad unidad = new NaveCiencia();
@@ -80,7 +83,8 @@ public class MovimientoAereoTest {
 	}
 	
 	@Test
-	public void testUnidadNoLlegaSiElObjetivoEstaDemasiadoLejosPeroTampocoSeQuedaEnElOrigen() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
+	public void testUnidadNoLlegaSiElObjetivoEstaDemasiadoLejosPeroTampocoSeQuedaEnElOrigen() 
+			throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
 		Mapa mapa = new Mapa(10,10);
 		
 		Unidad unidad = new NaveCiencia();
@@ -100,7 +104,8 @@ public class MovimientoAereoTest {
 	}
 	
 	@Test
-	public void testUnidadNoLlegaSiElCaminoEstaObstruido() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
+	public void testUnidadNoLlegaSiElCaminoEstaObstruido() 
+			throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
 		Mapa mapa = new Mapa(1,3);
 		
 		Unidad unidad = new NaveCiencia();
@@ -122,7 +127,8 @@ public class MovimientoAereoTest {
 	}
 
 	@Test
-	public void testUnidadLlegaAunqueElCaminoEsteObstruidoPorTierra() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
+	public void testUnidadLlegaAunqueElCaminoEsteObstruidoPorTierra() 
+			throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
 		Mapa mapa = new Mapa(1,3);
 		
 		Unidad unidad = new NaveCiencia();

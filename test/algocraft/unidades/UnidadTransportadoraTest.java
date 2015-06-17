@@ -2,8 +2,12 @@ package algocraft.unidades;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
+import algocraft.exception.EspacioInsuficienteException;
+import algocraft.exception.UnidadNoTransportableException;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.UnidadTransportadora;
 import algocraft.unidades.terran.Golliat;
@@ -15,7 +19,8 @@ public class UnidadTransportadoraTest {
 
 	
 	@Test
-	public void testNaveSubeAUnidad(){
+	public void testNaveSubeAUnidad() 
+			throws EspacioInsuficienteException, UnidadNoTransportableException{
 		UnidadTransportadora nave = new NaveTransporte();
 		Unidad marine = new Marine();
 		
@@ -24,20 +29,31 @@ public class UnidadTransportadoraTest {
 		assertEquals(1, nave.unidadesCargadas());
 	}
 	
-	@Test
-	public void testNaveSubeAMuchasUnidadesPeroSoloHastaSuCapacidad(){
+	@Test(expected = UnidadNoTransportableException.class)
+	public void testNaveNoSubeAUnidadVoladora() 
+			throws EspacioInsuficienteException, UnidadNoTransportableException{
+		UnidadTransportadora nave = new NaveTransporte();
+		Unidad nave2 = new NaveTransporte();
+		
+		nave.subirUnidad(nave2);
+	}
+	
+	@Test(expected = EspacioInsuficienteException.class)
+	public void testNaveSubeAMuchasUnidadesPeroSoloHastaSuCapacidad() 
+			throws EspacioInsuficienteException, UnidadNoTransportableException{
 		UnidadTransportadora nave = new NaveTransporte();
 		
 		for(int i = 0; i<10; i++){
 			Unidad marine = new Marine();
 			nave.subirUnidad(marine);
 		}
-		
-		assertEquals(8, nave.unidadesCargadas());
 	}
 	
+	
+	
 	@Test
-	public void testNaveSubeAUnidadYLuegoLaBaja(){
+	public void testNaveSubeAUnidadYLuegoLaBaja() 
+			throws EspacioInsuficienteException, UnidadNoTransportableException{
 		UnidadTransportadora nave = new NaveTransporte();
 		Unidad marine = new Marine();
 		
@@ -52,7 +68,8 @@ public class UnidadTransportadoraTest {
 	}
 	
 	@Test
-	public void testNaveSubeAUnidadesDeIgualTipoYLuegoLasBaja(){
+	public void testNaveSubeAUnidadesDeIgualTipoYLuegoLasBaja() 
+			throws EspacioInsuficienteException, UnidadNoTransportableException{
 		UnidadTransportadora nave = new NaveTransporte();
 		Unidad marine1 = new Marine();
 		Unidad marine2 = new Marine();
@@ -69,7 +86,8 @@ public class UnidadTransportadoraTest {
 	}
 	
 	@Test
-	public void testNaveSubeAUnidadesDeDistintoTipoYLuegoLasBaja(){
+	public void testNaveSubeAUnidadesDeDistintoTipoYLuegoLasBaja() 
+			throws EspacioInsuficienteException, UnidadNoTransportableException{
 		UnidadTransportadora nave = new NaveTransporte();
 		Unidad marine = new Marine();
 		Unidad golliat = new Golliat();
@@ -83,6 +101,18 @@ public class UnidadTransportadoraTest {
 		
 		Unidad unidadDescargada2 = nave.bajarUnidad(marine);
 		assertEquals(unidadDescargada2,marine);
+	}
+	
+	@Test
+	public void testPuedoSaberQueUnidadesEstoyTransportando() 
+			throws EspacioInsuficienteException, UnidadNoTransportableException{
+		UnidadTransportadora nave = new NaveTransporte();
+		Unidad marine = new Marine();
+		nave.subirUnidad(marine);
+		
+		ArrayList<Unidad> transportados = nave.obtenerTranspotados();
+		
+		assertEquals(UnidadesTerran.MARINE,transportados.get(0).getNombre());
 	}
 	
 }

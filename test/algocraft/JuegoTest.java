@@ -7,23 +7,28 @@ import org.junit.Test;
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.exception.DestinoInvalidoException;
+import algocraft.exception.EspacioInsuficienteException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.PropiedadNoEstaEnJuegoException;
+import algocraft.exception.UnidadNoTransportableException;
 import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 import algocraft.jugador.Colores;
 import algocraft.mapa.Coordenada;
+import algocraft.mapa.Mapa;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
 import algocraft.razas.Protoss;
 import algocraft.razas.Terran;
 import algocraft.unidades.Unidad;
+import algocraft.unidades.UnidadTransportadora;
 import algocraft.unidades.terran.UnidadesTerran;
 
 public class JuegoTest {
 	
-	private static final int ancho = 30;
-	private static final int alto = 30;
+	private int ancho = 30;
+	private int alto = 30;
 
 	private Juego iniciarJuegoConDosJugadores(){
 		Juego algocraft = new Juego(ancho,alto);
@@ -75,12 +80,35 @@ public class JuegoTest {
 
 	private CreadorDeUnidades crearBarracaListaEn(Juego algocraft, Coordenada posicion) 
 			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException{
+		
 		algocraft.construirEn(EnumEdificiosTerran.BARRACA, posicion);
 		CreadorDeUnidades barraca=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicion);
 		while(barraca.enConstruccion()){
 			algocraft.pasarTurno();
 		}
 		return barraca;
+	}
+	
+	private CreadorDeUnidades crearFabricaListaEn(Juego algocraft,Coordenada posicion) 
+			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException {
+		
+		algocraft.construirEn(EnumEdificiosTerran.FABRICA, posicion);
+		CreadorDeUnidades fabrica=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicion);
+		while(fabrica.enConstruccion()){
+			algocraft.pasarTurno();
+		}
+		return fabrica;
+	}
+	
+	private CreadorDeUnidades crearPuertoListoEn(Juego algocraft,Coordenada posicion) 
+			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException {
+		
+		algocraft.construirEn(EnumEdificiosTerran.PUERTO_ESTELAR, posicion);
+		CreadorDeUnidades puerto=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicion);
+		while(puerto.enConstruccion()){
+			algocraft.pasarTurno();
+		}
+		return puerto;
 	}
 	
 	@Test
@@ -164,42 +192,94 @@ public class JuegoTest {
 		for(int turnos=1 ; turnos<=8 ; turnos++)
 			algocraft.pasarTurno();
 		
-		boolean encontrado = encontrarMarineCercaDeBarraca(algocraft,
-				posicionBarraca);
-		assertTrue(encontrado);
+		Coordenada posicionMarine = encontrarUnidad(algocraft,	UnidadesTerran.MARINE);
+		assertTrue(posicionBarraca.distanciaA(posicionMarine) == 1);
 	}
 
-	private boolean encontrarMarineCercaDeBarraca(Juego algocraft,
-			Coordenada posicionBarraca) throws FueraDeLimitesException {
+	private Coordenada encontrarUnidad(Juego algocraft, UnidadesTerran nombreUnidad) {
 		boolean encontrado = false;
-		for(int x = posicionBarraca.getX()-1 ; x <= posicionBarraca.getX()+1  && !encontrado; x++){
-			for(int y = posicionBarraca.getY()-1 ; y <= posicionBarraca.getY()+1 && !encontrado; y++){
+		for(int x = 1 ; x <= ancho  && !encontrado; x++){
+			for(int y = 1 ; y <= alto && !encontrado; y++){
 				Coordenada coordenadaCandidata = new Coordenada(x,y);
-				if(algocraft.seleccionarSuelo(coordenadaCandidata) != null)
-					try{
-						Unidad unidadEncontrada = (Unidad)algocraft.seleccionarSuelo(coordenadaCandidata);
-						if(unidadEncontrada.getNombre()==UnidadesTerran.MARINE) encontrado = true;
-					}catch(ClassCastException e){
-						e.printStackTrace();
+				try{
+					Unidad unidadEncontrada = (Unidad)algocraft.seleccionarSuelo(coordenadaCandidata);
+					if(!(unidadEncontrada==null) && unidadEncontrada.getNombre()==nombreUnidad){
+						encontrado = true;
+						return coordenadaCandidata;
 					}
+					unidadEncontrada = (Unidad)algocraft.seleccionarCielo(coordenadaCandidata);
+					if(!(unidadEncontrada==null) && unidadEncontrada.getNombre()==nombreUnidad){
+						encontrado = true;
+						return coordenadaCandidata;
+					}
+				}catch(ClassCastException | FueraDeLimitesException e){
+					//se que esto no se debe hacer pero no se de que otra forma
+					//probarlo sin generar metodos especificos en el modelo para el test
+				}
 			}
 		}
-		return encontrado;
+		return null;
 	}
 
 	@Test
 	public void testTransportoMarineATravesDeAire() 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException{
+			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException,
+				PropiedadNoEstaEnJuegoException, EspacioInsuficienteException, UnidadNoTransportableException{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
+		inyectarMapaEspecial(algocraft);
 		this.juntarRecursosParaAmbosJugadores(algocraft);
-		Coordenada posicionBarraca = new Coordenada(6,alto-5);
+		Coordenada posicionBarraca = new Coordenada(5,3);
 		CreadorDeUnidades barraca = this.crearBarracaListaEn(algocraft, posicionBarraca);
-		algocraft.crearUnidad(barraca, UnidadesTerran.MARINE);
-		for(int turnos=1 ; turnos<=8 ; turnos++)
-			algocraft.pasarTurno();
-		@SuppressWarnings("unused")
-		Coordenada posicionFabrica = new Coordenada(5,alto-5);
+		Coordenada posicionFabrica = new Coordenada(6,3);
+		this.crearFabricaListaEn(algocraft, posicionFabrica);
+		Coordenada posicionPuerto = new Coordenada(4,3);
+		CreadorDeUnidades puerto = this.crearPuertoListoEn(algocraft, posicionPuerto);
 		
-		//incompleto
+		algocraft.crearUnidad(barraca, UnidadesTerran.MARINE);
+		algocraft.crearUnidad(puerto, UnidadesTerran.NAVE_TRANSPORTE);
+		while(puerto.unidadEnCreacion()){
+			algocraft.pasarTurno();
+		}
+		algocraft.pasarTurno();
+		Coordenada posicionMarine = encontrarUnidad(algocraft,UnidadesTerran.MARINE);
+		UnidadTransportadora nave = (UnidadTransportadora) algocraft.seleccionarCielo(
+				encontrarUnidad(algocraft,UnidadesTerran.NAVE_TRANSPORTE));
+		
+		algocraft.moverUnidad(nave,posicionMarine);
+		
+		algocraft.subirUnidad((Unidad) algocraft.seleccionarSuelo(posicionMarine),nave);
+		
+		
+		
+		//paso un turno y vuelvo a mi turno para que tenga movimientos suficientes
+		algocraft.pasarTurno();
+		algocraft.pasarTurno();
+		
+		Coordenada destino = new Coordenada(5,7);
+		
+		algocraft.moverUnidad(nave, destino);
+		algocraft.bajarUnidad(nave,nave.obtenerTranspotados().get(0));
+		
+		 assertEquals(UnidadesTerran.MARINE, ((Unidad)algocraft.seleccionarSuelo(algocraft.mapa.encontrar(nave))).getNombre());
+		
+		this.ancho = 30;
+		this.alto = 30;
 	}
+
+	private void inyectarMapaEspecial(Juego algocraft) {
+		this.ancho = 10;
+		this.alto = 10;
+		Mapa mapaEspecial = new Mapa(ancho,alto);
+		for(int i = 1 ; i <= 10 ; i++){
+			mapaEspecial.setearTerrenoEnCoordenada(Terrenos.MINERALES, i, 1);
+			mapaEspecial.setearTerrenoEnCoordenada(Terrenos.MINERALES, i, 10);
+			mapaEspecial.setearTerrenoEnCoordenada(Terrenos.VOLCAN, i, 2);
+			mapaEspecial.setearTerrenoEnCoordenada(Terrenos.VOLCAN, i, 9);
+			mapaEspecial.setearTerrenoEnCoordenada(Terrenos.AIRE, i, 5);
+		}
+		algocraft.mapa = mapaEspecial;
+		
+	}
+
+	
 }
