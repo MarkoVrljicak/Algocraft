@@ -260,4 +260,13 @@ public class Mapa implements Iterable<Terreno>{
 		return outputTerrenos;
 	}
 
+	public Coordenada getPosicionPropiedad(Propiedad propiedad) throws PropiedadNoEstaEnJuegoException {
+		if(posiciones.containsKey(propiedad)){
+			return posiciones.get(propiedad);
+		} else {
+			throw new PropiedadNoEstaEnJuegoException();
+		}
+		
+	}
+
 }

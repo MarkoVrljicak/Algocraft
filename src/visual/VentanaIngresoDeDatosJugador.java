@@ -3,14 +3,14 @@ package visual;
 import java.awt.Font;
 
 import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.JButton;
 
 import controlador.SubmitDatosJugador1;
-import javax.swing.ButtonGroup;
 
 @SuppressWarnings("serial")
 public class VentanaIngresoDeDatosJugador extends JPanel {

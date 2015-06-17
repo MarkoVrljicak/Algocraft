@@ -2,7 +2,6 @@ package algocraft.unidades.protos;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Collection;
 import java.util.Iterator;
 
 import org.junit.Test;
@@ -179,11 +178,10 @@ public class AltoTemplarioTest {
 		Unidad otraUnidad = new Marine();
 		Coordenada posicion =  new Coordenada(5,5);
 		mapa.almacenar(otraUnidad, posicion);
-		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, posicion);
 		
 		int vidaOriginal = otraUnidad.getVida();
 		
-		templario.tormentaPsionica(area);
+		templario.tormentaPsionica(mapa, posicion);
 		
 		assertEquals(true, otraUnidad.getVida() < vidaOriginal);
 	}
@@ -200,10 +198,9 @@ public class AltoTemplarioTest {
 		
 		Coordenada posicion =  new Coordenada(5,5);
 		mapa.almacenar(otraUnidad, posicion);
-		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, posicion);
 		
 		
-		templario.tormentaPsionica(area);
+		templario.tormentaPsionica(mapa, posicion);
 		
 		assertEquals(vidaInicial - 100, otraUnidad.getVida());
 	}
@@ -218,9 +215,8 @@ public class AltoTemplarioTest {
 		
 		Coordenada posicion =  new Coordenada(5,5);
 		mapa.almacenar(otraUnidad, posicion);
-		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, posicion);
 		
-		templario.tormentaPsionica(area);
+		templario.tormentaPsionica(mapa, posicion);
 		templario.iniciarTurno();
 		
 		assertEquals(true, otraUnidad.estoyMuerto());
@@ -240,9 +236,8 @@ public class AltoTemplarioTest {
 		
 		mapa.almacenar(nave1, posicion1);
 		mapa.almacenar(nave2, posicion2);
-		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, posicion1);
 		
-		templario.tormentaPsionica(area);
+		templario.tormentaPsionica(mapa, posicion1);
 		templario.iniciarTurno();
 		
 		assertEquals(true, nave1.estoyMuerto() && nave2.estoyMuerto());
@@ -258,9 +253,8 @@ public class AltoTemplarioTest {
 		
 		Coordenada posicion =  new Coordenada(5,5);
 		mapa.almacenar(otraUnidad, posicion);
-		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, posicion);
 		
-		templario.tormentaPsionica(area);
+		templario.tormentaPsionica(mapa, posicion);
 		
 		assertEquals(vidaInicial, otraUnidad.getVida());
 	}
@@ -271,12 +265,28 @@ public class AltoTemplarioTest {
 		AltoTemplario templario = new AltoTemplario();
 		
 		pasarMuchosTurnos(templario);
-		
-		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, new Coordenada(5,5));
-		
-		templario.tormentaPsionica(area);
+				
+		templario.tormentaPsionica(mapa, new Coordenada(5,5));
 		
 		assertEquals(templario.getMagiaMaxima() - 75, templario.getMagiaActual());
+	}
+	
+	@Test
+	public void testTormentaPsionicaDura2Turnos() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(10,10);
+		AltoTemplario templario = new AltoTemplario();
+		
+		pasarMuchosTurnos(templario);
+		
+		templario.tormentaPsionica(mapa, new Coordenada(5,5));
+		templario.iniciarTurno();
+		
+		Unidad marine = new Marine();
+		mapa.almacenar(marine, new Coordenada(5,5));
+		
+		templario.iniciarTurno();
+		
+		assertEquals(marine.getVida(), marine.getVitalidadMaxima());
 	}
 	
 

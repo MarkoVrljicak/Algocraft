@@ -1,6 +1,13 @@
 package algocraft.razas;
 
-import algocraft.factory.edificiosTerran.*;
+import algocraft.factory.edificiosTerran.CreadorBarraca;
+import algocraft.factory.edificiosTerran.CreadorBaseTerran;
+import algocraft.factory.edificiosTerran.CreadorCentroDeMineral;
+import algocraft.factory.edificiosTerran.CreadorDepositoDeSuministros;
+import algocraft.factory.edificiosTerran.CreadorFabrica;
+import algocraft.factory.edificiosTerran.CreadorPuertoEstelar;
+import algocraft.factory.edificiosTerran.CreadorRefineria;
+import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 
 public class Terran extends Raza{
 		

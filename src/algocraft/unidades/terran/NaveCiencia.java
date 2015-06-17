@@ -1,19 +1,25 @@
 package algocraft.unidades.terran;
 
+import algocraft.magias.AtaqueMagico;
+import algocraft.magias.Radiacion;
+import algocraft.mapa.Mapa;
 import algocraft.movimientos.MovimientoAereo;
 import algocraft.stats.Magia;
 import algocraft.stats.Movimientos;
 import algocraft.stats.Vida;
+import algocraft.unidades.Unidad;
 import algocraft.unidades.UnidadMagica;
 
 
 
 public class NaveCiencia extends UnidadMagica{
+	
 
 	public NaveCiencia() {
 		super.inicializar();
 	}
 
+	
 	@Override
 	protected void setearNombre() {
 		this.nombre = UnidadesTerran.NAVE_CIENCIA;
@@ -61,5 +67,19 @@ public class NaveCiencia extends UnidadMagica{
 		int regeneracion = 10;
 		this.magia = new Magia(maximo, regeneracion);
 		this.magia.disminuir(150);
+	}
+
+	public void radiacion(Unidad marine, Mapa mapa) {
+		int costo = 75;
+		if(this.magia.actual() < costo){
+			return;
+		} else {
+			this.magia.disminuir(costo);
+		}
+		
+		AtaqueMagico radiacion = new Radiacion(marine, mapa);
+		radiacion.ejecutar();
+		this.magias.add(radiacion);
+		
 	}
 }

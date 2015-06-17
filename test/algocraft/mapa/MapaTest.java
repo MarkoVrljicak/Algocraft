@@ -471,5 +471,18 @@ public class MapaTest {
 		assertEquals(true , camino.contains(mapa.getTerreno(destino)));
 	}
 	
+	@Test
+	public void testObtengoCoordenadaDeUnidad() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+		Mapa mapa = new Mapa(10,10);
+		Unidad marine = new Marine();
+		Coordenada posicion = new Coordenada(2,8);
+		
+		mapa.almacenar(marine, posicion);
+		
+		assertEquals(posicion, mapa.getPosicionPropiedad(marine));
+		
+		
+	}
+	
 	
 }

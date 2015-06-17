@@ -1,14 +1,12 @@
 package visual;
 
+import java.awt.CardLayout;
 import java.awt.EventQueue;
+import java.awt.SystemColor;
 
 import javax.swing.JFrame;
-
-import java.awt.SystemColor;
-import java.awt.CardLayout;
-
-import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import algocraft.Juego;

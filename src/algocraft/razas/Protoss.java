@@ -1,6 +1,13 @@
 package algocraft.razas;
 
-import algocraft.factory.edificiosProtoss.*;
+import algocraft.factory.edificiosProtoss.CreadorAcceso;
+import algocraft.factory.edificiosProtoss.CreadorArchivosTemplarios;
+import algocraft.factory.edificiosProtoss.CreadorAsimilador;
+import algocraft.factory.edificiosProtoss.CreadorBaseProtoss;
+import algocraft.factory.edificiosProtoss.CreadorNexoMineral;
+import algocraft.factory.edificiosProtoss.CreadorPilon;
+import algocraft.factory.edificiosProtoss.CreadorPuertoEstelar;
+import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 
 public class Protoss extends Raza{
 
