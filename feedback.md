@@ -1,3 +1,16 @@
+## 17/6
+
+* Imagenes pertenecen al paquete de la vista, no del controlador
+* _algocraft_ es el nombre de la aplicación completa, debería ser o el paquete raíz o renombrar el paquete actual a _modelo_ o similar
+* Por qué son necesarios los métodos `setearXXXX` en `Unidad`? Es para evitar pasarlos por parámetro al constructor? De ser así porque no se invoca al método `inicializar()` en el constructor de la case base en vez de hacerlo desde cada unidad? (**A nadie le hizo ruido tener que poner el mismo pedazo de código duplicado en todos los construcores?**)
+* Usar `for` para iterar sobre los terrenos en `AltoTemplario.alucinacion()`
+* Faltan validaciones (ej: al invocar ataques especiales, `AltoTemplario.alucinacion()` debería arrojar una excepción si no tiene suficiente magia, si la unidad a clonar no es del mismo jugador, etc.)
+* Es necesaria la jerarquía de clases e interfases tan compleja para las unidades?
+* La convención en Java es usar ciclos `for` para recorrer iteradores en vez de `while(iterator.hasNext())` (ej: `UnidadMagica.iniciarTurno()`)
+* Usar constantes en vez de _números mágicos_ para los factories de edificios
+* Dependencias deberían setearse al construir los objetos (ej: `Raza` tiene como dependencia al `duenio` pero este no se setea por parámetro en el constructor sino que se inicializa a través de un setter)
+* Al usarse excepciones como mecanismo de comunicación en vez de chequear si un jugador tiene los recursos necesarios para crear una construcción en `Raza.crearConstruccion()`, se puede dar el caso que si tiene suficiente mineral pero **no tiene** suficiente gas, se decrementa el mineral aunque no se haya construido el edificio. No debería ser necesario el bloque `try / catch` si ya se hace la verificación más arriba.
+
 ## 10/6
 
 * Modelo
