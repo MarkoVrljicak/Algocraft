@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import algocraft.Interfaces.Movible;
 import algocraft.ataques.Danio;
+import algocraft.jugador.Colores;
 import algocraft.mapa.Coordenada;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.movimientos.Movimiento;
@@ -21,6 +22,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 	protected Danio danio;
 	protected Movimientos movimientos;
 	protected Movimiento movimiento;
+	private Colores color = Colores.GRIS;
 
 	//Template method
 	protected void inicializar() {
@@ -85,6 +87,14 @@ public abstract class Unidad extends Propiedad implements Movible{
 	
 	public int getPesoTransporte(){
 		return this.pesoTransporte;
+	}
+	
+	public void setColor(Colores color){
+		this.color= color;
+	}
+	
+	public Colores getColor(){
+		return this.color;
 	}
 	
 	public void darPaso(){

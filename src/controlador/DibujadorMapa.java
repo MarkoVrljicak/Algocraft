@@ -49,48 +49,48 @@ public class DibujadorMapa {
 	}
 	
 	public void dibujar(){
-//		final int anchoCelda = 30;
-//		final int altoCelda = 30;
-//		Mapa mapa = juego.mapa;
-//		for(int x = 1 ; x <=mapa.getAncho() ; x++){
-//			for(int y = 1 ; y <= mapa.getAlto() ; y++){
-//				try {
-//					Terreno unTerreno = juego.obtenerTerreno(new Coordenada(x,y));
-//					JLabel terrenoADibujar = this.dibujarTerreno(unTerreno.getNombre());
-//					terrenoADibujar.setBounds((x-1)*anchoCelda,(y-1)*altoCelda,anchoCelda,altoCelda);
-//					terrenoADibujar.setVisible(true);
-//					vistaMapa.add(terrenoADibujar);
-//				} catch (FueraDeLimitesException e) {
-//					// los for lo evitan
-//					e.printStackTrace();
-//				}				
-//			}
-//		}
-//		JLabel terrenoADibujar = this.dibujarTerreno(Terrenos.VOLCAN);
-//		terrenoADibujar.setBounds(0*anchoCelda,0*altoCelda,anchoCelda,altoCelda);
-//		terrenoADibujar.setVisible(true);
-//		vistaMapa.add(terrenoADibujar);
+		final int anchoCelda = 30;
+		final int altoCelda = 30;
+		Mapa mapa = juego.mapa;
+		for(int x = 1 ; x <=mapa.getAncho() ; x++){
+			for(int y = 1 ; y <= mapa.getAlto() ; y++){
+				try {
+					Terreno unTerreno = juego.obtenerTerreno(new Coordenada(x,y));
+					JLabel terrenoADibujar = this.dibujarTerreno(unTerreno.getNombre());
+					terrenoADibujar.setBounds((x-1)*anchoCelda,(y-1)*altoCelda,anchoCelda,altoCelda);
+					terrenoADibujar.setVisible(true);
+					vistaMapa.add(terrenoADibujar);
+				} catch (FueraDeLimitesException e) {
+					// los for lo evitan
+					e.printStackTrace();
+				}				
+			}
+		}
+		JLabel terrenoADibujar = this.dibujarTerreno(Terrenos.VOLCAN);
+		terrenoADibujar.setBounds(0*anchoCelda,0*altoCelda,anchoCelda,altoCelda);
+		terrenoADibujar.setVisible(true);
+		vistaMapa.add(terrenoADibujar);
 	}
 	
-//	private JLabel dibujarTerreno(Terrenos nombreTerreno){
-//		BufferedImage imagen;
-//		switch(nombreTerreno){
-//		case AIRE:
-//			imagen =imagenAire;
-//			break;
-//		case MINERALES:
-//			imagen =imagenMineral;
-//			break;
-//		case TIERRA:
-//			imagen =imagenTierra;
-//			break;
-//		case VOLCAN:
-//			imagen =imagenVolcan;
-//			break;
-//		default:
-//			imagen =imagenTierra;
-//			break;
-//		}
-//		return new JLabel(new ImageIcon( imagen));
-//    }
+	private JLabel dibujarTerreno(Terrenos nombreTerreno){
+		BufferedImage imagen;
+		switch(nombreTerreno){
+		case AIRE:
+			imagen =imagenAire;
+			break;
+		case MINERALES:
+			imagen =imagenMineral;
+			break;
+		case TIERRA:
+			imagen =imagenTierra;
+			break;
+		case VOLCAN:
+			imagen =imagenVolcan;
+			break;
+		default:
+			imagen =imagenTierra;
+			break;
+		}
+		return new JLabel(new ImageIcon( imagen));
+    }
 }

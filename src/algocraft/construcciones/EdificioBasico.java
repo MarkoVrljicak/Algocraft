@@ -1,5 +1,6 @@
 package algocraft.construcciones;
 
+import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 import algocraft.propiedad.Propiedad;
 import algocraft.stats.Stat;
@@ -12,6 +13,7 @@ public class EdificioBasico extends Propiedad implements Construccion{
 	protected EnumEdificios nombre;
 	public Jugador duenio;
 	protected int poblacionSumada;
+	private Colores color = Colores.GRIS;
 	
 	public EdificioBasico(EnumEdificios nombre, int vidaMaxima, int tiempoDeConstruccion){
 		this.nombre= nombre;
@@ -38,11 +40,17 @@ public class EdificioBasico extends Propiedad implements Construccion{
 	}
 	
 	public void setDuenio(Jugador jugador) {
-		duenio = jugador;		
+		duenio = jugador;
+		color = jugador.getColor();
 	}
 	
 	public Jugador getDuenio() {
 		return duenio;		
+	}
+	
+	
+	public Colores getColor(){
+		return this.color;
 	}
 
 	@Override

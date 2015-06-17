@@ -1,6 +1,7 @@
 package algocraft.construcciones;
 
 import algocraft.ataques.Ataques;
+import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 import algocraft.propiedad.Propiedad;
 
@@ -25,6 +26,10 @@ public abstract class DecoradorEdificioBasico extends Propiedad implements Const
 	
 	public Jugador getDuenio(){
 		return this.edificio.getDuenio();
+	}
+	
+	public Colores getColor(){
+		return this.edificio.getColor();
 	}
 	
 	public void setDuenio(Jugador jugador){

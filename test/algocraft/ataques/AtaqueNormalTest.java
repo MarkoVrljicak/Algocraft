@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
+import algocraft.jugador.Colores;
 import algocraft.mapa.Coordenada;
 import algocraft.mapa.Mapa;
 import algocraft.mapa.terrenos.SectoresDeTerreno;
@@ -118,5 +119,20 @@ public class AtaqueNormalTest {
 		mapa.almacenar(naveAtacada, coordenadaEnRango);
 		
 		assertEquals(true, marineAtacante.atacar(naveAtacada, coordenadaAtacante.distanciaA(coordenadaEnRango)));
+	}
+	
+	@Test
+	public void testUnidadNoAtacaAUnidadAmiga() 
+			throws DestinoInvalidoException, FueraDeLimitesException {
+		Mapa mapa = new Mapa(2,2);
+		UnidadAtacante marineAtacante = new Marine();
+		Unidad marineAtacado = new Marine();
+		mapa.almacenar(marineAtacante, coordenadaAtacante);
+		mapa.almacenar(marineAtacado, coordenadaEnRango);
+		
+		marineAtacante.setColor(Colores.AZUL);
+		marineAtacado.setColor(Colores.AZUL);		
+		
+		assertEquals(false, marineAtacante.atacar(marineAtacado, coordenadaAtacante.distanciaA(coordenadaEnRango)));
 	}
 }

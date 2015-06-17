@@ -39,6 +39,7 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 				e.printStackTrace();
 			}
 			Unidad unidadCreada = creador.crearUnidad();
+			unidadCreada.setColor(this.getColor());
 			this.unidadesEnCreacion.add(unidadCreada);
 			
 			return unidadCreada;
