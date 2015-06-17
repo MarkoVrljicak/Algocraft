@@ -1,15 +1,11 @@
 package algocraft.jugador;
 
 import algocraft.construcciones.EnumEdificios;
-import algocraft.stats.Recurso;
 
 //para no intervenir con los tests unitarios
 public class JugadorNulo implements Usuario {
 
-	@Override
-	public Recurso getRecursos() {
-		return new Recurso(1000,1000);
-	}
+	
 
 	@Override
 	public boolean tieneConstruccion(EnumEdificios nombreEdificio) {
@@ -28,6 +24,16 @@ public class JugadorNulo implements Usuario {
 
 	public int getPoblacionMaxima() {
 		return 5;
+	}
+
+	@Override
+	public int getMineral() {
+		return 1000;
+	}
+
+	@Override
+	public int getGas() {
+		return 1000;
 	}
 	
 }

@@ -72,7 +72,7 @@ public class ProtossTest {
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,protoss.puedoCrearConstruccion(new CreadorAcceso()));
 	}
@@ -94,8 +94,8 @@ public class ProtossTest {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(1000);
-		jugador.getRecursos().incrementarMineral(1000);
+		jugador.incrementarGas(1000);
+		jugador.incrementarMineral(1000);
 		jugador.construir(EnumEdificiosProtos.ACCESO);
 		jugador.construir(EnumEdificiosProtos.PUERTO_ESTELAR);
 		protoss.setDuenio(jugador);
@@ -110,7 +110,7 @@ public class ProtossTest {
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,protoss.puedoCrearConstruccion(new CreadorArchivosTemplarios()));
 	}
@@ -131,7 +131,7 @@ public class ProtossTest {
 		Jugador jugador = new Jugador("Nombre", protoss, Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,protoss.puedoCrearConstruccion(new CreadorAsimilador()));
 	}
@@ -163,7 +163,7 @@ public class ProtossTest {
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,protoss.puedoCrearConstruccion(new CreadorNexoMineral()));
 	}
@@ -185,8 +185,8 @@ public class ProtossTest {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
-		jugador.getRecursos().incrementarMineral(150);
-		jugador.getRecursos().incrementarGas(100);
+		jugador.incrementarMineral(150);
+		jugador.incrementarGas(100);
 		jugador.construir(EnumEdificiosProtos.ACCESO);
 		protoss.setDuenio(jugador);
 			
@@ -200,7 +200,7 @@ public class ProtossTest {
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,protoss.puedoCrearConstruccion(new CreadorPuertoEstelar()));
 	}
@@ -221,7 +221,7 @@ public class ProtossTest {
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
 		protoss.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,protoss.puedoCrearConstruccion(new CreadorPilon()));
 	}

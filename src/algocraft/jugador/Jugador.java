@@ -40,16 +40,21 @@ public class Jugador implements Actualizable, Usuario {
 		return raza.getNombre();
 	}
 	
-	
-	public Set<EnumEdificios> getConstruccionesDisponibles(){
-		return raza.getListaDeConstrucciones();
+	public int getMineral(){
+		return recursos.obtenerMineral();
 	}
 	
-	
-	public Recurso getRecursos(){
-		return recursos;
+	public int getGas(){
+		return recursos.obtenerGas();
 	}
 	
+	public void incrementarMineral(int cantidad){
+		this.recursos.incrementarMineral(cantidad);
+	}
+	
+	public void incrementarGas(int cantidad){
+		this.recursos.incrementarGas(cantidad);
+	}
 	public void consumirMineral(int cantidad) throws RecursosNegativosException{
 		this.recursos.consumirMineral(cantidad);
 	}
@@ -62,6 +67,9 @@ public class Jugador implements Actualizable, Usuario {
 		return color;
 	}
 	
+	public Set<EnumEdificios> getConstruccionesDisponibles(){
+		return raza.getListaDeConstrucciones();
+	}
 	
 	public int cantidadConstrucciones() {
 		return construcciones.size();

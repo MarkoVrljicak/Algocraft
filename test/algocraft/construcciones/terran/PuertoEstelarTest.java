@@ -33,8 +33,8 @@ public class PuertoEstelarTest {
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(1000);
-		jugador.getRecursos().incrementarMineral(1000);
+		jugador.incrementarGas(1000);
+		jugador.incrementarMineral(1000);
 		puertoEstelar.setDuenio(jugador);
 			
 		assertEquals(true,puertoEstelar.puedoCrearUnidad(new CreadorEspectro()));
@@ -48,7 +48,7 @@ public class PuertoEstelarTest {
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,puertoEstelar.puedoCrearUnidad(new CreadorEspectro()));
 	}
@@ -59,8 +59,8 @@ public class PuertoEstelarTest {
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(1000);
-		jugador.getRecursos().incrementarMineral(1000);
+		jugador.incrementarGas(1000);
+		jugador.incrementarMineral(1000);
 		puertoEstelar.setDuenio(jugador);
 		
 		Unidad espectro = puertoEstelar.crearUnidad(UnidadesTerran.ESPECTRO);
@@ -82,8 +82,8 @@ public class PuertoEstelarTest {
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(1000);
-		jugador.getRecursos().incrementarMineral(1000);
+		jugador.incrementarGas(1000);
+		jugador.incrementarMineral(1000);
 		puertoEstelar.setDuenio(jugador);
 			
 		assertEquals(true,puertoEstelar.puedoCrearUnidad(new CreadorNaveTransporte()));
@@ -97,7 +97,7 @@ public class PuertoEstelarTest {
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,puertoEstelar.puedoCrearUnidad(new CreadorNaveTransporte()));
 	}
@@ -108,8 +108,8 @@ public class PuertoEstelarTest {
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(1000);
-		jugador.getRecursos().incrementarMineral(1000);
+		jugador.incrementarGas(1000);
+		jugador.incrementarMineral(1000);
 		puertoEstelar.setDuenio(jugador);
 		Unidad nave = puertoEstelar.crearUnidad(UnidadesTerran.NAVE_TRANSPORTE);
 		
@@ -130,8 +130,8 @@ public class PuertoEstelarTest {
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(1000);
-		jugador.getRecursos().incrementarMineral(1000);
+		jugador.incrementarGas(1000);
+		jugador.incrementarMineral(1000);
 		puertoEstelar.setDuenio(jugador);
 			
 		assertEquals(true,puertoEstelar.puedoCrearUnidad(new CreadorNaveCiencia()));
@@ -145,7 +145,7 @@ public class PuertoEstelarTest {
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,puertoEstelar.puedoCrearUnidad(new CreadorNaveCiencia()));
 	}
@@ -156,8 +156,8 @@ public class PuertoEstelarTest {
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(1000);
-		jugador.getRecursos().incrementarMineral(1000);
+		jugador.incrementarGas(1000);
+		jugador.incrementarMineral(1000);
 		puertoEstelar.setDuenio(jugador);
 		Unidad nave = puertoEstelar.crearUnidad(UnidadesTerran.NAVE_CIENCIA);
 		

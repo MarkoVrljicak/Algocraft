@@ -60,7 +60,7 @@ public class IntegracionesJugadorTest {
 
 		jugador.iniciarTurno();
 		//160 por que es 200 iniciales -50 del centro mineral +10 de la recoleccion
-		assertEquals(160,jugador.getRecursos().obtenerMineral());
+		assertEquals(160,jugador.getMineral());
 	}
 
 
@@ -72,7 +72,7 @@ public class IntegracionesJugadorTest {
 
 		jugador.iniciarTurno();
 
-		assertEquals(10,jugador.getRecursos().obtenerGas());
+		assertEquals(10,jugador.getGas());
 	}
 
 
@@ -84,7 +84,7 @@ public class IntegracionesJugadorTest {
 		jugador.construir(EnumEdificiosTerran.REFINERIA);
 
 		//200 iniciales - 100 coste refineria
-		assertEquals(100,jugador.getRecursos().obtenerMineral());
+		assertEquals(100,jugador.getMineral());
 	}	
 
 

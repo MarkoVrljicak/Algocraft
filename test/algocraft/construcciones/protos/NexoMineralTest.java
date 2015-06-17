@@ -16,9 +16,9 @@ public class NexoMineralTest {
 		RecolectorMineral nexo = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
-		nexo.recolectarMineral(jugador.getRecursos());
+		nexo.recolectarMineral(jugador);
 		
-		assertEquals(210 , jugador.getRecursos().obtenerMineral());
+		assertEquals(210 , jugador.getMineral());
 	}
 	
 	@Test
@@ -29,6 +29,6 @@ public class NexoMineralTest {
 		nexo.setDuenio(jugador);
 		nexo.iniciarTurno();
 		
-		assertEquals(210 , jugador.getRecursos().obtenerMineral());
+		assertEquals(210 , jugador.getMineral());
 	}
 }

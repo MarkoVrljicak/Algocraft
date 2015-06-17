@@ -9,7 +9,6 @@ import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.EdificiosAbstractFactory;
 import algocraft.jugador.Jugador;
-import algocraft.stats.Recurso;
 
 public abstract class Raza {
 
@@ -69,10 +68,11 @@ public abstract class Raza {
 	
 	//creacion edificios
 	public boolean puedoCrearConstruccion(EdificiosAbstractFactory creador) {
-		final Recurso recursosDisponibles = duenio.getRecursos();
+		final int mineralDisponible = duenio.getMineral();
+		final int gasDisponible = duenio.getGas();
 		
-		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= creador.getMineralNecesario());
-		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= creador.getGasNecesario());
+		boolean puedeCrearse = (mineralDisponible >= creador.getMineralNecesario());
+		puedeCrearse = puedeCrearse && (gasDisponible >= creador.getGasNecesario());
 		
 		if(creador.necesitoConstruccionAnterior()){
 			puedeCrearse = puedeCrearse && (duenio.tieneConstruccion(creador.getConstruccionNecesitada()));

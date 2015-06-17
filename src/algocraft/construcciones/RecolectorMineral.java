@@ -1,6 +1,6 @@
 package algocraft.construcciones;
 
-import algocraft.stats.Recurso;
+import algocraft.jugador.Jugador;
 
 public class RecolectorMineral extends DecoradorEdificioBasico{
 
@@ -11,11 +11,11 @@ public class RecolectorMineral extends DecoradorEdificioBasico{
 	@Override
 	public void iniciarTurno() {
 		this.edificio.iniciarTurno();
-		recolectarMineral(this.getDuenio().getRecursos());
+		recolectarMineral(this.getDuenio());
 	}
 
-	public void recolectarMineral(Recurso recursos) {
-		recursos.incrementarMineral(10);		
+	public void recolectarMineral(Jugador jugador) {
+		jugador.incrementarMineral(10);		
 	}
 
 	@Override

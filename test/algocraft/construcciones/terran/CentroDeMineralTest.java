@@ -17,9 +17,9 @@ public class CentroDeMineralTest {
 		RecolectorMineral centroDeMineral = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(),Colores.AZUL);
 		
-		centroDeMineral.recolectarMineral(jugador.getRecursos());
+		centroDeMineral.recolectarMineral(jugador);
 		
-		assertEquals(210 , jugador.getRecursos().obtenerMineral());
+		assertEquals(210 , jugador.getMineral());
 	}
 	
 	@Test
@@ -31,6 +31,6 @@ public class CentroDeMineralTest {
 		centroDeMineral.setDuenio(jugador);
 		centroDeMineral.iniciarTurno();
 		
-		assertEquals(210 , jugador.getRecursos().obtenerMineral());
+		assertEquals(210 , jugador.getMineral());
 	}
 }

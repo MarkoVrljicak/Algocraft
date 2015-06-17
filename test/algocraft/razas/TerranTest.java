@@ -80,7 +80,7 @@ public class TerranTest {
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,terran.puedoCrearConstruccion(new CreadorBarraca()));
 	}
@@ -112,7 +112,7 @@ public class TerranTest {
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,terran.puedoCrearConstruccion(new CreadorCentroDeMineral()));
 	}
@@ -144,7 +144,7 @@ public class TerranTest {
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,terran.puedoCrearConstruccion(new CreadorDepositoDeSuministros()));
 	}
@@ -166,8 +166,8 @@ public class TerranTest {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(1000);
-		jugador.getRecursos().incrementarMineral(1000);
+		jugador.incrementarGas(1000);
+		jugador.incrementarMineral(1000);
 		jugador.construir(EnumEdificiosTerran.BARRACA);
 		terran.setDuenio(jugador);
 			
@@ -181,7 +181,7 @@ public class TerranTest {
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,terran.puedoCrearConstruccion(new CreadorFabrica()));
 	}
@@ -192,8 +192,8 @@ public class TerranTest {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(1000);
-		jugador.getRecursos().incrementarMineral(1000);
+		jugador.incrementarGas(1000);
+		jugador.incrementarMineral(1000);
 		jugador.construir(EnumEdificiosTerran.BARRACA);
 		jugador.construir(EnumEdificiosTerran.FABRICA);
 		terran.setDuenio(jugador);
@@ -208,7 +208,7 @@ public class TerranTest {
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,terran.puedoCrearConstruccion(new CreadorPuertoEstelar()));
 	}
@@ -229,7 +229,7 @@ public class TerranTest {
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,terran.puedoCrearConstruccion(new CreadorRefineria()));
 	}

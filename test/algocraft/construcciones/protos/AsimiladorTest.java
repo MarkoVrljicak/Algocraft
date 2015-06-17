@@ -16,9 +16,9 @@ public class AsimiladorTest {
 		RecolectorGas asimilador = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
-		asimilador.recolectarGas(jugador.getRecursos());
+		asimilador.recolectarGas(jugador);
 		
-		assertEquals(10 , jugador.getRecursos().obtenerGas());
+		assertEquals(10 , jugador.getGas());
 	}
 	
 	@Test
@@ -30,6 +30,6 @@ public class AsimiladorTest {
 		asimilador.setDuenio(jugador);
 		asimilador.iniciarTurno();
 		
-		assertEquals(10 , jugador.getRecursos().obtenerGas());
+		assertEquals(10 , jugador.getGas());
 	}
 }

@@ -17,9 +17,9 @@ public class RefineriaTest {
 		RecolectorGas refineria = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
-		refineria.recolectarGas(jugador.getRecursos());
+		refineria.recolectarGas(jugador);
 		
-		assertEquals(10 , jugador.getRecursos().obtenerGas());
+		assertEquals(10 , jugador.getGas());
 	}
 	
 	@Test
@@ -31,6 +31,6 @@ public class RefineriaTest {
 		refineria.setDuenio(jugador);
 		refineria.iniciarTurno();
 		
-		assertEquals(10 , jugador.getRecursos().obtenerGas());
+		assertEquals(10 , jugador.getGas());
 	}
 }

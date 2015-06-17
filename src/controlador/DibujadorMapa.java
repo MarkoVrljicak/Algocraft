@@ -30,13 +30,13 @@ public class DibujadorMapa {
 		
 		String file;
 		file = (pathTexturas + "tierra.png") ;
-		imagenTierra =createImageIcon(file,"");
+		imagenTierra =createImageIcon(file,"tierra");
 		file =(pathTexturas + "aire.png") ;
-		imagenAire=createImageIcon(file,"");
+		imagenAire=createImageIcon(file,"aire");
 		file = (pathTexturas + "cristales.png") ;
-		imagenMineral=createImageIcon(file,"");
+		imagenMineral=createImageIcon(file,"mineral");
 		file = (pathTexturas + "volcan.png") ;
-		imagenVolcan=createImageIcon(file,"");
+		imagenVolcan=createImageIcon(file,"volcan");
 	}
 	
 	protected ImageIcon createImageIcon(String path,

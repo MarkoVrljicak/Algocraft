@@ -8,7 +8,6 @@ import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.exception.UnidadIncompletaException;
 import algocraft.factory.UnidadesAbstractFactory;
-import algocraft.stats.Recurso;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.Unidades;
 
@@ -50,11 +49,13 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	}
 	
 	public boolean puedoCrearUnidad(UnidadesAbstractFactory creador) {
-		final Recurso recursosDisponibles = this.getDuenio().getRecursos();
+		final int mineralDisponible = this.getDuenio().getMineral();
+		final int gasDisponible = this.getDuenio().getGas();
+		
 		final int poblacionDisponible = this.getDuenio().getPoblacionDisponible();
 		
-		boolean puedeCrearse = (recursosDisponibles.obtenerMineral() >= creador.getMineralNecesario());
-		puedeCrearse = puedeCrearse && (recursosDisponibles.obtenerGas() >= creador.getGasNecesario());
+		boolean puedeCrearse = (mineralDisponible >= creador.getMineralNecesario());
+		puedeCrearse = puedeCrearse && (gasDisponible >= creador.getGasNecesario());
 		puedeCrearse = puedeCrearse && (poblacionDisponible >= creador.getPoblacionNecesaria());
 		
 		return (puedeCrearse);

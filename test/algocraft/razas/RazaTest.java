@@ -17,7 +17,7 @@ public class RazaTest {
 		Jugador jugador = new Jugador("Nombre", raza,  Colores.AZUL);
 		
 		raza.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		raza.crearConstruccion(EnumEdificiosProtos.ACCESO);
 	}

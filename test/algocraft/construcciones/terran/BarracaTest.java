@@ -43,7 +43,7 @@ public class BarracaTest {
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
 		barraca.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,barraca.puedoCrearUnidad(new CreadorMarine()));
 	}

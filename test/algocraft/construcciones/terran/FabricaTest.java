@@ -31,7 +31,7 @@ public class FabricaTest {
 		CreadorDeUnidades fabrica = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(100);
+		jugador.incrementarGas(100);
 		fabrica.setDuenio(jugador);
 			
 		assertEquals(true,fabrica.puedoCrearUnidad(new CreadorGolliat()));
@@ -55,7 +55,7 @@ public class FabricaTest {
 		CreadorDeUnidades fabrica = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(100);
+		jugador.incrementarGas(100);
 		fabrica.setDuenio(jugador);
 		Unidad golliat = fabrica.crearUnidad(UnidadesTerran.GOLLIAT);
 		

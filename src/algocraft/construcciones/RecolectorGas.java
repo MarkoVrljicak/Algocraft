@@ -1,6 +1,6 @@
 package algocraft.construcciones;
 
-import algocraft.stats.Recurso;
+import algocraft.jugador.Jugador;
 
 public class RecolectorGas extends DecoradorEdificioBasico {
 
@@ -11,11 +11,11 @@ public class RecolectorGas extends DecoradorEdificioBasico {
 	@Override
 	public void iniciarTurno() {
 		this.edificio.iniciarTurno();
-		recolectarGas(this.edificio.getDuenio().getRecursos());
+		recolectarGas(this.edificio.getDuenio());
 	}
 
-	public void recolectarGas(Recurso recursos) {
-		recursos.incrementarGas(10);		
+	public void recolectarGas(Jugador jugador) {
+		jugador.incrementarGas(10);		
 	}
 
 	@Override

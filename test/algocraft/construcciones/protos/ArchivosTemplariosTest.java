@@ -31,7 +31,7 @@ public class ArchivosTemplariosTest {
 		CreadorDeUnidades archivosTemplarios = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(150);
+		jugador.incrementarGas(150);
 		archivosTemplarios.setDuenio(jugador);
 			
 		assertEquals(true,archivosTemplarios.puedoCrearUnidad(new CreadorAltoTemplario()));
@@ -55,7 +55,7 @@ public class ArchivosTemplariosTest {
 		CreadorDeUnidades archivosTemplarios = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(150);
+		jugador.incrementarGas(150);
 		archivosTemplarios.setDuenio(jugador);
 		Unidad altoTemplario = archivosTemplarios.crearUnidad(UnidadesProtos.ALTO_TEMPLARIO);
 		

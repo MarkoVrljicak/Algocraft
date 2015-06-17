@@ -38,14 +38,14 @@ public class JugadorTest {
 	public void jugadorTerranEmpiezaCon200DeMineral() {
 		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran(), Colores.AZUL);
 		
-		assertEquals(200, jugadorTerran.getRecursos().obtenerMineral());
+		assertEquals(200, jugadorTerran.getMineral());
 	}
 	
 	@Test
 	public void jugadorTerranEmpiezaCon0DeGas() {
 		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran(), Colores.AZUL);
 		
-		assertEquals(0, jugadorTerran.getRecursos().obtenerGas());
+		assertEquals(0, jugadorTerran.getGas());
 	}
 	
 	@Test

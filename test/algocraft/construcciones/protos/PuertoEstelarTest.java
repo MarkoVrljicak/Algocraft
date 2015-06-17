@@ -32,8 +32,8 @@ public class PuertoEstelarTest {
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarMineral(100);
-		jugador.getRecursos().incrementarGas(150);
+		jugador.incrementarMineral(100);
+		jugador.incrementarGas(150);
 		puertoEstelar.setDuenio(jugador);
 			
 		assertEquals(true,puertoEstelar.puedoCrearUnidad(new CreadorScout()));
@@ -56,8 +56,8 @@ public class PuertoEstelarTest {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);		
-		jugador.getRecursos().incrementarMineral(100);
-		jugador.getRecursos().incrementarGas(150);
+		jugador.incrementarMineral(100);
+		jugador.incrementarGas(150);
 		puertoEstelar.setDuenio(jugador);
 		Unidad scout = puertoEstelar.crearUnidad(UnidadesProtos.SCOUT);
 		
@@ -91,7 +91,7 @@ public class PuertoEstelarTest {
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,puertoEstelar.puedoCrearUnidad(new CreadorNaveDeTransporte()));
 	}
@@ -101,7 +101,7 @@ public class PuertoEstelarTest {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);		
-		jugador.getRecursos().incrementarGas(50);
+		jugador.incrementarGas(50);
 		puertoEstelar.setDuenio(jugador);
 		Unidad nave = puertoEstelar.crearUnidad(UnidadesProtos.NAVE_DE_TRANSPORTE);
 		

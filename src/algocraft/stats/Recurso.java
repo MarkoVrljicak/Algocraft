@@ -4,8 +4,8 @@ import algocraft.exception.RecursosNegativosException;
 
 public class Recurso {
 	
-	public int mineral;
-	public int gas;
+	private int mineral;
+	private int gas;
 
 	public Recurso(int cantidadMineral,int cantidadGas){
 		if(cantidadMineral>=0)

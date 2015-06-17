@@ -44,7 +44,7 @@ public class AccesoTest {
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		acceso.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,acceso.puedoCrearUnidad(new CreadorZealot()));
 	}
@@ -75,7 +75,7 @@ public class AccesoTest {
 		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(50);
+		jugador.incrementarGas(50);
 		acceso.setDuenio(jugador);
 					
 		assertEquals(true,acceso.puedoCrearUnidad(new CreadorDragon()));
@@ -89,7 +89,7 @@ public class AccesoTest {
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
 		acceso.setDuenio(jugador);
-		jugador.getRecursos().consumirMineral(200);
+		jugador.consumirMineral(200);
 			
 		assertEquals(false,acceso.puedoCrearUnidad(new CreadorDragon()));
 	}
@@ -100,7 +100,7 @@ public class AccesoTest {
 		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
 		
-		jugador.getRecursos().incrementarGas(50);
+		jugador.incrementarGas(50);
 		acceso.setDuenio(jugador);
 		Unidad dragon = acceso.crearUnidad(UnidadesProtos.DRAGON);
 		
