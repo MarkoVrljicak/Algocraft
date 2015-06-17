@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import algocraft.construcciones.Construccion;
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.edificiosProtoss.*;
 import algocraft.jugador.Colores;
@@ -77,7 +78,7 @@ public class ProtossTest {
 	}
 		
 	@Test
-	public void testProtossCreaAcceso() {
+	public void testProtossCreaAcceso() throws CondicionesInsuficientesException {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
@@ -88,7 +89,8 @@ public class ProtossTest {
 	}
 	
 	@Test
-	public void testProtossPuedeCrearArchivosTemplariosConRecursosSuficientesyPoblacionSuficiente() {
+	public void testProtossPuedeCrearArchivosTemplariosConRecursosSuficientesyPoblacionSuficiente() 
+			throws CondicionesInsuficientesException {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
@@ -135,7 +137,7 @@ public class ProtossTest {
 	}
 		
 	@Test
-	public void testProtossCreaAsimilador() {
+	public void testProtossCreaAsimilador() throws CondicionesInsuficientesException {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
@@ -167,7 +169,7 @@ public class ProtossTest {
 	}
 		
 	@Test
-	public void testProtossCreaNexoMineral() {
+	public void testProtossCreaNexoMineral() throws CondicionesInsuficientesException {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
@@ -178,7 +180,8 @@ public class ProtossTest {
 	}
 	
 	@Test
-	public void testProtossPuedeCrearPuertoEstelarConRecursosSuficientesyPoblacionSuficiente() {
+	public void testProtossPuedeCrearPuertoEstelarConRecursosSuficientesyPoblacionSuficiente() 
+			throws CondicionesInsuficientesException {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
@@ -224,7 +227,7 @@ public class ProtossTest {
 	}
 		
 	@Test
-	public void testProtossCreaPilon() {
+	public void testProtossCreaPilon() throws CondicionesInsuficientesException {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		

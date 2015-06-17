@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
@@ -55,7 +56,8 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void jugadorTerranPuedeCrearBarracaConRecursosIniciales() {
+	public void jugadorTerranPuedeCrearBarracaConRecursosIniciales() 
+			throws CondicionesInsuficientesException {
 		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran(), Colores.AZUL);
 		jugadorTerran.construir(EnumEdificiosTerran.BARRACA);
 		

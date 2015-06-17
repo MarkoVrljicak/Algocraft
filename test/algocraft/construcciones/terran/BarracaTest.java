@@ -1,8 +1,11 @@
 package algocraft.construcciones.terran;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
 import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.edificiosTerran.CreadorBarraca;
 import algocraft.factory.unidadesTerran.CreadorMarine;
@@ -46,7 +49,7 @@ public class BarracaTest {
 	}
 		
 	@Test
-	public void testBarracaCreaMarine() {
+	public void testBarracaCreaMarine() throws CondicionesInsuficientesException {
 		CreadorBarraca creador = new CreadorBarraca();
 		CreadorDeUnidades barraca = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);

@@ -10,8 +10,12 @@ import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.exception.PropiedadNoEstaEnJuegoException;
 import algocraft.exception.PropiedadNoExisteEnEstaUbicacion;
+import algocraft.mapa.terrenos.Aire;
+import algocraft.mapa.terrenos.Minerales;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
+import algocraft.mapa.terrenos.Tierra;
+import algocraft.mapa.terrenos.Volcan;
 import algocraft.propiedad.Propiedad;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.UnidadAtacante;
@@ -48,7 +52,25 @@ public class Mapa implements Iterable<Terreno>{
 	
 	public void setearTerrenoEnCoordenada(Terrenos terreno, int i, int j){
 		Coordenada nuevaCoordenada = new Coordenada(i, j);
-		Terreno nuevoTerreno = terreno.crear(i, j);
+		Terreno nuevoTerreno;
+		switch(terreno){
+		case AIRE:
+			nuevoTerreno = new Aire(nuevaCoordenada);
+			break;
+		case MINERALES:
+			nuevoTerreno = new Minerales(nuevaCoordenada);
+			break;
+		case TIERRA:
+			nuevoTerreno = new Tierra(nuevaCoordenada);
+			break;
+		case VOLCAN:
+			nuevoTerreno = new Volcan(nuevaCoordenada);
+			break;
+		default:
+			nuevoTerreno = new Tierra(nuevaCoordenada);
+			break;
+		
+		}
 		casilleros.put(nuevaCoordenada, nuevoTerreno);
 	}
 	

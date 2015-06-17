@@ -1,8 +1,11 @@
 package algocraft.construcciones.protos;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
 import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.edificiosProtoss.CreadorArchivosTemplarios;
 import algocraft.factory.unidadesProtoss.CreadorAltoTemplario;
@@ -47,7 +50,7 @@ public class ArchivosTemplariosTest {
 	}
 		
 	@Test
-	public void testArchivosTemplariosCreaAltoTemplario() {
+	public void testArchivosTemplariosCreaAltoTemplario() throws CondicionesInsuficientesException {
 		CreadorArchivosTemplarios creador = new CreadorArchivosTemplarios();
 		CreadorDeUnidades archivosTemplarios = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);

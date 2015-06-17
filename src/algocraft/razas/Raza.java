@@ -5,6 +5,7 @@ import java.util.Set;
 
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.EnumEdificios;
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.EdificiosAbstractFactory;
 import algocraft.jugador.Jugador;
@@ -46,7 +47,7 @@ public abstract class Raza {
 		return construccionesCreables.containsKey(nombreEdificio);
 	}
 	
-	public Construccion crearConstruccion(EnumEdificios nombreEdificio){
+	public Construccion crearConstruccion(EnumEdificios nombreEdificio) throws CondicionesInsuficientesException{
 		EdificiosAbstractFactory creador = construccionesCreables.get(nombreEdificio);
 		
 		if(puedoCrearConstruccion(creador) ){
@@ -55,14 +56,15 @@ public abstract class Raza {
 				duenio.consumirMineral(creador.getMineralNecesario());
 				duenio.consumirGas(creador.getGasNecesario());
 			} catch (RecursosNegativosException e) {
-				e.printStackTrace();
+				throw new CondicionesInsuficientesException();
 			}
 			
 			Construccion edificio = creador.crearEdificio();
 			edificio.setDuenio(duenio);
 			return edificio;
 		}
-		else return null;
+		else 
+			throw new CondicionesInsuficientesException();
 	}
 	
 	//creacion edificios

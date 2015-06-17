@@ -1,8 +1,11 @@
 package algocraft.construcciones.terran;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
 import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.edificiosTerran.CreadorPuertoEstelar;
 import algocraft.factory.unidadesTerran.CreadorEspectro;
@@ -51,7 +54,7 @@ public class PuertoEstelarTest {
 	}
 		
 	@Test
-	public void testPuertoEstelarCreaEspectro() {
+	public void testPuertoEstelarCreaEspectro() throws CondicionesInsuficientesException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
@@ -100,7 +103,7 @@ public class PuertoEstelarTest {
 	}
 		
 	@Test
-	public void testPuertoEstelarCreaNaveDeTransporte() {
+	public void testPuertoEstelarCreaNaveDeTransporte() throws CondicionesInsuficientesException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
@@ -148,7 +151,7 @@ public class PuertoEstelarTest {
 	}
 		
 	@Test
-	public void testPuertoEstelarCreaNaveDeCiencia() {
+	public void testPuertoEstelarCreaNaveDeCiencia() throws CondicionesInsuficientesException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);

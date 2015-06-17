@@ -1,8 +1,11 @@
 package algocraft.construcciones.protos;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
 import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.edificiosProtoss.CreadorPuertoEstelar;
 import algocraft.factory.unidadesProtoss.CreadorNaveDeTransporte;
@@ -49,7 +52,7 @@ public class PuertoEstelarTest {
 	}
 		
 	@Test
-	public void testPuertoEstelarCreaScout() {
+	public void testPuertoEstelarCreaScout() throws CondicionesInsuficientesException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);		
@@ -94,7 +97,7 @@ public class PuertoEstelarTest {
 	}
 		
 	@Test
-	public void testPuertoEstelarCreaNaveDeTransporte() {
+	public void testPuertoEstelarCreaNaveDeTransporte() throws CondicionesInsuficientesException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);		

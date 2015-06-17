@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import algocraft.construcciones.Construccion;
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 import algocraft.factory.edificiosTerran.*;
@@ -85,7 +86,7 @@ public class TerranTest {
 	}
 		
 	@Test
-	public void testTerranCreaBarraca() {
+	public void testTerranCreaBarraca() throws CondicionesInsuficientesException {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
@@ -117,7 +118,7 @@ public class TerranTest {
 	}
 		
 	@Test
-	public void testTerranCreaCentroDeMineral() {
+	public void testTerranCreaCentroDeMineral() throws CondicionesInsuficientesException {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
@@ -149,7 +150,7 @@ public class TerranTest {
 	}
 		
 	@Test
-	public void testTerranCreaDepositoDeSuministros() {
+	public void testTerranCreaDepositoDeSuministros() throws CondicionesInsuficientesException {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
@@ -160,7 +161,8 @@ public class TerranTest {
 	}
 	
 	@Test
-	public void testTerranPuedeCrearFabricaConRecursosSuficientesyPoblacionSuficiente() {
+	public void testTerranPuedeCrearFabricaConRecursosSuficientesyPoblacionSuficiente()
+			throws CondicionesInsuficientesException {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
@@ -185,7 +187,8 @@ public class TerranTest {
 	}
 		
 	@Test
-	public void testTerranPuedeCrearPuertoEstelarConRecursosSuficientesyPoblacionSuficiente() {
+	public void testTerranPuedeCrearPuertoEstelarConRecursosSuficientesyPoblacionSuficiente() 
+			throws CondicionesInsuficientesException {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
@@ -232,7 +235,7 @@ public class TerranTest {
 	}
 		
 	@Test
-	public void testTerranCreaRefineria() {
+	public void testTerranCreaRefineria() throws CondicionesInsuficientesException {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		

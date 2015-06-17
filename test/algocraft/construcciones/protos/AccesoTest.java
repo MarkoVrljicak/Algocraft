@@ -1,8 +1,11 @@
 package algocraft.construcciones.protos;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
 import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.edificiosProtoss.CreadorAcceso;
 import algocraft.factory.unidadesProtoss.CreadorDragon;
@@ -47,7 +50,7 @@ public class AccesoTest {
 	}
 		
 	@Test
-	public void testAccesoCreaZealot() {
+	public void testAccesoCreaZealot() throws CondicionesInsuficientesException {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
@@ -92,7 +95,7 @@ public class AccesoTest {
 	}
 		
 	@Test
-	public void testAccesoCreaDragon() {
+	public void testAccesoCreaDragon() throws CondicionesInsuficientesException {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);

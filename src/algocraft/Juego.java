@@ -10,6 +10,7 @@ import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.construcciones.EnumEdificios;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.FueraDeLimitesException;
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.UnidadIncompletaException;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
@@ -63,12 +64,13 @@ public class Juego {
 	}
 
 	public void construirEn(EnumEdificios edificio, Coordenada coordenada) 
-			throws DestinoInvalidoException, FueraDeLimitesException {
+			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException {
 		Construccion edificioNuevo = jugadorActual.construir(edificio);
 		mapa.almacenar((Propiedad) edificioNuevo, coordenada);
 	}
 	
-	public void crearUnidad(CreadorDeUnidades edificioCreador, Unidades unidadPedida) {
+	public void crearUnidad(CreadorDeUnidades edificioCreador, Unidades unidadPedida) 
+			throws CondicionesInsuficientesException {
 		 jugadorActual.crearUnidad(unidadPedida, edificioCreador);	
 		 creadoresDeUnidadesEnUso.add(edificioCreador);
 	}

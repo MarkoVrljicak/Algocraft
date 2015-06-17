@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import algocraft.Interfaces.Daniable;
 import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.UnidadIncompletaException;
 import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
@@ -25,7 +26,8 @@ public class IntegracionesJugadorTest {
 	private static final int tiempoCreacionUnPilon = 6;
 	
 	
-	public void iniciarJugadorTerranConRecursos(Jugador jugador){
+	public void iniciarJugadorTerranConRecursos(Jugador jugador) 
+			throws CondicionesInsuficientesException{
 		final int turnosSuficientesParaQueSobrenRecursos = 200;
 		//construyo edificios para acumular recursos 
 		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
@@ -37,7 +39,8 @@ public class IntegracionesJugadorTest {
 		}
 	}
 	
-	public void iniciarJugadorProtossConRecursos(Jugador jugador){
+	public void iniciarJugadorProtossConRecursos(Jugador jugador) 
+			throws CondicionesInsuficientesException{
 		final int turnosSuficientesParaQueSobrenRecursos = 200;
 		//construyo edificios para acumular recursos 
 		jugador.construir(EnumEdificiosProtos.NEXO_MINERAL);
@@ -50,7 +53,8 @@ public class IntegracionesJugadorTest {
 	}
 	
 	@Test
-	public void testActualizarConCentroDeMineralAumentaLosRecursosDelJugador(){
+	public void testActualizarConCentroDeMineralAumentaLosRecursosDelJugador() 
+			throws CondicionesInsuficientesException{
 		Jugador jugador= new Jugador("Fernando De La Rua", new Terran(), Colores.AZUL);
 		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
 
@@ -61,7 +65,8 @@ public class IntegracionesJugadorTest {
 
 
 	@Test
-	public void testActualizarConRefineriaAumentaLosRecursosDelJugador(){
+	public void testActualizarConRefineriaAumentaLosRecursosDelJugador() 
+			throws CondicionesInsuficientesException{
 		Jugador jugador= new Jugador("Fernando De La Rua", new Terran(), Colores.AZUL);
 		jugador.construir(EnumEdificiosTerran.REFINERIA);
 
@@ -72,7 +77,7 @@ public class IntegracionesJugadorTest {
 
 
 	@Test
-	public void testConstruirReduceRecursos(){
+	public void testConstruirReduceRecursos() throws CondicionesInsuficientesException{
 		Jugador jugador= new Jugador("Fernando De La Rua", new Terran(), Colores.AZUL);
 
 		//cuesta 100 mineral
@@ -84,7 +89,8 @@ public class IntegracionesJugadorTest {
 
 
 	@Test
-	public void testConstruyoPilonEsperoAQueSeConstruyaMiroPoblacion(){
+	public void testConstruyoPilonEsperoAQueSeConstruyaMiroPoblacion()
+			throws CondicionesInsuficientesException{
 		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss(), Colores.AZUL);
 
 		jugador.construir(EnumEdificiosProtos.PILON);
@@ -98,7 +104,7 @@ public class IntegracionesJugadorTest {
 
 
 	@Test
-	public void testLlevoPoblacionMaximaAlTopeYVerifico(){
+	public void testLlevoPoblacionMaximaAlTopeYVerifico() throws CondicionesInsuficientesException{
 		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss(), Colores.AZUL);
 		this.iniciarJugadorProtossConRecursos(jugador);
 		
@@ -116,7 +122,8 @@ public class IntegracionesJugadorTest {
 
 
 	@Test
-	public void testSuperoTopePoblacionMaximaVerificoQueSigaEnTope(){
+	public void testSuperoTopePoblacionMaximaVerificoQueSigaEnTope() 
+			throws CondicionesInsuficientesException{
 		Jugador jugador= new Jugador("Fernando De La Rua", new Protoss(), Colores.AZUL);
 		this.iniciarJugadorProtossConRecursos(jugador);
 
@@ -133,7 +140,8 @@ public class IntegracionesJugadorTest {
 	}
 	
 	@Test
-	public void testCrearUnidadesNoAumentaPoblacionSiNoEspero() {
+	public void testCrearUnidadesNoAumentaPoblacionSiNoEspero() 
+			throws CondicionesInsuficientesException {
 		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		this.iniciarJugadorTerranConRecursos(jugador);
 		//creo edificios para unidades
@@ -146,7 +154,8 @@ public class IntegracionesJugadorTest {
 	}
 
 	@Test
-	public void testCrearUnidadesYEsperarASuCreacionAumentaPoblacion() {
+	public void testCrearUnidadesYEsperarASuCreacionAumentaPoblacion() 
+			throws CondicionesInsuficientesException {
 		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		this.iniciarJugadorTerranConRecursos(jugador);
 		//creo edificios para unidades
@@ -163,9 +172,9 @@ public class IntegracionesJugadorTest {
 		assertEquals( 1 , jugador.getPoblacionActual() );
 	}
 
-	@Test
+	@Test(expected = CondicionesInsuficientesException.class)
 	public void testNoSePuedeCrearUnidadesCuandoPoblacionEstaAlMaximo() 
-			throws UnidadIncompletaException {
+			throws UnidadIncompletaException, CondicionesInsuficientesException {
 		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		this.iniciarJugadorTerranConRecursos(jugador);
 		//creo edificios para unidades
@@ -183,11 +192,12 @@ public class IntegracionesJugadorTest {
 		
 		assertEquals( 5 , jugador.getPoblacionMaxima() );//verifico poblacion maxima
 		assertEquals( 5 , jugador.getPoblacionActual() );//verifico poblacion maxima alcanzada
-		assertEquals( null , jugador.crearUnidad( UnidadesTerran.MARINE, barraca) );//verifico que no pueda crear
+		
+		jugador.crearUnidad( UnidadesTerran.MARINE, barraca) ;
 	}
 
 	@Test
-	public void testMatarUnidadesdisminuyePoblacion() {
+	public void testMatarUnidadesdisminuyePoblacion() throws CondicionesInsuficientesException {
 		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		this.iniciarJugadorTerranConRecursos(jugador);
 		

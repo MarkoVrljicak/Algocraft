@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.exception.UnidadIncompletaException;
 import algocraft.factory.UnidadesAbstractFactory;
@@ -27,7 +28,7 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 		unidadesCreables.put(nombreUnidad, creador);
 	}
 	
-	public Unidad crearUnidad(Unidades unidad){
+	public Unidad crearUnidad(Unidades unidad) throws CondicionesInsuficientesException{
 		UnidadesAbstractFactory creador = unidadesCreables.get(unidad);
 		
 		if(puedoCrearUnidad(creador) ){
@@ -36,7 +37,7 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 				this.getDuenio().consumirMineral(creador.getMineralNecesario());
 				this.getDuenio().consumirGas(creador.getGasNecesario());
 			} catch (RecursosNegativosException e) {
-				e.printStackTrace();
+				throw new CondicionesInsuficientesException();
 			}
 			Unidad unidadCreada = creador.crearUnidad();
 			unidadCreada.setColor(this.getColor());
@@ -44,7 +45,8 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 			
 			return unidadCreada;
 		}
-		else return null;
+		else 
+			throw new CondicionesInsuficientesException();
 	}
 	
 	public boolean puedoCrearUnidad(UnidadesAbstractFactory creador) {

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.factory.edificiosTerran.CreadorBarraca;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
@@ -30,7 +31,8 @@ public class CreadorDeUnidadesTest {
 	}
 	
 	@Test
-	public void testCrearUnidadHaceQueHallaUnidadEnCreacion(){
+	public void testCrearUnidadHaceQueHallaUnidadEnCreacion() 
+			throws CondicionesInsuficientesException{
 		CreadorDeUnidades barraca = this.crearBarracaValida();
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);
@@ -39,7 +41,8 @@ public class CreadorDeUnidadesTest {
 	}
 	
 	@Test
-	public void testCreoUnidadVerificoQueNoEsteTerminada(){
+	public void testCreoUnidadVerificoQueNoEsteTerminada() 
+			throws CondicionesInsuficientesException{
 		CreadorDeUnidades barraca = this.crearBarracaValida();
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);
@@ -48,7 +51,8 @@ public class CreadorDeUnidadesTest {
 	}
 	
 	@Test
-	public void testCreoUnidadEsperoAQueTermineVerificoQueEsteTerminada(){
+	public void testCreoUnidadEsperoAQueTermineVerificoQueEsteTerminada() 
+			throws CondicionesInsuficientesException{
 		CreadorDeUnidades barraca = this.crearBarracaValida();
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);
@@ -56,5 +60,20 @@ public class CreadorDeUnidadesTest {
 			barraca.iniciarTurno();
 		
 		assertTrue(barraca.unidadTerminada());
+	}
+	
+	@Test(expected = CondicionesInsuficientesException.class)
+	public void testIntentarCrearUnidadSinRecursosLanzaException()
+			throws CondicionesInsuficientesException{
+		
+			CreadorDeUnidades barraca = this.crearBarracaValida();
+			
+			barraca.crearUnidad(UnidadesTerran.MARINE);
+			barraca.crearUnidad(UnidadesTerran.MARINE);
+			barraca.crearUnidad(UnidadesTerran.MARINE);
+			barraca.crearUnidad(UnidadesTerran.MARINE);
+			
+			barraca.crearUnidad(UnidadesTerran.MARINE);
+			//4 para gastar recursos iniciales, 1 para lanzar exception
 	}
 }

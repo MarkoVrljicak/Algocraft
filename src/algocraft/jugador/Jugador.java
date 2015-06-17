@@ -9,6 +9,7 @@ import algocraft.Interfaces.Daniable;
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.construcciones.EnumEdificios;
+import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.razas.EnumRazas;
 import algocraft.razas.Raza;
@@ -111,16 +112,17 @@ public class Jugador implements Actualizable, Usuario {
 	
 	//de creacion
 	
-	public Construccion construir(EnumEdificios nombreConstruccion){
+	public Construccion construir(EnumEdificios nombreConstruccion) 
+			throws CondicionesInsuficientesException{
 		Construccion construccion = raza.crearConstruccion(nombreConstruccion);
-		if(!(construccion == null) ){
-			construcciones.add(construccion);
-		}
+		construcciones.add(construccion);
+	
 		return construccion;
 	}
 	
 	
-	public Unidad crearUnidad(Unidades nombreUnidad , CreadorDeUnidades edificioCreador) {
+	public Unidad crearUnidad(Unidades nombreUnidad , CreadorDeUnidades edificioCreador) 
+			throws CondicionesInsuficientesException {
 		Unidad unidadCreada = null;
 		unidadCreada = edificioCreador.crearUnidad(nombreUnidad);
 		if(!(unidadCreada == null)){
