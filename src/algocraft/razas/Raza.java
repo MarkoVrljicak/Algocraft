@@ -5,7 +5,9 @@ import java.util.Set;
 
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.EnumEdificios;
-import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.DependenciasNoCumplidasException;
+import algocraft.exception.GasInsuficienteException;
+import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.EdificiosAbstractFactory;
 import algocraft.jugador.Jugador;
@@ -46,39 +48,51 @@ public abstract class Raza {
 		return construccionesCreables.containsKey(nombreEdificio);
 	}
 	
-	public Construccion crearConstruccion(EnumEdificios nombreEdificio) throws CondicionesInsuficientesException{
+	public Construccion crearConstruccion(EnumEdificios nombreEdificio) 
+			throws MineralInsuficienteException,GasInsuficienteException, DependenciasNoCumplidasException{
 		EdificiosAbstractFactory creador = construccionesCreables.get(nombreEdificio);
 		
-		if(puedoCrearConstruccion(creador) ){
-			
-			try {
-				duenio.consumirMineral(creador.getMineralNecesario());
-				duenio.consumirGas(creador.getGasNecesario());
-			} catch (RecursosNegativosException e) {
-				throw new CondicionesInsuficientesException();
-			}
-			
-			Construccion edificio = creador.crearEdificio();
-			edificio.setDuenio(duenio);
-			return edificio;
+		if(!tengoMineralSuficiente(creador))
+			throw new MineralInsuficienteException();
+		if(!tengoGasSuficiente(creador))
+			throw new GasInsuficienteException();
+		if(!tengoDependencias(creador))
+			throw new DependenciasNoCumplidasException();
+
+		try {
+			duenio.consumirMineral(creador.getMineralNecesario());
+			duenio.consumirGas(creador.getGasNecesario());
+		} catch (RecursosNegativosException e) {
+			//contradiccion
+			e.printStackTrace();
 		}
-		else 
-			throw new CondicionesInsuficientesException();
+
+		Construccion edificio = creador.crearEdificio();
+		edificio.setDuenio(duenio);
+		return edificio;
 	}
 	
-	//creacion edificios
+	
+	private boolean tengoDependencias(EdificiosAbstractFactory creador) {
+		if(creador.necesitoConstruccionAnterior())
+			return (duenio.tieneConstruccion(creador.getConstruccionNecesitada()));
+		else
+			return true;
+	}
+
+	private boolean tengoGasSuficiente(EdificiosAbstractFactory creador) {
+		int gasDisponible = this.duenio.getGas();
+		return (gasDisponible >= creador.getGasNecesario());
+	}
+
+	private boolean tengoMineralSuficiente(EdificiosAbstractFactory creador) {
+		int mineralDisponible = this.duenio.getMineral();
+		return(mineralDisponible >= creador.getMineralNecesario());
+	}
+
 	public boolean puedoCrearConstruccion(EdificiosAbstractFactory creador) {
-		final int mineralDisponible = duenio.getMineral();
-		final int gasDisponible = duenio.getGas();
-		
-		boolean puedeCrearse = (mineralDisponible >= creador.getMineralNecesario());
-		puedeCrearse = puedeCrearse && (gasDisponible >= creador.getGasNecesario());
-		
-		if(creador.necesitoConstruccionAnterior()){
-			puedeCrearse = puedeCrearse && (duenio.tieneConstruccion(creador.getConstruccionNecesitada()));
-		}
-		
-		return puedeCrearse;
-	}	
-		
+		return (this.tengoGasSuficiente(creador)&& 
+				this.tengoMineralSuficiente(creador)&&
+				this.tengoDependencias(creador));
+	}		
 }

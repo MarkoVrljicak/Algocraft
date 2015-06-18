@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import algocraft.construcciones.CreadorDeUnidades;
-import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.GasInsuficienteException;
 import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.PoblacionInsuficienteException;
@@ -53,8 +52,8 @@ public class ArchivosTemplariosTest {
 	}
 		
 	@Test
-	public void testArchivosTemplariosCreaAltoTemplario() throws CondicionesInsuficientesException, 
-			MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+	public void testArchivosTemplariosCreaAltoTemplario() 
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorArchivosTemplarios creador = new CreadorArchivosTemplarios();
 		CreadorDeUnidades archivosTemplarios = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);

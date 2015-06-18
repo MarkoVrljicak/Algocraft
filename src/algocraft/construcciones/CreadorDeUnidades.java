@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.GasInsuficienteException;
 import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.PoblacionInsuficienteException;
@@ -31,7 +30,7 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	}
 	
 	public Unidad crearUnidad(Unidades unidad) 
-			throws CondicionesInsuficientesException, MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		UnidadesAbstractFactory creador = unidadesCreables.get(unidad);
 		
 		if(!tengoMineralSuficiente(creador))
@@ -46,7 +45,7 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 			this.getDuenio().consumirGas(creador.getGasNecesario());
 		} catch (RecursosNegativosException e) {
 			//contradiccion, tengo suficiente o no llegue aca
-			throw new CondicionesInsuficientesException();
+			e.printStackTrace();
 		}
 		Unidad unidadCreada = creador.crearUnidad();
 		unidadCreada.setColor(this.getColor());
@@ -71,8 +70,9 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	}
 
 	public boolean puedoCrearUnidad(UnidadesAbstractFactory creador) {
-		return (this.tengoGasSuficiente(creador)&& this.tengoMineralSuficiente(creador)
-				&& this.tengoPoblacionSuficiente(creador));
+		return (this.tengoGasSuficiente(creador)&&
+				this.tengoMineralSuficiente(creador)&&
+				this.tengoPoblacionSuficiente(creador));
 	}
 	
 	public boolean unidadEnCreacion() {

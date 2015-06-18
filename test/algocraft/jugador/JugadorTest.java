@@ -1,13 +1,13 @@
 package algocraft.jugador;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.DependenciasNoCumplidasException;
+import algocraft.exception.GasInsuficienteException;
+import algocraft.exception.MineralInsuficienteException;
 import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
-import algocraft.jugador.Colores;
-import algocraft.jugador.Jugador;
 import algocraft.razas.EnumRazas;
 import algocraft.razas.Terran;
 
@@ -57,7 +57,7 @@ public class JugadorTest {
 	
 	@Test
 	public void jugadorTerranPuedeCrearBarracaConRecursosIniciales() 
-			throws CondicionesInsuficientesException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Jugador jugadorTerran = new Jugador("Fernando De La Rua", new Terran(), Colores.AZUL);
 		jugadorTerran.construir(EnumEdificiosTerran.BARRACA);
 		

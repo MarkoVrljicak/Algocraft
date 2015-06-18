@@ -1,6 +1,6 @@
 package algocraft.exception;
 
-public class CondicionesInsuficientesException extends Exception {
+public class DependenciasNoCumplidasException extends Exception {
 
 	/**
 	 * 

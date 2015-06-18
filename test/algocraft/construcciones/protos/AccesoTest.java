@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import algocraft.construcciones.CreadorDeUnidades;
-import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.GasInsuficienteException;
 import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.PoblacionInsuficienteException;
@@ -53,8 +52,8 @@ public class AccesoTest {
 	}
 		
 	@Test
-	public void testAccesoCreaZealot() throws CondicionesInsuficientesException, 
-			MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+	public void testAccesoCreaZealot() 
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
@@ -99,8 +98,8 @@ public class AccesoTest {
 	}
 		
 	@Test
-	public void testAccesoCreaDragon() throws CondicionesInsuficientesException, MineralInsuficienteException,
-			GasInsuficienteException, PoblacionInsuficienteException {
+	public void testAccesoCreaDragon() 
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);

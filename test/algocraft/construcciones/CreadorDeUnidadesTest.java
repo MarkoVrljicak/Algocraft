@@ -1,10 +1,10 @@
 package algocraft.construcciones;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.GasInsuficienteException;
 import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.PoblacionInsuficienteException;
@@ -35,8 +35,7 @@ public class CreadorDeUnidadesTest {
 	
 	@Test
 	public void testCrearUnidadHaceQueHallaUnidadEnCreacion() 
-			throws CondicionesInsuficientesException, MineralInsuficienteException, 
-				GasInsuficienteException, PoblacionInsuficienteException{
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException{
 		CreadorDeUnidades barraca = this.crearBarracaValida();
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);
@@ -46,8 +45,7 @@ public class CreadorDeUnidadesTest {
 	
 	@Test
 	public void testCreoUnidadVerificoQueNoEsteTerminada() 
-			throws CondicionesInsuficientesException, MineralInsuficienteException,
-				GasInsuficienteException, PoblacionInsuficienteException{
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException{
 		CreadorDeUnidades barraca = this.crearBarracaValida();
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);
@@ -57,8 +55,7 @@ public class CreadorDeUnidadesTest {
 	
 	@Test
 	public void testCreoUnidadEsperoAQueTermineVerificoQueEsteTerminada() 
-			throws CondicionesInsuficientesException, MineralInsuficienteException,
-				GasInsuficienteException, PoblacionInsuficienteException{
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException{
 		CreadorDeUnidades barraca = this.crearBarracaValida();
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);
@@ -70,8 +67,7 @@ public class CreadorDeUnidadesTest {
 	
 	@Test(expected = MineralInsuficienteException.class)
 	public void testIntentarCrearUnidadSinRecursosLanzaException()
-			throws CondicionesInsuficientesException, MineralInsuficienteException,
-				GasInsuficienteException, PoblacionInsuficienteException{
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException{
 		
 			CreadorDeUnidades barraca = this.crearBarracaValida();
 			

@@ -1,16 +1,23 @@
 package algocraft.razas;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import algocraft.construcciones.Construccion;
-import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.DependenciasNoCumplidasException;
+import algocraft.exception.GasInsuficienteException;
+import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.RecursosNegativosException;
-import algocraft.factory.edificiosProtoss.*;
+import algocraft.factory.edificiosProtoss.CreadorAcceso;
+import algocraft.factory.edificiosProtoss.CreadorArchivosTemplarios;
+import algocraft.factory.edificiosProtoss.CreadorAsimilador;
+import algocraft.factory.edificiosProtoss.CreadorNexoMineral;
+import algocraft.factory.edificiosProtoss.CreadorPilon;
+import algocraft.factory.edificiosProtoss.CreadorPuertoEstelar;
+import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
-import algocraft.razas.Protoss;
 
 public class ProtossTest {
 	
@@ -78,7 +85,8 @@ public class ProtossTest {
 	}
 		
 	@Test
-	public void testProtossCreaAcceso() throws CondicionesInsuficientesException {
+	public void testProtossCreaAcceso() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
@@ -90,7 +98,7 @@ public class ProtossTest {
 	
 	@Test
 	public void testProtossPuedeCrearArchivosTemplariosConRecursosSuficientesyPoblacionSuficiente() 
-			throws CondicionesInsuficientesException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
@@ -137,7 +145,8 @@ public class ProtossTest {
 	}
 		
 	@Test
-	public void testProtossCreaAsimilador() throws CondicionesInsuficientesException {
+	public void testProtossCreaAsimilador() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
@@ -169,7 +178,8 @@ public class ProtossTest {
 	}
 		
 	@Test
-	public void testProtossCreaNexoMineral() throws CondicionesInsuficientesException {
+	public void testProtossCreaNexoMineral() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
@@ -181,7 +191,7 @@ public class ProtossTest {
 	
 	@Test
 	public void testProtossPuedeCrearPuertoEstelarConRecursosSuficientesyPoblacionSuficiente() 
-			throws CondicionesInsuficientesException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		
@@ -227,7 +237,8 @@ public class ProtossTest {
 	}
 		
 	@Test
-	public void testProtossCreaPilon() throws CondicionesInsuficientesException {
+	public void testProtossCreaPilon() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Protoss protoss = new Protoss();
 		Jugador jugador = new Jugador("Nombre", protoss,  Colores.AZUL);
 		

@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import algocraft.construcciones.CreadorDeUnidades;
-import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.GasInsuficienteException;
 import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.PoblacionInsuficienteException;
@@ -52,8 +51,8 @@ public class BarracaTest {
 	}
 		
 	@Test
-	public void testBarracaCreaMarine() throws CondicionesInsuficientesException, 
-			MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+	public void testBarracaCreaMarine() 
+			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorBarraca creador = new CreadorBarraca();
 		CreadorDeUnidades barraca = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);

@@ -2,16 +2,17 @@ package algocraft;
 
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.CreadorDeUnidades;
+import algocraft.exception.DependenciasNoCumplidasException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.EspacioInsuficienteException;
 import algocraft.exception.FueraDeLimitesException;
-import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.GasInsuficienteException;
 import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.PoblacionInsuficienteException;
@@ -58,7 +59,8 @@ public class JuegoTest {
 	}
 	
 	private void juntarRecursosParaAmbosJugadores(Juego algocraft) 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException {
+			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
+					GasInsuficienteException, DependenciasNoCumplidasException{
 		final int muchosTurnos = 400; 
 		
 		algocraft.construirEn(EnumEdificiosTerran.CENTRO_DE_MINERALES,
@@ -84,7 +86,8 @@ public class JuegoTest {
 	}
 
 	private CreadorDeUnidades crearBarracaListaEn(Juego algocraft, Coordenada posicion) 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException{
+			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
+					GasInsuficienteException, DependenciasNoCumplidasException{
 		
 		algocraft.construirEn(EnumEdificiosTerran.BARRACA, posicion);
 		CreadorDeUnidades barraca=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicion);
@@ -95,7 +98,8 @@ public class JuegoTest {
 	}
 	
 	private CreadorDeUnidades crearFabricaListaEn(Juego algocraft,Coordenada posicion) 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException {
+			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
+					GasInsuficienteException, DependenciasNoCumplidasException {
 		
 		algocraft.construirEn(EnumEdificiosTerran.FABRICA, posicion);
 		CreadorDeUnidades fabrica=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicion);
@@ -106,7 +110,8 @@ public class JuegoTest {
 	}
 	
 	private CreadorDeUnidades crearPuertoListoEn(Juego algocraft,Coordenada posicion) 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException {
+			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException, 
+					GasInsuficienteException, DependenciasNoCumplidasException {
 		
 		algocraft.construirEn(EnumEdificiosTerran.PUERTO_ESTELAR, posicion);
 		CreadorDeUnidades puerto=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicion);
@@ -118,7 +123,8 @@ public class JuegoTest {
 	
 	@Test
 	public void testCreoEdificioEnPosicionVerificoQueEsteAhi() 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException{
+			throws DestinoInvalidoException, FueraDeLimitesException,
+			MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		algocraft.construirEn(EnumEdificiosTerran.BARRACA , new Coordenada(6,alto-4));
 		
@@ -129,7 +135,8 @@ public class JuegoTest {
 	
 	@Test(expected = DestinoInvalidoException.class)
 	public void testIntentarCrearEdificioEnAireLanzaDestinoInvalido() 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException{
+			throws DestinoInvalidoException, FueraDeLimitesException, 
+			MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		Coordenada posicionInvalida = this.encontrarTerrenoVacio(Terrenos.AIRE, algocraft);
 		
@@ -138,7 +145,8 @@ public class JuegoTest {
 	
 	@Test(expected = DestinoInvalidoException.class)
 	public void testIntentarCrearEdificioIncorrectoEnMineralLanzaDestinoInvalido() 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException{
+			throws DestinoInvalidoException, FueraDeLimitesException, 
+			MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		Coordenada posicionInvalida = this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft);
 		
@@ -148,7 +156,8 @@ public class JuegoTest {
 	
 	@Test
 	public void testCreoCentroMineralEnCristalesVerificoQueEsteAhi() 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException{
+			throws DestinoInvalidoException, FueraDeLimitesException, 
+			MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		Coordenada unaPosicion = this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft);
 		
@@ -161,7 +170,8 @@ public class JuegoTest {
 	
 	@Test
 	public void testCreoRefineriaEnVolcanVerificoQueEsteAhi() 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException{
+			throws DestinoInvalidoException, FueraDeLimitesException, 
+			MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		Coordenada unaPosicion = this.encontrarTerrenoVacio(Terrenos.VOLCAN, algocraft);
 		
@@ -184,8 +194,8 @@ public class JuegoTest {
 	@Test
 	public void testCreoUnidadEsperoQueSeConstruyaVerificoQueEsteAlLadoDeSuBarraca() 
 			throws DestinoInvalidoException, FueraDeLimitesException,
-				CondicionesInsuficientesException, MineralInsuficienteException, 
-					GasInsuficienteException, PoblacionInsuficienteException{
+				MineralInsuficienteException, GasInsuficienteException, 
+				PoblacionInsuficienteException, DependenciasNoCumplidasException{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		this.juntarRecursosParaAmbosJugadores(algocraft);
 		Coordenada posicionBarraca = new Coordenada(6,alto-5);
@@ -230,9 +240,10 @@ public class JuegoTest {
 
 	@Test
 	public void testTransportoMarineATravesDeAire() 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException,
-				PropiedadNoEstaEnJuegoException, EspacioInsuficienteException, UnidadNoTransportableException, 
-					MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException{
+			throws DestinoInvalidoException, FueraDeLimitesException,PropiedadNoEstaEnJuegoException,
+					EspacioInsuficienteException, UnidadNoTransportableException,MineralInsuficienteException,
+					GasInsuficienteException, PoblacionInsuficienteException, DependenciasNoCumplidasException{
+		
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		inyectarMapaEspecial(algocraft);
 		this.juntarRecursosParaAmbosJugadores(algocraft);

@@ -4,7 +4,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.DependenciasNoCumplidasException;
+import algocraft.exception.GasInsuficienteException;
+import algocraft.exception.MineralInsuficienteException;
 import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
@@ -13,7 +15,7 @@ import algocraft.razas.Protoss;
 public class IntegracionProtossTest {
 
 	private Jugador crearJugadorConMuchosRecursos()
-			throws CondicionesInsuficientesException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
 		//construyo edificios para acumular recursos 
 		jugador.construir( EnumEdificiosProtos.NEXO_MINERAL);
@@ -27,7 +29,8 @@ public class IntegracionProtossTest {
 	}
 	
 	@Test
-	public void testCrearAcceso() throws CondicionesInsuficientesException {
+	public void testCrearAcceso() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
 		jugador.construir(EnumEdificiosProtos.ACCESO);
 		
@@ -35,7 +38,8 @@ public class IntegracionProtossTest {
 	}
 	
 	@Test
-	public void testCrearAsimilador() throws CondicionesInsuficientesException {
+	public void testCrearAsimilador() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
 		jugador.construir( EnumEdificiosProtos.ASIMILADOR);
 		
@@ -43,7 +47,8 @@ public class IntegracionProtossTest {
 	}
 	
 	@Test
-	public void testCrearNexoMineral() throws CondicionesInsuficientesException {
+	public void testCrearNexoMineral() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
 		jugador.construir(  EnumEdificiosProtos.NEXO_MINERAL);
 		
@@ -51,7 +56,8 @@ public class IntegracionProtossTest {
 	}
 	
 	@Test
-	public void testCrearPilon() throws CondicionesInsuficientesException {
+	public void testCrearPilon() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
 		jugador.construir(EnumEdificiosProtos.PILON);
 		
@@ -59,7 +65,8 @@ public class IntegracionProtossTest {
 	}
 
 	@Test
-	public void testCrearPuertoEstelar() throws CondicionesInsuficientesException {
+	public void testCrearPuertoEstelar() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Jugador jugador = crearJugadorConMuchosRecursos();
 		//creo edificios necesarios
 		jugador.construir(EnumEdificiosProtos.ACCESO);
@@ -72,8 +79,9 @@ public class IntegracionProtossTest {
 
 	
 	
-	@Test(expected = CondicionesInsuficientesException.class)
-	public void testNoSeCreaPuertoEstelarSinAcceso() throws CondicionesInsuficientesException {
+	@Test(expected = DependenciasNoCumplidasException.class)
+	public void testNoSeCreaPuertoEstelarSinAcceso() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Jugador jugador = crearJugadorConMuchosRecursos();
 				
 		//creo PuertoEstelar sin tener Acceso
@@ -81,7 +89,8 @@ public class IntegracionProtossTest {
 	}
 	
 	@Test
-	public void testCrearArchivosTemplarios() throws CondicionesInsuficientesException {
+	public void testCrearArchivosTemplarios() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Jugador jugador = crearJugadorConMuchosRecursos();
 		//creo edificios necesarios
 		jugador.construir(EnumEdificiosProtos.ACCESO);
@@ -93,8 +102,9 @@ public class IntegracionProtossTest {
 		assertTrue(jugador.tieneConstruccion(EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS));
 	}
 	
-	@Test(expected = CondicionesInsuficientesException.class)
-	public void testNoSeCreaArchivosTemplariosSinPuertoEstelar() throws CondicionesInsuficientesException {
+	@Test(expected = DependenciasNoCumplidasException.class)
+	public void testNoSeCreaArchivosTemplariosSinPuertoEstelar() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Jugador jugador = crearJugadorConMuchosRecursos();
 		
 		//creo ArchivosTemplarios

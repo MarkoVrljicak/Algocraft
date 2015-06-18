@@ -1,17 +1,24 @@
 package algocraft.razas;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import algocraft.construcciones.Construccion;
-import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.DependenciasNoCumplidasException;
+import algocraft.exception.GasInsuficienteException;
+import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
-import algocraft.factory.edificiosTerran.*;
+import algocraft.factory.edificiosTerran.CreadorBarraca;
+import algocraft.factory.edificiosTerran.CreadorCentroDeMineral;
+import algocraft.factory.edificiosTerran.CreadorDepositoDeSuministros;
+import algocraft.factory.edificiosTerran.CreadorFabrica;
+import algocraft.factory.edificiosTerran.CreadorPuertoEstelar;
+import algocraft.factory.edificiosTerran.CreadorRefineria;
+import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
-import algocraft.razas.Terran;
 
 public class TerranTest {
 
@@ -86,7 +93,8 @@ public class TerranTest {
 	}
 		
 	@Test
-	public void testTerranCreaBarraca() throws CondicionesInsuficientesException {
+	public void testTerranCreaBarraca()
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
@@ -118,7 +126,8 @@ public class TerranTest {
 	}
 		
 	@Test
-	public void testTerranCreaCentroDeMineral() throws CondicionesInsuficientesException {
+	public void testTerranCreaCentroDeMineral() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
@@ -150,7 +159,8 @@ public class TerranTest {
 	}
 		
 	@Test
-	public void testTerranCreaDepositoDeSuministros() throws CondicionesInsuficientesException {
+	public void testTerranCreaDepositoDeSuministros() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
@@ -162,7 +172,7 @@ public class TerranTest {
 	
 	@Test
 	public void testTerranPuedeCrearFabricaConRecursosSuficientesyPoblacionSuficiente()
-			throws CondicionesInsuficientesException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException{
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
@@ -188,7 +198,7 @@ public class TerranTest {
 		
 	@Test
 	public void testTerranPuedeCrearPuertoEstelarConRecursosSuficientesyPoblacionSuficiente() 
-			throws CondicionesInsuficientesException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		
@@ -235,7 +245,8 @@ public class TerranTest {
 	}
 		
 	@Test
-	public void testTerranCreaRefineria() throws CondicionesInsuficientesException {
+	public void testTerranCreaRefineria() 
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Terran terran = new Terran();
 		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
 		

@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import algocraft.construcciones.CreadorDeUnidades;
-import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.GasInsuficienteException;
 import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.PoblacionInsuficienteException;
@@ -53,8 +52,8 @@ public class FabricaTest {
 	}
 		
 	@Test
-	public void testFabricaCreaGolliat() throws CondicionesInsuficientesException,
-			MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+	public void testFabricaCreaGolliat() 
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorFabrica creador = new CreadorFabrica();
 		CreadorDeUnidades fabrica = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);

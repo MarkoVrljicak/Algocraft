@@ -7,10 +7,10 @@ import java.util.Iterator;
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.construcciones.EnumEdificios;
+import algocraft.exception.DependenciasNoCumplidasException;
 import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.EspacioInsuficienteException;
 import algocraft.exception.FueraDeLimitesException;
-import algocraft.exception.CondicionesInsuficientesException;
 import algocraft.exception.GasInsuficienteException;
 import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.PoblacionInsuficienteException;
@@ -76,14 +76,15 @@ public class Juego {
 	}
 
 	public void construirEn(EnumEdificios edificio, Coordenada coordenada) 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException {
+			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
+					GasInsuficienteException, DependenciasNoCumplidasException {
+		
 		Construccion edificioNuevo = jugadorActual.construir(edificio);
 		mapa.almacenar((Propiedad) edificioNuevo, coordenada);
 	}
 	
 	public void crearUnidad(CreadorDeUnidades edificioCreador, Unidades unidadPedida) 
-			throws CondicionesInsuficientesException, MineralInsuficienteException, 
-				GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException {
 		 jugadorActual.crearUnidad(unidadPedida, edificioCreador);	
 		 creadoresDeUnidadesEnUso.add(edificioCreador);
 	}

@@ -9,7 +9,7 @@ import algocraft.Interfaces.Daniable;
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.construcciones.EnumEdificios;
-import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.DependenciasNoCumplidasException;
 import algocraft.exception.GasInsuficienteException;
 import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.PoblacionInsuficienteException;
@@ -124,7 +124,7 @@ public class Jugador implements Actualizable, Usuario {
 	//de creacion
 	
 	public Construccion construir(EnumEdificios nombreConstruccion) 
-			throws CondicionesInsuficientesException{
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
 		Construccion construccion = raza.crearConstruccion(nombreConstruccion);
 		construcciones.add(construccion);
 	
@@ -133,8 +133,7 @@ public class Jugador implements Actualizable, Usuario {
 	
 	
 	public Unidad crearUnidad(Unidades nombreUnidad , CreadorDeUnidades edificioCreador) 
-			throws CondicionesInsuficientesException, MineralInsuficienteException,
-				GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException {
 		Unidad unidadCreada = null;
 		unidadCreada = edificioCreador.crearUnidad(nombreUnidad);
 		if(!(unidadCreada == null)){
