@@ -25,7 +25,7 @@ import algocraft.mapa.GeneradorDeMapa;
 import algocraft.mapa.Mapa;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.propiedad.Propiedad;
-import algocraft.razas.Raza;
+import algocraft.razas.EnumRazas;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.UnidadTransportadora;
 import algocraft.unidades.Unidades;
@@ -44,11 +44,11 @@ public class Juego {
 		creadoresDeUnidadesEnUso = new ArrayList<CreadorDeUnidades>();
 	}
 
-	public void setJugador1(String nombre, Raza unaRaza , Colores unColor) {
+	public void setJugador1(String nombre, EnumRazas unaRaza , Colores unColor) {
 		this.jugador1 = new Jugador(nombre, unaRaza, unColor);		
 	}
 	
-	public void setJugador2(String nombre, Raza unaRaza , Colores unColor) {
+	public void setJugador2(String nombre, EnumRazas unaRaza , Colores unColor) {
 		this.jugador2 = new Jugador(nombre, unaRaza, unColor);		
 	}
 

@@ -15,7 +15,7 @@ import algocraft.factory.unidadesTerran.CreadorNaveCiencia;
 import algocraft.factory.unidadesTerran.CreadorNaveTransporte;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
-import algocraft.razas.Terran;
+import algocraft.razas.EnumRazas;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.terran.UnidadesTerran;
 
@@ -33,7 +33,7 @@ public class PuertoEstelarTest {
 	public void testPuertoEstelarPuedeCrearEspectroConRecursosSuficientesyPoblacionSuficiente() {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
 		jugador.incrementarMineral(1000);
@@ -47,7 +47,7 @@ public class PuertoEstelarTest {
 			throws RecursosNegativosException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -60,7 +60,7 @@ public class PuertoEstelarTest {
 			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
 		jugador.incrementarMineral(1000);
@@ -83,7 +83,7 @@ public class PuertoEstelarTest {
 	public void testPuertoEstelarPuedeCrearNaveDeTransporteConRecursosSuficientesyPoblacionSuficiente() {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
 		jugador.incrementarMineral(1000);
@@ -97,7 +97,7 @@ public class PuertoEstelarTest {
 			throws RecursosNegativosException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -110,7 +110,7 @@ public class PuertoEstelarTest {
 			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
 		jugador.incrementarMineral(1000);
@@ -132,7 +132,7 @@ public class PuertoEstelarTest {
 	public void testPuertoEstelarPuedeCrearNaveDeCienciaConRecursosSuficientesyPoblacionSuficiente() {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
 		jugador.incrementarMineral(1000);
@@ -146,7 +146,7 @@ public class PuertoEstelarTest {
 			throws RecursosNegativosException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -159,7 +159,7 @@ public class PuertoEstelarTest {
 			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
 		jugador.incrementarMineral(1000);

@@ -13,7 +13,7 @@ import algocraft.factory.edificiosTerran.CreadorFabrica;
 import algocraft.factory.unidadesTerran.CreadorGolliat;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
-import algocraft.razas.Terran;
+import algocraft.razas.EnumRazas;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.terran.UnidadesTerran;
 
@@ -31,7 +31,7 @@ public class FabricaTest {
 	public void testFabricaPuedeCrearGolliatConRecursosSuficientesyPoblacionSuficiente() {
 		CreadorFabrica creador = new CreadorFabrica();
 		CreadorDeUnidades fabrica = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(100);
 		fabrica.setDuenio(jugador);
@@ -44,7 +44,7 @@ public class FabricaTest {
 			throws RecursosNegativosException {
 		CreadorFabrica creador = new CreadorFabrica();
 		CreadorDeUnidades fabrica = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		fabrica.setDuenio(jugador);
 			
@@ -56,7 +56,7 @@ public class FabricaTest {
 			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorFabrica creador = new CreadorFabrica();
 		CreadorDeUnidades fabrica = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(100);
 		fabrica.setDuenio(jugador);

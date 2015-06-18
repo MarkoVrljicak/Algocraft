@@ -25,8 +25,7 @@ import algocraft.mapa.Coordenada;
 import algocraft.mapa.Mapa;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
-import algocraft.razas.Protoss;
-import algocraft.razas.Terran;
+import algocraft.razas.EnumRazas;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.UnidadTransportadora;
 import algocraft.unidades.terran.UnidadesTerran;
@@ -38,8 +37,8 @@ public class JuegoTest {
 
 	private Juego iniciarJuegoConDosJugadores(){
 		Juego algocraft = new Juego(ancho,alto);
-		algocraft.setJugador1("Agustin", new Terran() , Colores.AZUL );
-		algocraft.setJugador2("Marco", new Protoss() , Colores.ROJO );
+		algocraft.setJugador1("Agustin", EnumRazas.TERRAN , Colores.AZUL );
+		algocraft.setJugador2("Marco", EnumRazas.PROTOSS , Colores.ROJO );
 		algocraft.iniciarJuego();
 		
 		return algocraft;

@@ -12,14 +12,14 @@ import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.EdificiosAbstractFactory;
 import algocraft.jugador.Jugador;
 
-public abstract class Raza {
+public abstract class CreadorDeEdificios {
 
 	protected EnumRazas nombre;
 	protected HashMap<EnumEdificios, EdificiosAbstractFactory> construccionesCreables;
 	protected Jugador duenio;
 	
 	//metodos de inicializacion
-	protected Raza(){
+	protected CreadorDeEdificios(){
 		construccionesCreables = new HashMap<EnumEdificios, EdificiosAbstractFactory>();
 		this.determinarCreables();
 	}

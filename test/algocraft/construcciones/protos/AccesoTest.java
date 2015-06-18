@@ -14,7 +14,7 @@ import algocraft.factory.unidadesProtoss.CreadorDragon;
 import algocraft.factory.unidadesProtoss.CreadorZealot;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
-import algocraft.razas.Protoss;
+import algocraft.razas.EnumRazas;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.protos.UnidadesProtos;
 
@@ -32,7 +32,7 @@ public class AccesoTest {
 	public void testAccesoPuedeCrearZealotConRecursosSuficientesyPoblacionSuficiente() {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		acceso.setDuenio(jugador);
 			
 		assertEquals(true,acceso.puedoCrearUnidad(new CreadorZealot()));
@@ -43,7 +43,7 @@ public class AccesoTest {
 			throws RecursosNegativosException {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		acceso.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -56,7 +56,7 @@ public class AccesoTest {
 			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		acceso.setDuenio(jugador);
 		Unidad zealot = acceso.crearUnidad(UnidadesProtos.ZEALOT);
@@ -76,7 +76,7 @@ public class AccesoTest {
 	public void testAccesoPuedeCrearDragonConRecursosSuficientesyPoblacionSuficiente() {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		jugador.incrementarGas(50);
 		acceso.setDuenio(jugador);
@@ -89,7 +89,7 @@ public class AccesoTest {
 			throws RecursosNegativosException {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		acceso.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -102,7 +102,7 @@ public class AccesoTest {
 			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		jugador.incrementarGas(50);
 		acceso.setDuenio(jugador);

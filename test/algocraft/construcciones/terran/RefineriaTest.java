@@ -1,12 +1,14 @@
 package algocraft.construcciones.terran;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
 import algocraft.construcciones.RecolectorGas;
 import algocraft.factory.edificiosTerran.CreadorRefineria;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
-import algocraft.razas.Terran;
+import algocraft.razas.EnumRazas;
 
 
 public class RefineriaTest {
@@ -15,7 +17,7 @@ public class RefineriaTest {
 	public void testRecolectoGas() {
 		CreadorRefineria creador = new CreadorRefineria();
 		RecolectorGas refineria = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		refineria.recolectarGas(jugador);
 		
@@ -26,7 +28,7 @@ public class RefineriaTest {
 	public void testPasoDeTurnoYRecolectoGas() {
 		CreadorRefineria creador = new CreadorRefineria();
 		RecolectorGas refineria = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		refineria.setDuenio(jugador);
 		refineria.iniciarTurno();

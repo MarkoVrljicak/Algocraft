@@ -14,33 +14,47 @@ import algocraft.exception.GasInsuficienteException;
 import algocraft.exception.MineralInsuficienteException;
 import algocraft.exception.PoblacionInsuficienteException;
 import algocraft.exception.RecursosNegativosException;
+import algocraft.razas.CreadorDeEdificiosProtoss;
+import algocraft.razas.CreadorDeEdificiosTerran;
 import algocraft.razas.EnumRazas;
-import algocraft.razas.Raza;
+import algocraft.razas.CreadorDeEdificios;
 import algocraft.stats.Recurso;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.Unidades;
 
 public class Jugador implements Actualizable, Usuario {
 	
-	private Raza raza;
+	private CreadorDeEdificios creadorEdificios;
 	private ArrayList<Unidad> unidades;
 	private ArrayList<Construccion> construcciones;
 	private Recurso recursos;
 	private Colores color;
 	
-	public Jugador(String nombreJugador, Raza raza, Colores color){
+	public Jugador(String nombreJugador, EnumRazas raza, Colores color){
 		this.color = color;
-		this.raza = raza;
-		this.raza.setDuenio(this);
+		this.creadorEdificios = elegirCreadorEdificios(raza);
+		this.creadorEdificios.setDuenio(this);
 		unidades = new ArrayList<Unidad>();
 		recursos = new Recurso(200,0);
 		construcciones = new ArrayList<Construccion>();
 	}
 	
+	private CreadorDeEdificios elegirCreadorEdificios(EnumRazas raza){
+		switch(raza){
+		case PROTOSS:
+			return new CreadorDeEdificiosProtoss();
+		case TERRAN:
+			return new CreadorDeEdificiosTerran();
+		default:
+			return new CreadorDeEdificiosTerran();
+		}
+		
+	}
+	
 	//accesors 
 	
 	public EnumRazas getRaza(){
-		return raza.getNombre();
+		return creadorEdificios.getNombre();
 	}
 	
 	public int getMineral(){
@@ -71,7 +85,7 @@ public class Jugador implements Actualizable, Usuario {
 	}
 	
 	public Set<EnumEdificios> getConstruccionesDisponibles(){
-		return raza.getListaDeConstrucciones();
+		return creadorEdificios.getListaDeConstrucciones();
 	}
 	
 	public int cantidadConstrucciones() {
@@ -125,7 +139,7 @@ public class Jugador implements Actualizable, Usuario {
 	
 	public Construccion construir(EnumEdificios nombreConstruccion) 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Construccion construccion = raza.crearConstruccion(nombreConstruccion);
+		Construccion construccion = creadorEdificios.crearConstruccion(nombreConstruccion);
 		construcciones.add(construccion);
 	
 		return construccion;

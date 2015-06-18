@@ -10,14 +10,14 @@ import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 
-public class RazaTest {
+public class CreadorEdificosTest {
 
 	@Test(expected = MineralInsuficienteException.class)
 	public void testRazaLanzaExcepcionSiSeIntentaConstruirSinRecursosSuficientes() 
 			throws RecursosNegativosException, MineralInsuficienteException, 
 			GasInsuficienteException, DependenciasNoCumplidasException {
-		Protoss raza = new Protoss();
-		Jugador jugador = new Jugador("Nombre", raza,  Colores.AZUL);
+		CreadorDeEdificiosProtoss raza = new CreadorDeEdificiosProtoss();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS,  Colores.AZUL);
 		
 		raza.setDuenio(jugador);
 		jugador.consumirMineral(200);

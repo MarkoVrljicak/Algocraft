@@ -20,61 +20,61 @@ import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
 
-public class TerranTest {
+public class CreadorEdificosTerranTest {
 
 	@Test
 	public void testTerranInicializaConCentroMineral() {
-		Terran terran = new Terran();
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		
 		assertEquals(true, terran.tengoConstruccion(EnumEdificiosTerran.CENTRO_DE_MINERALES));
 	}
 	
 	@Test
 	public void testTerranInicializaConBarraca() {
-		Terran terran = new Terran();
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		
 		assertEquals(true, terran.tengoConstruccion(EnumEdificiosTerran.BARRACA));
 	}
 	
 	@Test
 	public void testTerranInicializaConDepositoDeSuministros() {
-		Terran terran = new Terran();
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		
 		assertEquals(true, terran.tengoConstruccion(EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS));
 	}
 	
 	@Test
 	public void testTerranInicializaConRefineria() {
-		Terran terran = new Terran();
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		
 		assertEquals(true, terran.tengoConstruccion(EnumEdificiosTerran.REFINERIA));
 	}
 	
 	@Test
 	public void testTerrranInicializaConFabrica() {
-		Terran terran = new Terran();
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		
 		assertEquals(true, terran.tengoConstruccion(EnumEdificiosTerran.FABRICA));
 	}
 	
 	@Test
 	public void testTerranInicializaConPuertoEstelar() {
-		Terran terran = new Terran();
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		
 		assertEquals(true, terran.tengoConstruccion(EnumEdificiosTerran.PUERTO_ESTELAR));
 	}
 	
 	@Test
 	public void testTerranNoTieneNexoMineral() {
-		Terran terran = new Terran();
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		
 		assertEquals(false, terran.tengoConstruccion(EnumEdificiosProtos.NEXO_MINERAL));
 	}
 	
 	@Test
 	public void testTerranPuedeCrearBarracaConRecursosSuficientesyPoblacionSuficiente() {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		terran.setDuenio(jugador);
 			
 		assertEquals(true,terran.puedoCrearConstruccion(new CreadorBarraca()));
@@ -83,8 +83,8 @@ public class TerranTest {
 	@Test
 	public void testTerranNoPuedeCrearBarracaConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -95,8 +95,8 @@ public class TerranTest {
 	@Test
 	public void testTerranCreaBarraca()
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
 		Construccion barraca = terran.crearConstruccion(EnumEdificiosTerran.BARRACA);
@@ -106,8 +106,8 @@ public class TerranTest {
 	
 	@Test
 	public void testTerranPuedeCrearCentroDeMineralConRecursosSuficientesyPoblacionSuficiente() {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		terran.setDuenio(jugador);
 			
 		assertEquals(true,terran.puedoCrearConstruccion(new CreadorCentroDeMineral()));
@@ -116,8 +116,8 @@ public class TerranTest {
 	@Test
 	public void testTerranNoPuedeCrearCentroDeMineralConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -128,8 +128,8 @@ public class TerranTest {
 	@Test
 	public void testTerranCreaCentroDeMineral() 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
 		Construccion centroDeMineral = terran.crearConstruccion(EnumEdificiosTerran.CENTRO_DE_MINERALES);
@@ -139,8 +139,8 @@ public class TerranTest {
 	
 	@Test
 	public void testTerranPuedeCrearDepositoDeSuministrosConRecursosSuficientesyPoblacionSuficiente() {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		terran.setDuenio(jugador);
 			
 		assertEquals(true,terran.puedoCrearConstruccion(new CreadorDepositoDeSuministros()));
@@ -149,8 +149,8 @@ public class TerranTest {
 	@Test
 	public void testTerranNoPuedeCrearDepositoDeSuministrosConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -161,8 +161,8 @@ public class TerranTest {
 	@Test
 	public void testTerranCreaDepositoDeSuministros() 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
 		Construccion depositoDeSuministros = terran.crearConstruccion(EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS);
@@ -173,8 +173,8 @@ public class TerranTest {
 	@Test
 	public void testTerranPuedeCrearFabricaConRecursosSuficientesyPoblacionSuficiente()
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException{
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
 		jugador.incrementarMineral(1000);
@@ -187,8 +187,8 @@ public class TerranTest {
 	@Test
 	public void testTerranNoPuedeCrearFabricaConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -199,8 +199,8 @@ public class TerranTest {
 	@Test
 	public void testTerranPuedeCrearPuertoEstelarConRecursosSuficientesyPoblacionSuficiente() 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
 		jugador.incrementarMineral(1000);
@@ -214,8 +214,8 @@ public class TerranTest {
 	@Test
 	public void testTerranNoPuedeCrearPuertoEstelarConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -225,8 +225,8 @@ public class TerranTest {
 		
 	@Test
 	public void testTerranPuedeCrearRefineriaConRecursosSuficientesyPoblacionSuficiente() {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		terran.setDuenio(jugador);
 			
 		assertEquals(true,terran.puedoCrearConstruccion(new CreadorRefineria()));
@@ -235,8 +235,8 @@ public class TerranTest {
 	@Test
 	public void testTerranNoPuedeCrearRefineriaConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -247,8 +247,8 @@ public class TerranTest {
 	@Test
 	public void testTerranCreaRefineria() 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Terran terran = new Terran();
-		Jugador jugador = new Jugador("Nombre", terran, Colores.AZUL);
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		terran.setDuenio(jugador);
 		Construccion refineria = terran.crearConstruccion(EnumEdificiosTerran.REFINERIA);
@@ -258,7 +258,7 @@ public class TerranTest {
 
 	@Test
 	public void testTerranEmpiezaConSieteConstruccionesDisponibles(){
-		Terran terran = new Terran();
+		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		
 		assertEquals(7, terran.getListaDeConstrucciones().size());
 	}

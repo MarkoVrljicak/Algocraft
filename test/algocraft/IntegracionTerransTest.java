@@ -10,13 +10,18 @@ import algocraft.exception.MineralInsuficienteException;
 import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
-import algocraft.razas.Terran;
+import algocraft.razas.EnumRazas;
 
 public class IntegracionTerransTest {
 	
+	private Jugador nuevoJugadorTerran() {
+		Jugador jugador = new Jugador("pepe", EnumRazas.TERRAN, Colores.AZUL);
+		return jugador;
+	}
+	
 	private Jugador inicializarJugadorConMuchosRecursos()
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
+		Jugador jugador = nuevoJugadorTerran();
 		//construyo edificios para acumular recursos 
 		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
 		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
@@ -31,7 +36,7 @@ public class IntegracionTerransTest {
 	@Test
 	public void testCrearCentroDeMineral() 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
+		Jugador jugador = nuevoJugadorTerran();
 		jugador.construir( EnumEdificiosTerran.CENTRO_DE_MINERALES);
 		
 		assertTrue(jugador.tieneConstruccion(EnumEdificiosTerran.CENTRO_DE_MINERALES));
@@ -40,7 +45,7 @@ public class IntegracionTerransTest {
 	@Test
 	public void testCrearBarraca() 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
+		Jugador jugador = nuevoJugadorTerran();
 		jugador.construir( EnumEdificiosTerran.BARRACA);
 		
 		assertTrue(jugador.tieneConstruccion(EnumEdificiosTerran.BARRACA));
@@ -49,7 +54,7 @@ public class IntegracionTerransTest {
 	@Test
 	public void testCrearDepositoDeSuministros() 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Jugador jugador = new Jugador("pepe", new Terran(),Colores.AZUL);
+		Jugador jugador = nuevoJugadorTerran();
 		jugador.construir( EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS);
 		
 		assertTrue(jugador.tieneConstruccion(EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS));
@@ -58,7 +63,7 @@ public class IntegracionTerransTest {
 	@Test
 	public void testCrearRefineria() 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
+		Jugador jugador = nuevoJugadorTerran();
 		jugador.construir(EnumEdificiosTerran.REFINERIA);
 		
 		assertTrue(jugador.tieneConstruccion(EnumEdificiosTerran.REFINERIA));

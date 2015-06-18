@@ -9,9 +9,9 @@ import algocraft.factory.edificiosProtoss.CreadorPilon;
 import algocraft.factory.edificiosProtoss.CreadorPuertoEstelar;
 import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 
-public class Protoss extends Raza{
+public class CreadorDeEdificiosProtoss extends CreadorDeEdificios{
 
-	public Protoss(){
+	public CreadorDeEdificiosProtoss(){
 		super();
 		this.nombre = EnumRazas.PROTOSS;
 	}

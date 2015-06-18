@@ -13,7 +13,7 @@ import algocraft.factory.edificiosProtoss.CreadorArchivosTemplarios;
 import algocraft.factory.unidadesProtoss.CreadorAltoTemplario;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
-import algocraft.razas.Protoss;
+import algocraft.razas.EnumRazas;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.protos.UnidadesProtos;
 
@@ -31,7 +31,7 @@ public class ArchivosTemplariosTest {
 	public void testArchivosTemplariosPuedeCrearAltoTemplarioConRecursosSuficientesyPoblacionSuficiente() {
 		CreadorArchivosTemplarios creador = new CreadorArchivosTemplarios();
 		CreadorDeUnidades archivosTemplarios = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		jugador.incrementarGas(150);
 		archivosTemplarios.setDuenio(jugador);
@@ -44,7 +44,7 @@ public class ArchivosTemplariosTest {
 			throws RecursosNegativosException {
 		CreadorArchivosTemplarios creador = new CreadorArchivosTemplarios();
 		CreadorDeUnidades archivosTemplarios = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		archivosTemplarios.setDuenio(jugador);
 			
@@ -56,7 +56,7 @@ public class ArchivosTemplariosTest {
 			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorArchivosTemplarios creador = new CreadorArchivosTemplarios();
 		CreadorDeUnidades archivosTemplarios = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		jugador.incrementarGas(150);
 		archivosTemplarios.setDuenio(jugador);

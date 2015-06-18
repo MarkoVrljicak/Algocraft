@@ -10,13 +10,17 @@ import algocraft.exception.MineralInsuficienteException;
 import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
-import algocraft.razas.Protoss;
+import algocraft.razas.EnumRazas;
 
 public class IntegracionProtossTest {
-
+	
+	private Jugador nuevoJugadorProtoss() {
+		return new Jugador("pepe", EnumRazas.PROTOSS, Colores.AZUL);
+	}
+	
 	private Jugador crearJugadorConMuchosRecursos()
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
+		Jugador jugador = nuevoJugadorProtoss();
 		//construyo edificios para acumular recursos 
 		jugador.construir( EnumEdificiosProtos.NEXO_MINERAL);
 		jugador.construir( EnumEdificiosProtos.NEXO_MINERAL);
@@ -31,7 +35,7 @@ public class IntegracionProtossTest {
 	@Test
 	public void testCrearAcceso() 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
+		Jugador jugador = nuevoJugadorProtoss();
 		jugador.construir(EnumEdificiosProtos.ACCESO);
 		
 		assertTrue(jugador.tieneConstruccion(EnumEdificiosProtos.ACCESO));
@@ -40,7 +44,7 @@ public class IntegracionProtossTest {
 	@Test
 	public void testCrearAsimilador() 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
+		Jugador jugador = nuevoJugadorProtoss();
 		jugador.construir( EnumEdificiosProtos.ASIMILADOR);
 		
 		assertTrue(jugador.tieneConstruccion(EnumEdificiosProtos.ASIMILADOR));
@@ -49,7 +53,7 @@ public class IntegracionProtossTest {
 	@Test
 	public void testCrearNexoMineral() 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
+		Jugador jugador = nuevoJugadorProtoss();
 		jugador.construir(  EnumEdificiosProtos.NEXO_MINERAL);
 		
 		assertTrue(jugador.tieneConstruccion( EnumEdificiosProtos.NEXO_MINERAL));
@@ -58,7 +62,7 @@ public class IntegracionProtossTest {
 	@Test
 	public void testCrearPilon() 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
-		Jugador jugador = new Jugador("pepe", new Protoss(), Colores.AZUL);
+		Jugador jugador = nuevoJugadorProtoss();
 		jugador.construir(EnumEdificiosProtos.PILON);
 		
 		assertTrue(jugador.tieneConstruccion(EnumEdificiosProtos.PILON));

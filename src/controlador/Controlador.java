@@ -6,9 +6,7 @@ import visual.Ventanas;
 import algocraft.Juego;
 import algocraft.jugador.Colores;
 import algocraft.mapa.Coordenada;
-import algocraft.razas.Protoss;
-import algocraft.razas.Raza;
-import algocraft.razas.Terran;
+import algocraft.razas.EnumRazas;
 
 public class Controlador {
 	
@@ -48,15 +46,15 @@ public class Controlador {
 	public void validarDatosJugador1() {
 		VentanaIngresoDeDatosJugador ventanaDatos = aplicacion.ventanaDatosJugador;
 		String nombreIngresado = ventanaDatos.nombreJugador.getText();
-		Raza razaElegida = null;
+		EnumRazas razaElegida = null;
 		Colores colorElegido = null;
 		//validar nombre
 		
 		
 		if(ventanaDatos.opcionTerran.isSelected()){
-			razaElegida = new Terran();
+			razaElegida = EnumRazas.TERRAN;
 		}else if(ventanaDatos.opcionProtoss.isSelected()){
-			razaElegida = new Protoss();
+			razaElegida = EnumRazas.PROTOSS;
 		}//aniadir control al menos uno elegido
 		
 		if(ventanaDatos.opcionRojo.isSelected()){
@@ -81,15 +79,15 @@ public class Controlador {
 	public void validarDatosJugador2() {
 		VentanaIngresoDeDatosJugador ventanaDatos = aplicacion.ventanaDatosJugador;
 		String nombreIngresado = ventanaDatos.nombreJugador.getText();
-		Raza razaElegida = null;
+		EnumRazas razaElegida = null;
 		Colores colorElegido = null;
 		//validar nombre
 		
 		
 		if(ventanaDatos.opcionTerran.isSelected()){
-			razaElegida = new Terran();
+			razaElegida = EnumRazas.TERRAN;
 		}else if(ventanaDatos.opcionProtoss.isSelected()){
-			razaElegida = new Protoss();
+			razaElegida = EnumRazas.PROTOSS;
 		}//aniadir control al menos uno elegido
 		
 		if(ventanaDatos.opcionRojo.isSelected()){

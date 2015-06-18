@@ -14,7 +14,7 @@ import algocraft.factory.unidadesProtoss.CreadorNaveDeTransporte;
 import algocraft.factory.unidadesProtoss.CreadorScout;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
-import algocraft.razas.Protoss;
+import algocraft.razas.EnumRazas;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.protos.UnidadesProtos;
 
@@ -32,7 +32,7 @@ public class PuertoEstelarTest {
 	public void testPuertoEstelarPuedeCrearScoutConRecursosSuficientesyPoblacionSuficiente() {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		jugador.incrementarMineral(100);
 		jugador.incrementarGas(150);
@@ -46,7 +46,7 @@ public class PuertoEstelarTest {
 			throws RecursosNegativosException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 			
@@ -58,7 +58,7 @@ public class PuertoEstelarTest {
 			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);		
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);		
 		jugador.incrementarMineral(100);
 		jugador.incrementarGas(150);
 		puertoEstelar.setDuenio(jugador);
@@ -79,7 +79,7 @@ public class PuertoEstelarTest {
 	public void testPuertoEstelarPuedeCrearNaveDeTransporteConRecursosSuficientesyPoblacionSuficiente() {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 					
@@ -91,7 +91,7 @@ public class PuertoEstelarTest {
 			throws RecursosNegativosException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -104,7 +104,7 @@ public class PuertoEstelarTest {
 			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);		
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);		
 		jugador.incrementarGas(50);
 		puertoEstelar.setDuenio(jugador);
 		Unidad nave = puertoEstelar.crearUnidad(UnidadesProtos.NAVE_DE_TRANSPORTE);

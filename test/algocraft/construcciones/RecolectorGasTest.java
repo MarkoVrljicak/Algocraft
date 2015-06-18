@@ -4,12 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algocraft.construcciones.EdificioBasico;
-import algocraft.construcciones.RecolectorGas;
 import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
-import algocraft.razas.Terran;
+import algocraft.razas.EnumRazas;
 
 public class RecolectorGasTest {
 
@@ -17,7 +15,7 @@ public class RecolectorGasTest {
 	public void testRecoletoGaslVeoSiAumentoEn10(){
 		RecolectorGas refineria=new RecolectorGas(
 				new EdificioBasico(EnumEdificiosTerran.REFINERIA,750,6));
-		Jugador depositoControl=new Jugador("contorl", new Terran() , Colores.AZUL);
+		Jugador depositoControl=new Jugador("contorl", EnumRazas.TERRAN , Colores.AZUL);
 		
 		refineria.recolectarGas(depositoControl);
 		

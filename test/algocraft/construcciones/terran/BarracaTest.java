@@ -13,7 +13,7 @@ import algocraft.factory.edificiosTerran.CreadorBarraca;
 import algocraft.factory.unidadesTerran.CreadorMarine;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
-import algocraft.razas.Terran;
+import algocraft.razas.EnumRazas;
 import algocraft.unidades.Unidad;
 import algocraft.unidades.terran.UnidadesTerran;
 
@@ -31,7 +31,7 @@ public class BarracaTest {
 	public void testBarracaPuedeCrearMarineConRecursosSuficientesyPoblacionSuficiente() {
 		CreadorBarraca creador = new CreadorBarraca();
 		CreadorDeUnidades barraca = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		barraca.setDuenio(jugador);
 			
 		assertEquals(true,barraca.puedoCrearUnidad(new CreadorMarine()));
@@ -42,7 +42,7 @@ public class BarracaTest {
 			throws RecursosNegativosException {
 		CreadorBarraca creador = new CreadorBarraca();
 		CreadorDeUnidades barraca = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		barraca.setDuenio(jugador);
 		jugador.consumirMineral(200);
@@ -55,7 +55,7 @@ public class BarracaTest {
 			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorBarraca creador = new CreadorBarraca();
 		CreadorDeUnidades barraca = creador.crearEdificio();
-		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
+		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		barraca.setDuenio(jugador);
 		Unidad marine = barraca.crearUnidad(UnidadesTerran.MARINE);

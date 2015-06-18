@@ -9,9 +9,9 @@ import algocraft.factory.edificiosTerran.CreadorPuertoEstelar;
 import algocraft.factory.edificiosTerran.CreadorRefineria;
 import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
 
-public class Terran extends Raza{
+public class CreadorDeEdificiosTerran extends CreadorDeEdificios{
 		
-	public Terran(){
+	public CreadorDeEdificiosTerran(){
 		super();
 		this.nombre = EnumRazas.TERRAN;
 	}
