@@ -11,6 +11,9 @@ import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.EspacioInsuficienteException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.GasInsuficienteException;
+import algocraft.exception.MineralInsuficienteException;
+import algocraft.exception.PoblacionInsuficienteException;
 import algocraft.exception.PropiedadNoEstaEnJuegoException;
 import algocraft.exception.PropiedadNoExisteEnEstaUbicacion;
 import algocraft.exception.UnidadIncompletaException;
@@ -79,7 +82,8 @@ public class Juego {
 	}
 	
 	public void crearUnidad(CreadorDeUnidades edificioCreador, Unidades unidadPedida) 
-			throws CondicionesInsuficientesException {
+			throws CondicionesInsuficientesException, MineralInsuficienteException, 
+				GasInsuficienteException, PoblacionInsuficienteException {
 		 jugadorActual.crearUnidad(unidadPedida, edificioCreador);	
 		 creadoresDeUnidadesEnUso.add(edificioCreador);
 	}

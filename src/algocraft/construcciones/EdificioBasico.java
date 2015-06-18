@@ -84,7 +84,10 @@ public class EdificioBasico extends Propiedad implements Construccion{
 	}
 	
 	public int getPoblacionSumada(){
-		return this.poblacionSumada;
+		if (!this.estoyMuerto())
+			return this.poblacionSumada;
+		else
+			return 0;
 	}
 
 

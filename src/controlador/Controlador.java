@@ -70,7 +70,7 @@ public class Controlador {
 		//si llego aca es que los datos son validos
 		juego.setJugador1(nombreIngresado, razaElegida, colorElegido);
 		
-		ventanaDatos.lblSetUpJugador.setText("Set Up Jsugador 2");
+		ventanaDatos.lblSetUpJugador.setText("Set Up Jugador 2");
 		ventanaDatos.nombreJugador.setText("");
 		ventanaDatos.ColorBtnGroup.clearSelection();
 		ventanaDatos.RazaBtnGroup.clearSelection();

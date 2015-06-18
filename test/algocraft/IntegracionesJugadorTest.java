@@ -7,6 +7,9 @@ import org.junit.Test;
 import algocraft.Interfaces.Daniable;
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.GasInsuficienteException;
+import algocraft.exception.MineralInsuficienteException;
+import algocraft.exception.PoblacionInsuficienteException;
 import algocraft.exception.UnidadIncompletaException;
 import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
 import algocraft.factory.edificiosTerran.EnumEdificiosTerran;
@@ -141,7 +144,8 @@ public class IntegracionesJugadorTest {
 	
 	@Test
 	public void testCrearUnidadesNoAumentaPoblacionSiNoEspero() 
-			throws CondicionesInsuficientesException {
+			throws CondicionesInsuficientesException, MineralInsuficienteException,
+				GasInsuficienteException, PoblacionInsuficienteException {
 		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		this.iniciarJugadorTerranConRecursos(jugador);
 		//creo edificios para unidades
@@ -155,7 +159,8 @@ public class IntegracionesJugadorTest {
 
 	@Test
 	public void testCrearUnidadesYEsperarASuCreacionAumentaPoblacion() 
-			throws CondicionesInsuficientesException {
+			throws CondicionesInsuficientesException, MineralInsuficienteException,
+				GasInsuficienteException, PoblacionInsuficienteException {
 		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		this.iniciarJugadorTerranConRecursos(jugador);
 		//creo edificios para unidades
@@ -172,9 +177,10 @@ public class IntegracionesJugadorTest {
 		assertEquals( 1 , jugador.getPoblacionActual() );
 	}
 
-	@Test(expected = CondicionesInsuficientesException.class)
+	@Test(expected = PoblacionInsuficienteException.class)
 	public void testNoSePuedeCrearUnidadesCuandoPoblacionEstaAlMaximo() 
-			throws UnidadIncompletaException, CondicionesInsuficientesException {
+			throws UnidadIncompletaException, CondicionesInsuficientesException,
+				MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		this.iniciarJugadorTerranConRecursos(jugador);
 		//creo edificios para unidades
@@ -197,7 +203,9 @@ public class IntegracionesJugadorTest {
 	}
 
 	@Test
-	public void testMatarUnidadesdisminuyePoblacion() throws CondicionesInsuficientesException {
+	public void testMatarUnidadesdisminuyePoblacion() 
+			throws CondicionesInsuficientesException, MineralInsuficienteException,
+				GasInsuficienteException, PoblacionInsuficienteException {
 		Jugador jugador = new Jugador("pepe", new Terran(), Colores.AZUL);
 		this.iniciarJugadorTerranConRecursos(jugador);
 		

@@ -12,6 +12,9 @@ import algocraft.exception.DestinoInvalidoException;
 import algocraft.exception.EspacioInsuficienteException;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.GasInsuficienteException;
+import algocraft.exception.MineralInsuficienteException;
+import algocraft.exception.PoblacionInsuficienteException;
 import algocraft.exception.PropiedadNoEstaEnJuegoException;
 import algocraft.exception.UnidadNoTransportableException;
 import algocraft.factory.edificiosProtoss.EnumEdificiosProtos;
@@ -180,7 +183,9 @@ public class JuegoTest {
 	
 	@Test
 	public void testCreoUnidadEsperoQueSeConstruyaVerificoQueEsteAlLadoDeSuBarraca() 
-			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException{
+			throws DestinoInvalidoException, FueraDeLimitesException,
+				CondicionesInsuficientesException, MineralInsuficienteException, 
+					GasInsuficienteException, PoblacionInsuficienteException{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		this.juntarRecursosParaAmbosJugadores(algocraft);
 		Coordenada posicionBarraca = new Coordenada(6,alto-5);
@@ -226,7 +231,8 @@ public class JuegoTest {
 	@Test
 	public void testTransportoMarineATravesDeAire() 
 			throws DestinoInvalidoException, FueraDeLimitesException, CondicionesInsuficientesException,
-				PropiedadNoEstaEnJuegoException, EspacioInsuficienteException, UnidadNoTransportableException{
+				PropiedadNoEstaEnJuegoException, EspacioInsuficienteException, UnidadNoTransportableException, 
+					MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		inyectarMapaEspecial(algocraft);
 		this.juntarRecursosParaAmbosJugadores(algocraft);
@@ -251,13 +257,13 @@ public class JuegoTest {
 		
 		algocraft.subirUnidad((Unidad) algocraft.seleccionarSuelo(posicionMarine),nave);
 		
-		
-		
+		//assertEquals(null,algocraft.seleccionarSuelo(posicionMarine));
+
 		//paso un turno y vuelvo a mi turno para que tenga movimientos suficientes
 		algocraft.pasarTurno();
 		algocraft.pasarTurno();
 		
-		Coordenada destino = new Coordenada(5,7);
+		Coordenada destino = new Coordenada(5,6);
 		
 		algocraft.moverUnidad(nave, destino);
 		algocraft.bajarUnidad(nave,nave.obtenerTranspotados().get(0));

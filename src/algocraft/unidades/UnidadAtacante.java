@@ -24,7 +24,7 @@ abstract public class UnidadAtacante extends Unidad{
 		if(!(daniableAtacado.getColor()== Colores.GRIS) && daniableAtacado.getColor()== this.getColor())
 			return false;
 		
-		if(this.yaAtaco)
+		if(this.yaAtaco || this.estoyMuerto())
 			return false;
 		
 		if (tipoAtaque == Ataques.ATAQUE_NORMAL_AEREO){

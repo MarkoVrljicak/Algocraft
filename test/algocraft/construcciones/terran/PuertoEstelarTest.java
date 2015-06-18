@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.GasInsuficienteException;
+import algocraft.exception.MineralInsuficienteException;
+import algocraft.exception.PoblacionInsuficienteException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.edificiosTerran.CreadorPuertoEstelar;
 import algocraft.factory.unidadesTerran.CreadorEspectro;
@@ -54,7 +57,8 @@ public class PuertoEstelarTest {
 	}
 		
 	@Test
-	public void testPuertoEstelarCreaEspectro() throws CondicionesInsuficientesException {
+	public void testPuertoEstelarCreaEspectro() throws CondicionesInsuficientesException, 
+			MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
@@ -103,7 +107,7 @@ public class PuertoEstelarTest {
 	}
 		
 	@Test
-	public void testPuertoEstelarCreaNaveDeTransporte() throws CondicionesInsuficientesException {
+	public void testPuertoEstelarCreaNaveDeTransporte() throws CondicionesInsuficientesException, MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);
@@ -151,7 +155,8 @@ public class PuertoEstelarTest {
 	}
 		
 	@Test
-	public void testPuertoEstelarCreaNaveDeCiencia() throws CondicionesInsuficientesException {
+	public void testPuertoEstelarCreaNaveDeCiencia() throws CondicionesInsuficientesException,
+			MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Terran(), Colores.AZUL);

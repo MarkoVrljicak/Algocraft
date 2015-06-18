@@ -10,6 +10,9 @@ import controlador.ClickEnLugar;
 @SuppressWarnings("serial")
 public class VistaMapa extends JPanel {
 
+	private final int anchoCelda = 30;
+	private final int altoCelda = 30;
+
 	public VistaMapa(){
 		super();
 		setLayout(null);
@@ -19,8 +22,7 @@ public class VistaMapa extends JPanel {
 
 	private void inicializarComponentes() {
 
-		final int anchoCelda = 30;
-		final int altoCelda = 30;
+		
 		for(int x = 1 ; x <= 30 ; x++){
 			for(int y = 1 ; y <= 30 ; y++){
 				JButton botonGenerico = new JButton("ClickEnLugar");

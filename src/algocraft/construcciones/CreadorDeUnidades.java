@@ -5,6 +5,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.GasInsuficienteException;
+import algocraft.exception.MineralInsuficienteException;
+import algocraft.exception.PoblacionInsuficienteException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.exception.UnidadIncompletaException;
 import algocraft.factory.UnidadesAbstractFactory;
@@ -27,38 +30,49 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 		unidadesCreables.put(nombreUnidad, creador);
 	}
 	
-	public Unidad crearUnidad(Unidades unidad) throws CondicionesInsuficientesException{
+	public Unidad crearUnidad(Unidades unidad) 
+			throws CondicionesInsuficientesException, MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		UnidadesAbstractFactory creador = unidadesCreables.get(unidad);
 		
-		if(puedoCrearUnidad(creador) ){
-			
-			try {
-				this.getDuenio().consumirMineral(creador.getMineralNecesario());
-				this.getDuenio().consumirGas(creador.getGasNecesario());
-			} catch (RecursosNegativosException e) {
-				throw new CondicionesInsuficientesException();
-			}
-			Unidad unidadCreada = creador.crearUnidad();
-			unidadCreada.setColor(this.getColor());
-			this.unidadesEnCreacion.add(unidadCreada);
-			
-			return unidadCreada;
-		}
-		else 
+		if(!tengoMineralSuficiente(creador))
+			throw new MineralInsuficienteException();
+		if(!tengoGasSuficiente(creador))
+			throw new GasInsuficienteException();
+		if(!tengoPoblacionSuficiente(creador))
+			throw new PoblacionInsuficienteException();
+		
+		try {
+			this.getDuenio().consumirMineral(creador.getMineralNecesario());
+			this.getDuenio().consumirGas(creador.getGasNecesario());
+		} catch (RecursosNegativosException e) {
+			//contradiccion, tengo suficiente o no llegue aca
 			throw new CondicionesInsuficientesException();
+		}
+		Unidad unidadCreada = creador.crearUnidad();
+		unidadCreada.setColor(this.getColor());
+		this.unidadesEnCreacion.add(unidadCreada);
+
+		return unidadCreada;
 	}
 	
-	public boolean puedoCrearUnidad(UnidadesAbstractFactory creador) {
-		final int mineralDisponible = this.getDuenio().getMineral();
-		final int gasDisponible = this.getDuenio().getGas();
-		
+	private boolean tengoPoblacionSuficiente(UnidadesAbstractFactory creador) {
 		final int poblacionDisponible = this.getDuenio().getPoblacionDisponible();
-		
-		boolean puedeCrearse = (mineralDisponible >= creador.getMineralNecesario());
-		puedeCrearse = puedeCrearse && (gasDisponible >= creador.getGasNecesario());
-		puedeCrearse = puedeCrearse && (poblacionDisponible >= creador.getPoblacionNecesaria());
-		
-		return (puedeCrearse);
+		return (poblacionDisponible >= creador.getPoblacionNecesaria());
+	}
+
+	private boolean tengoGasSuficiente(UnidadesAbstractFactory creador) {
+		final int gasDisponible = this.getDuenio().getGas();
+		return (gasDisponible >= creador.getGasNecesario());
+	}
+
+	private boolean tengoMineralSuficiente(UnidadesAbstractFactory creador) {
+		final int mineralDisponible = this.getDuenio().getMineral();
+		return(mineralDisponible >= creador.getMineralNecesario());
+	}
+
+	public boolean puedoCrearUnidad(UnidadesAbstractFactory creador) {
+		return (this.tengoGasSuficiente(creador)&& this.tengoMineralSuficiente(creador)
+				&& this.tengoPoblacionSuficiente(creador));
 	}
 	
 	public boolean unidadEnCreacion() {

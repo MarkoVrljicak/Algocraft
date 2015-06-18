@@ -41,6 +41,7 @@ abstract public class Movimiento {
 				}
 				
 				unidad.darPaso();
+				terrenoOriginal = proximoTerreno;
 			}
 		}
 		

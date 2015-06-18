@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import algocraft.construcciones.CreadorDeUnidades;
 import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.GasInsuficienteException;
+import algocraft.exception.MineralInsuficienteException;
+import algocraft.exception.PoblacionInsuficienteException;
 import algocraft.exception.RecursosNegativosException;
 import algocraft.factory.edificiosProtoss.CreadorPuertoEstelar;
 import algocraft.factory.unidadesProtoss.CreadorNaveDeTransporte;
@@ -52,7 +55,8 @@ public class PuertoEstelarTest {
 	}
 		
 	@Test
-	public void testPuertoEstelarCreaScout() throws CondicionesInsuficientesException {
+	public void testPuertoEstelarCreaScout() throws CondicionesInsuficientesException, 
+			MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);		
@@ -97,7 +101,8 @@ public class PuertoEstelarTest {
 	}
 		
 	@Test
-	public void testPuertoEstelarCreaNaveDeTransporte() throws CondicionesInsuficientesException {
+	public void testPuertoEstelarCreaNaveDeTransporte() throws CondicionesInsuficientesException,
+			MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", new Protoss(), Colores.AZUL);		

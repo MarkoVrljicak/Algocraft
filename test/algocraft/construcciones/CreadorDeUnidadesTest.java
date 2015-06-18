@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import algocraft.exception.CondicionesInsuficientesException;
+import algocraft.exception.GasInsuficienteException;
+import algocraft.exception.MineralInsuficienteException;
+import algocraft.exception.PoblacionInsuficienteException;
 import algocraft.factory.edificiosTerran.CreadorBarraca;
 import algocraft.jugador.Colores;
 import algocraft.jugador.Jugador;
@@ -32,7 +35,8 @@ public class CreadorDeUnidadesTest {
 	
 	@Test
 	public void testCrearUnidadHaceQueHallaUnidadEnCreacion() 
-			throws CondicionesInsuficientesException{
+			throws CondicionesInsuficientesException, MineralInsuficienteException, 
+				GasInsuficienteException, PoblacionInsuficienteException{
 		CreadorDeUnidades barraca = this.crearBarracaValida();
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);
@@ -42,7 +46,8 @@ public class CreadorDeUnidadesTest {
 	
 	@Test
 	public void testCreoUnidadVerificoQueNoEsteTerminada() 
-			throws CondicionesInsuficientesException{
+			throws CondicionesInsuficientesException, MineralInsuficienteException,
+				GasInsuficienteException, PoblacionInsuficienteException{
 		CreadorDeUnidades barraca = this.crearBarracaValida();
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);
@@ -52,7 +57,8 @@ public class CreadorDeUnidadesTest {
 	
 	@Test
 	public void testCreoUnidadEsperoAQueTermineVerificoQueEsteTerminada() 
-			throws CondicionesInsuficientesException{
+			throws CondicionesInsuficientesException, MineralInsuficienteException,
+				GasInsuficienteException, PoblacionInsuficienteException{
 		CreadorDeUnidades barraca = this.crearBarracaValida();
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);
@@ -62,9 +68,10 @@ public class CreadorDeUnidadesTest {
 		assertTrue(barraca.unidadTerminada());
 	}
 	
-	@Test(expected = CondicionesInsuficientesException.class)
+	@Test(expected = MineralInsuficienteException.class)
 	public void testIntentarCrearUnidadSinRecursosLanzaException()
-			throws CondicionesInsuficientesException{
+			throws CondicionesInsuficientesException, MineralInsuficienteException,
+				GasInsuficienteException, PoblacionInsuficienteException{
 		
 			CreadorDeUnidades barraca = this.crearBarracaValida();
 			

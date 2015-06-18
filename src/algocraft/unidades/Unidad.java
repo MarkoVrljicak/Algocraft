@@ -63,6 +63,9 @@ public abstract class Unidad extends Propiedad implements Movible{
 	
 	@Override
 	public boolean puedoMoverme(Terreno terrenoDestino) {
+		if(this.estoyMuerto()){
+			return false;
+		}
 		if (this.soyVolador()){
 			return terrenoDestino.sePuedeVolar();
 		} else {
