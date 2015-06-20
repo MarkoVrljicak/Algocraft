@@ -38,7 +38,11 @@ public class Coordenada {
 	
 	@Override
 	public int hashCode() {
-		return (x + y * 1000);
+		int primo = 31;
+		int resultado = 1;
+		resultado = resultado*primo + x;
+		resultado = resultado*primo + y;
+		return resultado;
 	}
 
 	public int distanciaA(Coordenada otraCoordenada) {

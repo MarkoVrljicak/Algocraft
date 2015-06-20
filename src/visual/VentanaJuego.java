@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.JScrollPane;
 
+import algocraft.Juego;
+
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -12,7 +14,7 @@ public class VentanaJuego extends JPanel {
 
 	public VistaMapa mapa;
 
-	public VentanaJuego(){
+	public VentanaJuego(Juego juego){
 		super();
 		setBackground(Color.DARK_GRAY);
 		this.setLayout(null);
@@ -25,7 +27,7 @@ public class VentanaJuego extends JPanel {
 		acciones.setBounds(10, 390, 601, 55);
 		add(acciones);
 		
-		mapa = new VistaMapa();
+		mapa = new VistaMapa(juego);
 		mapa.setPreferredSize(new Dimension(900, 900));
 		mapa.setVisible(true);
 		
@@ -33,11 +35,6 @@ public class VentanaJuego extends JPanel {
 		scrollPane.setViewportView(mapa);
 		scrollPane.setBounds(10, 44, 601, 338);
 		add(scrollPane);
-		
-		inicializarComponentes();
-	}
-
-	private void inicializarComponentes() {
 		
 	}
 }

@@ -1,39 +1,38 @@
 package visual;
 
-import javax.swing.JButton;
+import java.awt.GridLayout;
+
 import javax.swing.JPanel;
 
-import controlador.ClickEnLugar;
+import algocraft.Juego;
+import algocraft.exception.FueraDeLimitesException;
+import algocraft.mapa.Coordenada;
 
 
 
 @SuppressWarnings("serial")
 public class VistaMapa extends JPanel {
 
-	private final int anchoCelda = 30;
-	private final int altoCelda = 30;
 
-	public VistaMapa(){
+	public VistaMapa(Juego juego){
 		super();
-		setLayout(null);
-		inicializarComponentes();
-		this.setBounds(0, 0, 900, 900);
-	}
-
-	private void inicializarComponentes() {
-
 		
-		for(int x = 1 ; x <= 30 ; x++){
-			for(int y = 1 ; y <= 30 ; y++){
-				JButton botonGenerico = new JButton("ClickEnLugar");
-				botonGenerico.addActionListener(new ClickEnLugar(x,y));
-				botonGenerico.setBounds((x-1)*anchoCelda,(y-1)*altoCelda,anchoCelda,altoCelda);
-				botonGenerico.setVisible(false);
-				this.add(botonGenerico);
+		int ancho = juego.getAncho();
+		int alto = juego.getAlto();
+		
+		setLayout(null);
+		this.setBounds(0, 0, 900, 900);
+		this.setLayout(new GridLayout(ancho,alto));
+		
+		for(int x = 1 ; x <=ancho ; x++){
+			for(int y = 1 ; y <= alto ; y++){
+				try {
+					this.add(new VistaTerreno(new Coordenada(x,y),juego));
+				} catch (FueraDeLimitesException e) {
+					// no se puede ir fuera de limites por las condiciones del for
+					e.printStackTrace();
+				}
 			}
 		}
-		
 	}
-	
-	
 }

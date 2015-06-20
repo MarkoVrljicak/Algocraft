@@ -60,6 +60,14 @@ public class Juego {
 		return jugadorActual;
 	}
 	
+	public int getAncho() {
+		return mapa.getAncho();
+	}
+	
+	public int getAlto() {
+		return mapa.getAlto();
+	}
+	
 	public Terreno obtenerTerreno(Coordenada coordenada) 
 			throws FueraDeLimitesException {
 		return mapa.getTerreno(coordenada);
@@ -169,9 +177,5 @@ public class Juego {
 			// contradiccion
 			e.printStackTrace();
 		}
-	}
-
-	
-
-	
+	}	
 }

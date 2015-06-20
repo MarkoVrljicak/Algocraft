@@ -49,9 +49,9 @@ public class Algocraft {
 	 * @throws IOException 
 	 */
 	public Algocraft(){
-		initialize();
 		this.juego = new Juego(anchoMapa,altoMapa);
 		this.controlador = new Controlador(this,this.juego);
+		initialize();
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class Algocraft {
 		frame.getContentPane().add(ventanaDatosJugador, "name_482181740405689");
 		
 		
-		ventanaJuego = new VentanaJuego();
+		ventanaJuego = new VentanaJuego(juego);
 		frame.getContentPane().add(ventanaJuego, "name_482183878529208");
 		
 		
