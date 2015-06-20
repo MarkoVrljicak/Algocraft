@@ -21,7 +21,7 @@ public class ControladorMouse extends MouseAdapter {
 
     public void mousePressed(MouseEvent mouseEvent) {
      //ofrecer opciones al jugador o acciones, pedirle a la vista su posicion
-    //potencialmente añadir controladores hijos para diferenciar comportamiento suelo de cielo
+    //potencialmente aniadir controladores hijos para diferenciar comportamiento suelo de cielo
     	
     }
 }
