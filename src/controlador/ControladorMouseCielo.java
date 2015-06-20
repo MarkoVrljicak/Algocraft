@@ -5,23 +5,20 @@ import java.awt.event.MouseEvent;
 
 import visual.VistaTerreno;
 import algocraft.Juego;
-
-
 //borrable
-public class ControladorMouse extends MouseAdapter {
+public class ControladorMouseCielo extends MouseAdapter {
 
-    Juego juego;
+	Juego juego;
 
     VistaTerreno vista;
 
-    public ControladorMouse(Juego juego, VistaTerreno vista) {
+    public ControladorMouseCielo(Juego juego, VistaTerreno vista) {
         this.juego = juego;
         this.vista = vista;
     }
 
     public void mousePressed(MouseEvent mouseEvent) {
-     //ofrecer opciones al jugador o acciones, pedirle a la vista su posicion
-    //potencialmente añadir controladores hijos para diferenciar comportamiento suelo de cielo
-    	
+    	vista.accionDePruebaCielo();
     }
+
 }

@@ -2,7 +2,7 @@ package visual;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
+//esta y sus clases hijas son mi idea de la version final, uso la otra version por ahora(dibujadorTerreno)
 public abstract class Dibujador {
 
 	abstract public JLabel dibujar();

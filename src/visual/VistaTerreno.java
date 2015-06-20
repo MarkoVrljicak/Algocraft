@@ -10,8 +10,12 @@ import javax.swing.JLayeredPane;
 import algocraft.Juego;
 import algocraft.exception.FueraDeLimitesException;
 import algocraft.mapa.Coordenada;
+import algocraft.mapa.terrenos.Aire;
 import algocraft.mapa.terrenos.Terreno;
 import algocraft.mapa.terrenos.Terrenos;
+import algocraft.mapa.terrenos.Tierra;
+import controlador.ControladorMouseCielo;
+import controlador.ControladorMouseSuelo;
 
 public class VistaTerreno extends JLayeredPane implements Observer{
 
@@ -29,7 +33,9 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 	
 	@Override
 	public void update(Observable o, Object arg) {
+		
 		this.removeAll();
+		
 		try {
 			this.dibujar();
 		} catch (FueraDeLimitesException e) {
@@ -46,8 +52,9 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 				
 		this.posicion = coordenada;
 		this.observado = juego;
-			
+		this.observado.addObserver(this);
 		
+			
 		dibujar();
 	}
 
@@ -76,6 +83,7 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 		terrenoADibujar.setVisible(true);
 		setLayer(terrenoADibujar,1);
 		terrenoADibujar.setBounds(0, 15, 15, 15);
+		terrenoADibujar.addMouseListener(new ControladorMouseSuelo(observado, this));
 
 		add(terrenoADibujar,10);
 	}
@@ -88,7 +96,24 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 		terrenoADibujar.setVisible(true);
 		setLayer(terrenoADibujar,1);
 		terrenoADibujar.setBounds(15, 0, 15, 15);
+		terrenoADibujar.addMouseListener(new ControladorMouseCielo(observado, this));
 
 		add(terrenoADibujar,10);
+	}
+	
+	public void accionDePruebaSuelo(){
+		//accion de prueba para saber si el mouse funciona
+		//borra los pedacitos de terreno
+		
+		this.removeAll();
+		this.dibujarTerreno(new Tierra(posicion));
+	}
+	
+	public void accionDePruebaCielo(){
+		//accion de prueba para saber si el mouse funciona
+		//borra los pedacitos de terreno
+		
+		this.removeAll();
+		this.dibujarTerreno(new Aire(posicion));
 	}
 }

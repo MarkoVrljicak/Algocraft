@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import algocraft.mapa.terrenos.Terrenos;
-
+//borrable
 public class DibujadorTerreno {
 
 	private ImageIcon imagenTierra;

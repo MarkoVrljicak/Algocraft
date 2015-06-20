@@ -3,6 +3,7 @@ package algocraft;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
 
 import algocraft.construcciones.Construccion;
 import algocraft.construcciones.CreadorDeUnidades;
@@ -30,7 +31,7 @@ import algocraft.unidades.Unidad;
 import algocraft.unidades.UnidadTransportadora;
 import algocraft.unidades.Unidades;
 
-public class Juego {
+public class Juego extends Observable{
 	
 	private Jugador jugador1;
 	private Jugador jugador2;
@@ -89,12 +90,16 @@ public class Juego {
 		
 		Construccion edificioNuevo = jugadorActual.construir(edificio);
 		mapa.almacenar((Propiedad) edificioNuevo, coordenada);
+		
+		this.notifyObservers();
 	}
 	
 	public void crearUnidad(CreadorDeUnidades edificioCreador, Unidades unidadPedida) 
 			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException {
 		 jugadorActual.crearUnidad(unidadPedida, edificioCreador);	
 		 creadoresDeUnidadesEnUso.add(edificioCreador);
+		 
+		 this.notifyObservers();
 	}
 
 	public void pasarTurno() {
@@ -110,6 +115,7 @@ public class Juego {
 		//gestiono creacion de unidades
 		ponerNuevasUnidadesEnMapa();
 		
+		this.notifyObservers();
 	}
 
 	private void ponerNuevasUnidadesEnMapa() {
@@ -149,11 +155,15 @@ public class Juego {
 				}
 			}
 		}
+		
+		this.notifyObservers();
 	}
 
 	public void moverUnidad(Unidad unidad, Coordenada destino) 
 			throws PropiedadNoEstaEnJuegoException {
-		this.mapa.moverUnidad(unidad, destino);		
+		this.mapa.moverUnidad(unidad, destino);	
+		
+		this.notifyObservers();
 	}
 
 	public void subirUnidad(Unidad unidadSubida, UnidadTransportadora naveTransportadora) 
@@ -164,7 +174,9 @@ public class Juego {
 		} catch (PropiedadNoExisteEnEstaUbicacion | FueraDeLimitesException e) {
 			// contradiccion
 			e.printStackTrace();
-		}	
+		}
+		
+		this.notifyObservers();
 	}
 
 	public void bajarUnidad(UnidadTransportadora naveTransportadora, Unidad unidadABajar)
@@ -177,5 +189,7 @@ public class Juego {
 			// contradiccion
 			e.printStackTrace();
 		}
+		
+		this.notifyObservers();
 	}	
 }
