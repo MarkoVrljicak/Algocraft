@@ -16,7 +16,7 @@ public class AtaqueNormal{
 		if (distancia > rangoAtaque || distancia == 0 || danioAtaque == 0) return false;
 		
 		if (enemigo == null){
-			return false; //analizar luego si deberia devolver excepcion.
+			return false;
 		} else {
 			enemigo.recibirDanio(danioAtaque);
 			return true;

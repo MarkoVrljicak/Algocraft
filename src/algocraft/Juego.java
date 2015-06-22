@@ -102,7 +102,7 @@ public class Juego extends Observable{
 		 this.notifyObservers();
 	}
 
-	public void pasarTurno() {
+	public void pasarTurno() throws UnidadIncompletaException {
 		//cambio de jugador
 		if(jugadorActual == jugador1)
 			jugadorActual= jugador2;
@@ -118,19 +118,13 @@ public class Juego extends Observable{
 		this.notifyObservers();
 	}
 
-	private void ponerNuevasUnidadesEnMapa() {
+	private void ponerNuevasUnidadesEnMapa() throws UnidadIncompletaException {
 		Iterator<CreadorDeUnidades> itEdificiosCreadores = creadoresDeUnidadesEnUso.iterator();
 		while(itEdificiosCreadores.hasNext()){
 			CreadorDeUnidades unCreador = itEdificiosCreadores.next();
-			if(unCreador.getDuenio()==jugadorActual 
-					&& unCreador.unidadEnCreacion() && unCreador.unidadTerminada()){
-				try {
-					Unidad  unidadTerminada = unCreador.obtenerUnidadCreada();
-					this.posicionarNuevaUnidad(unidadTerminada,this.mapa.encontrar(unCreador));
-				} catch (UnidadIncompletaException e) {
-					//no ocurre, pregunte antes
-					e.printStackTrace();
-				}				
+			if(unCreador.getDuenio()==jugadorActual && unCreador.unidadEnCreacion() && unCreador.unidadTerminada()){
+				Unidad  unidadTerminada = unCreador.obtenerUnidadCreada();
+				this.posicionarNuevaUnidad(unidadTerminada,this.mapa.encontrar(unCreador));		
 				//si no pudo lo intenta de nuevo en el proximo turno
 			}
 			if(!unCreador.unidadEnCreacion()){
