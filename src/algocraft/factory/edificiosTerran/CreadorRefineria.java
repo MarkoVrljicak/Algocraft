@@ -10,11 +10,13 @@ public class CreadorRefineria extends EdificiosAbstractFactory {
 
 	public CreadorRefineria(){
 		this.recursosNecesarios = new Recurso(100,0);
+		this.vida = 750;
+		this.tiempoDeConstruccion = 6;
 	}
 	
 	@Override
 	public RecolectorGas crearEdificio() {
-		return new RecolectorGas(new EdificioBasico(EnumEdificiosTerran.REFINERIA,750,6));
+		return new RecolectorGas(new EdificioBasico(EnumEdificiosTerran.REFINERIA,vida,tiempoDeConstruccion));
 	}
 
 	@Override

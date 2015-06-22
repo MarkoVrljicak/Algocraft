@@ -8,13 +8,18 @@ import algocraft.stats.Recurso;
 
 public class CreadorBaseProtoss extends EdificiosAbstractFactory {
 
+	private int escudo;
+
 	public CreadorBaseProtoss(){
 		this.recursosNecesarios = new Recurso(0,0);
+		this.vida = 1300;
+		this.tiempoDeConstruccion = 0;
+		this.escudo = 1200;
 	}
 	
 	@Override
 	public Construccion crearEdificio() {
-		return new EdificioConEscudo(EnumEdificiosProtos.BASE_PROTOSS,1300,0,1200);
+		return new EdificioConEscudo(EnumEdificiosProtos.BASE_PROTOSS,vida,tiempoDeConstruccion,escudo);
 	}
 
 	@Override

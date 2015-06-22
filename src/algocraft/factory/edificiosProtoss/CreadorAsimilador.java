@@ -8,13 +8,18 @@ import algocraft.stats.Recurso;
 
 public class CreadorAsimilador extends EdificiosAbstractFactory {
 
+	private int escudo;
+
 	public CreadorAsimilador(){
 		this.recursosNecesarios = new Recurso(100,0);
+		this.vida = 450;
+		this.tiempoDeConstruccion = 6;
+		this.escudo = 450;
 	}
 	
 	@Override
 	public RecolectorGas crearEdificio() {
-		return new RecolectorGas(new EdificioConEscudo(EnumEdificiosProtos.ASIMILADOR,450,6,450));
+		return new RecolectorGas(new EdificioConEscudo(EnumEdificiosProtos.ASIMILADOR,vida,tiempoDeConstruccion,escudo));
 	}
 
 	@Override

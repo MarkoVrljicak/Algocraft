@@ -16,11 +16,13 @@ public class CreadorPuertoEstelar extends EdificiosAbstractFactory {
 	public CreadorPuertoEstelar(){
 		this.recursosNecesarios = new Recurso(150,100);
 		this.construccionNecesitada = EnumEdificiosTerran.FABRICA;
+		this.vida = 1300;
+		this.tiempoDeConstruccion = 10;
 	}
 	
 	@Override
 	public CreadorDeUnidades crearEdificio() {
-		CreadorDeUnidades puertoEstelar = new CreadorDeUnidades(new EdificioBasico(EnumEdificiosTerran.PUERTO_ESTELAR,1300,10));
+		CreadorDeUnidades puertoEstelar = new CreadorDeUnidades(new EdificioBasico(EnumEdificiosTerran.PUERTO_ESTELAR,vida,tiempoDeConstruccion));
 		puertoEstelar.aniadirUnidadCreable(UnidadesTerran.ESPECTRO, new CreadorEspectro());
 		puertoEstelar.aniadirUnidadCreable(UnidadesTerran.NAVE_TRANSPORTE, new CreadorNaveTransporte());
 		puertoEstelar.aniadirUnidadCreable(UnidadesTerran.NAVE_CIENCIA, new CreadorNaveCiencia());

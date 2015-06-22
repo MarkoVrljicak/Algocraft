@@ -14,11 +14,13 @@ public class CreadorFabrica extends EdificiosAbstractFactory {
 	public CreadorFabrica(){
 		this.recursosNecesarios = new Recurso(200,100);
 		this.construccionNecesitada = EnumEdificiosTerran.BARRACA;
+		this.vida = 1250;
+		this.tiempoDeConstruccion = 12;
 	}
 	
 	@Override
 	public CreadorDeUnidades crearEdificio() {
-		CreadorDeUnidades fabrica =  new CreadorDeUnidades(new EdificioBasico(EnumEdificiosTerran.FABRICA,1250,12));
+		CreadorDeUnidades fabrica =  new CreadorDeUnidades(new EdificioBasico(EnumEdificiosTerran.FABRICA,vida,tiempoDeConstruccion));
 		fabrica.aniadirUnidadCreable(UnidadesTerran.GOLLIAT, new CreadorGolliat());
 		return fabrica;
 	}

@@ -11,13 +11,18 @@ import algocraft.unidades.protos.UnidadesProtos;
 
 public class CreadorAcceso extends EdificiosAbstractFactory {
 
+	private int escudo;
+
 	public CreadorAcceso(){
 		this.recursosNecesarios = new Recurso(150,0);
+		this.vida = 500;
+		this.tiempoDeConstruccion = 8;
+		this.escudo = 500;
 	}
 	
 	@Override
 	public CreadorDeUnidades crearEdificio() {
-		CreadorDeUnidades acceso = new CreadorDeUnidades(new EdificioConEscudo(EnumEdificiosProtos.ACCESO,500,8,500));
+		CreadorDeUnidades acceso = new CreadorDeUnidades(new EdificioConEscudo(EnumEdificiosProtos.ACCESO,vida,tiempoDeConstruccion,escudo));
 		acceso.aniadirUnidadCreable(UnidadesProtos.ZEALOT, new CreadorZealot());
 		acceso.aniadirUnidadCreable(UnidadesProtos.DRAGON, new CreadorDragon());
 		return acceso;

@@ -7,6 +7,8 @@ import algocraft.stats.Recurso;
 public abstract class EdificiosAbstractFactory {
 	
 	protected Recurso recursosNecesarios;
+	protected int vida;
+	protected int tiempoDeConstruccion;
 	
 	public abstract Construccion crearEdificio();
 	public abstract boolean necesitoConstruccionAnterior();
