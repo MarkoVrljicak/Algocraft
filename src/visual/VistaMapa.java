@@ -4,9 +4,9 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-import algocraft.Juego;
-import algocraft.exception.FueraDeLimitesException;
-import algocraft.mapa.Coordenada;
+import modelo.Juego;
+import modelo.exception.FueraDeLimitesException;
+import modelo.mapa.Coordenada;
 
 
 

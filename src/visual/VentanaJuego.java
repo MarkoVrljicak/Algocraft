@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.JScrollPane;
 
-import algocraft.Juego;
+import modelo.Juego;
 
 import java.awt.Color;
 import java.awt.Dimension;

@@ -9,7 +9,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import algocraft.Juego;
+import modelo.Juego;
 import controlador.Controlador;
 
 public class Algocraft {

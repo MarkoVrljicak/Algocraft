@@ -1,12 +1,12 @@
 package controlador;
 
+import modelo.Juego;
+import modelo.jugador.Colores;
+import modelo.mapa.Coordenada;
+import modelo.razas.EnumRazas;
 import visual.Algocraft;
 import visual.VentanaIngresoDeDatosJugador;
 import visual.Ventanas;
-import algocraft.Juego;
-import algocraft.jugador.Colores;
-import algocraft.mapa.Coordenada;
-import algocraft.razas.EnumRazas;
 
 public class Controlador {
 	

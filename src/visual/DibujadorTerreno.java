@@ -3,7 +3,7 @@ package visual;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import algocraft.mapa.terrenos.Terrenos;
+import modelo.mapa.terrenos.Terrenos;
 //borrable
 public class DibujadorTerreno {
 

@@ -7,13 +7,13 @@ import java.util.Observer;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
-import algocraft.Juego;
-import algocraft.exception.FueraDeLimitesException;
-import algocraft.mapa.Coordenada;
-import algocraft.mapa.terrenos.Aire;
-import algocraft.mapa.terrenos.Terreno;
-import algocraft.mapa.terrenos.Terrenos;
-import algocraft.mapa.terrenos.Tierra;
+import modelo.Juego;
+import modelo.exception.FueraDeLimitesException;
+import modelo.mapa.Coordenada;
+import modelo.mapa.terrenos.Aire;
+import modelo.mapa.terrenos.Terreno;
+import modelo.mapa.terrenos.Terrenos;
+import modelo.mapa.terrenos.Tierra;
 import controlador.ControladorMouseCielo;
 import controlador.ControladorMouseSuelo;
 

@@ -3,8 +3,8 @@ package controlador;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import modelo.Juego;
 import visual.VistaTerreno;
-import algocraft.Juego;
 //borrable
 public class ControladorMouseCielo extends MouseAdapter {
 

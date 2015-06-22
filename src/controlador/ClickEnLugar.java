@@ -2,7 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 
-import algocraft.mapa.Coordenada;
+import modelo.mapa.Coordenada;
 
 
 
