@@ -4,31 +4,30 @@ import java.util.HashMap;
 
 import javax.swing.JLabel;
 
-import modelo.mapa.terrenos.Aire;
-import modelo.mapa.terrenos.Minerales;
-import modelo.mapa.terrenos.Tierra;
-import modelo.mapa.terrenos.Volcan;
+import modelo.mapa.terrenos.Terreno;
+import modelo.mapa.terrenos.Terrenos;
 
-@SuppressWarnings("rawtypes")
+
 public class DibujadorTerreno {
 	
 	
-	private HashMap<Class,Dibujador> dibujadores;
+	private HashMap<Terrenos, Dibujador> dibujadores;
 	
 	public DibujadorTerreno(){
 		
-		dibujadores = new HashMap<Class, Dibujador>();
+		dibujadores = new HashMap<Terrenos , Dibujador>();
 		//terrenos
-		dibujadores.put(Tierra.class,new DibujadorTierra());
-		dibujadores.put(Aire.class,new DibujadorAire());
-		dibujadores.put(Minerales.class,new DibujadorMineral());
-		dibujadores.put(Volcan.class,new DibujadorVolcan());		
+		dibujadores.put(Terrenos.TIERRA,new DibujadorTierra());
+		dibujadores.put(Terrenos.AIRE,new DibujadorAire());
+		dibujadores.put(Terrenos.MINERALES,new DibujadorMineral());
+		dibujadores.put(Terrenos.VOLCAN,new DibujadorVolcan());		
 	}
 	
-	public JLabel dibujar(Object o){
+	public JLabel dibujar(Terreno unTerreno){
 		Dibujador unDibujador;
-		if(! (o == null))
-			unDibujador= dibujadores.getOrDefault(o.getClass(), new DibujadorVacio());
+		
+		if(! (unTerreno == null))
+			unDibujador= dibujadores.getOrDefault(unTerreno.getNombre(), new DibujadorVacio());
 		else
 			unDibujador = new DibujadorVacio();
 		
