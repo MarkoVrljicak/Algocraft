@@ -29,8 +29,10 @@ public class Jugador implements Actualizable, Usuario {
 	private ArrayList<Construccion> construcciones;
 	private Recurso recursos;
 	private Colores color;
+	private String nombre;
 	
 	public Jugador(String nombreJugador, EnumRazas raza, Colores color){
+		this.nombre = nombreJugador;
 		this.color = color;
 		this.creadorEdificios = elegirCreadorEdificios(raza);
 		this.creadorEdificios.setDuenio(this);
@@ -52,6 +54,10 @@ public class Jugador implements Actualizable, Usuario {
 	}
 	
 	//accesors 
+
+	public String getNombre() {
+		return this.nombre;
+	}
 	
 	public EnumRazas getRaza(){
 		return creadorEdificios.getNombre();
@@ -195,4 +201,5 @@ public class Jugador implements Actualizable, Usuario {
 			}
 		}
 	}
+
 }

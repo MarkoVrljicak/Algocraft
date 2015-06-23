@@ -42,7 +42,10 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 			// no ocurre, una vez creado tiene una posicion valida.
 			e.printStackTrace();
 		}
+		repaint();
 	}
+	
+	
 
 	public VistaTerreno(Coordenada coordenada, Juego juego) 
 			throws FueraDeLimitesException {
@@ -53,9 +56,7 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 		this.posicion = coordenada;
 		this.observado = juego;
 		this.observado.addObserver(this);
-		
-			
-		dibujar();
+
 	}
 
 	private void dibujar() throws FueraDeLimitesException {

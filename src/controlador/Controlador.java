@@ -1,6 +1,7 @@
 package controlador;
 
 import modelo.Juego;
+import modelo.exception.UnidadIncompletaException;
 import modelo.jugador.Colores;
 import modelo.mapa.Coordenada;
 import modelo.razas.EnumRazas;
@@ -103,9 +104,10 @@ public class Controlador {
 	}
 
 	public void realizarAccionPara(Coordenada posicion) {
-		//toma la posicion y acorde al strategy hace algo con juego
-		
-		
-		
+		//toma la posicion y acorde al strategy hace algo con juego	
+	}
+
+	public void pasarTurno() throws UnidadIncompletaException {
+		juego.pasarTurno();		
 	}
 }

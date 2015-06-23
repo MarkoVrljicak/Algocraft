@@ -8,7 +8,7 @@ import visual.VistaTerreno;
 
 
 //borrable
-public class ControladorMouse extends MouseAdapter {
+public abstract class ControladorMouse extends MouseAdapter {
 
     Juego juego;
 
@@ -19,9 +19,5 @@ public class ControladorMouse extends MouseAdapter {
         this.vista = vista;
     }
 
-    public void mousePressed(MouseEvent mouseEvent) {
-     //ofrecer opciones al jugador o acciones, pedirle a la vista su posicion
-    //potencialmente aniadir controladores hijos para diferenciar comportamiento suelo de cielo
-    	
-    }
+    abstract public void mousePressed(MouseEvent mouseEvent);
 }

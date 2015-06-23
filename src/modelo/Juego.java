@@ -43,6 +43,7 @@ public class Juego extends Observable{
 		GeneradorDeMapa generador = new GeneradorDeMapa(ancho, alto);
 		mapa = generador.generar();
 		creadoresDeUnidadesEnUso = new ArrayList<CreadorDeUnidades>();
+		iniciarJuego();
 	}
 
 	public void setJugador1(String nombre, EnumRazas unaRaza , Colores unColor) {
@@ -54,7 +55,10 @@ public class Juego extends Observable{
 	}
 
 	public void iniciarJuego() {
-		jugadorActual = jugador1 ; 		
+		jugadorActual = jugador1 ;
+		
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public Jugador obtenerJugadorActual() {
@@ -91,6 +95,7 @@ public class Juego extends Observable{
 		Construccion edificioNuevo = jugadorActual.construir(edificio);
 		mapa.almacenar((Propiedad) edificioNuevo, coordenada);
 		
+		this.setChanged();
 		this.notifyObservers();
 	}
 	
@@ -98,8 +103,6 @@ public class Juego extends Observable{
 			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException {
 		 jugadorActual.crearUnidad(unidadPedida, edificioCreador);	
 		 creadoresDeUnidadesEnUso.add(edificioCreador);
-		 
-		 this.notifyObservers();
 	}
 
 	public void pasarTurno() throws UnidadIncompletaException {
@@ -115,6 +118,7 @@ public class Juego extends Observable{
 		//gestiono creacion de unidades
 		ponerNuevasUnidadesEnMapa();
 		
+		this.setChanged();
 		this.notifyObservers();
 	}
 
@@ -149,14 +153,13 @@ public class Juego extends Observable{
 				}
 			}
 		}
-		
-		this.notifyObservers();
 	}
 
 	public void moverUnidad(Unidad unidad, Coordenada destino) 
 			throws PropiedadNoEstaEnJuegoException {
 		this.mapa.moverUnidad(unidad, destino);	
 		
+		this.setChanged();
 		this.notifyObservers();
 	}
 
@@ -170,6 +173,7 @@ public class Juego extends Observable{
 			e.printStackTrace();
 		}
 		
+		this.setChanged();
 		this.notifyObservers();
 	}
 
@@ -184,6 +188,7 @@ public class Juego extends Observable{
 			e.printStackTrace();
 		}
 		
+		this.setChanged();
 		this.notifyObservers();
 	}	
 }

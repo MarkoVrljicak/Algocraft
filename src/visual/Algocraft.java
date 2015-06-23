@@ -3,6 +3,7 @@ package visual;
 import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.SystemColor;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -10,11 +11,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import modelo.Juego;
+import modelo.jugador.Colores;
+import modelo.razas.EnumRazas;
 import controlador.Controlador;
 
 public class Algocraft {
 	
-	@SuppressWarnings("unused")
 	private Controlador controlador;
 	private Juego juego;
 	private int anchoMapa = 30;
@@ -94,5 +96,12 @@ public class Algocraft {
 		
 		mntmSalir = new JMenuItem("Salir");
 		mnArchivo.add(mntmSalir);
+		
+		
+		//bypass ingreso datos
+		juego.setJugador1("nick", EnumRazas.TERRAN, Colores.AZUL);
+		juego.setJugador2("dominic", EnumRazas.PROTOSS, Colores.ROJO);
+		juego.iniciarJuego();
+		this.controlador.cambiarVentanaA(Ventanas.JUEGO);
 	}
 }
