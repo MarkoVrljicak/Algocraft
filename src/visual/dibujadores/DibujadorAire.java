@@ -1,4 +1,4 @@
-package visual;
+package visual.dibujadores;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -7,7 +7,6 @@ public class DibujadorAire extends Dibujador {
 
 	
 	private ImageIcon imagenAire;
-	private static final String pathTexturas ="texturas//";
 
 	public DibujadorAire(){
 		String file;

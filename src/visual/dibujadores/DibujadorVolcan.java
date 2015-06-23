@@ -1,4 +1,4 @@
-package visual;
+package visual.dibujadores;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -7,7 +7,6 @@ public class DibujadorVolcan extends Dibujador {
 
 	
 	private ImageIcon imagenVolcan;
-	private static final String pathTexturas ="texturas//";
 
 	public DibujadorVolcan(){
 		String file;

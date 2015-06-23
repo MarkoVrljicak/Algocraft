@@ -12,8 +12,9 @@ import modelo.exception.FueraDeLimitesException;
 import modelo.mapa.Coordenada;
 import modelo.mapa.terrenos.Aire;
 import modelo.mapa.terrenos.Terreno;
-import modelo.mapa.terrenos.Terrenos;
 import modelo.mapa.terrenos.Tierra;
+import visual.dibujadores.DibujadorPropiedades;
+import visual.dibujadores.DibujadorTerreno;
 import controlador.ControladorMouseCielo;
 import controlador.ControladorMouseSuelo;
 
@@ -42,11 +43,8 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 			// no ocurre, una vez creado tiene una posicion valida.
 			// TODO Avisar por vista
 		}
-		repaint();
 	}
 	
-	
-
 	public VistaTerreno(Coordenada coordenada, Juego juego) 
 			throws FueraDeLimitesException {
 		super();
@@ -69,7 +67,7 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 	private void dibujarTerreno(Terreno unTerreno){ 
 		DibujadorTerreno dibujador = new DibujadorTerreno();
 		
-		JLabel terrenoADibujar =dibujador.dibujarTerreno(unTerreno.getNombre());
+		JLabel terrenoADibujar =dibujador.dibujar(unTerreno);
 		terrenoADibujar.setVisible(true);
 		terrenoADibujar.setBounds(0, 0, anchoCelda, altoCelda);
 
@@ -77,10 +75,9 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 	}
 
 	private void dibujarSuelo(Terreno unTerreno) {
-		//cambiar por un dibujador de unidades o afin
-		DibujadorTerreno dibujador = new DibujadorTerreno();
+		DibujadorPropiedades dibujador = new DibujadorPropiedades();
 		
-		JLabel terrenoADibujar =dibujador.dibujarTerreno(Terrenos.TIERRA);
+		JLabel terrenoADibujar =dibujador.dibujar(unTerreno.getContenidoSuelo());
 		terrenoADibujar.setVisible(true);
 		setLayer(terrenoADibujar,1);
 		terrenoADibujar.setBounds(0, 15, 15, 15);
@@ -90,18 +87,17 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 	}
 
 	private void dibujarCielo(Terreno unTerreno) {
-		//cambiar por un dibujador de unidades y edificios o afin
-		DibujadorTerreno dibujador = new DibujadorTerreno();
+		DibujadorPropiedades dibujador = new DibujadorPropiedades();
 		
-		JLabel terrenoADibujar =dibujador.dibujarTerreno(Terrenos.AIRE);
+		JLabel terrenoADibujar =dibujador.dibujar(unTerreno.getContenidoCielo());
 		terrenoADibujar.setVisible(true);
-		setLayer(terrenoADibujar,1);
+		setLayer(terrenoADibujar,1 );
 		terrenoADibujar.setBounds(15, 0, 15, 15);
 		terrenoADibujar.addMouseListener(new ControladorMouseCielo(observado, this));
 
 		add(terrenoADibujar,10);
 	}
-	
+	//*******************************************tests**********************************************
 	public void accionDePruebaSuelo(){
 		//accion de prueba para saber si el mouse funciona
 		//borra los pedacitos de terreno
@@ -117,4 +113,7 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 		this.removeAll();
 		this.dibujarTerreno(new Aire(posicion));
 	}
+	
+	
+	
 }

@@ -1,12 +1,10 @@
-package visual;
+package visual.dibujadores;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class DibujadorTierra extends Dibujador {
 	
-	private static final String pathTexturas ="texturas//";
-
 	private ImageIcon imagenTierra;
 	
 	public DibujadorTierra(){

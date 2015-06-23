@@ -1,10 +1,11 @@
-package visual;
+package visual.dibujadores;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 //esta y sus clases hijas son mi idea de la version final, uso la otra version por ahora(dibujadorTerreno)
 public abstract class Dibujador {
 
+	protected static final String pathTexturas ="texturas/";
 	abstract public JLabel dibujar();
 	
 	protected ImageIcon createImageIcon(String path,
