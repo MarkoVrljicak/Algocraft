@@ -37,12 +37,9 @@ public class Algocraft {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					Algocraft window = new Algocraft();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					//Avisar
-				}
+				Algocraft window = new Algocraft();
+				window.frame.setVisible(true);
+				
 			}
 		});
 	}
