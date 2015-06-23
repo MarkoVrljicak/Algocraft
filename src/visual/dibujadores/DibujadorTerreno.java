@@ -27,7 +27,7 @@ public class DibujadorTerreno {
 		Dibujador unDibujador;
 		
 		if(! (unTerreno == null))
-			unDibujador= dibujadores.getOrDefault(unTerreno.getNombre(), new DibujadorVacio());
+			unDibujador= dibujadores.get(unTerreno.getNombre());
 		else
 			unDibujador = new DibujadorVacio();
 		
