@@ -144,6 +144,10 @@ public class Jugador implements Actualizable, Usuario {
 	
 	//de creacion
 	
+	public boolean puedoConstruir(EnumEdificios nombreEdificio) {
+		return creadorEdificios.puedoCrearConstruccion(nombreEdificio);		
+	}
+	
 	public Construccion construir(EnumEdificios nombreConstruccion) 
 			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		Construccion construccion = creadorEdificios.crearConstruccion(nombreConstruccion);
@@ -152,6 +156,9 @@ public class Jugador implements Actualizable, Usuario {
 		return construccion;
 	}
 	
+	public boolean puedoCrearUnidad(Unidades nombreUnidad, CreadorDeUnidades edificioCreador) {
+		return edificioCreador.puedoCrearUnidad(nombreUnidad);		
+	}
 	
 	public Unidad crearUnidad(Unidades nombreUnidad , CreadorDeUnidades edificioCreador) 
 			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {

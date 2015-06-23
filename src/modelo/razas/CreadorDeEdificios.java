@@ -89,5 +89,10 @@ public abstract class CreadorDeEdificios {
 		return (this.tengoGasSuficiente(creador)&& 
 				this.tengoMineralSuficiente(creador)&&
 				this.tengoDependencias(creador));
+	}
+
+	public boolean puedoCrearConstruccion(EnumEdificios nombreEdificio) {
+		 return puedoCrearConstruccion(construccionesCreables.get(nombreEdificio));
+		
 	}		
 }

@@ -191,7 +191,7 @@ public class JuegoTest {
 		
 		algocraft.pasarTurno();
 		
-		assertEquals(Colores.ROJO,algocraft.obtenerJugadorActual().getColor());
+		assertEquals(Colores.ROJO,algocraft.getJugadorActual().getColor());
 	}
 	
 	@Test

@@ -103,12 +103,11 @@ public class Algocraft {
 		
 		inicializarComponentes();
 		
-		frame.setBounds(100, 100, 693, 510);
+		frame.setBounds(50, 50, 1000, 700);
 		frame.setTitle("Algocraft");
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
+	
 	}
 
 	private void inicializarComponentes(){

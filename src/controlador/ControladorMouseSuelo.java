@@ -1,24 +1,26 @@
 package controlador;
 
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import modelo.Juego;
+import modelo.exception.FueraDeLimitesException;
+import modelo.mapa.Coordenada;
 import visual.VistaTerreno;
-//borrable
-public class ControladorMouseSuelo extends MouseAdapter {
 
-	Juego juego;
+public class ControladorMouseSuelo extends MiControladorMouse {
 
-    VistaTerreno vista;
+	Coordenada posicion;
 
-    public ControladorMouseSuelo(Juego juego, VistaTerreno vista) {
-        this.juego = juego;
-        this.vista = vista;
+    public ControladorMouseSuelo(VistaTerreno vista) {
+        this.posicion = vista.getPosicion();
     }
 
     public void mousePressed(MouseEvent mouseEvent) {
-    	vista.accionDePruebaSuelo();
+    	try {
+			controlador.accionSuelo(posicion);
+		} catch (FueraDeLimitesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 }

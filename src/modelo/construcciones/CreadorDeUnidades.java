@@ -73,6 +73,10 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 				this.tengoPoblacionSuficiente(creador));
 	}
 	
+	public boolean puedoCrearUnidad(Unidades nombreUnidad) {
+		return puedoCrearUnidad(unidadesCreables.get(nombreUnidad));
+	}
+	
 	public boolean unidadEnCreacion() {
 		return !unidadesEnCreacion.isEmpty();
 	}	
@@ -107,5 +111,4 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	public boolean soyVolador() {
 		return false;
 	}
-
 }

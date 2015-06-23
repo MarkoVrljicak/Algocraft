@@ -63,7 +63,7 @@ public class Juego extends Observable{
 		this.notifyObservers();
 	}
 	
-	public Jugador obtenerJugadorActual() {
+	public Jugador getJugadorActual() {
 		return jugadorActual;
 	}
 	
@@ -89,6 +89,8 @@ public class Juego extends Observable{
 			throws FueraDeLimitesException {	
 		return mapa.getPropiedadCielo(coordenada);
 	}
+	
+	
 
 	public void construirEn(EnumEdificios edificio, Coordenada coordenada) 
 			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
@@ -102,12 +104,16 @@ public class Juego extends Observable{
 	}
 	
 	public void crearUnidad(CreadorDeUnidades edificioCreador, Unidades unidadPedida) 
-			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
+			throws MineralInsuficienteException,GasInsuficienteException, 
+			PoblacionInsuficienteException, RecursosNegativosException {
+		
 		 jugadorActual.crearUnidad(unidadPedida, edificioCreador);	
 		 creadoresDeUnidadesEnUso.add(edificioCreador);
 	}
 
-	public void pasarTurno() throws UnidadIncompletaException, DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException {
+	public void pasarTurno() 
+			throws UnidadIncompletaException, DestinoInvalidoException, 
+			FueraDeLimitesException, PropiedadNoEstaEnJuegoException {
 		//cambio de jugador
 		if(jugadorActual == jugador1)
 			jugadorActual= jugador2;
@@ -179,5 +185,7 @@ public class Juego extends Observable{
 		
 		this.setChanged();
 		this.notifyObservers();
-	}	
+	}
+
+		
 }

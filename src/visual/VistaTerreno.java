@@ -28,8 +28,8 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 	
 	private Coordenada posicion;
 	private Juego observado;
-	private static final int anchoCelda = 30;
-	private static final int altoCelda = 30;
+	public static final int anchoCelda = 100;
+	public static final int altoCelda = 100;
 	
 	
 	@Override
@@ -56,6 +56,10 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 		this.observado.addObserver(this);
 
 	}
+	
+	public Coordenada getPosicion(){
+		return posicion;
+	}
 
 	private void dibujar() throws FueraDeLimitesException {
 		Terreno unTerreno = observado.obtenerTerreno(posicion);
@@ -80,8 +84,8 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 		JLabel terrenoADibujar =dibujador.dibujar(unTerreno.getContenidoSuelo());
 		terrenoADibujar.setVisible(true);
 		setLayer(terrenoADibujar,1);
-		terrenoADibujar.setBounds(0, 15, 15, 15);
-		terrenoADibujar.addMouseListener(new ControladorMouseSuelo(observado, this));
+		terrenoADibujar.setBounds(0, altoCelda/2, anchoCelda/2, altoCelda/2);
+		terrenoADibujar.addMouseListener(new ControladorMouseSuelo(this));
 
 		add(terrenoADibujar,10);
 	}
@@ -92,8 +96,8 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 		JLabel terrenoADibujar =dibujador.dibujar(unTerreno.getContenidoCielo());
 		terrenoADibujar.setVisible(true);
 		setLayer(terrenoADibujar,1 );
-		terrenoADibujar.setBounds(15, 0, 15, 15);
-		terrenoADibujar.addMouseListener(new ControladorMouseCielo(observado, this));
+		terrenoADibujar.setBounds(anchoCelda/2, 0, anchoCelda/2, altoCelda/2);
+		terrenoADibujar.addMouseListener(new ControladorMouseCielo(this));
 
 		add(terrenoADibujar,10);
 	}

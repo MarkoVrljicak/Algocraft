@@ -1,12 +1,16 @@
 package visual.dibujadores;
 
+import java.awt.Color;
 import java.util.HashMap;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.border.Border;
 
 import modelo.construcciones.Construccion;
 import modelo.construcciones.EnumEdificios;
 import modelo.factory.edificiosTerran.EnumEdificiosTerran;
+import modelo.jugador.Colores;
 import modelo.propiedad.Propiedad;
 import modelo.unidades.Unidad;
 import modelo.unidades.Unidades;
@@ -28,16 +32,29 @@ public class DibujadorPropiedades {
 	}
 
 	public JLabel dibujar(Propiedad aDibujar) {
+		JLabel imagenObtenida;
+		Border border = null;
+		if(aDibujar == null){
+			imagenObtenida = new DibujadorVacio().dibujar();
+		}else if (aDibujar.getColor()==Colores.AZUL)
+			border = BorderFactory.createLineBorder(Color.BLUE, 1);
+		else
+			border = BorderFactory.createLineBorder(Color.RED, 1);
+		
 		if(aDibujar instanceof Construccion){
 			Construccion edificio = (Construccion) aDibujar;
 			EnumEdificios nombre = edificio.getNombre();
-			return dibujadores.get(nombre).dibujar();
+			imagenObtenida = dibujadores.get(nombre).dibujar();
+			imagenObtenida.setBorder(border);
 		}else if(aDibujar instanceof Unidad){
 			Unidad unidad = (Unidad) aDibujar;
 			Unidades nombe = unidad.getNombre();
-			return dibujadores.get(nombe).dibujar();
+			imagenObtenida = dibujadores.get(nombe).dibujar();
+			imagenObtenida.setBorder(border);
 		}else
-			return new DibujadorVacio().dibujar();
+			imagenObtenida = new DibujadorVacio().dibujar();
+		
+		return imagenObtenida;
 	}
 
 }

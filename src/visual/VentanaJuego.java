@@ -21,6 +21,7 @@ public class VentanaJuego extends JPanel implements Observer {
 	public VistaMapa mapa;
 	private Juego juegoObservado;
 	private JToolBar estadisticas;
+	private JToolBar acciones;
 
 	public VentanaJuego(Juego juego){
 		super();
@@ -32,31 +33,30 @@ public class VentanaJuego extends JPanel implements Observer {
 		
 		presentarEstadisticas();
 		
-		JToolBar acciones = new JToolBar();
-		acciones.setBounds(10, 390, 601, 55);
+		acciones = new JToolBar();
+		acciones.setBounds(10, 565, 950, 60);
 		add(acciones);
-		
-		JButton btnPasarTurno = new JButton("PasarTurno");
-		btnPasarTurno.addActionListener(new AccionPasarTurno());
-		acciones.add(btnPasarTurno);
-		
-		
+				
 		//creo mapa
 		mapa = new VistaMapa(juego);
-		mapa.setPreferredSize(new Dimension(900, 900));
+		mapa.setPreferredSize(new Dimension(3000, 3000));
 		mapa.setVisible(true);
 		//mapa scrolleable
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportView(mapa);
-		scrollPane.setBounds(10, 44, 601, 338);
-		add(scrollPane);
-		
+		scrollPane.setBounds(10, 40, 950, 520);
+		add(scrollPane);		
 	}
 
 	private void presentarEstadisticas() {
 		estadisticas = new JToolBar();
-		estadisticas.setBounds(10, 11, 601, 22);
+		estadisticas.setBounds(10, 10, 950, 22);
 		add(estadisticas);
+		
+		JButton btnPasarTurno = new JButton("PasarTurno");
+		btnPasarTurno.setForeground(Color.RED);
+		estadisticas.add(btnPasarTurno);
+		btnPasarTurno.addActionListener(new AccionPasarTurno());
 		
 		JLabel lblInfoNombre = new JLabel("Jugador:");
 		estadisticas.add(lblInfoNombre);
@@ -91,22 +91,26 @@ public class VentanaJuego extends JPanel implements Observer {
 	}
 
 	private void actualizarEstadisticas() {
-		Jugador jugadorActual = juegoObservado.obtenerJugadorActual();
+		Jugador jugadorActual = juegoObservado.getJugadorActual();
 		
-		JLabel nombre = (JLabel) estadisticas.getComponent(1);
+		JLabel nombre = (JLabel) estadisticas.getComponent(2);
 		nombre.setText(jugadorActual.getNombre());
 		
-		JLabel minerales = (JLabel) estadisticas.getComponent(3);
+		JLabel minerales = (JLabel) estadisticas.getComponent(4);
 		minerales.setText(String.valueOf(jugadorActual.getMineral()));
 		
-		JLabel gas = (JLabel) estadisticas.getComponent(5);
+		JLabel gas = (JLabel) estadisticas.getComponent(6);
 		gas.setText(String.valueOf(jugadorActual.getGas()));
 		
-		JLabel poblacionActual = (JLabel) estadisticas.getComponent(7);
+		JLabel poblacionActual = (JLabel) estadisticas.getComponent(8);
 		poblacionActual.setText(String.valueOf(jugadorActual.getPoblacionActual()));
 		
-		JLabel poblacionMaxima = (JLabel) estadisticas.getComponent(9);
+		JLabel poblacionMaxima = (JLabel) estadisticas.getComponent(10);
 		poblacionMaxima.setText(String.valueOf(jugadorActual.getPoblacionMaxima()));
+	}
+	
+	public JToolBar getAcciones(){
+		return acciones;
 	}
 
 	@Override

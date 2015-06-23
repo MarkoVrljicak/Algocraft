@@ -21,7 +21,9 @@ public class VistaMapa extends JPanel {
 		int alto = juego.getAlto();
 		
 		setLayout(null);
-		this.setBounds(0, 0, 900, 900);
+		int anchoCelda = VistaTerreno.anchoCelda;
+		int altoCelda = VistaTerreno.altoCelda;
+		this.setBounds(0, 0, ancho*anchoCelda, alto*altoCelda);
 		this.setLayout(new GridLayout(ancho,alto));
 		
 		for(int x = 1 ; x <=ancho ; x++){
