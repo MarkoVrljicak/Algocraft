@@ -5,8 +5,13 @@ import javax.swing.JLabel;
 //esta y sus clases hijas son mi idea de la version final, uso la otra version por ahora(dibujadorTerreno)
 public abstract class Dibujador {
 
+	protected ImageIcon imagen;
 	protected static final String pathTexturas ="texturas/";
-	abstract public JLabel dibujar();
+	
+	public JLabel dibujar() {
+		
+		return new JLabel(imagen);
+	}
 	
 	protected ImageIcon createImageIcon(String path,
 			String description) {

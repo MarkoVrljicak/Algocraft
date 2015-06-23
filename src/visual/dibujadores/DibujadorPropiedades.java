@@ -24,8 +24,8 @@ public class DibujadorPropiedades {
 		dibujadores = new HashMap<Enum, Dibujador>();
 		
 		dibujadores.put(EnumEdificiosTerran.BARRACA, new DibujadorBarraca());
-		dibujadores.put(EnumEdificiosTerran.BASE_TERRAN, new DibujadorBasaTerran());
-		dibujadores.put(EnumEdificiosTerran.CENTRO_DE_MINERALES, new DibujadorCentroMinerales());
+		dibujadores.put(EnumEdificiosTerran.BASE_TERRAN, new DibujadorBaseTerran());
+		dibujadores.put(EnumEdificiosTerran.CENTRO_DE_MINERALES, new DibujadorCentroDeMineral());
 		dibujadores.put(EnumEdificiosTerran.REFINERIA, new DibujadorRefineria());
 		dibujadores.put(EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS, new DibujadorDepositoSuministros());
 		
