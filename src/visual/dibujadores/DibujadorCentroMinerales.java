@@ -9,7 +9,7 @@ public class DibujadorCentroMinerales extends Dibujador {
 
 	public DibujadorCentroMinerales(){
 		String file;
-		file = (pathTexturas + "centroMinerales.png") ;
+		file = (pathTexturas + "centro_de_mineral.png") ;
 		imagenCentroMinerales=createImageIcon(file,"");
 	}
 
