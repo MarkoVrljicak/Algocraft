@@ -49,7 +49,7 @@ public abstract class CreadorDeEdificios {
 	}
 	
 	public Construccion crearConstruccion(EnumEdificios nombreEdificio) 
-			throws MineralInsuficienteException,GasInsuficienteException, DependenciasNoCumplidasException{
+			throws MineralInsuficienteException,GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException{
 		EdificiosAbstractFactory creador = construccionesCreables.get(nombreEdificio);
 		
 		if(!tengoMineralSuficiente(creador))
@@ -59,13 +59,8 @@ public abstract class CreadorDeEdificios {
 		if(!tengoDependencias(creador))
 			throw new DependenciasNoCumplidasException();
 
-		try {
-			duenio.consumirMineral(creador.getMineralNecesario());
-			duenio.consumirGas(creador.getGasNecesario());
-		} catch (RecursosNegativosException e) {
-			//contradiccion
-			e.printStackTrace();
-		}
+		duenio.consumirMineral(creador.getMineralNecesario());
+		duenio.consumirGas(creador.getGasNecesario());
 
 		Construccion edificio = creador.crearEdificio();
 		edificio.setDuenio(duenio);

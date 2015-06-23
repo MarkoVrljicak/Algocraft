@@ -52,7 +52,7 @@ public class ArchivosTemplariosTest {
 		
 	@Test
 	public void testArchivosTemplariosCreaAltoTemplario() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
 		CreadorArchivosTemplarios creador = new CreadorArchivosTemplarios();
 		CreadorDeUnidades archivosTemplarios = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);

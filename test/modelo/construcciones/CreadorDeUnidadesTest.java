@@ -6,6 +6,8 @@ import modelo.construcciones.CreadorDeUnidades;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.RecursosNegativosException;
 import modelo.factory.edificiosTerran.CreadorBarraca;
 import modelo.jugador.Colores;
 import modelo.jugador.Jugador;
@@ -35,7 +37,7 @@ public class CreadorDeUnidadesTest {
 	
 	@Test
 	public void testCrearUnidadHaceQueHallaUnidadEnCreacion() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException{
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException{
 		CreadorDeUnidades barraca = this.crearBarracaValida();
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);
@@ -45,7 +47,7 @@ public class CreadorDeUnidadesTest {
 	
 	@Test
 	public void testCreoUnidadVerificoQueNoEsteTerminada() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException{
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException{
 		CreadorDeUnidades barraca = this.crearBarracaValida();
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);
@@ -55,7 +57,7 @@ public class CreadorDeUnidadesTest {
 	
 	@Test
 	public void testCreoUnidadEsperoAQueTermineVerificoQueEsteTerminada() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException{
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException, PropiedadNoEstaEnJuegoException{
 		CreadorDeUnidades barraca = this.crearBarracaValida();
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);
@@ -67,7 +69,7 @@ public class CreadorDeUnidadesTest {
 	
 	@Test(expected = MineralInsuficienteException.class)
 	public void testIntentarCrearUnidadSinRecursosLanzaException()
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException{
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException{
 		
 			CreadorDeUnidades barraca = this.crearBarracaValida();
 			

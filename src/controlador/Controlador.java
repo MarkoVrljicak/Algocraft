@@ -1,6 +1,9 @@
 package controlador;
 
 import modelo.Juego;
+import modelo.exception.DestinoInvalidoException;
+import modelo.exception.FueraDeLimitesException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.UnidadIncompletaException;
 import modelo.jugador.Colores;
 import modelo.mapa.Coordenada;
@@ -107,7 +110,17 @@ public class Controlador {
 		//toma la posicion y acorde al strategy hace algo con juego	
 	}
 
-	public void pasarTurno() throws UnidadIncompletaException {
-		juego.pasarTurno();		
+	public void pasarTurno() {
+		try {
+			juego.pasarTurno();
+		} catch (DestinoInvalidoException e) {
+			// TODO Avisar en ventana de error
+		} catch (FueraDeLimitesException e) {
+			// TODO Avisar en ventana de error
+		} catch (PropiedadNoEstaEnJuegoException e) {
+			// TODO Avisar en ventana de error
+		} catch (UnidadIncompletaException e) {
+			// TODO Avisar en ventana de error
+		}		
 	}
 }

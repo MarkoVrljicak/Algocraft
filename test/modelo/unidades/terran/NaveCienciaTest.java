@@ -1,9 +1,11 @@
 package modelo.unidades.terran;
 
 import static org.junit.Assert.assertEquals;
+import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.mapa.Coordenada;
 import modelo.mapa.Mapa;
 import modelo.unidades.Unidad;
@@ -96,7 +98,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionGasta75DeMagia() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testRadiacionGasta75DeMagia() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		pasarMuchosTurnos(nave);
@@ -112,7 +114,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionNoSeActivaConMenosDe75DeMagia() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testRadiacionNoSeActivaConMenosDe75DeMagia() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad marine = new Marine();
@@ -124,7 +126,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionHace10DeDanioEnUnTurno() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testRadiacionHace10DeDanioEnUnTurno() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad marine = new Marine();
@@ -138,7 +140,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionHace10DeDanioEnSegundoTurno() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testRadiacionHace10DeDanioEnSegundoTurno() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad marine = new Marine();
@@ -153,7 +155,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testUnidadSeMueveYSigueRecibiendoRadiacion() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testUnidadSeMueveYSigueRecibiendoRadiacion() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, CoordenadaInexistenteException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad marine = new Marine();
@@ -171,7 +173,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionAfectaAUnidadesVecinas() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testRadiacionAfectaAUnidadesVecinas() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad marine1 = new Marine();
@@ -187,7 +189,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionNoAfectaAUnidadesADistancia2() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testRadiacionNoAfectaAUnidadesADistancia2() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad marine1 = new Marine();
@@ -203,7 +205,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionDejaDeAfectarASegundaUnidadCuandoSeDespegaDeLaAfectada() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testRadiacionDejaDeAfectarASegundaUnidadCuandoSeDespegaDeLaAfectada() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, CoordenadaInexistenteException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad marine1 = new Marine();
@@ -223,7 +225,7 @@ public class NaveCienciaTest {
 	}
 
 	@Test
-	public void testEMPMataAlucinacionesDeUna() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testEMPMataAlucinacionesDeUna() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10, 10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad aClonar = new Zealot();
@@ -238,7 +240,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testEMPNoSeRealizaSinMagiaSuficiente() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testEMPNoSeRealizaSinMagiaSuficiente() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10, 10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad aClonar = new Zealot();
@@ -252,7 +254,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testEMPQuitaMagiaEnLugarDeEscudoAUnidadesMagicas() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testEMPQuitaMagiaEnLugarDeEscudoAUnidadesMagicas() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10, 10);
 		NaveCiencia nave = new NaveCiencia();
 		UnidadMagica templario = new AltoTemplario();
@@ -266,7 +268,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testEMPNoQuitaEnergiaFueraDeRango() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testEMPNoQuitaEnergiaFueraDeRango() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10, 10);
 		NaveCiencia nave = new NaveCiencia();
 		UnidadMagica templario = new AltoTemplario();

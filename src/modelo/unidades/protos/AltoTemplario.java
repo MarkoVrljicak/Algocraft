@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import modelo.exception.DestinoInvalidoException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.magias.AtaqueMagico;
 import modelo.magias.TormentaPsionica;
 import modelo.mapa.Coordenada;
@@ -99,7 +100,7 @@ public class AltoTemplario extends UnidadMagica {
 		
 	}
 
-	public void tormentaPsionica(Mapa mapa, Coordenada coordenadaObjetivo) {
+	public void tormentaPsionica(Mapa mapa, Coordenada coordenadaObjetivo) throws PropiedadNoEstaEnJuegoException {
 		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, coordenadaObjetivo);
 		if(this.magia.actual() < 75){
 			return;

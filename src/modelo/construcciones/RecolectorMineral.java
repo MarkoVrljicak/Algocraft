@@ -1,5 +1,6 @@
 package modelo.construcciones;
 
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.jugador.Jugador;
 
 public class RecolectorMineral extends DecoradorEdificioBasico{
@@ -9,7 +10,7 @@ public class RecolectorMineral extends DecoradorEdificioBasico{
 	}
 
 	@Override
-	public void iniciarTurno() {
+	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException {
 		this.edificio.iniciarTurno();
 		recolectarMineral(this.getDuenio());
 	}

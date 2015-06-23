@@ -2,6 +2,7 @@ package modelo.unidades.terran;
 
 import java.util.Collection;
 
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.magias.AtaqueMagico;
 import modelo.magias.EMP;
 import modelo.magias.Radiacion;
@@ -74,7 +75,7 @@ public class NaveCiencia extends UnidadMagica{
 		this.magia.disminuir(150);
 	}
 
-	public void radiacion(Unidad unidad, Mapa mapa) {
+	public void radiacion(Unidad unidad, Mapa mapa) throws PropiedadNoEstaEnJuegoException {
 		int costo = 75;
 		if(!chequearCostoDeMagia(costo)) return;
 		
@@ -84,7 +85,7 @@ public class NaveCiencia extends UnidadMagica{
 		
 	}
 	
-	public void emp(Mapa mapa, Coordenada objetivo){
+	public void emp(Mapa mapa, Coordenada objetivo) throws PropiedadNoEstaEnJuegoException{
 		int costo = 100;
 		if(!chequearCostoDeMagia(costo)) return;
 		

@@ -8,6 +8,7 @@ import java.util.Observable;
 import modelo.construcciones.Construccion;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.construcciones.EnumEdificios;
+import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.EspacioInsuficienteException;
@@ -17,6 +18,7 @@ import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
+import modelo.exception.RecursosNegativosException;
 import modelo.exception.UnidadIncompletaException;
 import modelo.exception.UnidadNoTransportableException;
 import modelo.jugador.Colores;
@@ -39,7 +41,7 @@ public class Juego extends Observable{
 	public Mapa mapa;
 	private ArrayList<CreadorDeUnidades> creadoresDeUnidadesEnUso;
 	
-	public Juego(int ancho , int alto){
+	public Juego(int ancho , int alto) throws FueraDeLimitesException{
 		GeneradorDeMapa generador = new GeneradorDeMapa(ancho, alto);
 		mapa = generador.generar();
 		creadoresDeUnidadesEnUso = new ArrayList<CreadorDeUnidades>();
@@ -90,7 +92,7 @@ public class Juego extends Observable{
 
 	public void construirEn(EnumEdificios edificio, Coordenada coordenada) 
 			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
-					GasInsuficienteException, DependenciasNoCumplidasException {
+					GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		
 		Construccion edificioNuevo = jugadorActual.construir(edificio);
 		mapa.almacenar((Propiedad) edificioNuevo, coordenada);
@@ -100,12 +102,12 @@ public class Juego extends Observable{
 	}
 	
 	public void crearUnidad(CreadorDeUnidades edificioCreador, Unidades unidadPedida) 
-			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
 		 jugadorActual.crearUnidad(unidadPedida, edificioCreador);	
 		 creadoresDeUnidadesEnUso.add(edificioCreador);
 	}
 
-	public void pasarTurno() throws UnidadIncompletaException {
+	public void pasarTurno() throws UnidadIncompletaException, DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException {
 		//cambio de jugador
 		if(jugadorActual == jugador1)
 			jugadorActual= jugador2;
@@ -122,7 +124,7 @@ public class Juego extends Observable{
 		this.notifyObservers();
 	}
 
-	private void ponerNuevasUnidadesEnMapa() throws UnidadIncompletaException {
+	private void ponerNuevasUnidadesEnMapa() throws UnidadIncompletaException, DestinoInvalidoException, FueraDeLimitesException {
 		Iterator<CreadorDeUnidades> itEdificiosCreadores = creadoresDeUnidadesEnUso.iterator();
 		while(itEdificiosCreadores.hasNext()){
 			CreadorDeUnidades unCreador = itEdificiosCreadores.next();
@@ -138,25 +140,21 @@ public class Juego extends Observable{
 		}
 	}
 
-	private void posicionarNuevaUnidad(Unidad unidad, Coordenada posicionCreador){
+	private void posicionarNuevaUnidad(Unidad unidad, Coordenada posicionCreador) throws DestinoInvalidoException, FueraDeLimitesException{
 		for(int x = posicionCreador.getX()-1 ; x <= posicionCreador.getX()+1 ; x++){
 			for(int y = posicionCreador.getY()-1 ; y <= posicionCreador.getY()+1 ; y++){
 				Coordenada coordenadaCandidata = new Coordenada(x,y);
-				try {
-					if(this.mapa.hayCasillero(coordenadaCandidata) &&
-							unidad.puedoMoverme(this.mapa.getTerreno(coordenadaCandidata))){
-						this.mapa.almacenar(unidad,coordenadaCandidata );
-					}
-				} catch (FueraDeLimitesException | DestinoInvalidoException e) {
-					//no ocurren(pregunto si hay casillero y si puedo estar ahi)
-					e.printStackTrace();
+				if(this.mapa.hayCasillero(coordenadaCandidata) &&
+						unidad.puedoMoverme(this.mapa.getTerreno(coordenadaCandidata))){
+					this.mapa.almacenar(unidad,coordenadaCandidata );
+					
 				}
-			}
+			}	
 		}
 	}
 
 	public void moverUnidad(Unidad unidad, Coordenada destino) 
-			throws PropiedadNoEstaEnJuegoException {
+			throws PropiedadNoEstaEnJuegoException, CoordenadaInexistenteException, PropiedadNoExisteEnEstaUbicacion, DestinoInvalidoException {
 		this.mapa.moverUnidad(unidad, destino);	
 		
 		this.setChanged();
@@ -164,29 +162,20 @@ public class Juego extends Observable{
 	}
 
 	public void subirUnidad(Unidad unidadSubida, UnidadTransportadora naveTransportadora) 
-			throws EspacioInsuficienteException, UnidadNoTransportableException {
+			throws EspacioInsuficienteException, UnidadNoTransportableException, PropiedadNoExisteEnEstaUbicacion, FueraDeLimitesException {
 		naveTransportadora.subirUnidad(unidadSubida);
-		try {
-			mapa.getTerreno(mapa.encontrar(unidadSubida)).borrarContenido(unidadSubida);
-		} catch (PropiedadNoExisteEnEstaUbicacion | FueraDeLimitesException e) {
-			// contradiccion
-			e.printStackTrace();
-		}
+		mapa.getTerreno(mapa.encontrar(unidadSubida)).borrarContenido(unidadSubida);
 		
 		this.setChanged();
 		this.notifyObservers();
 	}
 
 	public void bajarUnidad(UnidadTransportadora naveTransportadora, Unidad unidadABajar)
-			throws DestinoInvalidoException {
+			throws DestinoInvalidoException, FueraDeLimitesException {
 		Coordenada posicionDescenso = mapa.encontrar(naveTransportadora);
 		Unidad unidadBajada = naveTransportadora.bajarUnidad(unidadABajar);
-		try {
-			mapa.almacenar(unidadBajada, posicionDescenso);
-		} catch (FueraDeLimitesException e) {
-			// contradiccion
-			e.printStackTrace();
-		}
+		mapa.almacenar(unidadBajada, posicionDescenso);
+		
 		
 		this.setChanged();
 		this.notifyObservers();

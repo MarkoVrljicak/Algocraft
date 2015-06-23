@@ -7,6 +7,7 @@ import java.util.Collection;
 import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.FueraDeLimitesException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.mapa.Coordenada;
 import modelo.mapa.Mapa;
 import modelo.mapa.terrenos.Terreno;
@@ -21,7 +22,7 @@ import org.junit.Test;
 public class MovimientoTerrestreTest {
 
 	@Test
-	public void testMovimientoTerrestreAVecinoDespejado() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
+	public void testMovimientoTerrestreAVecinoDespejado() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException, PropiedadNoExisteEnEstaUbicacion {
 		Mapa mapa = new Mapa(3,3);
 		
 		Unidad unidad = new Marine();
@@ -41,7 +42,7 @@ public class MovimientoTerrestreTest {
 	}
 	
 	@Test
-	public void testMovimientoTerrestreATierraMasLejanaConCaminoDespejado() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
+	public void testMovimientoTerrestreATierraMasLejanaConCaminoDespejado() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException, PropiedadNoExisteEnEstaUbicacion {
 		Mapa mapa = new Mapa(3,3);
 		
 		Unidad unidad = new Marine();
@@ -61,7 +62,7 @@ public class MovimientoTerrestreTest {
 	}
 	
 	@Test
-	public void testUnidadNoLlegaSiElObjetivoEstaDemasiadoLejos() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
+	public void testUnidadNoLlegaSiElObjetivoEstaDemasiadoLejos() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException, PropiedadNoExisteEnEstaUbicacion {
 		Mapa mapa = new Mapa(10,10);
 		
 		Unidad unidad = new Marine();
@@ -81,7 +82,7 @@ public class MovimientoTerrestreTest {
 	}
 	
 	@Test
-	public void testUnidadNoLlegaSiElObjetivoEstaDemasiadoLejosPeroTampocoSeQuedaEnElOrigen() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
+	public void testUnidadNoLlegaSiElObjetivoEstaDemasiadoLejosPeroTampocoSeQuedaEnElOrigen() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException, PropiedadNoExisteEnEstaUbicacion {
 		Mapa mapa = new Mapa(10,10);
 		
 		Unidad unidad = new Marine();
@@ -101,7 +102,7 @@ public class MovimientoTerrestreTest {
 	}
 	
 	@Test
-	public void testUnidadNoLlegaSiElCaminoEstaObstruido() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException {
+	public void testUnidadNoLlegaSiElCaminoEstaObstruido() throws CoordenadaInexistenteException, FueraDeLimitesException, DestinoInvalidoException, PropiedadNoExisteEnEstaUbicacion {
 		Mapa mapa = new Mapa(1,3);
 		
 		Unidad unidad = new Marine();

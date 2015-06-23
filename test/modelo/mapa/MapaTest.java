@@ -10,6 +10,7 @@ import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.mapa.Coordenada;
 import modelo.mapa.Mapa;
 import modelo.mapa.terrenos.Terreno;
@@ -83,24 +84,16 @@ public class MapaTest {
 	// tests de movimiento
 	
 	@Test
-	public void testMapaMueveUnidadPorTierra() throws FueraDeLimitesException{
+	public void testMapaMueveUnidadPorTierra() throws FueraDeLimitesException, PropiedadNoEstaEnJuegoException, CoordenadaInexistenteException, DestinoInvalidoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa= new Mapa(2,2);
 		Unidad marine = new Marine();
 		
 		Coordenada origen = new Coordenada(1,1);
 		Coordenada destino = new Coordenada(1,2);
 		
-		try {
-			mapa.almacenar(marine, origen);
-		} catch (DestinoInvalidoException e) {
-			e.printStackTrace();
-		}
+		mapa.almacenar(marine, origen);
 		
-		try {
-			mapa.moverUnidad(marine, destino);
-		} catch (PropiedadNoEstaEnJuegoException e) {
-			e.printStackTrace();
-		}
+		mapa.moverUnidad(marine, destino);
 		
 		assertEquals(marine, mapa.getPropiedadSuelo(destino));
 	}
@@ -223,7 +216,7 @@ public class MapaTest {
 	
 	@Test
 	public void testCuandoMapaMueveUnidadPorTierraOrigenEstaVacio() 
-			throws FueraDeLimitesException, PropiedadNoEstaEnJuegoException, DestinoInvalidoException{
+			throws FueraDeLimitesException, PropiedadNoEstaEnJuegoException, DestinoInvalidoException, CoordenadaInexistenteException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa= new Mapa(2,2);
 		Unidad marine = new Marine();
 		
@@ -240,7 +233,7 @@ public class MapaTest {
 	
 	@Test
 	public void testMapaMueveUnidadPorAire() 
-			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException, CoordenadaInexistenteException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa= new Mapa(2,2);
 		Unidad nave = new NaveCiencia();
 		
@@ -260,7 +253,7 @@ public class MapaTest {
 	
 	@Test
 	public void testMapaMueveUnidadPorAireInclusoSiDestinoOcupadoEnTierra() 
-			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException, CoordenadaInexistenteException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa= new Mapa(2,2);
 		Unidad nave = new NaveCiencia();
 		Unidad marine= new Marine();
@@ -281,7 +274,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testCuandoMapaMueveUnidadPorAireOrigenEstaVacio() throws FueraDeLimitesException{
+	public void testCuandoMapaMueveUnidadPorAireOrigenEstaVacio() throws FueraDeLimitesException, PropiedadNoEstaEnJuegoException, CoordenadaInexistenteException, PropiedadNoExisteEnEstaUbicacion, DestinoInvalidoException{
 		Mapa mapa= new Mapa(2,2);
 		Unidad nave = new NaveCiencia();
 		
@@ -294,11 +287,8 @@ public class MapaTest {
 			e.printStackTrace();
 		}
 		
-		try {
-			mapa.moverUnidad(nave, destino);
-		} catch (PropiedadNoEstaEnJuegoException e) {
-			e.printStackTrace();
-		}
+		mapa.moverUnidad(nave, destino);
+
 		
 		assertEquals(null, mapa.getPropiedadCielo(origen));
 	}
@@ -307,7 +297,7 @@ public class MapaTest {
 	
 	@Test
 	public void testMapaGestionaAtaqueEntreDosUnidades() 
-			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(5,5);
 		UnidadAtacante marine1 = new Marine();
 		Unidad marine2 = new Marine();
@@ -320,7 +310,7 @@ public class MapaTest {
 	
 	@Test
 	public void testMapaGestionaAtaqueEntreDosUnidadesYDisminuyeVidaDeUnidadAtacada() 
-			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(5,5);
 		UnidadAtacante marine1 = new Marine();
 		Unidad marine2 = new Marine();
@@ -335,7 +325,7 @@ public class MapaTest {
 	
 	@Test
 	public void testPeleaGestionadaPorMapaResultaEnMuerte() 
-			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(5,5);
 		UnidadAtacante dragon = new Dragon();
 		Unidad marine = new Marine();
@@ -352,7 +342,7 @@ public class MapaTest {
 	
 	@Test
 	public void testMapaEliminaUnidadMatada() 
-			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException{
+			throws PropiedadNoEstaEnJuegoException, DestinoInvalidoException, FueraDeLimitesException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(5,5);
 		UnidadAtacante dragon = new Dragon();
 		Unidad marine = new Marine();

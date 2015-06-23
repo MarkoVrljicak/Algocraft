@@ -56,7 +56,7 @@ public class PuertoEstelarTest {
 		
 	@Test
 	public void testPuertoEstelarCreaEspectro()
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
@@ -106,7 +106,7 @@ public class PuertoEstelarTest {
 		
 	@Test
 	public void testPuertoEstelarCreaNaveDeTransporte() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
@@ -155,7 +155,7 @@ public class PuertoEstelarTest {
 		
 	@Test
 	public void testPuertoEstelarCreaNaveDeCiencia() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);

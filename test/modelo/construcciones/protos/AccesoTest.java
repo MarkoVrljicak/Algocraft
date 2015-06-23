@@ -52,7 +52,7 @@ public class AccesoTest {
 		
 	@Test
 	public void testAccesoCreaZealot() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
@@ -98,7 +98,7 @@ public class AccesoTest {
 		
 	@Test
 	public void testAccesoCreaDragon() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);

@@ -2,6 +2,7 @@ package modelo.construcciones.protos;
 
 import static org.junit.Assert.assertEquals;
 import modelo.construcciones.RecolectorGas;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.factory.edificiosProtoss.CreadorAsimilador;
 import modelo.jugador.Colores;
 import modelo.jugador.Jugador;
@@ -23,7 +24,7 @@ public class AsimiladorTest {
 	}
 	
 	@Test
-	public void testPasoDeTurnoYRecolectoGas() {
+	public void testPasoDeTurnoYRecolectoGas() throws PropiedadNoEstaEnJuegoException {
 		CreadorAsimilador creador = new CreadorAsimilador();
 		RecolectorGas asimilador = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);

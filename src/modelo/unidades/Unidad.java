@@ -4,6 +4,8 @@ import java.util.Collection;
 
 import modelo.Interfaces.Movible;
 import modelo.ataques.Danio;
+import modelo.exception.DestinoInvalidoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.jugador.Colores;
 import modelo.mapa.Coordenada;
 import modelo.mapa.terrenos.Terreno;
@@ -121,7 +123,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 		return (tiempoDeConstruccion!=0);
 	}
 	
-	public Coordenada mover(Collection<Terreno> camino){
+	public Coordenada mover(Collection<Terreno> camino) throws PropiedadNoExisteEnEstaUbicacion, DestinoInvalidoException{
 		return this.movimiento.ejecutar(camino, this);
 	}
 	

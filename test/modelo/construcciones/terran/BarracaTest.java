@@ -51,7 +51,7 @@ public class BarracaTest {
 		
 	@Test
 	public void testBarracaCreaMarine() 
-			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
 		CreadorBarraca creador = new CreadorBarraca();
 		CreadorDeUnidades barraca = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);

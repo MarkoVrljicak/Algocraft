@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
 
+import modelo.exception.FueraDeLimitesException;
 import modelo.mapa.Coordenada;
 import modelo.mapa.GeneradorDeMapa;
 import modelo.mapa.Mapa;
@@ -17,7 +18,7 @@ import org.junit.Test;
 public class GeneradorMapaTest {
 
 	@Test
-	public void testAireNoSeCreaSolo(){
+	public void testAireNoSeCreaSolo() throws FueraDeLimitesException{
 		GeneradorDeMapa generador = new GeneradorDeMapa(22,22);
 		Mapa mapa = generador.generar();
 		boolean anterioresNoSolos= true;
@@ -44,7 +45,7 @@ public class GeneradorMapaTest {
 	}
 	
 	@Test
-	public void testBasesTienenMineralesEquidistantes(){
+	public void testBasesTienenMineralesEquidistantes() throws FueraDeLimitesException{
 		GeneradorDeMapa generador = new GeneradorDeMapa(22,22);
 		Mapa mapa = generador.generar();
 		Coordenada base1 = generador.posicionBase1;
@@ -77,7 +78,7 @@ public class GeneradorMapaTest {
 	}
 	
 	@Test
-	public void testBasesTienenGasEquidistantes(){
+	public void testBasesTienenGasEquidistantes() throws FueraDeLimitesException{
 		GeneradorDeMapa generador = new GeneradorDeMapa(22,22);
 		Mapa mapa = generador.generar();
 		Coordenada base1 = generador.posicionBase1;

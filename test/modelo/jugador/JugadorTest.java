@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
+import modelo.exception.RecursosNegativosException;
 import modelo.factory.edificiosTerran.EnumEdificiosTerran;
 import modelo.jugador.Colores;
 import modelo.jugador.Jugador;
@@ -57,7 +58,7 @@ public class JugadorTest {
 	
 	@Test
 	public void jugadorTerranPuedeCrearBarracaConRecursosIniciales() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		Jugador jugadorTerran = new Jugador("Fernando De La Rua", EnumRazas.TERRAN, Colores.AZUL);
 		jugadorTerran.construir(EnumEdificiosTerran.BARRACA);
 		

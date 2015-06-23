@@ -7,6 +7,7 @@ import java.util.Queue;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.RecursosNegativosException;
 import modelo.exception.UnidadIncompletaException;
 import modelo.factory.UnidadesAbstractFactory;
@@ -30,7 +31,7 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	}
 	
 	public Unidad crearUnidad(Unidades unidad) 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
 		UnidadesAbstractFactory creador = unidadesCreables.get(unidad);
 		
 		if(!tengoMineralSuficiente(creador))
@@ -40,13 +41,10 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 		if(!tengoPoblacionSuficiente(creador))
 			throw new PoblacionInsuficienteException();
 		
-		try {
-			this.getDuenio().consumirMineral(creador.getMineralNecesario());
-			this.getDuenio().consumirGas(creador.getGasNecesario());
-		} catch (RecursosNegativosException e) {
-			//contradiccion, tengo suficiente o no llegue aca
-			e.printStackTrace();
-		}
+		
+		this.getDuenio().consumirMineral(creador.getMineralNecesario());
+		this.getDuenio().consumirGas(creador.getGasNecesario());
+		
 		Unidad unidadCreada = creador.crearUnidad();
 		unidadCreada.setColor(this.getColor());
 		this.unidadesEnCreacion.add(unidadCreada);
@@ -97,7 +95,7 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	}
 	
 	@Override
-	public void iniciarTurno() {
+	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException {
 		this.edificio.iniciarTurno();
 		Unidad primerUnidadEnLista = this.unidadesEnCreacion.peek();
 		if(this.unidadEnCreacion() && primerUnidadEnLista.enConstruccion())

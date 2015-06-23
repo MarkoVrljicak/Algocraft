@@ -30,7 +30,7 @@ public class VistaMapa extends JPanel {
 					this.add(new VistaTerreno(new Coordenada(x,y),juego));
 				} catch (FueraDeLimitesException e) {
 					// no se puede ir fuera de limites por las condiciones del for
-					e.printStackTrace();
+					// TODO Avisar a la vista
 				}
 			}
 		}

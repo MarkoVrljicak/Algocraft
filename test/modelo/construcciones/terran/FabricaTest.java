@@ -52,7 +52,7 @@ public class FabricaTest {
 		
 	@Test
 	public void testFabricaCreaGolliat() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
 		CreadorFabrica creador = new CreadorFabrica();
 		CreadorDeUnidades fabrica = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);

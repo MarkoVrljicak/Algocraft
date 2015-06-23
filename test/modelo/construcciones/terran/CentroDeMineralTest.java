@@ -2,6 +2,7 @@ package modelo.construcciones.terran;
 
 import static org.junit.Assert.assertEquals;
 import modelo.construcciones.RecolectorMineral;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.factory.edificiosTerran.CreadorCentroDeMineral;
 import modelo.jugador.Colores;
 import modelo.jugador.Jugador;
@@ -24,7 +25,7 @@ public class CentroDeMineralTest {
 	}
 	
 	@Test
-	public void testPasoDeTurnoYRecolectoMineral() {
+	public void testPasoDeTurnoYRecolectoMineral() throws PropiedadNoEstaEnJuegoException {
 		CreadorCentroDeMineral creador = new CreadorCentroDeMineral();
 		RecolectorMineral centroDeMineral = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);

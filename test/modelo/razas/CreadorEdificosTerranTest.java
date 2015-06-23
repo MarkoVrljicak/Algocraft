@@ -95,7 +95,7 @@ public class CreadorEdificosTerranTest {
 		
 	@Test
 	public void testTerranCreaBarraca()
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
@@ -128,7 +128,7 @@ public class CreadorEdificosTerranTest {
 		
 	@Test
 	public void testTerranCreaCentroDeMineral() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
@@ -161,7 +161,7 @@ public class CreadorEdificosTerranTest {
 		
 	@Test
 	public void testTerranCreaDepositoDeSuministros() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
@@ -173,7 +173,7 @@ public class CreadorEdificosTerranTest {
 	
 	@Test
 	public void testTerranPuedeCrearFabricaConRecursosSuficientesyPoblacionSuficiente()
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException{
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException{
 		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
@@ -199,7 +199,7 @@ public class CreadorEdificosTerranTest {
 		
 	@Test
 	public void testTerranPuedeCrearPuertoEstelarConRecursosSuficientesyPoblacionSuficiente() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
@@ -247,7 +247,7 @@ public class CreadorEdificosTerranTest {
 		
 	@Test
 	public void testTerranCreaRefineria() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		CreadorDeEdificiosTerran terran = new CreadorDeEdificiosTerran();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		

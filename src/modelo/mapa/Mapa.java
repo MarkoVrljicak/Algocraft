@@ -112,7 +112,7 @@ public class Mapa implements Iterable<Terreno>{
 	
 	//movimiento
 	
-	public void moverUnidad(Unidad unidad, Coordenada destino) throws PropiedadNoEstaEnJuegoException{
+	public void moverUnidad(Unidad unidad, Coordenada destino) throws PropiedadNoEstaEnJuegoException, CoordenadaInexistenteException, PropiedadNoExisteEnEstaUbicacion, DestinoInvalidoException{
 
 		Coordenada origen = posiciones.get(unidad);
 		if(origen == null){
@@ -120,11 +120,7 @@ public class Mapa implements Iterable<Terreno>{
 		}
 		
 		Collection<Terreno> camino = null;
-		try {
-			camino = this.trazarCamino(origen, destino);
-		} catch (CoordenadaInexistenteException e) {
-			e.printStackTrace();
-		}
+		camino = this.trazarCamino(origen, destino);
 		
 		Coordenada coordenadaArribada = unidad.mover(camino);
 		
@@ -165,7 +161,7 @@ public class Mapa implements Iterable<Terreno>{
 	
 	//ataque
 	
-	public boolean gestionarAtaque(UnidadAtacante atacante, Propiedad atacado) throws PropiedadNoEstaEnJuegoException {
+	public boolean gestionarAtaque(UnidadAtacante atacante, Propiedad atacado) throws PropiedadNoEstaEnJuegoException, FueraDeLimitesException, PropiedadNoExisteEnEstaUbicacion {
 		Coordenada posicionAtacante = posiciones.get(atacante);
 		Coordenada posicionAtacado = posiciones.get(atacado);
 		
@@ -177,25 +173,17 @@ public class Mapa implements Iterable<Terreno>{
 		
 		boolean resultado = atacante.atacar(atacado, distanciaAtaque);
 		if (atacado.estoyMuerto()){
-			try {
-				limpiarMuerto(atacado);
-			} catch (FueraDeLimitesException e) {
-				e.printStackTrace();//no deberia
-			}
+			limpiarMuerto(atacado);
 		}
 		
 		return resultado;
 	}
 	
 	private void limpiarMuerto(Propiedad propiedad) 
-			throws FueraDeLimitesException{
+			throws FueraDeLimitesException, PropiedadNoExisteEnEstaUbicacion{
 		Terreno terreno = this.getTerreno(posiciones.get(propiedad));
 		
-		try {
-			terreno.borrarContenido(propiedad);
-		} catch (PropiedadNoExisteEnEstaUbicacion e) {
-			e.printStackTrace();
-		}
+		terreno.borrarContenido(propiedad);
 		
 		posiciones.remove(propiedad);
 		

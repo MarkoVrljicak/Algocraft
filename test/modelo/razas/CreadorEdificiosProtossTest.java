@@ -87,7 +87,7 @@ public class CreadorEdificiosProtossTest {
 		
 	@Test
 	public void testProtossCreaAcceso() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		CreadorDeEdificiosProtoss protoss = new CreadorDeEdificiosProtoss();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS,  Colores.AZUL);
 		
@@ -99,7 +99,7 @@ public class CreadorEdificiosProtossTest {
 	
 	@Test
 	public void testProtossPuedeCrearArchivosTemplariosConRecursosSuficientesyPoblacionSuficiente() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		CreadorDeEdificiosProtoss protoss = new CreadorDeEdificiosProtoss();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS,  Colores.AZUL);
 		
@@ -147,7 +147,7 @@ public class CreadorEdificiosProtossTest {
 		
 	@Test
 	public void testProtossCreaAsimilador() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		CreadorDeEdificiosProtoss protoss = new CreadorDeEdificiosProtoss();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS,  Colores.AZUL);
 		
@@ -180,7 +180,7 @@ public class CreadorEdificiosProtossTest {
 		
 	@Test
 	public void testProtossCreaNexoMineral() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		CreadorDeEdificiosProtoss protoss = new CreadorDeEdificiosProtoss();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS,  Colores.AZUL);
 		
@@ -192,7 +192,7 @@ public class CreadorEdificiosProtossTest {
 	
 	@Test
 	public void testProtossPuedeCrearPuertoEstelarConRecursosSuficientesyPoblacionSuficiente() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		CreadorDeEdificiosProtoss protoss = new CreadorDeEdificiosProtoss();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS,  Colores.AZUL);
 		
@@ -239,7 +239,7 @@ public class CreadorEdificiosProtossTest {
 		
 	@Test
 	public void testProtossCreaPilon() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		CreadorDeEdificiosProtoss protoss = new CreadorDeEdificiosProtoss();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS,  Colores.AZUL);
 		

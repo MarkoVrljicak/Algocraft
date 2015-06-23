@@ -18,16 +18,11 @@ public class Radiacion extends AtaqueMagico{
 		this.mapa = mapa;
 	}
 	
-	public void ejecutar(){
+	public void ejecutar() throws PropiedadNoEstaEnJuegoException{
 		int danio = 10;
 		Coordenada posicionUnidad = null;
 		
-		try {
-			posicionUnidad = mapa.getPosicionPropiedad(unidad);
-		} catch (PropiedadNoEstaEnJuegoException e) {
-			//solo puede pasar en caso de bug.
-			e.printStackTrace();
-		}
+		posicionUnidad = mapa.getPosicionPropiedad(unidad);
 		
 		Collection<Terreno> zonaRadioactiva = mapa.obtenerRadioDeCasilleros(1, posicionUnidad);
 		Iterator<Terreno> iter = zonaRadioactiva.iterator();

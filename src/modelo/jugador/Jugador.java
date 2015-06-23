@@ -13,6 +13,7 @@ import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.RecursosNegativosException;
 import modelo.razas.CreadorDeEdificios;
 import modelo.razas.CreadorDeEdificiosProtoss;
@@ -144,7 +145,7 @@ public class Jugador implements Actualizable, Usuario {
 	//de creacion
 	
 	public Construccion construir(EnumEdificios nombreConstruccion) 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		Construccion construccion = creadorEdificios.crearConstruccion(nombreConstruccion);
 		construcciones.add(construccion);
 	
@@ -153,7 +154,7 @@ public class Jugador implements Actualizable, Usuario {
 	
 	
 	public Unidad crearUnidad(Unidades nombreUnidad , CreadorDeUnidades edificioCreador) 
-			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException {
+			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
 		Unidad unidadCreada = null;
 		unidadCreada = edificioCreador.crearUnidad(nombreUnidad);
 		if(!(unidadCreada == null)){
@@ -165,7 +166,7 @@ public class Jugador implements Actualizable, Usuario {
 	//actualizacion
 	
 	@Override
-	public void iniciarTurno() {
+	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException {
 		
 		this.limpiarMuertos();
 		//inicio construcciones

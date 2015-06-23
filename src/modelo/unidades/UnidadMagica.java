@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.magias.AtaqueMagico;
 import modelo.stats.Magia;
 
@@ -33,7 +34,12 @@ abstract public class UnidadMagica extends Unidad {
 		iter = magias.iterator();
 		while(iter.hasNext()) {
 			AtaqueMagico siguienteMagia = iter.next();
-			siguienteMagia.ejecutar();
+			try {
+				siguienteMagia.ejecutar();
+			} catch (PropiedadNoEstaEnJuegoException e) {
+				// TODO No me deja tirarlo para arriba
+				e.printStackTrace();
+			}
 		}
 	}
 	

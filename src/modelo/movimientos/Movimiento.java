@@ -13,7 +13,7 @@ abstract public class Movimiento {
 	
 	abstract public boolean validarPaso(Terreno terrenoSiguiente);
 	
-	public Coordenada ejecutar(Collection<Terreno> camino, Unidad unidad){
+	public Coordenada ejecutar(Collection<Terreno> camino, Unidad unidad) throws PropiedadNoExisteEnEstaUbicacion, DestinoInvalidoException{
 		Iterator<Terreno> iter = camino.iterator();
 		
 		Terreno terrenoOriginal = null;
@@ -27,18 +27,9 @@ abstract public class Movimiento {
 				return terrenoOriginal.getCoordenada();
 				
 			} else {
-				try {
-					proximoTerreno.almacenar(unidad);
-				} catch (DestinoInvalidoException e) {
-					// No deberia, se chequeo anteriormente.
-					e.printStackTrace();
-				} 
+				proximoTerreno.almacenar(unidad);
 				
-				try {
-					terrenoOriginal.borrarContenido(unidad);
-				} catch (PropiedadNoExisteEnEstaUbicacion e) {
-					e.printStackTrace();
-				}
+				terrenoOriginal.borrarContenido(unidad);
 				
 				unidad.darPaso();
 				terrenoOriginal = proximoTerreno;

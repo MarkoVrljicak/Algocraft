@@ -11,6 +11,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import modelo.Juego;
+import modelo.exception.FueraDeLimitesException;
 import modelo.jugador.Colores;
 import modelo.razas.EnumRazas;
 import controlador.Controlador;
@@ -40,7 +41,7 @@ public class Algocraft {
 					Algocraft window = new Algocraft();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					//Avisar
 				}
 			}
 		});
@@ -51,7 +52,11 @@ public class Algocraft {
 	 * @throws IOException 
 	 */
 	public Algocraft(){
-		this.juego = new Juego(anchoMapa,altoMapa);
+		try {
+			this.juego = new Juego(anchoMapa,altoMapa);
+		} catch (FueraDeLimitesException e) {
+			// TODO Avisar de error por ventana
+		}
 		this.controlador = new Controlador(this,this.juego);
 		initialize();
 	}

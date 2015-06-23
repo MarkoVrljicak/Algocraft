@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.RecursosNegativosException;
 import modelo.factory.edificiosProtoss.EnumEdificiosProtos;
 import modelo.jugador.Colores;
 import modelo.jugador.Jugador;
@@ -18,7 +20,7 @@ public class IntegracionProtossTest {
 	}
 	
 	private Jugador crearJugadorConMuchosRecursos()
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
 		Jugador jugador = nuevoJugadorProtoss();
 		//construyo edificios para acumular recursos 
 		jugador.construir( EnumEdificiosProtos.NEXO_MINERAL);
@@ -33,7 +35,7 @@ public class IntegracionProtossTest {
 	
 	@Test
 	public void testCrearAcceso() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		Jugador jugador = nuevoJugadorProtoss();
 		jugador.construir(EnumEdificiosProtos.ACCESO);
 		
@@ -42,7 +44,7 @@ public class IntegracionProtossTest {
 	
 	@Test
 	public void testCrearAsimilador() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		Jugador jugador = nuevoJugadorProtoss();
 		jugador.construir( EnumEdificiosProtos.ASIMILADOR);
 		
@@ -51,7 +53,7 @@ public class IntegracionProtossTest {
 	
 	@Test
 	public void testCrearNexoMineral() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		Jugador jugador = nuevoJugadorProtoss();
 		jugador.construir(  EnumEdificiosProtos.NEXO_MINERAL);
 		
@@ -60,7 +62,7 @@ public class IntegracionProtossTest {
 	
 	@Test
 	public void testCrearPilon() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		Jugador jugador = nuevoJugadorProtoss();
 		jugador.construir(EnumEdificiosProtos.PILON);
 		
@@ -69,7 +71,7 @@ public class IntegracionProtossTest {
 
 	@Test
 	public void testCrearPuertoEstelar() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
 		Jugador jugador = crearJugadorConMuchosRecursos();
 		//creo edificios necesarios
 		jugador.construir(EnumEdificiosProtos.ACCESO);
@@ -84,7 +86,7 @@ public class IntegracionProtossTest {
 	
 	@Test(expected = DependenciasNoCumplidasException.class)
 	public void testNoSeCreaPuertoEstelarSinAcceso() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
 		Jugador jugador = crearJugadorConMuchosRecursos();
 				
 		//creo PuertoEstelar sin tener Acceso
@@ -93,7 +95,7 @@ public class IntegracionProtossTest {
 	
 	@Test
 	public void testCrearArchivosTemplarios() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
 		Jugador jugador = crearJugadorConMuchosRecursos();
 		//creo edificios necesarios
 		jugador.construir(EnumEdificiosProtos.ACCESO);
@@ -107,7 +109,7 @@ public class IntegracionProtossTest {
 	
 	@Test(expected = DependenciasNoCumplidasException.class)
 	public void testNoSeCreaArchivosTemplariosSinPuertoEstelar() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
 		Jugador jugador = crearJugadorConMuchosRecursos();
 		
 		//creo ArchivosTemplarios

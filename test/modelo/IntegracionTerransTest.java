@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.RecursosNegativosException;
 import modelo.factory.edificiosTerran.EnumEdificiosTerran;
 import modelo.jugador.Colores;
 import modelo.jugador.Jugador;
@@ -19,7 +21,7 @@ public class IntegracionTerransTest {
 	}
 	
 	private Jugador inicializarJugadorConMuchosRecursos()
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
 		Jugador jugador = nuevoJugadorTerran();
 		//construyo edificios para acumular recursos 
 		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
@@ -34,7 +36,7 @@ public class IntegracionTerransTest {
 
 	@Test
 	public void testCrearCentroDeMineral() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		Jugador jugador = nuevoJugadorTerran();
 		jugador.construir( EnumEdificiosTerran.CENTRO_DE_MINERALES);
 		
@@ -43,7 +45,7 @@ public class IntegracionTerransTest {
 	
 	@Test
 	public void testCrearBarraca() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		Jugador jugador = nuevoJugadorTerran();
 		jugador.construir( EnumEdificiosTerran.BARRACA);
 		
@@ -52,7 +54,7 @@ public class IntegracionTerransTest {
 	
 	@Test
 	public void testCrearDepositoDeSuministros() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		Jugador jugador = nuevoJugadorTerran();
 		jugador.construir( EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS);
 		
@@ -61,7 +63,7 @@ public class IntegracionTerransTest {
 	
 	@Test
 	public void testCrearRefineria() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		Jugador jugador = nuevoJugadorTerran();
 		jugador.construir(EnumEdificiosTerran.REFINERIA);
 		
@@ -70,7 +72,7 @@ public class IntegracionTerransTest {
 	
 	@Test
 	public void testCrearFabrica() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
 		Jugador jugador = inicializarJugadorConMuchosRecursos();
 		//creo edificios necesarios
 		jugador.construir(EnumEdificiosTerran.BARRACA);
@@ -83,7 +85,7 @@ public class IntegracionTerransTest {
 	
 	@Test(expected = DependenciasNoCumplidasException.class)
 	public void testNoSeCreaFabricaSinBarraca() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
 		Jugador jugador = inicializarJugadorConMuchosRecursos();
 		
 		
@@ -93,7 +95,7 @@ public class IntegracionTerransTest {
 	
 	@Test
 	public void testCrearPuertoEstelar() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
 		Jugador jugador = inicializarJugadorConMuchosRecursos();
 		//creo edificios necesarios
 		jugador.construir(EnumEdificiosTerran.BARRACA);
@@ -107,7 +109,7 @@ public class IntegracionTerransTest {
 	
 	@Test(expected =DependenciasNoCumplidasException.class)
 	public void testNoSeCreaPuertoEstelarSinFabrica() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException {
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
 		Jugador jugador = inicializarJugadorConMuchosRecursos();
 
 		//creo puerto estelar

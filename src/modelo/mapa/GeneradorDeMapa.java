@@ -18,7 +18,7 @@ public class GeneradorDeMapa {
 		mapaGenerado = new Mapa(ancho, alto);
 	}
 	
-	public Mapa generar(){
+	public Mapa generar() throws FueraDeLimitesException{
 		
 		//1) Colocar Recursos
 		//6 minerales a distancia 3 de las bases
@@ -54,7 +54,7 @@ public class GeneradorDeMapa {
 		return mapaGenerado;
 	}
 
-	private void colocarRecursoAlRededorDeBase(Terrenos terreno, int cantidad, int distancia, Coordenada posicionBase){
+	private void colocarRecursoAlRededorDeBase(Terrenos terreno, int cantidad, int distancia, Coordenada posicionBase) throws FueraDeLimitesException{
 		/* Coloca cierta cantidad de cierto recurso a cierta distancia de la coordenada provista */
 		
 		while (cantidad > 0){
@@ -76,7 +76,7 @@ public class GeneradorDeMapa {
 		
 	}
 
-	private void colocarAire(){
+	private void colocarAire() throws FueraDeLimitesException{
 		int minimaCantidadLagosAire = 2;
 		
 		while (minimaCantidadLagosAire > 0){
@@ -95,7 +95,7 @@ public class GeneradorDeMapa {
 			
 	}
 	
-	private void expandirAireConProbabilidad(int i, int j, double probabilidad, int cantidadAireRestante){
+	private void expandirAireConProbabilidad(int i, int j, double probabilidad, int cantidadAireRestante) throws FueraDeLimitesException{
 		/* La probabilidad es del 0 (imposible) a 1 (seguro) */
 		
 		if(Math.random() < probabilidad && cantidadAireRestante > 0){
@@ -127,17 +127,13 @@ public class GeneradorDeMapa {
 		
 	}
 	
-	private boolean casilleroEsApto(int i, int j) {
+	private boolean casilleroEsApto(int i, int j) throws FueraDeLimitesException {
 		/* Chequea que un casillero no tenga recursos y no este
 		 * en el area reservada para las bases */
 		Coordenada coordenadaActual = new Coordenada(i, j);
 		
 		Terreno unCasillero = null;
-		try {
-			unCasillero = mapaGenerado.getTerreno(coordenadaActual);
-		} catch (FueraDeLimitesException e) {
-			e.printStackTrace();
-		}
+		unCasillero = mapaGenerado.getTerreno(coordenadaActual);
 		
 		boolean areaPermitida = true; 
 		

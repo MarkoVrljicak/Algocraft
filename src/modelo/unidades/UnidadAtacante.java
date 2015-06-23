@@ -37,7 +37,12 @@ abstract public class UnidadAtacante extends Unidad{
 	}
 	
 	public void iniciarTurno(){
-		super.iniciarTurno();
+		try {
+			super.iniciarTurno();
+		} catch (Exception e) {
+			// TODO No me deja tirarlo para arriba
+			e.printStackTrace();
+		}
 		this.yaAtaco = false;
 	}
 }

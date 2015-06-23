@@ -40,7 +40,7 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 			this.dibujar();
 		} catch (FueraDeLimitesException e) {
 			// no ocurre, una vez creado tiene una posicion valida.
-			e.printStackTrace();
+			// TODO Avisar por vista
 		}
 		repaint();
 	}
