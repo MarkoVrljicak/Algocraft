@@ -9,8 +9,8 @@ import modelo.mapa.terrenos.Terrenos;
 
 public class GeneradorDeMapa {
 	//Tamanio minimo para que funcione el algoritmo: 22x22
-	Coordenada posicionBase1;
-	Coordenada posicionBase2;
+	private Coordenada posicionBase1;
+	private Coordenada posicionBase2;
 	
 	private Mapa mapaGenerado;
 	private int distanciaMinimaABases=3;
@@ -19,6 +19,14 @@ public class GeneradorDeMapa {
 		posicionBase1 = new Coordenada(4, alto -3);
 		posicionBase2 = new Coordenada(ancho -3, 4);
 		mapaGenerado = new Mapa(ancho, alto);
+	}
+	
+	public Coordenada getPosicionBase1(){
+		return posicionBase1;
+	}
+
+	public Coordenada getPosicionBase2(){
+		return posicionBase2;
 	}
 	
 	public Mapa generar() throws FueraDeLimitesException{

@@ -48,8 +48,8 @@ public class GeneradorMapaTest {
 	public void testBasesTienenMineralesEquidistantes() throws FueraDeLimitesException{
 		GeneradorDeMapa generador = new GeneradorDeMapa(22,22);
 		Mapa mapa = generador.generar();
-		Coordenada base1 = generador.posicionBase1;
-		Coordenada base2 = generador.posicionBase2;
+		Coordenada base1 = generador.getPosicionBase1();
+		Coordenada base2 = generador.getPosicionBase2();
 		boolean mineralesEquidistantes = true;
 		//los valores de n son las dist min y maxima determinadas en la construccion
 		for(int n=3 ; n<=7 && mineralesEquidistantes ; n++){
@@ -81,8 +81,8 @@ public class GeneradorMapaTest {
 	public void testBasesTienenGasEquidistantes() throws FueraDeLimitesException{
 		GeneradorDeMapa generador = new GeneradorDeMapa(22,22);
 		Mapa mapa = generador.generar();
-		Coordenada base1 = generador.posicionBase1;
-		Coordenada base2 = generador.posicionBase2;
+		Coordenada base1 = generador.getPosicionBase1();
+		Coordenada base2 = generador.getPosicionBase2();
 		boolean gasEquidistantes = true;
 		
 		for(int n=3 ; n<=7 && gasEquidistantes ; n++){

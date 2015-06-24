@@ -22,6 +22,8 @@ import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.exception.RecursosNegativosException;
 import modelo.exception.UnidadIncompletaException;
 import modelo.exception.UnidadNoTransportableException;
+import modelo.factory.edificiosProtoss.EnumEdificiosProtos;
+import modelo.factory.edificiosTerran.EnumEdificiosTerran;
 import modelo.jugador.Colores;
 import modelo.jugador.Jugador;
 import modelo.mapa.Coordenada;
@@ -42,12 +44,15 @@ public class Juego extends Observable{
 	private Jugador jugadorActual;
 	public Mapa mapa;
 	private ArrayList<CreadorDeUnidades> creadoresDeUnidadesEnUso;
+	private Coordenada base1;
+	private Coordenada base2;
 	
 	public Juego(int ancho , int alto) throws FueraDeLimitesException{
 		GeneradorDeMapa generador = new GeneradorDeMapa(ancho, alto);
 		mapa = generador.generar();
+		base1 = generador.getPosicionBase1();
+		base2 = generador.getPosicionBase2();
 		creadoresDeUnidadesEnUso = new ArrayList<CreadorDeUnidades>();
-		iniciarJuego();
 	}
 
 	public void setJugador1(String nombre, EnumRazas unaRaza , Colores unColor) {
@@ -59,12 +64,46 @@ public class Juego extends Observable{
 	}
 
 	public void iniciarJuego() {
+		posicionarBases();
+		
 		jugadorActual = jugador1 ;
 		
 		this.setChanged();
 		this.notifyObservers();
 	}
 	
+	private void posicionarBases() {
+		try {
+			
+			jugadorActual = jugador1 ;
+			switch(jugadorActual.getRaza()){
+			case PROTOSS:
+				construirEn(EnumEdificiosProtos.BASE_PROTOSS,base1);
+				break;
+			case TERRAN:
+				construirEn(EnumEdificiosTerran.BASE_TERRAN,base1);
+				break;			
+			}
+			
+			jugadorActual = jugador2 ;
+			switch(jugadorActual.getRaza()){
+			case PROTOSS:
+				construirEn(EnumEdificiosProtos.BASE_PROTOSS,base2);
+				break;
+			case TERRAN:
+				construirEn(EnumEdificiosTerran.BASE_TERRAN,base2);
+				break;			
+			}
+			
+		} catch (DestinoInvalidoException | FueraDeLimitesException
+				| MineralInsuficienteException | GasInsuficienteException
+				| DependenciasNoCumplidasException
+				| RecursosNegativosException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public Jugador getJugadorActual() {
 		return jugadorActual;
 	}
