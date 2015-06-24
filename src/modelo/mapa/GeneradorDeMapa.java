@@ -80,14 +80,14 @@ public class GeneradorDeMapa {
 	}
 
 	private void colocarAire() throws FueraDeLimitesException{
-		int minimaCantidadLagosAire = 3;
+		int minimaCantidadLagosAire = 2;
 		
 		while (minimaCantidadLagosAire > 0){
 			for (int i = 1; i <= mapaGenerado.getAncho(); i++) {
 				for (int j = 1; j <= mapaGenerado.getAlto(); j++) {
 				
 					if (!estoyEncerrado(i,j) && casilleroEsApto(i,j) && Math.random() < 0.005){
-						expandirAireConProbabilidad(i, j, 1);
+						expandirAireConProbabilidad(i, j, 1, 5);
 						minimaCantidadLagosAire--;
 					
 					}
@@ -98,13 +98,13 @@ public class GeneradorDeMapa {
 			
 	}
 	
-	private void expandirAireConProbabilidad(int i, int j, double probabilidad) throws FueraDeLimitesException{
+	private void expandirAireConProbabilidad(int i, int j, double probabilidad, int cantidadAireRestante) throws FueraDeLimitesException{
 		/* La probabilidad es del 0 (imposible) a 1 (seguro) */
-		double decrecimientoDeProbabilidad = 0.05;
 		
-		if(Math.random() < probabilidad){
+		if(Math.random() < probabilidad && cantidadAireRestante > 0){
 		
 			mapaGenerado.setearTerrenoEnCoordenada(Terrenos.AIRE, i, j);
+			cantidadAireRestante--;
 		} else {
 			
 			return;
@@ -112,19 +112,19 @@ public class GeneradorDeMapa {
 		
 		
 		if ( i+1 < mapaGenerado.getAncho() && casilleroEsApto(i+1, j) ){
-			expandirAireConProbabilidad(i+1, j, probabilidad - decrecimientoDeProbabilidad);
+			expandirAireConProbabilidad(i+1, j, probabilidad - 0.1, cantidadAireRestante);
 		}
 		
 		if ( j+1 < mapaGenerado.getAlto() && casilleroEsApto(i, j+1)){
-			expandirAireConProbabilidad(i, j+1, probabilidad - decrecimientoDeProbabilidad);
+			expandirAireConProbabilidad(i, j+1, probabilidad - 0.1, cantidadAireRestante);
 		}
 		
 		if ( (i-1 > 0) && casilleroEsApto(i-1, j) ){
-			expandirAireConProbabilidad(i-1, j, probabilidad - decrecimientoDeProbabilidad);
+			expandirAireConProbabilidad(i-1, j, probabilidad - 0.1, cantidadAireRestante);
 		}
 		
 		if ( (j-1 > 0) && casilleroEsApto(i, j-1) ){
-			expandirAireConProbabilidad(i, j-1, probabilidad - decrecimientoDeProbabilidad);
+			expandirAireConProbabilidad(i, j-1, probabilidad - 0.1, cantidadAireRestante);
 		}
 		
 		

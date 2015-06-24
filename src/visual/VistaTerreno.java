@@ -10,9 +10,7 @@ import javax.swing.JLayeredPane;
 import modelo.Juego;
 import modelo.exception.FueraDeLimitesException;
 import modelo.mapa.Coordenada;
-import modelo.mapa.terrenos.Aire;
 import modelo.mapa.terrenos.Terreno;
-import modelo.mapa.terrenos.Tierra;
 import visual.dibujadores.DibujadorPropiedades;
 import visual.dibujadores.DibujadorTerreno;
 import controlador.ControladorMouseCielo;
@@ -69,7 +67,7 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 	}
 	
 	private void dibujarTerreno(Terreno unTerreno){ 
-		DibujadorTerreno dibujador = new DibujadorTerreno();
+		DibujadorTerreno dibujador = DibujadorTerreno.getInstance();
 		
 		JLabel terrenoADibujar =dibujador.dibujar(unTerreno);
 		terrenoADibujar.setVisible(true);
@@ -79,7 +77,7 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 	}
 
 	private void dibujarSuelo(Terreno unTerreno) {
-		DibujadorPropiedades dibujador = new DibujadorPropiedades();
+		DibujadorPropiedades dibujador = DibujadorPropiedades.getInstance();
 		
 		JLabel terrenoADibujar =dibujador.dibujar(unTerreno.getContenidoSuelo());
 		terrenoADibujar.setVisible(true);
@@ -91,7 +89,7 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 	}
 
 	private void dibujarCielo(Terreno unTerreno) {
-		DibujadorPropiedades dibujador = new DibujadorPropiedades();
+		DibujadorPropiedades dibujador = DibujadorPropiedades.getInstance();
 		
 		JLabel terrenoADibujar =dibujador.dibujar(unTerreno.getContenidoCielo());
 		terrenoADibujar.setVisible(true);
@@ -100,24 +98,5 @@ public class VistaTerreno extends JLayeredPane implements Observer{
 		terrenoADibujar.addMouseListener(new ControladorMouseCielo(this));
 
 		add(terrenoADibujar,10);
-	}
-	//*******************************************tests**********************************************
-	public void accionDePruebaSuelo(){
-		//accion de prueba para saber si el mouse funciona
-		//borra los pedacitos de terreno
-		
-		this.removeAll();
-		this.dibujarTerreno(new Tierra(posicion));
-	}
-	
-	public void accionDePruebaCielo(){
-		//accion de prueba para saber si el mouse funciona
-		//borra los pedacitos de terreno
-		
-		this.removeAll();
-		this.dibujarTerreno(new Aire(posicion));
-	}
-	
-	
-	
+	}	
 }

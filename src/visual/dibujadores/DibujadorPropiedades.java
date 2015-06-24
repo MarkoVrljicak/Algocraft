@@ -18,9 +18,18 @@ import modelo.unidades.Unidades;
 @SuppressWarnings("rawtypes")
 public class DibujadorPropiedades {
 	
+private static DibujadorPropiedades instance = null;
+	
+	public static DibujadorPropiedades getInstance(){
+		if(instance == null)
+			instance = new DibujadorPropiedades();
+		
+		return instance;
+	}
+	
 	private HashMap<Enum,Dibujador> dibujadores;
 	
-	public DibujadorPropiedades(){
+	protected DibujadorPropiedades(){
 		dibujadores = new HashMap<Enum, Dibujador>();
 		
 		dibujadores.put(EnumEdificiosTerran.BARRACA, new DibujadorBarraca());

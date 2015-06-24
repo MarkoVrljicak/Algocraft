@@ -115,6 +115,8 @@ public class VentanaJuego extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		actualizarEstadisticas();		
+		actualizarEstadisticas();
+		acciones.removeAll();
+		acciones.repaint();
 	}
 }

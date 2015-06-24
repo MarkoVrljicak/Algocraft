@@ -5,7 +5,7 @@ public class DibujadorAcceso extends Dibujador{
 
 	public DibujadorAcceso(){
 		String file;
-		file = (pathTexturas + "acceso.png") ;
+		file = (pathTexturas + "accesso.png") ;
 		imagen = createImageIcon(file,"");
 	}
 

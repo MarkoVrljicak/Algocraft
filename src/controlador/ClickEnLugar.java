@@ -17,7 +17,7 @@ public class ClickEnLugar extends AccionesAlgocraft{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		controlador.realizarAccionPara(posicion);
+//		controlador.realizarAccionPara(posicion);
 	}
 
 }

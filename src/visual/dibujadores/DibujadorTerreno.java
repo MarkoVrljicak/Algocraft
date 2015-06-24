@@ -10,10 +10,18 @@ import modelo.mapa.terrenos.Terrenos;
 
 public class DibujadorTerreno {
 	
+	private static DibujadorTerreno instance = null;
+	
+	public static DibujadorTerreno getInstance(){
+		if(instance == null)
+			instance = new DibujadorTerreno();
+		
+		return instance;
+	}
 	
 	private HashMap<Terrenos, Dibujador> dibujadores;
 	
-	public DibujadorTerreno(){
+	protected DibujadorTerreno(){
 		
 		dibujadores = new HashMap<Terrenos , Dibujador>();
 		//terrenos

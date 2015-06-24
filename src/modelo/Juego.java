@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 
+import modelo.Interfaces.Daniable;
 import modelo.construcciones.Construccion;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.construcciones.EnumEdificios;
@@ -30,6 +31,7 @@ import modelo.mapa.terrenos.Terreno;
 import modelo.propiedad.Propiedad;
 import modelo.razas.EnumRazas;
 import modelo.unidades.Unidad;
+import modelo.unidades.UnidadAtacante;
 import modelo.unidades.UnidadTransportadora;
 import modelo.unidades.Unidades;
 
@@ -183,6 +185,16 @@ public class Juego extends Observable{
 		mapa.almacenar(unidadBajada, posicionDescenso);
 		
 		
+		this.setChanged();
+		this.notifyObservers();
+	}
+
+	public void realizarAtaque(UnidadAtacante atacante, Coordenada posicionAtacado) throws FueraDeLimitesException {
+		Coordenada posicionAtacante = mapa.encontrar(atacante);
+		Daniable atacado = mapa.getTerreno(posicionAtacado).getContenidoSuelo();
+
+		atacante.atacar(atacado, posicionAtacante.distanciaA(posicionAtacado));
+
 		this.setChanged();
 		this.notifyObservers();
 	}

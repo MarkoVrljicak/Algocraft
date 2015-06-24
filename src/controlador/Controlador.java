@@ -8,13 +8,17 @@ import javax.swing.JToolBar;
 
 import modelo.Juego;
 import modelo.construcciones.Construccion;
+import modelo.construcciones.CreadorDeUnidades;
 import modelo.construcciones.EnumEdificios;
+import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
+import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.exception.RecursosNegativosException;
 import modelo.exception.UnidadIncompletaException;
 import modelo.jugador.Colores;
@@ -23,6 +27,8 @@ import modelo.mapa.terrenos.Terreno;
 import modelo.propiedad.Propiedad;
 import modelo.razas.EnumRazas;
 import modelo.unidades.Unidad;
+import modelo.unidades.UnidadAtacante;
+import modelo.unidades.Unidades;
 import visual.Algocraft;
 import visual.VentanaErrorFatal;
 import visual.VentanaIngresoDeDatosJugador;
@@ -32,12 +38,19 @@ public class Controlador {
 	
 	private Algocraft aplicacion;
 	private Juego juego;
+	private StrategyAccion estrategia;
 
 	public Controlador(Algocraft aplicacion, Juego juego){
 		AccionesAlgocraft.setearControlador(this);
 		MiControladorMouse.setearControlador(this);
 		this.aplicacion = aplicacion;
 		this.juego = juego;
+		estrategia = new StrategySeleccion();
+	}
+	
+	public void setStrategyAccion(StrategyAccion strategy) {
+	
+		estrategia = strategy;
 	}
 
 	public void cambiarVentanaA(Ventanas enumVentana) {
@@ -122,11 +135,7 @@ public class Controlador {
 		juego.iniciarJuego();
 		this.cambiarVentanaA(Ventanas.JUEGO);		
 	}
-
-	public void realizarAccionPara(Coordenada posicion) {
-		//toma la posicion y acorde al strategy hace algo con juego	
-	}
-
+	
 	public void pasarTurno() {
 		try {
 			juego.pasarTurno();
@@ -150,31 +159,47 @@ public class Controlador {
 	}
 
 	public void accionSuelo(Coordenada posicion) throws FueraDeLimitesException {
-		Terreno terrenoElegido = juego.obtenerTerreno(posicion);
-		Propiedad objetoEnSuelo = terrenoElegido.getContenidoSuelo();
-		if(objetoEnSuelo == null){
-			ofrecerConstruccionesDisponibles(terrenoElegido);
-		}else if(objetoEnSuelo instanceof Unidad){
-			ofrecerAccionesParaUnidad((Unidad)objetoEnSuelo);
-		}else if(objetoEnSuelo instanceof Construccion){
-			ofrecerAccionesParaEdificio((Construccion)objetoEnSuelo);
-		}
+		estrategia.accionSuelo(posicion, juego, this);
 	}
-
-	private void ofrecerAccionesParaEdificio(Construccion construccion) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void ofrecerAccionesParaUnidad(Unidad unidad) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void ofrecerConstruccionesDisponibles(Terreno terreno) {
-		Set<EnumEdificios> edificiosProbables = juego.getJugadorActual().getConstruccionesDisponibles();
+	
+	protected JToolBar obtenerToolbarAccionesLimpo() {
 		JToolBar acciones = aplicacion.ventanaJuego.getAcciones();
 		acciones.removeAll();
+		acciones.repaint();
+		return acciones;
+	}
+
+	protected void ofrecerAccionesParaEdificio(Construccion construccion) {
+		if(construccion instanceof CreadorDeUnidades){
+			CreadorDeUnidades creador = (CreadorDeUnidades)construccion;
+			Set<Unidades> unidadesCreables = creador.getUnidadesCreables();
+			JToolBar acciones = obtenerToolbarAccionesLimpo();
+			for(Iterator<Unidades> it = unidadesCreables.iterator(); it.hasNext(); ){
+				Unidades nombreUnidad = it.next();
+				JButton btnNewButton = new JButton(nombreUnidad.toString());
+				btnNewButton.addActionListener(new AccionCrearUnidad(nombreUnidad, creador));
+				acciones.add(btnNewButton);
+			}
+		}
+		
+	}
+	
+	protected void ofrecerAccionesParaUnidad(Unidad unidad) {
+		JToolBar acciones = obtenerToolbarAccionesLimpo();
+		
+		JButton btnMover = new JButton("Mover");
+		btnMover.addActionListener(new AccionMoverUnidad(unidad));
+		acciones.add(btnMover);
+		
+		JButton btnAtacar = new JButton("Atacar");
+		btnMover.addActionListener(new AccionAtacar((UnidadAtacante) unidad));
+		acciones.add(btnAtacar);
+		
+	}
+
+	protected void ofrecerConstruccionesDisponibles(Terreno terreno) {
+		Set<EnumEdificios> edificiosProbables = juego.getJugadorActual().getConstruccionesDisponibles();
+		JToolBar acciones = obtenerToolbarAccionesLimpo();
 		for(Iterator<EnumEdificios> it = edificiosProbables.iterator(); it.hasNext();){
 			EnumEdificios nombreEdificio = it.next();
 			JButton btnNewButton = new JButton(nombreEdificio.toString());
@@ -204,5 +229,50 @@ public class Controlador {
 		} catch (RecursosNegativosException e) {
 			(new VentanaErrorFatal("Recursos negativos")).setVisible(true);
 		}		
+	}
+
+	public void crearUnidad(Unidades nombreUnidad, CreadorDeUnidades creador) {
+		try {
+			juego.crearUnidad(creador, nombreUnidad);
+		} catch (MineralInsuficienteException e) {
+			//  mostrar mensajes
+			e.printStackTrace();
+		} catch (GasInsuficienteException e) {
+			//  mostrar mensajes
+			e.printStackTrace();
+		} catch (PoblacionInsuficienteException e) {
+			//  mostrar mensajes
+			e.printStackTrace();
+		} catch (RecursosNegativosException e) {
+			// mostrar mensajes
+			e.printStackTrace();
+		}		
+	}
+
+	public void moverUnidad(Unidad unidad, Coordenada coordenada2) {
+		try {
+			juego.moverUnidad(unidad, coordenada2);
+		} catch (PropiedadNoEstaEnJuegoException e) {
+			// mostrar mensajes
+			e.printStackTrace();
+		} catch (CoordenadaInexistenteException e) {
+			// mostrar mensajes
+			e.printStackTrace();
+		} catch (PropiedadNoExisteEnEstaUbicacion e) {
+			// mostrar mensajes
+			e.printStackTrace();
+		} catch (DestinoInvalidoException e) {
+			// mostrar mensajes
+			e.printStackTrace();
+		}		
+	}
+
+	public void realizarAtaque(UnidadAtacante unidad, Coordenada posicionAtacado) {
+		try {
+			juego.realizarAtaque(unidad,posicionAtacado);
+		} catch (FueraDeLimitesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

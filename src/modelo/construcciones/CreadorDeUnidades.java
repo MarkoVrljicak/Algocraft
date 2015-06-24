@@ -3,6 +3,7 @@ package modelo.construcciones;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
@@ -110,5 +111,9 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	@Override
 	public boolean soyVolador() {
 		return false;
+	}
+
+	public Set<Unidades> getUnidadesCreables() {
+		return unidadesCreables.keySet();
 	}
 }
