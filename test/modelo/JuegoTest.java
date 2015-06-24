@@ -4,7 +4,6 @@ package modelo;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import modelo.Juego;
 import modelo.construcciones.Construccion;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.exception.CoordenadaInexistenteException;
@@ -23,6 +22,7 @@ import modelo.exception.UnidadNoTransportableException;
 import modelo.factory.edificiosProtoss.EnumEdificiosProtos;
 import modelo.factory.edificiosTerran.EnumEdificiosTerran;
 import modelo.jugador.Colores;
+import modelo.jugador.Jugador;
 import modelo.mapa.Coordenada;
 import modelo.mapa.Mapa;
 import modelo.mapa.terrenos.Terreno;
@@ -302,6 +302,18 @@ public class JuegoTest {
 		algocraft.mapa = mapaEspecial;
 		
 	}
-
 	
+	@Test
+	public void testJuegadoresEmpiezanConBases() 
+			throws FueraDeLimitesException, UnidadIncompletaException, DestinoInvalidoException, PropiedadNoEstaEnJuegoException{
+		Juego algocraft = this.iniciarJuegoConDosJugadores();
+		Jugador jugador1 = algocraft.getJugadorActual();
+		
+		assertTrue(jugador1.tieneConstruccion(EnumEdificiosTerran.BASE_TERRAN));
+		
+		algocraft.pasarTurno();
+		Jugador jugador2 = algocraft.getJugadorActual();
+		
+		assertTrue(jugador2.tieneConstruccion(EnumEdificiosProtos.BASE_PROTOSS));
+	}
 }

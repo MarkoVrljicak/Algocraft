@@ -166,7 +166,7 @@ public class Juego extends Observable{
 		
 		//gestiono creacion de unidades
 		ponerNuevasUnidadesEnMapa();
-		
+				
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -188,13 +188,14 @@ public class Juego extends Observable{
 	}
 
 	private void posicionarNuevaUnidad(Unidad unidad, Coordenada posicionCreador) throws DestinoInvalidoException, FueraDeLimitesException{
-		for(int x = posicionCreador.getX()-1 ; x <= posicionCreador.getX()+1 ; x++){
-			for(int y = posicionCreador.getY()-1 ; y <= posicionCreador.getY()+1 ; y++){
+		boolean posicionado = false;
+		for(int x = posicionCreador.getX()-1 ; x <= posicionCreador.getX()+1 && !posicionado; x++){
+			for(int y = posicionCreador.getY()-1 ; y <= posicionCreador.getY()+1 && !posicionado; y++){
 				Coordenada coordenadaCandidata = new Coordenada(x,y);
 				if(this.mapa.hayCasillero(coordenadaCandidata) &&
 						unidad.puedoMoverme(this.mapa.getTerreno(coordenadaCandidata))){
 					this.mapa.almacenar(unidad,coordenadaCandidata );
-					
+					posicionado = true;					
 				}
 			}	
 		}
@@ -236,6 +237,35 @@ public class Juego extends Observable{
 
 		this.setChanged();
 		this.notifyObservers();
+	}
+	
+	public boolean hayGanador(){
+		if(jugador1Perdio() && !jugador2Perdio())
+			return true;
+		else if(jugador2Perdio() && !jugador1Perdio())
+			return true;
+		else
+			return false;
+		
+	}
+	
+	public String getNombreGanador(){
+		if((jugador1Perdio() && jugador2Perdio())|| (!jugador1Perdio() && !jugador2Perdio())){
+			return "No Hay Ganador";
+		}else if(jugador1Perdio()){
+			return jugador2.getNombre();
+		}else if(jugador2Perdio()){
+			return jugador1.getNombre();
+		}else
+			return "No Hay Ganador";
+	}
+
+	private boolean jugador1Perdio() {
+		return (jugador1.cantidadConstrucciones() == 0 && jugador1.getPoblacionActual() == 0);
+	}
+	
+	private boolean jugador2Perdio() {
+		return (jugador2.cantidadConstrucciones() == 0 && jugador2.getPoblacionActual() == 0);
 	}
 
 		

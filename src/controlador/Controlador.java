@@ -139,6 +139,9 @@ public class Controlador {
 	public void pasarTurno() {
 		try {
 			juego.pasarTurno();
+			if(juego.hayGanador())
+				new VentanaErrorFatal(juego.getNombreGanador()).setVisible(true);
+			
 		} catch (DestinoInvalidoException e) {
 			(new VentanaErrorFatal("Destino invalido")).setVisible(true);
 		} catch (FueraDeLimitesException e) {
