@@ -14,7 +14,9 @@ import modelo.Juego;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.RecursosNegativosException;
+import controlador.CerrarAplicacionListener;
 import controlador.Controlador;
+import controlador.DatosDelGrupo;
 
 public class Algocraft {
 	
@@ -31,6 +33,8 @@ public class Algocraft {
 	private JMenuBar menuBar;
 	private JMenu mnArchivo;
 	private JMenuItem mntmSalir;
+	private JMenu mnAcercaDe;
+	private JMenuItem mntmIntegrantes;
 	/**
 	 * Launch the application.
 	 */
@@ -121,6 +125,15 @@ public class Algocraft {
 		
 		mntmSalir = new JMenuItem("Salir");
 		mnArchivo.add(mntmSalir);
+		mntmSalir.addActionListener(new CerrarAplicacionListener());
+		
+		mnAcercaDe = new JMenu("Acerca de...");
+		menuBar.add(mnAcercaDe);
+		
+		mntmIntegrantes = new JMenuItem("Integrantes");
+		mnAcercaDe.add(mntmIntegrantes);
+		mntmIntegrantes.addActionListener(new DatosDelGrupo());
+		
 		
 		//bypass
 		this.controlador.cambiarVentanaA(Ventanas.VENTANA_INICIAL);
