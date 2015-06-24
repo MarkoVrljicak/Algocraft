@@ -1,42 +1,64 @@
 package visual;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import javax.swing.JPanel;
-
-import controlador.CerrarAplicacionListener;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
-@SuppressWarnings("serial")
-public class VentanaErrorFatal extends JPanel {
-	
-	String mensajeError;
-	public VentanaErrorFatal(String mensajeError) {
-		
-		this.mensajeError = mensajeError;
-		
-		JButton botonSalir = new JButton("Salir");
-		botonSalir.setBounds(143, 133, 66, 25);
-		botonSalir.addActionListener(new CerrarAplicacionListener());
-		setLayout(null);
-		add(botonSalir);
-		
-		JLabel str1 = new JLabel("Error fatal:");
-		str1.setHorizontalAlignment(SwingConstants.CENTER);
+import controlador.CerrarAplicacionListener;
 
-		str1.setBounds(131, 29, 90, 15);
-		add(str1);
+@SuppressWarnings("serial")
+public class VentanaErrorFatal extends JDialog {
+	
+	private final JButton botonSalida = new JButton("Salir");
+	String mensaje;
+	public VentanaErrorFatal(String mensaje) {
+		this.mensaje = mensaje;
 		
-		JLabel str2 = new JLabel(mensajeError);
-		str2.setHorizontalAlignment(SwingConstants.CENTER);
-		str2.setBounds(12, 56, 330, 41);
-		add(str2);
+		botonSalida.addActionListener(new CerrarAplicacionListener());
 		
-		JLabel str3 = new JLabel("El juego sera cerrado.");
-		str2.setHorizontalAlignment(SwingConstants.CENTER);
-		str3.setBounds(94, 106, 166, 15);
-		add(str3);
+		JLabel str1 = new JLabel("Error", SwingConstants.CENTER);
 		
+		JLabel str2 = new JLabel(mensaje, SwingConstants.CENTER);
 		
+		JLabel str3 = new JLabel("El programa debera cerrarse.", SwingConstants.CENTER);
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(8)
+					.addComponent(botonSalida, GroupLayout.PREFERRED_SIZE, 354, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(144)
+					.addComponent(str1, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(166, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(71)
+					.addComponent(str3)
+					.addContainerGap(82, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(25)
+					.addComponent(str2, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+					.addGap(47))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(28)
+					.addComponent(str1)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(str2)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(str3)
+					.addGap(40)
+					.addComponent(botonSalida))
+		);
+		getContentPane().setLayout(groupLayout);
+		
+		this.pack();
+		this.setModal(true);
 	}
 }

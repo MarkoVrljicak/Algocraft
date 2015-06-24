@@ -24,6 +24,7 @@ import modelo.propiedad.Propiedad;
 import modelo.razas.EnumRazas;
 import modelo.unidades.Unidad;
 import visual.Algocraft;
+import visual.VentanaErrorFatal;
 import visual.VentanaIngresoDeDatosJugador;
 import visual.Ventanas;
 
@@ -130,13 +131,13 @@ public class Controlador {
 		try {
 			juego.pasarTurno();
 		} catch (DestinoInvalidoException e) {
-			// TODO Avisar en ventana de error
+			(new VentanaErrorFatal("Destino invalido")).setVisible(true);
 		} catch (FueraDeLimitesException e) {
-			// TODO Avisar en ventana de error
+			(new VentanaErrorFatal("Fuera de limites")).setVisible(true);
 		} catch (PropiedadNoEstaEnJuegoException e) {
-			// TODO Avisar en ventana de error
+			(new VentanaErrorFatal("Unidad o construccion fuera de juego")).setVisible(true);
 		} catch (UnidadIncompletaException e) {
-			// TODO Avisar en ventana de error
+			(new VentanaErrorFatal("Unidad mal inicializada")).setVisible(true);
 		}		
 	}
 
@@ -186,23 +187,22 @@ public class Controlador {
 		try {
 			juego.construirEn(nombreEdificio, posicion);
 		} catch (DestinoInvalidoException e) {
-			// mostrar mensajes 
-			e.printStackTrace();
+			(new VentanaErrorFatal("Destino invalido")).setVisible(true);
 		} catch (FueraDeLimitesException e) {
-			// mostrar mensajes 
-			e.printStackTrace();
+			(new VentanaErrorFatal("Fuera de limites")).setVisible(true);
 		} catch (MineralInsuficienteException e) {
-			// mostrar mensajes 
+			//TODO este error no es fatal
 			e.printStackTrace();
+			(new VentanaErrorFatal("Fuera de limites")).setVisible(true);
 		} catch (GasInsuficienteException e) {
-			// mostrar mensajes 
+			//TODO este error no es fatal
 			e.printStackTrace();
+			(new VentanaErrorFatal("Fuera de limites")).setVisible(true);
 		} catch (DependenciasNoCumplidasException e) {
-			// mostrar mensajes 
+			//// mostrar mensajes 
 			e.printStackTrace();
 		} catch (RecursosNegativosException e) {
-			// mostrar mensajes 
-			e.printStackTrace();
+			(new VentanaErrorFatal("Recursos negativos")).setVisible(true);
 		}		
 	}
 }

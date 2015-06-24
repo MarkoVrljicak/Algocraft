@@ -54,8 +54,7 @@ public class Algocraft {
 					window.frame.setVisible(true);
 				} catch (PropiedadNoEstaEnJuegoException
 						| RecursosNegativosException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					(new VentanaErrorFatal("asfasfas")).setVisible(true);
 				}	
 				
 			}
@@ -72,7 +71,7 @@ public class Algocraft {
 		try {
 			this.juego = new Juego(anchoMapa,altoMapa);
 		} catch (FueraDeLimitesException e) {
-			// TODO Avisar de error por ventana
+			(new VentanaErrorFatal("Fuera de limites")).setVisible(true);
 		}
 		this.controlador = new Controlador(this,this.juego);
 		initialize();
@@ -97,8 +96,7 @@ public class Algocraft {
 		} catch (DestinoInvalidoException | FueraDeLimitesException
 				| MineralInsuficienteException | GasInsuficienteException
 				| DependenciasNoCumplidasException | UnidadIncompletaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			(new VentanaErrorFatal("asfasfasfa")).setVisible(true);
 		}//end bypass
 		
 		inicializarComponentes();
