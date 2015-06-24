@@ -19,6 +19,7 @@ import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.RecursosNegativosException;
 import modelo.exception.UnidadIncompletaException;
+import modelo.factory.edificiosProtoss.EnumEdificiosProtos;
 import modelo.factory.edificiosTerran.EnumEdificiosTerran;
 import modelo.jugador.Colores;
 import modelo.mapa.Coordenada;
@@ -167,12 +168,12 @@ public class Algocraft {
 		
 		algocraft.pasarTurno();
 		
-//		algocraft.construirEn(EnumEdificiosProtos.NEXO_MINERAL,
-//				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
-//		algocraft.construirEn(EnumEdificiosProtos.NEXO_MINERAL,
-//				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
-//		algocraft.construirEn(EnumEdificiosProtos.ASIMILADOR, 
-//				this.encontrarTerrenoVacio(Terrenos.VOLCAN, algocraft));
+		algocraft.construirEn(EnumEdificiosProtos.NEXO_MINERAL,
+				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
+		algocraft.construirEn(EnumEdificiosProtos.NEXO_MINERAL,
+				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
+		algocraft.construirEn(EnumEdificiosProtos.ASIMILADOR, 
+				this.encontrarTerrenoVacio(Terrenos.VOLCAN, algocraft));
 		
 		for (int turnos=0; turnos<=muchosTurnos ; turnos++){
 			algocraft.pasarTurno();
