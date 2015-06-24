@@ -1,5 +1,8 @@
 package modelo.mapa;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import modelo.exception.FueraDeLimitesException;
 import modelo.mapa.terrenos.Terreno;
 import modelo.mapa.terrenos.Terrenos;
@@ -83,7 +86,7 @@ public class GeneradorDeMapa {
 			for (int i = 1; i <= mapaGenerado.getAncho(); i++) {
 				for (int j = 1; j <= mapaGenerado.getAlto(); j++) {
 				
-					if (casilleroEsApto(i,j) && Math.random() < 0.005){
+					if (!estoyEncerrado(i,j) && casilleroEsApto(i,j) && Math.random() < 0.005){
 						expandirAireConProbabilidad(i, j, 1, 5);
 						minimaCantidadLagosAire--;
 					
@@ -143,6 +146,24 @@ public class GeneradorDeMapa {
 		}
 		
 		return (areaPermitida && unCasillero.sePuedeCaminar());
+		
+	}
+	
+	private boolean estoyEncerrado(int i, int j) throws FueraDeLimitesException {
+		/* Chequea que un casillero no tenga recursos y no este
+		 * en el area reservada para las bases */
+		Coordenada coordenadaActual = new Coordenada(i, j);
+		
+		Collection<Terreno> radio = mapaGenerado.obtenerRadioDeCasilleros(1, coordenadaActual);
+		Collection<Terreno> caminables = new ArrayList<Terreno>();
+		
+		for(Terreno unTerreno : radio){
+			if(!unTerreno.sePuedeCaminar()){
+				caminables.add(unTerreno);
+			}
+		}
+		
+		return (caminables.size() > 1);
 		
 	}
 
