@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
+import modelo.exception.EdificioTodaviaEnConstruccionException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
@@ -32,7 +33,8 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	}
 	
 	public Unidad crearUnidad(Unidades unidad) 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
+			throws MineralInsuficienteException, GasInsuficienteException, 
+			PoblacionInsuficienteException, RecursosNegativosException, EdificioTodaviaEnConstruccionException {
 		UnidadesAbstractFactory creador = unidadesCreables.get(unidad);
 		
 		if(!tengoMineralSuficiente(creador))
@@ -41,7 +43,8 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 			throw new GasInsuficienteException();
 		if(!tengoPoblacionSuficiente(creador))
 			throw new PoblacionInsuficienteException();
-		
+		if(this.enConstruccion())
+			throw new EdificioTodaviaEnConstruccionException();
 		
 		this.getDuenio().consumirMineral(creador.getMineralNecesario());
 		this.getDuenio().consumirGas(creador.getGasNecesario());
@@ -69,7 +72,8 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	}
 
 	public boolean puedoCrearUnidad(UnidadesAbstractFactory creador) {
-		return (this.tengoGasSuficiente(creador)&&
+		return (!this.enConstruccion()&&
+				this.tengoGasSuficiente(creador)&&
 				this.tengoMineralSuficiente(creador)&&
 				this.tengoPoblacionSuficiente(creador));
 	}

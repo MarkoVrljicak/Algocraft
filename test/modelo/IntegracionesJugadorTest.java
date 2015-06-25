@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import modelo.Interfaces.Daniable;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.exception.DependenciasNoCumplidasException;
+import modelo.exception.EdificioTodaviaEnConstruccionException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
@@ -27,6 +28,7 @@ public class IntegracionesJugadorTest {
 	private static final int edificiosParaLegarATopePoblacion = (topePoblacion-5)/ 5;
 	private static final int tiempoCreacionUnMarine = 3;
 	private static final int tiempoCreacionUnPilon = 6;
+	private static final int tiempoConstruccionBarraca = 12;
 	
 	private Jugador nuevoJugadorTerran() {
 		Jugador jugador= new Jugador("Fernando De La Rua", EnumRazas.TERRAN, Colores.AZUL);
@@ -154,26 +156,42 @@ public class IntegracionesJugadorTest {
 	@Test
 	public void testCrearUnidadesNoAumentaPoblacionSiNoEspero() 
 			throws DependenciasNoCumplidasException, MineralInsuficienteException,
-				GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
+				GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException, 
+				PropiedadNoEstaEnJuegoException, EdificioTodaviaEnConstruccionException {
 		Jugador jugador = nuevoJugadorTerran();
 		this.iniciarJugadorTerranConRecursos(jugador);
 		//creo edificios para unidades
-		CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(EnumEdificiosTerran.BARRACA);
+		CreadorDeUnidades barraca = crearBarracaValida(jugador);
 
 		//creo unidad
 		jugador.crearUnidad( UnidadesTerran.MARINE, barraca);
 			
 		assertEquals( 0 , jugador.getPoblacionActual() );
 	}
+	
+	private CreadorDeUnidades crearBarracaValida(Jugador jugador) 
+			throws MineralInsuficienteException, GasInsuficienteException, 
+			DependenciasNoCumplidasException, RecursosNegativosException {
+		
+		CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(EnumEdificiosTerran.BARRACA);;
+		for(int turnos = 1 ; turnos<= tiempoConstruccionBarraca ; turnos++)
+			try {
+				barraca .iniciarTurno();
+			} catch (PropiedadNoEstaEnJuegoException e) {
+				// no entiendo por que se lanzaria esta excepcion
+				e.printStackTrace();
+			}
+		return barraca;
+	}
 
 	@Test
 	public void testCrearUnidadesYEsperarASuCreacionAumentaPoblacion() 
 			throws DependenciasNoCumplidasException, MineralInsuficienteException,
-				GasInsuficienteException, PoblacionInsuficienteException, PropiedadNoEstaEnJuegoException, RecursosNegativosException {
+				GasInsuficienteException, PoblacionInsuficienteException, PropiedadNoEstaEnJuegoException, 
+				RecursosNegativosException, EdificioTodaviaEnConstruccionException {
 		Jugador jugador = nuevoJugadorTerran();
 		this.iniciarJugadorTerranConRecursos(jugador);
-		//creo edificios para unidades
-		CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(EnumEdificiosTerran.BARRACA);
+		CreadorDeUnidades barraca = crearBarracaValida(jugador);
 
 		//creo unidad
 		jugador.crearUnidad( UnidadesTerran.MARINE, barraca);
@@ -189,11 +207,11 @@ public class IntegracionesJugadorTest {
 	@Test(expected = PoblacionInsuficienteException.class)
 	public void testNoSePuedeCrearUnidadesCuandoPoblacionEstaAlMaximo() 
 			throws UnidadIncompletaException, DependenciasNoCumplidasException,
-				MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
+				MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException,
+				RecursosNegativosException, PropiedadNoEstaEnJuegoException, EdificioTodaviaEnConstruccionException {
 		Jugador jugador =nuevoJugadorTerran();
 		this.iniciarJugadorTerranConRecursos(jugador);
-		//creo edificios para unidades
-		CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(EnumEdificiosTerran.BARRACA);
+		CreadorDeUnidades barraca = crearBarracaValida(jugador);
 		//creo 5 marines
 		for(int i = 1 ; i <= 5 ; i++ ){
 			jugador.crearUnidad( UnidadesTerran.MARINE, barraca);
@@ -214,12 +232,12 @@ public class IntegracionesJugadorTest {
 	@Test
 	public void testMatarUnidadesdisminuyePoblacion() 
 			throws DependenciasNoCumplidasException, MineralInsuficienteException,
-				GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
+				GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException, 
+				PropiedadNoEstaEnJuegoException, EdificioTodaviaEnConstruccionException {
 		Jugador jugador = nuevoJugadorTerran();
 		this.iniciarJugadorTerranConRecursos(jugador);
 		
-		//creo edificios para unidades
-		CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(EnumEdificiosTerran.BARRACA);
+		CreadorDeUnidades barraca = crearBarracaValida(jugador);
 		
 		//creo unidad
 		Daniable marine = jugador.crearUnidad( UnidadesTerran.MARINE, barraca);

@@ -2,9 +2,11 @@ package modelo.construcciones.terran;
 
 import static org.junit.Assert.assertEquals;
 import modelo.construcciones.CreadorDeUnidades;
+import modelo.exception.EdificioTodaviaEnConstruccionException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.RecursosNegativosException;
 import modelo.factory.edificiosTerran.CreadorFabrica;
 import modelo.factory.unidadesTerran.CreadorGolliat;
@@ -18,18 +20,32 @@ import org.junit.Test;
 
 public class FabricaTest {
 	
-	@Test
-	public void testFabricaInicializaConGolliat() {
+
+	private static final int tiempoConstruccionFabrica = 12;
+
+	private CreadorDeUnidades crearFabricaValida() {
 		CreadorFabrica creador = new CreadorFabrica();
 		CreadorDeUnidades fabrica = creador.crearEdificio();
+		for(int turnos = 1 ; turnos<= tiempoConstruccionFabrica ; turnos++)
+			try {
+				fabrica.iniciarTurno();
+			} catch (PropiedadNoEstaEnJuegoException e) {
+				// no entiendo por que se lanzaria esta excepcion
+				e.printStackTrace();
+			}
+		return fabrica;
+	}
+	
+	@Test
+	public void testFabricaInicializaConGolliat() {
+		CreadorDeUnidades fabrica = crearFabricaValida();
 		
 		assertEquals(true, fabrica.tengoUnidad(UnidadesTerran.GOLLIAT));
 	}
 		
 	@Test
 	public void testFabricaPuedeCrearGolliatConRecursosSuficientesyPoblacionSuficiente() {
-		CreadorFabrica creador = new CreadorFabrica();
-		CreadorDeUnidades fabrica = creador.crearEdificio();
+		CreadorDeUnidades fabrica = crearFabricaValida();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(100);
@@ -41,8 +57,7 @@ public class FabricaTest {
 	@Test
 	public void testFabricaNoPuedeCrearGolliatConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		CreadorFabrica creador = new CreadorFabrica();
-		CreadorDeUnidades fabrica = creador.crearEdificio();
+		CreadorDeUnidades fabrica = crearFabricaValida();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		fabrica.setDuenio(jugador);
@@ -52,9 +67,10 @@ public class FabricaTest {
 		
 	@Test
 	public void testFabricaCreaGolliat() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
-		CreadorFabrica creador = new CreadorFabrica();
-		CreadorDeUnidades fabrica = creador.crearEdificio();
+			throws MineralInsuficienteException, GasInsuficienteException, 
+			PoblacionInsuficienteException, RecursosNegativosException, EdificioTodaviaEnConstruccionException {
+		
+		CreadorDeUnidades fabrica = crearFabricaValida();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(100);
@@ -63,5 +79,6 @@ public class FabricaTest {
 		
 		assertEquals(UnidadesTerran.GOLLIAT, golliat.getNombre());
 	}
+
 }
 

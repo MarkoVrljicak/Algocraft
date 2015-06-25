@@ -10,6 +10,7 @@ import modelo.construcciones.Construccion;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.construcciones.EnumEdificios;
 import modelo.exception.DependenciasNoCumplidasException;
+import modelo.exception.EdificioTodaviaEnConstruccionException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
@@ -161,7 +162,8 @@ public class Jugador implements Actualizable, Usuario {
 	}
 	
 	public Unidad crearUnidad(Unidades nombreUnidad , CreadorDeUnidades edificioCreador) 
-			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
+			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException, 
+			RecursosNegativosException, EdificioTodaviaEnConstruccionException {
 		Unidad unidadCreada = null;
 		unidadCreada = edificioCreador.crearUnidad(nombreUnidad);
 		if(!(unidadCreada == null)){

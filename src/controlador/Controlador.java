@@ -15,6 +15,7 @@ import modelo.construcciones.EnumEdificios;
 import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
+import modelo.exception.EdificioTodaviaEnConstruccionException;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
@@ -237,16 +238,13 @@ public class Controlador {
 			nuevoMensajeFatal("Fuera de limites");
 		} catch (MineralInsuficienteException e) {
 			nuevoMensaje("Te falta mineral");
-			e.printStackTrace();
 		} catch (GasInsuficienteException e) {
 			nuevoMensaje("Te falta gas");
-			e.printStackTrace();
-			nuevoMensajeFatal("Fuera de limites");
 		} catch (DependenciasNoCumplidasException e) {
 			nuevoMensaje("Te faltan los edificios anteriores");
-			e.printStackTrace();
 		} catch (RecursosNegativosException e) {
 			nuevoMensajeFatal("Recursos negativos");
+			e.printStackTrace();
 		}		
 	}
 
@@ -254,17 +252,16 @@ public class Controlador {
 		try {
 			juego.crearUnidad(creador, nombreUnidad);
 		} catch (MineralInsuficienteException e) {
-			//  mostrar mensajes
-			e.printStackTrace();
+			nuevoMensaje("Te falta mineral");
 		} catch (GasInsuficienteException e) {
-			//  mostrar mensajes
-			e.printStackTrace();
+			nuevoMensaje("Te falta gas");
 		} catch (PoblacionInsuficienteException e) {
-			//  mostrar mensajes
-			e.printStackTrace();
+			nuevoMensaje("Poblacion Insuficiente");
 		} catch (RecursosNegativosException e) {
-			// mostrar mensajes
+			nuevoMensajeFatal("Recursos negativos");
 			e.printStackTrace();
+		} catch (EdificioTodaviaEnConstruccionException e) {
+			nuevoMensaje("Edificio en construccion");
 		}		
 	}
 

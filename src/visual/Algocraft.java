@@ -97,6 +97,7 @@ public class Algocraft {
 		//creo algunas cosas para ver que esten
 		try {
 			juntarRecursosParaAmbosJugadores(juego);
+			crearEdificiosUnidadesParaAmbos(juego);
 		} catch (DestinoInvalidoException | FueraDeLimitesException
 				| MineralInsuficienteException | GasInsuficienteException
 				| DependenciasNoCumplidasException | UnidadIncompletaException e) {
@@ -111,7 +112,7 @@ public class Algocraft {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	}
-
+	
 	private void inicializarComponentes(){
 		frame.getContentPane().setBackground(SystemColor.controlShadow);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
@@ -148,7 +149,8 @@ public class Algocraft {
 		
 		//cambiar al poner o sacar bypass
 		this.controlador.cambiarVentanaA(Ventanas.JUEGO);
-		
+		//sacar con bypass
+		this.controlador.pasarTurno();
 	}
 	
 	public JFrame getFrame(){
@@ -197,5 +199,24 @@ public class Algocraft {
 			algocraft.pasarTurno();
 		}
 		//nota: al salir es el turno del jugador 1
+	}
+	
+	private void crearEdificiosUnidadesParaAmbos(Juego algocraft) 
+			throws UnidadIncompletaException, DestinoInvalidoException, FueraDeLimitesException, 
+			PropiedadNoEstaEnJuegoException, MineralInsuficienteException, GasInsuficienteException, 
+			DependenciasNoCumplidasException, RecursosNegativosException {
+		
+		algocraft.construirEn(EnumEdificiosTerran.BARRACA,
+				this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft));
+			
+		algocraft.pasarTurno();
+		
+		algocraft.construirEn(EnumEdificiosProtos.ACCESO,
+				this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft));
+		
+		int muchosTurnos = 29;
+		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
+			algocraft.pasarTurno();
+		}//nota: al salir es el turno del jugador 2
 	}
 }

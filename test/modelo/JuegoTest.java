@@ -9,6 +9,7 @@ import modelo.construcciones.CreadorDeUnidades;
 import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
+import modelo.exception.EdificioTodaviaEnConstruccionException;
 import modelo.exception.EspacioInsuficienteException;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.GasInsuficienteException;
@@ -198,7 +199,9 @@ public class JuegoTest {
 	public void testCreoUnidadEsperoQueSeConstruyaVerificoQueEsteAlLadoDeSuBarraca() 
 			throws DestinoInvalidoException, FueraDeLimitesException,
 				MineralInsuficienteException, GasInsuficienteException, 
-				PoblacionInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, RecursosNegativosException, PropiedadNoEstaEnJuegoException{
+				PoblacionInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, 
+				RecursosNegativosException, PropiedadNoEstaEnJuegoException, EdificioTodaviaEnConstruccionException{
+		
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		this.juntarRecursosParaAmbosJugadores(algocraft);
 		Coordenada posicionBarraca = new Coordenada(6,alto-5);
@@ -245,7 +248,9 @@ public class JuegoTest {
 	public void testTransportoMarineATravesDeAire() 
 			throws DestinoInvalidoException, FueraDeLimitesException,PropiedadNoEstaEnJuegoException,
 					EspacioInsuficienteException, UnidadNoTransportableException,MineralInsuficienteException,
-					GasInsuficienteException, PoblacionInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, RecursosNegativosException, PropiedadNoExisteEnEstaUbicacion, CoordenadaInexistenteException{
+					GasInsuficienteException, PoblacionInsuficienteException, DependenciasNoCumplidasException,
+					UnidadIncompletaException, RecursosNegativosException, PropiedadNoExisteEnEstaUbicacion, 
+					CoordenadaInexistenteException, EdificioTodaviaEnConstruccionException{
 		
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		inyectarMapaEspecial(algocraft);

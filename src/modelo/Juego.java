@@ -12,6 +12,7 @@ import modelo.construcciones.EnumEdificios;
 import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
+import modelo.exception.EdificioTodaviaEnConstruccionException;
 import modelo.exception.EspacioInsuficienteException;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.GasInsuficienteException;
@@ -146,7 +147,7 @@ public class Juego extends Observable{
 	
 	public void crearUnidad(CreadorDeUnidades edificioCreador, Unidades unidadPedida) 
 			throws MineralInsuficienteException,GasInsuficienteException, 
-			PoblacionInsuficienteException, RecursosNegativosException {
+			PoblacionInsuficienteException, RecursosNegativosException, EdificioTodaviaEnConstruccionException {
 		
 		 jugadorActual.crearUnidad(unidadPedida, edificioCreador);	
 		 creadoresDeUnidadesEnUso.add(edificioCreador);

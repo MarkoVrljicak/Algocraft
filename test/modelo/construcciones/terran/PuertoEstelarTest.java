@@ -2,9 +2,11 @@ package modelo.construcciones.terran;
 
 import static org.junit.Assert.assertEquals;
 import modelo.construcciones.CreadorDeUnidades;
+import modelo.exception.EdificioTodaviaEnConstruccionException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.RecursosNegativosException;
 import modelo.factory.edificiosTerran.CreadorPuertoEstelar;
 import modelo.factory.unidadesTerran.CreadorEspectro;
@@ -20,18 +22,31 @@ import org.junit.Test;
 
 public class PuertoEstelarTest {
 	
-	@Test
-	public void testPuertoEstelarInicializaConEspectro() {
+	private static final int tiempoConstruccionPuertoEstelar = 10;
+
+	private CreadorDeUnidades crearPuertoEstelarValido() {
 		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
 		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
+		for(int turnos = 1 ; turnos<= tiempoConstruccionPuertoEstelar ; turnos++)
+			try {
+				puertoEstelar .iniciarTurno();
+			} catch (PropiedadNoEstaEnJuegoException e) {
+				// no entiendo por que se lanzaria esta excepcion
+				e.printStackTrace();
+			}
+		return puertoEstelar;
+	}
+	
+	@Test
+	public void testPuertoEstelarInicializaConEspectro() {
+		CreadorDeUnidades puertoEstelar = crearPuertoEstelarValido();
 		
 		assertEquals(true, puertoEstelar.tengoUnidad(UnidadesTerran.ESPECTRO));
 	}
 		
 	@Test
 	public void testPuertoEstelarPuedeCrearEspectroConRecursosSuficientesyPoblacionSuficiente() {
-		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
-		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
+		CreadorDeUnidades puertoEstelar = crearPuertoEstelarValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
@@ -44,8 +59,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarNoPuedeCrearEspectroConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
-		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
+		CreadorDeUnidades puertoEstelar = crearPuertoEstelarValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
@@ -56,9 +70,9 @@ public class PuertoEstelarTest {
 		
 	@Test
 	public void testPuertoEstelarCreaEspectro()
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
-		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
-		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
+			throws MineralInsuficienteException, GasInsuficienteException, 
+			PoblacionInsuficienteException, RecursosNegativosException, EdificioTodaviaEnConstruccionException {
+		CreadorDeUnidades puertoEstelar = crearPuertoEstelarValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
@@ -72,16 +86,14 @@ public class PuertoEstelarTest {
 	
 	@Test
 	public void testPuertoEstelarInicializaConNaveDeTransporte() {
-		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
-		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
+		CreadorDeUnidades puertoEstelar = crearPuertoEstelarValido();
 		
 		assertEquals(true, puertoEstelar.tengoUnidad(UnidadesTerran.NAVE_TRANSPORTE));
 	}
 		
 	@Test
 	public void testPuertoEstelarPuedeCrearNaveDeTransporteConRecursosSuficientesyPoblacionSuficiente() {
-		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
-		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
+		CreadorDeUnidades puertoEstelar = crearPuertoEstelarValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
@@ -94,8 +106,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarNoPuedeCrearNaveDeTransporteConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
-		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
+		CreadorDeUnidades puertoEstelar = crearPuertoEstelarValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
@@ -106,9 +117,9 @@ public class PuertoEstelarTest {
 		
 	@Test
 	public void testPuertoEstelarCreaNaveDeTransporte() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
-		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
-		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
+			throws MineralInsuficienteException, GasInsuficienteException, 
+			PoblacionInsuficienteException, RecursosNegativosException, EdificioTodaviaEnConstruccionException {
+		CreadorDeUnidades puertoEstelar = crearPuertoEstelarValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
@@ -121,16 +132,14 @@ public class PuertoEstelarTest {
 	
 	@Test
 	public void testPuertoEstelarInicializaConNaveDeCiencia() {
-		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
-		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
+		CreadorDeUnidades puertoEstelar = crearPuertoEstelarValido();
 		
 		assertEquals(true, puertoEstelar.tengoUnidad(UnidadesTerran.NAVE_CIENCIA));
 	}
 		
 	@Test
 	public void testPuertoEstelarPuedeCrearNaveDeCienciaConRecursosSuficientesyPoblacionSuficiente() {
-		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
-		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
+		CreadorDeUnidades puertoEstelar = crearPuertoEstelarValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);
@@ -143,8 +152,7 @@ public class PuertoEstelarTest {
 	@Test
 	public void testPuertoEstelarNoPuedeCrearNaveDeCienciaConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
-		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
+		CreadorDeUnidades puertoEstelar = crearPuertoEstelarValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		puertoEstelar.setDuenio(jugador);
@@ -155,9 +163,9 @@ public class PuertoEstelarTest {
 		
 	@Test
 	public void testPuertoEstelarCreaNaveDeCiencia() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
-		CreadorPuertoEstelar creador = new CreadorPuertoEstelar();
-		CreadorDeUnidades puertoEstelar = creador.crearEdificio();
+			throws MineralInsuficienteException, GasInsuficienteException, 
+			PoblacionInsuficienteException, RecursosNegativosException, EdificioTodaviaEnConstruccionException {
+		CreadorDeUnidades puertoEstelar = crearPuertoEstelarValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);
 		
 		jugador.incrementarGas(1000);

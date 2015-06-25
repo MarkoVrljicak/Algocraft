@@ -2,9 +2,11 @@ package modelo.construcciones.protos;
 
 import static org.junit.Assert.assertEquals;
 import modelo.construcciones.CreadorDeUnidades;
+import modelo.exception.EdificioTodaviaEnConstruccionException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.RecursosNegativosException;
 import modelo.factory.edificiosProtoss.CreadorAcceso;
 import modelo.factory.unidadesProtoss.CreadorDragon;
@@ -19,18 +21,31 @@ import org.junit.Test;
 
 public class AccesoTest {
 	
-	@Test
-	public void testAccesoInicializaConZealot() {
+	private static final int tiempoConstruccionAcceso = 8;
+
+	private CreadorDeUnidades crearAccesoValido() {
 		CreadorAcceso creador = new CreadorAcceso();
 		CreadorDeUnidades acceso = creador.crearEdificio();
+		for(int turnos = 1 ; turnos<= tiempoConstruccionAcceso ; turnos++)
+			try {
+				acceso .iniciarTurno();
+			} catch (PropiedadNoEstaEnJuegoException e) {
+				// no entiendo por que se lanzaria esta excepcion
+				e.printStackTrace();
+			}
+		return acceso;
+	}
+	
+	@Test
+	public void testAccesoInicializaConZealot() {
+		CreadorDeUnidades acceso = crearAccesoValido();
 		
 		assertEquals(true, acceso.tengoUnidad(UnidadesProtos.ZEALOT));
 	}
 		
 	@Test
 	public void testAccesoPuedeCrearZealotConRecursosSuficientesyPoblacionSuficiente() {
-		CreadorAcceso creador = new CreadorAcceso();
-		CreadorDeUnidades acceso = creador.crearEdificio();
+		CreadorDeUnidades acceso = crearAccesoValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		acceso.setDuenio(jugador);
 			
@@ -40,8 +55,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoNoPuedeCrearZealotConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		CreadorAcceso creador = new CreadorAcceso();
-		CreadorDeUnidades acceso = creador.crearEdificio();
+		CreadorDeUnidades acceso = crearAccesoValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		acceso.setDuenio(jugador);
@@ -52,9 +66,10 @@ public class AccesoTest {
 		
 	@Test
 	public void testAccesoCreaZealot() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
-		CreadorAcceso creador = new CreadorAcceso();
-		CreadorDeUnidades acceso = creador.crearEdificio();
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, 
+			RecursosNegativosException, EdificioTodaviaEnConstruccionException {
+		
+		CreadorDeUnidades acceso = crearAccesoValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		acceso.setDuenio(jugador);
@@ -65,16 +80,14 @@ public class AccesoTest {
 	
 	@Test
 	public void testAccesoInicializaConDragon() {
-		CreadorAcceso creador = new CreadorAcceso();
-		CreadorDeUnidades acceso = creador.crearEdificio();
+		CreadorDeUnidades acceso = crearAccesoValido();
 		
 		assertEquals(true, acceso.tengoUnidad(UnidadesProtos.DRAGON));
 	}
 		
 	@Test
 	public void testAccesoPuedeCrearDragonConRecursosSuficientesyPoblacionSuficiente() {
-		CreadorAcceso creador = new CreadorAcceso();
-		CreadorDeUnidades acceso = creador.crearEdificio();
+		CreadorDeUnidades acceso = crearAccesoValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		jugador.incrementarGas(50);
@@ -86,8 +99,7 @@ public class AccesoTest {
 	@Test
 	public void testAccesoNoPuedeCrearDragonConRecursosInSuficientesyPoblacionSuficiente() 
 			throws RecursosNegativosException {
-		CreadorAcceso creador = new CreadorAcceso();
-		CreadorDeUnidades acceso = creador.crearEdificio();
+		CreadorDeUnidades acceso = crearAccesoValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		acceso.setDuenio(jugador);
@@ -98,9 +110,10 @@ public class AccesoTest {
 		
 	@Test
 	public void testAccesoCreaDragon() 
-			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException {
-		CreadorAcceso creador = new CreadorAcceso();
-		CreadorDeUnidades acceso = creador.crearEdificio();
+			throws MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException, 
+			RecursosNegativosException, EdificioTodaviaEnConstruccionException {
+		
+		CreadorDeUnidades acceso = crearAccesoValido();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
 		
 		jugador.incrementarGas(50);
