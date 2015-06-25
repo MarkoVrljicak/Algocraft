@@ -20,7 +20,7 @@ public class UnidadBasicaTest {
 	}
 	
 	@Test
-	public void testVidaActualEsIgualAVidaMaxima(){
+	public void testVidaActualEsIgualAVidaMaximaRecienCreado(){
 		Unidad marine= new Marine();
 		
 		assertEquals(marine.getVitalidadMaxima(),marine.getVida());
@@ -64,7 +64,7 @@ public class UnidadBasicaTest {
 	}
 	
 	@Test
-	public void testUnidadNoMuereCondanioDeMenos(){
+	public void testUnidadNoMuereConDanioDeMenos(){
 		int danioCausado = 39;
 		
 		Unidad marine= new Marine();

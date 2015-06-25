@@ -271,7 +271,7 @@ public class JuegoTest {
 		
 		algocraft.subirUnidad((Unidad) algocraft.seleccionarSuelo(posicionMarine),nave);
 		
-		//assertEquals(null,algocraft.seleccionarSuelo(posicionMarine));
+		assertEquals(null,algocraft.seleccionarSuelo(posicionMarine));
 
 		//paso un turno y vuelvo a mi turno para que tenga movimientos suficientes
 		algocraft.pasarTurno();

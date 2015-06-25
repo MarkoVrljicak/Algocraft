@@ -14,6 +14,8 @@ abstract public class Movimiento {
 	abstract public boolean validarPaso(Terreno terrenoSiguiente);
 	
 	public Coordenada ejecutar(Collection<Terreno> camino, Unidad unidad) throws PropiedadNoExisteEnEstaUbicacion, DestinoInvalidoException{
+		
+		
 		Iterator<Terreno> iter = camino.iterator();
 		
 		Terreno terrenoOriginal = null;
@@ -23,7 +25,7 @@ abstract public class Movimiento {
 			terrenoOriginal = proximoTerreno;
 			proximoTerreno = iter.next();
 			
-			if(!this.validarPaso(proximoTerreno) || unidad.getMovimientos() < 1){
+			if(!unidad.puedoMoverme(proximoTerreno) || unidad.getMovimientos() < 1){
 				return terrenoOriginal.getCoordenada();
 				
 			} else {

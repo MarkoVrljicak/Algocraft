@@ -68,11 +68,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 		if(this.estoyMuerto()){
 			return false;
 		}
-		if (this.soyVolador()){
-			return terrenoDestino.sePuedeVolar();
-		} else {
-			return terrenoDestino.sePuedeCaminar();
-		}
+		return movimiento.validarPaso(terrenoDestino);
 	}
 	
 	@Override

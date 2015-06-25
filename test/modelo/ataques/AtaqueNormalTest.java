@@ -9,6 +9,7 @@ import modelo.mapa.Mapa;
 import modelo.mapa.terrenos.SectoresDeTerreno;
 import modelo.unidades.Unidad;
 import modelo.unidades.UnidadAtacante;
+import modelo.unidades.protos.Dragon;
 import modelo.unidades.protos.Zealot;
 import modelo.unidades.terran.Espectro;
 import modelo.unidades.terran.Marine;
@@ -162,5 +163,22 @@ public class AtaqueNormalTest {
 		marineAtacante.iniciarTurno();
 		
 		assertEquals(true, marineAtacante.atacar(marineAtacado, coordenadaAtacante.distanciaA(coordenadaEnRango)));
+	}
+	
+	@Test
+	public void testUnidadNoAtacaSiEstaMuerta() throws DestinoInvalidoException, FueraDeLimitesException{
+		Mapa mapa = new Mapa(2,2);
+		UnidadAtacante dragon = new Dragon();
+		UnidadAtacante marine = new Marine();
+		Coordenada coordenada1 = new Coordenada(1,1);
+		Coordenada coordenada2 = new Coordenada(2,2);
+		mapa.almacenar(dragon, coordenada1);
+		mapa.almacenar(marine, coordenada2);
+		
+		dragon.atacar(marine, coordenada1.distanciaA(coordenada2));
+		dragon.iniciarTurno();
+		dragon.atacar(marine, coordenada1.distanciaA(coordenada2));
+		
+		assertEquals(false, marine.atacar(dragon, coordenada2.distanciaA(coordenada1)));
 	}
 }
