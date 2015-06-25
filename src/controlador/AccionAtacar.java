@@ -15,6 +15,9 @@ public class AccionAtacar extends AccionesAlgocraft{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		controlador.setStrategyAccion(new StrategyAtacar(unidad));
+		controlador.escribirEnLog(
+				"Modoataque para:" + unidad.getNombre().toString()
+				+"\n Seleccionea quien quiere atacar");
 	}
 
 }

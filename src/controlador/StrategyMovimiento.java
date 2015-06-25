@@ -15,6 +15,9 @@ public class StrategyMovimiento implements StrategyAccion {
 	@Override
 	public void accionSuelo(Coordenada posicion,Juego juego,Controlador controlador) {
 		controlador.moverUnidad(unidad, posicion);
+		controlador.escribirEnLog(
+				"Moviendo unidad:" + unidad.getNombre().toString()
+				+ " a posicion:" + posicion.getX() + "/" + posicion.getY());
 	}
 
 }

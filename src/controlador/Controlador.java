@@ -213,7 +213,7 @@ public class Controlador {
 		acciones.add(btnMover);
 		
 		JButton btnAtacar = new JButton("Atacar");
-		btnMover.addActionListener(new AccionAtacar((UnidadAtacante) unidad));
+		btnAtacar.addActionListener(new AccionAtacar((UnidadAtacante) unidad));
 		acciones.add(btnAtacar);
 	}
 
@@ -289,12 +289,15 @@ public class Controlador {
 	}
 
 	public void realizarAtaque(UnidadAtacante unidad, Coordenada posicionAtacado) {
+		
 		try {
 			juego.realizarAtaque(unidad,posicionAtacado);
-			this.setStrategyAccion(new StrategySeleccion());	
+			this.setStrategyAccion(new StrategySeleccion());
+			escribirEnLog(
+					"Atacando con: "+unidad.getNombre().toString()
+					+" a posicion:" +posicionAtacado.getX() +"/" +posicionAtacado.getY());
 		} catch (FueraDeLimitesException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			(new VentanaErrorFatal("Fuera de limites")).setVisible(true);
 		}
 	}
 }

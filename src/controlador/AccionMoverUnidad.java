@@ -15,6 +15,9 @@ public class AccionMoverUnidad extends AccionesAlgocraft {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		controlador.setStrategyAccion(new StrategyMovimiento(unidad));
+		controlador.escribirEnLog(
+				"Modo movimiento para:" + unidad.getNombre().toString()
+				+"Seleccione posicion a la cual mover");
 	}
 
 }
