@@ -8,13 +8,28 @@ import modelo.stats.Vida;
 import org.junit.Test;
 
 public class EscudoTest {
+	
+	private static final int timpoDeRetraso = 2;//copiado de la clase escudo
 
 	@Test
-	public void testEscudoSeRegeneraElDiezPorciento() {
+	public void testEscudoNoSeRegeneraRecienAtacado() {
+		Stat vida = new Vida(100);
+		Escudo escudo = new Escudo(100, vida);
+		
+		escudo.disminuir(10);
+		escudo.regenerar();
+		
+		assertEquals(90, escudo.actual());
+	}
+	
+	@Test
+	public void testEscudoSeRegeneraElDiezPorcientoPasadoElTiempoDeRetraso() {
 		Stat vida = new Vida(100);
 		Escudo escudo = new Escudo(100, vida);
 		
 		escudo.disminuir(20);
+		for(int turnos = 1 ; turnos<=timpoDeRetraso ; turnos ++)
+			escudo.regenerar();
 		escudo.regenerar();
 		
 		assertEquals(90, escudo.actual());

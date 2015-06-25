@@ -150,13 +150,13 @@ public class Controlador {
 			}
 			
 		} catch (DestinoInvalidoException e) {
-			(new VentanaErrorFatal("Destino invalido")).setVisible(true);
+			nuevoMensajeFatal("Destino invalido");
 		} catch (FueraDeLimitesException e) {
-			(new VentanaErrorFatal("Fuera de limites")).setVisible(true);
+			nuevoMensajeFatal("Fuera de limites");
 		} catch (PropiedadNoEstaEnJuegoException e) {
-			(new VentanaErrorFatal("Unidad o construccion fuera de juego")).setVisible(true);
+			nuevoMensajeFatal("Unidad o construccion fuera de juego");
 		} catch (UnidadIncompletaException e) {
-			(new VentanaErrorFatal("Unidad mal inicializada")).setVisible(true);
+			nuevoMensajeFatal("Unidad mal inicializada");
 		}		
 	}
 
@@ -232,22 +232,21 @@ public class Controlador {
 		try {
 			juego.construirEn(nombreEdificio, posicion);
 		} catch (DestinoInvalidoException e) {
-			(new VentanaErrorFatal("Destino invalido")).setVisible(true);
+			nuevoMensaje("No Podes construir ahi");
 		} catch (FueraDeLimitesException e) {
-			(new VentanaErrorFatal("Fuera de limites")).setVisible(true);
+			nuevoMensajeFatal("Fuera de limites");
 		} catch (MineralInsuficienteException e) {
-			//TODO este error no es fatal
+			nuevoMensaje("Te falta mineral");
 			e.printStackTrace();
-			(new VentanaErrorFatal("Fuera de limites")).setVisible(true);
 		} catch (GasInsuficienteException e) {
-			//TODO este error no es fatal
+			nuevoMensaje("Te falta gas");
 			e.printStackTrace();
-			(new VentanaErrorFatal("Fuera de limites")).setVisible(true);
+			nuevoMensajeFatal("Fuera de limites");
 		} catch (DependenciasNoCumplidasException e) {
-			//// mostrar mensajes 
+			nuevoMensaje("Te faltan los edificios anteriores");
 			e.printStackTrace();
 		} catch (RecursosNegativosException e) {
-			(new VentanaErrorFatal("Recursos negativos")).setVisible(true);
+			nuevoMensajeFatal("Recursos negativos");
 		}		
 	}
 
@@ -274,16 +273,16 @@ public class Controlador {
 			juego.moverUnidad(unidad, coordenada2);
 			this.setStrategyAccion(new StrategySeleccion());
 		} catch (PropiedadNoEstaEnJuegoException e) {
-			// mostrar mensajes
+			nuevoMensajeFatal("No Existe Unidad ?");
 			e.printStackTrace();
 		} catch (CoordenadaInexistenteException e) {
-			// mostrar mensajes
+			nuevoMensajeFatal("No Existe Destino, no se como lo cliqueaste..");
 			e.printStackTrace();
 		} catch (PropiedadNoExisteEnEstaUbicacion e) {
-			// mostrar mensajes
+			nuevoMensajeFatal("La unidad no esta donde esta");
 			e.printStackTrace();
 		} catch (DestinoInvalidoException e) {
-			// mostrar mensajes
+			nuevoMensaje("La unidad no puede moversa al destino");
 			e.printStackTrace();
 		}		
 	}
@@ -297,7 +296,15 @@ public class Controlador {
 					"Atacando con: "+unidad.getNombre().toString()
 					+" a posicion:" +posicionAtacado.getX() +"/" +posicionAtacado.getY());
 		} catch (FueraDeLimitesException e) {
-			(new VentanaErrorFatal("Fuera de limites")).setVisible(true);
+			nuevoMensajeFatal("Fuera de limites");
 		}
+	}
+	
+	public void nuevoMensaje(String mensaje){
+		JOptionPane.showMessageDialog(aplicacion.getFrame(),mensaje);
+	}
+	
+	public void nuevoMensajeFatal(String mensaje){
+		(new VentanaErrorFatal(mensaje)).setVisible(true);
 	}
 }
