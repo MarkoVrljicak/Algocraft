@@ -158,8 +158,8 @@ public class Juego extends Observable{
 		//cambio de jugador
 		if(jugadorActual == jugador1)
 			jugadorActual= jugador2;
-		else
-			jugadorActual = jugador1;
+		else if(jugadorActual == jugador2)
+			jugadorActual= jugador1;
 		
 		//empiezo su turno
 		jugadorActual.iniciarTurno();
@@ -240,6 +240,8 @@ public class Juego extends Observable{
 	}
 	
 	public boolean hayGanador(){
+		if(jugador1Perdio()&&jugador2Perdio())
+			return false;		
 		if(jugador1Perdio() && !jugador2Perdio())
 			return true;
 		else if(jugador2Perdio() && !jugador1Perdio())

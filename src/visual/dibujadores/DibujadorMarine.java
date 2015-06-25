@@ -5,7 +5,7 @@ public class DibujadorMarine extends Dibujador {
 
 	public DibujadorMarine(){
 		String file;
-		file = (pathTexturas + "refineria.png") ;
+		file = (pathTexturas + "marine.png") ;
 		imagen = createImageIcon(file,"");
 	}
 

@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.Set;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 
 import modelo.Juego;
@@ -74,6 +76,10 @@ public class Controlador {
 		}
 		
 	}
+	
+	public void escribirEnLog(String texto){
+		aplicacion.ventanaJuego.escribirEnLog(texto);
+	}
 
 	public void validarDatosJugador1() {
 		VentanaIngresoDeDatosJugador ventanaDatos = aplicacion.ventanaDatosJugador;
@@ -139,8 +145,9 @@ public class Controlador {
 	public void pasarTurno() {
 		try {
 			juego.pasarTurno();
-			if(juego.hayGanador())
-				new VentanaErrorFatal(juego.getNombreGanador()).setVisible(true);
+			if(juego.hayGanador()){
+				JOptionPane.showMessageDialog(aplicacion.getFrame(),"El Jugador:"+juego.getNombreGanador()+" ha ganado.");
+			}
 			
 		} catch (DestinoInvalidoException e) {
 			(new VentanaErrorFatal("Destino invalido")).setVisible(true);
@@ -190,6 +197,17 @@ public class Controlador {
 	protected void ofrecerAccionesParaUnidad(Unidad unidad) {
 		JToolBar acciones = obtenerToolbarAccionesLimpo();
 		
+		JLabel lblInfoVida = new JLabel("Vida:");
+		acciones.add(lblInfoVida);
+		JLabel lblVidaActual = new JLabel();
+		lblVidaActual.setText(String.valueOf(unidad.getVida()));
+		acciones.add(lblVidaActual);
+		JLabel lblSeparadorVida = new JLabel("/");
+		acciones.add(lblSeparadorVida);
+		JLabel lblVidaMax = new JLabel();
+		lblVidaMax.setText(String.valueOf(unidad.getVitalidadMaxima()));
+		acciones.add(lblVidaMax);
+		
 		JButton btnMover = new JButton("Mover");
 		btnMover.addActionListener(new AccionMoverUnidad(unidad));
 		acciones.add(btnMover);
@@ -197,7 +215,6 @@ public class Controlador {
 		JButton btnAtacar = new JButton("Atacar");
 		btnMover.addActionListener(new AccionAtacar((UnidadAtacante) unidad));
 		acciones.add(btnAtacar);
-		
 	}
 
 	protected void ofrecerConstruccionesDisponibles(Terreno terreno) {
@@ -255,6 +272,7 @@ public class Controlador {
 	public void moverUnidad(Unidad unidad, Coordenada coordenada2) {
 		try {
 			juego.moverUnidad(unidad, coordenada2);
+			this.setStrategyAccion(new StrategySeleccion());
 		} catch (PropiedadNoEstaEnJuegoException e) {
 			// mostrar mensajes
 			e.printStackTrace();
@@ -273,6 +291,7 @@ public class Controlador {
 	public void realizarAtaque(UnidadAtacante unidad, Coordenada posicionAtacado) {
 		try {
 			juego.realizarAtaque(unidad,posicionAtacado);
+			this.setStrategyAccion(new StrategySeleccion());	
 		} catch (FueraDeLimitesException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

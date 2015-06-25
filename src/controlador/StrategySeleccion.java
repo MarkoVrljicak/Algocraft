@@ -16,6 +16,7 @@ public class StrategySeleccion implements StrategyAccion {
 		try {
 			terrenoElegido = juego.obtenerTerreno(posicion);
 			Propiedad objetoEnSuelo = terrenoElegido.getContenidoSuelo();
+			controlador.escribirEnLog("Seleccionado posicion(x/y):"+posicion.getX()+"/"+posicion.getY());
 			if(objetoEnSuelo == null){
 				controlador.ofrecerConstruccionesDisponibles(terrenoElegido);
 			}else if(objetoEnSuelo instanceof Unidad){

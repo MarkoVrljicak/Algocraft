@@ -11,9 +11,21 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import modelo.Juego;
+import modelo.exception.DependenciasNoCumplidasException;
+import modelo.exception.DestinoInvalidoException;
 import modelo.exception.FueraDeLimitesException;
+import modelo.exception.GasInsuficienteException;
+import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.RecursosNegativosException;
+import modelo.exception.UnidadIncompletaException;
+import modelo.factory.edificiosProtoss.EnumEdificiosProtos;
+import modelo.factory.edificiosTerran.EnumEdificiosTerran;
+import modelo.jugador.Colores;
+import modelo.mapa.Coordenada;
+import modelo.mapa.terrenos.Terreno;
+import modelo.mapa.terrenos.Terrenos;
+import modelo.razas.EnumRazas;
 import controlador.CerrarAplicacionListener;
 import controlador.Controlador;
 import controlador.DatosDelGrupo;
@@ -78,23 +90,22 @@ public class Algocraft {
 	 */
 	private void initialize() throws PropiedadNoEstaEnJuegoException, RecursosNegativosException{
 		frame = new JFrame();
-		
-//		//bypass ingreso datos y creacion cosas
-//		juego.setJugador1("nick", EnumRazas.TERRAN, Colores.AZUL);
-//		juego.setJugador2("dominic", EnumRazas.PROTOSS, Colores.ROJO);
-//		juego.iniciarJuego();
-//		//creo algunas cosas para ver que esten
-//		try {
-//			juntarRecursosParaAmbosJugadores(juego);
-//		} catch (DestinoInvalidoException | FueraDeLimitesException
-//				| MineralInsuficienteException | GasInsuficienteException
-//				| DependenciasNoCumplidasException | UnidadIncompletaException e) {
-//			(new VentanaErrorFatal("asfasfasfa")).setVisible(true);
-//		}//end bypass
-		
+		//************************************BYPASS INGRESO DATOS********************
+		juego.setJugador1("nick", EnumRazas.TERRAN, Colores.AZUL);
+		juego.setJugador2("dominic", EnumRazas.PROTOSS, Colores.ROJO);
+		juego.iniciarJuego();
+		//creo algunas cosas para ver que esten
+		try {
+			juntarRecursosParaAmbosJugadores(juego);
+		} catch (DestinoInvalidoException | FueraDeLimitesException
+				| MineralInsuficienteException | GasInsuficienteException
+				| DependenciasNoCumplidasException | UnidadIncompletaException e) {
+			(new VentanaErrorFatal("asfasfasfa")).setVisible(true);
+		}
+		//************************************END BYPASS INGRESO DATOS********************
 		inicializarComponentes();
 		
-		frame.setBounds(50, 50, 1000, 700);
+		frame.setBounds(50, 50, 1200, 700);
 		frame.setTitle("Algocraft");
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -135,50 +146,56 @@ public class Algocraft {
 		mntmIntegrantes.addActionListener(new DatosDelGrupo());
 		
 		
-		//bypass
-		this.controlador.cambiarVentanaA(Ventanas.VENTANA_INICIAL);
-//*************************************FOR TESTING*******************************************	
+		//cambiar al poner o sacar bypass
+		this.controlador.cambiarVentanaA(Ventanas.JUEGO);
 		
 	}
 	
-//	private Coordenada encontrarTerrenoVacio(Terrenos terrenoBuscado,Juego algocraft) 
-//			throws FueraDeLimitesException{
-//		for(int i = 1 ; i<=juego.getAncho() ; i++){
-//			for(int j = 1 ; j<=juego.getAlto() ; j++){
-//				Coordenada unaPosicion = new Coordenada(i,j);
-//				Terreno unTerreno = algocraft.obtenerTerreno(unaPosicion);
-//				if( (unTerreno.getNombre() == terrenoBuscado) && (unTerreno.getContenidoSuelo() == null) )
-//					return unaPosicion;
-//			}
-//		}
-//		return null; //no se encontro en todo el mapa
-//	}
+	public JFrame getFrame(){
+		return frame;
+	}
 	
-//	private void juntarRecursosParaAmbosJugadores(Juego algocraft) 
-//			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
-//					GasInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, 
-//					PropiedadNoEstaEnJuegoException, RecursosNegativosException{
-//		final int muchosTurnos = 100; 
-//		
-//		algocraft.construirEn(EnumEdificiosTerran.CENTRO_DE_MINERALES,
-//				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
-//		algocraft.construirEn(EnumEdificiosTerran.CENTRO_DE_MINERALES,
-//				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
-//		algocraft.construirEn(EnumEdificiosTerran.REFINERIA,
-//				this.encontrarTerrenoVacio(Terrenos.VOLCAN, algocraft));
-//		
-//		algocraft.pasarTurno();
-//		
-//		algocraft.construirEn(EnumEdificiosProtos.NEXO_MINERAL,
-//				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
-//		algocraft.construirEn(EnumEdificiosProtos.NEXO_MINERAL,
-//				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
-//		algocraft.construirEn(EnumEdificiosProtos.ASIMILADOR, 
-//				this.encontrarTerrenoVacio(Terrenos.VOLCAN, algocraft));
-//		
-//		for (int turnos=0; turnos<=muchosTurnos ; turnos++){
-//			algocraft.pasarTurno();
-//		}
-//		//nota: al salir es el turno del jugador 1
-//	}
+	//*************************************FOR BYPASS(TESTING)*******************************************	
+
+	
+	private Coordenada encontrarTerrenoVacio(Terrenos terrenoBuscado,Juego algocraft) 
+			throws FueraDeLimitesException{
+		for(int i = 1 ; i<=juego.getAncho() ; i++){
+			for(int j = 1 ; j<=juego.getAlto() ; j++){
+				Coordenada unaPosicion = new Coordenada(i,j);
+				Terreno unTerreno = algocraft.obtenerTerreno(unaPosicion);
+				if( (unTerreno.getNombre() == terrenoBuscado) && (unTerreno.getContenidoSuelo() == null) )
+					return unaPosicion;
+			}
+		}
+		return null; //no se encontro en todo el mapa
+	}
+	
+	private void juntarRecursosParaAmbosJugadores(Juego algocraft) 
+			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
+					GasInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, 
+					PropiedadNoEstaEnJuegoException, RecursosNegativosException{
+		final int muchosTurnos = 100; 
+		
+		algocraft.construirEn(EnumEdificiosTerran.CENTRO_DE_MINERALES,
+				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
+		algocraft.construirEn(EnumEdificiosTerran.CENTRO_DE_MINERALES,
+				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
+		algocraft.construirEn(EnumEdificiosTerran.REFINERIA,
+				this.encontrarTerrenoVacio(Terrenos.VOLCAN, algocraft));
+		
+		algocraft.pasarTurno();
+		
+		algocraft.construirEn(EnumEdificiosProtos.NEXO_MINERAL,
+				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
+		algocraft.construirEn(EnumEdificiosProtos.NEXO_MINERAL,
+				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
+		algocraft.construirEn(EnumEdificiosProtos.ASIMILADOR, 
+				this.encontrarTerrenoVacio(Terrenos.VOLCAN, algocraft));
+		
+		for (int turnos=0; turnos<=muchosTurnos ; turnos++){
+			algocraft.pasarTurno();
+		}
+		//nota: al salir es el turno del jugador 1
+	}
 }

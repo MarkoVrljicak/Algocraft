@@ -9,7 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 import javax.swing.JToolBar;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 
 import modelo.Juego;
 import modelo.jugador.Jugador;
@@ -22,6 +25,7 @@ public class VentanaJuego extends JPanel implements Observer {
 	private Juego juegoObservado;
 	private JToolBar estadisticas;
 	private JToolBar acciones;
+	private JTextPane log;
 
 	public VentanaJuego(Juego juego){
 		super();
@@ -42,10 +46,27 @@ public class VentanaJuego extends JPanel implements Observer {
 		mapa.setPreferredSize(new Dimension(3000, 3000));
 		mapa.setVisible(true);
 		//mapa scrolleable
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setViewportView(mapa);
-		scrollPane.setBounds(10, 40, 950, 520);
-		add(scrollPane);		
+		JScrollPane scrollPaneMapa = new JScrollPane();
+		scrollPaneMapa.setViewportView(mapa);
+		scrollPaneMapa.setBounds(10, 40, 950, 520);
+		add(scrollPaneMapa);
+		
+		log = new JTextPane();
+		JScrollPane scrollPaneLog = new JScrollPane(log);
+		scrollPaneLog.setBounds(970, 10, 160, 600);
+		add(scrollPaneLog);
+		
+	}
+	
+	//escribe una nueva linea al final del log
+	public void escribirEnLog(String texto){
+		String pasarLinea = "\n ";
+		Document doc = log.getDocument();
+		try {
+			doc.insertString(doc.getLength(), pasarLinea+texto,null);
+		} catch (BadLocationException e) {
+			(new VentanaErrorFatal("Error escribiendo en log")).setVisible(true);
+		}
 	}
 
 	private void presentarEstadisticas() {
