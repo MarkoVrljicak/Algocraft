@@ -50,9 +50,5 @@ public class Volcan extends Terreno {
 		return false;
 	}
 
-	@Override
-	public char dibujar() {
-		return 'V';
-	}
 
 }

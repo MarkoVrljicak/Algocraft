@@ -45,8 +45,4 @@ public class Tierra extends Terreno {
 		return true;
 	}
 
-	@Override
-	public char dibujar() {
-		return 'T';
-	}
 }

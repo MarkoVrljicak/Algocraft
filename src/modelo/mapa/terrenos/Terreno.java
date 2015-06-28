@@ -1,12 +1,11 @@
 package modelo.mapa.terrenos;
 
-import modelo.Interfaces.Dibujable;
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.mapa.Coordenada;
 import modelo.propiedad.Propiedad;
 
-public abstract class Terreno implements Dibujable {
+public abstract class Terreno {
 	
 	protected Terrenos nombre;
 	protected Propiedad contenidoSuelo;

@@ -40,10 +40,5 @@ public class Aire extends Terreno {
 	public boolean sePuedeEdificar() {
 		return false;
 	}
-
-	@Override
-	public char dibujar() {
-		return 'A';
-	}
 	
 }
