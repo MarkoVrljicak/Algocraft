@@ -9,6 +9,7 @@ import modelo.Interfaces.Daniable;
 import modelo.construcciones.Construccion;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.construcciones.EnumEdificios;
+import modelo.exception.ColorRepetidoExepcion;
 import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
@@ -17,6 +18,8 @@ import modelo.exception.EspacioInsuficienteException;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
+import modelo.exception.MinimoCuatroCaracteresException;
+import modelo.exception.NombreRepetidoExepcion;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
@@ -56,14 +59,27 @@ public class Juego extends Observable{
 		creadoresDeUnidadesEnUso = new ArrayList<CreadorDeUnidades>();
 	}
 
-	public void setJugador1(String nombre, EnumRazas unaRaza , Colores unColor) {
+	public void setJugador1(String nombre, EnumRazas unaRaza , Colores unColor) throws MinimoCuatroCaracteresException {
+		this.validacionNombreJugador(nombre);
 		this.jugador1 = new Jugador(nombre, unaRaza, unColor);		
 	}
 	
-	public void setJugador2(String nombre, EnumRazas unaRaza , Colores unColor) {
+	public void setJugador2(String nombre, EnumRazas unaRaza , Colores unColor) 
+			throws MinimoCuatroCaracteresException, NombreRepetidoExepcion, ColorRepetidoExepcion {
+		this.validacionNombreJugador(nombre);
+		this.validacionJugadorDos(nombre, unColor);
 		this.jugador2 = new Jugador(nombre, unaRaza, unColor);		
 	}
 
+	private void validacionNombreJugador(String nombre) throws MinimoCuatroCaracteresException{
+		if (nombre.length() < 4) throw new MinimoCuatroCaracteresException();
+	}
+	
+	private void validacionJugadorDos(String nombre, Colores unColor) throws NombreRepetidoExepcion, ColorRepetidoExepcion{
+		if (nombre == jugador1.getNombre()) throw new NombreRepetidoExepcion();
+		if (unColor == jugador1.getColor()) throw new ColorRepetidoExepcion();
+	}
+	
 	public void iniciarJuego() {
 		posicionarBases();
 		

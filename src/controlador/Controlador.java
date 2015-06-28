@@ -12,6 +12,7 @@ import modelo.Juego;
 import modelo.construcciones.Construccion;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.construcciones.EnumEdificios;
+import modelo.exception.ColorRepetidoExepcion;
 import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
@@ -19,6 +20,8 @@ import modelo.exception.EdificioTodaviaEnConstruccionException;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
+import modelo.exception.MinimoCuatroCaracteresException;
+import modelo.exception.NombreRepetidoExepcion;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
@@ -82,19 +85,21 @@ public class Controlador {
 		aplicacion.ventanaJuego.escribirEnLog(texto);
 	}
 
-	public void validarDatosJugador1() {
+	public EnumRazas seleccionRaza(){
 		VentanaIngresoDeDatosJugador ventanaDatos = aplicacion.ventanaDatosJugador;
-		String nombreIngresado = ventanaDatos.nombreJugador.getText();
 		EnumRazas razaElegida = null;
-		Colores colorElegido = null;
-		//validar nombre
-		
 		
 		if(ventanaDatos.opcionTerran.isSelected()){
 			razaElegida = EnumRazas.TERRAN;
 		}else if(ventanaDatos.opcionProtoss.isSelected()){
 			razaElegida = EnumRazas.PROTOSS;
-		}//aniadir control al menos uno elegido
+		}		
+		return razaElegida;
+	}
+	
+	public Colores seleccionColor(){
+		VentanaIngresoDeDatosJugador ventanaDatos = aplicacion.ventanaDatosJugador;
+		Colores colorElegido = null;
 		
 		if(ventanaDatos.opcionRojo.isSelected()){
 			colorElegido = Colores.ROJO;
@@ -102,10 +107,21 @@ public class Controlador {
 		}else if(ventanaDatos.opcionAzul.isSelected()){
 			colorElegido = Colores.AZUL;
 			ventanaDatos.opcionAzul.setEnabled(false);
-		}//aniadir control al menos uno elegido
-		
-		//si llego aca es que los datos son validos
-		juego.setJugador1(nombreIngresado, razaElegida, colorElegido);
+		}
+		return colorElegido;
+	}
+	
+	public String nombreIngresado(){
+		VentanaIngresoDeDatosJugador ventanaDatos = aplicacion.ventanaDatosJugador;
+		return ventanaDatos.nombreJugador.getText();
+	}
+	
+	public void ingresarDatosJugador1(String nombre, EnumRazas raza, Colores color) throws MinimoCuatroCaracteresException {
+			juego.setJugador1(nombre, raza, color);
+	}
+	
+	public void renovarIngresoDeDatos(){
+		VentanaIngresoDeDatosJugador ventanaDatos = aplicacion.ventanaDatosJugador;
 		
 		ventanaDatos.lblSetUpJugador.setText("Set Up Jugador 2");
 		ventanaDatos.nombreJugador.setText("");
@@ -115,32 +131,13 @@ public class Controlador {
 		ventanaDatos.btnContinuar.addActionListener(new SubmitDatosJugador2());
 	}
 	
-	public void validarDatosJugador2() {
-		VentanaIngresoDeDatosJugador ventanaDatos = aplicacion.ventanaDatosJugador;
-		String nombreIngresado = ventanaDatos.nombreJugador.getText();
-		EnumRazas razaElegida = null;
-		Colores colorElegido = null;
-		//validar nombre
-		
-		
-		if(ventanaDatos.opcionTerran.isSelected()){
-			razaElegida = EnumRazas.TERRAN;
-		}else if(ventanaDatos.opcionProtoss.isSelected()){
-			razaElegida = EnumRazas.PROTOSS;
-		}//aniadir control al menos uno elegido
-		
-		if(ventanaDatos.opcionRojo.isSelected()){
-			colorElegido = Colores.ROJO;
-			ventanaDatos.opcionRojo.setEnabled(false);
-		}else if(ventanaDatos.opcionAzul.isSelected()){
-			colorElegido = Colores.AZUL;
-			ventanaDatos.opcionAzul.setEnabled(false);
-		}//aniadir control al menos uno elegido
-		
-		//si llego aca es que los datos son validos
-		juego.setJugador2(nombreIngresado, razaElegida, colorElegido);
+	public void ingresarDatosJugador2(String nombre, EnumRazas raza, Colores color) throws MinimoCuatroCaracteresException, NombreRepetidoExepcion, ColorRepetidoExepcion {
+		juego.setJugador2(nombre, raza, color);	
+	}
+	
+	public void iniciarJuego(){
 		juego.iniciarJuego();
-		this.cambiarVentanaA(Ventanas.JUEGO);		
+		this.cambiarVentanaA(Ventanas.JUEGO);	
 	}
 	
 	public void pasarTurno() {

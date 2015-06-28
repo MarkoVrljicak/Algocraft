@@ -11,11 +11,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import modelo.Juego;
+import modelo.exception.ColorRepetidoExepcion;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
+import modelo.exception.MinimoCuatroCaracteresException;
+import modelo.exception.NombreRepetidoExepcion;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.RecursosNegativosException;
 import modelo.exception.UnidadIncompletaException;
@@ -91,8 +94,13 @@ public class Algocraft {
 	private void initialize() throws PropiedadNoEstaEnJuegoException, RecursosNegativosException{
 		frame = new JFrame();
 		//************************************BYPASS INGRESO DATOS********************
-		juego.setJugador1("nick", EnumRazas.TERRAN, Colores.AZUL);
-		juego.setJugador2("dominic", EnumRazas.PROTOSS, Colores.ROJO);
+		try {
+			juego.setJugador1("nick", EnumRazas.TERRAN, Colores.AZUL);
+			juego.setJugador2("dominic", EnumRazas.PROTOSS, Colores.ROJO);
+		} catch (MinimoCuatroCaracteresException | NombreRepetidoExepcion| ColorRepetidoExepcion e1) {
+			e1.printStackTrace();
+		}
+		
 		juego.iniciarJuego();
 		//creo algunas cosas para ver que esten
 		try {

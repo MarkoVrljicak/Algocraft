@@ -2,10 +2,10 @@ package modelo;
 
 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import modelo.construcciones.Construccion;
 import modelo.construcciones.CreadorDeUnidades;
+import modelo.exception.ColorRepetidoExepcion;
 import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
@@ -14,6 +14,8 @@ import modelo.exception.EspacioInsuficienteException;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
+import modelo.exception.MinimoCuatroCaracteresException;
+import modelo.exception.NombreRepetidoExepcion;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
@@ -42,13 +44,18 @@ public class JuegoTest {
 
 	private Juego iniciarJuegoConDosJugadores() throws FueraDeLimitesException{
 		Juego algocraft = new Juego(ancho,alto);
-		algocraft.setJugador1("Agustin", EnumRazas.TERRAN , Colores.AZUL );
-		algocraft.setJugador2("Marco", EnumRazas.PROTOSS , Colores.ROJO );
+		try {
+			algocraft.setJugador1("Agustin", EnumRazas.TERRAN , Colores.AZUL );
+			algocraft.setJugador2("Marco", EnumRazas.PROTOSS , Colores.ROJO );
+		} catch (MinimoCuatroCaracteresException | NombreRepetidoExepcion
+				| ColorRepetidoExepcion e) {
+			e.printStackTrace();
+		}
 		algocraft.iniciarJuego();
 		
 		return algocraft;
 	}
-	
+		
 	private Coordenada encontrarTerrenoVacio(Terrenos terrenoBuscado,Juego algocraft) 
 			throws FueraDeLimitesException{
 		for(int i = 1 ; i<=ancho ; i++){
@@ -320,5 +327,21 @@ public class JuegoTest {
 		Jugador jugador2 = algocraft.getJugadorActual();
 		
 		assertTrue(jugador2.tieneConstruccion(EnumEdificiosProtos.BASE_PROTOSS));
+	}
+	
+	@Test
+	public void inicaElJuegoPasaDeTurnoYNoHayGanadores() throws FueraDeLimitesException{
+		Juego algocraft = iniciarJuegoConDosJugadores();
+		
+		assertFalse(algocraft.hayGanador());
+		
+		try {
+			algocraft.pasarTurno();
+		} catch (UnidadIncompletaException | DestinoInvalidoException
+				| PropiedadNoEstaEnJuegoException e) {
+			e.printStackTrace();
+		}
+		
+		assertFalse(algocraft.hayGanador());
 	}
 }
