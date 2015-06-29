@@ -51,4 +51,8 @@ public abstract class UnidadTransportadora extends Unidad{
 		this.pesoTransporte = 0;
 	}
 
+	public ArrayList<Unidad> getTransportados() {
+		return unidadesTransportadas;
+	}
+
 }

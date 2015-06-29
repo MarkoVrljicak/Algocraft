@@ -173,7 +173,7 @@ public class Algocraft {
 		return frame;
 	}
 	
-	//*************************************FOR BYPASS(TESTING)*******************************************	
+	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvFOR BYPASS(TESTING)vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 
 	
 	private Coordenada encontrarTerrenoVacio(Terrenos terrenoBuscado,Juego algocraft) 
@@ -258,7 +258,7 @@ public class Algocraft {
 		algocraft.construirEn(EnumEdificiosTerran.PUERTO_ESTELAR,
 				this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft));
 		
-		int muchosTurnos = 29;
+		int muchosTurnos = 28;
 		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
 			algocraft.pasarTurno();
 		}//nota: al salir es el turno del jugador 2

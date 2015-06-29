@@ -7,6 +7,7 @@ import javax.swing.JToolBar;
 
 import modelo.Juego;
 import modelo.mapa.Coordenada;
+import modelo.unidades.Unidad;
 import modelo.unidades.UnidadTransportadora;
 import controlador.acciones.AccionBajar;
 import controlador.acciones.AccionSubir;
@@ -25,13 +26,6 @@ public class VistaUnidadTransportadora extends VistaUnidades {
 	public void mostrarInformacion(JToolBar barraInformacion) {
 		super.mostrarInformacion(barraInformacion);
 		mostrarDatosTransporte(barraInformacion);
-		mostrarUnidadesTransportadas(barraInformacion);
-	}
-
-	private void mostrarUnidadesTransportadas(JToolBar barraInformacion) {
-		String unidades = "Transportadas : ";
-		JLabel lblTransportadas = new JLabel(unidades);
-		barraInformacion.add(lblTransportadas);
 	}
 
 	private void mostrarDatosTransporte(JToolBar barraInformacion) {
@@ -52,9 +46,12 @@ public class VistaUnidadTransportadora extends VistaUnidades {
 
 	private void ofrecerAccionBajar(JToolBar barraAcciones) {
 		if(unidadTransportadora.unidadesCargadas()>0){
-			JButton btnBajar = new JButton("Bajar");
-			btnBajar.addActionListener(new AccionBajar(unidadTransportadora, null));
-			barraAcciones.add(btnBajar);
+			for(Unidad unidadABajar : unidadTransportadora.getTransportados()){
+				String nombre = unidadABajar.getNombre().toString();
+				JButton btnBajar = new JButton("Bajar "+nombre);
+				btnBajar.addActionListener(new AccionBajar(unidadTransportadora, unidadABajar));
+				barraAcciones.add(btnBajar);
+			}
 		}
 	}
 
