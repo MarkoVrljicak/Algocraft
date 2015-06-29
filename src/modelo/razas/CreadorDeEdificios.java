@@ -94,5 +94,15 @@ public abstract class CreadorDeEdificios {
 	public boolean puedoCrearConstruccion(EnumEdificios nombreEdificio) {
 		 return puedoCrearConstruccion(construccionesCreables.get(nombreEdificio));
 		
+	}
+
+	public int getGasNecesario(EnumEdificios nombreEdificio) {
+		EdificiosAbstractFactory creador = construccionesCreables.get(nombreEdificio);
+		return creador.getGasNecesario();
+	}
+
+	public int getMineralNecesario(EnumEdificios nombreEdificio) {
+		EdificiosAbstractFactory creador = construccionesCreables.get(nombreEdificio);
+		return creador.getMineralNecesario();
 	}		
 }

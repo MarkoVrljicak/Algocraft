@@ -56,6 +56,14 @@ public class Jugador implements Actualizable, Usuario {
 	}
 	
 	//accesors 
+	
+	public int getGasNecesarioParaEdificio(EnumEdificios nombreEdificio){
+		return creadorEdificios.getGasNecesario(nombreEdificio);
+	}
+	
+	public int getMineralNecesarioParaEdificio(EnumEdificios nombreEdificio){
+		return creadorEdificios.getMineralNecesario(nombreEdificio);
+	}
 
 	public String getNombre() {
 		return this.nombre;

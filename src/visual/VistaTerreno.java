@@ -9,6 +9,7 @@ import javax.swing.JToolBar;
 
 import modelo.Juego;
 import modelo.construcciones.EnumEdificios;
+import modelo.jugador.Jugador;
 import modelo.mapa.Coordenada;
 import modelo.mapa.terrenos.Terreno;
 import controlador.AccionCrearEdificio;
@@ -35,12 +36,21 @@ public class VistaTerreno extends JLabel implements Seleccionable{
 		//TODO Preguntar si se puede construir el edificio antes de ofrecer accion
 		// <Marko> Estas seguro? Me parece bien que te ofrezca la opcion aunque despues
 		//         no te permita construirlo. Asi funciona en el starcraft.
-		//TODO mostrar costos (con ToolTip)
+		//TODO Diferenciar por tipo de terreno
 		for(EnumEdificios nombreEdificio : edificiosProbables){
-			JButton btnNewButton = new JButton(nombreEdificio.toString());
-			btnNewButton.addActionListener(new AccionCrearEdificio(nombreEdificio, terreno.getCoordenada()));
-			barraAcciones.add(btnNewButton);
+			Coordenada coordenada = terreno.getCoordenada();
+			JButton botonCreador = new JButton(nombreEdificio.toString());
+			botonCreador.setToolTipText(this.getRecursosNecesarios(nombreEdificio, juego.getJugadorActual()));
+			botonCreador.addActionListener(new AccionCrearEdificio(nombreEdificio, coordenada));
+			barraAcciones.add(botonCreador);
 		}		
+	}
+
+	private String getRecursosNecesarios(EnumEdificios nombreEdificio, Jugador jugadorActual) {
+		String gasNecesario = String.valueOf(jugadorActual.getGasNecesarioParaEdificio(nombreEdificio));
+		String mineralNecesario = String.valueOf(jugadorActual.getMineralNecesarioParaEdificio(nombreEdificio));
+		String mensaje = "<html> costo: <br> gas: " + gasNecesario + " <br> mineral:" + mineralNecesario + "</html>";
+		return mensaje;
 	}
 
 	@Override
