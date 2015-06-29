@@ -12,9 +12,6 @@ import modelo.mapa.Mapa;
 import modelo.mapa.terrenos.Terreno;
 import modelo.unidades.Unidad;
 import modelo.unidades.UnidadMagica;
-import modelo.unidades.protos.AltoTemplario;
-import modelo.unidades.protos.UnidadesProtos;
-import modelo.unidades.protos.Zealot;
 import modelo.unidades.terran.Marine;
 import modelo.unidades.terran.NaveCiencia;
 
@@ -26,7 +23,11 @@ public class AltoTemplarioTest {
 	public void pasarMuchosTurnos(AltoTemplario templario){
 		//para llenar magia
 		for(int i = 0; i<20; i++){
-			templario.iniciarTurno();
+			try {
+				templario.iniciarTurno();
+			} catch (PropiedadNoEstaEnJuegoException e) {
+				// no importa
+			}
 		}
 	}
 
@@ -98,7 +99,7 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-	public void testTemplarioRegenera15DeMagia(){
+	public void testTemplarioRegenera15DeMagia() throws PropiedadNoEstaEnJuegoException{
 		UnidadMagica templario = new AltoTemplario();
 		templario.iniciarTurno();
 		

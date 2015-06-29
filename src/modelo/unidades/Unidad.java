@@ -5,6 +5,7 @@ import java.util.Collection;
 import modelo.Interfaces.Movible;
 import modelo.ataques.Danio;
 import modelo.exception.DestinoInvalidoException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.jugador.Colores;
 import modelo.mapa.Coordenada;
@@ -73,7 +74,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 	}
 	
 	@Override
-	public void iniciarTurno() {
+	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException {
 		if(!this.enConstruccion())
 			this.vitalidad.regenerar();
 			this.movimientos.regenerar();

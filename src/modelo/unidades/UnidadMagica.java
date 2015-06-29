@@ -19,7 +19,7 @@ abstract public class UnidadMagica extends Unidad {
 
 	abstract protected void setearMagia();
 	
-	public void iniciarTurno(){
+	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException{
 		this.magia.regenerar();
 		
 		Iterator<AtaqueMagico> iter = magias.iterator();
@@ -34,12 +34,9 @@ abstract public class UnidadMagica extends Unidad {
 		iter = magias.iterator();
 		while(iter.hasNext()) {
 			AtaqueMagico siguienteMagia = iter.next();
-			try {
-				siguienteMagia.ejecutar();
-			} catch (PropiedadNoEstaEnJuegoException e) {
-				// TODO No me deja tirarlo para arriba
-				e.printStackTrace();
-			}
+			
+			siguienteMagia.ejecutar();
+			
 		}
 	}
 	

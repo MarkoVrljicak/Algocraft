@@ -3,6 +3,7 @@ package modelo.unidades;
 import modelo.Interfaces.Daniable;
 import modelo.ataques.AtaqueNormal;
 import modelo.ataques.Ataques;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.jugador.Colores;
 
 abstract public class UnidadAtacante extends Unidad{
@@ -36,13 +37,9 @@ abstract public class UnidadAtacante extends Unidad{
 		return ataque.ejecutarAtaque(daniableAtacado, distancia);
 	}
 	
-	public void iniciarTurno(){
-		try {
-			super.iniciarTurno();
-		} catch (Exception e) {
-			// TODO No me deja tirarlo para arriba
-			e.printStackTrace();
-		}
+	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException{
+		super.iniciarTurno();
+		
 		this.yaAtaco = false;
 	}
 }

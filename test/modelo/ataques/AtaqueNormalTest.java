@@ -3,6 +3,7 @@ package modelo.ataques;
 import static org.junit.Assert.assertEquals;
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.FueraDeLimitesException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.jugador.Colores;
 import modelo.mapa.Coordenada;
 import modelo.mapa.Mapa;
@@ -152,7 +153,7 @@ public class AtaqueNormalTest {
 	
 	@Test
 	public void testUnidadPuedeVolverAAtacarEnOtroTurno() 
-			throws DestinoInvalidoException, FueraDeLimitesException {
+			throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException {
 		Mapa mapa = new Mapa(2,2);
 		UnidadAtacante marineAtacante = new Marine();
 		Unidad marineAtacado = new Marine();
@@ -166,7 +167,7 @@ public class AtaqueNormalTest {
 	}
 	
 	@Test
-	public void testUnidadNoAtacaSiEstaMuerta() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testUnidadNoAtacaSiEstaMuerta() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(2,2);
 		UnidadAtacante dragon = new Dragon();
 		UnidadAtacante marine = new Marine();

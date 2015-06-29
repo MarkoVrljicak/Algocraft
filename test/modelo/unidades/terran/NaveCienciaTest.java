@@ -25,7 +25,11 @@ public class NaveCienciaTest {
 	public void pasarMuchosTurnos(NaveCiencia nave){
 		//para llenar magia
 		for(int i = 0; i<20; i++){
-			nave.iniciarTurno();
+			try {
+				nave.iniciarTurno();
+			} catch (PropiedadNoEstaEnJuegoException e) {
+				// no importa
+			}
 		}
 	}
 
@@ -89,7 +93,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testNaveRegenera10DeMagia(){
+	public void testNaveRegenera10DeMagia() throws PropiedadNoEstaEnJuegoException{
 		UnidadMagica nave = new NaveCiencia();
 		nave.iniciarTurno();
 		
