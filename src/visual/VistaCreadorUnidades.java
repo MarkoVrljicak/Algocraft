@@ -55,7 +55,7 @@ public class VistaCreadorUnidades extends VistaEdificios {
 	private String getRecursosNecesarios(Unidades nombreUnidad, CreadorDeUnidades creadorUnidades){
 		String gasNecesario = String.valueOf(creadorUnidades.getGasNecesario(nombreUnidad));
 		String mineralNecesario = String.valueOf(creadorUnidades.getMineralNecesario(nombreUnidad));
-		String mensaje = "gas: " + gasNecesario + " mineral:" + mineralNecesario;
+		String mensaje = "<html> costo: <br> gas: " + gasNecesario + " <br> mineral:" + mineralNecesario + "</html>";
 		return mensaje;
 		
 	}
