@@ -70,6 +70,14 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 		final int mineralDisponible = this.getDuenio().getMineral();
 		return(mineralDisponible >= creador.getMineralNecesario());
 	}
+	
+	public int getGasNecesario(Unidades nombreUnidad){
+		return unidadesCreables.get(nombreUnidad).getGasNecesario();
+	}
+	
+	public int getMineralNecesario(Unidades nombreUnidad){
+		return unidadesCreables.get(nombreUnidad).getMineralNecesario();
+	}
 
 	public boolean puedoCrearUnidad(UnidadesAbstractFactory creador) {
 		return (!this.enConstruccion()&&

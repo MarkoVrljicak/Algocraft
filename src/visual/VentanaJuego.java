@@ -57,7 +57,7 @@ public class VentanaJuego extends JPanel implements Observer {
 		JScrollPane scrollPaneLog = new JScrollPane(log);
 		scrollPaneLog.setBounds(10, 565, 950, 60);;
 		add(scrollPaneLog);
-		
+				
 	}
 	
 	//escribe una nueva linea al final del log
@@ -141,5 +141,8 @@ public class VentanaJuego extends JPanel implements Observer {
 		actualizarEstadisticas();
 		acciones.removeAll();
 		acciones.repaint();
-	}
+	} 
+
+	
+	
 }

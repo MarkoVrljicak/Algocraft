@@ -45,10 +45,18 @@ public class VistaCreadorUnidades extends VistaEdificios {
 		JLabel lblExplicacion = new JLabel(intro);
 		barraAcciones.add(lblExplicacion);
 		for (Unidades nombreUnidad : creables) {
-			// TODO mostrar costos
-			JButton btnNewButton = new JButton(nombreUnidad.toString());
-			btnNewButton.addActionListener(new AccionCrearUnidad(nombreUnidad, creadorUnidades));
-			barraAcciones.add(btnNewButton);
+			JButton botonCreador = new JButton(nombreUnidad.toString());
+			botonCreador.setToolTipText(this.getRecursosNecesarios(nombreUnidad, creadorUnidades));
+			botonCreador.addActionListener(new AccionCrearUnidad(nombreUnidad, creadorUnidades));
+			barraAcciones.add(botonCreador);
 		}
+	}
+	
+	private String getRecursosNecesarios(Unidades nombreUnidad, CreadorDeUnidades creadorUnidades){
+		String gasNecesario = String.valueOf(creadorUnidades.getGasNecesario(nombreUnidad));
+		String mineralNecesario = String.valueOf(creadorUnidades.getMineralNecesario(nombreUnidad));
+		String mensaje = "gas: " + gasNecesario + " mineral:" + mineralNecesario;
+		return mensaje;
+		
 	}
 }

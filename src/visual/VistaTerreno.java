@@ -35,6 +35,7 @@ public class VistaTerreno extends JLabel implements Seleccionable{
 		//TODO Preguntar si se puede construir el edificio antes de ofrecer accion
 		// <Marko> Estas seguro? Me parece bien que te ofrezca la opcion aunque despues
 		//         no te permita construirlo. Asi funciona en el starcraft.
+		//TODO mostrar costos (con ToolTip)
 		for(EnumEdificios nombreEdificio : edificiosProbables){
 			JButton btnNewButton = new JButton(nombreEdificio.toString());
 			btnNewButton.addActionListener(new AccionCrearEdificio(nombreEdificio, terreno.getCoordenada()));
