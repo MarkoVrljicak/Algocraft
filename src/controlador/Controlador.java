@@ -29,6 +29,7 @@ import modelo.unidades.UnidadAtacante;
 import modelo.unidades.Unidades;
 import visual.Algocraft;
 import visual.Seleccionable;
+import visual.VentanaErrorFatal;
 import visual.VentanaIngresoDeDatosJugador;
 import visual.Ventanas;
 
@@ -243,7 +244,7 @@ public class Controlador {
 	}
 	
 	public void nuevoMensajeFatal(String mensaje){
-		nuevoMensajeFatal(mensaje);
+		(new VentanaErrorFatal(mensaje)).setVisible(true);
 	}
 
 	
