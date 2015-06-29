@@ -29,7 +29,7 @@ public class VistaUnidadTransportadora extends VistaUnidades {
 	}
 
 	private void mostrarDatosTransporte(JToolBar barraInformacion) {
-		String transporte = "Transporte : "+ String.valueOf(unidadTransportadora.unidadesCargadas()) ;
+		String transporte = "Transportados : "+ String.valueOf(unidadTransportadora.unidadesCargadas()) ;
 		JLabel lblTransporte = new JLabel(transporte);
 		barraInformacion.add(lblTransporte);
 		//completar

@@ -16,6 +16,8 @@ public class AccionSubir extends AccionesAlgocraft {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		controlador.setStrategyAccion(new StrategySubirUnidad(unidadTransportadora));
+		controlador.escribirEnLog(
+				"Modo subir unidad. " +"Seleccione unidad a subir");
 	}
 
 }

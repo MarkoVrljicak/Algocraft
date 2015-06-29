@@ -236,11 +236,14 @@ public class Juego extends Observable{
 
 	public void bajarUnidad(UnidadTransportadora naveTransportadora, Unidad unidadABajar)
 			throws DestinoInvalidoException, FueraDeLimitesException {
+		
 		Coordenada posicionDescenso = mapa.encontrar(naveTransportadora);
-		Unidad unidadBajada = naveTransportadora.bajarUnidad(unidadABajar);
-		mapa.almacenar(unidadBajada, posicionDescenso);
-
-
+		if(mapa.getTerreno(posicionDescenso).sePuedeCaminar()){
+			Unidad unidadBajada = naveTransportadora.bajarUnidad(unidadABajar);		
+			mapa.almacenar(unidadBajada, posicionDescenso);
+		} else{
+			throw new DestinoInvalidoException();
+		}
 		this.setChanged();
 		this.notifyObservers();
 	}

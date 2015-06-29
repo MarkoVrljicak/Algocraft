@@ -273,7 +273,7 @@ public class Controlador {
 			juego.bajarUnidad(unidadTransportadora, unidadABajar);
 			this.setStrategyAccion(new StrategySeleccion());
 		} catch (DestinoInvalidoException e) {
-			nuevoMensaje("No se podia bajar aqui, ahora murio");
+			nuevoMensaje("No se puede bajar aca");
 		} catch (FueraDeLimitesException e) {
 			nuevoMensajeFatal("El transporte no esta en mapa");
 		}
