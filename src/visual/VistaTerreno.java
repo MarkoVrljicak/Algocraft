@@ -1,6 +1,5 @@
 package visual;
 
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.swing.ImageIcon;
@@ -33,9 +32,10 @@ public class VistaTerreno extends JLabel implements Seleccionable{
 	@Override
 	public void ofrecerAcciones(JToolBar barraAcciones, Juego juego) {
 		Set<EnumEdificios> edificiosProbables = juego.getJugadorActual().getConstruccionesDisponibles();
-		//TODO cambiar for, preguntar si se puede construir el edificio antes de ofrecer accion
-		for(Iterator<EnumEdificios> it = edificiosProbables.iterator(); it.hasNext();){
-			EnumEdificios nombreEdificio = it.next();
+		//TODO Preguntar si se puede construir el edificio antes de ofrecer accion
+		// <Marko> Estas seguro? Me parece bien que te ofrezca la opcion aunque despues
+		//         no te permita construirlo. Asi funciona en el starcraft.
+		for(EnumEdificios nombreEdificio : edificiosProbables){
 			JButton btnNewButton = new JButton(nombreEdificio.toString());
 			btnNewButton.addActionListener(new AccionCrearEdificio(nombreEdificio, terreno.getCoordenada()));
 			barraAcciones.add(btnNewButton);

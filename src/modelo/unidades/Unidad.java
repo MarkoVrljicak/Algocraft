@@ -76,6 +76,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 	public void iniciarTurno() {
 		if(!this.enConstruccion())
 			this.vitalidad.regenerar();
+			this.movimientos.regenerar();
 	}
 
 

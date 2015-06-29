@@ -7,6 +7,7 @@ import java.util.Collection;
 import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.FueraDeLimitesException;
+import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.mapa.Coordenada;
 import modelo.mapa.Mapa;
@@ -38,5 +39,19 @@ public class MovimientoTest {
 		movimiento.ejecutar(camino, unidad);
 		
 		assertEquals(mapa.getPropiedadSuelo(origen), unidad);
+	}
+	
+	@Test
+	public void testMovimientosSeRegeneranAlPasarTurno() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, CoordenadaInexistenteException, PropiedadNoExisteEnEstaUbicacion{
+		
+		Mapa mapa = new Mapa(5,5);
+		Unidad marine = new Marine();
+		
+		mapa.almacenar(marine, new Coordenada(1,1));
+		mapa.moverUnidad(marine, new Coordenada(5,5));
+		
+		marine.iniciarTurno();
+		assertEquals(3, marine.getMovimientos());
+		
 	}
 }

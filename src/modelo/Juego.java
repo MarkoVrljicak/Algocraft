@@ -79,7 +79,7 @@ public class Juego extends Observable{
 		if (unColor == jugador1.getColor()) throw new ColorRepetidoExepcion();
 	}
 	
-	public void iniciarJuego() {
+	public void iniciarJuego() throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		posicionarBases();
 		
 		jugadorActual = jugador1 ;
@@ -88,36 +88,30 @@ public class Juego extends Observable{
 		this.notifyObservers();
 	}
 	
-	private void posicionarBases() {
-		try {
-			
-			jugadorActual = jugador1 ;
-			switch(jugadorActual.getRaza()){
-			case PROTOSS:
-				construirEn(EnumEdificiosProtos.BASE_PROTOSS,base1);
-				break;
-			case TERRAN:
-				construirEn(EnumEdificiosTerran.BASE_TERRAN,base1);
-				break;			
-			}
-			
-			jugadorActual = jugador2 ;
-			switch(jugadorActual.getRaza()){
-			case PROTOSS:
-				construirEn(EnumEdificiosProtos.BASE_PROTOSS,base2);
-				break;
-			case TERRAN:
-				construirEn(EnumEdificiosTerran.BASE_TERRAN,base2);
-				break;			
-			}
-			
-		} catch (DestinoInvalidoException | FueraDeLimitesException
-				| MineralInsuficienteException | GasInsuficienteException
-				| DependenciasNoCumplidasException
-				| RecursosNegativosException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	private void posicionarBases() throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
+		
+		jugadorActual = jugador1 ;
+		switch(jugadorActual.getRaza()){
+		case PROTOSS:
+			construirEn(EnumEdificiosProtos.BASE_PROTOSS,base1);
+			break;
+		case TERRAN:
+			construirEn(EnumEdificiosTerran.BASE_TERRAN,base1);
+			break;			
 		}
+		
+		jugadorActual = jugador2 ;
+		switch(jugadorActual.getRaza()){
+		case PROTOSS:
+			construirEn(EnumEdificiosProtos.BASE_PROTOSS,base2);
+			break;
+		case TERRAN:
+			construirEn(EnumEdificiosTerran.BASE_TERRAN,base2);
+			break;			
+		}
+			
+			
+		
 	}
 
 	public Jugador getJugadorActual() {

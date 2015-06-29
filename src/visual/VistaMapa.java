@@ -31,8 +31,7 @@ public class VistaMapa extends JPanel {
 				try {
 					this.add(new VistaCasillero(new Coordenada(x,y),juego));
 				} catch (FueraDeLimitesException e) {
-					// no se puede ir fuera de limites por las condiciones del for
-					// TODO Avisar a la vista
+					(new VentanaErrorFatal("Error al crear el mapa")).setVisible(true);
 				}
 			}
 		}

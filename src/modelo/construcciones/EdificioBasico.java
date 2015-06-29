@@ -95,4 +95,10 @@ public class EdificioBasico extends Propiedad implements Construccion{
 	public void quitarEnergia() {
 		//no responde
 	}
+
+
+	@Override
+	public int getVidaMaxima() {
+		return stat.max();
+	}
 }

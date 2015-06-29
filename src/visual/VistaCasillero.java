@@ -37,8 +37,7 @@ public class VistaCasillero extends JLayeredPane implements Observer{
 		try {
 			this.dibujar();
 		} catch (FueraDeLimitesException e) {
-			// no ocurre, una vez creado tiene una posicion valida.
-			// TODO Avisar por vista
+			(new VentanaErrorFatal("Error al actualizar el mapa")).setVisible(true);
 		}
 	}
 	

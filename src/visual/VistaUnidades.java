@@ -40,16 +40,16 @@ public abstract class VistaUnidades extends JLabel implements Seleccionable{
 	}
 	
 	private void mostrarVida(JToolBar barraInformacion) {
-		String vida = "Vida : "+ String.valueOf(unidad.getVida()) + "/" + String.valueOf(unidad.getVitalidadMaxima());
-		//TODO vida maxima no se muestra
+		String vidaActual = String.valueOf(unidad.getVida());
+		String vidaMaxima = String.valueOf(unidad.getVitalidadMaxima());
+		String vida = "Vida : "+ vidaActual + "/" + vidaMaxima;
 		JLabel lblVida = new JLabel(vida);
 		barraInformacion.add(lblVida);
 	}
 
 
 	private void mostrarMovimientosRestantes(JToolBar barraInformacion) {
-		//TODO movimientos restantes no se actualizan
-		String movimientosRestantes = "Movimientos restantes : "+ String.valueOf(unidad.getMovimientos());
+		String movimientosRestantes = "Movimientos : "+ String.valueOf(unidad.getMovimientos());
 		JLabel lblMovRestantes = new JLabel(movimientosRestantes);
 		barraInformacion.add(lblMovRestantes);
 	}

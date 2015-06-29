@@ -9,7 +9,7 @@ import modelo.construcciones.Construccion;
 import modelo.mapa.Coordenada;
 
 @SuppressWarnings("serial")
-public class VistaEdificios  extends JLabel implements Seleccionable{
+public class VistaEdificios extends JLabel implements Seleccionable{
 
 	private Construccion edificio;
 
@@ -39,8 +39,9 @@ public class VistaEdificios  extends JLabel implements Seleccionable{
 	}
 	
 	private void mostrarVida(JToolBar barraInformacion) {
-		// TODO pedir vida maxima
-		String vida = "Vida : "+ String.valueOf(edificio.getVida()) + "/";
+		String vidaActual = String.valueOf(edificio.getVida());
+		String vidaMaxima = String.valueOf(edificio.getVidaMaxima());
+		String vida = "Vida : "+ vidaActual + "/" + vidaMaxima;
 		JLabel lblVida = new JLabel(vida);
 		barraInformacion.add(lblVida);
 	}

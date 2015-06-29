@@ -101,7 +101,13 @@ public class Algocraft {
 			e1.printStackTrace();
 		}
 		
-		juego.iniciarJuego();
+		try {
+			juego.iniciarJuego();
+		} catch (DestinoInvalidoException | FueraDeLimitesException
+				| MineralInsuficienteException | GasInsuficienteException
+				| DependenciasNoCumplidasException e1) {
+			//no importa, total lo vamos a sacar.
+		}
 		//creo algunas cosas para ver que esten
 		try {
 			juntarRecursosParaAmbosJugadores(juego);

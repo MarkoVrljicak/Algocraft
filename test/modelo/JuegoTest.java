@@ -51,7 +51,13 @@ public class JuegoTest {
 				| ColorRepetidoExepcion e) {
 			e.printStackTrace();
 		}
-		algocraft.iniciarJuego();
+		try {
+			algocraft.iniciarJuego();
+		} catch (DestinoInvalidoException | MineralInsuficienteException
+				| GasInsuficienteException | DependenciasNoCumplidasException
+				| RecursosNegativosException e) {
+			e.printStackTrace();
+		}
 		
 		return algocraft;
 	}

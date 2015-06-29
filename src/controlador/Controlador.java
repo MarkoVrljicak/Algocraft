@@ -29,7 +29,6 @@ import modelo.unidades.UnidadAtacante;
 import modelo.unidades.Unidades;
 import visual.Algocraft;
 import visual.Seleccionable;
-import visual.VentanaErrorFatal;
 import visual.VentanaIngresoDeDatosJugador;
 import visual.Ventanas;
 
@@ -129,7 +128,14 @@ public class Controlador {
 	}
 	
 	public void iniciarJuego(){
-		juego.iniciarJuego();
+		try {
+			juego.iniciarJuego();
+		} catch (DestinoInvalidoException | FueraDeLimitesException
+				| MineralInsuficienteException | GasInsuficienteException
+				| DependenciasNoCumplidasException | RecursosNegativosException e) {
+			// Ninguno deberia suceder.
+			nuevoMensajeFatal("Error de inicializacion");
+		}
 		this.cambiarVentanaA(Ventanas.JUEGO);	
 	}
 	
@@ -180,7 +186,6 @@ public class Controlador {
 			nuevoMensaje("Te faltan los edificios anteriores");
 		} catch (RecursosNegativosException e) {
 			nuevoMensajeFatal("Recursos negativos");
-			e.printStackTrace();
 		}		
 	}
 
@@ -238,7 +243,7 @@ public class Controlador {
 	}
 	
 	public void nuevoMensajeFatal(String mensaje){
-		(new VentanaErrorFatal(mensaje)).setVisible(true);
+		nuevoMensajeFatal(mensaje);
 	}
 
 	

@@ -61,6 +61,10 @@ public abstract class DecoradorEdificioBasico extends Propiedad implements Const
 		//no responde.
 	}	
 	
+	public int getVidaMaxima() {
+		return edificio.getVidaMaxima();
+	}
+	
 	
 }
 
