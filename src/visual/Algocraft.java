@@ -108,7 +108,7 @@ public class Algocraft {
 				| DependenciasNoCumplidasException e1) {
 			//no importa, total lo vamos a sacar.
 		}
-		//creo algunas cosas para ver que esten
+		//creo algunas cosas para ver que funcionen
 		try {
 			juntarRecursosParaAmbosJugadores(juego);
 			crearEdificiosUnidadesParaAmbos(juego);

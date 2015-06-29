@@ -39,11 +39,7 @@ public class VistaTerreno extends JLabel implements Seleccionable{
 		Set<EnumEdificios> edificiosDisponibles = new HashSet<EnumEdificios>();
 		edificiosDisponibles.addAll(juego.getJugadorActual().getConstruccionesDisponibles());
 		edificiosDisponibles.retainAll(edificios);
-		
-		//TODO Preguntar si se puede construir el edificio antes de ofrecer accion
-		// <Marko> Estas seguro? Me parece bien que te ofrezca la opcion aunque despues
-		//         no te permita construirlo. Asi funciona en el starcraft.
-		
+				
 		mostrarOpciones(edificiosDisponibles, barraAcciones, juego);
 	}
 	

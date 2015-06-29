@@ -128,4 +128,8 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	public Set<Unidades> getUnidadesCreables() {
 		return unidadesCreables.keySet();
 	}
+
+	public Queue<Unidad> getUnidadesEnCreacion() {
+		return unidadesEnCreacion;
+	}
 }

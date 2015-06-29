@@ -10,6 +10,7 @@ import javax.swing.JToolBar;
 import modelo.Juego;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.mapa.Coordenada;
+import modelo.unidades.Unidad;
 import modelo.unidades.Unidades;
 import controlador.acciones.AccionCrearUnidad;
 
@@ -33,9 +34,12 @@ public class VistaCreadorUnidades extends VistaEdificios {
 	private void mostrarUnidadesEnCreacion(JToolBar barraInformacion) {
 		if(creadorUnidades.unidadEnCreacion()){
 			String unisEnCreacion = "UnidadesEnCreacion: ";
-			//TODO pedir unidades en creacion, aniadirlas al label(o labels) junto con tiempo restante
 			JLabel lblUnidadesCreacion = new JLabel(unisEnCreacion);
 			barraInformacion.add(lblUnidadesCreacion);
+			for(Unidad unidadEnCreacion : creadorUnidades.getUnidadesEnCreacion()){
+				JLabel lblUnidadEnCreacion = new JLabel(unidadEnCreacion.getNombre().toString());
+				barraInformacion.add(lblUnidadEnCreacion);
+			}
 		}
 	}
 	
