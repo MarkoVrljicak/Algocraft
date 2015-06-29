@@ -2,16 +2,15 @@ package visual.dibujadores;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import modelo.Interfaces.Daniable;
 //esta y sus clases hijas son mi idea de la version final, uso la otra version por ahora(dibujadorTerreno)
 public abstract class Dibujador {
 
 	protected ImageIcon imagen;
 	protected static final String pathTexturas ="texturas/";
 	
-	public JLabel dibujar() {
-		
-		return new JLabel(imagen);
-	}
+	abstract public JLabel dibujar(Daniable aDibujar);
 	
 	protected ImageIcon createImageIcon(String path,
 			String description) {

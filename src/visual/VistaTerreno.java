@@ -1,102 +1,49 @@
 package visual;
 
-import java.awt.Dimension;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.Iterator;
+import java.util.Set;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
+import javax.swing.JToolBar;
 
 import modelo.Juego;
-import modelo.exception.FueraDeLimitesException;
+import modelo.construcciones.EnumEdificios;
 import modelo.mapa.Coordenada;
 import modelo.mapa.terrenos.Terreno;
-import visual.dibujadores.DibujadorPropiedades;
-import visual.dibujadores.DibujadorTerreno;
-import controlador.ControladorMouseCielo;
-import controlador.ControladorMouseSuelo;
+import controlador.AccionCrearEdificio;
 
-public class VistaTerreno extends JLayeredPane implements Observer{
+@SuppressWarnings("serial")
+public class VistaTerreno extends JLabel implements Seleccionable{
+	
+	private Terreno terreno;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2635527590416447581L;
-	
-	
-	private Coordenada posicion;
-	private Juego observado;
-	public static final int anchoCelda = 100;
-	public static final int altoCelda = 100;
-	
-	
+	public VistaTerreno(Terreno terreno, ImageIcon imagen){
+		super(imagen);
+		this.terreno = terreno;
+	}
+
 	@Override
-	public void update(Observable o, Object arg) {
-		
-		this.removeAll();
-		
-		try {
-			this.dibujar();
-		} catch (FueraDeLimitesException e) {
-			// no ocurre, una vez creado tiene una posicion valida.
-			// TODO Avisar por vista
-		}
-	}
-	
-	public VistaTerreno(Coordenada coordenada, Juego juego) 
-			throws FueraDeLimitesException {
-		super();
-		setPreferredSize(new Dimension(anchoCelda, altoCelda));
-		setLayout(null);
-				
-		this.posicion = coordenada;
-		this.observado = juego;
-		this.observado.addObserver(this);
-
-	}
-	
-	public Coordenada getPosicion(){
-		return posicion;
+	public void mostrarInformacion(JToolBar barraInformacion) {
+		JLabel lblNombre = new JLabel(terreno.getNombre().toString());
+		barraInformacion.add(lblNombre);
 	}
 
-	private void dibujar() throws FueraDeLimitesException {
-		Terreno unTerreno = observado.obtenerTerreno(posicion);
-		this.dibujarTerreno(unTerreno);
-		this.dibujarSuelo(unTerreno);
-		this.dibujarCielo(unTerreno);
-	}
-	
-	private void dibujarTerreno(Terreno unTerreno){ 
-		DibujadorTerreno dibujador = DibujadorTerreno.getInstance();
-		
-		JLabel terrenoADibujar =dibujador.dibujar(unTerreno);
-		terrenoADibujar.setVisible(true);
-		terrenoADibujar.setBounds(0, 0, anchoCelda, altoCelda);
-
-		add(terrenoADibujar);
+	@Override
+	public void ofrecerAcciones(JToolBar barraAcciones, Juego juego) {
+		Set<EnumEdificios> edificiosProbables = juego.getJugadorActual().getConstruccionesDisponibles();
+		//TODO cambiar for, preguntar si se puede construir el edificio antes de ofrecer accion
+		for(Iterator<EnumEdificios> it = edificiosProbables.iterator(); it.hasNext();){
+			EnumEdificios nombreEdificio = it.next();
+			JButton btnNewButton = new JButton(nombreEdificio.toString());
+			btnNewButton.addActionListener(new AccionCrearEdificio(nombreEdificio, terreno.getCoordenada()));
+			barraAcciones.add(btnNewButton);
+		}		
 	}
 
-	private void dibujarSuelo(Terreno unTerreno) {
-		DibujadorPropiedades dibujador = DibujadorPropiedades.getInstance();
-		
-		JLabel terrenoADibujar =dibujador.dibujar(unTerreno.getContenidoSuelo());
-		terrenoADibujar.setVisible(true);
-		setLayer(terrenoADibujar,1);
-		terrenoADibujar.setBounds(0, altoCelda/2, anchoCelda/2, altoCelda/2);
-		terrenoADibujar.addMouseListener(new ControladorMouseSuelo(this));
-
-		add(terrenoADibujar,10);
+	@Override
+	public Coordenada obtenerPosicion() {
+		return terreno.getCoordenada();
 	}
-
-	private void dibujarCielo(Terreno unTerreno) {
-		DibujadorPropiedades dibujador = DibujadorPropiedades.getInstance();
-		
-		JLabel terrenoADibujar =dibujador.dibujar(unTerreno.getContenidoCielo());
-		terrenoADibujar.setVisible(true);
-		setLayer(terrenoADibujar,1 );
-		terrenoADibujar.setBounds(anchoCelda/2, 0, anchoCelda/2, altoCelda/2);
-		terrenoADibujar.addMouseListener(new ControladorMouseCielo(this));
-
-		add(terrenoADibujar,10);
-	}	
 }

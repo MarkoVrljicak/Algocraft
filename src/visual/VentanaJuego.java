@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
@@ -38,7 +39,8 @@ public class VentanaJuego extends JPanel implements Observer {
 		presentarEstadisticas();
 		
 		acciones = new JToolBar();
-		acciones.setBounds(10, 565, 950, 60);
+		acciones.setBounds(970, 10, 160, 600);
+		acciones.setOrientation(SwingConstants.VERTICAL);
 		add(acciones);
 				
 		//creo mapa
@@ -53,7 +55,7 @@ public class VentanaJuego extends JPanel implements Observer {
 		
 		log = new JTextPane();
 		JScrollPane scrollPaneLog = new JScrollPane(log);
-		scrollPaneLog.setBounds(970, 10, 160, 600);
+		scrollPaneLog.setBounds(10, 565, 950, 60);;
 		add(scrollPaneLog);
 		
 	}

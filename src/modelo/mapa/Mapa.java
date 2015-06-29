@@ -161,7 +161,9 @@ public class Mapa implements Iterable<Terreno>{
 	
 	//ataque
 	
-	public boolean gestionarAtaque(UnidadAtacante atacante, Propiedad atacado) throws PropiedadNoEstaEnJuegoException, FueraDeLimitesException, PropiedadNoExisteEnEstaUbicacion {
+	public boolean gestionarAtaque(UnidadAtacante atacante, Propiedad atacado) 
+			throws PropiedadNoEstaEnJuegoException, FueraDeLimitesException, PropiedadNoExisteEnEstaUbicacion {
+		
 		Coordenada posicionAtacante = posiciones.get(atacante);
 		Coordenada posicionAtacado = posiciones.get(atacado);
 		
@@ -181,6 +183,7 @@ public class Mapa implements Iterable<Terreno>{
 	
 	private void limpiarMuerto(Propiedad propiedad) 
 			throws FueraDeLimitesException, PropiedadNoExisteEnEstaUbicacion{
+		
 		Terreno terreno = this.getTerreno(posiciones.get(propiedad));
 		
 		terreno.borrarContenido(propiedad);

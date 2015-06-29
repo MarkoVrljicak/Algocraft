@@ -1,8 +1,8 @@
 package controlador;
 
 import modelo.Juego;
-import modelo.mapa.Coordenada;
 import modelo.unidades.UnidadAtacante;
+import visual.Seleccionable;
 
 public class StrategyAtacar implements StrategyAccion {
 
@@ -13,8 +13,8 @@ public class StrategyAtacar implements StrategyAccion {
 	}
 
 	@Override
-	public void accionSuelo(Coordenada posicionAtacado, Juego juego,Controlador controlador) {
-		controlador.realizarAtaque(unidad,posicionAtacado);
+	public void accionPara(Seleccionable accionado, Juego juego ,Controlador controlador) {
+		controlador.realizarAtaque(unidad,accionado.obtenerPosicion());		
 	}
 
 }

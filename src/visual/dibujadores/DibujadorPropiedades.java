@@ -65,24 +65,25 @@ private static DibujadorPropiedades instance = null;
 		JLabel imagenObtenida;
 		Border border = null;
 		if(aDibujar == null){
-			imagenObtenida = new DibujadorVacio().dibujar();
+			imagenObtenida = new DibujadorVacio().dibujar(null);
 		}else if (aDibujar.getColor()==Colores.AZUL)
 			border = BorderFactory.createLineBorder(Color.BLUE, 1);
 		else
 			border = BorderFactory.createLineBorder(Color.RED, 1);
 		
+		//TODO sacar los instance of... se complica por los diferentes enums y como pedirlos
 		if(aDibujar instanceof Construccion){
 			Construccion edificio = (Construccion) aDibujar;
 			EnumEdificios nombre = edificio.getNombre();
-			imagenObtenida = dibujadores.get(nombre).dibujar();
+			imagenObtenida = dibujadores.get(nombre).dibujar(edificio);
 			imagenObtenida.setBorder(border);
 		}else if(aDibujar instanceof Unidad){
 			Unidad unidad = (Unidad) aDibujar;
-			Unidades nombe = unidad.getNombre();
-			imagenObtenida = dibujadores.get(nombe).dibujar();
+			Unidades nombre = unidad.getNombre();
+			imagenObtenida = dibujadores.get(nombre).dibujar(unidad);
 			imagenObtenida.setBorder(border);
 		}else
-			imagenObtenida = new DibujadorVacio().dibujar();
+			imagenObtenida = new DibujadorVacio().dibujar(null);
 		
 		return imagenObtenida;
 	}

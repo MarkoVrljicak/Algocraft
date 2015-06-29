@@ -1,8 +1,8 @@
 package controlador;
 
 import modelo.Juego;
-import modelo.mapa.Coordenada;
 import modelo.unidades.Unidad;
+import visual.Seleccionable;
 
 public class StrategyMovimiento implements StrategyAccion {
 
@@ -13,11 +13,11 @@ public class StrategyMovimiento implements StrategyAccion {
 	}
 
 	@Override
-	public void accionSuelo(Coordenada posicion,Juego juego,Controlador controlador) {
-		controlador.moverUnidad(unidad, posicion);
+	public void accionPara(Seleccionable accionado, Juego juego, Controlador controlador) {
+		controlador.moverUnidad(unidad, accionado.obtenerPosicion());
 		controlador.escribirEnLog(
 				"Moviendo unidad:" + unidad.getNombre().toString()
-				+ " a posicion:" + posicion.getX() + "/" + posicion.getY());
+				+ " a posicion:" + accionado.obtenerPosicion().getX() + "/" +accionado.obtenerPosicion().getY());
 	}
 
 }

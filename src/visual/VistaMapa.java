@@ -21,15 +21,15 @@ public class VistaMapa extends JPanel {
 		int alto = juego.getAlto();
 		
 		setLayout(null);
-		int anchoCelda = VistaTerreno.anchoCelda;
-		int altoCelda = VistaTerreno.altoCelda;
+		int anchoCelda = VistaCasillero.anchoCelda;
+		int altoCelda = VistaCasillero.altoCelda;
 		this.setBounds(0, 0, ancho*anchoCelda, alto*altoCelda);
 		this.setLayout(new GridLayout(ancho,alto));
 		
 		for(int x = 1 ; x <=ancho ; x++){
 			for(int y = 1 ; y <= alto ; y++){
 				try {
-					this.add(new VistaTerreno(new Coordenada(x,y),juego));
+					this.add(new VistaCasillero(new Coordenada(x,y),juego));
 				} catch (FueraDeLimitesException e) {
 					// no se puede ir fuera de limites por las condiciones del for
 					// TODO Avisar a la vista

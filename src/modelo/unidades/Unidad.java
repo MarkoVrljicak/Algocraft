@@ -50,6 +50,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 	}
 	
 	abstract public int getVida();
+	
 	public int getVitalidadMaxima(){
 		return this.vitalidad.max();
 	}

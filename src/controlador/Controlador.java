@@ -1,15 +1,9 @@
 package controlador;
 
-import java.util.Iterator;
-import java.util.Set;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 
 import modelo.Juego;
-import modelo.construcciones.Construccion;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.construcciones.EnumEdificios;
 import modelo.exception.ColorRepetidoExepcion;
@@ -29,13 +23,12 @@ import modelo.exception.RecursosNegativosException;
 import modelo.exception.UnidadIncompletaException;
 import modelo.jugador.Colores;
 import modelo.mapa.Coordenada;
-import modelo.mapa.terrenos.Terreno;
-import modelo.propiedad.Propiedad;
 import modelo.razas.EnumRazas;
 import modelo.unidades.Unidad;
 import modelo.unidades.UnidadAtacante;
 import modelo.unidades.Unidades;
 import visual.Algocraft;
+import visual.Seleccionable;
 import visual.VentanaErrorFatal;
 import visual.VentanaIngresoDeDatosJugador;
 import visual.Ventanas;
@@ -48,7 +41,7 @@ public class Controlador {
 
 	public Controlador(Algocraft aplicacion, Juego juego){
 		AccionesAlgocraft.setearControlador(this);
-		MiControladorMouse.setearControlador(this);
+		MiControladorMouse2.setearControlador(this);
 		this.aplicacion = aplicacion;
 		this.juego = juego;
 		estrategia = new StrategySeleccion();
@@ -157,74 +150,20 @@ public class Controlador {
 			nuevoMensajeFatal("Unidad mal inicializada");
 		}		
 	}
-
-	public void accionCielo(Coordenada posicion) throws FueraDeLimitesException {
-		Terreno terrenoElegido = juego.obtenerTerreno(posicion);
-		Propiedad objetoEnCielo = terrenoElegido.getContenidoCielo();
-		if(objetoEnCielo instanceof Unidad){
-			ofrecerAccionesParaUnidad((Unidad)objetoEnCielo);
-		}
-	}
-
-	public void accionSuelo(Coordenada posicion) throws FueraDeLimitesException {
-		estrategia.accionSuelo(posicion, juego, this);
-	}
 	
-	protected JToolBar obtenerToolbarAccionesLimpo() {
+	public void accionPara(Seleccionable accionado) {
+		estrategia.accionPara(accionado, juego, this);
+	}
+
+
+	
+	protected JToolBar obtenerToolbarAccionesLimpio() {
 		JToolBar acciones = aplicacion.ventanaJuego.getAcciones();
 		acciones.removeAll();
 		acciones.repaint();
 		return acciones;
 	}
 
-	protected void ofrecerAccionesParaEdificio(Construccion construccion) {
-		if(construccion instanceof CreadorDeUnidades){
-			CreadorDeUnidades creador = (CreadorDeUnidades)construccion;
-			Set<Unidades> unidadesCreables = creador.getUnidadesCreables();
-			JToolBar acciones = obtenerToolbarAccionesLimpo();
-			for(Iterator<Unidades> it = unidadesCreables.iterator(); it.hasNext(); ){
-				Unidades nombreUnidad = it.next();
-				JButton btnNewButton = new JButton(nombreUnidad.toString());
-				btnNewButton.addActionListener(new AccionCrearUnidad(nombreUnidad, creador));
-				acciones.add(btnNewButton);
-			}
-		}
-		
-	}
-	
-	protected void ofrecerAccionesParaUnidad(Unidad unidad) {
-		JToolBar acciones = obtenerToolbarAccionesLimpo();
-		
-		JLabel lblInfoVida = new JLabel("Vida:");
-		acciones.add(lblInfoVida);
-		JLabel lblVidaActual = new JLabel();
-		lblVidaActual.setText(String.valueOf(unidad.getVida()));
-		acciones.add(lblVidaActual);
-		JLabel lblSeparadorVida = new JLabel("/");
-		acciones.add(lblSeparadorVida);
-		JLabel lblVidaMax = new JLabel();
-		lblVidaMax.setText(String.valueOf(unidad.getVitalidadMaxima()));
-		acciones.add(lblVidaMax);
-		
-		JButton btnMover = new JButton("Mover");
-		btnMover.addActionListener(new AccionMoverUnidad(unidad));
-		acciones.add(btnMover);
-		
-		JButton btnAtacar = new JButton("Atacar");
-		btnAtacar.addActionListener(new AccionAtacar((UnidadAtacante) unidad));
-		acciones.add(btnAtacar);
-	}
-
-	protected void ofrecerConstruccionesDisponibles(Terreno terreno) {
-		Set<EnumEdificios> edificiosProbables = juego.getJugadorActual().getConstruccionesDisponibles();
-		JToolBar acciones = obtenerToolbarAccionesLimpo();
-		for(Iterator<EnumEdificios> it = edificiosProbables.iterator(); it.hasNext();){
-			EnumEdificios nombreEdificio = it.next();
-			JButton btnNewButton = new JButton(nombreEdificio.toString());
-			btnNewButton.addActionListener(new AccionCrearEdificio(nombreEdificio, terreno.getCoordenada()));
-			acciones.add(btnNewButton);
-		}
-	}
 
 	public void construirEn(EnumEdificios nombreEdificio, Coordenada posicion) {
 		try {
@@ -301,4 +240,6 @@ public class Controlador {
 	public void nuevoMensajeFatal(String mensaje){
 		(new VentanaErrorFatal(mensaje)).setVisible(true);
 	}
+
+	
 }
