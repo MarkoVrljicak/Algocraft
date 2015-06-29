@@ -95,7 +95,7 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 		return !unidadesEnCreacion.isEmpty();
 	}	
 	
-	//TODO preguntar si hay unidades en creacion
+	
 	public boolean unidadTerminada() {
 		return !unidadesEnCreacion.peek().enConstruccion();
 	}

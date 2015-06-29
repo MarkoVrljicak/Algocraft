@@ -101,4 +101,10 @@ public class EdificioBasico extends Propiedad implements Construccion{
 	public int getVidaMaxima() {
 		return stat.max();
 	}
+
+
+	@Override
+	public int getTiempoConstruccion() {
+		return tiempoDeConstruccion;
+	}
 }

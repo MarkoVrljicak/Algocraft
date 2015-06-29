@@ -33,6 +33,10 @@ public abstract class VistaUnidades extends JLabel implements Seleccionable{
 		this.mostrarNombre(barraInformacion);
 		this.mostrarVida(barraInformacion);
 		this.mostrarMovimientosRestantes(barraInformacion);
+		this.mostrarCostoTransporte(barraInformacion);
+		JButton separador = new JButton("para que se muestren las estadisticas");
+		separador.setVisible(false);
+		barraInformacion.add(separador);
 	}
 	
 	private void mostrarNombre(JToolBar barraInformacion) {
@@ -55,17 +59,18 @@ public abstract class VistaUnidades extends JLabel implements Seleccionable{
 		JLabel lblMovRestantes = new JLabel(movimientosRestantes);
 		barraInformacion.add(lblMovRestantes);
 	}
+	
+	private void mostrarCostoTransporte(JToolBar barraInformacion) {
+		String costoTransporte = "Peso transporte : "+ String.valueOf(unidad.getPesoTransporte());
+		JLabel lblCostoTransporte = new JLabel(costoTransporte);
+		barraInformacion.add(lblCostoTransporte);
+	}
 
 	@Override
 	public void ofrecerAcciones(JToolBar barraAcciones, Juego juego) {
 		
 		if(unidadPerteneceAJugadorActual(juego))
 			ofrecerAccionMovimiento(barraAcciones);
-		else{
-			JButton auxiliar = new JButton("para que se muestren las estadisticas");
-			auxiliar.setVisible(false);
-			barraAcciones.add(auxiliar);
-		}
 	}
 
 	protected boolean unidadPerteneceAJugadorActual(Juego juego) {

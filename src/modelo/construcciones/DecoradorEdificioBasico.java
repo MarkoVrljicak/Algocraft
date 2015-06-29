@@ -65,6 +65,11 @@ public abstract class DecoradorEdificioBasico extends Propiedad implements Const
 		return edificio.getVidaMaxima();
 	}
 	
+	@Override
+	public int getTiempoConstruccion(){
+		return edificio.getTiempoConstruccion();
+	}
+	
 	
 }
 

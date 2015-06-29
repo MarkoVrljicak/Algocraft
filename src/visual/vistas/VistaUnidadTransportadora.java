@@ -53,14 +53,14 @@ public class VistaUnidadTransportadora extends VistaUnidades {
 	private void ofrecerAccionBajar(JToolBar barraAcciones) {
 		if(unidadTransportadora.unidadesCargadas()>0){
 			JButton btnBajar = new JButton("Bajar");
-			btnBajar.addActionListener(new AccionBajar(unidadTransportadora));//completar accion
+			btnBajar.addActionListener(new AccionBajar(unidadTransportadora, null));
 			barraAcciones.add(btnBajar);
 		}
 	}
 
 	private void ofrecerAccionSubir(JToolBar barraAcciones) {
 		JButton btnSubir = new JButton("Subir");
-		btnSubir.addActionListener(new AccionSubir(unidadTransportadora));//completar accion
+		btnSubir.addActionListener(new AccionSubir(unidadTransportadora));
 		barraAcciones.add(btnSubir);
 	}
 

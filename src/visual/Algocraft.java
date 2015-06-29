@@ -112,6 +112,8 @@ public class Algocraft {
 		try {
 			juntarRecursosParaAmbosJugadores(juego);
 			crearEdificiosUnidadesParaAmbos(juego);
+			crearFabricaTerran(juego);
+			crearPuertoEstelarTerran(juego);
 		} catch (DestinoInvalidoException | FueraDeLimitesException
 				| MineralInsuficienteException | GasInsuficienteException
 				| DependenciasNoCumplidasException | UnidadIncompletaException e) {
@@ -226,6 +228,34 @@ public class Algocraft {
 		algocraft.pasarTurno();
 		
 		algocraft.construirEn(EnumEdificiosProtos.ACCESO,
+				this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft));
+		
+		int muchosTurnos = 28;
+		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
+			algocraft.pasarTurno();
+		}//nota: al salir es el turno del jugador 1
+	}
+	
+	private void crearFabricaTerran(Juego algocraft) 
+			throws DestinoInvalidoException, FueraDeLimitesException,MineralInsuficienteException, 
+			GasInsuficienteException,DependenciasNoCumplidasException, RecursosNegativosException, 
+			UnidadIncompletaException, PropiedadNoEstaEnJuegoException {
+		
+		algocraft.construirEn(EnumEdificiosTerran.FABRICA,
+				this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft));
+		
+		int muchosTurnos = 29;
+		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
+			algocraft.pasarTurno();
+		}//nota: al salir es el turno del jugador 1
+	}
+	
+	private void crearPuertoEstelarTerran(Juego algocraft) 
+			throws DestinoInvalidoException, FueraDeLimitesException,MineralInsuficienteException, 
+			GasInsuficienteException,DependenciasNoCumplidasException, RecursosNegativosException, 
+			UnidadIncompletaException, PropiedadNoEstaEnJuegoException {
+		
+		algocraft.construirEn(EnumEdificiosTerran.PUERTO_ESTELAR,
 				this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft));
 		
 		int muchosTurnos = 29;

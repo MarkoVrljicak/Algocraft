@@ -53,9 +53,6 @@ public class VistaCreadorUnidades extends VistaEdificios {
 				barraAcciones.add(botonCreador);
 			}
 		}
-		JButton auxiliar = new JButton("para que se muestren las estadisticas");
-		auxiliar.setVisible(false);
-		barraAcciones.add(auxiliar);
 	}
 	
 	private String getRecursosNecesarios(Unidades nombreUnidad, CreadorDeUnidades creadorUnidades){

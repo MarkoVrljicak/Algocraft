@@ -12,6 +12,7 @@ import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.EdificioTodaviaEnConstruccionException;
+import modelo.exception.EspacioInsuficienteException;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
@@ -22,11 +23,13 @@ import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.exception.RecursosNegativosException;
 import modelo.exception.UnidadIncompletaException;
+import modelo.exception.UnidadNoTransportableException;
 import modelo.jugador.Colores;
 import modelo.mapa.Coordenada;
 import modelo.razas.EnumRazas;
 import modelo.unidades.Unidad;
 import modelo.unidades.UnidadAtacante;
+import modelo.unidades.UnidadTransportadora;
 import modelo.unidades.Unidades;
 import visual.Algocraft;
 import visual.Seleccionable;
@@ -245,6 +248,36 @@ public class Controlador {
 	
 	public void nuevoMensajeFatal(String mensaje){
 		(new VentanaErrorFatal(mensaje)).setVisible(true);
+	}
+
+	public void subirUnidad(UnidadTransportadora unidadTransportadora,Seleccionable accionado) {
+		try {
+			this.setStrategyAccion(new StrategySeleccion());
+			Coordenada posicionDeUnidadASubir = accionado.obtenerPosicion();
+			juego.subirUnidad((Unidad)juego.seleccionarSuelo(posicionDeUnidadASubir) , unidadTransportadora);
+		} catch (EspacioInsuficienteException e) {
+			this.nuevoMensaje("No hay suficiente espacio");
+		} catch (UnidadNoTransportableException e) {
+			this.nuevoMensaje("Esto no es transportable");
+		} catch (PropiedadNoExisteEnEstaUbicacion e) {
+			this.nuevoMensajeFatal("La unidad no esta en juego");
+		} catch (FueraDeLimitesException e) {
+			this.nuevoMensajeFatal("La unidad no esta en juego");
+		}catch (ClassCastException e){
+			this.nuevoMensaje("Esto no es una unidad");
+		}
+	}
+
+	public void bajarUnidad(UnidadTransportadora unidadTransportadora,Unidad unidadABajar) {
+		try {
+			juego.bajarUnidad(unidadTransportadora, unidadABajar);
+			this.setStrategyAccion(new StrategySeleccion());
+		} catch (DestinoInvalidoException e) {
+			nuevoMensaje("No se puede bajar aqui");
+		} catch (FueraDeLimitesException e) {
+			nuevoMensajeFatal("El transporte no esta en mapa");
+		}
+		
 	}
 
 	

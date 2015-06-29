@@ -225,9 +225,11 @@ public class Juego extends Observable{
 
 	public void subirUnidad(Unidad unidadSubida, UnidadTransportadora naveTransportadora) 
 			throws EspacioInsuficienteException, UnidadNoTransportableException, PropiedadNoExisteEnEstaUbicacion, FueraDeLimitesException {
-		naveTransportadora.subirUnidad(unidadSubida);
-		mapa.getTerreno(mapa.encontrar(unidadSubida)).borrarContenido(unidadSubida);
-
+		
+		if(mapa.encontrar(unidadSubida).distanciaA(mapa.encontrar(naveTransportadora))<=1){
+			naveTransportadora.subirUnidad(unidadSubida);
+			mapa.getTerreno(mapa.encontrar(unidadSubida)).borrarContenido(unidadSubida);
+		}
 		this.setChanged();
 		this.notifyObservers();
 	}

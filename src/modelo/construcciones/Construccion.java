@@ -13,5 +13,6 @@ public interface Construccion extends Daniable, Actualizable{
 	public Jugador getDuenio();
 	public void setDuenio(Jugador jugador);
 	public int getPoblacionSumada();
+	public int getTiempoConstruccion();
 	
 }

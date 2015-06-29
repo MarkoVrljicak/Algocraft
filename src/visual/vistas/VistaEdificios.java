@@ -1,6 +1,7 @@
 package visual.vistas;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
@@ -32,6 +33,9 @@ public class VistaEdificios extends JLabel implements Seleccionable{
 		this.mostrarVida(barraInformacion);
 		this.mostrarPoblacionSumada(barraInformacion);
 		this.mostrarEnConstruccion(barraInformacion);
+		JButton separador = new JButton("para que se muestren las estadisticas");
+		separador.setVisible(false);
+		barraInformacion.add(separador);
 	}
 
 	private void mostrarNombre(JToolBar barraInformacion) {
@@ -57,9 +61,12 @@ public class VistaEdificios extends JLabel implements Seleccionable{
 
 	private void mostrarEnConstruccion(JToolBar barraInformacion) {
 		if(edificio.enConstruccion()){
-			String enConstruccion = "Edificio en construccion, tiempo restante:";// TODO obtener tiempo restante
-			JLabel lblEnConstruccion = new JLabel(enConstruccion);
+			
+			JLabel lblEnConstruccion = new JLabel("Edificio en construccion:");
 			barraInformacion.add(lblEnConstruccion);
+			String enConstruccion =  "Tiempo restante:"+ String.valueOf(edificio.getTiempoConstruccion());
+			JLabel lblEnConstruccion2 = new JLabel(enConstruccion);
+			barraInformacion.add(lblEnConstruccion2);
 		}
 	}
 	
