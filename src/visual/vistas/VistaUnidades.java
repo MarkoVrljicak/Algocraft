@@ -9,7 +9,7 @@ import visual.Seleccionable;
 import modelo.Juego;
 import modelo.mapa.Coordenada;
 import modelo.unidades.Unidad;
-import controlador.AccionMoverUnidad;
+import controlador.acciones.AccionMoverUnidad;
 
 @SuppressWarnings("serial")
 public abstract class VistaUnidades extends JLabel implements Seleccionable{
@@ -58,9 +58,14 @@ public abstract class VistaUnidades extends JLabel implements Seleccionable{
 
 	@Override
 	public void ofrecerAcciones(JToolBar barraAcciones, Juego juego) {
-		barraAcciones.add(new JLabel(""));
+		
 		if(unidadPerteneceAJugadorActual(juego))
 			ofrecerAccionMovimiento(barraAcciones);
+		else{
+			JButton auxiliar = new JButton("para que se muestren las estadisticas");
+			auxiliar.setVisible(false);
+			barraAcciones.add(auxiliar);
+		}
 	}
 
 	protected boolean unidadPerteneceAJugadorActual(Juego juego) {

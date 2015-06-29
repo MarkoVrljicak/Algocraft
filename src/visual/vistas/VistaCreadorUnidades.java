@@ -11,7 +11,7 @@ import modelo.Juego;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.mapa.Coordenada;
 import modelo.unidades.Unidades;
-import controlador.AccionCrearUnidad;
+import controlador.acciones.AccionCrearUnidad;
 
 
 @SuppressWarnings("serial")
@@ -41,7 +41,6 @@ public class VistaCreadorUnidades extends VistaEdificios {
 	
 	@Override
 	public void ofrecerAcciones(JToolBar barraAcciones, Juego juego) {
-		barraAcciones.add(new JLabel(""));
 		if(creadorUnidades.getDuenio()==juego.getJugadorActual()){
 			Set<Unidades> creables = creadorUnidades.getUnidadesCreables();
 			String intro = "Crear unidad:";
@@ -54,6 +53,9 @@ public class VistaCreadorUnidades extends VistaEdificios {
 				barraAcciones.add(botonCreador);
 			}
 		}
+		JButton auxiliar = new JButton("para que se muestren las estadisticas");
+		auxiliar.setVisible(false);
+		barraAcciones.add(auxiliar);
 	}
 	
 	private String getRecursosNecesarios(Unidades nombreUnidad, CreadorDeUnidades creadorUnidades){

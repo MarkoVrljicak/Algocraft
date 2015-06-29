@@ -7,7 +7,7 @@ import javax.swing.JToolBar;
 import modelo.Juego;
 import modelo.mapa.Coordenada;
 import modelo.unidades.UnidadAtacante;
-import controlador.AccionAtacar;
+import controlador.acciones.AccionAtacar;
 
 @SuppressWarnings("serial")
 public class VistaUnidadAtacante extends VistaUnidades{

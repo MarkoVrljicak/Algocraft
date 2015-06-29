@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controlador.AccionCambiarAVentanaIngresoDeDatos;
+import controlador.acciones.AccionCambiarAVentanaIngresoDeDatos;
 
 @SuppressWarnings("serial")
 public class VentanaInicial extends JPanel {

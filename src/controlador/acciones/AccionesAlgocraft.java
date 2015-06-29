@@ -1,6 +1,8 @@
-package controlador;
+package controlador.acciones;
 
 import java.awt.event.ActionListener;
+
+import controlador.Controlador;
 
 public abstract class AccionesAlgocraft implements ActionListener{
 

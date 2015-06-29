@@ -3,6 +3,7 @@ package controlador;
 import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 
+import controlador.acciones.AccionesAlgocraft;
 import modelo.Juego;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.construcciones.EnumEdificios;
@@ -37,19 +38,19 @@ public class Controlador {
 	
 	private Algocraft aplicacion;
 	private Juego juego;
-	private StrategyAccion estrategia;
+	private StrategyAccion estrategiaClick;
 
 	public Controlador(Algocraft aplicacion, Juego juego){
 		AccionesAlgocraft.setearControlador(this);
 		MiControladorMouse.setearControlador(this);
 		this.aplicacion = aplicacion;
 		this.juego = juego;
-		estrategia = new StrategySeleccion();
+		estrategiaClick = new StrategySeleccion();
 	}
 	
-	public void setStrategyAccion(StrategyAccion strategy) {
+	public void setStrategyAccion(StrategyAccion strategyClick) {
 	
-		estrategia = strategy;
+		estrategiaClick = strategyClick;
 	}
 
 	public void cambiarVentanaA(Ventanas enumVentana) {
@@ -159,11 +160,10 @@ public class Controlador {
 	}
 	
 	public void accionPara(Seleccionable accionado) {
-		estrategia.accionPara(accionado, juego, this);
+		estrategiaClick.accionPara(accionado, juego, this);
 	}
 
 
-	
 	protected JToolBar obtenerToolbarAccionesLimpio() {
 		JToolBar acciones = aplicacion.ventanaJuego.getAcciones();
 		acciones.removeAll();

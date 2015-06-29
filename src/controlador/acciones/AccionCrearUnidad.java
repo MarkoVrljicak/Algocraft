@@ -1,4 +1,4 @@
-package controlador;
+package controlador.acciones;
 
 import java.awt.event.ActionEvent;
 

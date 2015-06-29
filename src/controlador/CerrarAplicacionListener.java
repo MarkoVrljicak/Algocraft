@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 
+import controlador.acciones.AccionesAlgocraft;
+
 public class CerrarAplicacionListener extends AccionesAlgocraft {
 
 	@Override

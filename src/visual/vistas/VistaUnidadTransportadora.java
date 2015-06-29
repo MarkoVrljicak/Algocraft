@@ -8,8 +8,8 @@ import javax.swing.JToolBar;
 import modelo.Juego;
 import modelo.mapa.Coordenada;
 import modelo.unidades.UnidadTransportadora;
-import controlador.AccionBajar;
-import controlador.AccionSubir;
+import controlador.acciones.AccionBajar;
+import controlador.acciones.AccionSubir;
 
 @SuppressWarnings("serial")
 public class VistaUnidadTransportadora extends VistaUnidades {

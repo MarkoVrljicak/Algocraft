@@ -13,7 +13,7 @@ import modelo.construcciones.EnumEdificios;
 import modelo.jugador.Jugador;
 import modelo.mapa.Coordenada;
 import modelo.mapa.terrenos.Terreno;
-import controlador.AccionCrearEdificio;
+import controlador.acciones.AccionCrearEdificio;
 
 @SuppressWarnings("serial")
 public class VistaTerreno extends JLabel implements Seleccionable{

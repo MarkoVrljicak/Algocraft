@@ -18,7 +18,7 @@ import javax.swing.text.Document;
 import visual.vistas.VistaMapa;
 import modelo.Juego;
 import modelo.jugador.Jugador;
-import controlador.AccionPasarTurno;
+import controlador.acciones.AccionPasarTurno;
 
 @SuppressWarnings("serial")
 public class VentanaJuego extends JPanel implements Observer {
@@ -40,7 +40,8 @@ public class VentanaJuego extends JPanel implements Observer {
 		presentarEstadisticas();
 		
 		acciones = new JToolBar();
-		acciones.setBounds(970, 10, 160, 600);
+		acciones.setFloatable(false);
+		acciones.setBounds(970, 10, 200, 400);
 		acciones.setOrientation(SwingConstants.VERTICAL);
 		add(acciones);
 				
@@ -51,12 +52,12 @@ public class VentanaJuego extends JPanel implements Observer {
 		//mapa scrolleable
 		JScrollPane scrollPaneMapa = new JScrollPane();
 		scrollPaneMapa.setViewportView(mapa);
-		scrollPaneMapa.setBounds(10, 40, 950, 520);
+		scrollPaneMapa.setBounds(10, 40, 950, 580);
 		add(scrollPaneMapa);
 		
 		log = new JTextPane();
 		JScrollPane scrollPaneLog = new JScrollPane(log);
-		scrollPaneLog.setBounds(10, 565, 950, 60);;
+		scrollPaneLog.setBounds(970, 420, 200, 190);;
 		add(scrollPaneLog);
 				
 	}
@@ -74,6 +75,7 @@ public class VentanaJuego extends JPanel implements Observer {
 
 	private void presentarEstadisticas() {
 		estadisticas = new JToolBar();
+		estadisticas.setFloatable(false);
 		estadisticas.setBounds(10, 10, 950, 22);
 		add(estadisticas);
 		
