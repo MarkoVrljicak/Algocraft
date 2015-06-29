@@ -22,14 +22,10 @@ public class NaveCienciaTest {
 	
 	int danioRadiacion = 10;
 	
-	public void pasarMuchosTurnos(NaveCiencia nave){
+	public void pasarMuchosTurnos(NaveCiencia nave) throws PropiedadNoEstaEnJuegoException{
 		//para llenar magia
 		for(int i = 0; i<20; i++){
-			try {
-				nave.iniciarTurno();
-			} catch (PropiedadNoEstaEnJuegoException e) {
-				// no importa
-			}
+			nave.iniciarTurno();
 		}
 	}
 

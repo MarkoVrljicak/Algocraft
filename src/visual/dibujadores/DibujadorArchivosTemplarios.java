@@ -4,7 +4,8 @@ import javax.swing.JLabel;
 
 import modelo.Interfaces.Daniable;
 import modelo.construcciones.CreadorDeUnidades;
-import visual.VistaCreadorUnidades;
+import modelo.mapa.Coordenada;
+import visual.vistas.VistaCreadorUnidades;
 
 
 public class DibujadorArchivosTemplarios extends Dibujador {
@@ -16,7 +17,7 @@ public class DibujadorArchivosTemplarios extends Dibujador {
 	}
 
 	@Override
-	public JLabel dibujar(Daniable aDibujar) {
-		return new VistaCreadorUnidades((CreadorDeUnidades) aDibujar,imagen) ;
+	public JLabel dibujar(Daniable aDibujar, Coordenada posicion) {
+		return new VistaCreadorUnidades((CreadorDeUnidades) aDibujar, posicion,imagen) ;
 	}
 }

@@ -1,7 +1,6 @@
 package modelo.magias;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import modelo.mapa.terrenos.Terreno;
 import modelo.propiedad.Propiedad;
@@ -26,9 +25,8 @@ public class EMP extends AtaqueMagico{
 
 	@Override
 	public void ejecutar() {
-		Iterator<Terreno> iter = area.iterator();
-		while(iter.hasNext()){
-			afectarZona(iter.next());
+		for(Terreno terreno :area){
+			afectarZona(terreno);
 		}
 	}
 

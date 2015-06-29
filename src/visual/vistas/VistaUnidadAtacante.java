@@ -1,10 +1,11 @@
-package visual;
+package visual.vistas;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
 import modelo.Juego;
+import modelo.mapa.Coordenada;
 import modelo.unidades.UnidadAtacante;
 import controlador.AccionAtacar;
 
@@ -13,8 +14,8 @@ public class VistaUnidadAtacante extends VistaUnidades{
 
 	private UnidadAtacante unidadAtacante;
 
-	public VistaUnidadAtacante(UnidadAtacante unidad, ImageIcon imagen) {
-		super(unidad, imagen);
+	public VistaUnidadAtacante(UnidadAtacante unidad,Coordenada posicion, ImageIcon imagen) {
+		super(unidad,posicion, imagen);
 		this.unidadAtacante = unidad;
 	}
 	

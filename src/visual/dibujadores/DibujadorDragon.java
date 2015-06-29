@@ -3,8 +3,9 @@ package visual.dibujadores;
 import javax.swing.JLabel;
 
 import modelo.Interfaces.Daniable;
+import modelo.mapa.Coordenada;
 import modelo.unidades.UnidadAtacante;
-import visual.VistaUnidadAtacante;
+import visual.vistas.VistaUnidadAtacante;
 
 
 public class DibujadorDragon extends Dibujador{
@@ -16,7 +17,7 @@ public class DibujadorDragon extends Dibujador{
 	}
 
 	@Override
-	public JLabel dibujar(Daniable aDibujar) {
-		return new  VistaUnidadAtacante( (UnidadAtacante) aDibujar,imagen) ;
+	public JLabel dibujar(Daniable aDibujar, Coordenada posicion) {
+		return new  VistaUnidadAtacante( (UnidadAtacante) aDibujar,posicion,imagen) ;
 	}
 }

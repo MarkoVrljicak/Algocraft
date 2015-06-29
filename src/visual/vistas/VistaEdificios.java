@@ -1,9 +1,10 @@
-package visual;
+package visual.vistas;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
+import visual.Seleccionable;
 import modelo.Juego;
 import modelo.construcciones.Construccion;
 import modelo.mapa.Coordenada;
@@ -12,16 +13,17 @@ import modelo.mapa.Coordenada;
 public class VistaEdificios extends JLabel implements Seleccionable{
 
 	private Construccion edificio;
+	private Coordenada posicion;
 
-	public VistaEdificios(Construccion edificio, ImageIcon imagen){
+	public VistaEdificios(Construccion edificio,Coordenada posicion, ImageIcon imagen){
 		super(imagen);
 		this.edificio = edificio;
+		this.posicion = posicion;
 	}
 	
 	@Override
 	public Coordenada obtenerPosicion() {
-		// TODO Auto-generated method stub
-		return null;
+		return posicion;
 	}
 
 	@Override

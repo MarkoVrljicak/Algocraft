@@ -41,6 +41,10 @@ public abstract class UnidadTransportadora extends Unidad{
 		return unidadesTransportadas;
 		
 	}
+	
+	public int getCapacidadMaxima(){
+		return capacidad;
+	}
 
 	@Override
 	protected void setearPesoTransporte() {

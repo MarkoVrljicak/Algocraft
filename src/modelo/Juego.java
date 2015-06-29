@@ -41,7 +41,7 @@ import modelo.unidades.UnidadTransportadora;
 import modelo.unidades.Unidades;
 
 public class Juego extends Observable{
-	
+
 	private Jugador jugador1;
 	private Jugador jugador2;
 	private Jugador jugadorActual;
@@ -49,7 +49,7 @@ public class Juego extends Observable{
 	private ArrayList<CreadorDeUnidades> creadoresDeUnidadesEnUso;
 	private Coordenada base1;
 	private Coordenada base2;
-	
+
 	public Juego(int ancho , int alto) throws FueraDeLimitesException{
 		GeneradorDeMapa generador = new GeneradorDeMapa(ancho, alto);
 		mapa = generador.generar();
@@ -62,7 +62,7 @@ public class Juego extends Observable{
 		this.validacionNombreJugador(nombre);
 		this.jugador1 = new Jugador(nombre, unaRaza, unColor);		
 	}
-	
+
 	public void setJugador2(String nombre, EnumRazas unaRaza , Colores unColor) 
 			throws MinimoCuatroCaracteresException, NombreRepetidoExepcion, ColorRepetidoExepcion {
 		this.validacionNombreJugador(nombre);
@@ -73,23 +73,23 @@ public class Juego extends Observable{
 	private void validacionNombreJugador(String nombre) throws MinimoCuatroCaracteresException{
 		if (nombre.length() < 4) throw new MinimoCuatroCaracteresException();
 	}
-	
+
 	private void validacionJugadorDos(String nombre, Colores unColor) throws NombreRepetidoExepcion, ColorRepetidoExepcion{
 		if (nombre == jugador1.getNombre()) throw new NombreRepetidoExepcion();
 		if (unColor == jugador1.getColor()) throw new ColorRepetidoExepcion();
 	}
-	
+
 	public void iniciarJuego() throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
 		posicionarBases();
-		
+
 		jugadorActual = jugador1 ;
-		
+
 		this.setChanged();
 		this.notifyObservers();
 	}
-	
+
 	private void posicionarBases() throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
-		
+
 		jugadorActual = jugador1 ;
 		switch(jugadorActual.getRaza()){
 		case PROTOSS:
@@ -99,7 +99,7 @@ public class Juego extends Observable{
 			construirEn(EnumEdificiosTerran.BASE_TERRAN,base1);
 			break;			
 		}
-		
+
 		jugadorActual = jugador2 ;
 		switch(jugadorActual.getRaza()){
 		case PROTOSS:
@@ -109,79 +109,83 @@ public class Juego extends Observable{
 			construirEn(EnumEdificiosTerran.BASE_TERRAN,base2);
 			break;			
 		}
-			
-			
-		
+
+
+
 	}
 
 	public Jugador getJugadorActual() {
 		return jugadorActual;
 	}
-	
+
 	public int getAncho() {
 		return mapa.getAncho();
 	}
-	
+
 	public int getAlto() {
 		return mapa.getAlto();
 	}
-	
+
 	public Terreno obtenerTerreno(Coordenada coordenada) 
 			throws FueraDeLimitesException {
 		return mapa.getTerreno(coordenada);
 	}
-	
+
 	public Propiedad seleccionarSuelo(Coordenada coordenada) 
 			throws FueraDeLimitesException {
 		return mapa.getPropiedadSuelo(coordenada);
 	}
-	
+
 	public Propiedad seleccionarCielo(Coordenada coordenada) 
 			throws FueraDeLimitesException {	
 		return mapa.getPropiedadCielo(coordenada);
 	}
-	
-	
+
+
 
 	public void construirEn(EnumEdificios edificio, Coordenada coordenada) 
 			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
-					GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
-		
+			GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
+
 		Construccion edificioNuevo = jugadorActual.construir(edificio);
 		mapa.almacenar((Propiedad) edificioNuevo, coordenada);
-		
+
 		this.setChanged();
 		this.notifyObservers();
 	}
-	
+
 	public void crearUnidad(CreadorDeUnidades edificioCreador, Unidades unidadPedida) 
 			throws MineralInsuficienteException,GasInsuficienteException, 
 			PoblacionInsuficienteException, RecursosNegativosException, EdificioTodaviaEnConstruccionException {
-		
-		 jugadorActual.crearUnidad(unidadPedida, edificioCreador);	
-		 creadoresDeUnidadesEnUso.add(edificioCreador);
+
+		jugadorActual.crearUnidad(unidadPedida, edificioCreador);	
+		creadoresDeUnidadesEnUso.add(edificioCreador);
+
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public void pasarTurno() 
 			throws UnidadIncompletaException, DestinoInvalidoException, 
 			FueraDeLimitesException, PropiedadNoEstaEnJuegoException {
-		//cambio de jugador
+		
 		if(jugadorActual == jugador1)
 			jugadorActual= jugador2;
 		else if(jugadorActual == jugador2)
 			jugadorActual= jugador1;
+
 		
-		//empiezo su turno
 		jugadorActual.iniciarTurno();
+
 		
-		//gestiono creacion de unidades
 		ponerNuevasUnidadesEnMapa();
-				
+
 		this.setChanged();
 		this.notifyObservers();
 	}
 
 	private void ponerNuevasUnidadesEnMapa() throws UnidadIncompletaException, DestinoInvalidoException, FueraDeLimitesException {
+		
 		Iterator<CreadorDeUnidades> itEdificiosCreadores = creadoresDeUnidadesEnUso.iterator();
 		while(itEdificiosCreadores.hasNext()){
 			CreadorDeUnidades unCreador = itEdificiosCreadores.next();
@@ -214,7 +218,7 @@ public class Juego extends Observable{
 	public void moverUnidad(Unidad unidad, Coordenada destino) 
 			throws PropiedadNoEstaEnJuegoException, CoordenadaInexistenteException, PropiedadNoExisteEnEstaUbicacion, DestinoInvalidoException {
 		this.mapa.moverUnidad(unidad, destino);	
-		
+
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -223,7 +227,7 @@ public class Juego extends Observable{
 			throws EspacioInsuficienteException, UnidadNoTransportableException, PropiedadNoExisteEnEstaUbicacion, FueraDeLimitesException {
 		naveTransportadora.subirUnidad(unidadSubida);
 		mapa.getTerreno(mapa.encontrar(unidadSubida)).borrarContenido(unidadSubida);
-		
+
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -233,8 +237,8 @@ public class Juego extends Observable{
 		Coordenada posicionDescenso = mapa.encontrar(naveTransportadora);
 		Unidad unidadBajada = naveTransportadora.bajarUnidad(unidadABajar);
 		mapa.almacenar(unidadBajada, posicionDescenso);
-		
-		
+
+
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -253,7 +257,7 @@ public class Juego extends Observable{
 		this.setChanged();
 		this.notifyObservers();
 	}
-	
+
 	public boolean hayGanador(){
 		if(jugador1Perdio()&&jugador2Perdio())
 			return false;		
@@ -263,9 +267,9 @@ public class Juego extends Observable{
 			return true;
 		else
 			return false;
-		
+
 	}
-	
+
 	public String getNombreGanador(){
 		if((jugador1Perdio() && jugador2Perdio())|| (!jugador1Perdio() && !jugador2Perdio())){
 			return "No Hay Ganador";
@@ -280,10 +284,10 @@ public class Juego extends Observable{
 	private boolean jugador1Perdio() {
 		return (jugador1.cantidadConstrucciones() == 0 && jugador1.getPoblacionActual() == 0);
 	}
-	
+
 	private boolean jugador2Perdio() {
 		return (jugador2.cantidadConstrucciones() == 0 && jugador2.getPoblacionActual() == 0);
 	}
 
-		
+
 }

@@ -1,4 +1,4 @@
-package visual;
+package visual.vistas;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
 import modelo.Juego;
+import modelo.mapa.Coordenada;
 import modelo.unidades.UnidadTransportadora;
 import controlador.AccionBajar;
 import controlador.AccionSubir;
@@ -15,8 +16,8 @@ public class VistaUnidadTransportadora extends VistaUnidades {
 
 	private UnidadTransportadora unidadTransportadora;
 
-	public VistaUnidadTransportadora(UnidadTransportadora unidad, ImageIcon imagen) {
-		super(unidad, imagen);
+	public VistaUnidadTransportadora(UnidadTransportadora unidad,Coordenada posicion, ImageIcon imagen) {
+		super(unidad,posicion, imagen);
 		this.unidadTransportadora = unidad;
 	}
 	

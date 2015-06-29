@@ -1,10 +1,11 @@
-package visual;
+package visual.vistas;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
+import visual.Seleccionable;
 import modelo.Juego;
 import modelo.mapa.Coordenada;
 import modelo.unidades.Unidad;
@@ -14,16 +15,17 @@ import controlador.AccionMoverUnidad;
 public abstract class VistaUnidades extends JLabel implements Seleccionable{
 
 	private Unidad unidad;
+	private Coordenada posicion;
 
-	public VistaUnidades(Unidad unidad, ImageIcon imagen){
+	public VistaUnidades(Unidad unidad,Coordenada posicion, ImageIcon imagen){
 		super(imagen);
 		this.unidad = unidad;
+		this.posicion = posicion;
 	}
 	
 	@Override
 	public Coordenada obtenerPosicion() {
-		// TODO Auto-generated method stub
-		return null;
+		return posicion;
 	}
 
 	@Override
@@ -56,6 +58,7 @@ public abstract class VistaUnidades extends JLabel implements Seleccionable{
 
 	@Override
 	public void ofrecerAcciones(JToolBar barraAcciones, Juego juego) {
+		barraAcciones.add(new JLabel(""));
 		if(unidadPerteneceAJugadorActual(juego))
 			ofrecerAccionMovimiento(barraAcciones);
 	}

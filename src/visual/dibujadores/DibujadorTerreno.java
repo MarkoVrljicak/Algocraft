@@ -3,11 +3,11 @@ package visual.dibujadores;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import modelo.mapa.terrenos.Terreno;
 import modelo.mapa.terrenos.Terrenos;
-import visual.VistaTerreno;
+import visual.vistas.VistaTerreno;
+import controlador.MiControladorMouse;
 
 
 public class DibujadorTerreno {
@@ -44,8 +44,10 @@ public class DibujadorTerreno {
 		}
 	}
 	
-	public JLabel dibujar(Terreno unTerreno){
-		return new VistaTerreno(unTerreno,imagenes.get(unTerreno.getNombre()));
+	public VistaTerreno dibujar(Terreno unTerreno){
+		VistaTerreno vistaTerreno = new VistaTerreno(unTerreno,imagenes.get(unTerreno.getNombre()));
+		vistaTerreno.addMouseListener(new MiControladorMouse(vistaTerreno));
+		return vistaTerreno;
 	}
 
 }

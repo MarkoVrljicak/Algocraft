@@ -1,7 +1,6 @@
 package modelo.magias;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import modelo.mapa.terrenos.Terreno;
 
@@ -16,9 +15,8 @@ public class TormentaPsionica extends AtaqueMagico{
 	
 	public void ejecutar(){
 		int danio = 100;
-		Iterator<Terreno> iter = area.iterator();
-		while(iter.hasNext()){
-			afectarZona(iter.next(), danio);
+		for(Terreno terreno : area){
+			afectarZona(terreno, danio);
 		}
 		turnosActivo++;
 	}

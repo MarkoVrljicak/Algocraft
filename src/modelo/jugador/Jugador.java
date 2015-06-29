@@ -24,7 +24,7 @@ import modelo.stats.Recurso;
 import modelo.unidades.Unidad;
 import modelo.unidades.Unidades;
 
-public class Jugador implements Actualizable, Usuario {
+public class Jugador implements Actualizable {
 	
 	private CreadorDeEdificios creadorEdificios;
 	private ArrayList<Unidad> unidades;
@@ -111,9 +111,7 @@ public class Jugador implements Actualizable, Usuario {
 	
 	public int getPoblacionActual(){
 		int poblacion = 0;
-		Iterator<Unidad> itUnidades = unidades.iterator();
-		while(itUnidades.hasNext()){
-			Unidad unaUnidad = itUnidades.next();
+		for(Unidad unaUnidad : unidades){
 			if (!unaUnidad.enConstruccion())
 				poblacion += unaUnidad.getSuministros();
 		}
@@ -122,12 +120,9 @@ public class Jugador implements Actualizable, Usuario {
 	
 	public int getPoblacionMaxima() {
 		final int topePoblacional = 200 ;
-		//empieza en cinco
-		int poblacionMaxima = 5;
-		//recorro construcciones, pilon y deposito suman poblacion maxima
-		Iterator<Construccion> itConstrucciones = construcciones.iterator();
-		while(itConstrucciones.hasNext()){
-			 Construccion edificio = itConstrucciones.next();
+		final int poblacionInicial = 5;
+		int poblacionMaxima = poblacionInicial;
+		for(Construccion edificio : construcciones){
 			 poblacionMaxima += edificio.getPoblacionSumada();
 		}
 		if(poblacionMaxima<=topePoblacional)
@@ -135,17 +130,13 @@ public class Jugador implements Actualizable, Usuario {
 		else return topePoblacional ;
 	}	
 	
-	@Override
 	public int getPoblacionDisponible() {
 		return this.getPoblacionMaxima()-this.getPoblacionActual();
 	}
 	
-	
-	@Override
 	public boolean tieneConstruccion(EnumEdificios nombreEdificio) {
-		Iterator<Construccion> itConstrucciones= construcciones.iterator();	
-		while(itConstrucciones.hasNext()){
-			if(itConstrucciones.next().getNombre() == nombreEdificio)
+		for(Construccion unaConstruccion : construcciones){
+			if(unaConstruccion.getNombre() == nombreEdificio)
 				return true;
 		}
 		return false;//si no lo tiene
@@ -158,7 +149,9 @@ public class Jugador implements Actualizable, Usuario {
 	}
 	
 	public Construccion construir(EnumEdificios nombreConstruccion) 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {
+			throws MineralInsuficienteException, GasInsuficienteException, 
+			DependenciasNoCumplidasException, RecursosNegativosException {
+		
 		Construccion construccion = creadorEdificios.crearConstruccion(nombreConstruccion);
 		construcciones.add(construccion);
 	
@@ -172,6 +165,7 @@ public class Jugador implements Actualizable, Usuario {
 	public Unidad crearUnidad(Unidades nombreUnidad , CreadorDeUnidades edificioCreador) 
 			throws MineralInsuficienteException,GasInsuficienteException, PoblacionInsuficienteException, 
 			RecursosNegativosException, EdificioTodaviaEnConstruccionException {
+		
 		Unidad unidadCreada = null;
 		unidadCreada = edificioCreador.crearUnidad(nombreUnidad);
 		if(!(unidadCreada == null)){
@@ -186,15 +180,12 @@ public class Jugador implements Actualizable, Usuario {
 	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException {
 		
 		this.limpiarMuertos();
-		//inicio construcciones
-		Iterator<Construccion> itConstrucciones= construcciones.iterator();	
-		while(itConstrucciones.hasNext()){
-			itConstrucciones.next().iniciarTurno();;
+		
+		for(Construccion unaConstruccion : construcciones){
+			unaConstruccion.iniciarTurno();;
 		}
-		//inicio unidades
-		Iterator<Unidad> itUnidades= unidades.iterator();	
-		while(itUnidades.hasNext()){
-			itUnidades.next().iniciarTurno();
+		for(Unidad unaUnidad : unidades){
+			unaUnidad.iniciarTurno();
 		}
 	}
 

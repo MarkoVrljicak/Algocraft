@@ -203,10 +203,8 @@ public class Mapa implements Iterable<Terreno>{
 	public Collection<Terreno> obtenerRadioDeCasilleros(int radio, Coordenada centro){
 		
 		Collection<Terreno> outputTerrenos = new ArrayList<Terreno>();
-		Iterator<Terreno> iter = this.iterator();
-		
-		while (iter.hasNext()){
-			Terreno terrenoActual = iter.next();
+			
+		for(Terreno terrenoActual : this){
 			Coordenada coordenadaActual = terrenoActual.getCoordenada();
 			if(coordenadaActual.distanciaA(centro) <= radio){
 				outputTerrenos.add(terrenoActual);

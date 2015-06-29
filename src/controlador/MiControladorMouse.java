@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 
 import visual.Seleccionable;
 
-public class MiControladorMouse2 extends MouseAdapter {
+public class MiControladorMouse extends MouseAdapter {
 
 	private static Controlador controlador;
 	private Seleccionable accionado;
@@ -14,7 +14,7 @@ public class MiControladorMouse2 extends MouseAdapter {
 		controlador = miControlador;
 	}
 	
-	public MiControladorMouse2(Seleccionable accionado){
+	public MiControladorMouse(Seleccionable accionado){
 		this.accionado = accionado;
 	}
 	

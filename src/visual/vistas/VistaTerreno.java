@@ -1,4 +1,4 @@
-package visual;
+package visual.vistas;
 
 import java.util.Set;
 
@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
+import visual.Seleccionable;
 import modelo.Juego;
 import modelo.construcciones.EnumEdificios;
 import modelo.jugador.Jugador;

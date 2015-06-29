@@ -3,8 +3,9 @@ package visual.dibujadores;
 import javax.swing.JLabel;
 
 import modelo.Interfaces.Daniable;
+import modelo.mapa.Coordenada;
 import modelo.unidades.UnidadTransportadora;
-import visual.VistaUnidadTransportadora;
+import visual.vistas.VistaUnidadTransportadora;
 
 
 public class DibujadorNaveTransporteProtoss extends Dibujador{
@@ -15,7 +16,7 @@ public class DibujadorNaveTransporteProtoss extends Dibujador{
 	}
 
 	@Override
-	public JLabel dibujar(Daniable aDibujar) {
-		return new  VistaUnidadTransportadora((UnidadTransportadora) aDibujar,imagen) ;
+	public JLabel dibujar(Daniable aDibujar, Coordenada posicion) {
+		return new  VistaUnidadTransportadora((UnidadTransportadora) aDibujar,posicion,imagen) ;
 	}
 }

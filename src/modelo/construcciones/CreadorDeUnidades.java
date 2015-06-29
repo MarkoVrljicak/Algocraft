@@ -35,6 +35,7 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	public Unidad crearUnidad(Unidades unidad) 
 			throws MineralInsuficienteException, GasInsuficienteException, 
 			PoblacionInsuficienteException, RecursosNegativosException, EdificioTodaviaEnConstruccionException {
+		
 		UnidadesAbstractFactory creador = unidadesCreables.get(unidad);
 		
 		if(!tengoMineralSuficiente(creador))
@@ -94,12 +95,11 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 		return !unidadesEnCreacion.isEmpty();
 	}	
 	
-	//preguntar si hay unidades en creacion
+	//TODO preguntar si hay unidades en creacion
 	public boolean unidadTerminada() {
 		return !unidadesEnCreacion.peek().enConstruccion();
 	}
 	
-	//preguntar si la unidad esta terminada
 	public Unidad obtenerUnidadCreada() throws UnidadIncompletaException{
 		if(this.unidadEnCreacion() && this.unidadTerminada())
 			return unidadesEnCreacion.poll();

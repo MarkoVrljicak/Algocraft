@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
+import visual.vistas.VistaMapa;
 import modelo.Juego;
 import modelo.jugador.Jugador;
 import controlador.AccionPasarTurno;

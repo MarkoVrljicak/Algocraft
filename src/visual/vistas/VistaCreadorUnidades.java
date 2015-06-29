@@ -1,4 +1,4 @@
-package visual;
+package visual.vistas;
 
 import java.util.Set;
 
@@ -9,6 +9,7 @@ import javax.swing.JToolBar;
 
 import modelo.Juego;
 import modelo.construcciones.CreadorDeUnidades;
+import modelo.mapa.Coordenada;
 import modelo.unidades.Unidades;
 import controlador.AccionCrearUnidad;
 
@@ -18,8 +19,8 @@ public class VistaCreadorUnidades extends VistaEdificios {
 
 	private CreadorDeUnidades creadorUnidades;
 
-	public VistaCreadorUnidades(CreadorDeUnidades edificio,ImageIcon imagen) {
-		super(edificio, imagen);
+	public VistaCreadorUnidades(CreadorDeUnidades edificio,Coordenada posicion,ImageIcon imagen) {
+		super(edificio, posicion, imagen);
 		this.creadorUnidades = edificio;
 	}
 	
@@ -40,15 +41,18 @@ public class VistaCreadorUnidades extends VistaEdificios {
 	
 	@Override
 	public void ofrecerAcciones(JToolBar barraAcciones, Juego juego) {
-		Set<Unidades> creables = creadorUnidades.getUnidadesCreables();
-		String intro = "Crear unidad:";
-		JLabel lblExplicacion = new JLabel(intro);
-		barraAcciones.add(lblExplicacion);
-		for (Unidades nombreUnidad : creables) {
-			JButton botonCreador = new JButton(nombreUnidad.toString());
-			botonCreador.setToolTipText(this.getRecursosNecesarios(nombreUnidad, creadorUnidades));
-			botonCreador.addActionListener(new AccionCrearUnidad(nombreUnidad, creadorUnidades));
-			barraAcciones.add(botonCreador);
+		barraAcciones.add(new JLabel(""));
+		if(creadorUnidades.getDuenio()==juego.getJugadorActual()){
+			Set<Unidades> creables = creadorUnidades.getUnidadesCreables();
+			String intro = "Crear unidad:";
+			JLabel lblExplicacion = new JLabel(intro);
+			barraAcciones.add(lblExplicacion);
+			for (Unidades nombreUnidad : creables) {
+				JButton botonCreador = new JButton(nombreUnidad.toString());
+				botonCreador.setToolTipText(this.getRecursosNecesarios(nombreUnidad, creadorUnidades));
+				botonCreador.addActionListener(new AccionCrearUnidad(nombreUnidad, creadorUnidades));
+				barraAcciones.add(botonCreador);
+			}
 		}
 	}
 	

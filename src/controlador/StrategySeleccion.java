@@ -12,8 +12,8 @@ public class StrategySeleccion implements StrategyAccion {
 		JToolBar barraAcciones = controlador.obtenerToolbarAccionesLimpio();
 		accionado.mostrarInformacion(barraAcciones);
 		accionado.ofrecerAcciones(barraAcciones, juego);
-//		controlador.escribirEnLog("Seleccionado posicion(x/y):"
-//				+accionado.obtenerPosicion().getX()+"/"+accionado.obtenerPosicion().getY());
+		controlador.escribirEnLog("Seleccionado posicion(x/y):"
+				+accionado.obtenerPosicion().getX()+"/"+accionado.obtenerPosicion().getY());
 	}
 
 }

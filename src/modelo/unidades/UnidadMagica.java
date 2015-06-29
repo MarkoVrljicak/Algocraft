@@ -31,12 +31,8 @@ abstract public class UnidadMagica extends Unidad {
 			} 
 		}
 		
-		iter = magias.iterator();
-		while(iter.hasNext()) {
-			AtaqueMagico siguienteMagia = iter.next();
-			
+		for(AtaqueMagico siguienteMagia : magias) {
 			siguienteMagia.ejecutar();
-			
 		}
 	}
 	

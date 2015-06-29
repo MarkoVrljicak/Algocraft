@@ -41,7 +41,7 @@ public class Controlador {
 
 	public Controlador(Algocraft aplicacion, Juego juego){
 		AccionesAlgocraft.setearControlador(this);
-		MiControladorMouse2.setearControlador(this);
+		MiControladorMouse.setearControlador(this);
 		this.aplicacion = aplicacion;
 		this.juego = juego;
 		estrategia = new StrategySeleccion();

@@ -20,14 +20,10 @@ import org.junit.Test;
 
 public class AltoTemplarioTest {
 	
-	public void pasarMuchosTurnos(AltoTemplario templario){
+	public void pasarMuchosTurnos(AltoTemplario templario) throws PropiedadNoEstaEnJuegoException{
 		//para llenar magia
 		for(int i = 0; i<20; i++){
-			try {
-				templario.iniciarTurno();
-			} catch (PropiedadNoEstaEnJuegoException e) {
-				// no importa
-			}
+			templario.iniciarTurno();
 		}
 	}
 
@@ -108,7 +104,7 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-	public void testTemplarioClonaUnidad() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testTemplarioClonaUnidad() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10,10);
 		Unidad original = new Zealot();
 		AltoTemplario templario = new AltoTemplario();
@@ -158,7 +154,7 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-	public void testAlucinacionGasta100Magia() throws DestinoInvalidoException, FueraDeLimitesException{
+	public void testAlucinacionGasta100Magia() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10,10);
 		Unidad original = new Zealot();
 		AltoTemplario templario = new AltoTemplario();

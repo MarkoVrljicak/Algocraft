@@ -4,7 +4,8 @@ import javax.swing.JLabel;
 
 import modelo.Interfaces.Daniable;
 import modelo.construcciones.Construccion;
-import visual.VistaEdificios;
+import modelo.mapa.Coordenada;
+import visual.vistas.VistaEdificios;
 
 
 public class DibujadorPilon extends Dibujador {
@@ -15,7 +16,7 @@ public class DibujadorPilon extends Dibujador {
 	}
 
 	@Override
-	public JLabel dibujar(Daniable aDibujar) {
-		return new  VistaEdificios( (Construccion) aDibujar,imagen) ;
+	public JLabel dibujar(Daniable aDibujar, Coordenada posicion) {
+		return new  VistaEdificios( (Construccion) aDibujar,posicion,imagen) ;
 	}
 }

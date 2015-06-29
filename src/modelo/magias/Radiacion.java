@@ -1,7 +1,6 @@
 package modelo.magias;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.mapa.Coordenada;
@@ -25,9 +24,8 @@ public class Radiacion extends AtaqueMagico{
 		posicionUnidad = mapa.getPosicionPropiedad(unidad);
 		
 		Collection<Terreno> zonaRadioactiva = mapa.obtenerRadioDeCasilleros(1, posicionUnidad);
-		Iterator<Terreno> iter = zonaRadioactiva.iterator();
-		while(iter.hasNext()){
-			afectarZona(iter.next(), danio);
+		for(Terreno terreno : zonaRadioactiva){
+			afectarZona(terreno, danio);
 		}
 		
 	}

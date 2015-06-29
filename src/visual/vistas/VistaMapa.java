@@ -1,9 +1,10 @@
-package visual;
+package visual.vistas;
 
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
+import visual.VentanaErrorFatal;
 import modelo.Juego;
 import modelo.exception.FueraDeLimitesException;
 import modelo.mapa.Coordenada;
