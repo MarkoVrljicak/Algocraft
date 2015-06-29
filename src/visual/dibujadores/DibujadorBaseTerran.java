@@ -18,6 +18,6 @@ public class DibujadorBaseTerran extends Dibujador {
 	
 	@Override
 	public JLabel dibujar(Daniable aDibujar, Coordenada posicion) {
-		return new  VistaEdificios( (Construccion) aDibujar ,posicion ,imagen) ;
+		return new  VistaEdificios( (Construccion) aDibujar, posicion, imagen) ;
 	}
 }

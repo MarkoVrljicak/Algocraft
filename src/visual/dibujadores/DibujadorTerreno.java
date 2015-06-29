@@ -1,53 +1,33 @@
 package visual.dibujadores;
 
-import java.util.HashMap;
+import java.util.Set;
 
 import javax.swing.ImageIcon;
 
-import modelo.mapa.terrenos.Terreno;
-import modelo.mapa.terrenos.Terrenos;
-import visual.vistas.VistaTerreno;
-import controlador.MiControladorMouse;
+import modelo.construcciones.EnumEdificios;
 
-
-public class DibujadorTerreno {
+public abstract class DibujadorTerreno{
 	
-	private static final String pathTexturas = "texturas/";
-	private static DibujadorTerreno instance = null;
+	protected ImageIcon imagen;
+	protected static final String pathTexturas ="texturas/";
 	
-	public static DibujadorTerreno getInstance(){
-		if(instance == null)
-			instance = new DibujadorTerreno();
-		
-		return instance;
-	}
-	
-	private HashMap<Terrenos, ImageIcon> imagenes;
-	
-	protected DibujadorTerreno(){
-		
-		imagenes = new HashMap<Terrenos ,ImageIcon>();
-		//terrenos
-		imagenes.put(Terrenos.TIERRA,createImageIcon(pathTexturas + "tierra.png"));
-		imagenes.put(Terrenos.AIRE,createImageIcon(pathTexturas + "aire.png"));
-		imagenes.put(Terrenos.MINERALES,createImageIcon(pathTexturas + "cristales.png"));
-		imagenes.put(Terrenos.VOLCAN,createImageIcon(pathTexturas + "volcan.png"));		
-	}
-	
-	protected ImageIcon createImageIcon(String path) {
+	protected ImageIcon createImageIcon(String path,
+			String description) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {
-			return new ImageIcon(imgURL);
+			return new ImageIcon(imgURL, description);
 		} else {
 			System.err.println("Couldn't find file: " + path);
 			return null;
 		}
 	}
+	protected Set<EnumEdificios> edificiosConstruibles;
 	
-	public VistaTerreno dibujar(Terreno unTerreno){
-		VistaTerreno vistaTerreno = new VistaTerreno(unTerreno,imagenes.get(unTerreno.getNombre()));
-		vistaTerreno.addMouseListener(new MiControladorMouse(vistaTerreno));
-		return vistaTerreno;
+	public Set<EnumEdificios> getEdificiosConstruibles(){
+		return edificiosConstruibles;
 	}
-
+	
+	public ImageIcon getImagen(){
+		return imagen;
+	}
 }

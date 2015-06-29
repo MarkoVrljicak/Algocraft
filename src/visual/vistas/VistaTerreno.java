@@ -1,5 +1,6 @@
 package visual.vistas;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.swing.ImageIcon;
@@ -7,22 +8,24 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
-import visual.Seleccionable;
 import modelo.Juego;
 import modelo.construcciones.EnumEdificios;
 import modelo.jugador.Jugador;
 import modelo.mapa.Coordenada;
 import modelo.mapa.terrenos.Terreno;
+import visual.Seleccionable;
 import controlador.acciones.AccionCrearEdificio;
 
 @SuppressWarnings("serial")
 public class VistaTerreno extends JLabel implements Seleccionable{
 	
 	private Terreno terreno;
+	Set<EnumEdificios> edificios;
 
-	public VistaTerreno(Terreno terreno, ImageIcon imagen){
+	public VistaTerreno(Terreno terreno, ImageIcon imagen, Set<EnumEdificios> edificios){
 		super(imagen);
 		this.terreno = terreno;
+		this.edificios = edificios;
 	}
 
 	@Override
@@ -33,12 +36,19 @@ public class VistaTerreno extends JLabel implements Seleccionable{
 
 	@Override
 	public void ofrecerAcciones(JToolBar barraAcciones, Juego juego) {
-		Set<EnumEdificios> edificiosProbables = juego.getJugadorActual().getConstruccionesDisponibles();
+		Set<EnumEdificios> edificiosDisponibles = new HashSet<EnumEdificios>();
+		edificiosDisponibles.addAll(juego.getJugadorActual().getConstruccionesDisponibles());
+		edificiosDisponibles.retainAll(edificios);
+		
 		//TODO Preguntar si se puede construir el edificio antes de ofrecer accion
 		// <Marko> Estas seguro? Me parece bien que te ofrezca la opcion aunque despues
 		//         no te permita construirlo. Asi funciona en el starcraft.
-		//TODO Diferenciar por tipo de terreno
-		for(EnumEdificios nombreEdificio : edificiosProbables){
+		
+		mostrarOpciones(edificiosDisponibles, barraAcciones, juego);
+	}
+	
+	private void mostrarOpciones(Set<EnumEdificios> edificios, JToolBar barraAcciones, Juego juego){
+		for(EnumEdificios nombreEdificio : edificios){
 			Coordenada coordenada = terreno.getCoordenada();
 			JButton botonCreador = new JButton(nombreEdificio.toString());
 			botonCreador.setToolTipText(this.getRecursosNecesarios(nombreEdificio, juego.getJugadorActual()));
