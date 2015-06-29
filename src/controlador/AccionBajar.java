@@ -6,10 +6,10 @@ import modelo.unidades.UnidadTransportadora;
 
 public class AccionBajar extends AccionesAlgocraft {
 	
-	private UnidadTransportadora unidad;
+//	private UnidadTransportadora unidad;
 
 	public AccionBajar(UnidadTransportadora unidadTransportadora){
-		this.unidad = unidadTransportadora;
+//		this.unidad = unidadTransportadora;
 	}
 
 	@Override

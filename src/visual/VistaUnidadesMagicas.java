@@ -8,11 +8,11 @@ import modelo.unidades.UnidadMagica;
 @SuppressWarnings("serial")
 public class VistaUnidadesMagicas extends VistaUnidades {
 
-	private UnidadMagica unidadMagica;
+//	private UnidadMagica unidadMagica;
 
 	public VistaUnidadesMagicas(UnidadMagica unidad, ImageIcon imagen) {
 		super(unidad, imagen);
-		unidadMagica = unidad;
+//		unidadMagica = unidad;
 	}
 	
 	@Override
