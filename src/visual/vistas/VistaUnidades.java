@@ -32,6 +32,7 @@ public abstract class VistaUnidades extends JLabel implements Seleccionable{
 	public void mostrarInformacion(JToolBar barraInformacion) {
 		this.mostrarNombre(barraInformacion);
 		this.mostrarVida(barraInformacion);
+		this.mostrarEscudo(barraInformacion);
 		this.mostrarMovimientosRestantes(barraInformacion);
 		this.mostrarCostoTransporte(barraInformacion);
 		JButton separador = new JButton("para que se muestren las estadisticas");
@@ -51,6 +52,16 @@ public abstract class VistaUnidades extends JLabel implements Seleccionable{
 		String vida = "Vida : "+ vidaActual + "/" + vidaMaxima;
 		JLabel lblVida = new JLabel(vida);
 		barraInformacion.add(lblVida);
+	}
+	
+	private void mostrarEscudo(JToolBar barraInformacion) {
+		if(unidad.getEscudoMaximo() != 0){
+			String escudoActual = String.valueOf(unidad.getEscudo());
+			String escudoMaximo = String.valueOf(unidad.getEscudoMaximo());
+			String escudo = "Escudo : "+ escudoActual + "/" + escudoMaximo;
+			JLabel lblEscudo = new JLabel(escudo);
+			barraInformacion.add(lblEscudo);
+		}
 	}
 
 

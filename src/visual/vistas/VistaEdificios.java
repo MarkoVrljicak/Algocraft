@@ -31,6 +31,7 @@ public class VistaEdificios extends JLabel implements Seleccionable{
 	public void mostrarInformacion(JToolBar barraInformacion) {
 		this.mostrarNombre(barraInformacion);
 		this.mostrarVida(barraInformacion);
+		this.mostrarEscudo(barraInformacion);
 		this.mostrarPoblacionSumada(barraInformacion);
 		this.mostrarEnConstruccion(barraInformacion);
 		JButton separador = new JButton("para que se muestren las estadisticas");
@@ -50,6 +51,16 @@ public class VistaEdificios extends JLabel implements Seleccionable{
 		String vida = "Vida : "+ vidaActual + "/" + vidaMaxima;
 		JLabel lblVida = new JLabel(vida);
 		barraInformacion.add(lblVida);
+	}
+	
+	private void mostrarEscudo(JToolBar barraInformacion) {
+		if(edificio.getEscudoMaximo() != 0){
+			String escudoActual = String.valueOf(edificio.getEscudo());
+			String escudoMaximo = String.valueOf(edificio.getEscudoMaximo());
+			String escudo = "Escudo : "+ escudoActual + "/" + escudoMaximo;
+			JLabel lblEscudo = new JLabel(escudo);
+			barraInformacion.add(lblEscudo);
+		}
 	}
 	
 	private void mostrarPoblacionSumada(JToolBar barraInformacion) {

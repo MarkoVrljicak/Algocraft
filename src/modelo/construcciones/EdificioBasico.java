@@ -8,7 +8,7 @@ import modelo.stats.Vida;
 
 public class EdificioBasico extends Propiedad implements Construccion{
 
-	protected Stat stat;
+	protected Stat vitalidad;
 	protected int tiempoDeConstruccion;
 	protected EnumEdificios nombre;
 	public Jugador duenio;
@@ -17,14 +17,26 @@ public class EdificioBasico extends Propiedad implements Construccion{
 	
 	public EdificioBasico(EnumEdificios nombre, int vidaMaxima, int tiempoDeConstruccion){
 		this.nombre= nombre;
-		this.stat = new Vida(vidaMaxima);
+		this.vitalidad = new Vida(vidaMaxima);
 		this.tiempoDeConstruccion=tiempoDeConstruccion;
 		this.setPoblacionSumada(0);
 	}
 	
 
-	public int getVida() {
-		return stat.actual();
+	public int getVida(){
+		return this.vitalidad.actual();
+	}
+	
+	public int getVidaMaxima(){
+		return this.vitalidad.max();
+	}
+	
+	public int getEscudo(){
+		return 0;
+	}
+	
+	public int getEscudoMaximo(){
+		return 0;
 	}
 	
 		
@@ -65,12 +77,12 @@ public class EdificioBasico extends Propiedad implements Construccion{
 
 	@Override
 	public void recibirDanio(int cantidadDanio) {
-		stat.disminuir(cantidadDanio);
+		vitalidad.disminuir(cantidadDanio);
 	}
 
 	@Override
 	public boolean estoyMuerto() {
-		return stat.estoyVacio();
+		return vitalidad.estoyVacio();
 	}
 
 
@@ -94,12 +106,6 @@ public class EdificioBasico extends Propiedad implements Construccion{
 	@Override
 	public void quitarEnergia() {
 		//no responde
-	}
-
-
-	@Override
-	public int getVidaMaxima() {
-		return stat.max();
 	}
 
 

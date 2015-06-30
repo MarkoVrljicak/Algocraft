@@ -16,6 +16,20 @@ public abstract class DecoradorEdificioBasico extends Propiedad implements Const
 	public int getVida(){
 		return this.edificio.getVida();
 	}
+	
+	public int getVidaMaxima(){
+		return this.edificio.getVidaMaxima();
+	}
+	
+	public int getEscudo(){
+		return this.edificio.getEscudo();
+	}
+	
+	public int getEscudoMaximo(){
+		return this.edificio.getEscudoMaximo();
+	}
+	
+	
 	public EnumEdificios getNombre(){
 		return this.edificio.getNombre();
 		
@@ -60,10 +74,6 @@ public abstract class DecoradorEdificioBasico extends Propiedad implements Const
 	public void quitarEnergia() {
 		//no responde.
 	}	
-	
-	public int getVidaMaxima() {
-		return edificio.getVidaMaxima();
-	}
 	
 	@Override
 	public int getTiempoConstruccion(){
