@@ -2,23 +2,25 @@ package modelo.construcciones;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import modelo.construcciones.CreadorDeUnidades;
 import modelo.exception.EdificioTodaviaEnConstruccionException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.RecursosNegativosException;
+import modelo.factory.edificiosProtoss.CreadorAcceso;
 import modelo.factory.edificiosTerran.CreadorBarraca;
 import modelo.jugador.Colores;
 import modelo.jugador.Jugador;
 import modelo.razas.EnumRazas;
+import modelo.unidades.protos.UnidadesProtos;
 import modelo.unidades.terran.UnidadesTerran;
 
 import org.junit.Test;
 
 public class CreadorDeUnidadesTest {
 	private static final int tiempoConstruccionBarraca = 12;
+	private static final int tiempoConstruccionAcceso = 12;
 
 	//pruebo con una clase hija por ser clase abstracta
 
@@ -30,6 +32,23 @@ public class CreadorDeUnidadesTest {
 
 		return barraca;
 	}
+	
+	private CreadorDeUnidades crearAccesoListo() {
+		CreadorAcceso creador = new CreadorAcceso();
+		CreadorDeUnidades acceso = creador.crearEdificio();
+		Jugador jugador = new Jugador("Nombre", EnumRazas.PROTOSS, Colores.AZUL);
+		acceso.setDuenio(jugador);
+		for(int turnos = 1 ; turnos<= tiempoConstruccionAcceso ; turnos++)
+			try {
+				acceso.iniciarTurno();
+			} catch (PropiedadNoEstaEnJuegoException e) {
+				// no entiendo por que se lanzaria esta excepcion
+				e.printStackTrace();
+			}
+
+		return acceso;
+	}
+
 
 	private CreadorDeUnidades crearBarracaLista(){
 		CreadorDeUnidades barraca = crearBarracaValida();
@@ -87,7 +106,7 @@ public class CreadorDeUnidadesTest {
 	}
 
 	@Test(expected = MineralInsuficienteException.class)
-	public void testIntentarCrearUnidadSinRecursosLanzaException()
+	public void testIntentarCrearUnidadSinMineralLanzaException()
 			throws MineralInsuficienteException, GasInsuficienteException, 
 			PoblacionInsuficienteException, RecursosNegativosException, EdificioTodaviaEnConstruccionException{
 
@@ -101,7 +120,17 @@ public class CreadorDeUnidadesTest {
 		barraca.crearUnidad(UnidadesTerran.MARINE);
 		//4 para gastar recursos iniciales, 1 para lanzar exception
 	}
+	
+	@Test(expected = GasInsuficienteException.class)
+	public void testIntentarCrearUnidadSinGasLanzaException()
+			throws MineralInsuficienteException, GasInsuficienteException, 
+			PoblacionInsuficienteException, RecursosNegativosException, EdificioTodaviaEnConstruccionException{
 
+		CreadorDeUnidades acceso = this.crearAccesoListo();
+
+		acceso.crearUnidad(UnidadesProtos.DRAGON);
+	}
+	
 	@Test(expected = EdificioTodaviaEnConstruccionException.class)
 	public void testIntentarCrearUnidadMientrasCreadorEstaEnConstruccionNoFunicona() 
 			throws MineralInsuficienteException, GasInsuficienteException, 

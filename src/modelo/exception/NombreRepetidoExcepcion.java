@@ -1,6 +1,6 @@
 package modelo.exception;
 
-public class NombreRepetidoExepcion extends Exception {
+public class NombreRepetidoExcepcion extends Exception {
 
 	/**
 	 * 

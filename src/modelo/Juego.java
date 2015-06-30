@@ -8,7 +8,7 @@ import java.util.Observable;
 import modelo.construcciones.Construccion;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.construcciones.EnumEdificios;
-import modelo.exception.ColorRepetidoExepcion;
+import modelo.exception.ColorRepetidoExcepcion;
 import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
@@ -18,7 +18,7 @@ import modelo.exception.FueraDeLimitesException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.MinimoCuatroCaracteresException;
-import modelo.exception.NombreRepetidoExepcion;
+import modelo.exception.NombreRepetidoExcepcion;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
@@ -64,7 +64,7 @@ public class Juego extends Observable{
 	}
 
 	public void setJugador2(String nombre, EnumRazas unaRaza , Colores unColor) 
-			throws MinimoCuatroCaracteresException, NombreRepetidoExepcion, ColorRepetidoExepcion {
+			throws MinimoCuatroCaracteresException, NombreRepetidoExcepcion, ColorRepetidoExcepcion {
 		this.validacionNombreJugador(nombre);
 		this.validacionJugadorDos(nombre, unColor);
 		this.jugador2 = new Jugador(nombre, unaRaza, unColor);		
@@ -74,9 +74,9 @@ public class Juego extends Observable{
 		if (nombre.length() < 4) throw new MinimoCuatroCaracteresException();
 	}
 
-	private void validacionJugadorDos(String nombre, Colores unColor) throws NombreRepetidoExepcion, ColorRepetidoExepcion{
-		if (nombre == jugador1.getNombre()) throw new NombreRepetidoExepcion();
-		if (unColor == jugador1.getColor()) throw new ColorRepetidoExepcion();
+	private void validacionJugadorDos(String nombre, Colores unColor) throws NombreRepetidoExcepcion, ColorRepetidoExcepcion{
+		if (nombre == jugador1.getNombre()) throw new NombreRepetidoExcepcion();
+		if (unColor == jugador1.getColor()) throw new ColorRepetidoExcepcion();
 	}
 
 	public void iniciarJuego() throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException {

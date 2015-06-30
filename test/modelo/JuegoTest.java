@@ -2,10 +2,12 @@ package modelo;
 
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import modelo.construcciones.Construccion;
 import modelo.construcciones.CreadorDeUnidades;
-import modelo.exception.ColorRepetidoExepcion;
+import modelo.exception.ColorRepetidoExcepcion;
 import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
@@ -15,7 +17,7 @@ import modelo.exception.FueraDeLimitesException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.MinimoCuatroCaracteresException;
-import modelo.exception.NombreRepetidoExepcion;
+import modelo.exception.NombreRepetidoExcepcion;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
@@ -47,8 +49,8 @@ public class JuegoTest {
 		try {
 			algocraft.setJugador1("Agustin", EnumRazas.TERRAN , Colores.AZUL );
 			algocraft.setJugador2("Marco", EnumRazas.PROTOSS , Colores.ROJO );
-		} catch (MinimoCuatroCaracteresException | NombreRepetidoExepcion
-				| ColorRepetidoExepcion e) {
+		} catch (MinimoCuatroCaracteresException | NombreRepetidoExcepcion
+				| ColorRepetidoExcepcion e) {
 			e.printStackTrace();
 		}
 		try {
@@ -136,6 +138,32 @@ public class JuegoTest {
 			algocraft.pasarTurno();
 		}
 		return puerto;
+	}
+	
+	@Test(expected = NombreRepetidoExcepcion.class)
+	public void testJugadoresDebenTenerNombresDiferentes() 
+			throws MinimoCuatroCaracteresException, NombreRepetidoExcepcion, ColorRepetidoExcepcion, FueraDeLimitesException{
+		Juego algocraft = new Juego(ancho,alto);
+		
+		algocraft.setJugador1("Nico", EnumRazas.PROTOSS, Colores.AZUL);
+		algocraft.setJugador2("Nico", EnumRazas.PROTOSS, Colores.ROJO);
+	}
+	
+	@Test(expected = MinimoCuatroCaracteresException.class)
+	public void testJugadoresDebenTenerNombresConAlMenosCuatroCaracteres() 
+			throws MinimoCuatroCaracteresException, NombreRepetidoExcepcion, ColorRepetidoExcepcion, FueraDeLimitesException{
+		Juego algocraft = new Juego(ancho,alto);
+		
+		algocraft.setJugador1("Nic", EnumRazas.PROTOSS, Colores.AZUL);
+	}
+	
+	@Test(expected = ColorRepetidoExcepcion.class)
+	public void testJugadoresDebenTenerColoresDiferentes() 
+			throws MinimoCuatroCaracteresException, NombreRepetidoExcepcion, ColorRepetidoExcepcion, FueraDeLimitesException{
+		Juego algocraft = new Juego(ancho,alto);
+		
+		algocraft.setJugador1("Nico", EnumRazas.PROTOSS, Colores.AZUL);
+		algocraft.setJugador2("Nico2", EnumRazas.PROTOSS, Colores.AZUL);
 	}
 	
 	@Test

@@ -5,9 +5,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 import controlador.acciones.AccionesAlgocraft;
-import modelo.exception.ColorRepetidoExepcion;
+import modelo.exception.ColorRepetidoExcepcion;
 import modelo.exception.MinimoCuatroCaracteresException;
-import modelo.exception.NombreRepetidoExepcion;
+import modelo.exception.NombreRepetidoExcepcion;
 import modelo.jugador.Colores;
 import modelo.razas.EnumRazas;
 
@@ -22,7 +22,7 @@ public class SubmitDatosJugador2 extends AccionesAlgocraft {
 		try {
 			controlador.ingresarDatosJugador2(nombreIngresado, razaElegida, colorElegido);
 			controlador.iniciarJuego();
-		} catch (MinimoCuatroCaracteresException | NombreRepetidoExepcion | ColorRepetidoExepcion e1) {
+		} catch (MinimoCuatroCaracteresException | NombreRepetidoExcepcion | ColorRepetidoExcepcion e1) {
 			JOptionPane.showMessageDialog(null, "Mal ingreso de Datos","ERROR",JOptionPane.INFORMATION_MESSAGE);
 		}
 	}

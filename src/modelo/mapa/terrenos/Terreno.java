@@ -54,10 +54,10 @@ public abstract class Terreno {
 	
 	public void borrarContenido(Propiedad propiedad) throws PropiedadNoExisteEnEstaUbicacion {
 		if(this.getContenidoSuelo() == propiedad){
-			this.contenidoSuelo = null;
+			this.vaciarSuelo();
 			
 		} else if(this.getContenidoCielo() == propiedad){
-			this.contenidoCielo = null;
+			this.vaciarCielo();
 			
 		} else {
 			throw new PropiedadNoExisteEnEstaUbicacion();

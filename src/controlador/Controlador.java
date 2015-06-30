@@ -7,7 +7,7 @@ import controlador.acciones.AccionesAlgocraft;
 import modelo.Juego;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.construcciones.EnumEdificios;
-import modelo.exception.ColorRepetidoExepcion;
+import modelo.exception.ColorRepetidoExcepcion;
 import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.DestinoInvalidoException;
@@ -17,7 +17,7 @@ import modelo.exception.FueraDeLimitesException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.MinimoCuatroCaracteresException;
-import modelo.exception.NombreRepetidoExepcion;
+import modelo.exception.NombreRepetidoExcepcion;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
@@ -128,7 +128,7 @@ public class Controlador {
 		ventanaDatos.btnContinuar.addActionListener(new SubmitDatosJugador2());
 	}
 	
-	public void ingresarDatosJugador2(String nombre, EnumRazas raza, Colores color) throws MinimoCuatroCaracteresException, NombreRepetidoExepcion, ColorRepetidoExepcion {
+	public void ingresarDatosJugador2(String nombre, EnumRazas raza, Colores color) throws MinimoCuatroCaracteresException, NombreRepetidoExcepcion, ColorRepetidoExcepcion {
 		juego.setJugador2(nombre, raza, color);	
 	}
 	
