@@ -1,10 +1,14 @@
-package visual.dibujadores;
+package visual.vistas;
 
 import java.util.HashMap;
 
 import modelo.mapa.terrenos.Terreno;
 import modelo.mapa.terrenos.Terrenos;
-import visual.vistas.VistaTerreno;
+import visual.dibujadores.DibujadorTerreno;
+import visual.dibujadores.DibujadorTerrenoAire;
+import visual.dibujadores.DibujadorTerrenoMinerales;
+import visual.dibujadores.DibujadorTerrenoTierra;
+import visual.dibujadores.DibujadorTerrenoVolcan;
 import controlador.MiControladorMouse;
 
 

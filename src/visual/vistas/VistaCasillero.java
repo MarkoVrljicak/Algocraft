@@ -13,7 +13,6 @@ import modelo.mapa.Coordenada;
 import modelo.mapa.terrenos.Terreno;
 import visual.VentanaErrorFatal;
 import visual.dibujadores.DibujadorPropiedades;
-import visual.dibujadores.RepresentadorDeMapa;
 
 public class VistaCasillero extends JLayeredPane implements Observer{
 
