@@ -147,6 +147,7 @@ public class Controlador {
 	public void pasarTurno() {
 		try {
 			juego.pasarTurno();
+			this.setStrategyAccion(new StrategySeleccion());
 			if(juego.hayGanador()){
 				JOptionPane.showMessageDialog(aplicacion.getFrame(),"El Jugador:"+juego.getNombreGanador()+" ha ganado.");
 			}

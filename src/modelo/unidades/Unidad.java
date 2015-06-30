@@ -70,7 +70,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 		return (pesoTransporte == 0);
 	}
 	
-	//los que tengan escudo deberian pisarlo
+	
 	public void recibirDanio(int cantidadDanio){
 		vitalidad.disminuir(cantidadDanio);
 	}

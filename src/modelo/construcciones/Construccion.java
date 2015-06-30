@@ -6,10 +6,6 @@ import modelo.jugador.Jugador;
 
 public interface Construccion extends Daniable, Actualizable{
 
-	public int getVida();
-	public int getVidaMaxima();
-	public int getEscudo();
-	public int getEscudoMaximo();
 	public EnumEdificios getNombre();
 	public boolean enConstruccion();
 	public Jugador getDuenio();

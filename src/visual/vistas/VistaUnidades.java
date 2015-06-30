@@ -5,39 +5,29 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
-import visual.Seleccionable;
 import modelo.Juego;
 import modelo.mapa.Coordenada;
 import modelo.unidades.Unidad;
 import controlador.acciones.AccionMoverUnidad;
 
 @SuppressWarnings("serial")
-public abstract class VistaUnidades extends JLabel implements Seleccionable{
+public abstract class VistaUnidades extends VistaDaniable{
 
 	private Unidad unidad;
-	private Coordenada posicion;
 
 	public VistaUnidades(Unidad unidad,Coordenada posicion, ImageIcon imagen){
-		super(imagen);
+		super(unidad, posicion, imagen);
 		this.unidad = unidad;
-		this.posicion = posicion;
 	}
 	
-	@Override
-	public Coordenada obtenerPosicion() {
-		return posicion;
-	}
 
 	@Override
 	public void mostrarInformacion(JToolBar barraInformacion) {
 		this.mostrarNombre(barraInformacion);
-		this.mostrarVida(barraInformacion);
-		this.mostrarEscudo(barraInformacion);
+		super.mostrarInformacion(barraInformacion);
 		this.mostrarMovimientosRestantes(barraInformacion);
 		this.mostrarCostoTransporte(barraInformacion);
-		JButton separador = new JButton("para que se muestren las estadisticas");
-		separador.setVisible(false);
-		barraInformacion.add(separador);
+		workaroundToolbarBug(barraInformacion);
 	}
 	
 	private void mostrarNombre(JToolBar barraInformacion) {
@@ -45,25 +35,6 @@ public abstract class VistaUnidades extends JLabel implements Seleccionable{
 		JLabel lblnombre = new JLabel(nombre);
 		barraInformacion.add(lblnombre);
 	}
-	
-	private void mostrarVida(JToolBar barraInformacion) {
-		String vidaActual = String.valueOf(unidad.getVida());
-		String vidaMaxima = String.valueOf(unidad.getVidaMaxima());
-		String vida = "Vida : "+ vidaActual + "/" + vidaMaxima;
-		JLabel lblVida = new JLabel(vida);
-		barraInformacion.add(lblVida);
-	}
-	
-	private void mostrarEscudo(JToolBar barraInformacion) {
-		if(unidad.getEscudoMaximo() != 0){
-			String escudoActual = String.valueOf(unidad.getEscudo());
-			String escudoMaximo = String.valueOf(unidad.getEscudoMaximo());
-			String escudo = "Escudo : "+ escudoActual + "/" + escudoMaximo;
-			JLabel lblEscudo = new JLabel(escudo);
-			barraInformacion.add(lblEscudo);
-		}
-	}
-
 
 	private void mostrarMovimientosRestantes(JToolBar barraInformacion) {
 		String movimientosRestantes = "Movimientos : "+ String.valueOf(unidad.getMovimientos());
