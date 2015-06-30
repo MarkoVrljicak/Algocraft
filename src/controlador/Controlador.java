@@ -255,7 +255,11 @@ public class Controlador {
 		try {
 			this.setStrategyAccion(new StrategySeleccion());
 			Coordenada posicionDeUnidadASubir = accionado.obtenerPosicion();
-			juego.subirUnidad((Unidad)juego.seleccionarSuelo(posicionDeUnidadASubir) , unidadTransportadora);
+			Unidad unidadASubir = (Unidad) juego.seleccionarSuelo(posicionDeUnidadASubir);
+			if(unidadASubir.getColor()==juego.getJugadorActual().getColor())
+				juego.subirUnidad(unidadASubir , unidadTransportadora);
+			else
+				nuevoMensaje("Esta unidad no es tuya");
 		} catch (EspacioInsuficienteException e) {
 			this.nuevoMensaje("No hay suficiente espacio");
 		} catch (UnidadNoTransportableException e) {
