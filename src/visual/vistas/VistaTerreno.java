@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
 import modelo.Juego;
+import modelo.Interfaces.Daniable;
 import modelo.construcciones.EnumEdificios;
 import modelo.jugador.Jugador;
 import modelo.mapa.Coordenada;
@@ -63,5 +64,10 @@ public class VistaTerreno extends JLabel implements Seleccionable{
 	@Override
 	public Coordenada obtenerPosicion() {
 		return terreno.getCoordenada();
+	}
+
+	@Override
+	public Daniable getDaniable() {
+		return null;
 	}
 }

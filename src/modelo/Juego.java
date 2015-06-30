@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 
+import modelo.Interfaces.Daniable;
 import modelo.construcciones.Construccion;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.construcciones.EnumEdificios;
@@ -109,9 +110,6 @@ public class Juego extends Observable{
 			construirEn(EnumEdificiosTerran.BASE_TERRAN,base2);
 			break;			
 		}
-
-
-
 	}
 
 	public Jugador getJugadorActual() {
@@ -140,8 +138,6 @@ public class Juego extends Observable{
 			throws FueraDeLimitesException {	
 		return mapa.getPropiedadCielo(coordenada);
 	}
-
-
 
 	public void construirEn(EnumEdificios edificio, Coordenada coordenada) 
 			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
@@ -174,9 +170,7 @@ public class Juego extends Observable{
 		else if(jugadorActual == jugador2)
 			jugadorActual= jugador1;
 
-		
 		jugadorActual.iniciarTurno();
-
 		
 		ponerNuevasUnidadesEnMapa();
 
@@ -248,9 +242,8 @@ public class Juego extends Observable{
 		this.notifyObservers();
 	}
 
-	public void realizarAtaque(UnidadAtacante atacante, Coordenada posicionAtacado) throws FueraDeLimitesException {
-		Propiedad atacado = mapa.getTerreno(posicionAtacado).getContenidoSuelo();
-
+	public void realizarAtaque(UnidadAtacante atacante, Daniable atacado) throws FueraDeLimitesException {
+		
 		try {
 			mapa.gestionarAtaque(atacante, atacado);
 		} catch (PropiedadNoEstaEnJuegoException

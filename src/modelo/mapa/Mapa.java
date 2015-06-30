@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import modelo.Interfaces.Daniable;
 import modelo.exception.CoordenadaInexistenteException;
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.FueraDeLimitesException;
@@ -112,7 +113,9 @@ public class Mapa implements Iterable<Terreno>{
 	
 	//movimiento
 	
-	public void moverUnidad(Unidad unidad, Coordenada destino) throws PropiedadNoEstaEnJuegoException, CoordenadaInexistenteException, PropiedadNoExisteEnEstaUbicacion, DestinoInvalidoException{
+	public void moverUnidad(Unidad unidad, Coordenada destino) 
+			throws PropiedadNoEstaEnJuegoException, CoordenadaInexistenteException, 
+			PropiedadNoExisteEnEstaUbicacion, DestinoInvalidoException{
 
 		Coordenada origen = posiciones.get(unidad);
 		if(origen == null){
@@ -161,7 +164,7 @@ public class Mapa implements Iterable<Terreno>{
 	
 	//ataque
 	
-	public boolean gestionarAtaque(UnidadAtacante atacante, Propiedad atacado) 
+	public boolean gestionarAtaque(UnidadAtacante atacante, Daniable atacado) 
 			throws PropiedadNoEstaEnJuegoException, FueraDeLimitesException, PropiedadNoExisteEnEstaUbicacion {
 		
 		Coordenada posicionAtacante = posiciones.get(atacante);
@@ -175,7 +178,7 @@ public class Mapa implements Iterable<Terreno>{
 		
 		boolean resultado = atacante.atacar(atacado, distanciaAtaque);
 		if (atacado.estoyMuerto()){
-			limpiarMuerto(atacado);
+			limpiarMuerto((Propiedad) atacado);
 		}
 		
 		return resultado;

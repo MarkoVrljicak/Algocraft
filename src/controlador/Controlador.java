@@ -3,7 +3,6 @@ package controlador;
 import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 
-import controlador.acciones.AccionesAlgocraft;
 import modelo.Juego;
 import modelo.construcciones.CreadorDeUnidades;
 import modelo.construcciones.EnumEdificios;
@@ -36,6 +35,7 @@ import visual.Seleccionable;
 import visual.VentanaErrorFatal;
 import visual.VentanaIngresoDeDatosJugador;
 import visual.Ventanas;
+import controlador.acciones.AccionesAlgocraft;
 
 public class Controlador {
 	
@@ -230,14 +230,16 @@ public class Controlador {
 		}		
 	}
 
-	public void realizarAtaque(UnidadAtacante unidad, Coordenada posicionAtacado) {
+	public void realizarAtaque(UnidadAtacante unidad, Seleccionable accionado) {
 		
 		try {
-			juego.realizarAtaque(unidad,posicionAtacado);
-			this.setStrategyAccion(new StrategySeleccion());
-			escribirEnLog(
-					"Atacando con: "+unidad.getNombre().toString()
-					+" a posicion:" +posicionAtacado.getX() +"/" +posicionAtacado.getY());
+			if(!(accionado.getDaniable()==null)){
+				juego.realizarAtaque(unidad,accionado.getDaniable());
+				this.setStrategyAccion(new StrategySeleccion());
+				escribirEnLog(
+						"Atacando con: "+unidad.getNombre().toString()
+						+" a posicion:" +accionado.obtenerPosicion().getX() +"/" +accionado.obtenerPosicion().getY());
+			}
 		} catch (FueraDeLimitesException e) {
 			nuevoMensajeFatal("Fuera de limites");
 		}

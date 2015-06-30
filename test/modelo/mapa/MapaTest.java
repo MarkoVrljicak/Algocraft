@@ -348,7 +348,8 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void testObtengoCoordenadaDeUnidad() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testObtengoCoordenadaDeUnidad() 
+			throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
 		Mapa mapa = new Mapa(10,10);
 		Unidad marine = new Marine();
 		Coordenada posicion = new Coordenada(2,8);
@@ -359,6 +360,18 @@ public class MapaTest {
 		
 		
 	}
+	
+	@Test(expected = PropiedadNoEstaEnJuegoException.class)
+	public void testObtengoCoordenadaDeUnidadNoEnMapaLanzaException() 
+			throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+		Mapa mapa = new Mapa(10,10);
+		Unidad marine = new Marine();
+		Coordenada posicion = new Coordenada(2,8);
+				
+		assertEquals(posicion, mapa.getPosicionPropiedad(marine));	
+	}
+	
+	
 	
 	
 }

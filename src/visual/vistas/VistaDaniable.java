@@ -23,6 +23,11 @@ public abstract class VistaDaniable  extends JLabel implements Seleccionable{
 	}
 	
 	@Override
+	public Daniable getDaniable() {
+		return daniable;
+	}
+	
+	@Override
 	public Coordenada obtenerPosicion() {
 		return posicion;
 	}

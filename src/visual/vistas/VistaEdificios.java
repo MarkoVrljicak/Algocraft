@@ -57,6 +57,5 @@ public class VistaEdificios extends VistaDaniable{
 		
 	}
 
-
 }
 	

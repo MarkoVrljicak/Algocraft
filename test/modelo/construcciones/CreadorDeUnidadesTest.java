@@ -8,6 +8,7 @@ import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.RecursosNegativosException;
+import modelo.exception.UnidadIncompletaException;
 import modelo.factory.edificiosProtoss.CreadorAcceso;
 import modelo.factory.edificiosTerran.CreadorBarraca;
 import modelo.jugador.Colores;
@@ -140,5 +141,17 @@ public class CreadorDeUnidadesTest {
 		assertTrue(barraca.enConstruccion());
 		
 		barraca.crearUnidad(UnidadesTerran.MARINE);			
+	}
+	
+	@Test(expected = UnidadIncompletaException.class)
+	public void testIntentarSacarUnidadAntesDeQueEsteTerminadaLanzaException() 
+			throws MineralInsuficienteException, GasInsuficienteException, 
+			PoblacionInsuficienteException, RecursosNegativosException, 
+			EdificioTodaviaEnConstruccionException, UnidadIncompletaException{
+		
+		CreadorDeUnidades barraca = this.crearBarracaLista();
+		barraca.crearUnidad(UnidadesTerran.MARINE);	
+		
+		barraca.obtenerUnidadCreada();
 	}
 }

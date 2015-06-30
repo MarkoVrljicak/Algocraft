@@ -14,7 +14,7 @@ public class StrategyAtacar implements StrategyAccion {
 
 	@Override
 	public void accionPara(Seleccionable accionado, Juego juego ,Controlador controlador) {
-		controlador.realizarAtaque(unidad,accionado.obtenerPosicion());		
+		controlador.realizarAtaque(unidad,accionado);		
 	}
 
 }

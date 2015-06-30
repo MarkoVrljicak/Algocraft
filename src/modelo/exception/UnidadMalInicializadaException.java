@@ -1,6 +1,6 @@
 package modelo.exception;
 
-public class UnidadMalInicializadaError extends Exception {
+public class UnidadMalInicializadaException extends Exception {
 
 	/**
 	 * 

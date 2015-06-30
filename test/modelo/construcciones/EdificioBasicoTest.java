@@ -49,6 +49,17 @@ public class EdificioBasicoTest {
 
 		assertEquals(true, depositoSuministros.enConstruccion());
 	}
+	
+	@Test
+	public void testCreoDepositoPasoTurnoVeoTiempoConstruccionHallaBajado() {
+		EdificioBasico depositoSuministros = new EdificioBasico(
+				EnumEdificiosTerran.DEPOSITO_DE_SUMINISTROS, vidaDeposito,
+				tiempoConstruccionDeposito);
+
+		depositoSuministros.iniciarTurno();
+
+		assertEquals(tiempoConstruccionDeposito-1, depositoSuministros.getTiempoConstruccion());
+	}
 
 	@Test
 	public void testCreoDepositoEsperoSeConstruyaYVeoQueNoEsteEnConstruccion() {
