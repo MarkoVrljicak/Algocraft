@@ -47,7 +47,7 @@ public abstract class VistaUnidades extends JLabel implements Seleccionable{
 	
 	private void mostrarVida(JToolBar barraInformacion) {
 		String vidaActual = String.valueOf(unidad.getVida());
-		String vidaMaxima = String.valueOf(unidad.getVitalidadMaxima());
+		String vidaMaxima = String.valueOf(unidad.getVidaMaxima());
 		String vida = "Vida : "+ vidaActual + "/" + vidaMaxima;
 		JLabel lblVida = new JLabel(vida);
 		barraInformacion.add(lblVida);

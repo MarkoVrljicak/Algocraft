@@ -287,7 +287,7 @@ public class AltoTemplarioTest {
 		
 		templario.iniciarTurno();
 		
-		assertEquals(marine.getVida(), marine.getVitalidadMaxima());
+		assertEquals(marine.getVida(), marine.getVidaMaxima());
 	}
 	
 

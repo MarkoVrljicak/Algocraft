@@ -28,7 +28,7 @@ public class Alucinacion extends UnidadAtacante{
 	@Override
 	protected void setearVida() {
 		Stat vida = new Vida(0);
-		this.vitalidad = new Escudo(this.otraUnidad.getVitalidadMaxima(), vida);
+		this.vitalidad = new Escudo(this.otraUnidad.getEscudoMaximo(), vida);
 	}
 
 	@Override
@@ -57,6 +57,21 @@ public class Alucinacion extends UnidadAtacante{
 	@Override
 	public int getVida() {
 		return ((Escudo)this.vitalidad).actualProtegida();
+	}
+	
+	@Override
+	public int getVidaMaxima() {
+		return ((Escudo)this.vitalidad).maxProtegida();
+	}
+
+	@Override
+	public int getEscudo() {
+		return ((Escudo)this.vitalidad).actual();
+	}
+
+	@Override
+	public int getEscudoMaximo() {
+		return ((Escudo)this.vitalidad).max();
 	}
 
 	@Override

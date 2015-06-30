@@ -50,11 +50,6 @@ public class Golliat extends UnidadAtacante{
 	}
 
 	@Override
-	public int getVida() {
-		return vitalidad.actual();
-	}
-
-	@Override
 	protected void seteartiempoDeConstruccion() {
 		this.tiempoDeConstruccion = 6;
 	}	

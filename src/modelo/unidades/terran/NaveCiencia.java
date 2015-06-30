@@ -52,11 +52,6 @@ public class NaveCiencia extends UnidadMagica{
 	}
 
 	@Override
-	public int getVida() {
-		return vitalidad.actual();
-	}
-
-	@Override
 	protected void seteartiempoDeConstruccion() {
 		this.tiempoDeConstruccion = 10;
 	}	

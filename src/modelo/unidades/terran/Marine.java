@@ -48,11 +48,6 @@ public class Marine extends UnidadAtacante{
 	}
 
 	@Override
-	public int getVida() {
-		return this.vitalidad.actual();
-	}
-
-	@Override
 	protected void seteartiempoDeConstruccion() {
 		this.tiempoDeConstruccion = 3;
 	}	

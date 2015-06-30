@@ -19,7 +19,7 @@ public class AlucinacionTest {
 		Unidad unidadReal = new Zealot();
 		Unidad alucinacion = new Alucinacion(unidadReal);
 		
-		assertEquals(unidadReal.getVitalidadMaxima(), alucinacion.getVitalidadMaxima());
+		assertEquals(unidadReal.getEscudoMaximo(), alucinacion.getEscudoMaximo());
 	}
 	
 	@Test

@@ -52,7 +52,22 @@ public class Dragon extends UnidadAtacante {
 	@Override
 	public int getVida() {
 		return ((Escudo)this.vitalidad).actualProtegida();
-	}	
+	}
+	
+	@Override
+	public int getVidaMaxima() {
+		return ((Escudo)this.vitalidad).maxProtegida();
+	}
+
+	@Override
+	public int getEscudo() {
+		return ((Escudo)this.vitalidad).actual();
+	}
+
+	@Override
+	public int getEscudoMaximo() {
+		return ((Escudo)this.vitalidad).max();
+	}
 
 	@Override
 	protected void seteartiempoDeConstruccion() {

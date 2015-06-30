@@ -48,6 +48,10 @@ public class Escudo extends Stat {
 	public int actualProtegida() {
 		return this.statProtegido.actual();
 	}
+	
+	public int maxProtegida() {
+		return this.statProtegido.max();
+	}
 
 	@Override
 	public void quitarEnergia() {

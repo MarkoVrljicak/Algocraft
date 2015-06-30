@@ -122,7 +122,7 @@ public class NaveCienciaTest {
 		
 		nave.radiacion(marine, mapa);
 		
-		assertEquals(marine.getVida(), marine.getVitalidadMaxima());
+		assertEquals(marine.getVida(), marine.getVidaMaxima());
 	}
 	
 	@Test
@@ -136,7 +136,7 @@ public class NaveCienciaTest {
 		
 		nave.radiacion(marine, mapa);
 		
-		assertEquals(marine.getVitalidadMaxima() - danioRadiacion, marine.getVida());
+		assertEquals(marine.getVidaMaxima() - danioRadiacion, marine.getVida());
 	}
 	
 	@Test
@@ -151,7 +151,7 @@ public class NaveCienciaTest {
 		nave.radiacion(marine, mapa);
 		nave.iniciarTurno();
 		
-		assertEquals(marine.getVitalidadMaxima() - danioRadiacion*2, marine.getVida());
+		assertEquals(marine.getVidaMaxima() - danioRadiacion*2, marine.getVida());
 	}
 	
 	@Test
@@ -169,7 +169,7 @@ public class NaveCienciaTest {
 		
 		nave.iniciarTurno();
 		
-		assertEquals(marine.getVitalidadMaxima() - danioRadiacion*2, marine.getVida());
+		assertEquals(marine.getVidaMaxima() - danioRadiacion*2, marine.getVida());
 	}
 	
 	@Test
@@ -185,7 +185,7 @@ public class NaveCienciaTest {
 		
 		nave.radiacion(marine1, mapa);
 		
-		assertEquals(marine2.getVitalidadMaxima() - danioRadiacion, marine2.getVida());
+		assertEquals(marine2.getVidaMaxima() - danioRadiacion, marine2.getVida());
 	}
 	
 	@Test
@@ -201,7 +201,7 @@ public class NaveCienciaTest {
 		
 		nave.radiacion(marine1, mapa);
 		
-		assertEquals(marine2.getVitalidadMaxima(), marine2.getVida());
+		assertEquals(marine2.getVidaMaxima(), marine2.getVida());
 	}
 	
 	@Test
@@ -221,7 +221,7 @@ public class NaveCienciaTest {
 		
 		nave.iniciarTurno();
 		
-		assertEquals(marine2.getVitalidadMaxima() - danioRadiacion, marine2.getVida());
+		assertEquals(marine2.getVidaMaxima() - danioRadiacion, marine2.getVida());
 	}
 
 	@Test

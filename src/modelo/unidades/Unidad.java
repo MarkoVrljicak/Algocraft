@@ -50,10 +50,20 @@ public abstract class Unidad extends Propiedad implements Movible{
 		return nombre;
 	}
 	
-	abstract public int getVida();
+	public int getVida(){
+		return this.vitalidad.actual();
+	}
 	
-	public int getVitalidadMaxima(){
+	public int getVidaMaxima(){
 		return this.vitalidad.max();
+	}
+	
+	public int getEscudo(){
+		return 0;
+	}
+	
+	public int getEscudoMaximo(){
+		return 0;
 	}
 	
 	public boolean soyVolador(){
