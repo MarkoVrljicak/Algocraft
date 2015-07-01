@@ -3,7 +3,7 @@ package controlador.acciones;
 import java.awt.event.ActionEvent;
 
 import modelo.unidades.protos.AltoTemplario;
-import controlador.StrategyTormentaPsionica;
+import controlador.strategiesClick.StrategyTormentaPsionica;
 
 public class AccionTormentaPsionica extends AccionesAlgocraft {
 	

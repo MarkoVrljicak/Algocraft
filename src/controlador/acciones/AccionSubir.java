@@ -2,7 +2,7 @@ package controlador.acciones;
 
 import java.awt.event.ActionEvent;
 
-import controlador.StrategySubirUnidad;
+import controlador.strategiesClick.StrategySubirUnidad;
 import modelo.unidades.UnidadTransportadora;
 
 public class AccionSubir extends AccionesAlgocraft {

@@ -39,6 +39,8 @@ import visual.VentanaErrorFatal;
 import visual.VentanaIngresoDeDatosJugador;
 import visual.Ventanas;
 import controlador.acciones.AccionesAlgocraft;
+import controlador.strategiesClick.StrategyAccion;
+import controlador.strategiesClick.StrategySeleccion;
 
 public class Controlador {
 	
@@ -171,7 +173,7 @@ public class Controlador {
 	}
 
 
-	protected JToolBar obtenerToolbarAccionesLimpio() {
+	public JToolBar obtenerToolbarAccionesLimpio() {
 		JToolBar acciones = aplicacion.ventanaJuego.getAcciones();
 		acciones.removeAll();
 		acciones.repaint();
@@ -310,6 +312,7 @@ public class Controlador {
 		} catch (PropiedadNoEstaEnJuegoException e) {
 			nuevoMensajeFatal("La unidad esta fuera de juego");
 		}
+		this.setStrategyAccion(new StrategySeleccion());
 		escribirEnLog("Radiacion lanzada");
 		
 	}
@@ -323,6 +326,7 @@ public class Controlador {
 		} catch (PropiedadNoExisteEnEstaUbicacion e) {
 			nuevoMensajeFatal("Error al eliminar muertos del mapa");
 		}
+		this.setStrategyAccion(new StrategySeleccion());
 		escribirEnLog("Tormenta Psionica lanzada");
 		
 	}
@@ -331,6 +335,7 @@ public class Controlador {
 			Coordenada objetivo) {
 		Mapa mapa = juego.getMapa();
 		altoTemplario.alucinacion((Unidad) accionado.getDaniable(), mapa, objetivo);
+		this.setStrategyAccion(new StrategySeleccion());
 		escribirEnLog("Alucinacion creada");
 		
 	}

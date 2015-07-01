@@ -3,7 +3,7 @@ package controlador.acciones;
 import java.awt.event.ActionEvent;
 
 import modelo.unidades.terran.NaveCiencia;
-import controlador.StrategyRadiacion;
+import controlador.strategiesClick.StrategyRadiacion;
 
 public class AccionRadiacion extends AccionesAlgocraft {
 

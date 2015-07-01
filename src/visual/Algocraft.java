@@ -31,7 +31,6 @@ import modelo.mapa.terrenos.Terrenos;
 import modelo.razas.EnumRazas;
 import controlador.CerrarAplicacionListener;
 import controlador.Controlador;
-import controlador.DatosDelGrupo;
 
 public class Algocraft {
 	
@@ -112,8 +111,6 @@ public class Algocraft {
 		try {
 			juntarRecursosParaAmbosJugadores(juego);
 			crearEdificiosUnidadesParaAmbos(juego);
-			crearFabricaTerran(juego);
-			crearPuertoEstelarTerran(juego);
 		} catch (DestinoInvalidoException | FueraDeLimitesException
 				| MineralInsuficienteException | GasInsuficienteException
 				| DependenciasNoCumplidasException | UnidadIncompletaException e) {
@@ -234,6 +231,11 @@ public class Algocraft {
 		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
 			algocraft.pasarTurno();
 		}//nota: al salir es el turno del jugador 1
+		
+		crearFabricaTerran(juego);
+		crearPuertoEstelarTerran(juego);
+		crearPuertoEstelarProtoss(juego);
+		crearArchivosTemplarios(juego);
 	}
 	
 	private void crearFabricaTerran(Juego algocraft) 
@@ -259,6 +261,34 @@ public class Algocraft {
 				this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft));
 		
 		int muchosTurnos = 28;
+		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
+			algocraft.pasarTurno();
+		}//nota: al salir es el turno del jugador 2
+	}
+	
+	private void crearPuertoEstelarProtoss(Juego algocraft) 
+			throws DestinoInvalidoException, FueraDeLimitesException,MineralInsuficienteException, 
+			GasInsuficienteException,DependenciasNoCumplidasException, RecursosNegativosException, 
+			UnidadIncompletaException, PropiedadNoEstaEnJuegoException {
+		
+		algocraft.construirEn(EnumEdificiosProtos.PUERTO_ESTELAR,
+				this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft));
+		
+		int muchosTurnos = 29;
+		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
+			algocraft.pasarTurno();
+		}//nota: al salir es el turno del jugador 2
+	}
+	
+	private void crearArchivosTemplarios(Juego algocraft) 
+			throws DestinoInvalidoException, FueraDeLimitesException,MineralInsuficienteException, 
+			GasInsuficienteException,DependenciasNoCumplidasException, RecursosNegativosException, 
+			UnidadIncompletaException, PropiedadNoEstaEnJuegoException {
+		
+		algocraft.construirEn(EnumEdificiosProtos.ARCHIVOS_TEMPLARIOS,
+				this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft));
+		
+		int muchosTurnos = 29;
 		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
 			algocraft.pasarTurno();
 		}//nota: al salir es el turno del jugador 2

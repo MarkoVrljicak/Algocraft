@@ -2,7 +2,7 @@ package controlador.acciones;
 
 import java.awt.event.ActionEvent;
 
-import controlador.StrategyMovimiento;
+import controlador.strategiesClick.StrategyMovimiento;
 import modelo.unidades.Unidad;
 
 public class AccionMoverUnidad extends AccionesAlgocraft {

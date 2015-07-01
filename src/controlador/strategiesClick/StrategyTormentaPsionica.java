@@ -1,5 +1,6 @@
-package controlador;
+package controlador.strategiesClick;
 
+import controlador.Controlador;
 import modelo.Juego;
 import modelo.unidades.protos.AltoTemplario;
 import visual.Seleccionable;

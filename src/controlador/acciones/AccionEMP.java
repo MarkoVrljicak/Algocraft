@@ -3,7 +3,7 @@ package controlador.acciones;
 import java.awt.event.ActionEvent;
 
 import modelo.unidades.terran.NaveCiencia;
-import controlador.StrategyEMP;
+import controlador.strategiesClick.StrategyEMP;
 
 public class AccionEMP extends AccionesAlgocraft {
 	

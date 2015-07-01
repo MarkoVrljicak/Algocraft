@@ -1,7 +1,8 @@
-package controlador;
+package controlador.strategiesClick;
 
 import javax.swing.JToolBar;
 
+import controlador.Controlador;
 import modelo.Juego;
 import visual.Seleccionable;
 
