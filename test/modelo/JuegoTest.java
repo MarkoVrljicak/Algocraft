@@ -167,6 +167,18 @@ public class JuegoTest {
 	}
 	
 	@Test
+	public void testPasoUnTurnoVerificoQueNoHallaGanador() 
+			throws UnidadIncompletaException, DestinoInvalidoException, FueraDeLimitesException, 
+			PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
+		
+		Juego algocraft = this.iniciarJuegoConDosJugadores();
+		
+		algocraft.pasarTurno();
+		
+		assertFalse(algocraft.hayGanador());
+	}
+	
+	@Test
 	public void testCreoEdificioEnPosicionVerificoQueEsteAhi() 
 			throws DestinoInvalidoException, FueraDeLimitesException,
 			MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException{

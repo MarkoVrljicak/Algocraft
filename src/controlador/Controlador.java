@@ -119,6 +119,7 @@ public class Controlador {
 	}
 	
 	public void ingresarDatosJugador1(String nombre, EnumRazas raza, Colores color) throws MinimoCuatroCaracteresException {
+		
 			juego.setJugador1(nombre, raza, color);
 	}
 	
@@ -133,7 +134,9 @@ public class Controlador {
 		ventanaDatos.btnContinuar.addActionListener(new SubmitDatosJugador2());
 	}
 	
-	public void ingresarDatosJugador2(String nombre, EnumRazas raza, Colores color) throws MinimoCuatroCaracteresException, NombreRepetidoExcepcion, ColorRepetidoExcepcion {
+	public void ingresarDatosJugador2(String nombre, EnumRazas raza, Colores color) 
+			throws MinimoCuatroCaracteresException, NombreRepetidoExcepcion, ColorRepetidoExcepcion {
+		
 		juego.setJugador2(nombre, raza, color);	
 	}
 	

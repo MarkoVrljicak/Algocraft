@@ -114,6 +114,12 @@ public class VentanaJuego extends JPanel implements Observer {
 		JLabel lblPoblacionMaxima = new JLabel("0");
 		estadisticas.add(lblPoblacionMaxima);
 		
+		JLabel lblInfoColor = new JLabel("   Su color es: ");
+		estadisticas.add(lblInfoColor);
+		
+		JLabel lblColor = new JLabel("gris");
+		estadisticas.add(lblColor);
+		
 	}
 
 	private void actualizarEstadisticas() {
@@ -133,6 +139,9 @@ public class VentanaJuego extends JPanel implements Observer {
 		
 		JLabel poblacionMaxima = (JLabel) estadisticas.getComponent(10);
 		poblacionMaxima.setText(String.valueOf(jugadorActual.getPoblacionMaxima()));
+		
+		JLabel color = (JLabel) estadisticas.getComponent(12);
+		color.setText(String.valueOf(jugadorActual.getColor().toString()));
 	}
 	
 	public JToolBar getAcciones(){

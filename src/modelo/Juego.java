@@ -58,18 +58,24 @@ public class Juego extends Observable{
 		base1 = generador.getPosicionBase1();
 		base2 = generador.getPosicionBase2();
 		creadoresDeUnidadesEnUso = new ArrayList<CreadorDeUnidades>();
+		jugador1=null;
+		jugador2=null;
 	}
 
 	public void setJugador1(String nombre, EnumRazas unaRaza , Colores unColor) throws MinimoCuatroCaracteresException {
-		this.validacionNombreJugador(nombre);
-		this.jugador1 = new Jugador(nombre, unaRaza, unColor);		
+		if(jugador1==null){
+			this.validacionNombreJugador(nombre);
+			this.jugador1 = new Jugador(nombre, unaRaza, unColor);		
+		}
 	}
 
 	public void setJugador2(String nombre, EnumRazas unaRaza , Colores unColor) 
 			throws MinimoCuatroCaracteresException, NombreRepetidoExcepcion, ColorRepetidoExcepcion {
-		this.validacionNombreJugador(nombre);
-		this.validacionJugadorDos(nombre, unColor);
-		this.jugador2 = new Jugador(nombre, unaRaza, unColor);		
+		if(jugador2==null){
+			this.validacionNombreJugador(nombre);
+			this.validacionJugadorDos(nombre, unColor);
+			this.jugador2 = new Jugador(nombre, unaRaza, unColor);
+		}
 	}
 
 	private void validacionNombreJugador(String nombre) throws MinimoCuatroCaracteresException{
