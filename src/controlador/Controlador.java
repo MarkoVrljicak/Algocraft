@@ -53,7 +53,7 @@ public class Controlador {
 		MiControladorMouse.setearControlador(this);
 		this.aplicacion = aplicacion;
 		this.juego = juego;
-		estrategiaClick = new StrategySeleccion();
+		setStrategyAccion(new StrategySeleccion());
 	}
 	
 	public void setStrategyAccion(StrategyAccion strategyClick) {
@@ -105,20 +105,12 @@ public class Controlador {
 		
 		if(ventanaDatos.opcionRojo.isSelected()){
 			colorElegido = Colores.ROJO;
-			if (colorNoSeleccionado()) ventanaDatos.opcionRojo.setEnabled(false);
-			
+			ventanaDatos.opcionRojo.setEnabled(false);
 		}else if(ventanaDatos.opcionAzul.isSelected()){
 			colorElegido = Colores.AZUL;
-			if (colorNoSeleccionado()) ventanaDatos.opcionAzul.setEnabled(false);
+			ventanaDatos.opcionAzul.setEnabled(false);
 		}
 		return colorElegido;
-	}
-	
-	private boolean colorNoSeleccionado(){
-		VentanaIngresoDeDatosJugador ventanaDatos = aplicacion.ventanaDatosJugador;
-		
-		return (ventanaDatos.opcionRojo.isEnabled() && ventanaDatos.opcionAzul.isEnabled());
-
 	}
 	
 	public String nombreIngresado(){
@@ -311,7 +303,6 @@ public class Controlador {
 	public void realizarEMP(NaveCiencia nave, Coordenada objetivo) {
 		try {
 			nave.emp(juego.getMapa(), objetivo);
-			juego.limpiarMuertos();
 		} catch (PropiedadNoEstaEnJuegoException e) {
 			nuevoMensajeFatal("La nave no esta en el mapa");
 		} catch (PropiedadNoExisteEnEstaUbicacion e) {
@@ -341,7 +332,6 @@ public class Controlador {
 			Coordenada objetivo) {
 		try {
 			altoTemplario.tormentaPsionica(juego.getMapa(), objetivo);
-			juego.limpiarMuertos();
 		} catch (PropiedadNoEstaEnJuegoException e) {
 			nuevoMensajeFatal("El alto templario no esta en el mapa");
 		} catch (PropiedadNoExisteEnEstaUbicacion e) {
