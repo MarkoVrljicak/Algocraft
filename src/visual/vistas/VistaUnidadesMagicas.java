@@ -32,7 +32,6 @@ abstract public class VistaUnidadesMagicas extends VistaUnidades {
 		barraInformacion.add(lblMagia);
 	}
 	
-	//TODO mostrar magias y triarlas
 	@Override
 	public void ofrecerAcciones(JToolBar barraAcciones, Juego juego) {
 		super.ofrecerAcciones(barraAcciones, juego);

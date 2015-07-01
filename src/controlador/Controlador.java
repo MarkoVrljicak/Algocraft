@@ -151,7 +151,11 @@ public class Controlador {
 	
 	public void pasarTurno() {
 		try {
-			juego.pasarTurno();
+			try {
+				juego.pasarTurno();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
+				nuevoMensajeFatal("Error al actualizar propiedades");
+			}
 			this.setStrategyAccion(new StrategySeleccion());
 			if(juego.hayGanador()){
 				JOptionPane.showMessageDialog(aplicacion.getFrame(),"El Jugador:"+juego.getNombreGanador()+" ha ganado.");
@@ -298,6 +302,8 @@ public class Controlador {
 			nave.emp(juego.getMapa(), objetivo);
 		} catch (PropiedadNoEstaEnJuegoException e) {
 			nuevoMensajeFatal("La nave no esta en el mapa");
+		} catch (PropiedadNoExisteEnEstaUbicacion e) {
+			nuevoMensajeFatal("La unidad no existe en esta ubicacion");
 		}
 		this.setStrategyAccion(new StrategySeleccion());
 		escribirEnLog(
@@ -305,12 +311,14 @@ public class Controlador {
 		
 	}
 
-	public void realizarRadiacion(NaveCiencia nave, Seleccionable accionable) {
+	public void realizarRadiacion(NaveCiencia nave, Unidad unidad) {
 		Mapa mapa = juego.getMapa();
 		try {
-			nave.radiacion((Unidad) accionable, mapa);
+			nave.radiacion(unidad, mapa);
 		} catch (PropiedadNoEstaEnJuegoException e) {
 			nuevoMensajeFatal("La unidad esta fuera de juego");
+		} catch (PropiedadNoExisteEnEstaUbicacion e) {
+			nuevoMensajeFatal("La unidad no existe en esta ubicacion");
 		}
 		this.setStrategyAccion(new StrategySeleccion());
 		escribirEnLog("Radiacion lanzada");
@@ -333,8 +341,7 @@ public class Controlador {
 
 	public void realizarAlucinacion(AltoTemplario altoTemplario, Seleccionable accionado,
 			Coordenada objetivo) {
-		Mapa mapa = juego.getMapa();
-		altoTemplario.alucinacion((Unidad) accionado.getDaniable(), mapa, objetivo);
+		juego.crearAlucinacion(altoTemplario, (Unidad) accionado.getDaniable(), objetivo);
 		this.setStrategyAccion(new StrategySeleccion());
 		escribirEnLog("Alucinacion creada");
 		

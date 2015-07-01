@@ -5,6 +5,7 @@ import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.exception.RecursosNegativosException;
 import modelo.factory.edificiosProtoss.EnumEdificiosProtos;
 import modelo.jugador.Colores;
@@ -28,7 +29,11 @@ public class IntegracionProtossTest {
 		jugador.construir(EnumEdificiosProtos.ASIMILADOR);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
-			jugador.iniciarTurno();
+			try {
+				jugador.iniciarTurno();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
+				e.printStackTrace();
+			}
 		}
 		return jugador;
 	}

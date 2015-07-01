@@ -21,6 +21,8 @@ import modelo.unidades.terran.UnidadesTerran;
 import visual.Seleccionable;
 import controlador.MiControladorMouse;
 
+
+
 @SuppressWarnings("rawtypes")
 public class DibujadorPropiedades {
 
@@ -62,6 +64,7 @@ public class DibujadorPropiedades {
 		dibujadores.put(UnidadesProtos.NAVE_DE_TRANSPORTE, new DibujadorNaveTransporteProtoss());
 		dibujadores.put(UnidadesProtos.SCOUT, new DibujadorScout());
 		dibujadores.put(UnidadesProtos.ZEALOT, new DibujadorZealot());
+		dibujadores.put(UnidadesProtos.ALUCINACION, new DibujadorAlucinacion());
 	}
 
 	public JLabel dibujar(Propiedad aDibujar,Coordenada posicion) {

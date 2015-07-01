@@ -3,6 +3,7 @@ package modelo.construcciones.terran;
 import static org.junit.Assert.assertEquals;
 import modelo.construcciones.RecolectorGas;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.factory.edificiosTerran.CreadorRefineria;
 import modelo.jugador.Colores;
 import modelo.jugador.Jugador;
@@ -25,7 +26,7 @@ public class RefineriaTest {
 	}
 	
 	@Test
-	public void testPasoDeTurnoYRecolectoGas() throws PropiedadNoEstaEnJuegoException {
+	public void testPasoDeTurnoYRecolectoGas() throws PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion {
 		CreadorRefineria creador = new CreadorRefineria();
 		RecolectorGas refineria = creador.crearEdificio();
 		Jugador jugador = new Jugador("Nombre", EnumRazas.TERRAN, Colores.AZUL);

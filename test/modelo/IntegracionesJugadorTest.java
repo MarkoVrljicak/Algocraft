@@ -9,6 +9,7 @@ import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.exception.RecursosNegativosException;
 import modelo.exception.UnidadIncompletaException;
 import modelo.factory.edificiosProtoss.EnumEdificiosProtos;
@@ -41,7 +42,7 @@ public class IntegracionesJugadorTest {
 	}
 	
 	public void iniciarJugadorTerranConRecursos(Jugador jugador) 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException{
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		final int turnosSuficientesParaQueSobrenRecursos = 200;
 		//construyo edificios para acumular recursos 
 		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
@@ -54,7 +55,7 @@ public class IntegracionesJugadorTest {
 	}
 	
 	public void iniciarJugadorProtossConRecursos(Jugador jugador) 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, PropiedadNoEstaEnJuegoException, RecursosNegativosException{
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, PropiedadNoEstaEnJuegoException, RecursosNegativosException, PropiedadNoExisteEnEstaUbicacion{
 		final int turnosSuficientesParaQueSobrenRecursos = 200;
 		//construyo edificios para acumular recursos 
 		jugador.construir(EnumEdificiosProtos.NEXO_MINERAL);
@@ -68,7 +69,7 @@ public class IntegracionesJugadorTest {
 	
 	@Test
 	public void testActualizarConCentroDeMineralAumentaLosRecursosDelJugador() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException{
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Jugador jugador = nuevoJugadorTerran();
 		jugador.construir(EnumEdificiosTerran.CENTRO_DE_MINERALES);
 
@@ -79,7 +80,7 @@ public class IntegracionesJugadorTest {
 
 	@Test
 	public void testActualizarConRefineriaAumentaLosRecursosDelJugador() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, PropiedadNoEstaEnJuegoException, RecursosNegativosException{
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, PropiedadNoEstaEnJuegoException, RecursosNegativosException, PropiedadNoExisteEnEstaUbicacion{
 		Jugador jugador = nuevoJugadorTerran();
 		jugador.construir(EnumEdificiosTerran.REFINERIA);
 
@@ -104,7 +105,7 @@ public class IntegracionesJugadorTest {
 
 	@Test
 	public void testConstruyoPilonEsperoAQueSeConstruyaMiroPoblacion()
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, PropiedadNoEstaEnJuegoException, RecursosNegativosException{
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, PropiedadNoEstaEnJuegoException, RecursosNegativosException, PropiedadNoExisteEnEstaUbicacion{
 		Jugador jugador = crearJugadorProtos();
 
 		jugador.construir(EnumEdificiosProtos.PILON);
@@ -118,7 +119,7 @@ public class IntegracionesJugadorTest {
 
 	@Test
 	public void testLlevoPoblacionMaximaAlTopeYVerifico() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, PropiedadNoEstaEnJuegoException, RecursosNegativosException{
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, PropiedadNoEstaEnJuegoException, RecursosNegativosException, PropiedadNoExisteEnEstaUbicacion{
 		Jugador jugador = crearJugadorProtos();
 		this.iniciarJugadorProtossConRecursos(jugador);
 		
@@ -137,7 +138,7 @@ public class IntegracionesJugadorTest {
 
 	@Test
 	public void testSuperoTopePoblacionMaximaVerificoQueSigaEnTope() 
-			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, PropiedadNoEstaEnJuegoException, RecursosNegativosException{
+			throws MineralInsuficienteException, GasInsuficienteException, DependenciasNoCumplidasException, PropiedadNoEstaEnJuegoException, RecursosNegativosException, PropiedadNoExisteEnEstaUbicacion{
 		Jugador jugador = crearJugadorProtos();
 		this.iniciarJugadorProtossConRecursos(jugador);
 
@@ -157,7 +158,7 @@ public class IntegracionesJugadorTest {
 	public void testCrearUnidadesNoAumentaPoblacionSiNoEspero() 
 			throws DependenciasNoCumplidasException, MineralInsuficienteException,
 				GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException, 
-				PropiedadNoEstaEnJuegoException, EdificioTodaviaEnConstruccionException {
+				PropiedadNoEstaEnJuegoException, EdificioTodaviaEnConstruccionException, PropiedadNoExisteEnEstaUbicacion {
 		Jugador jugador = nuevoJugadorTerran();
 		this.iniciarJugadorTerranConRecursos(jugador);
 		//creo edificios para unidades
@@ -171,7 +172,7 @@ public class IntegracionesJugadorTest {
 	
 	private CreadorDeUnidades crearBarracaValida(Jugador jugador) 
 			throws MineralInsuficienteException, GasInsuficienteException, 
-			DependenciasNoCumplidasException, RecursosNegativosException {
+			DependenciasNoCumplidasException, RecursosNegativosException, PropiedadNoExisteEnEstaUbicacion {
 		
 		CreadorDeUnidades barraca = (CreadorDeUnidades) jugador.construir(EnumEdificiosTerran.BARRACA);;
 		for(int turnos = 1 ; turnos<= tiempoConstruccionBarraca ; turnos++)
@@ -188,7 +189,7 @@ public class IntegracionesJugadorTest {
 	public void testCrearUnidadesYEsperarASuCreacionAumentaPoblacion() 
 			throws DependenciasNoCumplidasException, MineralInsuficienteException,
 				GasInsuficienteException, PoblacionInsuficienteException, PropiedadNoEstaEnJuegoException, 
-				RecursosNegativosException, EdificioTodaviaEnConstruccionException {
+				RecursosNegativosException, EdificioTodaviaEnConstruccionException, PropiedadNoExisteEnEstaUbicacion {
 		Jugador jugador = nuevoJugadorTerran();
 		this.iniciarJugadorTerranConRecursos(jugador);
 		CreadorDeUnidades barraca = crearBarracaValida(jugador);
@@ -208,7 +209,7 @@ public class IntegracionesJugadorTest {
 	public void testNoSePuedeCrearUnidadesCuandoPoblacionEstaAlMaximo() 
 			throws UnidadIncompletaException, DependenciasNoCumplidasException,
 				MineralInsuficienteException, GasInsuficienteException, PoblacionInsuficienteException,
-				RecursosNegativosException, PropiedadNoEstaEnJuegoException, EdificioTodaviaEnConstruccionException {
+				RecursosNegativosException, PropiedadNoEstaEnJuegoException, EdificioTodaviaEnConstruccionException, PropiedadNoExisteEnEstaUbicacion {
 		Jugador jugador =nuevoJugadorTerran();
 		this.iniciarJugadorTerranConRecursos(jugador);
 		CreadorDeUnidades barraca = crearBarracaValida(jugador);
@@ -233,7 +234,7 @@ public class IntegracionesJugadorTest {
 	public void testMatarUnidadesdisminuyePoblacion() 
 			throws DependenciasNoCumplidasException, MineralInsuficienteException,
 				GasInsuficienteException, PoblacionInsuficienteException, RecursosNegativosException, 
-				PropiedadNoEstaEnJuegoException, EdificioTodaviaEnConstruccionException {
+				PropiedadNoEstaEnJuegoException, EdificioTodaviaEnConstruccionException, PropiedadNoExisteEnEstaUbicacion {
 		Jugador jugador = nuevoJugadorTerran();
 		this.iniciarJugadorTerranConRecursos(jugador);
 		

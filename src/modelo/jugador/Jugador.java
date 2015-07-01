@@ -15,6 +15,7 @@ import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.exception.RecursosNegativosException;
 import modelo.razas.CreadorDeEdificios;
 import modelo.razas.CreadorDeEdificiosProtoss;
@@ -177,7 +178,7 @@ public class Jugador implements Actualizable {
 	//actualizacion
 	
 	@Override
-	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException {
+	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion {
 		
 		this.limpiarMuertos();
 		

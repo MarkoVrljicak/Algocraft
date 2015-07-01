@@ -5,6 +5,7 @@ import modelo.exception.DependenciasNoCumplidasException;
 import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.exception.RecursosNegativosException;
 import modelo.factory.edificiosTerran.EnumEdificiosTerran;
 import modelo.jugador.Colores;
@@ -29,7 +30,12 @@ public class IntegracionTerransTest {
 		jugador.construir(EnumEdificiosTerran.REFINERIA);
 		//espero a que se construyan y recolecten recursos de mas
 		for(int i=1; i<= 200  ; i++){
-			jugador.iniciarTurno();
+			try {
+				jugador.iniciarTurno();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return jugador;
 	}

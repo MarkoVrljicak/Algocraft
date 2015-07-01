@@ -4,6 +4,7 @@ import modelo.Interfaces.Daniable;
 import modelo.ataques.AtaqueNormal;
 import modelo.ataques.Ataques;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.jugador.Colores;
 
 abstract public class UnidadAtacante extends Unidad{
@@ -37,7 +38,7 @@ abstract public class UnidadAtacante extends Unidad{
 		return ataque.ejecutarAtaque(daniableAtacado, distancia);
 	}
 	
-	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException{
+	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		super.iniciarTurno();
 		
 		this.yaAtaco = false;

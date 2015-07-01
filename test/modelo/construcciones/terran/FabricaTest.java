@@ -7,6 +7,7 @@ import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.exception.RecursosNegativosException;
 import modelo.factory.edificiosTerran.CreadorFabrica;
 import modelo.factory.unidadesTerran.CreadorGolliat;
@@ -29,7 +30,7 @@ public class FabricaTest {
 		for(int turnos = 1 ; turnos<= tiempoConstruccionFabrica ; turnos++)
 			try {
 				fabrica.iniciarTurno();
-			} catch (PropiedadNoEstaEnJuegoException e) {
+			} catch (PropiedadNoEstaEnJuegoException | PropiedadNoExisteEnEstaUbicacion e) {
 				// no entiendo por que se lanzaria esta excepcion
 				e.printStackTrace();
 			}

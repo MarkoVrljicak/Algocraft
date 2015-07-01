@@ -20,6 +20,7 @@ import modelo.exception.MineralInsuficienteException;
 import modelo.exception.MinimoCuatroCaracteresException;
 import modelo.exception.NombreRepetidoExcepcion;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.exception.RecursosNegativosException;
 import modelo.exception.UnidadIncompletaException;
 import modelo.factory.edificiosProtoss.EnumEdificiosProtos;
@@ -199,7 +200,12 @@ public class Algocraft {
 		algocraft.construirEn(EnumEdificiosTerran.REFINERIA,
 				this.encontrarTerrenoVacio(Terrenos.VOLCAN, algocraft));
 		
-		algocraft.pasarTurno();
+		try {
+			algocraft.pasarTurno();
+		} catch (PropiedadNoExisteEnEstaUbicacion e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		algocraft.construirEn(EnumEdificiosProtos.NEXO_MINERAL,
 				this.encontrarTerrenoVacio(Terrenos.MINERALES, algocraft));
@@ -209,7 +215,12 @@ public class Algocraft {
 				this.encontrarTerrenoVacio(Terrenos.VOLCAN, algocraft));
 		
 		for (int turnos=0; turnos<=muchosTurnos ; turnos++){
-			algocraft.pasarTurno();
+			try {
+				algocraft.pasarTurno();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		//nota: al salir es el turno del jugador 1
 	}
@@ -222,14 +233,24 @@ public class Algocraft {
 		algocraft.construirEn(EnumEdificiosTerran.BARRACA,
 				this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft));
 			
-		algocraft.pasarTurno();
+		try {
+			algocraft.pasarTurno();
+		} catch (PropiedadNoExisteEnEstaUbicacion e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		algocraft.construirEn(EnumEdificiosProtos.ACCESO,
 				this.encontrarTerrenoVacio(Terrenos.TIERRA, algocraft));
 		
 		int muchosTurnos = 28;
 		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
-			algocraft.pasarTurno();
+			try {
+				algocraft.pasarTurno();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}//nota: al salir es el turno del jugador 1
 		
 		crearFabricaTerran(juego);
@@ -248,7 +269,12 @@ public class Algocraft {
 		
 		int muchosTurnos = 29;
 		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
-			algocraft.pasarTurno();
+			try {
+				algocraft.pasarTurno();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}//nota: al salir es el turno del jugador 1
 	}
 	
@@ -262,7 +288,12 @@ public class Algocraft {
 		
 		int muchosTurnos = 28;
 		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
-			algocraft.pasarTurno();
+			try {
+				algocraft.pasarTurno();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}//nota: al salir es el turno del jugador 2
 	}
 	
@@ -276,7 +307,12 @@ public class Algocraft {
 		
 		int muchosTurnos = 29;
 		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
-			algocraft.pasarTurno();
+			try {
+				algocraft.pasarTurno();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}//nota: al salir es el turno del jugador 2
 	}
 	
@@ -290,7 +326,12 @@ public class Algocraft {
 		
 		int muchosTurnos = 29;
 		for (int turnos=0; turnos<=muchosTurnos  ; turnos++){
-			algocraft.pasarTurno();
+			try {
+				algocraft.pasarTurno();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}//nota: al salir es el turno del jugador 2
 	}
 }

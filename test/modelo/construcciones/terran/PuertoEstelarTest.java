@@ -7,6 +7,7 @@ import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.exception.RecursosNegativosException;
 import modelo.factory.edificiosTerran.CreadorPuertoEstelar;
 import modelo.factory.unidadesTerran.CreadorEspectro;
@@ -30,8 +31,7 @@ public class PuertoEstelarTest {
 		for(int turnos = 1 ; turnos<= tiempoConstruccionPuertoEstelar ; turnos++)
 			try {
 				puertoEstelar .iniciarTurno();
-			} catch (PropiedadNoEstaEnJuegoException e) {
-				// no entiendo por que se lanzaria esta excepcion
+			} catch (PropiedadNoEstaEnJuegoException | PropiedadNoExisteEnEstaUbicacion e) {
 				e.printStackTrace();
 			}
 		return puertoEstelar;

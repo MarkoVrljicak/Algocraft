@@ -3,6 +3,7 @@ package modelo.construcciones.protos;
 import static org.junit.Assert.assertEquals;
 import modelo.construcciones.RecolectorMineral;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.factory.edificiosProtoss.CreadorNexoMineral;
 import modelo.jugador.Colores;
 import modelo.jugador.Jugador;
@@ -28,7 +29,7 @@ public class NexoMineralTest {
 	}
 	
 	@Test
-	public void testPasoDeTurnoYRecolectoMineral() throws PropiedadNoEstaEnJuegoException {
+	public void testPasoDeTurnoYRecolectoMineral() throws PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion {
 		CreadorNexoMineral creador = new CreadorNexoMineral();
 		RecolectorMineral nexo = creador.crearEdificio();
 		Jugador jugador = nuevoJugadorProtos();		

@@ -40,6 +40,7 @@ import modelo.unidades.Unidad;
 import modelo.unidades.UnidadAtacante;
 import modelo.unidades.UnidadTransportadora;
 import modelo.unidades.Unidades;
+import modelo.unidades.protos.AltoTemplario;
 
 public class Juego extends Observable{
 
@@ -163,7 +164,7 @@ public class Juego extends Observable{
 
 	public void pasarTurno() 
 			throws UnidadIncompletaException, DestinoInvalidoException, 
-			FueraDeLimitesException, PropiedadNoEstaEnJuegoException {
+			FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion {
 		
 		if(jugadorActual == jugador1)
 			jugadorActual= jugador2;
@@ -289,6 +290,13 @@ public class Juego extends Observable{
 	
 	public Mapa getMapa() {
 		return mapa;
+	}
+	
+	public void crearAlucinacion(AltoTemplario altoTemplario, Unidad unidadAClonar, Coordenada objetivo)  {
+		altoTemplario.alucinacion(unidadAClonar, mapa, objetivo);
+		
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 

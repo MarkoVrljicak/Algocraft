@@ -25,7 +25,11 @@ public class NaveCienciaTest {
 	public void pasarMuchosTurnos(NaveCiencia nave) throws PropiedadNoEstaEnJuegoException{
 		//para llenar magia
 		for(int i = 0; i<20; i++){
-			nave.iniciarTurno();
+			try {
+				nave.iniciarTurno();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -89,7 +93,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testNaveRegenera10DeMagia() throws PropiedadNoEstaEnJuegoException{
+	public void testNaveRegenera10DeMagia() throws PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		UnidadMagica nave = new NaveCiencia();
 		nave.iniciarTurno();
 		
@@ -98,7 +102,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionGasta75DeMagia() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testRadiacionGasta75DeMagia() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		pasarMuchosTurnos(nave);
@@ -114,7 +118,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionNoSeActivaConMenosDe75DeMagia() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testRadiacionNoSeActivaConMenosDe75DeMagia() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad marine = new Marine();
@@ -126,7 +130,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionHace10DeDanioEnUnTurno() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testRadiacionHace10DeDanioEnUnTurno() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad marine = new Marine();
@@ -140,7 +144,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionHace10DeDanioEnSegundoTurno() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testRadiacionHace10DeDanioEnSegundoTurno() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad marine = new Marine();
@@ -173,7 +177,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionAfectaAUnidadesVecinas() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testRadiacionAfectaAUnidadesVecinas() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad marine1 = new Marine();
@@ -189,7 +193,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testRadiacionNoAfectaAUnidadesADistancia2() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testRadiacionNoAfectaAUnidadesADistancia2() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad marine1 = new Marine();
@@ -225,7 +229,7 @@ public class NaveCienciaTest {
 	}
 
 	@Test
-	public void testEMPMataAlucinacionesDeUna() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testEMPMataAlucinacionesDeUna() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10, 10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad aClonar = new Zealot();
@@ -240,7 +244,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testEMPNoSeRealizaSinMagiaSuficiente() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testEMPNoSeRealizaSinMagiaSuficiente() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10, 10);
 		NaveCiencia nave = new NaveCiencia();
 		Unidad aClonar = new Zealot();
@@ -254,7 +258,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testEMPQuitaMagiaEnLugarDeEscudoAUnidadesMagicas() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testEMPQuitaMagiaEnLugarDeEscudoAUnidadesMagicas() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10, 10);
 		NaveCiencia nave = new NaveCiencia();
 		UnidadMagica templario = new AltoTemplario();
@@ -268,7 +272,7 @@ public class NaveCienciaTest {
 	}
 	
 	@Test
-	public void testEMPNoQuitaEnergiaFueraDeRango() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testEMPNoQuitaEnergiaFueraDeRango() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10, 10);
 		NaveCiencia nave = new NaveCiencia();
 		UnidadMagica templario = new AltoTemplario();

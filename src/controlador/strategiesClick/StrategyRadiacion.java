@@ -1,9 +1,10 @@
 package controlador.strategiesClick;
 
-import controlador.Controlador;
 import modelo.Juego;
+import modelo.unidades.Unidad;
 import modelo.unidades.terran.NaveCiencia;
 import visual.Seleccionable;
+import controlador.Controlador;
 
 public class StrategyRadiacion implements StrategyAccion {
 
@@ -16,7 +17,7 @@ public class StrategyRadiacion implements StrategyAccion {
 	@Override
 	public void accionPara(Seleccionable accionado, Juego juego,
 			Controlador controlador) {
-		controlador.realizarRadiacion(nave, accionado);		
+		controlador.realizarRadiacion(nave, (Unidad) accionado.getDaniable());		
 
 	}
 

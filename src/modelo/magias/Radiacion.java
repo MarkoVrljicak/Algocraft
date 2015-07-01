@@ -3,6 +3,7 @@ package modelo.magias;
 import java.util.Collection;
 
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.mapa.Coordenada;
 import modelo.mapa.Mapa;
 import modelo.mapa.terrenos.Terreno;
@@ -17,7 +18,7 @@ public class Radiacion extends AtaqueMagico{
 		this.mapa = mapa;
 	}
 	
-	public void ejecutar() throws PropiedadNoEstaEnJuegoException{
+	public void ejecutar() throws PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		int danio = 10;
 		Coordenada posicionUnidad = null;
 		
@@ -27,6 +28,8 @@ public class Radiacion extends AtaqueMagico{
 		for(Terreno terreno : zonaRadioactiva){
 			afectarZona(terreno, danio);
 		}
+		
+		mapa.limpiarMuertos();
 		
 	}
 

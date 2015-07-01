@@ -24,7 +24,11 @@ public class AltoTemplarioTest {
 	public void pasarMuchosTurnos(AltoTemplario templario) throws PropiedadNoEstaEnJuegoException{
 		//para llenar magia
 		for(int i = 0; i<20; i++){
-			templario.iniciarTurno();
+			try {
+				templario.iniciarTurno();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -98,7 +102,11 @@ public class AltoTemplarioTest {
 	@Test
 	public void testTemplarioRegenera15DeMagia() throws PropiedadNoEstaEnJuegoException{
 		UnidadMagica templario = new AltoTemplario();
-		templario.iniciarTurno();
+		try {
+			templario.iniciarTurno();
+		} catch (PropiedadNoExisteEnEstaUbicacion e) {
+			e.printStackTrace();
+		}
 		
 		assertEquals(65, templario.getMagiaActual());
 		

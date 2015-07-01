@@ -84,7 +84,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 	}
 	
 	@Override
-	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException {
+	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion {
 		if(!this.enConstruccion())
 			this.vitalidad.regenerar();
 			this.movimientos.regenerar();

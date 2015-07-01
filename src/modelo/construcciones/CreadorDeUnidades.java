@@ -10,6 +10,7 @@ import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.exception.RecursosNegativosException;
 import modelo.exception.UnidadIncompletaException;
 import modelo.factory.UnidadesAbstractFactory;
@@ -112,7 +113,7 @@ public class CreadorDeUnidades extends DecoradorEdificioBasico {
 	}
 	
 	@Override
-	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException {
+	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion {
 		this.edificio.iniciarTurno();
 		Unidad primerUnidadEnLista = this.unidadesEnCreacion.peek();
 		if(this.unidadEnCreacion() && primerUnidadEnLista.enConstruccion())

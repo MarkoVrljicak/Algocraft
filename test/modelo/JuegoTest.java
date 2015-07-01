@@ -79,7 +79,7 @@ public class JuegoTest {
 	
 	private void juntarRecursosParaAmbosJugadores(Juego algocraft) 
 			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
-					GasInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, PropiedadNoEstaEnJuegoException, RecursosNegativosException{
+					GasInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, PropiedadNoEstaEnJuegoException, RecursosNegativosException, PropiedadNoExisteEnEstaUbicacion{
 		final int muchosTurnos = 400; 
 		
 		algocraft.construirEn(EnumEdificiosTerran.CENTRO_DE_MINERALES,
@@ -106,7 +106,7 @@ public class JuegoTest {
 
 	private CreadorDeUnidades crearBarracaListaEn(Juego algocraft, Coordenada posicion) 
 			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
-					GasInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, RecursosNegativosException, PropiedadNoEstaEnJuegoException{
+					GasInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, RecursosNegativosException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		
 		algocraft.construirEn(EnumEdificiosTerran.BARRACA, posicion);
 		CreadorDeUnidades barraca=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicion);
@@ -118,7 +118,7 @@ public class JuegoTest {
 	
 	private CreadorDeUnidades crearFabricaListaEn(Juego algocraft,Coordenada posicion) 
 			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException,
-					GasInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
+					GasInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, RecursosNegativosException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion {
 		
 		algocraft.construirEn(EnumEdificiosTerran.FABRICA, posicion);
 		CreadorDeUnidades fabrica=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicion);
@@ -130,7 +130,7 @@ public class JuegoTest {
 	
 	private CreadorDeUnidades crearPuertoListoEn(Juego algocraft,Coordenada posicion) 
 			throws DestinoInvalidoException, FueraDeLimitesException, MineralInsuficienteException, 
-					GasInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, RecursosNegativosException, PropiedadNoEstaEnJuegoException {
+					GasInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, RecursosNegativosException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion {
 		
 		algocraft.construirEn(EnumEdificiosTerran.PUERTO_ESTELAR, posicion);
 		CreadorDeUnidades puerto=(CreadorDeUnidades) algocraft.seleccionarSuelo(posicion);
@@ -228,7 +228,7 @@ public class JuegoTest {
 	
 	
 	@Test
-	public void testPasarTurnoCambiaElJugadorActual() throws UnidadIncompletaException, DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testPasarTurnoCambiaElJugadorActual() throws UnidadIncompletaException, DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		
 		algocraft.pasarTurno();
@@ -241,7 +241,7 @@ public class JuegoTest {
 			throws DestinoInvalidoException, FueraDeLimitesException,
 				MineralInsuficienteException, GasInsuficienteException, 
 				PoblacionInsuficienteException, DependenciasNoCumplidasException, UnidadIncompletaException, 
-				RecursosNegativosException, PropiedadNoEstaEnJuegoException, EdificioTodaviaEnConstruccionException{
+				RecursosNegativosException, PropiedadNoEstaEnJuegoException, EdificioTodaviaEnConstruccionException, PropiedadNoExisteEnEstaUbicacion{
 		
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		this.juntarRecursosParaAmbosJugadores(algocraft);
@@ -351,7 +351,7 @@ public class JuegoTest {
 	
 	@Test
 	public void testJuegadoresEmpiezanConBases() 
-			throws FueraDeLimitesException, UnidadIncompletaException, DestinoInvalidoException, PropiedadNoEstaEnJuegoException{
+			throws FueraDeLimitesException, UnidadIncompletaException, DestinoInvalidoException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Juego algocraft = this.iniciarJuegoConDosJugadores();
 		Jugador jugador1 = algocraft.getJugadorActual();
 		
@@ -364,7 +364,7 @@ public class JuegoTest {
 	}
 	
 	@Test
-	public void inicaElJuegoPasaDeTurnoYNoHayGanadores() throws FueraDeLimitesException{
+	public void inicaElJuegoPasaDeTurnoYNoHayGanadores() throws FueraDeLimitesException, PropiedadNoExisteEnEstaUbicacion{
 		Juego algocraft = iniciarJuegoConDosJugadores();
 		
 		assertFalse(algocraft.hayGanador());

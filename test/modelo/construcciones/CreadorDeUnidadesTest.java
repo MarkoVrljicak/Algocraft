@@ -7,6 +7,7 @@ import modelo.exception.GasInsuficienteException;
 import modelo.exception.MineralInsuficienteException;
 import modelo.exception.PoblacionInsuficienteException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.exception.RecursosNegativosException;
 import modelo.exception.UnidadIncompletaException;
 import modelo.factory.edificiosProtoss.CreadorAcceso;
@@ -43,7 +44,8 @@ public class CreadorDeUnidadesTest {
 			try {
 				acceso.iniciarTurno();
 			} catch (PropiedadNoEstaEnJuegoException e) {
-				// no entiendo por que se lanzaria esta excepcion
+				e.printStackTrace();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
 				e.printStackTrace();
 			}
 
@@ -56,8 +58,7 @@ public class CreadorDeUnidadesTest {
 		for(int turnos = 1 ; turnos<= tiempoConstruccionBarraca ; turnos++)
 			try {
 				barraca.iniciarTurno();
-			} catch (PropiedadNoEstaEnJuegoException e) {
-				// no entiendo por que se lanzaria esta excepcion
+			} catch (PropiedadNoEstaEnJuegoException | PropiedadNoExisteEnEstaUbicacion e) {
 				e.printStackTrace();
 			}
 		return barraca;
@@ -101,7 +102,11 @@ public class CreadorDeUnidadesTest {
 
 		barraca.crearUnidad(UnidadesTerran.MARINE);
 		for(int turno = 1 ; turno <= 3 ; turno++ )
-			barraca.iniciarTurno();
+			try {
+				barraca.iniciarTurno();
+			} catch (PropiedadNoExisteEnEstaUbicacion e) {
+				e.printStackTrace();
+			}
 
 		assertTrue(barraca.unidadTerminada());
 	}

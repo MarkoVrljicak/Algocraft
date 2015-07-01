@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.magias.AtaqueMagico;
 import modelo.stats.Magia;
 
@@ -19,7 +20,7 @@ abstract public class UnidadMagica extends Unidad {
 
 	abstract protected void setearMagia();
 	
-	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException{
+	public void iniciarTurno() throws PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		this.magia.regenerar();
 		
 		Iterator<AtaqueMagico> iter = magias.iterator();
