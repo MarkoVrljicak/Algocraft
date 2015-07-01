@@ -105,12 +105,20 @@ public class Controlador {
 		
 		if(ventanaDatos.opcionRojo.isSelected()){
 			colorElegido = Colores.ROJO;
-			ventanaDatos.opcionRojo.setEnabled(false);
+			if (colorNoSeleccionado()) ventanaDatos.opcionRojo.setEnabled(false);
+			
 		}else if(ventanaDatos.opcionAzul.isSelected()){
 			colorElegido = Colores.AZUL;
-			ventanaDatos.opcionAzul.setEnabled(false);
+			if (colorNoSeleccionado()) ventanaDatos.opcionAzul.setEnabled(false);
 		}
 		return colorElegido;
+	}
+	
+	private boolean colorNoSeleccionado(){
+		VentanaIngresoDeDatosJugador ventanaDatos = aplicacion.ventanaDatosJugador;
+		
+		return (ventanaDatos.opcionRojo.isEnabled() && ventanaDatos.opcionAzul.isEnabled());
+
 	}
 	
 	public String nombreIngresado(){
