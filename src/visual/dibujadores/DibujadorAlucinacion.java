@@ -9,6 +9,7 @@ import modelo.Interfaces.Daniable;
 import modelo.mapa.Coordenada;
 import modelo.unidades.Unidad;
 import modelo.unidades.Unidades;
+import modelo.unidades.protos.Alucinacion;
 import modelo.unidades.protos.UnidadesProtos;
 import visual.vistas.VistaAlucinacion;
 
@@ -26,10 +27,8 @@ public class DibujadorAlucinacion extends Dibujador {
 	}
 	
 	private void setearImagen(Unidad aDibujar){
-		String urlImagen = imagenes.get(aDibujar.getNombre());
-		if(imagenes.isEmpty()){
-			(new Exception()).printStackTrace();
-		}
+		Unidades aClonar = ((Alucinacion) aDibujar).getNombreClonado();
+		String urlImagen = imagenes.get(aClonar);
 		
 		this.imagen = createImageIcon(urlImagen, "");
 	}

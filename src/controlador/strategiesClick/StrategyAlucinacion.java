@@ -1,9 +1,10 @@
 package controlador.strategiesClick;
 
-import controlador.Controlador;
 import modelo.Juego;
+import modelo.unidades.Unidad;
 import modelo.unidades.protos.AltoTemplario;
 import visual.Seleccionable;
+import controlador.Controlador;
 
 public class StrategyAlucinacion implements StrategyAccion {
 
@@ -15,7 +16,7 @@ public class StrategyAlucinacion implements StrategyAccion {
 
 	@Override
 	public void accionPara(Seleccionable accionado, Juego juego ,Controlador controlador) {
-		controlador.realizarAlucinacion(altoTemplario, accionado, accionado.obtenerPosicion());		
+		controlador.realizarAlucinacion(altoTemplario, (Unidad) accionado.getDaniable(), accionado.obtenerPosicion());		
 	}
 
 }

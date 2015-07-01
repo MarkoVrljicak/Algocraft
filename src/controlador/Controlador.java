@@ -339,9 +339,9 @@ public class Controlador {
 		
 	}
 
-	public void realizarAlucinacion(AltoTemplario altoTemplario, Seleccionable accionado,
+	public void realizarAlucinacion(AltoTemplario altoTemplario, Unidad unidad,
 			Coordenada objetivo) {
-		juego.crearAlucinacion(altoTemplario, (Unidad) accionado.getDaniable(), objetivo);
+		juego.crearAlucinacion(altoTemplario, unidad, objetivo);
 		this.setStrategyAccion(new StrategySeleccion());
 		escribirEnLog("Alucinacion creada");
 		

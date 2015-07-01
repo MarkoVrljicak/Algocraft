@@ -33,7 +33,6 @@ public class IntegracionTerransTest {
 			try {
 				jugador.iniciarTurno();
 			} catch (PropiedadNoExisteEnEstaUbicacion e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

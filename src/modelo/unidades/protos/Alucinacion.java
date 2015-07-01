@@ -9,6 +9,7 @@ import modelo.stats.Stat;
 import modelo.stats.Vida;
 import modelo.unidades.Unidad;
 import modelo.unidades.UnidadAtacante;
+import modelo.unidades.Unidades;
 
 public class Alucinacion extends UnidadAtacante{
 	
@@ -18,6 +19,10 @@ public class Alucinacion extends UnidadAtacante{
 		this.otraUnidad = otraUnidad;
 		super.inicializar();
 		
+	}
+	
+	public Unidades getNombreClonado(){
+		return otraUnidad.getNombre();
 	}
 
 	@Override
