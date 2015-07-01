@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import modelo.exception.DestinoInvalidoException;
+import modelo.exception.FueraDeLimitesException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
 import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.magias.AtaqueMagico;
@@ -107,8 +108,8 @@ public class AltoTemplario extends UnidadMagica {
 		while(iter.hasNext() && alucinaciones > 0){
 			terrenoCualquiera = iter.next();
 			try {
-				terrenoCualquiera.almacenar(new Alucinacion(unidadAClonar));
-			} catch (DestinoInvalidoException e) {
+				mapa.almacenar(new Alucinacion(unidadAClonar), terrenoCualquiera.getCoordenada());
+			} catch (DestinoInvalidoException | FueraDeLimitesException e) {
 				continue;
 			}
 			alucinaciones--;

@@ -18,6 +18,7 @@ public class Alucinacion extends UnidadAtacante{
 	public Alucinacion(Unidad otraUnidad){
 		this.otraUnidad = otraUnidad;
 		super.inicializar();
+		setColor();
 		
 	}
 	
@@ -28,6 +29,11 @@ public class Alucinacion extends UnidadAtacante{
 	@Override
 	protected void setearNombre() {
 		this.nombre = UnidadesProtos.ALUCINACION;
+	}
+	
+	
+	private void setColor() {
+		this.color = otraUnidad.getColor();
 	}
 
 	@Override

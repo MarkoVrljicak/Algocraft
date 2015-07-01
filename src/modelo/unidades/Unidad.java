@@ -25,7 +25,7 @@ public abstract class Unidad extends Propiedad implements Movible{
 	protected Danio danio;
 	protected Movimientos movimientos;
 	protected Movimiento movimiento;
-	private Colores color = Colores.GRIS;
+	protected Colores color = Colores.GRIS;
 
 	//Template method
 	protected void inicializar() {
