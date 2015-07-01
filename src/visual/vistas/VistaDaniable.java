@@ -36,12 +36,12 @@ public abstract class VistaDaniable  extends JLabel implements Seleccionable{
 	public void mostrarInformacion(JToolBar barraInformacion) {
 		this.mostrarVida(barraInformacion);
 		this.mostrarEscudo(barraInformacion);
-		workaroundToolbarBug(barraInformacion);
+		decorarToolbar(barraInformacion);
 		
 	}
 
 	//TODO resolver el bug de una forma que no aniada un boton nulo vacio
-	protected void workaroundToolbarBug(JToolBar barraInformacion) {
+	protected void decorarToolbar(JToolBar barraInformacion) {
 		JButton separador = new JButton("para que se muestren las estadisticas");
 		separador.setVisible(false);
 		barraInformacion.add(separador);

@@ -27,7 +27,7 @@ public abstract class VistaUnidades extends VistaDaniable{
 		super.mostrarInformacion(barraInformacion);
 		this.mostrarMovimientosRestantes(barraInformacion);
 		this.mostrarCostoTransporte(barraInformacion);
-		workaroundToolbarBug(barraInformacion);
+		decorarToolbar(barraInformacion);
 	}
 	
 	private void mostrarNombre(JToolBar barraInformacion) {

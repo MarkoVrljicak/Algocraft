@@ -203,7 +203,6 @@ public class Algocraft {
 		try {
 			algocraft.pasarTurno();
 		} catch (PropiedadNoExisteEnEstaUbicacion e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -218,7 +217,6 @@ public class Algocraft {
 			try {
 				algocraft.pasarTurno();
 			} catch (PropiedadNoExisteEnEstaUbicacion e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -236,7 +234,6 @@ public class Algocraft {
 		try {
 			algocraft.pasarTurno();
 		} catch (PropiedadNoExisteEnEstaUbicacion e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -248,7 +245,6 @@ public class Algocraft {
 			try {
 				algocraft.pasarTurno();
 			} catch (PropiedadNoExisteEnEstaUbicacion e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}//nota: al salir es el turno del jugador 1
@@ -272,7 +268,6 @@ public class Algocraft {
 			try {
 				algocraft.pasarTurno();
 			} catch (PropiedadNoExisteEnEstaUbicacion e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}//nota: al salir es el turno del jugador 1
@@ -291,7 +286,6 @@ public class Algocraft {
 			try {
 				algocraft.pasarTurno();
 			} catch (PropiedadNoExisteEnEstaUbicacion e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}//nota: al salir es el turno del jugador 2
@@ -310,7 +304,6 @@ public class Algocraft {
 			try {
 				algocraft.pasarTurno();
 			} catch (PropiedadNoExisteEnEstaUbicacion e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}//nota: al salir es el turno del jugador 2
@@ -329,7 +322,6 @@ public class Algocraft {
 			try {
 				algocraft.pasarTurno();
 			} catch (PropiedadNoExisteEnEstaUbicacion e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}//nota: al salir es el turno del jugador 2

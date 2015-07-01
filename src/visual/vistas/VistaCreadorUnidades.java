@@ -29,7 +29,7 @@ public class VistaCreadorUnidades extends VistaEdificios {
 	public void mostrarInformacion(JToolBar barraInformacion) {
 		super.mostrarInformacion(barraInformacion);
 		this.mostrarUnidadesEnCreacion(barraInformacion);
-		workaroundToolbarBug(barraInformacion);
+		decorarToolbar(barraInformacion);
 	}
 
 	private void mostrarUnidadesEnCreacion(JToolBar barraInformacion) {

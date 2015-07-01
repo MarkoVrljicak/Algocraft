@@ -25,7 +25,7 @@ public class VistaEdificios extends VistaDaniable{
 		super.mostrarInformacion(barraInformacion);
 		this.mostrarPoblacionSumada(barraInformacion);
 		this.mostrarEnConstruccion(barraInformacion);
-		workaroundToolbarBug(barraInformacion);
+		decorarToolbar(barraInformacion);
 	}
 
 	private void mostrarNombre(JToolBar barraInformacion) {

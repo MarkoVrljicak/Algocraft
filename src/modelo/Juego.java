@@ -166,10 +166,7 @@ public class Juego extends Observable{
 			throws UnidadIncompletaException, DestinoInvalidoException, 
 			FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion {
 		
-		if(jugadorActual == jugador1)
-			jugadorActual= jugador2;
-		else if(jugadorActual == jugador2)
-			jugadorActual= jugador1;
+		cambiarDeJugador();
 
 		jugadorActual.iniciarTurno();
 		
@@ -177,6 +174,13 @@ public class Juego extends Observable{
 
 		this.setChanged();
 		this.notifyObservers();
+	}
+
+	private void cambiarDeJugador() {
+		if(jugadorActual == jugador1)
+			jugadorActual= jugador2;
+		else if(jugadorActual == jugador2)
+			jugadorActual= jugador1;
 	}
 
 	private void ponerNuevasUnidadesEnMapa() throws UnidadIncompletaException, DestinoInvalidoException, FueraDeLimitesException {
