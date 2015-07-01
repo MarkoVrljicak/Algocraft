@@ -4,13 +4,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
+import modelo.Juego;
 import modelo.mapa.Coordenada;
 import modelo.unidades.UnidadMagica;
 
 @SuppressWarnings("serial")
-public class VistaUnidadesMagicas extends VistaUnidades {
+abstract public class VistaUnidadesMagicas extends VistaUnidades {
 
-	private UnidadMagica unidadMagica;
+	protected UnidadMagica unidadMagica;
 
 	public VistaUnidadesMagicas(UnidadMagica unidad,Coordenada posicion, ImageIcon imagen) {
 		super(unidad,posicion, imagen);
@@ -32,4 +33,13 @@ public class VistaUnidadesMagicas extends VistaUnidades {
 	}
 	
 	//TODO mostrar magias y triarlas
+	@Override
+	public void ofrecerAcciones(JToolBar barraAcciones, Juego juego) {
+		super.ofrecerAcciones(barraAcciones, juego);
+		if(unidadPerteneceAJugadorActual(juego)){
+			ofrecerMagias(barraAcciones);
+		}
+	}
+
+	abstract protected void ofrecerMagias(JToolBar barraAcciones);
 }

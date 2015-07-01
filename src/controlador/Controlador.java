@@ -25,11 +25,14 @@ import modelo.exception.UnidadIncompletaException;
 import modelo.exception.UnidadNoTransportableException;
 import modelo.jugador.Colores;
 import modelo.mapa.Coordenada;
+import modelo.mapa.Mapa;
 import modelo.razas.EnumRazas;
 import modelo.unidades.Unidad;
 import modelo.unidades.UnidadAtacante;
 import modelo.unidades.UnidadTransportadora;
 import modelo.unidades.Unidades;
+import modelo.unidades.protos.AltoTemplario;
+import modelo.unidades.terran.NaveCiencia;
 import visual.Algocraft;
 import visual.Seleccionable;
 import visual.VentanaErrorFatal;
@@ -232,17 +235,18 @@ public class Controlador {
 
 	public void realizarAtaque(UnidadAtacante unidad, Seleccionable accionado) {
 		
-		try {
-			if(!(accionado.getDaniable()==null)){
+		if(!(accionado.getDaniable()==null)){
+			try {
 				juego.realizarAtaque(unidad,accionado.getDaniable());
-				this.setStrategyAccion(new StrategySeleccion());
-				escribirEnLog(
-						"Atacando con: "+unidad.getNombre().toString()
-						+" a posicion:" +accionado.obtenerPosicion().getX() +"/" +accionado.obtenerPosicion().getY());
+			} catch (FueraDeLimitesException e) {
+				nuevoMensajeFatal("Fuera de limites");
 			}
-		} catch (FueraDeLimitesException e) {
-			nuevoMensajeFatal("Fuera de limites");
+			this.setStrategyAccion(new StrategySeleccion());
+			escribirEnLog(
+					"Atacando con: "+unidad.getNombre().toString()
+					+" a posicion:" +accionado.obtenerPosicion().getX() +"/" +accionado.obtenerPosicion().getY());
 		}
+		
 	}
 	
 	public void nuevoMensaje(String mensaje){
@@ -278,14 +282,57 @@ public class Controlador {
 	public void bajarUnidad(UnidadTransportadora unidadTransportadora,Unidad unidadABajar) {
 		try {
 			juego.bajarUnidad(unidadTransportadora, unidadABajar);
-			this.setStrategyAccion(new StrategySeleccion());
 		} catch (DestinoInvalidoException e) {
 			nuevoMensaje("No se puede bajar aca");
 		} catch (FueraDeLimitesException e) {
 			nuevoMensajeFatal("El transporte no esta en mapa");
 		}
+		this.setStrategyAccion(new StrategySeleccion());
 		
 	}
 
+	public void realizarEMP(NaveCiencia nave, Coordenada objetivo) {
+		try {
+			nave.emp(juego.getMapa(), objetivo);
+		} catch (PropiedadNoEstaEnJuegoException e) {
+			nuevoMensajeFatal("La nave no esta en el mapa");
+		}
+		this.setStrategyAccion(new StrategySeleccion());
+		escribirEnLog(
+				"Lanzado EMP a posicion:" +objetivo.getX() +"/" +objetivo.getY());
+		
+	}
+
+	public void realizarRadiacion(NaveCiencia nave, Seleccionable accionable) {
+		Mapa mapa = juego.getMapa();
+		try {
+			nave.radiacion((Unidad) accionable, mapa);
+		} catch (PropiedadNoEstaEnJuegoException e) {
+			nuevoMensajeFatal("La unidad esta fuera de juego");
+		}
+		escribirEnLog("Radiacion lanzada");
+		
+	}
+
+	public void realizarTormentaPsionica(AltoTemplario altoTemplario,
+			Coordenada objetivo) {
+		try {
+			altoTemplario.tormentaPsionica(juego.getMapa(), objetivo);
+		} catch (PropiedadNoEstaEnJuegoException e) {
+			nuevoMensajeFatal("El alto templario no esta en el mapa");
+		} catch (PropiedadNoExisteEnEstaUbicacion e) {
+			nuevoMensajeFatal("Error al eliminar muertos del mapa");
+		}
+		escribirEnLog("Tormenta Psionica lanzada");
+		
+	}
+
+	public void realizarAlucinacion(AltoTemplario altoTemplario, Seleccionable accionado,
+			Coordenada objetivo) {
+		Mapa mapa = juego.getMapa();
+		altoTemplario.alucinacion((Unidad) accionado.getDaniable(), mapa, objetivo);
+		escribirEnLog("Alucinacion creada");
+		
+	}
 	
 }

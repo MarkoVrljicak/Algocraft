@@ -286,6 +286,10 @@ public class Juego extends Observable{
 	private boolean jugador2Perdio() {
 		return (jugador2.cantidadConstrucciones() == 0 && jugador2.getPoblacionActual() == 0);
 	}
+	
+	public Mapa getMapa() {
+		return mapa;
+	}
 
 
 }

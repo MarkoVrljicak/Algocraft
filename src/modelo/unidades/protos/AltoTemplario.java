@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.magias.AtaqueMagico;
 import modelo.magias.TormentaPsionica;
 import modelo.mapa.Coordenada;
@@ -91,7 +92,9 @@ public class AltoTemplario extends UnidadMagica {
 		this.magia.disminuir(150);
 	}
 	
-	public void alucinacion(Unidad unidadAClonar, Collection<Terreno> zonaDeClonacion){
+	public void alucinacion(Unidad unidadAClonar, Mapa mapa, Coordenada objetivo ){
+		Collection<Terreno> zonaDeClonacion = mapa.obtenerRadioDeCasilleros(2, objetivo);
+		
 		int magiaRequerida = 100;
 		if(this.magia.actual() < magiaRequerida){
 			return;
@@ -115,7 +118,7 @@ public class AltoTemplario extends UnidadMagica {
 		
 	}
 
-	public void tormentaPsionica(Mapa mapa, Coordenada coordenadaObjetivo) throws PropiedadNoEstaEnJuegoException {
+	public void tormentaPsionica(Mapa mapa, Coordenada coordenadaObjetivo) throws PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion {
 		Collection<Terreno> area = mapa.obtenerRadioDeCasilleros(2, coordenadaObjetivo);
 		if(this.magia.actual() < 75){
 			return;
@@ -126,6 +129,8 @@ public class AltoTemplario extends UnidadMagica {
 		AtaqueMagico tormenta = new TormentaPsionica(area);
 		tormenta.ejecutar();
 		this.magias.add(tormenta);
+		
+		mapa.limpiarMuertos();
 	}
 
 	

@@ -7,6 +7,7 @@ import java.util.Iterator;
 import modelo.exception.DestinoInvalidoException;
 import modelo.exception.FueraDeLimitesException;
 import modelo.exception.PropiedadNoEstaEnJuegoException;
+import modelo.exception.PropiedadNoExisteEnEstaUbicacion;
 import modelo.mapa.Coordenada;
 import modelo.mapa.Mapa;
 import modelo.mapa.terrenos.Terreno;
@@ -113,7 +114,7 @@ public class AltoTemplarioTest {
 		
 		pasarMuchosTurnos(templario);
 		
-		templario.alucinacion(original, mapa.obtenerRadioDeCasilleros(2, ubicacion));
+		templario.alucinacion(original, mapa, ubicacion);
 		
 		int alucinacionesEncontradas = 0;
 		
@@ -137,7 +138,7 @@ public class AltoTemplarioTest {
 		Coordenada ubicacion = new Coordenada(5,5);
 		mapa.almacenar(original, ubicacion);
 		
-		templario.alucinacion(original, mapa.obtenerRadioDeCasilleros(2, ubicacion));
+		templario.alucinacion(original, mapa, ubicacion);
 		
 		int alucinacionesEncontradas = 0;
 		
@@ -165,13 +166,13 @@ public class AltoTemplarioTest {
 		
 		int magiaOriginal = templario.getMagiaActual();
 		
-		templario.alucinacion(original, mapa.obtenerRadioDeCasilleros(2, ubicacion));
+		templario.alucinacion(original, mapa, ubicacion);
 		
 		assertEquals(templario.getMagiaActual(), magiaOriginal - 100);
 	}
 	
 	@Test
-	public void testTormentaPsionicaDaniaUnidad() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testTormentaPsionicaDaniaUnidad() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		AltoTemplario templario = new AltoTemplario();
 		pasarMuchosTurnos(templario);
@@ -188,7 +189,7 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-	public void testTormentaPsionicaHace100DeDanioLaPrimeraVuelta() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testTormentaPsionicaHace100DeDanioLaPrimeraVuelta() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		AltoTemplario templario = new AltoTemplario();
 		Unidad otraUnidad = new NaveCiencia();
@@ -207,7 +208,7 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-	public void testTormentaPsionicaHace100DeDanioLaSegundaVuelta() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testTormentaPsionicaHace100DeDanioLaSegundaVuelta() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		AltoTemplario templario = new AltoTemplario();
 		Unidad otraUnidad = new NaveCiencia();
@@ -224,7 +225,7 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-	public void testTormentaPsionicaMata2NavesCienciaEnDosTurnos() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testTormentaPsionicaMata2NavesCienciaEnDosTurnos() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		AltoTemplario templario = new AltoTemplario();
 		Unidad nave1 = new NaveCiencia();
@@ -245,7 +246,7 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-	public void testTormentaPsionicaNoSeActivaSinMagiaSuficiente() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testTormentaPsionicaNoSeActivaSinMagiaSuficiente() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		AltoTemplario templario = new AltoTemplario();
 		Unidad otraUnidad = new NaveCiencia();
@@ -261,7 +262,7 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-	public void testTormentaPsionicaGasta75deEnergia() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testTormentaPsionicaGasta75deEnergia() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		AltoTemplario templario = new AltoTemplario();
 		
@@ -273,7 +274,7 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-	public void testTormentaPsionicaDura2Turnos() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException{
+	public void testTormentaPsionicaDura2Turnos() throws DestinoInvalidoException, FueraDeLimitesException, PropiedadNoEstaEnJuegoException, PropiedadNoExisteEnEstaUbicacion{
 		Mapa mapa = new Mapa(10,10);
 		AltoTemplario templario = new AltoTemplario();
 		

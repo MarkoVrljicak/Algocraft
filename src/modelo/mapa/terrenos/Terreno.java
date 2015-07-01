@@ -88,6 +88,19 @@ public abstract class Terreno {
 	abstract public boolean sePuedeEdificar();
 	//Para que los edificios que no sean recolectores de recursos sepan si pueden ser construidos.
 
+	public void limpiarMuertos() throws PropiedadNoExisteEnEstaUbicacion {
+		Propiedad contenido = this.getContenidoSuelo();
+		if (contenido != null && contenido.estoyMuerto()){
+			this.borrarContenido(contenido);
+		} 
+		
+		contenido = this.getContenidoCielo();
+		if (contenido != null && contenido.estoyMuerto()){
+			this.borrarContenido(contenido);
+		}
+		
+	}
+
 
 
 

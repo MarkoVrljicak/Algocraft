@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import modelo.Interfaces.Daniable;
 import modelo.mapa.Coordenada;
 import modelo.unidades.UnidadMagica;
-import visual.vistas.VistaUnidadesMagicas;
+import visual.vistas.VistaAltoTemplario;
 
 
 public class DibujadorAltoTemplario extends Dibujador {
@@ -18,6 +18,6 @@ public class DibujadorAltoTemplario extends Dibujador {
 	
 	@Override
 	public JLabel dibujar(Daniable aDibujar, Coordenada posicion) {
-		return new  VistaUnidadesMagicas((UnidadMagica) aDibujar, posicion, imagen) ;
+		return new  VistaAltoTemplario((UnidadMagica) aDibujar, posicion, imagen) ;
 	}
 }

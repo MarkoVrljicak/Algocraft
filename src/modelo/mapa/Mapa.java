@@ -195,6 +195,13 @@ public class Mapa implements Iterable<Terreno>{
 		
 	}
 	
+	public void limpiarMuertos() throws PropiedadNoExisteEnEstaUbicacion{
+		Collection<Terreno> terrenos = casilleros.values();
+		for(Terreno unTerreno: terrenos){
+			unTerreno.limpiarMuertos();
+		}
+	}
+	
 	public int propiedadesEnJuego(){
 		return posiciones.size();
 	}
