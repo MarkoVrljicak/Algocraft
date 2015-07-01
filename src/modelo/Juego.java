@@ -309,5 +309,13 @@ public class Juego extends Observable{
 		this.notifyObservers();
 	}
 
+	public void limpiarMuertos() throws PropiedadNoExisteEnEstaUbicacion {
+		mapa.limpiarMuertos();
+		
+		this.setChanged();
+		this.notifyObservers();
+		
+	}
+
 
 }

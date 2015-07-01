@@ -303,6 +303,7 @@ public class Controlador {
 	public void realizarEMP(NaveCiencia nave, Coordenada objetivo) {
 		try {
 			nave.emp(juego.getMapa(), objetivo);
+			juego.limpiarMuertos();
 		} catch (PropiedadNoEstaEnJuegoException e) {
 			nuevoMensajeFatal("La nave no esta en el mapa");
 		} catch (PropiedadNoExisteEnEstaUbicacion e) {
@@ -332,6 +333,7 @@ public class Controlador {
 			Coordenada objetivo) {
 		try {
 			altoTemplario.tormentaPsionica(juego.getMapa(), objetivo);
+			juego.limpiarMuertos();
 		} catch (PropiedadNoEstaEnJuegoException e) {
 			nuevoMensajeFatal("El alto templario no esta en el mapa");
 		} catch (PropiedadNoExisteEnEstaUbicacion e) {
